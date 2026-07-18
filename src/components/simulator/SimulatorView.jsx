@@ -18,12 +18,15 @@ import {
   PlaneTakeoff,
   Target,
   TriangleAlert,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import * as THREE from "three";
 import { FlightEngine } from "../../simulator/FlightEngine.js";
 import { SceneManager } from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
 import { MissionTracker } from "../../simulator/MissionTracker.js";
+import { SoundEngine } from "../../simulator/SoundEngine.js";
 import TouchControls, { hasCoarsePointer } from "./TouchControls.jsx";
 import { MISSIONS } from "../../content/missions";
 import {
@@ -53,6 +56,18 @@ export default function SimulatorView({ onExit }) {
   const touchRef = useRef({ pitch: 0, roll: 0, yaw: 0, throttleTarget: null });
   const touchDevice = hasCoarsePointer();
 
+  // Sonido sintetizado: una instancia por montaje del simulador
+  const soundRef = useRef(null);
+  if (!soundRef.current) soundRef.current = new SoundEngine();
+  const [muted, setMuted] = useState(soundRef.current.muted);
+  useEffect(() => () => soundRef.current?.dispose(), []);
+
+  const toggleMuted = () => {
+    const next = !soundRef.current.muted;
+    soundRef.current.setMuted(next);
+    setMuted(next);
+  };
+
   useEffect(() => {
     if (phase !== "flying") return;
 
@@ -75,6 +90,8 @@ export default function SimulatorView({ onExit }) {
     window.addEventListener("resize", resize);
 
     const endSession = (finalPhase) => {
+      if (finalPhase === "crashed") soundRef.current?.crash();
+      if (finalPhase === "missionComplete") soundRef.current?.success();
       setStats({
         maxAltitude: Math.round(engine.maxAltitude),
         distanceKm: (engine.distance / 1000).toFixed(1),
@@ -102,6 +119,7 @@ export default function SimulatorView({ onExit }) {
       tracker.update(engine, dt);
       scene.update(engine, dt);
       scene.render();
+      soundRef.current?.update(engine);
 
       hudTimer += dt;
       if (hudTimer >= HUD_INTERVAL) {
@@ -135,6 +153,7 @@ export default function SimulatorView({ onExit }) {
   }, [phase, mission]);
 
   const fly = (selectedMission) => {
+    soundRef.current?.start(); // gesto del usuario: el AudioContext puede arrancar
     setMission(selectedMission);
     setHud(null);
     setStats(null);
@@ -180,6 +199,17 @@ export default function SimulatorView({ onExit }) {
               {t(`missions.${mission.id}.objective`)}
             </div>
           )}
+          <button
+            className="sound-toggle"
+            aria-label={muted ? t("sound.unmute") : t("sound.mute")}
+            onClick={toggleMuted}
+          >
+            {muted ? (
+              <VolumeX size={20} aria-hidden="true" />
+            ) : (
+              <Volume2 size={20} aria-hidden="true" />
+            )}
+          </button>
           {touchDevice && <TouchControls inputRef={touchRef} />}
         </>
       )}

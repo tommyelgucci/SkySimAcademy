@@ -519,6 +519,24 @@ body {
   }
 }
 
+/* Botón de silencio durante el vuelo */
+.sound-toggle {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 18, 32, 0.72);
+  backdrop-filter: blur(4px);
+  color: var(--color-text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 6;
+}
+
 /* Banner con el objetivo de la misión durante el vuelo */
 .hud-objective {
   position: absolute;

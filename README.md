@@ -2,7 +2,7 @@
 
 MVP educativo de aviación: **módulos de teoría con cuestionarios** + **mini simulador de vuelo 3D** (sesiones de máx. 5 minutos), multi-idioma desde el día 1 (**EN · DE · ES · PT · AR**, con RTL completo para árabe).
 
-Módulos disponibles: **Principios de vuelo** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** (+ Navegación básica en camino). Cada uno: 3 lecciones + quiz, traducido a los 5 idiomas.
+Módulos disponibles: **Principios de vuelo** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica**. Cada uno: 3 lecciones + banco de 10-12 preguntas (cada intento sortea 5), traducido a los 5 idiomas.
 
 Proyecto hermano de [`teoria-suiza`](../teoria-suiza) (la app de teoría de conducir): misma filosofía —contenido en datos estáticos, sin backend— aplicada al vuelo.
 
@@ -105,6 +105,7 @@ modules.<moduleId>.quiz.<questionId>.question / .options[]
 - **Física simplificada e intencionadamente pedagógica**: la velocidad depende de los gases, subir "cuesta" velocidad, los mandos pierden autoridad a baja velocidad y por debajo de la velocidad de pérdida el ala deja de sustentar — exactamente lo que enseña el módulo *Principios de vuelo*.
 - **Misiones**: vuelo libre siempre disponible + misiones con objetivo ("Primer despegue", "Viraje a rumbo", "Aterrizaje seguro") que se **desbloquean al aprobar el quiz** del módulo de teoría correspondiente (`requiresModule` en `src/content/missions/index.js`). El objetivo se muestra en un banner durante el vuelo y `MissionTracker` lo evalúa en cada frame.
 - **Sesión limitada a 5 minutos** con estadísticas al final (altitud máxima, distancia).
+- **Sonido 100 % sintetizado** (`SoundEngine.js`, Web Audio, sin archivos de audio): motor que sigue a gases y velocidad, viento, aviso intermitente de pérdida, crash y arpegio de misión cumplida. Botón de silencio persistente en el HUD. Misma política que los iconos: cero assets externos, cero copyright.
 - Despegue desde pista, viraje coordinado al alabear, detección de aterrizaje brusco/crash.
 - El "avión" es un cubo-fuselaje con alas primitivas (geometría básica, sin modelos externos) — ligero y suficiente para leer la actitud del avión.
 
@@ -132,7 +133,8 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Más módulos: instrumentos de cabina, meteorología, radio/alfabeto fonético
 - [x] Controles táctiles (joystick virtual) para móvil
 - [x] PWA (manifest + service worker) para instalación y uso offline
-- [ ] Módulo de navegación básica (placeholder ya en la lista)
+- [x] Módulo de navegación básica con misión propia
+- [x] Sonido sintetizado del simulador (Web Audio, sin assets)
+- [x] `vitest` para FlightEngine/MissionTracker + `check:i18n` en CI
 - [ ] Repetición espaciada (SRS) para repaso de preguntas falladas
-- [ ] `vitest` para FlightEngine y validación de paridad de claves entre locales
-- [ ] PWA (manifest + service worker) para uso offline
+- [ ] Estadísticas de estudio (racha, aciertos por tema, como en teoria-suiza)
