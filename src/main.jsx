@@ -9,3 +9,13 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>
 );
+
+// PWA: registrar el service worker relativo a esta app (alcance
+// /teoria-vuelo/ en producción). Se omite al abrir como archivo local.
+if ("serviceWorker" in navigator && window.location.protocol !== "file:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register(new URL("sw.js", window.location.href).pathname)
+      .catch(() => {});
+  });
+}

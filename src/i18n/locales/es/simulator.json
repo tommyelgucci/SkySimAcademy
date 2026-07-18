@@ -21,7 +21,8 @@
     "pitch": "Cabeceo (morro abajo / arriba)",
     "roll": "Alabeo (inclinar izquierda / derecha)",
     "yaw": "Guiñada (timón izquierda / derecha)",
-    "throttle": "Gases (menos / más)"
+    "throttle": "Gases (menos / más)",
+    "touch": "Pantalla táctil: joystick izquierdo = cabeceo y alabeo · barra derecha = gases · botones inferiores = timón"
   },
   "missions": {
     "title": "Elige una misión",

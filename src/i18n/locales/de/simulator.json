@@ -21,7 +21,8 @@
     "pitch": "Nicken (Nase runter / hoch)",
     "roll": "Rollen (links / rechts neigen)",
     "yaw": "Gieren (Seitenruder links / rechts)",
-    "throttle": "Gas (weniger / mehr)"
+    "throttle": "Gas (weniger / mehr)",
+    "touch": "Touchscreen: linker Joystick = Nicken und Rollen · rechter Regler = Gas · untere Tasten = Seitenruder"
   },
   "missions": {
     "title": "Wähle eine Mission",

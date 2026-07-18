@@ -24,6 +24,7 @@ import { FlightEngine } from "../../simulator/FlightEngine.js";
 import { SceneManager } from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
 import { MissionTracker } from "../../simulator/MissionTracker.js";
+import TouchControls, { hasCoarsePointer } from "./TouchControls.jsx";
 import { MISSIONS } from "../../content/missions";
 import {
   isMissionComplete,
@@ -47,6 +48,10 @@ export default function SimulatorView({ onExit }) {
   const [mission, setMission] = useState(null);
   const [hud, setHud] = useState(null);
   const [stats, setStats] = useState(null);
+
+  // Entradas táctiles: el overlay escribe aquí y el loop las lee por frame
+  const touchRef = useRef({ pitch: 0, roll: 0, yaw: 0, throttleTarget: null });
+  const touchDevice = hasCoarsePointer();
 
   useEffect(() => {
     if (phase !== "flying") return;
@@ -77,11 +82,22 @@ export default function SimulatorView({ onExit }) {
       setPhase(finalPhase);
     };
 
+    const clampAxis = (v) => Math.max(-1, Math.min(1, v));
     const loop = () => {
       const dt = clock.getDelta();
       elapsed += dt;
 
-      engine.setInput(controls.getInput());
+      // Fusionar teclado + táctil: los ejes se suman, los gases táctiles
+      // (valor absoluto) tienen prioridad cuando el slider se ha usado
+      const kb = controls.getInput();
+      const tc = touchRef.current;
+      engine.setInput({
+        pitch: clampAxis(kb.pitch + tc.pitch),
+        roll: clampAxis(kb.roll + tc.roll),
+        yaw: clampAxis(kb.yaw + tc.yaw),
+        throttle: kb.throttle,
+        throttleTarget: tc.throttleTarget,
+      });
       engine.update(dt);
       tracker.update(engine, dt);
       scene.update(engine, dt);
@@ -122,6 +138,7 @@ export default function SimulatorView({ onExit }) {
     setMission(selectedMission);
     setHud(null);
     setStats(null);
+    touchRef.current = { pitch: 0, roll: 0, yaw: 0, throttleTarget: null };
     setPhase("flying");
   };
 
@@ -163,6 +180,7 @@ export default function SimulatorView({ onExit }) {
               {t(`missions.${mission.id}.objective`)}
             </div>
           )}
+          {touchDevice && <TouchControls inputRef={touchRef} />}
         </>
       )}
 
@@ -275,9 +293,17 @@ function Overlay({ title, body, actions, children }) {
   );
 }
 
-/** Tabla de controles, íntegramente traducida. */
+/** Tabla de controles, íntegramente traducida (versión táctil o teclado). */
 function ControlsHelp() {
   const { t } = useTranslation("simulator");
+  if (hasCoarsePointer()) {
+    return (
+      <div className="controls-help">
+        <h2>{t("controls.title")}</h2>
+        <p className="controls-help__touch">{t("controls.touch")}</p>
+      </div>
+    );
+  }
   const rows = [
     { keys: "W / S", label: t("controls.pitch") },
     { keys: "A / D", label: t("controls.roll") },

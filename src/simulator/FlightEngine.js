@@ -45,8 +45,13 @@ export class FlightEngine {
   constructor() {
     this.position = new Vector3();
     this.quaternion = new Quaternion();
-    /** Entradas normalizadas: pitch/roll/yaw ∈ [-1,1], throttle ∈ {-1,0,1} (dirección de cambio) */
-    this.input = { pitch: 0, roll: 0, yaw: 0, throttle: 0 };
+    /**
+     * Entradas normalizadas: pitch/roll/yaw ∈ [-1,1].
+     * Gases: `throttle` ∈ {-1,0,1} (dirección de cambio, teclado) o
+     * `throttleTarget` ∈ [0,1] (valor absoluto, slider táctil). Si
+     * throttleTarget no es null, tiene prioridad.
+     */
+    this.input = { pitch: 0, roll: 0, yaw: 0, throttle: 0, throttleTarget: null };
     this.reset();
   }
 
@@ -54,6 +59,7 @@ export class FlightEngine {
     this.position.set(0, FLIGHT.GROUND_Y, 0);
     this.quaternion.identity();
     this.input.pitch = this.input.roll = this.input.yaw = this.input.throttle = 0;
+    this.input.throttleTarget = null;
     this.airspeed = 0;
     this.throttle = 0;
     this.verticalSpeed = 0;
@@ -79,11 +85,18 @@ export class FlightEngine {
     dt = clamp(dt, 0, 0.05);
 
     // --- Potencia y velocidad -------------------------------------------
-    this.throttle = clamp(
-      this.throttle + this.input.throttle * FLIGHT.THROTTLE_RATE * dt,
-      0,
-      1
-    );
+    if (this.input.throttleTarget != null) {
+      // Táctil: la palanca persigue el valor absoluto del slider
+      const target = clamp(this.input.throttleTarget, 0, 1);
+      const maxStep = FLIGHT.THROTTLE_RATE * 2 * dt;
+      this.throttle += clamp(target - this.throttle, -maxStep, maxStep);
+    } else {
+      this.throttle = clamp(
+        this.throttle + this.input.throttle * FLIGHT.THROTTLE_RATE * dt,
+        0,
+        1
+      );
+    }
     const targetSpeed = this.throttle * FLIGHT.MAX_SPEED;
     this.airspeed += (targetSpeed - this.airspeed) * 0.45 * dt;
 

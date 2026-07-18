@@ -21,7 +21,8 @@
     "pitch": "Arfagem (nariz para baixo / cima)",
     "roll": "Rolagem (inclinar esquerda / direita)",
     "yaw": "Guinada (leme esquerda / direita)",
-    "throttle": "Potência (menos / mais)"
+    "throttle": "Potência (menos / mais)",
+    "touch": "Tela sensível ao toque: joystick esquerdo = arfagem e rolagem · barra direita = potência · botões inferiores = leme"
   },
   "missions": {
     "title": "Escolha uma missão",

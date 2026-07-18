@@ -21,7 +21,8 @@
     "pitch": "Pitch (nose down / up)",
     "roll": "Roll (bank left / right)",
     "yaw": "Yaw (rudder left / right)",
-    "throttle": "Throttle (less / more)"
+    "throttle": "Throttle (less / more)",
+    "touch": "Touch screen: left joystick = pitch and roll · right slider = throttle · bottom buttons = rudder"
   },
   "missions": {
     "title": "Choose a mission",

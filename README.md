@@ -100,7 +100,8 @@ modules.<moduleId>.quiz.<questionId>.question / .options[]
 
 ## El simulador
 
-- **Controles**: `W/S` cabeceo · `A/D` alabeo · `Q/E` guiñada · `Shift/Ctrl` gases (también flechas).
+- **Controles de teclado**: `W/S` cabeceo · `A/D` alabeo · `Q/E` guiñada · `Shift/Ctrl` gases (también flechas).
+- **Controles táctiles** (`TouchControls.jsx`, se muestran solo en dispositivos con puntero grueso): joystick izquierdo (cabeceo/alabeo, arrastrar abajo = tirar = morro arriba), slider vertical derecho (gases con valor absoluto) y botones de timón. Escriben en un ref compartido que el game loop lee por frame — arrastrar no fuerza re-renders. Teclado y táctil se fusionan, así que un portátil táctil puede usar ambos.
 - **Física simplificada e intencionadamente pedagógica**: la velocidad depende de los gases, subir "cuesta" velocidad, los mandos pierden autoridad a baja velocidad y por debajo de la velocidad de pérdida el ala deja de sustentar — exactamente lo que enseña el módulo *Principios de vuelo*.
 - **Misiones**: vuelo libre siempre disponible + misiones con objetivo ("Primer despegue", "Viraje a rumbo", "Aterrizaje seguro") que se **desbloquean al aprobar el quiz** del módulo de teoría correspondiente (`requiresModule` en `src/content/missions/index.js`). El objetivo se muestra en un banner durante el vuelo y `MissionTracker` lo evalúa en cada frame.
 - **Sesión limitada a 5 minutos** con estadísticas al final (altitud máxima, distancia).
@@ -116,7 +117,9 @@ El workflow `.github/workflows/deploy-pages.yml` publica **ambas apps** en el ú
 
 El `base: "./"` de `vite.config.js` hace que el build funcione desde cualquier subruta sin configuración extra. Requisito único (ya cumplido si teoria-suiza está publicada): **Settings → Pages → Source: GitHub Actions**.
 
-Nota: el service worker de teoria-suiza (alcance en la raíz del sitio) usa *stale-while-revalidate*, por lo que no interfiere con esta app; si algún día AeroLearn se hace PWA, conviene registrar su propio service worker con alcance `/teoria-vuelo/`.
+### PWA
+
+AeroLearn es instalable ("Añadir a pantalla de inicio"): `public/manifest.webmanifest` + `public/sw.js` (stale-while-revalidate, caché propia `aerolearn-v1`) + iconos PNG generados a partir del icono "plane" de Lucide. El service worker se registra **relativo a la app**, así que en producción su alcance es `/teoria-vuelo/` y nunca interfiere con el de teoria-suiza en la raíz (que a su vez usa stale-while-revalidate y no bloquea esta app).
 
 ## Progreso del usuario
 
@@ -127,8 +130,9 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Persistencia de progreso (localStorage, como en teoria-suiza)
 - [x] Misiones guiadas en el simulador con desbloqueo por teoría
 - [x] Más módulos: instrumentos de cabina, meteorología, radio/alfabeto fonético
+- [x] Controles táctiles (joystick virtual) para móvil
+- [x] PWA (manifest + service worker) para instalación y uso offline
 - [ ] Módulo de navegación básica (placeholder ya en la lista)
 - [ ] Repetición espaciada (SRS) para repaso de preguntas falladas
-- [ ] Controles táctiles (joystick virtual) para móvil
 - [ ] `vitest` para FlightEngine y validación de paridad de claves entre locales
 - [ ] PWA (manifest + service worker) para uso offline

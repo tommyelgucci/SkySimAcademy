@@ -118,10 +118,18 @@ body {
   padding: 2rem 1.2rem;
 }
 
+/* En el simulador la app ocupa exactamente el viewport (100dvh respeta las
+   barras dinámicas de los navegadores móviles) y nada se desborda */
+.app--fullscreen {
+  height: 100vh;
+  height: 100dvh;
+}
+
 .app--fullscreen .app__main {
   max-width: none;
   padding: 0;
   display: flex;
+  min-height: 0;
 }
 
 .app__footer {
@@ -438,7 +446,7 @@ body {
 .simulator {
   position: relative;
   flex: 1;
-  min-height: calc(100vh - 60px);
+  min-height: 0; /* llena el hueco restante sin desbordar el viewport */
   overflow: hidden;
 }
 
@@ -650,6 +658,107 @@ body {
 
 .simulator__stats {
   color: var(--color-text-dim);
+}
+
+/* ---------- Mandos táctiles ---------- */
+
+.touch-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* solo los mandos capturan; el resto deja pasar */
+  z-index: 5;
+}
+
+.touch-controls > * {
+  pointer-events: auto;
+  touch-action: none; /* sin scroll/zoom del navegador al arrastrar */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.joystick {
+  position: absolute;
+  inset-block-end: 1.4rem;
+  inset-inline-start: 1.4rem;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: rgba(10, 18, 32, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(3px);
+  display: grid;
+  place-items: center;
+}
+
+.joystick__thumb {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.throttle-slider {
+  position: absolute;
+  inset-block-end: 1.4rem;
+  inset-inline-end: 1.4rem;
+  width: 52px;
+  height: 168px;
+  border-radius: 26px;
+  background: rgba(10, 18, 32, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(3px);
+  overflow: hidden;
+}
+
+.throttle-slider__fill {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  background: color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.throttle-slider__grip {
+  position: absolute;
+  inset-inline: 4px;
+  height: 14px;
+  margin-block-end: -7px;
+  border-radius: 7px;
+  background: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.touch-controls__yaw {
+  position: absolute;
+  inset-block-end: 1.6rem;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+.yaw-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(10, 18, 32, 0.45);
+  color: var(--color-text);
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(3px);
+  cursor: pointer;
+}
+
+.yaw-button:active {
+  background: var(--color-surface-raised);
+}
+
+.controls-help__touch {
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .controls-help h2 {
