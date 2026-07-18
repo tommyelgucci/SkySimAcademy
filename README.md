@@ -107,6 +107,17 @@ modules.<moduleId>.quiz.<questionId>.question / .options[]
 - Despegue desde pista, viraje coordinado al alabear, detección de aterrizaje brusco/crash.
 - El "avión" es un cubo-fuselaje con alas primitivas (geometría básica, sin modelos externos) — ligero y suficiente para leer la actitud del avión.
 
+## Despliegue (GitHub Pages)
+
+El workflow `.github/workflows/deploy-pages.yml` publica **ambas apps** en el único sitio de Pages del repo en cada push a `main` que toque `teoria-suiza/**` o `teoria-vuelo/**` (o manualmente con "Run workflow"):
+
+- `https://<usuario>.github.io/<repo>/` → teoria-suiza (URL sin cambios)
+- `https://<usuario>.github.io/<repo>/teoria-vuelo/` → esta app
+
+El `base: "./"` de `vite.config.js` hace que el build funcione desde cualquier subruta sin configuración extra. Requisito único (ya cumplido si teoria-suiza está publicada): **Settings → Pages → Source: GitHub Actions**.
+
+Nota: el service worker de teoria-suiza (alcance en la raíz del sitio) usa *stale-while-revalidate*, por lo que no interfiere con esta app; si algún día AeroLearn se hace PWA, conviene registrar su propio service worker con alcance `/teoria-vuelo/`.
+
 ## Progreso del usuario
 
 Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave versionada `aerolearn.progress.v1`) — mejores puntuaciones e intentos por quiz, módulos aprobados y misiones completadas. Los módulos aprobados muestran insignia en la lista de teoría y desbloquean sus misiones en el simulador.
