@@ -29,8 +29,11 @@
  * @property {string} id Slug de la lección (coincide con la clave i18n).
  *
  * @typedef {Object} Quiz
- * @property {number}     passScore Mínimo de aciertos para aprobar.
- * @property {Question[]} questions
+ * @property {number}     passScore  Mínimo de aciertos para aprobar (sobre
+ *                                   las preguntas mostradas en la ronda).
+ * @property {number}     [sampleSize] Preguntas sorteadas del banco por
+ *                                   intento; si falta, se usa el banco entero.
+ * @property {Question[]} questions  Banco completo de preguntas.
  *
  * @typedef {Object} Question
  * @property {string} id      Slug de la pregunta (coincide con la clave i18n).
@@ -56,6 +59,9 @@ export function validateModule(module) {
       if (typeof q.correct !== "number")
         problems.push(`pregunta ${q.id} sin índice \`correct\``);
     });
+    const size = module.quiz?.sampleSize;
+    if (size != null && module.quiz.passScore > size)
+      problems.push(`passScore (${module.quiz.passScore}) > sampleSize (${size})`);
   }
   if (problems.length)
     console.warn(`[content] Módulo "${module.id}" malformado:`, problems);

@@ -22,7 +22,6 @@ function shuffled(array) {
 
 export default function Quiz({ module, onBackToLessons, onExit }) {
   const { t } = useTranslation("theory");
-  const questions = module.quiz.questions;
   const keyBase = `modules.${module.id}.quiz`;
 
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -30,7 +29,17 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
   const [checked, setChecked] = useState(false);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [round, setRound] = useState(0); // fuerza rebarajar al repetir
+  const [round, setRound] = useState(0); // fuerza resortear al repetir
+
+  // Muestreo del banco: cada ronda sortea `sampleSize` preguntas distintas
+  // (si el módulo no lo define, usa el banco completo). Así repetir el quiz
+  // no es memorizar posiciones sino repasar de verdad.
+  const questions = useMemo(() => {
+    const bank = module.quiz.questions;
+    const size = Math.min(module.quiz.sampleSize ?? bank.length, bank.length);
+    return shuffled(bank).slice(0, size);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [module.id, round]);
 
   // Orden de opciones por pregunta, estable durante toda la ronda
   const optionOrders = useMemo(
@@ -40,7 +49,7 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
         return shuffled([...Array(count).keys()]);
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [module.id, round]
+    [questions]
   );
 
   const restart = () => {
