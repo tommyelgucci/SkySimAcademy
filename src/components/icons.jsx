@@ -9,11 +9,14 @@
  */
 import {
   CircleHelp,
+  CloudSun,
   Compass,
   Gauge,
   Joystick,
+  Map,
   PlaneLanding,
   PlaneTakeoff,
+  RadioTower,
 } from "lucide-react";
 
 const CONTENT_ICONS = {
@@ -22,6 +25,9 @@ const CONTENT_ICONS = {
   gauge: Gauge,
   joystick: Joystick,
   compass: Compass,
+  "cloud-sun": CloudSun,
+  "radio-tower": RadioTower,
+  map: Map,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */

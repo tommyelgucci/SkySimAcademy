@@ -73,7 +73,163 @@
     },
     "cockpit-instruments": {
       "title": "Instrumentos de cabine",
-      "description": "Altímetro, velocímetro e horizonte artificial — como ler o painel rapidamente."
+      "description": "Altímetro, velocímetro e horizonte artificial — como ler o painel rapidamente.",
+      "lessons": {
+        "altimeter": {
+          "title": "O altímetro",
+          "body": "O altímetro mostra a sua altura. Ele funciona medindo a pressão do ar: o ar fica mais rarefeito à medida que você sobe, e o instrumento converte essa queda de pressão em uma leitura de altitude. Verifique sempre a altitude antes de manobrar — perto do solo não há margem para corrigir erros."
+        },
+        "speed-horizon": {
+          "title": "Velocidade e horizonte artificial",
+          "body": "O velocímetro mede a rapidez com que o ar flui sobre as asas — a velocidade que mantém você voando, portanto é o instrumento a vigiar para ficar longe do estol. O horizonte artificial mostra se o nariz está acima ou abaixo do horizonte e quanto você está inclinado, mesmo sem ver nada lá fora."
+        },
+        "compass-heading": {
+          "title": "Bússola e proa",
+          "body": "A bússola mostra a direção para onde aponta o nariz, medida em graus: 0° é norte, 90° leste, 180° sul e 270° oeste. Pilotos navegam por proas, não por nomes de ruas: «curve para proa 270» significa simplesmente girar até o nariz apontar para o oeste. Você tem a mesma leitura de proa no HUD do simulador."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "O que o altímetro mostra?",
+          "options": [
+            "Sua altura",
+            "Sua velocidade",
+            "Sua proa"
+          ]
+        },
+        "q2": {
+          "question": "Qual instrumento mostra inclinação e nariz em relação ao horizonte?",
+          "options": [
+            "O horizonte artificial",
+            "O altímetro",
+            "A bússola"
+          ]
+        },
+        "q3": {
+          "question": "Proa 270° significa que o nariz aponta para…",
+          "options": [
+            "Oeste",
+            "Leste",
+            "Sul"
+          ]
+        },
+        "q4": {
+          "question": "Qual instrumento você vigia para ficar longe do estol?",
+          "options": [
+            "O velocímetro",
+            "O altímetro",
+            "A bússola"
+          ]
+        }
+      }
+    },
+    "weather-basics": {
+      "title": "Meteorologia para pilotos",
+      "description": "Vento, nuvens e visibilidade — e o tempo que todo piloto evita.",
+      "lessons": {
+        "wind": {
+          "title": "O vento: aliado e inimigo",
+          "body": "Aviões decolam e pousam contra o vento. O vento de proa encurta a corrida de decolagem e permite tocar o solo mais devagar e suave; o vento de cauda faz o contrário e pode deixar uma pista curta demais. O vento cruzado empurra você para fora do eixo da pista, por isso o piloto corrige com leme e inclinação até o toque."
+        },
+        "clouds-visibility": {
+          "title": "Nuvens e visibilidade",
+          "body": "O voo visual depende de ver o horizonte e o terreno. Nuvens baixas e nevoeiro podem esconder os dois em segundos, então o piloto visual mantém distância segura das nuvens e nunca entra nelas: dentro de uma nuvem, sem treinamento em voo por instrumentos, você perde rapidamente toda a noção de cima e baixo."
+        },
+        "dangerous-weather": {
+          "title": "O tempo a evitar",
+          "body": "Trovoadas são o tempo mais perigoso: escondem correntes ascendentes e descendentes violentas, granizo e gelo capazes de superar qualquer avião leve. O gelo também é traiçoeiro — gelo nas asas muda a sua forma e destrói a sustentação. A regra é simples: consulte a previsão antes de voar e, se o tempo estiver duvidoso, fique no chão."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Por que aviões decolam e pousam contra o vento?",
+          "options": [
+            "A corrida é mais curta e o toque mais lento",
+            "A vista é melhor para o piloto",
+            "Economiza combustível"
+          ]
+        },
+        "q2": {
+          "question": "Qual vento empurra você para fora do eixo da pista?",
+          "options": [
+            "O vento cruzado",
+            "O vento de proa",
+            "O vento de cauda"
+          ]
+        },
+        "q3": {
+          "question": "O que torna as trovoadas tão perigosas?",
+          "options": [
+            "Correntes violentas, granizo e gelo",
+            "O barulho distrai o piloto",
+            "Só ocorrem à noite"
+          ]
+        },
+        "q4": {
+          "question": "Por que gelo nas asas é perigoso?",
+          "options": [
+            "Muda a forma da asa e destrói a sustentação",
+            "Deixa o avião brilhante demais",
+            "Bloqueia a antena de rádio"
+          ]
+        }
+      }
+    },
+    "radio-alphabet": {
+      "title": "Rádio e alfabeto fonético",
+      "description": "Alfa, Bravo, Charlie — como os pilotos falam para ninguém entender errado.",
+      "lessons": {
+        "why-standard": {
+          "title": "Por que os pilotos falam «estranho»",
+          "body": "Numa frequência cheia, uma palavra mal ouvida pode colocar dois aviões no mesmo lugar. Por isso a aviação usa fraseologia padrão: frases curtas e fixas, cada uma com um único significado exato. Não é jargão por estilo — é uma ferramenta de segurança compartilhada por pilotos do mundo todo."
+        },
+        "icao-alphabet": {
+          "title": "O alfabeto fonético",
+          "body": "Letras como B, D e E soam parecido num rádio com ruído, então cada letra tem uma palavra: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu. A matrícula D-EABC lê-se «Delta – Echo Alfa Bravo Charlie»."
+        },
+        "numbers": {
+          "title": "Números no rádio",
+          "body": "Números são lidos dígito por dígito: a pista 27 é «dois sete», não «vinte e sete». O nove pronuncia-se «niner» em inglês para não se confundir com palavras de som parecido. Proas, altitudes e frequências são ditas assim para não deixar dúvida."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra B?",
+          "options": [
+            "Bravo",
+            "Beta",
+            "Berlim"
+          ]
+        },
+        "q2": {
+          "question": "Como se lê a pista 27 no rádio?",
+          "options": [
+            "Dois sete",
+            "Vinte e sete",
+            "Pista quase trinta"
+          ]
+        },
+        "q3": {
+          "question": "Por que o 9 se pronuncia «niner» em inglês?",
+          "options": [
+            "Para não confundir com palavras de som parecido",
+            "Porque é mais rápido de dizer",
+            "Por tradição marítima"
+          ]
+        },
+        "q4": {
+          "question": "O que soletra «Delta Echo»?",
+          "options": [
+            "DE",
+            "DC",
+            "EO"
+          ]
+        }
+      }
+    },
+    "navigation-basics": {
+      "title": "Navegação básica",
+      "description": "Cartas, rotas e orientação — de A a B sem estradas."
     }
   },
   "passedTag": "Aprovado"

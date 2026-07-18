@@ -1,12 +1,12 @@
 {
-  "id": "cockpit-instruments",
-  "icon": "gauge",
-  "order": 2,
+  "id": "radio-alphabet",
+  "icon": "radio-tower",
+  "order": 4,
   "status": "available",
   "lessons": [
-    { "id": "altimeter" },
-    { "id": "speed-horizon" },
-    { "id": "compass-heading" }
+    { "id": "why-standard" },
+    { "id": "icao-alphabet" },
+    { "id": "numbers" }
   ],
   "quiz": {
     "passScore": 3,

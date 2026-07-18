@@ -1,12 +1,12 @@
 {
-  "id": "cockpit-instruments",
-  "icon": "gauge",
-  "order": 2,
+  "id": "weather-basics",
+  "icon": "cloud-sun",
+  "order": 3,
   "status": "available",
   "lessons": [
-    { "id": "altimeter" },
-    { "id": "speed-horizon" },
-    { "id": "compass-heading" }
+    { "id": "wind" },
+    { "id": "clouds-visibility" },
+    { "id": "dangerous-weather" }
   ],
   "quiz": {
     "passScore": 3,

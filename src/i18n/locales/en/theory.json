@@ -73,7 +73,163 @@
     },
     "cockpit-instruments": {
       "title": "Cockpit instruments",
-      "description": "Altimeter, airspeed indicator and attitude indicator — reading the panel at a glance."
+      "description": "Altimeter, airspeed indicator and attitude indicator — reading the panel at a glance.",
+      "lessons": {
+        "altimeter": {
+          "title": "The altimeter",
+          "body": "The altimeter shows your height. It works by measuring air pressure: the air gets thinner as you climb, and the instrument converts that pressure drop into an altitude reading. Always check your altitude before manoeuvring — close to the ground there is no room to correct mistakes."
+        },
+        "speed-horizon": {
+          "title": "Airspeed and the artificial horizon",
+          "body": "The airspeed indicator measures how fast the air flows over your wings — the speed that keeps you flying, so it is the instrument to watch to stay away from a stall. The attitude indicator shows an artificial horizon: whether the nose is above or below the horizon and how much you are banked, even when you cannot see outside."
+        },
+        "compass-heading": {
+          "title": "Compass and heading",
+          "body": "The compass shows the direction the nose is pointing, measured in degrees: 0° is north, 90° east, 180° south and 270° west. Pilots navigate with headings, not street names: 'turn to heading 270' simply means turn until the nose points west. You have the same heading readout in the simulator HUD."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "What does the altimeter show?",
+          "options": [
+            "Your height",
+            "Your airspeed",
+            "Your heading"
+          ]
+        },
+        "q2": {
+          "question": "Which instrument shows your bank and pitch relative to the horizon?",
+          "options": [
+            "The attitude indicator",
+            "The altimeter",
+            "The compass"
+          ]
+        },
+        "q3": {
+          "question": "Heading 270° means the nose points…",
+          "options": [
+            "West",
+            "East",
+            "South"
+          ]
+        },
+        "q4": {
+          "question": "Which instrument do you watch to stay clear of a stall?",
+          "options": [
+            "The airspeed indicator",
+            "The altimeter",
+            "The compass"
+          ]
+        }
+      }
+    },
+    "weather-basics": {
+      "title": "Weather for pilots",
+      "description": "Wind, clouds and visibility — and the weather every pilot avoids.",
+      "lessons": {
+        "wind": {
+          "title": "Wind: friend and enemy",
+          "body": "Aircraft take off and land facing the wind. A headwind shortens the take-off run and lets you touch down slower and softer; a tailwind does the opposite and can make a runway too short. A crosswind blows you sideways off the runway line, so pilots correct with rudder and bank until touchdown."
+        },
+        "clouds-visibility": {
+          "title": "Clouds and visibility",
+          "body": "Visual flying depends on seeing the horizon and the terrain. Low clouds and fog can hide both within seconds, so visual pilots keep a safe distance from clouds and never fly into them: inside a cloud, without instrument training, you quickly lose all sense of up and down."
+        },
+        "dangerous-weather": {
+          "title": "Weather to avoid",
+          "body": "Thunderstorms are the most dangerous weather: they hide violent updrafts and downdrafts, hail and ice that can overwhelm any small aircraft. Icing is treacherous too — ice on the wings changes their shape and destroys lift. The rule is simple: check the forecast before flying, and if the weather looks doubtful, stay on the ground."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Why do aircraft take off and land facing the wind?",
+          "options": [
+            "The ground run is shorter and touchdown is slower",
+            "The view is better for the pilot",
+            "It saves fuel on the way out"
+          ]
+        },
+        "q2": {
+          "question": "Which wind pushes you sideways off the runway line?",
+          "options": [
+            "Crosswind",
+            "Headwind",
+            "Tailwind"
+          ]
+        },
+        "q3": {
+          "question": "What makes thunderstorms so dangerous?",
+          "options": [
+            "Violent updrafts and downdrafts, hail and ice",
+            "The noise distracts the pilot",
+            "They only occur at night"
+          ]
+        },
+        "q4": {
+          "question": "Why is ice on the wings dangerous?",
+          "options": [
+            "It changes the wing's shape and destroys lift",
+            "It makes the aircraft too shiny",
+            "It blocks the radio antenna"
+          ]
+        }
+      }
+    },
+    "radio-alphabet": {
+      "title": "Radio and the spelling alphabet",
+      "description": "Alfa, Bravo, Charlie — how pilots talk so nobody misunderstands.",
+      "lessons": {
+        "why-standard": {
+          "title": "Why pilots talk 'funny'",
+          "body": "On a busy frequency, a misheard word can put two aircraft in the same place. That is why aviation uses standard phraseology: short fixed phrases with exactly one meaning each. It is not jargon for style — it is a safety tool shared by pilots around the world."
+        },
+        "icao-alphabet": {
+          "title": "The spelling alphabet",
+          "body": "Letters like B, D and E sound alike over a noisy radio, so each letter has a word: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu. The registration D-EABC is read 'Delta – Echo Alfa Bravo Charlie'."
+        },
+        "numbers": {
+          "title": "Numbers on the radio",
+          "body": "Numbers are read digit by digit: runway 27 is 'two seven', not 'twenty-seven'. Nine is pronounced 'niner' so it cannot be confused with similar-sounding words. Headings, altitudes and frequencies are all spoken this way to leave no room for doubt."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "What is the spelling-alphabet word for the letter B?",
+          "options": [
+            "Bravo",
+            "Beta",
+            "Berlin"
+          ]
+        },
+        "q2": {
+          "question": "How do you read runway 27 on the radio?",
+          "options": [
+            "Two seven",
+            "Twenty-seven",
+            "Runway almost thirty"
+          ]
+        },
+        "q3": {
+          "question": "Why is 9 pronounced 'niner'?",
+          "options": [
+            "To avoid confusion with similar-sounding words",
+            "It is faster to say",
+            "Tradition from the age of sail"
+          ]
+        },
+        "q4": {
+          "question": "What does 'Delta Echo' spell?",
+          "options": [
+            "DE",
+            "DC",
+            "EO"
+          ]
+        }
+      }
+    },
+    "navigation-basics": {
+      "title": "Basic navigation",
+      "description": "Charts, courses and finding your way — from A to B without roads."
     }
   },
   "passedTag": "Passed"

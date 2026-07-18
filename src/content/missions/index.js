@@ -28,9 +28,10 @@ export const MISSIONS = [
     goal: { type: "altitude", target: 100 },
   },
   {
+    // Requiere "instrumentos de cabina": ahí se aprende qué es un rumbo
     id: "heading-turn",
     icon: "compass",
-    requiresModule: "principles-of-flight",
+    requiresModule: "cockpit-instruments",
     goal: { type: "heading", target: 270, tolerance: 12, minAltitude: 40, holdSeconds: 3 },
   },
   {

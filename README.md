@@ -2,6 +2,8 @@
 
 MVP educativo de aviación: **módulos de teoría con cuestionarios** + **mini simulador de vuelo 3D** (sesiones de máx. 5 minutos), multi-idioma desde el día 1 (**EN · DE · ES · PT · AR**, con RTL completo para árabe).
 
+Módulos disponibles: **Principios de vuelo** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** (+ Navegación básica en camino). Cada uno: 3 lecciones + quiz, traducido a los 5 idiomas.
+
 Proyecto hermano de [`teoria-suiza`](../teoria-suiza) (la app de teoría de conducir): misma filosofía —contenido en datos estáticos, sin backend— aplicada al vuelo.
 
 > ⚠️ MVP educativo. No es instrucción de vuelo real.
@@ -113,7 +115,8 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 
 - [x] Persistencia de progreso (localStorage, como en teoria-suiza)
 - [x] Misiones guiadas en el simulador con desbloqueo por teoría
-- [ ] Más módulos: instrumentos de cabina, meteorología, navegación, comunicaciones
+- [x] Más módulos: instrumentos de cabina, meteorología, radio/alfabeto fonético
+- [ ] Módulo de navegación básica (placeholder ya en la lista)
 - [ ] Repetición espaciada (SRS) para repaso de preguntas falladas
 - [ ] Controles táctiles (joystick virtual) para móvil
 - [ ] `vitest` para FlightEngine y validación de paridad de claves entre locales

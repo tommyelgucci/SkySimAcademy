@@ -9,8 +9,17 @@
 import { validateModule } from "../schema.js";
 import principlesOfFlight from "./principles-of-flight.json";
 import cockpitInstruments from "./cockpit-instruments.json";
+import weatherBasics from "./weather-basics.json";
+import radioAlphabet from "./radio-alphabet.json";
+import navigationBasics from "./navigation-basics.json";
 
-export const MODULES = [principlesOfFlight, cockpitInstruments]
+export const MODULES = [
+  principlesOfFlight,
+  cockpitInstruments,
+  weatherBasics,
+  radioAlphabet,
+  navigationBasics,
+]
   .map(validateModule)
   .sort((a, b) => a.order - b.order);
 

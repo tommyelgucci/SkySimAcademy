@@ -73,7 +73,163 @@
     },
     "cockpit-instruments": {
       "title": "Cockpit-Instrumente",
-      "description": "Höhenmesser, Fahrtmesser und künstlicher Horizont — das Panel auf einen Blick lesen."
+      "description": "Höhenmesser, Fahrtmesser und künstlicher Horizont — das Panel auf einen Blick lesen.",
+      "lessons": {
+        "altimeter": {
+          "title": "Der Höhenmesser",
+          "body": "Der Höhenmesser zeigt deine Höhe. Er misst den Luftdruck: Die Luft wird dünner, je höher du steigst, und das Instrument rechnet diesen Druckabfall in eine Höhenanzeige um. Prüfe vor jedem Manöver deine Höhe — in Bodennähe bleibt kein Raum, Fehler zu korrigieren."
+        },
+        "speed-horizon": {
+          "title": "Fahrtmesser und künstlicher Horizont",
+          "body": "Der Fahrtmesser misst, wie schnell die Luft über die Tragflächen strömt — die Geschwindigkeit, die dich in der Luft hält. Er ist daher das Instrument, das du im Blick behältst, um vom Strömungsabriss wegzubleiben. Der künstliche Horizont zeigt, ob die Nase über oder unter dem Horizont liegt und wie stark du geneigt bist — auch wenn du draußen nichts siehst."
+        },
+        "compass-heading": {
+          "title": "Kompass und Kurs",
+          "body": "Der Kompass zeigt die Richtung, in die die Nase zeigt, gemessen in Grad: 0° ist Norden, 90° Osten, 180° Süden und 270° Westen. Piloten navigieren mit Kursen, nicht mit Straßennamen: „Drehe auf Kurs 270“ heißt einfach, so lange zu kurven, bis die Nase nach Westen zeigt. Dieselbe Kursanzeige findest du im HUD des Simulators."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Was zeigt der Höhenmesser an?",
+          "options": [
+            "Deine Höhe",
+            "Deine Geschwindigkeit",
+            "Deinen Kurs"
+          ]
+        },
+        "q2": {
+          "question": "Welches Instrument zeigt Neigung und Nase relativ zum Horizont?",
+          "options": [
+            "Der künstliche Horizont",
+            "Der Höhenmesser",
+            "Der Kompass"
+          ]
+        },
+        "q3": {
+          "question": "Kurs 270° bedeutet, die Nase zeigt nach…",
+          "options": [
+            "Westen",
+            "Osten",
+            "Süden"
+          ]
+        },
+        "q4": {
+          "question": "Welches Instrument behältst du im Blick, um vom Strömungsabriss wegzubleiben?",
+          "options": [
+            "Den Fahrtmesser",
+            "Den Höhenmesser",
+            "Den Kompass"
+          ]
+        }
+      }
+    },
+    "weather-basics": {
+      "title": "Wetter für Piloten",
+      "description": "Wind, Wolken und Sicht — und das Wetter, das jeder Pilot meidet.",
+      "lessons": {
+        "wind": {
+          "title": "Wind: Freund und Gegner",
+          "body": "Flugzeuge starten und landen gegen den Wind. Gegenwind verkürzt die Startstrecke und lässt dich langsamer und weicher aufsetzen; Rückenwind bewirkt das Gegenteil und kann eine Landebahn zu kurz machen. Seitenwind schiebt dich seitlich von der Bahnachse, deshalb korrigieren Piloten bis zum Aufsetzen mit Seitenruder und Querneigung."
+        },
+        "clouds-visibility": {
+          "title": "Wolken und Sicht",
+          "body": "Sichtflug lebt davon, Horizont und Gelände zu sehen. Tiefe Wolken und Nebel können beides in Sekunden verschlucken, deshalb halten Sichtflieger Abstand zu Wolken und fliegen nie hinein: In einer Wolke verlierst du ohne Instrumententraining schnell jedes Gefühl für oben und unten."
+        },
+        "dangerous-weather": {
+          "title": "Wetter zum Meiden",
+          "body": "Gewitter sind das gefährlichste Wetter: In ihnen stecken heftige Auf- und Abwinde, Hagel und Eis, die jedes kleine Flugzeug überfordern können. Auch Vereisung ist tückisch — Eis auf den Tragflächen verändert ihre Form und zerstört den Auftrieb. Die Regel ist einfach: Vor dem Flug den Wetterbericht prüfen, und bei zweifelhaftem Wetter am Boden bleiben."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Warum starten und landen Flugzeuge gegen den Wind?",
+          "options": [
+            "Die Strecke ist kürzer und das Aufsetzen langsamer",
+            "Die Aussicht ist besser",
+            "Es spart Treibstoff"
+          ]
+        },
+        "q2": {
+          "question": "Welcher Wind schiebt dich seitlich von der Bahnachse?",
+          "options": [
+            "Seitenwind",
+            "Gegenwind",
+            "Rückenwind"
+          ]
+        },
+        "q3": {
+          "question": "Was macht Gewitter so gefährlich?",
+          "options": [
+            "Heftige Auf- und Abwinde, Hagel und Eis",
+            "Der Lärm lenkt den Piloten ab",
+            "Sie treten nur nachts auf"
+          ]
+        },
+        "q4": {
+          "question": "Warum ist Eis auf den Tragflächen gefährlich?",
+          "options": [
+            "Es verändert die Flügelform und zerstört den Auftrieb",
+            "Das Flugzeug glänzt zu stark",
+            "Es blockiert die Funkantenne"
+          ]
+        }
+      }
+    },
+    "radio-alphabet": {
+      "title": "Funk und Buchstabieralphabet",
+      "description": "Alfa, Bravo, Charlie — wie Piloten sprechen, damit niemand etwas missversteht.",
+      "lessons": {
+        "why-standard": {
+          "title": "Warum Piloten „komisch“ sprechen",
+          "body": "Auf einer vollen Frequenz kann ein falsch verstandenes Wort zwei Flugzeuge an dieselbe Stelle bringen. Deshalb nutzt die Luftfahrt Standard-Sprechgruppen: kurze feste Phrasen mit je genau einer Bedeutung. Das ist kein Jargon aus Stilgründen — es ist ein Sicherheitswerkzeug von Piloten weltweit."
+        },
+        "icao-alphabet": {
+          "title": "Das Buchstabieralphabet",
+          "body": "Buchstaben wie B, D und E klingen im Funk ähnlich, deshalb hat jeder Buchstabe ein Wort: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu. Das Kennzeichen D-EABC liest man „Delta – Echo Alfa Bravo Charlie“."
+        },
+        "numbers": {
+          "title": "Zahlen im Funk",
+          "body": "Zahlen werden Ziffer für Ziffer gelesen: Piste 27 ist „zwo sieben“, nicht „siebenundzwanzig“. Die Neun heißt im Englischen „niner“, damit sie nicht mit ähnlich klingenden Wörtern verwechselt wird. Kurse, Höhen und Frequenzen werden genauso gesprochen — ohne Raum für Zweifel."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben B?",
+          "options": [
+            "Bravo",
+            "Beta",
+            "Berlin"
+          ]
+        },
+        "q2": {
+          "question": "Wie liest man Piste 27 im Funk?",
+          "options": [
+            "Zwo sieben",
+            "Siebenundzwanzig",
+            "Piste fast dreißig"
+          ]
+        },
+        "q3": {
+          "question": "Warum heißt die 9 im Englischen „niner“?",
+          "options": [
+            "Um Verwechslungen mit ähnlich klingenden Wörtern zu vermeiden",
+            "Weil es schneller geht",
+            "Aus Seefahrertradition"
+          ]
+        },
+        "q4": {
+          "question": "Was buchstabiert „Delta Echo“?",
+          "options": [
+            "DE",
+            "DC",
+            "EO"
+          ]
+        }
+      }
+    },
+    "navigation-basics": {
+      "title": "Grundlagen der Navigation",
+      "description": "Karten, Kurse und Orientierung — von A nach B ohne Straßen."
     }
   },
   "passedTag": "Bestanden"

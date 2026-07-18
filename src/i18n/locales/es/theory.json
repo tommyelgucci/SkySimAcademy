@@ -73,7 +73,163 @@
     },
     "cockpit-instruments": {
       "title": "Instrumentos de cabina",
-      "description": "Altímetro, anemómetro y horizonte artificial — leer el panel de un vistazo."
+      "description": "Altímetro, anemómetro y horizonte artificial — leer el panel de un vistazo.",
+      "lessons": {
+        "altimeter": {
+          "title": "El altímetro",
+          "body": "El altímetro muestra tu altura. Funciona midiendo la presión del aire: el aire se vuelve más fino al subir, y el instrumento convierte esa caída de presión en una lectura de altitud. Comprueba siempre tu altitud antes de maniobrar — cerca del suelo no hay margen para corregir errores."
+        },
+        "speed-horizon": {
+          "title": "Velocidad y horizonte artificial",
+          "body": "El anemómetro mide lo rápido que fluye el aire sobre las alas — la velocidad que te mantiene volando, así que es el instrumento que hay que vigilar para alejarse de la pérdida. El horizonte artificial muestra si el morro está por encima o por debajo del horizonte y cuánto estás inclinado, incluso cuando no puedes ver el exterior."
+        },
+        "compass-heading": {
+          "title": "Brújula y rumbo",
+          "body": "La brújula muestra la dirección a la que apunta el morro, medida en grados: 0° es norte, 90° este, 180° sur y 270° oeste. Los pilotos navegan con rumbos, no con nombres de calles: «vira a rumbo 270» significa simplemente girar hasta que el morro apunte al oeste. Tienes la misma lectura de rumbo en el HUD del simulador."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "¿Qué muestra el altímetro?",
+          "options": [
+            "Tu altura",
+            "Tu velocidad",
+            "Tu rumbo"
+          ]
+        },
+        "q2": {
+          "question": "¿Qué instrumento muestra tu inclinación y cabeceo respecto al horizonte?",
+          "options": [
+            "El horizonte artificial",
+            "El altímetro",
+            "La brújula"
+          ]
+        },
+        "q3": {
+          "question": "Rumbo 270° significa que el morro apunta al…",
+          "options": [
+            "Oeste",
+            "Este",
+            "Sur"
+          ]
+        },
+        "q4": {
+          "question": "¿Qué instrumento vigilas para mantenerte lejos de la pérdida?",
+          "options": [
+            "El anemómetro",
+            "El altímetro",
+            "La brújula"
+          ]
+        }
+      }
+    },
+    "weather-basics": {
+      "title": "Meteorología para pilotos",
+      "description": "Viento, nubes y visibilidad — y el tiempo que todo piloto evita.",
+      "lessons": {
+        "wind": {
+          "title": "El viento: aliado y enemigo",
+          "body": "Los aviones despegan y aterrizan de cara al viento. El viento de cara acorta la carrera de despegue y permite tocar tierra más lento y suave; el viento de cola hace lo contrario y puede hacer que una pista se quede corta. El viento cruzado te empuja lateralmente fuera del eje de la pista, así que el piloto corrige con timón e inclinación hasta la toma."
+        },
+        "clouds-visibility": {
+          "title": "Nubes y visibilidad",
+          "body": "El vuelo visual depende de ver el horizonte y el terreno. Las nubes bajas y la niebla pueden ocultar ambos en segundos, así que el piloto visual mantiene distancia de seguridad con las nubes y nunca entra en ellas: dentro de una nube, sin entrenamiento en vuelo instrumental, pierdes rápidamente todo sentido de arriba y abajo."
+        },
+        "dangerous-weather": {
+          "title": "El tiempo que hay que evitar",
+          "body": "Las tormentas son el tiempo más peligroso: esconden corrientes ascendentes y descendentes violentas, granizo y hielo capaces de superar a cualquier avión ligero. El engelamiento también es traicionero — el hielo en las alas cambia su forma y destruye la sustentación. La regla es simple: consulta el pronóstico antes de volar y, si el tiempo es dudoso, quédate en tierra."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "¿Por qué los aviones despegan y aterrizan de cara al viento?",
+          "options": [
+            "La carrera es más corta y la toma más lenta",
+            "La vista es mejor para el piloto",
+            "Ahorra combustible en el trayecto"
+          ]
+        },
+        "q2": {
+          "question": "¿Qué viento te empuja lateralmente fuera del eje de la pista?",
+          "options": [
+            "El viento cruzado",
+            "El viento de cara",
+            "El viento de cola"
+          ]
+        },
+        "q3": {
+          "question": "¿Qué hace tan peligrosas a las tormentas?",
+          "options": [
+            "Corrientes violentas, granizo y hielo",
+            "El ruido distrae al piloto",
+            "Solo ocurren de noche"
+          ]
+        },
+        "q4": {
+          "question": "¿Por qué es peligroso el hielo en las alas?",
+          "options": [
+            "Cambia la forma del ala y destruye la sustentación",
+            "Hace el avión demasiado brillante",
+            "Bloquea la antena de radio"
+          ]
+        }
+      }
+    },
+    "radio-alphabet": {
+      "title": "Radio y alfabeto fonético",
+      "description": "Alfa, Bravo, Charlie — cómo hablan los pilotos para que nadie malinterprete.",
+      "lessons": {
+        "why-standard": {
+          "title": "Por qué los pilotos hablan «raro»",
+          "body": "En una frecuencia saturada, una palabra mal oída puede poner dos aviones en el mismo sitio. Por eso la aviación usa fraseología estándar: frases cortas y fijas con un único significado exacto. No es jerga por estilo — es una herramienta de seguridad compartida por pilotos de todo el mundo."
+        },
+        "icao-alphabet": {
+          "title": "El alfabeto fonético",
+          "body": "Letras como B, D y E suenan parecido en una radio con ruido, así que cada letra tiene una palabra: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu. La matrícula D-EABC se lee «Delta – Echo Alfa Bravo Charlie»."
+        },
+        "numbers": {
+          "title": "Los números por radio",
+          "body": "Los números se leen dígito a dígito: la pista 27 es «dos siete», no «veintisiete». El nueve se pronuncia «niner» en inglés para que no se confunda con palabras de sonido parecido. Rumbos, altitudes y frecuencias se dicen así para no dejar lugar a dudas."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "¿Cuál es la palabra del alfabeto fonético para la letra B?",
+          "options": [
+            "Bravo",
+            "Beta",
+            "Berlín"
+          ]
+        },
+        "q2": {
+          "question": "¿Cómo se lee la pista 27 por radio?",
+          "options": [
+            "Dos siete",
+            "Veintisiete",
+            "Pista casi treinta"
+          ]
+        },
+        "q3": {
+          "question": "¿Por qué el 9 se pronuncia «niner» en inglés?",
+          "options": [
+            "Para no confundirlo con palabras de sonido parecido",
+            "Porque es más rápido de decir",
+            "Por tradición marinera"
+          ]
+        },
+        "q4": {
+          "question": "¿Qué deletrea «Delta Echo»?",
+          "options": [
+            "DE",
+            "DC",
+            "EO"
+          ]
+        }
+      }
+    },
+    "navigation-basics": {
+      "title": "Navegación básica",
+      "description": "Cartas, rutas y cómo orientarse — de A a B sin carreteras."
     }
   },
   "passedTag": "Aprobado"
