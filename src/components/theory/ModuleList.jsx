@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
+import { Check } from "lucide-react";
 import { MODULES } from "../../content/modules";
-import { ModuleIcon } from "../icons.jsx";
+import { isModulePassed } from "../../storage.js";
+import { ContentIcon } from "../icons.jsx";
 
 export default function ModuleList({ onOpenModule }) {
   const { t } = useTranslation("theory");
@@ -13,6 +15,7 @@ export default function ModuleList({ onOpenModule }) {
       <div className="module-grid">
         {MODULES.map((module) => {
           const available = module.status === "available";
+          const passed = available && isModulePassed(module.id);
           return (
             <button
               key={module.id}
@@ -21,7 +24,7 @@ export default function ModuleList({ onOpenModule }) {
               onClick={() => onOpenModule(module.id)}
             >
               <span className="module-card__icon">
-                <ModuleIcon name={module.icon} size={30} />
+                <ContentIcon name={module.icon} size={30} />
               </span>
               <span className="module-card__title">
                 {t(`modules.${module.id}.title`)}
@@ -31,6 +34,11 @@ export default function ModuleList({ onOpenModule }) {
               </span>
               {!available && (
                 <span className="module-card__badge">{t("comingSoon")}</span>
+              )}
+              {passed && (
+                <span className="module-card__badge module-card__badge--passed">
+                  <Check size={12} aria-hidden="true" /> {t("passedTag")}
+                </span>
               )}
             </button>
           );

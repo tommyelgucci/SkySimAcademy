@@ -8,6 +8,7 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BookOpen, Check, Trophy } from "lucide-react";
+import { recordQuizResult } from "../../storage.js";
 
 /** Baraja de Fisher-Yates sin mutar el original. */
 function shuffled(array) {
@@ -98,6 +99,12 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
 
   const next = () => {
     if (isLast) {
+      // Persistir el intento: desbloquea misiones y marca el módulo aprobado
+      recordQuizResult(module.id, {
+        score,
+        total: questions.length,
+        passed: score >= module.quiz.passScore,
+      });
       setFinished(true);
     } else {
       setQuestionIndex((i) => i + 1);

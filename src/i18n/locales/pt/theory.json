@@ -39,11 +39,19 @@
       "quiz": {
         "q1": {
           "question": "Qual força mantém o avião no ar?",
-          "options": ["A sustentação", "O arrasto", "O peso"]
+          "options": [
+            "A sustentação",
+            "O arrasto",
+            "O peso"
+          ]
         },
         "q2": {
           "question": "Inclinar as asas com os ailerons chama-se…",
-          "options": ["Rolagem", "Guinada", "Arfagem"]
+          "options": [
+            "Rolagem",
+            "Guinada",
+            "Arfagem"
+          ]
         },
         "q3": {
           "question": "O que acontece se a velocidade cair abaixo da velocidade de estol?",
@@ -67,5 +75,6 @@
       "title": "Instrumentos de cabine",
       "description": "Altímetro, velocímetro e horizonte artificial — como ler o painel rapidamente."
     }
-  }
+  },
+  "passedTag": "Aprovado"
 }

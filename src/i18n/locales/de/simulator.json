@@ -23,6 +23,32 @@
     "yaw": "Gieren (Seitenruder links / rechts)",
     "throttle": "Gas (weniger / mehr)"
   },
+  "missions": {
+    "title": "Wähle eine Mission",
+    "locked": "Wird freigeschaltet, wenn du „{{module}}“ bestehst",
+    "completed": "Abgeschlossen",
+    "backToList": "Missionen",
+    "success": {
+      "title": "Mission erfüllt!",
+      "body": "Gut geflogen. Wähle deine nächste Mission oder flieg diese erneut."
+    },
+    "free-flight": {
+      "title": "Freier Flug",
+      "objective": "5 Minuten offener Himmel — übe, was du möchtest."
+    },
+    "first-takeoff": {
+      "title": "Erster Start",
+      "objective": "Starte und steige auf 100 m."
+    },
+    "heading-turn": {
+      "title": "Kurvenflug auf Kurs",
+      "objective": "Halte über 40 m den Kurs 270° für 3 Sekunden."
+    },
+    "safe-landing": {
+      "title": "Sichere Landung",
+      "objective": "Steige über 60 m und lande sanft wieder auf dem Boden."
+    }
+  },
   "timeUp": {
     "title": "Flugsession beendet",
     "body": "Deine 5 Minuten sind um. Wiederhole ein Theoriemodul oder starte einen neuen Flug."

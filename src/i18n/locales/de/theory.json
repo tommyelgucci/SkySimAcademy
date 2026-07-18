@@ -39,11 +39,19 @@
       "quiz": {
         "q1": {
           "question": "Welche Kraft hält ein Flugzeug in der Luft?",
-          "options": ["Der Auftrieb", "Der Luftwiderstand", "Das Gewicht"]
+          "options": [
+            "Der Auftrieb",
+            "Der Luftwiderstand",
+            "Das Gewicht"
+          ]
         },
         "q2": {
           "question": "Das Neigen der Tragflächen mit den Querrudern nennt man…",
-          "options": ["Rollen", "Gieren", "Nicken"]
+          "options": [
+            "Rollen",
+            "Gieren",
+            "Nicken"
+          ]
         },
         "q3": {
           "question": "Was passiert, wenn die Geschwindigkeit unter die Überziehgeschwindigkeit fällt?",
@@ -67,5 +75,6 @@
       "title": "Cockpit-Instrumente",
       "description": "Höhenmesser, Fahrtmesser und künstlicher Horizont — das Panel auf einen Blick lesen."
     }
-  }
+  },
+  "passedTag": "Bestanden"
 }

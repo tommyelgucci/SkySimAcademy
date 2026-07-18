@@ -311,6 +311,14 @@ body {
   border-radius: 999px;
 }
 
+.module-card__badge--passed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--color-correct);
+  color: #04310f;
+}
+
 /* ---------- Lección y quiz ---------- */
 
 .module__eyebrow {
@@ -501,6 +509,113 @@ body {
   50% {
     opacity: 0.2;
   }
+}
+
+/* Banner con el objetivo de la misión durante el vuelo */
+.hud-objective {
+  position: absolute;
+  inset-block-start: 4.6rem;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: fit-content;
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(10, 18, 32, 0.72);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+.hud-objective svg {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Selector de misiones */
+.mission-list__heading {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+  margin-block: 1.2rem 0.5rem;
+}
+
+.mission-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-block-end: 1.2rem;
+}
+
+.mission-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: start;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+}
+
+.mission-card:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.mission-card--locked {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.mission-card__icon {
+  color: var(--color-primary);
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.mission-card--locked .mission-card__icon {
+  color: var(--color-text-dim);
+}
+
+.mission-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.mission-card__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.mission-card__done {
+  color: var(--color-correct);
+}
+
+.mission-card__objective {
+  font-size: 0.82rem;
+  color: var(--color-text-dim);
+}
+
+.overlay-icon.is-correct {
+  color: var(--color-correct);
+}
+
+.simulator__panel--wide {
+  max-width: 36rem;
+  max-height: 90%;
+  overflow-y: auto;
 }
 
 .simulator__overlay {

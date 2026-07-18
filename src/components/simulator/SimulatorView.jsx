@@ -1,5 +1,9 @@
 /**
- * SimulatorView — orquesta motor de física + escena 3D + HUD + sesión de 5 min.
+ * SimulatorView — orquesta motor de física + escena 3D + HUD + misiones.
+ *
+ * Flujo: selección de misión (briefing) → vuelo → fin por objetivo cumplido,
+ * crash o límite de 5 minutos. Las misiones con `requiresModule` se
+ * desbloquean al aprobar el quiz del módulo de teoría correspondiente.
  *
  * Rendimiento: el game loop corre en requestAnimationFrame FUERA de React
  * (el estado de React solo se actualiza ~10 veces/segundo para el HUD),
@@ -7,11 +11,26 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Flag, PlaneTakeoff, TriangleAlert } from "lucide-react";
+import {
+  CircleCheck,
+  Flag,
+  Lock,
+  PlaneTakeoff,
+  Target,
+  TriangleAlert,
+} from "lucide-react";
 import * as THREE from "three";
 import { FlightEngine } from "../../simulator/FlightEngine.js";
 import { SceneManager } from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
+import { MissionTracker } from "../../simulator/MissionTracker.js";
+import { MISSIONS } from "../../content/missions";
+import {
+  isMissionComplete,
+  isModulePassed,
+  recordMissionComplete,
+} from "../../storage.js";
+import { ContentIcon } from "../icons.jsx";
 import Hud from "./Hud.jsx";
 
 /** Duración máxima de una sesión de vuelo, en segundos. */
@@ -19,12 +38,13 @@ const SESSION_SECONDS = 5 * 60;
 const HUD_INTERVAL = 0.1; // s entre actualizaciones del HUD
 
 export default function SimulatorView({ onExit }) {
-  const { t } = useTranslation("simulator");
+  const { t } = useTranslation(["simulator", "theory"]);
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
 
-  /** 'briefing' → 'flying' → ('crashed' | 'timeUp') */
+  /** 'briefing' → 'flying' → ('crashed' | 'timeUp' | 'missionComplete') */
   const [phase, setPhase] = useState("briefing");
+  const [mission, setMission] = useState(null);
   const [hud, setHud] = useState(null);
   const [stats, setStats] = useState(null);
 
@@ -32,6 +52,7 @@ export default function SimulatorView({ onExit }) {
     if (phase !== "flying") return;
 
     const engine = new FlightEngine();
+    const tracker = new MissionTracker(mission);
     const scene = new SceneManager(canvasRef.current);
     const controls = new KeyboardControls();
     controls.attach();
@@ -62,6 +83,7 @@ export default function SimulatorView({ onExit }) {
 
       engine.setInput(controls.getInput());
       engine.update(dt);
+      tracker.update(engine, dt);
       scene.update(engine, dt);
       scene.render();
 
@@ -79,6 +101,10 @@ export default function SimulatorView({ onExit }) {
       }
 
       if (engine.crashed) return endSession("crashed");
+      if (tracker.done) {
+        recordMissionComplete(mission.id);
+        return endSession("missionComplete");
+      }
       if (elapsed >= SESSION_SECONDS) return endSession("timeUp");
       frameId = requestAnimationFrame(loop);
     };
@@ -90,57 +116,132 @@ export default function SimulatorView({ onExit }) {
       controls.detach();
       scene.dispose();
     };
-  }, [phase]);
+  }, [phase, mission]);
 
-  const restart = () => {
+  const fly = (selectedMission) => {
+    setMission(selectedMission);
     setHud(null);
     setStats(null);
     setPhase("flying");
   };
 
+  const backToMissions = () => {
+    setHud(null);
+    setStats(null);
+    setPhase("briefing");
+  };
+
+  const endOverlays = {
+    crashed: {
+      icon: <TriangleAlert size={24} className="overlay-icon is-wrong" aria-hidden="true" />,
+      title: t("crash.title"),
+      body: t("crash.body"),
+    },
+    timeUp: {
+      icon: <Flag size={24} className="overlay-icon" aria-hidden="true" />,
+      title: t("timeUp.title"),
+      body: t("timeUp.body"),
+    },
+    missionComplete: {
+      icon: <CircleCheck size={24} className="overlay-icon is-correct" aria-hidden="true" />,
+      title: t("missions.success.title"),
+      body: t("missions.success.body"),
+    },
+  };
+  const ended = endOverlays[phase];
+
   return (
     <div className="simulator" ref={containerRef}>
       <canvas ref={canvasRef} className="simulator__canvas" />
 
-      {phase === "flying" && hud && <Hud hud={hud} />}
+      {phase === "flying" && hud && (
+        <>
+          <Hud hud={hud} />
+          {mission?.goal && (
+            <div className="hud-objective">
+              <Target size={16} aria-hidden="true" />{" "}
+              {t(`missions.${mission.id}.objective`)}
+            </div>
+          )}
+        </>
+      )}
 
       {phase === "briefing" && (
-        <Overlay
-          title={t("briefing.title")}
-          body={t("briefing.body")}
-          actions={
-            <>
-              <button className="button button--primary" onClick={restart}>
-                <PlaneTakeoff size={18} className="rtl-flip" aria-hidden="true" />{" "}
-                {t("briefing.start")}
-              </button>
+        <div className="simulator__overlay">
+          <div className="simulator__panel simulator__panel--wide">
+            <h1>{t("briefing.title")}</h1>
+            <p>{t("briefing.body")}</p>
+
+            <h2 className="mission-list__heading">{t("missions.title")}</h2>
+            <div className="mission-list">
+              {MISSIONS.map((m) => {
+                const locked =
+                  m.requiresModule && !isModulePassed(m.requiresModule);
+                const done = isMissionComplete(m.id);
+                return (
+                  <button
+                    key={m.id}
+                    className={`mission-card ${locked ? "mission-card--locked" : ""}`}
+                    disabled={locked}
+                    onClick={() => fly(m)}
+                  >
+                    <span className="mission-card__icon">
+                      {locked ? (
+                        <Lock size={20} aria-hidden="true" />
+                      ) : (
+                        <ContentIcon name={m.icon} size={20} />
+                      )}
+                    </span>
+                    <span className="mission-card__text">
+                      <span className="mission-card__title">
+                        {t(`missions.${m.id}.title`)}
+                        {done && (
+                          <CircleCheck
+                            size={15}
+                            className="mission-card__done"
+                            aria-label={t("missions.completed")}
+                          />
+                        )}
+                      </span>
+                      <span className="mission-card__objective">
+                        {locked
+                          ? t("missions.locked", {
+                              module: t(`theory:modules.${m.requiresModule}.title`),
+                            })
+                          : t(`missions.${m.id}.objective`)}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <ControlsHelp />
+            <div className="simulator__panel-actions">
               <button className="button button--ghost" onClick={onExit}>
                 {t("exit")}
               </button>
-            </>
-          }
-        >
-          <ControlsHelp />
-        </Overlay>
+            </div>
+          </div>
+        </div>
       )}
 
-      {(phase === "crashed" || phase === "timeUp") && (
+      {ended && (
         <Overlay
           title={
             <>
-              {phase === "crashed" ? (
-                <TriangleAlert size={24} className="overlay-icon is-wrong" aria-hidden="true" />
-              ) : (
-                <Flag size={24} className="overlay-icon" aria-hidden="true" />
-              )}{" "}
-              {phase === "crashed" ? t("crash.title") : t("timeUp.title")}
+              {ended.icon} {ended.title}
             </>
           }
-          body={phase === "crashed" ? t("crash.body") : t("timeUp.body")}
+          body={ended.body}
           actions={
             <>
-              <button className="button button--primary" onClick={restart}>
+              <button className="button button--primary" onClick={() => fly(mission)}>
+                <PlaneTakeoff size={18} className="rtl-flip" aria-hidden="true" />{" "}
                 {t("restart")}
+              </button>
+              <button className="button button--secondary" onClick={backToMissions}>
+                {t("missions.backToList")}
               </button>
               <button className="button button--ghost" onClick={onExit}>
                 {t("exit")}

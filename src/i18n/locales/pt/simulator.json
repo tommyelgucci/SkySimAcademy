@@ -23,6 +23,32 @@
     "yaw": "Guinada (leme esquerda / direita)",
     "throttle": "Potência (menos / mais)"
   },
+  "missions": {
+    "title": "Escolha uma missão",
+    "locked": "Desbloqueia ao passar em “{{module}}”",
+    "completed": "Concluída",
+    "backToList": "Missões",
+    "success": {
+      "title": "Missão cumprida!",
+      "body": "Bom voo. Escolha a próxima missão ou repita esta."
+    },
+    "free-flight": {
+      "title": "Voo livre",
+      "objective": "5 minutos de céu aberto — pratique o que quiser."
+    },
+    "first-takeoff": {
+      "title": "Primeira decolagem",
+      "objective": "Decole e suba até 100 m."
+    },
+    "heading-turn": {
+      "title": "Curva para a proa",
+      "objective": "Acima de 40 m, mantenha a proa 270° por 3 segundos."
+    },
+    "safe-landing": {
+      "title": "Pouso seguro",
+      "objective": "Suba acima de 60 m e pouse suavemente de volta."
+    }
+  },
   "timeUp": {
     "title": "Sessão de voo concluída",
     "body": "Seus 5 minutos acabaram. Revise um módulo de teoria ou inicie um novo voo."

@@ -40,11 +40,15 @@ teoria-vuelo/
     │       ├── theory.json     # TODO el contenido educativo
     │       └── simulator.json  # HUD, controles, mensajes
     │
+    ├── storage.js            # progreso en localStorage (quizzes + misiones)
+    │
     ├── content/              # ESTRUCTURA del contenido (sin texto visible)
     │   ├── schema.js         # esquema documentado + validación en dev
-    │   └── modules/
-    │       ├── index.js      # registro central de módulos
-    │       └── *.json        # un archivo por módulo
+    │   ├── modules/
+    │   │   ├── index.js      # registro central de módulos
+    │   │   └── *.json        # un archivo por módulo
+    │   └── missions/
+    │       └── index.js      # misiones del simulador (objetivos + desbloqueo)
     │
     ├── components/
     │   ├── Header.jsx, Home.jsx, LanguageSwitcher.jsx
@@ -53,6 +57,7 @@ teoria-vuelo/
     │
     └── simulator/            # motor puro, SIN React (testeable aislado)
         ├── FlightEngine.js   # física arcade: pitch/roll/yaw/throttle, pérdida
+        ├── MissionTracker.js # evalúa objetivos de misión sobre el motor
         ├── SceneManager.js   # escena Three.js, mundo, cámara de persecución
         └── KeyboardControls.js
 ```
@@ -95,15 +100,21 @@ modules.<moduleId>.quiz.<questionId>.question / .options[]
 
 - **Controles**: `W/S` cabeceo · `A/D` alabeo · `Q/E` guiñada · `Shift/Ctrl` gases (también flechas).
 - **Física simplificada e intencionadamente pedagógica**: la velocidad depende de los gases, subir "cuesta" velocidad, los mandos pierden autoridad a baja velocidad y por debajo de la velocidad de pérdida el ala deja de sustentar — exactamente lo que enseña el módulo *Principios de vuelo*.
+- **Misiones**: vuelo libre siempre disponible + misiones con objetivo ("Primer despegue", "Viraje a rumbo", "Aterrizaje seguro") que se **desbloquean al aprobar el quiz** del módulo de teoría correspondiente (`requiresModule` en `src/content/missions/index.js`). El objetivo se muestra en un banner durante el vuelo y `MissionTracker` lo evalúa en cada frame.
 - **Sesión limitada a 5 minutos** con estadísticas al final (altitud máxima, distancia).
 - Despegue desde pista, viraje coordinado al alabear, detección de aterrizaje brusco/crash.
 - El "avión" es un cubo-fuselaje con alas primitivas (geometría básica, sin modelos externos) — ligero y suficiente para leer la actitud del avión.
 
+## Progreso del usuario
+
+Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave versionada `aerolearn.progress.v1`) — mejores puntuaciones e intentos por quiz, módulos aprobados y misiones completadas. Los módulos aprobados muestran insignia en la lista de teoría y desbloquean sus misiones en el simulador.
+
 ## Roadmap sugerido
 
+- [x] Persistencia de progreso (localStorage, como en teoria-suiza)
+- [x] Misiones guiadas en el simulador con desbloqueo por teoría
 - [ ] Más módulos: instrumentos de cabina, meteorología, navegación, comunicaciones
-- [ ] Persistencia de progreso (localStorage, como en teoria-suiza) y SRS
-- [ ] Misiones guiadas en el simulador ("mantén 100 m de altitud", "aterriza en la pista")
+- [ ] Repetición espaciada (SRS) para repaso de preguntas falladas
 - [ ] Controles táctiles (joystick virtual) para móvil
 - [ ] `vitest` para FlightEngine y validación de paridad de claves entre locales
 - [ ] PWA (manifest + service worker) para uso offline

@@ -23,6 +23,32 @@
     "yaw": "Yaw (rudder left / right)",
     "throttle": "Throttle (less / more)"
   },
+  "missions": {
+    "title": "Choose a mission",
+    "locked": "Unlocks when you pass “{{module}}”",
+    "completed": "Completed",
+    "backToList": "Missions",
+    "success": {
+      "title": "Mission accomplished!",
+      "body": "Well flown. Pick your next mission or fly this one again."
+    },
+    "free-flight": {
+      "title": "Free flight",
+      "objective": "5 minutes of open sky — practice whatever you like."
+    },
+    "first-takeoff": {
+      "title": "First takeoff",
+      "objective": "Take off and climb to 100 m."
+    },
+    "heading-turn": {
+      "title": "Turn to heading",
+      "objective": "Above 40 m, hold heading 270° for 3 seconds."
+    },
+    "safe-landing": {
+      "title": "Safe landing",
+      "objective": "Climb above 60 m, then land gently back on the ground."
+    }
+  },
   "timeUp": {
     "title": "Flight session complete",
     "body": "Your 5 minutes are up. Review a theory module or start a new flight."

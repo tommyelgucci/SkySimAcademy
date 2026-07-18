@@ -39,11 +39,19 @@
       "quiz": {
         "q1": {
           "question": "Which force keeps an aircraft in the air?",
-          "options": ["Lift", "Drag", "Weight"]
+          "options": [
+            "Lift",
+            "Drag",
+            "Weight"
+          ]
         },
         "q2": {
           "question": "Banking the wings with the ailerons is called…",
-          "options": ["Roll", "Yaw", "Pitch"]
+          "options": [
+            "Roll",
+            "Yaw",
+            "Pitch"
+          ]
         },
         "q3": {
           "question": "What happens if airspeed drops below stall speed?",
@@ -67,5 +75,6 @@
       "title": "Cockpit instruments",
       "description": "Altimeter, airspeed indicator and attitude indicator — reading the panel at a glance."
     }
-  }
+  },
+  "passedTag": "Passed"
 }

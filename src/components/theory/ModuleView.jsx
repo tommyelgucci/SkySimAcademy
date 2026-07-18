@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getModule } from "../../content/modules";
-import { ModuleIcon } from "../icons.jsx";
+import { ContentIcon } from "../icons.jsx";
 import Quiz from "./Quiz.jsx";
 
 export default function ModuleView({ moduleId, onBack }) {
@@ -45,7 +45,7 @@ export default function ModuleView({ moduleId, onBack }) {
       </button>
 
       <p className="module__eyebrow">
-        <ModuleIcon name={module.icon} size={18} /> {t(`${keyBase}.title`)}
+        <ContentIcon name={module.icon} size={18} /> {t(`${keyBase}.title`)}
       </p>
       <p className="module__progress">
         {t("lessonProgress", { current: lessonIndex + 1, total: lessons.length })}

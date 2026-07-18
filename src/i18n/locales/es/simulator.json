@@ -23,6 +23,32 @@
     "yaw": "Guiñada (timón izquierda / derecha)",
     "throttle": "Gases (menos / más)"
   },
+  "missions": {
+    "title": "Elige una misión",
+    "locked": "Se desbloquea al aprobar «{{module}}»",
+    "completed": "Completada",
+    "backToList": "Misiones",
+    "success": {
+      "title": "¡Misión cumplida!",
+      "body": "Buen vuelo. Elige tu próxima misión o repite esta."
+    },
+    "free-flight": {
+      "title": "Vuelo libre",
+      "objective": "5 minutos de cielo abierto — practica lo que quieras."
+    },
+    "first-takeoff": {
+      "title": "Primer despegue",
+      "objective": "Despega y sube a 100 m."
+    },
+    "heading-turn": {
+      "title": "Viraje a rumbo",
+      "objective": "Por encima de 40 m, mantén rumbo 270° durante 3 segundos."
+    },
+    "safe-landing": {
+      "title": "Aterrizaje seguro",
+      "objective": "Sube por encima de 60 m y aterriza suavemente de vuelta."
+    }
+  },
   "timeUp": {
     "title": "Sesión de vuelo completada",
     "body": "Tus 5 minutos han terminado. Repasa un módulo de teoría o inicia un vuelo nuevo."
