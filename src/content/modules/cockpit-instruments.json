@@ -1,6 +1,6 @@
 {
   "id": "cockpit-instruments",
-  "icon": "🎛️",
+  "icon": "gauge",
   "order": 2,
   "status": "coming-soon"
 }

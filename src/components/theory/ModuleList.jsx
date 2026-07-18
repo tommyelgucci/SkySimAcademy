@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { MODULES } from "../../content/modules";
+import { ModuleIcon } from "../icons.jsx";
 
 export default function ModuleList({ onOpenModule }) {
   const { t } = useTranslation("theory");
@@ -19,7 +20,9 @@ export default function ModuleList({ onOpenModule }) {
               disabled={!available}
               onClick={() => onOpenModule(module.id)}
             >
-              <span className="module-card__icon">{module.icon}</span>
+              <span className="module-card__icon">
+                <ModuleIcon name={module.icon} size={30} />
+              </span>
               <span className="module-card__title">
                 {t(`modules.${module.id}.title`)}
               </span>

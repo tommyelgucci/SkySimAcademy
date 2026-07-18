@@ -18,7 +18,8 @@
  *
  * @typedef {Object} TheoryModule
  * @property {string}   id        Slug único (coincide con la clave i18n).
- * @property {string}   icon      Emoji mostrado en la tarjeta del módulo.
+ * @property {string}   icon      Nombre de icono Lucide registrado en
+ *                                src/components/icons.jsx (MODULE_ICONS).
  * @property {number}   order     Posición en la lista de módulos.
  * @property {"available"|"coming-soon"} status
  * @property {Lesson[]} [lessons] Lecciones en orden de lectura.

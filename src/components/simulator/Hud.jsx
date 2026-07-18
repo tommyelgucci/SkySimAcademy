@@ -4,6 +4,7 @@
  * árabes orientales cuando la interfaz está en árabe).
  */
 import { useTranslation } from "react-i18next";
+import { TriangleAlert } from "lucide-react";
 
 export default function Hud({ hud }) {
   const { t, i18n } = useTranslation("simulator");
@@ -27,7 +28,11 @@ export default function Hud({ hud }) {
           warning={hud.timeLeft <= 30}
         />
       </div>
-      {hud.stalled && <div className="hud__stall">⚠ {t("stallWarning")}</div>}
+      {hud.stalled && (
+        <div className="hud__stall">
+          <TriangleAlert size={22} aria-hidden="true" /> {t("stallWarning")}
+        </div>
+      )}
     </>
   );
 }

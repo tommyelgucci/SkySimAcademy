@@ -7,6 +7,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Flag, PlaneTakeoff, TriangleAlert } from "lucide-react";
 import * as THREE from "three";
 import { FlightEngine } from "../../simulator/FlightEngine.js";
 import { SceneManager } from "../../simulator/SceneManager.js";
@@ -110,7 +111,8 @@ export default function SimulatorView({ onExit }) {
           actions={
             <>
               <button className="button button--primary" onClick={restart}>
-                🛫 {t("briefing.start")}
+                <PlaneTakeoff size={18} className="rtl-flip" aria-hidden="true" />{" "}
+                {t("briefing.start")}
               </button>
               <button className="button button--ghost" onClick={onExit}>
                 {t("exit")}
@@ -124,7 +126,16 @@ export default function SimulatorView({ onExit }) {
 
       {(phase === "crashed" || phase === "timeUp") && (
         <Overlay
-          title={phase === "crashed" ? `💥 ${t("crash.title")}` : `🏁 ${t("timeUp.title")}`}
+          title={
+            <>
+              {phase === "crashed" ? (
+                <TriangleAlert size={24} className="overlay-icon is-wrong" aria-hidden="true" />
+              ) : (
+                <Flag size={24} className="overlay-icon" aria-hidden="true" />
+              )}{" "}
+              {phase === "crashed" ? t("crash.title") : t("timeUp.title")}
+            </>
+          }
           body={phase === "crashed" ? t("crash.body") : t("timeUp.body")}
           actions={
             <>

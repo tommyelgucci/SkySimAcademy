@@ -19,6 +19,7 @@ npm run build    # producción → dist/
 - **React 19 + Vite** — interfaz y build
 - **Three.js** — render 3D del simulador (importado solo en la pantalla del simulador; va en un chunk separado)
 - **i18next + react-i18next** — internacionalización con detección de idioma y persistencia en `localStorage`
+- **Lucide Icons** (`lucide-react`, licencia ISC) — TODA la iconografía de la interfaz, incluido el favicon. Sin emojis de sistema, sin imágenes con copyright, sin CDNs externos: los iconos se compilan como SVG inline. El registro de iconos de módulos vive en `src/components/icons.jsx`.
 - Sin backend: todo el contenido vive en JSON estáticos
 
 ## Arquitectura de archivos
@@ -69,7 +70,7 @@ teoria-vuelo/
 // src/content/modules/principles-of-flight.json
 {
   "id": "principles-of-flight",   // slug = clave i18n
-  "icon": "🛫",
+  "icon": "plane-takeoff",         // nombre Lucide registrado en icons.jsx
   "order": 1,
   "status": "available",           // o "coming-soon"
   "lessons": [{ "id": "four-forces" }, …],

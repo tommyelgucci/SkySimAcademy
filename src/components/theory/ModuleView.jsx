@@ -5,7 +5,9 @@
  */
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getModule } from "../../content/modules";
+import { ModuleIcon } from "../icons.jsx";
 import Quiz from "./Quiz.jsx";
 
 export default function ModuleView({ moduleId, onBack }) {
@@ -38,11 +40,12 @@ export default function ModuleView({ moduleId, onBack }) {
   return (
     <section className="module">
       <button className="button button--ghost" onClick={onBack}>
-        ← {t("common:actions.back")}
+        <ArrowLeft size={18} className="rtl-flip" aria-hidden="true" />{" "}
+        {t("common:actions.back")}
       </button>
 
       <p className="module__eyebrow">
-        {module.icon} {t(`${keyBase}.title`)}
+        <ModuleIcon name={module.icon} size={18} /> {t(`${keyBase}.title`)}
       </p>
       <p className="module__progress">
         {t("lessonProgress", { current: lessonIndex + 1, total: lessons.length })}
@@ -63,7 +66,8 @@ export default function ModuleView({ moduleId, onBack }) {
         </button>
         {isLast ? (
           <button className="button button--primary" onClick={() => setInQuiz(true)}>
-            {t("goToQuiz")} →
+            {t("goToQuiz")}{" "}
+            <ArrowRight size={18} className="rtl-flip" aria-hidden="true" />
           </button>
         ) : (
           <button

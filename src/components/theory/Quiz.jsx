@@ -7,6 +7,7 @@
  */
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { BookOpen, Check, Trophy } from "lucide-react";
 
 /** Baraja de Fisher-Yates sin mutar el original. */
 function shuffled(array) {
@@ -54,7 +55,13 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
     const passed = score >= module.quiz.passScore;
     return (
       <section className="quiz quiz--results">
-        <h1>{passed ? "🎉" : "📖"}</h1>
+        <div className={`quiz__result-icon ${passed ? "is-correct" : ""}`}>
+          {passed ? (
+            <Trophy size={56} aria-hidden="true" />
+          ) : (
+            <BookOpen size={56} aria-hidden="true" />
+          )}
+        </div>
         <p className="quiz__score">
           {t("quiz.score", { score, total: questions.length })}
         </p>
@@ -70,7 +77,7 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
           </button>
           {passed && (
             <button className="button button--secondary" onClick={onExit}>
-              ✓
+              <Check size={18} aria-hidden="true" />
             </button>
           )}
         </div>

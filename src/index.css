@@ -131,7 +131,46 @@ body {
   padding: 1rem;
 }
 
+/* ---------- Iconos (Lucide, SVG inline) ---------- */
+
+/* Los iconos heredan el color del texto y se alinean con él */
+.header__brand,
+.home__badge,
+.module__eyebrow,
+.hud__stall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+/* Iconos direccionales (flechas, despegue): se voltean en RTL */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+.quiz__result-icon {
+  color: var(--color-text-dim);
+  margin-block-start: 2rem;
+}
+
+.quiz__result-icon.is-correct {
+  color: var(--color-accent);
+}
+
+.overlay-icon {
+  vertical-align: -0.15em;
+}
+
+.overlay-icon.is-wrong {
+  color: var(--color-wrong);
+}
+
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
@@ -247,7 +286,7 @@ body {
 }
 
 .module-card__icon {
-  font-size: 1.8rem;
+  color: var(--color-primary);
 }
 
 .module-card__title {
