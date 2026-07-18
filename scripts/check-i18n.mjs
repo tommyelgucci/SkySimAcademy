@@ -17,7 +17,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const LANGS = ["en", "de", "es", "pt", "ar"];
-const NAMESPACES = ["common", "theory", "simulator"];
+const NAMESPACES = ["common", "theory", "simulator", "exam"];
 
 const load = (path) => JSON.parse(readFileSync(join(root, path), "utf8"));
 const flatten = (obj, prefix = "") =>

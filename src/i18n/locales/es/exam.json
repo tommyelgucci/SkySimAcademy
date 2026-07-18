@@ -1,0 +1,34 @@
+{
+  "exam": {
+    "entry": "Modo examen",
+    "entryDescription": "20 preguntas, 20 minutos, sin feedback hasta el final.",
+    "title": "Modo examen",
+    "description": "20 preguntas de todos los módulos, 20 minutos de reloj y sin feedback hasta el final — como el examen real. Aprobado: 15 de 20.",
+    "start": "Empezar examen",
+    "timeLeft": "Tiempo restante",
+    "progress": "Pregunta {{current}} de {{total}}",
+    "next": "Siguiente",
+    "finish": "Terminar examen",
+    "score": "Obtuviste {{score}} de {{total}}.",
+    "passed": "Aprobado — buen trabajo.",
+    "failed": "No aprobado. Repasa tus errores abajo — se han añadido a tu lista de repaso.",
+    "errorsTitle": "Tus errores",
+    "yourAnswer": "Tu respuesta",
+    "correctAnswer": "Respuesta correcta",
+    "noAnswer": "Sin responder",
+    "retake": "Hacer otro examen",
+    "history": "Últimos intentos",
+    "back": "Volver a la teoría"
+  },
+  "review": {
+    "entry": "Repasar fallos",
+    "toReview": "Preguntas pendientes: {{count}}",
+    "title": "Repaso de fallos",
+    "description": "Las preguntas que fallaste en quizzes y exámenes. Acierta cada una para eliminarla.",
+    "empty": "Nada que repasar — no tienes fallos pendientes. Los nuevos aparecerán aquí automáticamente.",
+    "cleared": "¡Eliminada!",
+    "keep": "Sigue pendiente — volverá a aparecer.",
+    "done": "Todos los fallos repasados. ¡Gran sesión de estudio!",
+    "remaining": "Quedan: {{count}}"
+  }
+}

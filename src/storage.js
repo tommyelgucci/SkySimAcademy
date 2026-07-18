@@ -8,7 +8,9 @@
  * Estructura:
  * {
  *   quizzes:  { [moduleId]: { bestScore, total, passed, attempts, lastAt } },
- *   missions: { [missionId]: { completedAt } }
+ *   missions: { [missionId]: { completedAt } },
+ *   failed:   { ["moduleId/questionId"]: { failedAt } },   // repaso de fallos
+ *   exams:    [ { score, total, passed, at } ]             // últimos intentos
  * }
  */
 const KEY = "aerolearn.progress.v1";
@@ -71,4 +73,47 @@ export function recordMissionComplete(missionId) {
 /** ¿Está completada esta misión? */
 export function isMissionComplete(missionId) {
   return Boolean(load().missions?.[missionId]);
+}
+
+/** Apunta una pregunta fallada para el repaso (idempotente). */
+export function recordFailedQuestion(moduleId, questionId) {
+  const data = load();
+  data.failed = {
+    ...data.failed,
+    [`${moduleId}/${questionId}`]: { failedAt: Date.now() },
+  };
+  save(data);
+}
+
+/** Elimina una pregunta del repaso (al acertarla en cualquier contexto). */
+export function clearFailedQuestion(moduleId, questionId) {
+  const data = load();
+  const key = `${moduleId}/${questionId}`;
+  if (data.failed?.[key]) {
+    delete data.failed[key];
+    save(data);
+  }
+}
+
+/** Preguntas pendientes de repaso, en orden de fallo. */
+export function getFailedQuestions() {
+  const failed = load().failed ?? {};
+  return Object.entries(failed)
+    .sort(([, a], [, b]) => a.failedAt - b.failedAt)
+    .map(([key]) => {
+      const [moduleId, questionId] = key.split("/");
+      return { moduleId, questionId };
+    });
+}
+
+/** Guarda un intento de examen; conserva los últimos 20. */
+export function recordExamResult({ score, total, passed }) {
+  const data = load();
+  data.exams = [...(data.exams ?? []), { score, total, passed, at: Date.now() }].slice(-20);
+  save(data);
+}
+
+/** Historial de exámenes, del más antiguo al más reciente. */
+export function getExamHistory() {
+  return load().exams ?? [];
 }

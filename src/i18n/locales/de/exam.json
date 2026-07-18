@@ -1,0 +1,34 @@
+{
+  "exam": {
+    "entry": "Prüfungsmodus",
+    "entryDescription": "20 Fragen, 20 Minuten, kein Feedback bis zum Schluss.",
+    "title": "Prüfungsmodus",
+    "description": "20 Fragen aus allen Modulen, 20 Minuten Zeit und kein Feedback bis zum Schluss — wie in der echten Prüfung. Bestanden ab 15 von 20.",
+    "start": "Prüfung starten",
+    "timeLeft": "Restzeit",
+    "progress": "Frage {{current}} von {{total}}",
+    "next": "Weiter",
+    "finish": "Prüfung abschließen",
+    "score": "Du hast {{score}} von {{total}} erreicht.",
+    "passed": "Bestanden — gut gemacht.",
+    "failed": "Nicht bestanden. Sieh dir deine Fehler unten an — sie wurden deiner Wiederholungsliste hinzugefügt.",
+    "errorsTitle": "Deine Fehler",
+    "yourAnswer": "Deine Antwort",
+    "correctAnswer": "Richtige Antwort",
+    "noAnswer": "Nicht beantwortet",
+    "retake": "Neue Prüfung starten",
+    "history": "Letzte Versuche",
+    "back": "Zurück zur Theorie"
+  },
+  "review": {
+    "entry": "Fehler wiederholen",
+    "toReview": "Offene Fragen: {{count}}",
+    "title": "Fehler-Wiederholung",
+    "description": "Fragen, die du in Quiz und Prüfung falsch beantwortet hast. Beantworte jede richtig, um sie zu löschen.",
+    "empty": "Nichts zu wiederholen — keine offenen Fehler. Neue erscheinen hier automatisch.",
+    "cleared": "Gelöscht!",
+    "keep": "Noch offen — sie kommt wieder.",
+    "done": "Alle Fehler abgearbeitet. Starke Lernsession!",
+    "remaining": "Übrig: {{count}}"
+  }
+}

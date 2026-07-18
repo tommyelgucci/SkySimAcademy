@@ -11,6 +11,8 @@ import Header from "./components/Header.jsx";
 import Home from "./components/Home.jsx";
 import ModuleList from "./components/theory/ModuleList.jsx";
 import ModuleView from "./components/theory/ModuleView.jsx";
+import ExamView from "./components/theory/ExamView.jsx";
+import ReviewView from "./components/theory/ReviewView.jsx";
 import SimulatorView from "./components/simulator/SimulatorView.jsx";
 
 export default function App() {
@@ -28,11 +30,17 @@ export default function App() {
       <main className="app__main">
         {screen.name === "home" && <Home onNavigate={goto} />}
         {screen.name === "theory" && (
-          <ModuleList onOpenModule={(moduleId) => goto("module", { moduleId })} />
+          <ModuleList
+            onOpenModule={(moduleId) => goto("module", { moduleId })}
+            onOpenExam={() => goto("exam")}
+            onOpenReview={() => goto("review")}
+          />
         )}
         {screen.name === "module" && (
           <ModuleView moduleId={screen.moduleId} onBack={() => goto("theory")} />
         )}
+        {screen.name === "exam" && <ExamView onBack={() => goto("theory")} />}
+        {screen.name === "review" && <ReviewView onBack={() => goto("theory")} />}
         {isSimulator && <SimulatorView onExit={() => goto("home")} />}
       </main>
 

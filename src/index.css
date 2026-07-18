@@ -260,6 +260,211 @@ body {
   color: var(--color-text-dim);
 }
 
+/* Herramientas de estudio (examen + repaso) */
+.study-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.8rem;
+  margin-block-start: 1.4rem;
+}
+
+.study-tool {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: start;
+  font-family: inherit;
+  color: var(--color-text);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-primary) 14%, var(--color-surface)),
+    var(--color-surface)
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+}
+
+.study-tool:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.study-tool:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.study-tool > svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.study-tool__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.study-tool__title {
+  font-weight: 700;
+}
+
+.study-tool__description {
+  font-size: 0.82rem;
+  color: var(--color-text-dim);
+}
+
+/* Modo examen */
+.exam {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.exam__hero {
+  text-align: center;
+  padding-block: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.exam__hero > svg {
+  color: var(--color-primary);
+}
+
+.exam__hero p {
+  max-width: 32rem;
+  color: var(--color-text-dim);
+}
+
+.exam__score {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text) !important;
+}
+
+.exam__actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-block-start: 0.6rem;
+}
+
+.exam__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 1.2rem 0;
+}
+
+.exam__timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.exam__history {
+  margin-block-start: 1.5rem;
+}
+
+.exam__history h2,
+.exam__errors h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+}
+
+.exam__history ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.exam__history li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.exam__errors {
+  margin-block-start: 1.5rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.exam-error {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-inline-start: 3px solid var(--color-wrong);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+}
+
+.exam-error__question {
+  font-weight: 600;
+  margin-block: 0 0.4rem;
+}
+
+.exam-error__given {
+  color: var(--color-wrong);
+  font-size: 0.9rem;
+  margin-block: 0;
+}
+
+.exam-error__correct {
+  color: var(--color-correct);
+  font-size: 0.9rem;
+  margin-block: 0.15rem 0;
+}
+
+.is-correct {
+  color: var(--color-correct);
+}
+
+.is-wrong {
+  color: var(--color-wrong);
+}
+
+/* Repaso de fallos */
+.review {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.review--empty {
+  text-align: center;
+  padding-block: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.review--empty > svg {
+  color: var(--color-primary);
+}
+
+.review--empty p {
+  color: var(--color-text-dim);
+  max-width: 28rem;
+}
+
+.quiz__feedback {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .module-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

@@ -6,8 +6,10 @@ const NAV_SCREENS = ["home", "theory", "simulator"];
 
 export default function Header({ activeScreen, onNavigate }) {
   const { t } = useTranslation();
-  // "module" es una subpantalla de "theory" a efectos de navegación
-  const active = activeScreen === "module" ? "theory" : activeScreen;
+  // "module", "exam" y "review" son subpantallas de "theory" en la navegación
+  const active = ["module", "exam", "review"].includes(activeScreen)
+    ? "theory"
+    : activeScreen;
 
   return (
     <header className="header">

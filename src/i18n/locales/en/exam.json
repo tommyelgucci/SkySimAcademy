@@ -1,0 +1,34 @@
+{
+  "exam": {
+    "entry": "Exam mode",
+    "entryDescription": "20 questions, 20 minutes, no feedback until the end.",
+    "title": "Exam mode",
+    "description": "20 questions drawn from every module, 20 minutes on the clock and no feedback until the end — just like the real thing. Pass mark: 15 of 20.",
+    "start": "Start exam",
+    "timeLeft": "Time left",
+    "progress": "Question {{current}} of {{total}}",
+    "next": "Next",
+    "finish": "Finish exam",
+    "score": "You scored {{score}} of {{total}}.",
+    "passed": "Passed — well done.",
+    "failed": "Not passed. Review your errors below — they have been added to your review list.",
+    "errorsTitle": "Your errors",
+    "yourAnswer": "Your answer",
+    "correctAnswer": "Correct answer",
+    "noAnswer": "Not answered",
+    "retake": "Take another exam",
+    "history": "Recent attempts",
+    "back": "Back to theory"
+  },
+  "review": {
+    "entry": "Review mistakes",
+    "toReview": "Pending questions: {{count}}",
+    "title": "Mistake review",
+    "description": "The questions you missed in quizzes and exams. Answer each one correctly to clear it.",
+    "empty": "Nothing to review — no pending mistakes. New ones will appear here automatically.",
+    "cleared": "Cleared!",
+    "keep": "Still pending — it will come back.",
+    "done": "All mistakes cleared. Great study session!",
+    "remaining": "Remaining: {{count}}"
+  }
+}

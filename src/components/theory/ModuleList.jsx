@@ -1,16 +1,45 @@
 import { useTranslation } from "react-i18next";
-import { Check } from "lucide-react";
+import { Check, GraduationCap, RotateCcw } from "lucide-react";
 import { MODULES } from "../../content/modules";
-import { isModulePassed } from "../../storage.js";
+import { getFailedQuestions, isModulePassed } from "../../storage.js";
 import { ContentIcon } from "../icons.jsx";
 
-export default function ModuleList({ onOpenModule }) {
-  const { t } = useTranslation("theory");
+export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview }) {
+  const { t } = useTranslation(["theory", "exam"]);
+  const failedCount = getFailedQuestions().length;
 
   return (
     <section className="theory">
       <h1>{t("title")}</h1>
       <p className="theory__subtitle">{t("subtitle")}</p>
+
+      {/* Herramientas de estudio PPL: examen y repaso de fallos */}
+      <div className="study-tools">
+        <button className="study-tool" onClick={onOpenExam}>
+          <GraduationCap size={22} aria-hidden="true" />
+          <span className="study-tool__text">
+            <span className="study-tool__title">{t("exam:exam.entry")}</span>
+            <span className="study-tool__description">
+              {t("exam:exam.entryDescription")}
+            </span>
+          </span>
+        </button>
+        <button
+          className="study-tool"
+          disabled={failedCount === 0}
+          onClick={onOpenReview}
+        >
+          <RotateCcw size={22} aria-hidden="true" />
+          <span className="study-tool__text">
+            <span className="study-tool__title">{t("exam:review.entry")}</span>
+            <span className="study-tool__description">
+              {failedCount === 0
+                ? t("exam:review.empty").split("—")[0].trim()
+                : t("exam:review.toReview", { count: failedCount })}
+            </span>
+          </span>
+        </button>
+      </div>
 
       <div className="module-grid">
         {MODULES.map((module) => {
