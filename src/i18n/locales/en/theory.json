@@ -116,6 +116,54 @@
             "It stays the same",
             "It decreases"
           ]
+        },
+        "q11": {
+          "question": "Which force opposes thrust?",
+          "options": [
+            "Drag",
+            "Weight",
+            "Lift"
+          ]
+        },
+        "q12": {
+          "question": "What generates lift?",
+          "options": [
+            "Air flowing over the wings",
+            "The engine spinning faster",
+            "The aircraft's weight"
+          ]
+        },
+        "q13": {
+          "question": "Which control surface controls yaw?",
+          "options": [
+            "The rudder",
+            "The ailerons",
+            "The elevator"
+          ]
+        },
+        "q14": {
+          "question": "Which control surfaces control roll?",
+          "options": [
+            "The ailerons",
+            "The rudder",
+            "The elevator"
+          ]
+        },
+        "q15": {
+          "question": "In straight and level flight, lift equals…",
+          "options": [
+            "Weight",
+            "Thrust",
+            "Drag"
+          ]
+        },
+        "q16": {
+          "question": "What is the first action to recover from a stall?",
+          "options": [
+            "Lower the nose",
+            "Pull the nose up",
+            "Cut the throttle"
+          ]
         }
       }
     },
@@ -216,6 +264,54 @@
             "How fast the aircraft moves over the ground",
             "The engine's power output"
           ]
+        },
+        "q11": {
+          "question": "Heading 180° means the nose points…",
+          "options": [
+            "South",
+            "North",
+            "East"
+          ]
+        },
+        "q12": {
+          "question": "Which instrument measures your height?",
+          "options": [
+            "The altimeter",
+            "The airspeed indicator",
+            "The compass"
+          ]
+        },
+        "q13": {
+          "question": "What happens to the air as you climb?",
+          "options": [
+            "It gets thinner and its pressure drops",
+            "It gets denser",
+            "It stays the same"
+          ]
+        },
+        "q14": {
+          "question": "Which instrument shows your bank?",
+          "options": [
+            "The attitude indicator",
+            "The altimeter",
+            "The compass"
+          ]
+        },
+        "q15": {
+          "question": "'Turn to heading 090' means turn until the nose points…",
+          "options": [
+            "East",
+            "West",
+            "North"
+          ]
+        },
+        "q16": {
+          "question": "Flying too slowly risks…",
+          "options": [
+            "Stalling",
+            "Exceeding the maximum speed",
+            "Losing the compass"
+          ]
         }
       }
     },
@@ -315,6 +411,54 @@
             "It changes its shape and destroys lift",
             "It makes it heavier but otherwise harmless",
             "It only affects the paint"
+          ]
+        },
+        "q11": {
+          "question": "What is the ideal wind for take-off and landing?",
+          "options": [
+            "A headwind",
+            "A tailwind",
+            "A crosswind"
+          ]
+        },
+        "q12": {
+          "question": "What effect does a tailwind have on the take-off run?",
+          "options": [
+            "It lengthens it",
+            "It shortens it",
+            "It has no effect"
+          ]
+        },
+        "q13": {
+          "question": "What can fog hide?",
+          "options": [
+            "The horizon and the terrain",
+            "Only high clouds",
+            "The wind"
+          ]
+        },
+        "q14": {
+          "question": "What happens inside a cloud without instrument training?",
+          "options": [
+            "You quickly lose all sense of up and down",
+            "You fly with more precision",
+            "The engine loses power"
+          ]
+        },
+        "q15": {
+          "question": "Where do you find hail and violent currents?",
+          "options": [
+            "In thunderstorms",
+            "In fog",
+            "In a crosswind"
+          ]
+        },
+        "q16": {
+          "question": "What should always be done before flying?",
+          "options": [
+            "Check the forecast",
+            "Wait until nightfall",
+            "Fill the tanks to the maximum"
           ]
         }
       }
@@ -432,6 +576,54 @@
             "SY",
             "TS"
           ]
+        },
+        "q13": {
+          "question": "What is the spelling-alphabet word for the letter D?",
+          "options": [
+            "Delta",
+            "Papa",
+            "Whiskey"
+          ]
+        },
+        "q14": {
+          "question": "What is the spelling-alphabet word for the letter H?",
+          "options": [
+            "Hotel",
+            "Golf",
+            "India"
+          ]
+        },
+        "q15": {
+          "question": "What does 'Papa Quebec' spell?",
+          "options": [
+            "PQ",
+            "PC",
+            "QP"
+          ]
+        },
+        "q16": {
+          "question": "What is the spelling-alphabet word for the letter W?",
+          "options": [
+            "Whiskey",
+            "Victor",
+            "X-ray"
+          ]
+        },
+        "q17": {
+          "question": "What does 'Victor Whiskey' spell?",
+          "options": [
+            "VW",
+            "VX",
+            "WV"
+          ]
+        },
+        "q18": {
+          "question": "Why does aviation phraseology use fixed phrases?",
+          "options": [
+            "Because each one has exactly one meaning",
+            "Because they sound more formal",
+            "Because they are shorter to write"
+          ]
         }
       }
     },
@@ -531,6 +723,54 @@
             "Rivers, railway lines and towns",
             "Small, isolated clouds",
             "The colour of the sky at sunset"
+          ]
+        },
+        "q11": {
+          "question": "In flight, what is the aeronautical chart compared against?",
+          "options": [
+            "The terrain and its features",
+            "The weather forecast",
+            "The engine manual"
+          ]
+        },
+        "q12": {
+          "question": "What do you need to estimate your future position?",
+          "options": [
+            "Heading, airspeed and time",
+            "Altitude and pressure",
+            "Fuel and weight"
+          ]
+        },
+        "q13": {
+          "question": "Which way does a pilot correct heading when there is wind?",
+          "options": [
+            "Into the wind",
+            "Always toward the north",
+            "It is never corrected, only speed is adjusted"
+          ]
+        },
+        "q14": {
+          "question": "What should fuel calculations always include?",
+          "options": [
+            "A reserve",
+            "Only the direct route",
+            "Only the pilot's weight"
+          ]
+        },
+        "q15": {
+          "question": "What is an alternate aerodrome?",
+          "options": [
+            "Where to go if you cannot land at the destination",
+            "The aerodrome the flight departed from",
+            "An aerodrome reserved for medical emergencies"
+          ]
+        },
+        "q16": {
+          "question": "Which linear features help with pilotage?",
+          "options": [
+            "Rivers, railway lines and roads",
+            "High clouds",
+            "The lights of other aircraft"
           ]
         }
       }

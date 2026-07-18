@@ -116,6 +116,54 @@
             "Er bleibt gleich",
             "Er nimmt ab"
           ]
+        },
+        "q11": {
+          "question": "Welche Kraft wirkt dem Schub entgegen?",
+          "options": [
+            "Der Luftwiderstand",
+            "Das Gewicht",
+            "Der Auftrieb"
+          ]
+        },
+        "q12": {
+          "question": "Was erzeugt den Auftrieb?",
+          "options": [
+            "Die Luft, die über die Tragflächen strömt",
+            "Der schneller drehende Motor",
+            "Das Gewicht des Flugzeugs"
+          ]
+        },
+        "q13": {
+          "question": "Welches Ruder steuert das Gieren?",
+          "options": [
+            "Das Seitenruder",
+            "Die Querruder",
+            "Das Höhenruder"
+          ]
+        },
+        "q14": {
+          "question": "Welche Ruder steuern das Rollen?",
+          "options": [
+            "Die Querruder",
+            "Das Seitenruder",
+            "Das Höhenruder"
+          ]
+        },
+        "q15": {
+          "question": "Im Geradeausflug in konstanter Höhe entspricht der Auftrieb…",
+          "options": [
+            "Dem Gewicht",
+            "Dem Schub",
+            "Dem Luftwiderstand"
+          ]
+        },
+        "q16": {
+          "question": "Was ist die erste Maßnahme, um einen Strömungsabriss auszuleiten?",
+          "options": [
+            "Die Nase senken",
+            "Die Nase hochziehen",
+            "Das Gas wegnehmen"
+          ]
         }
       }
     },
@@ -216,6 +264,54 @@
             "Wie schnell sich das Flugzeug über Grund bewegt",
             "Die Leistung des Motors"
           ]
+        },
+        "q11": {
+          "question": "Kurs 180° bedeutet, die Nase zeigt nach…",
+          "options": [
+            "Süden",
+            "Norden",
+            "Osten"
+          ]
+        },
+        "q12": {
+          "question": "Welches Instrument misst deine Höhe?",
+          "options": [
+            "Der Höhenmesser",
+            "Der Fahrtmesser",
+            "Der Kompass"
+          ]
+        },
+        "q13": {
+          "question": "Was passiert mit der Luft, während du steigst?",
+          "options": [
+            "Sie wird dünner und ihr Druck sinkt",
+            "Sie wird dichter",
+            "Sie bleibt unverändert"
+          ]
+        },
+        "q14": {
+          "question": "Welches Instrument zeigt deine Querneigung?",
+          "options": [
+            "Der künstliche Horizont",
+            "Der Höhenmesser",
+            "Der Kompass"
+          ]
+        },
+        "q15": {
+          "question": "„Drehe auf Kurs 090“ bedeutet, zu kurven, bis die Nase zeigt nach…",
+          "options": [
+            "Osten",
+            "Westen",
+            "Norden"
+          ]
+        },
+        "q16": {
+          "question": "Zu langsames Fliegen riskiert…",
+          "options": [
+            "Einen Strömungsabriss",
+            "Das Überschreiten der Höchstgeschwindigkeit",
+            "Den Ausfall des Kompasses"
+          ]
         }
       }
     },
@@ -315,6 +411,54 @@
             "Sie verändert ihre Form und zerstört den Auftrieb",
             "Sie macht sie schwerer, aber ansonsten harmlos",
             "Sie beschädigt nur den Lack"
+          ]
+        },
+        "q11": {
+          "question": "Welcher Wind ist ideal für Start und Landung?",
+          "options": [
+            "Gegenwind",
+            "Rückenwind",
+            "Seitenwind"
+          ]
+        },
+        "q12": {
+          "question": "Welche Wirkung hat Rückenwind auf die Startstrecke?",
+          "options": [
+            "Er verlängert sie",
+            "Er verkürzt sie",
+            "Er hat keine Wirkung"
+          ]
+        },
+        "q13": {
+          "question": "Was kann Nebel verbergen?",
+          "options": [
+            "Horizont und Gelände",
+            "Nur hohe Wolken",
+            "Den Wind"
+          ]
+        },
+        "q14": {
+          "question": "Was passiert in einer Wolke ohne Instrumententraining?",
+          "options": [
+            "Du verlierst schnell jedes Gefühl für oben und unten",
+            "Du fliegst präziser",
+            "Der Motor verliert an Leistung"
+          ]
+        },
+        "q15": {
+          "question": "Wo findest du Hagel und heftige Auf- und Abwinde?",
+          "options": [
+            "In Gewittern",
+            "Im Nebel",
+            "Im Seitenwind"
+          ]
+        },
+        "q16": {
+          "question": "Was sollte vor jedem Flug getan werden?",
+          "options": [
+            "Den Wetterbericht prüfen",
+            "Bis zum Einbruch der Dunkelheit warten",
+            "So viel Treibstoff wie möglich tanken"
           ]
         }
       }
@@ -432,6 +576,54 @@
             "SY",
             "TS"
           ]
+        },
+        "q13": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben D?",
+          "options": [
+            "Delta",
+            "Papa",
+            "Whiskey"
+          ]
+        },
+        "q14": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben H?",
+          "options": [
+            "Hotel",
+            "Golf",
+            "India"
+          ]
+        },
+        "q15": {
+          "question": "Was buchstabiert „Papa Quebec“?",
+          "options": [
+            "PQ",
+            "PC",
+            "QP"
+          ]
+        },
+        "q16": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben W?",
+          "options": [
+            "Whiskey",
+            "Victor",
+            "X-ray"
+          ]
+        },
+        "q17": {
+          "question": "Was buchstabiert „Victor Whiskey“?",
+          "options": [
+            "VW",
+            "VX",
+            "WV"
+          ]
+        },
+        "q18": {
+          "question": "Warum verwendet der Flugfunk feste Sprechgruppen?",
+          "options": [
+            "Weil jede genau eine Bedeutung hat",
+            "Weil sie förmlicher klingen",
+            "Weil sie kürzer zu schreiben sind"
+          ]
         }
       }
     },
@@ -531,6 +723,54 @@
             "Flüsse, Bahnlinien und Städte",
             "Kleine, vereinzelte Wolken",
             "Die Farbe des Himmels bei Sonnenuntergang"
+          ]
+        },
+        "q11": {
+          "question": "Womit wird die Luftfahrtkarte im Flug verglichen?",
+          "options": [
+            "Mit dem Gelände und seinen Merkmalen",
+            "Mit der Wettervorhersage",
+            "Mit dem Motorhandbuch"
+          ]
+        },
+        "q12": {
+          "question": "Was brauchst du, um deine zukünftige Position zu schätzen?",
+          "options": [
+            "Kurs, Geschwindigkeit und Zeit",
+            "Höhe und Luftdruck",
+            "Treibstoff und Gewicht"
+          ]
+        },
+        "q13": {
+          "question": "Wohin korrigiert ein Pilot den Kurs bei Wind?",
+          "options": [
+            "Gegen den Wind",
+            "Immer nach Norden",
+            "Er wird nie korrigiert, nur die Geschwindigkeit wird angepasst"
+          ]
+        },
+        "q14": {
+          "question": "Was sollte die Treibstoffberechnung immer enthalten?",
+          "options": [
+            "Eine Reserve",
+            "Nur die direkte Strecke",
+            "Nur das Gewicht des Piloten"
+          ]
+        },
+        "q15": {
+          "question": "Was ist ein Ausweichflugplatz?",
+          "options": [
+            "Wohin du fliegst, wenn du am Ziel nicht landen kannst",
+            "Der Startflugplatz des Flugs",
+            "Ein Flugplatz nur für medizinische Notfälle"
+          ]
+        },
+        "q16": {
+          "question": "Welche linienförmigen Merkmale helfen bei der Sichtnavigation?",
+          "options": [
+            "Flüsse, Bahnlinien und Straßen",
+            "Hohe Wolken",
+            "Die Lichter anderer Flugzeuge"
           ]
         }
       }

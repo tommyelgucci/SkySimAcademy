@@ -116,6 +116,54 @@
             "Permanece igual",
             "Diminui"
           ]
+        },
+        "q11": {
+          "question": "Qual força se opõe à tração?",
+          "options": [
+            "O arrasto",
+            "O peso",
+            "A sustentação"
+          ]
+        },
+        "q12": {
+          "question": "O que gera a sustentação?",
+          "options": [
+            "O ar fluindo sobre as asas",
+            "O motor girando mais rápido",
+            "O peso do avião"
+          ]
+        },
+        "q13": {
+          "question": "Qual superfície controla a guinada?",
+          "options": [
+            "O leme",
+            "Os ailerons",
+            "O profundor"
+          ]
+        },
+        "q14": {
+          "question": "Quais superfícies controlam a rolagem?",
+          "options": [
+            "Os ailerons",
+            "O leme",
+            "O profundor"
+          ]
+        },
+        "q15": {
+          "question": "No voo reto e nivelado, a sustentação é igual…",
+          "options": [
+            "Ao peso",
+            "À tração",
+            "Ao arrasto"
+          ]
+        },
+        "q16": {
+          "question": "Qual é a primeira ação para recuperar de um estol?",
+          "options": [
+            "Abaixar o nariz",
+            "Puxar o nariz para cima",
+            "Cortar a potência"
+          ]
         }
       }
     },
@@ -216,6 +264,54 @@
             "A rapidez com que o avião se move sobre o solo",
             "A potência entregue pelo motor"
           ]
+        },
+        "q11": {
+          "question": "Proa 180° significa que o nariz aponta para…",
+          "options": [
+            "Sul",
+            "Norte",
+            "Leste"
+          ]
+        },
+        "q12": {
+          "question": "Qual instrumento mede a sua altura?",
+          "options": [
+            "O altímetro",
+            "O velocímetro",
+            "A bússola"
+          ]
+        },
+        "q13": {
+          "question": "O que acontece com o ar à medida que você sobe?",
+          "options": [
+            "Fica mais rarefeito e sua pressão cai",
+            "Fica mais denso",
+            "Não muda"
+          ]
+        },
+        "q14": {
+          "question": "Qual instrumento mostra a sua inclinação lateral?",
+          "options": [
+            "O horizonte artificial",
+            "O altímetro",
+            "A bússola"
+          ]
+        },
+        "q15": {
+          "question": "«Curve para proa 090» significa girar até o nariz apontar para…",
+          "options": [
+            "Leste",
+            "Oeste",
+            "Norte"
+          ]
+        },
+        "q16": {
+          "question": "Voar devagar demais arrisca…",
+          "options": [
+            "Entrar em estol",
+            "Ultrapassar a velocidade máxima",
+            "Perder a bússola"
+          ]
         }
       }
     },
@@ -315,6 +411,54 @@
             "Muda a sua forma e destrói a sustentação",
             "Deixa-a mais pesada, mas sem outras consequências",
             "Só afeta a pintura"
+          ]
+        },
+        "q11": {
+          "question": "Qual é o vento ideal para decolar e pousar?",
+          "options": [
+            "O vento de proa",
+            "O vento de cauda",
+            "O vento cruzado"
+          ]
+        },
+        "q12": {
+          "question": "Que efeito o vento de cauda tem na corrida de decolagem?",
+          "options": [
+            "Ele a alonga",
+            "Ele a encurta",
+            "Não tem efeito"
+          ]
+        },
+        "q13": {
+          "question": "O que o nevoeiro pode esconder?",
+          "options": [
+            "O horizonte e o terreno",
+            "Apenas nuvens altas",
+            "O vento"
+          ]
+        },
+        "q14": {
+          "question": "O que acontece dentro de uma nuvem sem treinamento em voo por instrumentos?",
+          "options": [
+            "Você perde rapidamente toda noção de cima e baixo",
+            "Você voa com mais precisão",
+            "O motor perde potência"
+          ]
+        },
+        "q15": {
+          "question": "Onde você encontra granizo e correntes violentas?",
+          "options": [
+            "Nas trovoadas",
+            "No nevoeiro",
+            "No vento cruzado"
+          ]
+        },
+        "q16": {
+          "question": "O que se deve sempre fazer antes de voar?",
+          "options": [
+            "Consultar a previsão do tempo",
+            "Esperar até anoitecer",
+            "Encher o tanque ao máximo"
           ]
         }
       }
@@ -432,6 +576,54 @@
             "SY",
             "TS"
           ]
+        },
+        "q13": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra D?",
+          "options": [
+            "Delta",
+            "Papa",
+            "Whiskey"
+          ]
+        },
+        "q14": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra H?",
+          "options": [
+            "Hotel",
+            "Golf",
+            "India"
+          ]
+        },
+        "q15": {
+          "question": "O que soletra «Papa Quebec»?",
+          "options": [
+            "PQ",
+            "PC",
+            "QP"
+          ]
+        },
+        "q16": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra W?",
+          "options": [
+            "Whiskey",
+            "Victor",
+            "X-ray"
+          ]
+        },
+        "q17": {
+          "question": "O que soletra «Victor Whiskey»?",
+          "options": [
+            "VW",
+            "VX",
+            "WV"
+          ]
+        },
+        "q18": {
+          "question": "Por que a fraseologia aeronáutica usa frases fixas?",
+          "options": [
+            "Porque cada uma tem exatamente um único significado",
+            "Porque soam mais formais",
+            "Porque são mais curtas de escrever"
+          ]
         }
       }
     },
@@ -531,6 +723,54 @@
             "Rios, linhas de trem e cidades",
             "Nuvens pequenas e isoladas",
             "A cor do céu ao pôr do sol"
+          ]
+        },
+        "q11": {
+          "question": "Em voo, com que se compara a carta aeronáutica?",
+          "options": [
+            "Com o terreno e suas referências",
+            "Com a previsão do tempo",
+            "Com o manual do motor"
+          ]
+        },
+        "q12": {
+          "question": "O que você precisa para estimar sua posição futura?",
+          "options": [
+            "Proa, velocidade e tempo",
+            "Altitude e pressão",
+            "Combustível e peso"
+          ]
+        },
+        "q13": {
+          "question": "Para onde o piloto corrige a proa quando há vento?",
+          "options": [
+            "Contra o vento",
+            "Sempre para o norte",
+            "Nunca se corrige, só se ajusta a velocidade"
+          ]
+        },
+        "q14": {
+          "question": "O que o cálculo de combustível deve sempre incluir?",
+          "options": [
+            "Uma reserva",
+            "Apenas o trajeto direto",
+            "Somente o peso do piloto"
+          ]
+        },
+        "q15": {
+          "question": "O que é um aeródromo alternativo?",
+          "options": [
+            "Para onde ir se você não puder pousar no destino",
+            "O aeródromo de origem do voo",
+            "Um aeródromo só para emergências médicas"
+          ]
+        },
+        "q16": {
+          "question": "Quais referências lineares ajudam na navegação visual?",
+          "options": [
+            "Rios, linhas de trem e estradas",
+            "Nuvens altas",
+            "As luzes de outros aviões"
           ]
         }
       }
