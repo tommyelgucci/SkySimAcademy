@@ -437,7 +437,103 @@
     },
     "navigation-basics": {
       "title": "Navegación básica",
-      "description": "Cartas, rutas y cómo orientarse — de A a B sin carreteras."
+      "description": "Cartas, rutas y cómo orientarse — de A a B sin carreteras.",
+      "lessons": {
+        "pilotage": {
+          "title": "Navegación observada",
+          "body": "La navegación observada consiste en volar mirando afuera y comparar lo que ves —ríos, carreteras, vías de tren y ciudades— con la carta aeronáutica. Estas referencias grandes y lineales son fáciles de identificar desde el aire y te permiten confirmar tu posición en todo momento. La regla de oro es simple: debes saber SIEMPRE dónde estás sobre la carta."
+        },
+        "dead-reckoning": {
+          "title": "La estima",
+          "body": "La estima combina rumbo, velocidad y tiempo para calcular dónde estarás en cada momento. El viento te desvía de la ruta prevista, así que el piloto corrige el rumbo apuntando «hacia el viento» para compensar esa deriva. Brújula y reloj son las herramientas básicas de la estima: sin ellas no hay cálculo posible."
+        },
+        "planning": {
+          "title": "Planificación del vuelo",
+          "body": "Antes de volar se estudia la ruta, el tiempo previsto, el combustible necesario con una reserva y se elige un aeródromo alternativo por si el destino no es viable. Si te pierdes durante el vuelo, gana altura: verás más terreno y mejorarás la recepción de la radio. Perderse no es motivo de vergüenza, pero ocultarlo y no pedir ayuda sí es peligroso."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "¿En qué consiste la navegación observada?",
+          "options": [
+            "En comparar referencias del terreno con la carta",
+            "En seguir únicamente los instrumentos de a bordo",
+            "En volar siempre en línea recta sin mirar el mapa"
+          ]
+        },
+        "q2": {
+          "question": "¿Cuál es la regla de oro de la navegación observada?",
+          "options": [
+            "Saber siempre dónde estás sobre la carta",
+            "Volar siempre a la máxima altura posible",
+            "No consultar la carta hasta el final del vuelo"
+          ]
+        },
+        "q3": {
+          "question": "¿Qué tres datos combina la estima?",
+          "options": [
+            "Rumbo, velocidad y tiempo",
+            "Altitud, presión y temperatura",
+            "Combustible, peso y potencia"
+          ]
+        },
+        "q4": {
+          "question": "¿Qué le hace el viento a tu ruta prevista?",
+          "options": [
+            "Te desvía, y se corrige apuntando hacia el viento",
+            "No tiene ningún efecto sobre la ruta",
+            "Solo afecta a la velocidad, nunca al rumbo"
+          ]
+        },
+        "q5": {
+          "question": "¿Cuáles son las herramientas básicas de la estima?",
+          "options": [
+            "Brújula y reloj",
+            "Altímetro y anemómetro",
+            "Radio y transpondedor"
+          ]
+        },
+        "q6": {
+          "question": "¿Qué se planifica antes de un vuelo?",
+          "options": [
+            "La ruta, el tiempo, el combustible y un alternativo",
+            "Solo la hora de despegue",
+            "Únicamente el color del avión"
+          ]
+        },
+        "q7": {
+          "question": "¿Por qué se lleva combustible de reserva?",
+          "options": [
+            "Para cubrir imprevistos o desvíos",
+            "Para que el avión vuele más rápido",
+            "Para ahorrar en el aeropuerto de destino"
+          ]
+        },
+        "q8": {
+          "question": "¿Qué es un aeródromo alternativo?",
+          "options": [
+            "Una opción para aterrizar si no puedes hacerlo en el destino",
+            "El aeródromo donde se repara el avión",
+            "Una pista solo para vuelos nocturnos"
+          ]
+        },
+        "q9": {
+          "question": "¿Qué debes hacer si te pierdes durante el vuelo?",
+          "options": [
+            "Ganar altura y pedir ayuda por radio",
+            "Descender lo antes posible y aterrizar donde sea",
+            "Apagar la radio para concentrarte mejor"
+          ]
+        },
+        "q10": {
+          "question": "¿Qué son buenas referencias visuales desde el aire?",
+          "options": [
+            "Ríos, vías de tren y ciudades",
+            "Nubes pequeñas y aisladas",
+            "El color del cielo al atardecer"
+          ]
+        }
+      }
     }
   },
   "passedTag": "Aprobado"

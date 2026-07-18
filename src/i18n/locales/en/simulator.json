@@ -48,6 +48,10 @@
     "safe-landing": {
       "title": "Safe landing",
       "objective": "Climb above 60 m, then land gently back on the ground."
+    },
+    "cross-country": {
+      "title": "Cross-country leg",
+      "objective": "Climb above 80 m and hold heading 090° for 4 seconds."
     }
   },
   "timeUp": {
@@ -63,5 +67,9 @@
     "distance": "Distance flown: {{value}} km"
   },
   "restart": "Fly again",
-  "exit": "Exit simulator"
+  "exit": "Exit simulator",
+  "sound": {
+    "mute": "Mute sound",
+    "unmute": "Unmute sound"
+  }
 }

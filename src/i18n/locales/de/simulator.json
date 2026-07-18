@@ -48,6 +48,10 @@
     "safe-landing": {
       "title": "Sichere Landung",
       "objective": "Steige über 60 m und lande sanft wieder auf dem Boden."
+    },
+    "cross-country": {
+      "title": "Streckenflug-Abschnitt",
+      "objective": "Steige über 80 m und halte den Kurs 090° für 4 Sekunden."
     }
   },
   "timeUp": {
@@ -63,5 +67,9 @@
     "distance": "Geflogene Strecke: {{value}} km"
   },
   "restart": "Noch einmal fliegen",
-  "exit": "Simulator verlassen"
+  "exit": "Simulator verlassen",
+  "sound": {
+    "mute": "Ton stummschalten",
+    "unmute": "Ton einschalten"
+  }
 }

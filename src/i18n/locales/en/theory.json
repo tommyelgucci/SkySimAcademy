@@ -437,7 +437,103 @@
     },
     "navigation-basics": {
       "title": "Basic navigation",
-      "description": "Charts, courses and finding your way — from A to B without roads."
+      "description": "Charts, courses and finding your way — from A to B without roads.",
+      "lessons": {
+        "pilotage": {
+          "title": "Pilotage",
+          "body": "Pilotage means flying by looking outside and comparing what you see — rivers, roads, railway lines and towns — with the aeronautical chart. These large, linear features are easy to spot from the air and let you confirm your position at any moment. The golden rule is simple: you must ALWAYS know where you are on the chart."
+        },
+        "dead-reckoning": {
+          "title": "Dead reckoning",
+          "body": "Dead reckoning combines heading, airspeed and time to calculate where you will be at any given moment. Wind pushes you off your intended track, so pilots correct their heading by pointing 'into the wind' to compensate for that drift. A compass and a clock are the basic tools of dead reckoning — without them there is no calculation to make."
+        },
+        "planning": {
+          "title": "Flight planning",
+          "body": "Before flying, pilots study the route, the expected weather, the fuel required plus a reserve, and choose an alternate aerodrome in case the destination is not usable. If you get lost in flight, climb higher: you will see more terrain and get better radio reception. Getting lost is nothing to be ashamed of — but hiding it instead of asking for help is dangerous."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "What does pilotage consist of?",
+          "options": [
+            "Comparing terrain references with the chart",
+            "Following only the onboard instruments",
+            "Always flying in a straight line without checking the map"
+          ]
+        },
+        "q2": {
+          "question": "What is the golden rule of pilotage?",
+          "options": [
+            "Always know where you are on the chart",
+            "Always fly at the maximum possible altitude",
+            "Never check the chart until the end of the flight"
+          ]
+        },
+        "q3": {
+          "question": "Which three inputs does dead reckoning combine?",
+          "options": [
+            "Heading, airspeed and time",
+            "Altitude, pressure and temperature",
+            "Fuel, weight and power"
+          ]
+        },
+        "q4": {
+          "question": "What does the wind do to your intended track?",
+          "options": [
+            "It pushes you off track; you correct by heading into the wind",
+            "It has no effect on the track at all",
+            "It only affects your speed, never your heading"
+          ]
+        },
+        "q5": {
+          "question": "What are the basic tools of dead reckoning?",
+          "options": [
+            "A compass and a clock",
+            "An altimeter and an airspeed indicator",
+            "A radio and a transponder"
+          ]
+        },
+        "q6": {
+          "question": "What is planned before a flight?",
+          "options": [
+            "The route, the weather, the fuel and an alternate",
+            "Only the departure time",
+            "Only the colour of the aircraft"
+          ]
+        },
+        "q7": {
+          "question": "Why do pilots carry reserve fuel?",
+          "options": [
+            "To cover the unexpected or a diversion",
+            "To make the aircraft fly faster",
+            "To save money at the destination airport"
+          ]
+        },
+        "q8": {
+          "question": "What is an alternate aerodrome?",
+          "options": [
+            "An option to land if you cannot land at the destination",
+            "The aerodrome where the aircraft gets repaired",
+            "A runway used only for night flights"
+          ]
+        },
+        "q9": {
+          "question": "What should you do if you get lost in flight?",
+          "options": [
+            "Climb higher and ask for help by radio",
+            "Descend immediately and land anywhere",
+            "Turn off the radio to concentrate better"
+          ]
+        },
+        "q10": {
+          "question": "What makes for good visual references from the air?",
+          "options": [
+            "Rivers, railway lines and towns",
+            "Small, isolated clouds",
+            "The colour of the sky at sunset"
+          ]
+        }
+      }
     }
   },
   "passedTag": "Passed"

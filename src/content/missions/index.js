@@ -40,4 +40,11 @@ export const MISSIONS = [
     requiresModule: "principles-of-flight",
     goal: { type: "landing", minAltitude: 60 },
   },
+  {
+    // Requiere "navegación básica": mantener un rumbo es navegar por estima
+    id: "cross-country",
+    icon: "map",
+    requiresModule: "navigation-basics",
+    goal: { type: "heading", target: 90, tolerance: 12, minAltitude: 80, holdSeconds: 4 },
+  },
 ];

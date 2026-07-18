@@ -437,7 +437,103 @@
     },
     "navigation-basics": {
       "title": "Grundlagen der Navigation",
-      "description": "Karten, Kurse und Orientierung — von A nach B ohne Straßen."
+      "description": "Karten, Kurse und Orientierung — von A nach B ohne Straßen.",
+      "lessons": {
+        "pilotage": {
+          "title": "Sichtnavigation",
+          "body": "Bei der Sichtnavigation fliegst du und vergleichst, was du siehst — Flüsse, Straßen, Bahnlinien und Städte — mit der Luftfahrtkarte. Diese großen, linienförmigen Merkmale sind aus der Luft leicht zu erkennen und lassen dich jederzeit deine Position bestätigen. Die goldene Regel ist einfach: Du musst IMMER wissen, wo du auf der Karte stehst."
+        },
+        "dead-reckoning": {
+          "title": "Koppelnavigation",
+          "body": "Die Koppelnavigation verbindet Kurs, Geschwindigkeit und Zeit, um zu berechnen, wo du dich zu einem bestimmten Zeitpunkt befindest. Der Wind versetzt dich von deiner geplanten Strecke, deshalb korrigierst du deinen Kurs, indem du gegen den Wind hältst, um diesen Versatz auszugleichen. Kompass und Uhr sind die Grundwerkzeuge der Koppelnavigation — ohne sie gibt es keine Berechnung."
+        },
+        "planning": {
+          "title": "Flugplanung",
+          "body": "Vor dem Flug prüfst du die Strecke, das erwartete Wetter, den benötigten Treibstoff mit Reserve und wählst einen Ausweichflugplatz für den Fall, dass das Ziel nicht anfliegbar ist. Verlierst du während des Flugs die Orientierung, steige höher: Du siehst mehr Gelände und empfängst den Funk besser. Sich zu verirren ist keine Schande — es zu verbergen und keine Hilfe zu holen, ist gefährlich."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Worin besteht die Sichtnavigation?",
+          "options": [
+            "Im Vergleich von Geländemerkmalen mit der Karte",
+            "Im ausschließlichen Verlassen auf die Bordinstrumente",
+            "Im ständigen Geradeausfliegen ohne Blick auf die Karte"
+          ]
+        },
+        "q2": {
+          "question": "Was ist die goldene Regel der Sichtnavigation?",
+          "options": [
+            "Du musst immer wissen, wo du auf der Karte bist",
+            "Du musst immer in maximaler Höhe fliegen",
+            "Du darfst die Karte erst am Ende des Flugs prüfen"
+          ]
+        },
+        "q3": {
+          "question": "Welche drei Angaben verbindet die Koppelnavigation?",
+          "options": [
+            "Kurs, Geschwindigkeit und Zeit",
+            "Höhe, Luftdruck und Temperatur",
+            "Treibstoff, Gewicht und Leistung"
+          ]
+        },
+        "q4": {
+          "question": "Was macht der Wind mit deiner geplanten Strecke?",
+          "options": [
+            "Er versetzt dich davon; du korrigierst, indem du gegen den Wind hältst",
+            "Er hat überhaupt keine Wirkung auf die Strecke",
+            "Er beeinflusst nur die Geschwindigkeit, nie den Kurs"
+          ]
+        },
+        "q5": {
+          "question": "Was sind die Grundwerkzeuge der Koppelnavigation?",
+          "options": [
+            "Kompass und Uhr",
+            "Höhenmesser und Fahrtmesser",
+            "Funkgerät und Transponder"
+          ]
+        },
+        "q6": {
+          "question": "Was wird vor einem Flug geplant?",
+          "options": [
+            "Die Strecke, das Wetter, der Treibstoff und ein Ausweichflugplatz",
+            "Nur die Startzeit",
+            "Nur die Farbe des Flugzeugs"
+          ]
+        },
+        "q7": {
+          "question": "Warum führt man Treibstoffreserven mit?",
+          "options": [
+            "Um Unvorhergesehenes oder Umwege abzudecken",
+            "Damit das Flugzeug schneller fliegt",
+            "Um am Zielflughafen Geld zu sparen"
+          ]
+        },
+        "q8": {
+          "question": "Was ist ein Ausweichflugplatz?",
+          "options": [
+            "Eine Option zum Landen, falls das Ziel nicht anfliegbar ist",
+            "Der Flugplatz, an dem das Flugzeug gewartet wird",
+            "Eine Landebahn nur für Nachtflüge"
+          ]
+        },
+        "q9": {
+          "question": "Was solltest du tun, wenn du dich im Flug verirrst?",
+          "options": [
+            "Höher steigen und per Funk um Hilfe bitten",
+            "Sofort sinken und irgendwo landen",
+            "Das Funkgerät ausschalten, um dich besser zu konzentrieren"
+          ]
+        },
+        "q10": {
+          "question": "Was sind gute Sichtmerkmale aus der Luft?",
+          "options": [
+            "Flüsse, Bahnlinien und Städte",
+            "Kleine, vereinzelte Wolken",
+            "Die Farbe des Himmels bei Sonnenuntergang"
+          ]
+        }
+      }
     }
   },
   "passedTag": "Bestanden"

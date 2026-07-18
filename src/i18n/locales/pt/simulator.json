@@ -48,6 +48,10 @@
     "safe-landing": {
       "title": "Pouso seguro",
       "objective": "Suba acima de 60 m e pouse suavemente de volta."
+    },
+    "cross-country": {
+      "title": "Perna de navegação",
+      "objective": "Suba acima de 80 m e mantenha a proa 090° por 4 segundos."
     }
   },
   "timeUp": {
@@ -63,5 +67,9 @@
     "distance": "Distância percorrida: {{value}} km"
   },
   "restart": "Voar de novo",
-  "exit": "Sair do simulador"
+  "exit": "Sair do simulador",
+  "sound": {
+    "mute": "Silenciar o som",
+    "unmute": "Ativar o som"
+  }
 }

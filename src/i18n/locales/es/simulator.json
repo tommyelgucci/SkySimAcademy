@@ -48,6 +48,10 @@
     "safe-landing": {
       "title": "Aterrizaje seguro",
       "objective": "Sube por encima de 60 m y aterriza suavemente de vuelta."
+    },
+    "cross-country": {
+      "title": "Tramo de travesía",
+      "objective": "Sube por encima de 80 m y mantén rumbo 090° durante 4 segundos."
     }
   },
   "timeUp": {
@@ -63,5 +67,9 @@
     "distance": "Distancia recorrida: {{value}} km"
   },
   "restart": "Volar de nuevo",
-  "exit": "Salir del simulador"
+  "exit": "Salir del simulador",
+  "sound": {
+    "mute": "Silenciar sonido",
+    "unmute": "Activar sonido"
+  }
 }

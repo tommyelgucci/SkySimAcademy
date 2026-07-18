@@ -437,7 +437,103 @@
     },
     "navigation-basics": {
       "title": "Navegação básica",
-      "description": "Cartas, rotas e orientação — de A a B sem estradas."
+      "description": "Cartas, rotas e orientação — de A a B sem estradas.",
+      "lessons": {
+        "pilotage": {
+          "title": "Navegação visual",
+          "body": "A navegação visual consiste em voar olhando para fora e comparando o que você vê — rios, estradas, linhas de trem e cidades — com a carta aeronáutica. Essas referências grandes e lineares são fáceis de identificar do ar e permitem confirmar sua posição a qualquer momento. A regra de ouro é simples: você deve SEMPRE saber onde está na carta."
+        },
+        "dead-reckoning": {
+          "title": "Navegação estimada",
+          "body": "A navegação estimada combina proa, velocidade e tempo para calcular onde você estará em cada momento. O vento desvia você da rota prevista, por isso o piloto corrige a proa apontando contra o vento para compensar essa deriva. Bússola e relógio são as ferramentas básicas da navegação estimada — sem elas não há cálculo possível."
+        },
+        "planning": {
+          "title": "Planejamento de voo",
+          "body": "Antes de voar, estuda-se a rota, o tempo previsto, o combustível necessário com reserva, e escolhe-se um aeródromo alternativo caso o destino não seja viável. Se você se perder durante o voo, suba mais alto: verá mais terreno e melhorará a recepção do rádio. Perder-se não é motivo de vergonha, mas escondê-lo e não pedir ajuda é perigoso."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Em que consiste a navegação visual?",
+          "options": [
+            "Em comparar referências do terreno com a carta",
+            "Em seguir apenas os instrumentos de bordo",
+            "Em voar sempre em linha reta sem olhar o mapa"
+          ]
+        },
+        "q2": {
+          "question": "Qual é a regra de ouro da navegação visual?",
+          "options": [
+            "Saber sempre onde você está na carta",
+            "Voar sempre na altitude máxima possível",
+            "Só consultar a carta no fim do voo"
+          ]
+        },
+        "q3": {
+          "question": "Quais três dados a navegação estimada combina?",
+          "options": [
+            "Proa, velocidade e tempo",
+            "Altitude, pressão e temperatura",
+            "Combustível, peso e potência"
+          ]
+        },
+        "q4": {
+          "question": "O que o vento faz com a sua rota prevista?",
+          "options": [
+            "Desvia você; corrige-se apontando contra o vento",
+            "Não tem nenhum efeito sobre a rota",
+            "Só afeta a velocidade, nunca a proa"
+          ]
+        },
+        "q5": {
+          "question": "Quais são as ferramentas básicas da navegação estimada?",
+          "options": [
+            "Bússola e relógio",
+            "Altímetro e anemômetro",
+            "Rádio e transponder"
+          ]
+        },
+        "q6": {
+          "question": "O que se planeja antes de um voo?",
+          "options": [
+            "A rota, o tempo, o combustível e um alternativo",
+            "Somente o horário de decolagem",
+            "Somente a cor do avião"
+          ]
+        },
+        "q7": {
+          "question": "Por que se leva combustível de reserva?",
+          "options": [
+            "Para cobrir imprevistos ou desvios",
+            "Para o avião voar mais rápido",
+            "Para economizar no aeroporto de destino"
+          ]
+        },
+        "q8": {
+          "question": "O que é um aeródromo alternativo?",
+          "options": [
+            "Uma opção para pousar se não puder pousar no destino",
+            "O aeródromo onde o avião é consertado",
+            "Uma pista usada só para voos noturnos"
+          ]
+        },
+        "q9": {
+          "question": "O que você deve fazer se se perder durante o voo?",
+          "options": [
+            "Subir mais alto e pedir ajuda pelo rádio",
+            "Descer imediatamente e pousar em qualquer lugar",
+            "Desligar o rádio para se concentrar melhor"
+          ]
+        },
+        "q10": {
+          "question": "O que são boas referências visuais do ar?",
+          "options": [
+            "Rios, linhas de trem e cidades",
+            "Nuvens pequenas e isoladas",
+            "A cor do céu ao pôr do sol"
+          ]
+        }
+      }
     }
   },
   "passedTag": "Aprovado"
