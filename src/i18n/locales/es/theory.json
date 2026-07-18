@@ -68,6 +68,54 @@
             "Tirando del morro hacia arriba con fuerza",
             "Cortando gases y manteniendo la palanca quieta"
           ]
+        },
+        "q5": {
+          "question": "¿Qué fuerza frena al avión?",
+          "options": [
+            "La resistencia",
+            "El empuje",
+            "La sustentación"
+          ]
+        },
+        "q6": {
+          "question": "¿Qué fuerza genera el motor?",
+          "options": [
+            "El empuje",
+            "La sustentación",
+            "La resistencia"
+          ]
+        },
+        "q7": {
+          "question": "El vuelo recto y nivelado significa que…",
+          "options": [
+            "Las cuatro fuerzas están en equilibrio",
+            "Solo actúan la sustentación y el peso",
+            "El motor está al ralentí"
+          ]
+        },
+        "q8": {
+          "question": "¿Qué superficie sube o baja el morro?",
+          "options": [
+            "El timón de profundidad",
+            "Los alerones",
+            "El timón de dirección"
+          ]
+        },
+        "q9": {
+          "question": "¿Cómo vira el piloto el avión?",
+          "options": [
+            "Inclinando las alas con los alerones",
+            "Tirando del morro hacia arriba",
+            "Cortando gases"
+          ]
+        },
+        "q10": {
+          "question": "¿Qué le pasa a la sustentación al volar más rápido?",
+          "options": [
+            "Aumenta",
+            "Se mantiene igual",
+            "Disminuye"
+          ]
         }
       }
     },
@@ -119,6 +167,54 @@
             "El anemómetro",
             "El altímetro",
             "La brújula"
+          ]
+        },
+        "q5": {
+          "question": "Rumbo 90° significa que el morro apunta al…",
+          "options": [
+            "Este",
+            "Norte",
+            "Sur"
+          ]
+        },
+        "q6": {
+          "question": "¿Cómo mide el altímetro tu altitud?",
+          "options": [
+            "Midiendo la presión del aire",
+            "Midiendo las RPM del motor",
+            "Midiendo la temperatura exterior"
+          ]
+        },
+        "q7": {
+          "question": "¿Qué instrumento te mantiene orientado dentro de una nube?",
+          "options": [
+            "El horizonte artificial",
+            "La brújula",
+            "El altímetro"
+          ]
+        },
+        "q8": {
+          "question": "Rumbo 0° significa que el morro apunta al…",
+          "options": [
+            "Norte",
+            "Sur",
+            "Este"
+          ]
+        },
+        "q9": {
+          "question": "¿Por qué hay que vigilar de cerca la altitud cerca del suelo?",
+          "options": [
+            "No hay margen para corregir errores",
+            "El altímetro es menos preciso allí",
+            "El anemómetro deja de funcionar"
+          ]
+        },
+        "q10": {
+          "question": "¿Qué mide el anemómetro?",
+          "options": [
+            "Lo rápido que fluye el aire sobre las alas",
+            "Lo rápido que se mueve el avión sobre el suelo",
+            "La potencia que entrega el motor"
           ]
         }
       }
@@ -172,6 +268,54 @@
             "Hace el avión demasiado brillante",
             "Bloquea la antena de radio"
           ]
+        },
+        "q5": {
+          "question": "¿Por qué es peligroso aterrizar con viento de cola?",
+          "options": [
+            "Tocas tierra mucho más rápido",
+            "El motor pierde potencia",
+            "La visibilidad empeora"
+          ]
+        },
+        "q6": {
+          "question": "¿Por qué un piloto visual nunca entra en una nube?",
+          "options": [
+            "Dentro pierdes rápidamente todo sentido de arriba y abajo",
+            "Las nubes dañan la pintura del avión",
+            "La radio deja de funcionar dentro de las nubes"
+          ]
+        },
+        "q7": {
+          "question": "¿Cómo afecta el viento de cara a la carrera de despegue?",
+          "options": [
+            "La acorta",
+            "La alarga",
+            "No tiene efecto"
+          ]
+        },
+        "q8": {
+          "question": "¿Cómo corrige el piloto un viento cruzado al aterrizar?",
+          "options": [
+            "Con timón e inclinación",
+            "Cortando gases antes de tiempo",
+            "Aterrizando más rápido de lo normal"
+          ]
+        },
+        "q9": {
+          "question": "¿Qué debe hacer el piloto si el pronóstico es dudoso?",
+          "options": [
+            "Quedarse en tierra",
+            "Volar más alto para superar el mal tiempo",
+            "Despegar antes de lo previsto"
+          ]
+        },
+        "q10": {
+          "question": "¿Qué le hace el engelamiento a un ala?",
+          "options": [
+            "Cambia su forma y destruye la sustentación",
+            "La hace más pesada pero sin más consecuencias",
+            "Solo afecta a la pintura"
+          ]
         }
       }
     },
@@ -223,6 +367,70 @@
             "DE",
             "DC",
             "EO"
+          ]
+        },
+        "q5": {
+          "question": "¿Cuál es la palabra del alfabeto fonético para la letra A?",
+          "options": [
+            "Alfa",
+            "Bravo",
+            "Delta"
+          ]
+        },
+        "q6": {
+          "question": "¿Cuál es la palabra del alfabeto fonético para la letra S?",
+          "options": [
+            "Sierra",
+            "Whiskey",
+            "Golf"
+          ]
+        },
+        "q7": {
+          "question": "¿Cuál es la palabra del alfabeto fonético para la letra Z?",
+          "options": [
+            "Zulu",
+            "Yankee",
+            "X-ray"
+          ]
+        },
+        "q8": {
+          "question": "¿Cómo se lee el rumbo 270 por radio?",
+          "options": [
+            "Dos siete cero",
+            "Doscientos setenta",
+            "Setenta"
+          ]
+        },
+        "q9": {
+          "question": "¿Qué deletrea «Kilo Mike»?",
+          "options": [
+            "KM",
+            "KN",
+            "MK"
+          ]
+        },
+        "q10": {
+          "question": "¿Por qué se leen los números dígito a dígito por radio?",
+          "options": [
+            "Para evitar ambigüedad",
+            "Suena más profesional",
+            "Es herencia del código Morse"
+          ]
+        },
+        "q11": {
+          "question": "¿Cuál es la palabra del alfabeto fonético para la letra C?",
+          "options": [
+            "Charlie",
+            "Kilo",
+            "Mike"
+          ]
+        },
+        "q12": {
+          "question": "¿Qué deletrea «Sierra Tango»?",
+          "options": [
+            "ST",
+            "SY",
+            "TS"
           ]
         }
       }

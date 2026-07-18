@@ -68,6 +68,54 @@
             "Pull the nose up as hard as you can",
             "Cut the throttle and hold the stick still"
           ]
+        },
+        "q5": {
+          "question": "Which force slows an aircraft down?",
+          "options": [
+            "Drag",
+            "Thrust",
+            "Lift"
+          ]
+        },
+        "q6": {
+          "question": "Which force does the engine produce?",
+          "options": [
+            "Thrust",
+            "Lift",
+            "Drag"
+          ]
+        },
+        "q7": {
+          "question": "Straight and level flight means…",
+          "options": [
+            "The four forces are in balance",
+            "Only lift and weight are acting",
+            "The engine is at idle power"
+          ]
+        },
+        "q8": {
+          "question": "Which control surface raises or lowers the nose?",
+          "options": [
+            "The elevator",
+            "The ailerons",
+            "The rudder"
+          ]
+        },
+        "q9": {
+          "question": "How does a pilot turn the aircraft?",
+          "options": [
+            "By banking the wings with the ailerons",
+            "By pulling the nose straight up",
+            "By closing the throttle"
+          ]
+        },
+        "q10": {
+          "question": "What happens to lift as you fly faster?",
+          "options": [
+            "It increases",
+            "It stays the same",
+            "It decreases"
+          ]
         }
       }
     },
@@ -119,6 +167,54 @@
             "The airspeed indicator",
             "The altimeter",
             "The compass"
+          ]
+        },
+        "q5": {
+          "question": "Heading 90° means the nose points…",
+          "options": [
+            "East",
+            "North",
+            "South"
+          ]
+        },
+        "q6": {
+          "question": "How does the altimeter measure your altitude?",
+          "options": [
+            "By measuring air pressure",
+            "By measuring engine RPM",
+            "By measuring outside temperature"
+          ]
+        },
+        "q7": {
+          "question": "Which instrument keeps you oriented inside a cloud?",
+          "options": [
+            "The attitude indicator",
+            "The compass",
+            "The altimeter"
+          ]
+        },
+        "q8": {
+          "question": "Heading 0° means the nose points…",
+          "options": [
+            "North",
+            "South",
+            "East"
+          ]
+        },
+        "q9": {
+          "question": "Why watch your altitude closely near the ground?",
+          "options": [
+            "There is no room to correct mistakes",
+            "The altimeter is less accurate there",
+            "The airspeed indicator stops working"
+          ]
+        },
+        "q10": {
+          "question": "What does the airspeed indicator measure?",
+          "options": [
+            "How fast air flows over the wings",
+            "How fast the aircraft moves over the ground",
+            "The engine's power output"
           ]
         }
       }
@@ -172,6 +268,54 @@
             "It makes the aircraft too shiny",
             "It blocks the radio antenna"
           ]
+        },
+        "q5": {
+          "question": "Why is landing with a tailwind dangerous?",
+          "options": [
+            "You touch down much faster",
+            "The engine loses power",
+            "Visibility gets worse"
+          ]
+        },
+        "q6": {
+          "question": "Why does a visual pilot never fly into a cloud?",
+          "options": [
+            "Inside it you quickly lose all sense of up and down",
+            "Clouds damage the aircraft's paint",
+            "Radios stop working inside clouds"
+          ]
+        },
+        "q7": {
+          "question": "How does a headwind affect the take-off run?",
+          "options": [
+            "It shortens it",
+            "It lengthens it",
+            "It has no effect"
+          ]
+        },
+        "q8": {
+          "question": "How does a pilot correct for a crosswind on landing?",
+          "options": [
+            "With rudder and bank",
+            "By closing the throttle earlier",
+            "By landing faster than normal"
+          ]
+        },
+        "q9": {
+          "question": "What should a pilot do if the forecast looks doubtful?",
+          "options": [
+            "Stay on the ground",
+            "Fly higher to stay above the weather",
+            "Depart earlier than planned"
+          ]
+        },
+        "q10": {
+          "question": "What does icing do to a wing?",
+          "options": [
+            "It changes its shape and destroys lift",
+            "It makes it heavier but otherwise harmless",
+            "It only affects the paint"
+          ]
         }
       }
     },
@@ -223,6 +367,70 @@
             "DE",
             "DC",
             "EO"
+          ]
+        },
+        "q5": {
+          "question": "What is the spelling-alphabet word for the letter A?",
+          "options": [
+            "Alfa",
+            "Bravo",
+            "Delta"
+          ]
+        },
+        "q6": {
+          "question": "What is the spelling-alphabet word for the letter S?",
+          "options": [
+            "Sierra",
+            "Whiskey",
+            "Golf"
+          ]
+        },
+        "q7": {
+          "question": "What is the spelling-alphabet word for the letter Z?",
+          "options": [
+            "Zulu",
+            "Yankee",
+            "X-ray"
+          ]
+        },
+        "q8": {
+          "question": "How do you read heading 270 on the radio?",
+          "options": [
+            "Two seven zero",
+            "Two hundred seventy",
+            "Seventy"
+          ]
+        },
+        "q9": {
+          "question": "What does 'Kilo Mike' spell?",
+          "options": [
+            "KM",
+            "KN",
+            "MK"
+          ]
+        },
+        "q10": {
+          "question": "Why are numbers read digit by digit on the radio?",
+          "options": [
+            "To avoid ambiguity",
+            "It sounds more professional",
+            "It is a legacy from Morse code"
+          ]
+        },
+        "q11": {
+          "question": "What is the spelling-alphabet word for the letter C?",
+          "options": [
+            "Charlie",
+            "Kilo",
+            "Mike"
+          ]
+        },
+        "q12": {
+          "question": "What does 'Sierra Tango' spell?",
+          "options": [
+            "ST",
+            "SY",
+            "TS"
           ]
         }
       }

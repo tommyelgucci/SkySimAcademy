@@ -68,6 +68,54 @@
             "Puxando o nariz para cima com força",
             "Cortando a potência e mantendo o manche parado"
           ]
+        },
+        "q5": {
+          "question": "Qual força freia o avião?",
+          "options": [
+            "O arrasto",
+            "A tração",
+            "A sustentação"
+          ]
+        },
+        "q6": {
+          "question": "Qual força o motor produz?",
+          "options": [
+            "A tração",
+            "A sustentação",
+            "O arrasto"
+          ]
+        },
+        "q7": {
+          "question": "Voo reto e nivelado significa que…",
+          "options": [
+            "As quatro forças estão em equilíbrio",
+            "Só a sustentação e o peso atuam",
+            "O motor está em marcha lenta"
+          ]
+        },
+        "q8": {
+          "question": "Qual superfície sobe ou desce o nariz?",
+          "options": [
+            "O profundor",
+            "Os ailerons",
+            "O leme"
+          ]
+        },
+        "q9": {
+          "question": "Como o piloto faz o avião curvar?",
+          "options": [
+            "Inclinando as asas com os ailerons",
+            "Puxando o nariz para cima com força",
+            "Cortando a potência"
+          ]
+        },
+        "q10": {
+          "question": "O que acontece com a sustentação ao voar mais rápido?",
+          "options": [
+            "Aumenta",
+            "Permanece igual",
+            "Diminui"
+          ]
         }
       }
     },
@@ -119,6 +167,54 @@
             "O velocímetro",
             "O altímetro",
             "A bússola"
+          ]
+        },
+        "q5": {
+          "question": "Proa 90° significa que o nariz aponta para…",
+          "options": [
+            "Leste",
+            "Norte",
+            "Sul"
+          ]
+        },
+        "q6": {
+          "question": "Como o altímetro mede a sua altitude?",
+          "options": [
+            "Medindo a pressão do ar",
+            "Medindo as RPM do motor",
+            "Medindo a temperatura externa"
+          ]
+        },
+        "q7": {
+          "question": "Qual instrumento mantém você orientado dentro de uma nuvem?",
+          "options": [
+            "O horizonte artificial",
+            "A bússola",
+            "O altímetro"
+          ]
+        },
+        "q8": {
+          "question": "Proa 0° significa que o nariz aponta para…",
+          "options": [
+            "Norte",
+            "Sul",
+            "Leste"
+          ]
+        },
+        "q9": {
+          "question": "Por que vigiar de perto a altitude perto do solo?",
+          "options": [
+            "Não há margem para corrigir erros",
+            "O altímetro é menos preciso ali",
+            "O velocímetro para de funcionar"
+          ]
+        },
+        "q10": {
+          "question": "O que o velocímetro mede?",
+          "options": [
+            "A rapidez com que o ar flui sobre as asas",
+            "A rapidez com que o avião se move sobre o solo",
+            "A potência entregue pelo motor"
           ]
         }
       }
@@ -172,6 +268,54 @@
             "Deixa o avião brilhante demais",
             "Bloqueia a antena de rádio"
           ]
+        },
+        "q5": {
+          "question": "Por que é perigoso pousar com vento de cauda?",
+          "options": [
+            "Você toca o solo bem mais rápido",
+            "O motor perde potência",
+            "A visibilidade piora"
+          ]
+        },
+        "q6": {
+          "question": "Por que um piloto visual nunca entra numa nuvem?",
+          "options": [
+            "Dentro dela você perde rapidamente toda noção de cima e baixo",
+            "As nuvens danificam a pintura do avião",
+            "O rádio para de funcionar dentro das nuvens"
+          ]
+        },
+        "q7": {
+          "question": "Como o vento de proa afeta a corrida de decolagem?",
+          "options": [
+            "Ele a encurta",
+            "Ele a alonga",
+            "Não tem efeito"
+          ]
+        },
+        "q8": {
+          "question": "Como o piloto corrige um vento cruzado no pouso?",
+          "options": [
+            "Com leme e inclinação",
+            "Cortando a potência mais cedo",
+            "Pousando mais rápido que o normal"
+          ]
+        },
+        "q9": {
+          "question": "O que o piloto deve fazer se a previsão estiver duvidosa?",
+          "options": [
+            "Ficar no chão",
+            "Voar mais alto para ficar acima do mau tempo",
+            "Decolar antes do planejado"
+          ]
+        },
+        "q10": {
+          "question": "O que o gelo faz a uma asa?",
+          "options": [
+            "Muda a sua forma e destrói a sustentação",
+            "Deixa-a mais pesada, mas sem outras consequências",
+            "Só afeta a pintura"
+          ]
         }
       }
     },
@@ -223,6 +367,70 @@
             "DE",
             "DC",
             "EO"
+          ]
+        },
+        "q5": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra A?",
+          "options": [
+            "Alfa",
+            "Bravo",
+            "Delta"
+          ]
+        },
+        "q6": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra S?",
+          "options": [
+            "Sierra",
+            "Whiskey",
+            "Golf"
+          ]
+        },
+        "q7": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra Z?",
+          "options": [
+            "Zulu",
+            "Yankee",
+            "X-ray"
+          ]
+        },
+        "q8": {
+          "question": "Como se lê a proa 270 no rádio?",
+          "options": [
+            "Dois sete zero",
+            "Duzentos e setenta",
+            "Setenta"
+          ]
+        },
+        "q9": {
+          "question": "O que soletra «Kilo Mike»?",
+          "options": [
+            "KM",
+            "KN",
+            "MK"
+          ]
+        },
+        "q10": {
+          "question": "Por que os números são lidos dígito por dígito no rádio?",
+          "options": [
+            "Para evitar ambiguidade",
+            "Soa mais profissional",
+            "É uma herança do código Morse"
+          ]
+        },
+        "q11": {
+          "question": "Qual é a palavra do alfabeto fonético para a letra C?",
+          "options": [
+            "Charlie",
+            "Kilo",
+            "Mike"
+          ]
+        },
+        "q12": {
+          "question": "O que soletra «Sierra Tango»?",
+          "options": [
+            "ST",
+            "SY",
+            "TS"
           ]
         }
       }

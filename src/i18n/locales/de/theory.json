@@ -68,6 +68,54 @@
             "Die Nase mit aller Kraft hochziehen",
             "Gas wegnehmen und das Steuer stillhalten"
           ]
+        },
+        "q5": {
+          "question": "Welche Kraft bremst ein Flugzeug ab?",
+          "options": [
+            "Der Luftwiderstand",
+            "Der Schub",
+            "Der Auftrieb"
+          ]
+        },
+        "q6": {
+          "question": "Welche Kraft erzeugt der Motor?",
+          "options": [
+            "Der Schub",
+            "Der Auftrieb",
+            "Der Luftwiderstand"
+          ]
+        },
+        "q7": {
+          "question": "Geradeausflug in konstanter Höhe bedeutet…",
+          "options": [
+            "Die vier Kräfte sind im Gleichgewicht",
+            "Nur Auftrieb und Gewicht wirken",
+            "Der Motor läuft im Leerlauf"
+          ]
+        },
+        "q8": {
+          "question": "Welches Ruder hebt oder senkt die Nase?",
+          "options": [
+            "Das Höhenruder",
+            "Die Querruder",
+            "Das Seitenruder"
+          ]
+        },
+        "q9": {
+          "question": "Wie leitet ein Pilot eine Kurve ein?",
+          "options": [
+            "Indem er die Tragflächen mit den Querrudern neigt",
+            "Indem er die Nase kräftig hochzieht",
+            "Indem er das Gas wegnimmt"
+          ]
+        },
+        "q10": {
+          "question": "Was passiert mit dem Auftrieb, wenn du schneller fliegst?",
+          "options": [
+            "Er nimmt zu",
+            "Er bleibt gleich",
+            "Er nimmt ab"
+          ]
         }
       }
     },
@@ -119,6 +167,54 @@
             "Den Fahrtmesser",
             "Den Höhenmesser",
             "Den Kompass"
+          ]
+        },
+        "q5": {
+          "question": "Kurs 90° bedeutet, die Nase zeigt nach…",
+          "options": [
+            "Osten",
+            "Norden",
+            "Süden"
+          ]
+        },
+        "q6": {
+          "question": "Wie misst der Höhenmesser deine Höhe?",
+          "options": [
+            "Indem er den Luftdruck misst",
+            "Indem er die Motordrehzahl misst",
+            "Indem er die Außentemperatur misst"
+          ]
+        },
+        "q7": {
+          "question": "Welches Instrument hält dich in einer Wolke orientiert?",
+          "options": [
+            "Der künstliche Horizont",
+            "Der Kompass",
+            "Der Höhenmesser"
+          ]
+        },
+        "q8": {
+          "question": "Kurs 0° bedeutet, die Nase zeigt nach…",
+          "options": [
+            "Norden",
+            "Süden",
+            "Osten"
+          ]
+        },
+        "q9": {
+          "question": "Warum solltest du deine Höhe in Bodennähe genau im Blick behalten?",
+          "options": [
+            "Es bleibt kein Raum, Fehler zu korrigieren",
+            "Der Höhenmesser ist dort ungenauer",
+            "Der Fahrtmesser funktioniert dort nicht"
+          ]
+        },
+        "q10": {
+          "question": "Was misst der Fahrtmesser?",
+          "options": [
+            "Wie schnell die Luft über die Tragflächen strömt",
+            "Wie schnell sich das Flugzeug über Grund bewegt",
+            "Die Leistung des Motors"
           ]
         }
       }
@@ -172,6 +268,54 @@
             "Das Flugzeug glänzt zu stark",
             "Es blockiert die Funkantenne"
           ]
+        },
+        "q5": {
+          "question": "Warum ist eine Landung mit Rückenwind gefährlich?",
+          "options": [
+            "Du setzt viel schneller auf",
+            "Der Motor verliert an Leistung",
+            "Die Sicht wird schlechter"
+          ]
+        },
+        "q6": {
+          "question": "Warum fliegt ein Sichtflieger nie in eine Wolke hinein?",
+          "options": [
+            "Darin verlierst du schnell jedes Gefühl für oben und unten",
+            "Wolken beschädigen den Lack des Flugzeugs",
+            "Der Funk fällt in Wolken aus"
+          ]
+        },
+        "q7": {
+          "question": "Wie wirkt sich Gegenwind auf die Startstrecke aus?",
+          "options": [
+            "Er verkürzt sie",
+            "Er verlängert sie",
+            "Er hat keine Wirkung"
+          ]
+        },
+        "q8": {
+          "question": "Wie korrigiert ein Pilot Seitenwind bei der Landung?",
+          "options": [
+            "Mit Seitenruder und Querneigung",
+            "Indem er früher das Gas wegnimmt",
+            "Indem er schneller als normal landet"
+          ]
+        },
+        "q9": {
+          "question": "Was sollte ein Pilot tun, wenn die Wettervorhersage zweifelhaft aussieht?",
+          "options": [
+            "Am Boden bleiben",
+            "Höher fliegen, um über dem Wetter zu bleiben",
+            "Früher als geplant starten"
+          ]
+        },
+        "q10": {
+          "question": "Was bewirkt Vereisung an einer Tragfläche?",
+          "options": [
+            "Sie verändert ihre Form und zerstört den Auftrieb",
+            "Sie macht sie schwerer, aber ansonsten harmlos",
+            "Sie beschädigt nur den Lack"
+          ]
         }
       }
     },
@@ -223,6 +367,70 @@
             "DE",
             "DC",
             "EO"
+          ]
+        },
+        "q5": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben A?",
+          "options": [
+            "Alfa",
+            "Bravo",
+            "Delta"
+          ]
+        },
+        "q6": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben S?",
+          "options": [
+            "Sierra",
+            "Whiskey",
+            "Golf"
+          ]
+        },
+        "q7": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben Z?",
+          "options": [
+            "Zulu",
+            "Yankee",
+            "X-ray"
+          ]
+        },
+        "q8": {
+          "question": "Wie liest man Kurs 270 im Funk?",
+          "options": [
+            "Zwo sieben null",
+            "Zweihundertsiebzig",
+            "Siebzig"
+          ]
+        },
+        "q9": {
+          "question": "Was buchstabiert „Kilo Mike“?",
+          "options": [
+            "KM",
+            "KN",
+            "MK"
+          ]
+        },
+        "q10": {
+          "question": "Warum werden Zahlen im Funk Ziffer für Ziffer gelesen?",
+          "options": [
+            "Um Verwechslungen zu vermeiden",
+            "Es klingt professioneller",
+            "Es ist ein Erbe aus der Morsezeit"
+          ]
+        },
+        "q11": {
+          "question": "Wie lautet das Buchstabierwort für den Buchstaben C?",
+          "options": [
+            "Charlie",
+            "Kilo",
+            "Mike"
+          ]
+        },
+        "q12": {
+          "question": "Was buchstabiert „Sierra Tango“?",
+          "options": [
+            "ST",
+            "SY",
+            "TS"
           ]
         }
       }
