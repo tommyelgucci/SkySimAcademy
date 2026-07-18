@@ -1,0 +1,71 @@
+{
+  "title": "Flugtheorie",
+  "subtitle": "Kurze Module mit einem Quiz am Ende. Bestehe das Quiz und übe dann im Simulator.",
+  "lessonProgress": "Lektion {{current}} von {{total}}",
+  "goToQuiz": "Zum Quiz",
+  "comingSoon": "Demnächst",
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Frage {{current}} von {{total}}",
+    "check": "Antwort prüfen",
+    "next": "Nächste Frage",
+    "seeResults": "Ergebnis ansehen",
+    "correct": "Richtig!",
+    "wrong": "Nicht ganz — die richtige Antwort ist markiert.",
+    "score": "Du hast {{score}} von {{total}} richtig beantwortet.",
+    "passed": "Modul bestanden — du bist bereit für den Simulator!",
+    "failed": "Wiederhole die Lektionen und versuche es erneut.",
+    "restart": "Quiz wiederholen",
+    "backToLessons": "Zurück zu den Lektionen"
+  },
+  "modules": {
+    "principles-of-flight": {
+      "title": "Grundlagen des Fliegens",
+      "description": "Die vier Kräfte, die drei Steuerachsen und warum Flugzeuge in der Luft bleiben.",
+      "lessons": {
+        "four-forces": {
+          "title": "Die vier Kräfte",
+          "body": "Auf jedes Flugzeug wirken vier Kräfte: Der Auftrieb drückt es nach oben, das Gewicht zieht es nach unten, der Schub bewegt es vorwärts und der Luftwiderstand bremst es. Der Auftrieb entsteht an den Tragflächen, wenn Luft über sie strömt — je schneller du fliegst, desto mehr Auftrieb erzeugst du. Geradeausflug in konstanter Höhe bedeutet einfach: Diese vier Kräfte sind im Gleichgewicht."
+        },
+        "three-axes": {
+          "title": "Die drei Steuerachsen",
+          "body": "Ein Flugzeug dreht sich um drei Achsen. Nicken (Höhenruder) hebt oder senkt die Nase, Rollen (Querruder) neigt die Tragflächen und Gieren (Seitenruder) richtet die Nase nach links oder rechts. Zum Kurvenflug neigt der Pilot die Tragflächen und lässt den geneigten Auftrieb das Flugzeug durch die Kurve ziehen."
+        },
+        "speed-and-stall": {
+          "title": "Gashebel, Geschwindigkeit und Strömungsabriss",
+          "body": "Der Gashebel steuert die Motorleistung, und die Leistung bestimmt deine Fluggeschwindigkeit. Tragflächen brauchen eine Mindestgeschwindigkeit, um genug Auftrieb zu erzeugen: Fliegst du langsamer, kommt es zum Strömungsabriss — der Auftrieb bricht zusammen und die Nase sinkt. Zum Ausleiten senkst du die Nase, gibst Vollgas und lässt die Geschwindigkeit wieder ansteigen."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Welche Kraft hält ein Flugzeug in der Luft?",
+          "options": ["Der Auftrieb", "Der Luftwiderstand", "Das Gewicht"]
+        },
+        "q2": {
+          "question": "Das Neigen der Tragflächen mit den Querrudern nennt man…",
+          "options": ["Rollen", "Gieren", "Nicken"]
+        },
+        "q3": {
+          "question": "Was passiert, wenn die Geschwindigkeit unter die Überziehgeschwindigkeit fällt?",
+          "options": [
+            "Die Tragfläche erzeugt nicht mehr genug Auftrieb",
+            "Das Flugzeug fliegt automatisch eine Kurve",
+            "Der Motor schaltet sich ab"
+          ]
+        },
+        "q4": {
+          "question": "Wie leitest du einen Strömungsabriss aus?",
+          "options": [
+            "Nase senken und Vollgas geben",
+            "Die Nase mit aller Kraft hochziehen",
+            "Gas wegnehmen und das Steuer stillhalten"
+          ]
+        }
+      }
+    },
+    "cockpit-instruments": {
+      "title": "Cockpit-Instrumente",
+      "description": "Höhenmesser, Fahrtmesser und künstlicher Horizont — das Panel auf einen Blick lesen."
+    }
+  }
+}

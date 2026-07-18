@@ -1,0 +1,71 @@
+{
+  "title": "Teoría de vuelo",
+  "subtitle": "Módulos cortos con un quiz al final. Aprueba el quiz y practícalo en el simulador.",
+  "lessonProgress": "Lección {{current}} de {{total}}",
+  "goToQuiz": "Ir al quiz",
+  "comingSoon": "Próximamente",
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Pregunta {{current}} de {{total}}",
+    "check": "Comprobar respuesta",
+    "next": "Siguiente pregunta",
+    "seeResults": "Ver resultados",
+    "correct": "¡Correcto!",
+    "wrong": "No exactamente — la respuesta correcta está resaltada.",
+    "score": "Acertaste {{score}} de {{total}}.",
+    "passed": "¡Módulo aprobado — estás listo para el simulador!",
+    "failed": "Repasa las lecciones e inténtalo de nuevo.",
+    "restart": "Repetir quiz",
+    "backToLessons": "Volver a las lecciones"
+  },
+  "modules": {
+    "principles-of-flight": {
+      "title": "Principios de vuelo",
+      "description": "Las cuatro fuerzas, los tres ejes de control y por qué los aviones se mantienen en el aire.",
+      "lessons": {
+        "four-forces": {
+          "title": "Las cuatro fuerzas",
+          "body": "Sobre todo avión actúan cuatro fuerzas: la sustentación lo empuja hacia arriba, el peso tira de él hacia abajo, el empuje lo mueve hacia adelante y la resistencia lo frena. La sustentación la generan las alas cuando el aire fluye sobre ellas: cuanto más rápido vuelas, más sustentación produces. El vuelo recto y nivelado es simplemente estas cuatro fuerzas en equilibrio."
+        },
+        "three-axes": {
+          "title": "Los tres ejes de control",
+          "body": "Un avión gira alrededor de tres ejes. El cabeceo (timón de profundidad) sube o baja el morro, el alabeo (alerones) inclina las alas y la guiñada (timón de dirección) apunta el morro a izquierda o derecha. Para virar, el piloto inclina las alas y deja que la sustentación inclinada lleve al avión por la curva."
+        },
+        "speed-and-stall": {
+          "title": "Gases, velocidad y pérdida",
+          "body": "La palanca de gases controla la potencia del motor, y la potencia controla tu velocidad. Las alas necesitan una velocidad mínima para producir sustentación suficiente: si vuelas más lento, el ala entra en pérdida — deja de sustentar y el morro cae. Para recuperarte de una pérdida, baja el morro, aplica gases a fondo y deja que la velocidad aumente de nuevo."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "¿Qué fuerza mantiene al avión en el aire?",
+          "options": ["La sustentación", "La resistencia", "El peso"]
+        },
+        "q2": {
+          "question": "Inclinar las alas con los alerones se llama…",
+          "options": ["Alabeo", "Guiñada", "Cabeceo"]
+        },
+        "q3": {
+          "question": "¿Qué pasa si la velocidad cae por debajo de la velocidad de pérdida?",
+          "options": [
+            "El ala deja de producir sustentación suficiente",
+            "El avión vira automáticamente",
+            "El motor se apaga"
+          ]
+        },
+        "q4": {
+          "question": "¿Cómo te recuperas de una pérdida?",
+          "options": [
+            "Bajando el morro y aplicando gases a fondo",
+            "Tirando del morro hacia arriba con fuerza",
+            "Cortando gases y manteniendo la palanca quieta"
+          ]
+        }
+      }
+    },
+    "cockpit-instruments": {
+      "title": "Instrumentos de cabina",
+      "description": "Altímetro, anemómetro y horizonte artificial — leer el panel de un vistazo."
+    }
+  }
+}

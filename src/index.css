@@ -1,0 +1,539 @@
+/*
+ * AeroLearn — estilos globales.
+ *
+ * Nota i18n: se usan propiedades LÓGICAS (margin-inline, text-align: start…)
+ * en lugar de left/right físicos. Así el layout se voltea solo cuando
+ * <html dir="rtl"> (árabe), sin necesidad de hojas de estilo por idioma.
+ */
+
+:root {
+  --color-bg: #0e1726;
+  --color-surface: #182338;
+  --color-surface-raised: #21304c;
+  --color-border: #31425f;
+  --color-text: #eef3fb;
+  --color-text-dim: #9fb0c9;
+  --color-primary: #38b6ff;
+  --color-primary-ink: #06283d;
+  --color-accent: #ffb703;
+  --color-correct: #35c759;
+  --color-wrong: #ff5d5d;
+  --radius: 14px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans",
+    "Noto Sans Arabic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+#root,
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Cabecera ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--color-surface);
+  border-block-end: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.header__brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 0.3rem 0.4rem;
+}
+
+.header__nav {
+  display: flex;
+  gap: 0.25rem;
+  margin-inline-end: auto;
+}
+
+.header__link {
+  background: none;
+  border: none;
+  color: var(--color-text-dim);
+  font-size: 0.95rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.header__link:hover {
+  color: var(--color-text);
+}
+
+.header__link--active {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+}
+
+.lang-switcher select {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Layout general ---------- */
+
+.app__main {
+  flex: 1;
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: 2rem 1.2rem;
+}
+
+.app--fullscreen .app__main {
+  max-width: none;
+  padding: 0;
+  display: flex;
+}
+
+.app__footer {
+  text-align: center;
+  color: var(--color-text-dim);
+  font-size: 0.8rem;
+  padding: 1rem;
+}
+
+.button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.08s ease, filter 0.12s ease;
+}
+
+.button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.button--primary {
+  background: var(--color-primary);
+  color: var(--color-primary-ink);
+}
+
+.button--secondary {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.button--ghost {
+  background: none;
+  color: var(--color-text-dim);
+}
+
+/* ---------- Home ---------- */
+
+.home {
+  text-align: center;
+  padding-block: 3rem;
+}
+
+.home__badge {
+  display: inline-block;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+}
+
+.home__title {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  margin: 1rem 0 0.6rem;
+}
+
+.home__intro {
+  color: var(--color-text-dim);
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.home__actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-block-start: 2rem;
+}
+
+/* ---------- Teoría ---------- */
+
+.theory__subtitle {
+  color: var(--color-text-dim);
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-block-start: 1.6rem;
+}
+
+.module-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  color: var(--color-text);
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s ease, transform 0.12s ease;
+}
+
+.module-card:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.module-card--disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.module-card__icon {
+  font-size: 1.8rem;
+}
+
+.module-card__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.module-card__description {
+  font-size: 0.88rem;
+  color: var(--color-text-dim);
+}
+
+.module-card__badge {
+  position: absolute;
+  inset-block-start: 0.8rem;
+  inset-inline-end: 0.8rem;
+  background: var(--color-accent);
+  color: #3d2e00;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+/* ---------- Lección y quiz ---------- */
+
+.module__eyebrow {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-block: 1.2rem 0;
+}
+
+.module__progress,
+.quiz__progress {
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+}
+
+.lesson {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  margin-block: 1rem 1.4rem;
+}
+
+.lesson h1 {
+  margin-block-start: 0;
+  font-size: 1.5rem;
+}
+
+.module__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.quiz {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.quiz--results {
+  text-align: center;
+  padding-block: 2rem;
+}
+
+.quiz--results h1 {
+  font-size: 3rem;
+  margin-block-end: 0;
+}
+
+.quiz__score {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.quiz__question {
+  font-size: 1.4rem;
+}
+
+.quiz__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-block-end: 1.2rem;
+}
+
+.quiz__option {
+  text-align: start;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+}
+
+.quiz__option:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.quiz__option--selected {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised);
+}
+
+.quiz__option--correct {
+  border-color: var(--color-correct);
+  background: color-mix(in srgb, var(--color-correct) 18%, var(--color-surface));
+}
+
+.quiz__option--wrong {
+  border-color: var(--color-wrong);
+  background: color-mix(in srgb, var(--color-wrong) 18%, var(--color-surface));
+}
+
+.quiz__feedback {
+  font-weight: 600;
+}
+
+.quiz__feedback.is-correct {
+  color: var(--color-correct);
+}
+
+.quiz__feedback.is-wrong {
+  color: var(--color-wrong);
+}
+
+.quiz__actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Simulador ---------- */
+
+.simulator {
+  position: relative;
+  flex: 1;
+  min-height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.simulator__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hud {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+[dir="rtl"] .hud {
+  transform: translateX(50%);
+}
+
+.hud__item {
+  background: rgba(10, 18, 32, 0.72);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 0.4rem 0.9rem;
+  text-align: center;
+  min-width: 5.2rem;
+}
+
+.hud__item--warning .hud__value {
+  color: var(--color-wrong);
+}
+
+.hud__label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+}
+
+.hud__value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud__stall {
+  position: absolute;
+  inset-block-start: 6rem;
+  inset-inline: 0;
+  text-align: center;
+  color: var(--color-wrong);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  animation: blink 0.6s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.simulator__overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 13, 24, 0.7);
+  padding: 1rem;
+}
+
+.simulator__panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 30rem;
+  width: 100%;
+}
+
+.simulator__panel h1 {
+  margin-block-start: 0;
+  font-size: 1.6rem;
+}
+
+.simulator__panel-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-block-start: 1.4rem;
+}
+
+.simulator__stats {
+  color: var(--color-text-dim);
+}
+
+.controls-help h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+  margin-block-end: 0.5rem;
+}
+
+.controls-help dl {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.controls-help__row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.controls-help dt {
+  min-width: 6.5rem;
+}
+
+.controls-help dd {
+  margin: 0;
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+}
+
+kbd {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-block-end-width: 2px;
+  border-radius: 6px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+}

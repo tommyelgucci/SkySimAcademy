@@ -1,0 +1,24 @@
+{
+  "appName": "AeroLearn",
+  "tagline": "Learn to fly, step by step",
+  "language": "Language",
+  "nav": {
+    "home": "Home",
+    "theory": "Theory",
+    "simulator": "Simulator"
+  },
+  "home": {
+    "welcome": "Welcome aboard",
+    "intro": "Master the basics of flight with short theory modules, then put them into practice in the 3D mini simulator.",
+    "startTheory": "Start with the theory",
+    "openSimulator": "Open the simulator"
+  },
+  "actions": {
+    "back": "Back",
+    "continue": "Continue",
+    "start": "Start",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "footer": "Educational MVP — this is not real flight instruction."
+}

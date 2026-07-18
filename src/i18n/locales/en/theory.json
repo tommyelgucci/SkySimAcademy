@@ -1,0 +1,71 @@
+{
+  "title": "Theory of flight",
+  "subtitle": "Short modules with a quiz at the end. Pass the quiz, then try it in the simulator.",
+  "lessonProgress": "Lesson {{current}} of {{total}}",
+  "goToQuiz": "Go to the quiz",
+  "comingSoon": "Coming soon",
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Question {{current}} of {{total}}",
+    "check": "Check answer",
+    "next": "Next question",
+    "seeResults": "See results",
+    "correct": "Correct!",
+    "wrong": "Not quite — the right answer is highlighted.",
+    "score": "You got {{score}} of {{total}} right.",
+    "passed": "Module passed — you are ready for the simulator!",
+    "failed": "Review the lessons and try again.",
+    "restart": "Retake quiz",
+    "backToLessons": "Back to lessons"
+  },
+  "modules": {
+    "principles-of-flight": {
+      "title": "Principles of flight",
+      "description": "The four forces, the three axes of control, and why airplanes stay in the air.",
+      "lessons": {
+        "four-forces": {
+          "title": "The four forces",
+          "body": "Four forces act on every aircraft: lift pushes it up, weight pulls it down, thrust moves it forward, and drag holds it back. Lift is created by the wings as air flows over them — the faster you fly, the more lift you generate. Straight and level flight is simply these four forces in balance."
+        },
+        "three-axes": {
+          "title": "The three axes of control",
+          "body": "An aircraft rotates around three axes. Pitch (elevator) raises or lowers the nose, roll (ailerons) banks the wings, and yaw (rudder) points the nose left or right. To turn, pilots bank the wings and let the tilted lift pull the aircraft around the turn."
+        },
+        "speed-and-stall": {
+          "title": "Throttle, airspeed and stall",
+          "body": "The throttle controls engine power, and power controls your airspeed. Wings need a minimum airspeed to produce enough lift: fly slower than that and the wing stalls — it stops lifting and the nose drops. To recover from a stall, lower the nose, apply full throttle and let the speed build up again."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Which force keeps an aircraft in the air?",
+          "options": ["Lift", "Drag", "Weight"]
+        },
+        "q2": {
+          "question": "Banking the wings with the ailerons is called…",
+          "options": ["Roll", "Yaw", "Pitch"]
+        },
+        "q3": {
+          "question": "What happens if airspeed drops below stall speed?",
+          "options": [
+            "The wing stops producing enough lift",
+            "The aircraft turns automatically",
+            "The engine shuts down"
+          ]
+        },
+        "q4": {
+          "question": "How do you recover from a stall?",
+          "options": [
+            "Lower the nose and apply full throttle",
+            "Pull the nose up as hard as you can",
+            "Cut the throttle and hold the stick still"
+          ]
+        }
+      }
+    },
+    "cockpit-instruments": {
+      "title": "Cockpit instruments",
+      "description": "Altimeter, airspeed indicator and attitude indicator — reading the panel at a glance."
+    }
+  }
+}

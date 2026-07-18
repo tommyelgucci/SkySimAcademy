@@ -1,0 +1,40 @@
+{
+  "title": "Mini simulador",
+  "description": "Un vuelo libre de 5 minutos para practicar lo aprendido: despega, sube, vira y aterriza.",
+  "briefing": {
+    "title": "¿Listo para despegar?",
+    "body": "Aplica gases a fondo para acelerar por la pista. Por encima de 20 m/s, tira suavemente (S) para levantar el morro. Mantén la velocidad: si vuelas demasiado lento, el ala entrará en pérdida.",
+    "start": "Iniciar vuelo"
+  },
+  "hud": {
+    "speed": "Velocidad",
+    "altitude": "Altitud",
+    "heading": "Rumbo",
+    "throttle": "Gases",
+    "timeLeft": "Tiempo restante",
+    "unitSpeed": "m/s",
+    "unitAltitude": "m"
+  },
+  "stallWarning": "PÉRDIDA — baja el morro y aplica potencia",
+  "controls": {
+    "title": "Controles",
+    "pitch": "Cabeceo (morro abajo / arriba)",
+    "roll": "Alabeo (inclinar izquierda / derecha)",
+    "yaw": "Guiñada (timón izquierda / derecha)",
+    "throttle": "Gases (menos / más)"
+  },
+  "timeUp": {
+    "title": "Sesión de vuelo completada",
+    "body": "Tus 5 minutos han terminado. Repasa un módulo de teoría o inicia un vuelo nuevo."
+  },
+  "crash": {
+    "title": "¡Aterrizaje brusco!",
+    "body": "Tocaste el suelo demasiado fuerte o demasiado inclinado. Nivela las alas y desciende con suavidad antes de tocar tierra."
+  },
+  "stats": {
+    "maxAltitude": "Altitud máxima: {{value}} m",
+    "distance": "Distancia recorrida: {{value}} km"
+  },
+  "restart": "Volar de nuevo",
+  "exit": "Salir del simulador"
+}

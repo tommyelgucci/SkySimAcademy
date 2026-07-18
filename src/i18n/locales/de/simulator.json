@@ -1,0 +1,40 @@
+{
+  "title": "Mini-Simulator",
+  "description": "Ein freier 5-Minuten-Flug, um das Gelernte zu üben: starten, steigen, kurven und landen.",
+  "briefing": {
+    "title": "Bereit zum Start?",
+    "body": "Gib Vollgas, um auf der Startbahn zu beschleunigen. Über 20 m/s ziehst du sanft (S), um die Nase anzuheben. Halte deine Geschwindigkeit — fliegst du zu langsam, reißt die Strömung ab.",
+    "start": "Flug starten"
+  },
+  "hud": {
+    "speed": "Geschwindigkeit",
+    "altitude": "Höhe",
+    "heading": "Kurs",
+    "throttle": "Gas",
+    "timeLeft": "Restzeit",
+    "unitSpeed": "m/s",
+    "unitAltitude": "m"
+  },
+  "stallWarning": "STRÖMUNGSABRISS — Nase senken und Gas geben",
+  "controls": {
+    "title": "Steuerung",
+    "pitch": "Nicken (Nase runter / hoch)",
+    "roll": "Rollen (links / rechts neigen)",
+    "yaw": "Gieren (Seitenruder links / rechts)",
+    "throttle": "Gas (weniger / mehr)"
+  },
+  "timeUp": {
+    "title": "Flugsession beendet",
+    "body": "Deine 5 Minuten sind um. Wiederhole ein Theoriemodul oder starte einen neuen Flug."
+  },
+  "crash": {
+    "title": "Harte Landung!",
+    "body": "Du hast den Boden zu hart oder zu schräg berührt. Halte die Tragflächen waagerecht und sinke sanft, bevor du aufsetzt."
+  },
+  "stats": {
+    "maxAltitude": "Maximale Höhe: {{value}} m",
+    "distance": "Geflogene Strecke: {{value}} km"
+  },
+  "restart": "Noch einmal fliegen",
+  "exit": "Simulator verlassen"
+}

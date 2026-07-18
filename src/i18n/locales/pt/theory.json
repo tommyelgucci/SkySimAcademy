@@ -1,0 +1,71 @@
+{
+  "title": "Teoria de voo",
+  "subtitle": "Módulos curtos com um quiz no final. Passe no quiz e depois pratique no simulador.",
+  "lessonProgress": "Lição {{current}} de {{total}}",
+  "goToQuiz": "Ir para o quiz",
+  "comingSoon": "Em breve",
+  "quiz": {
+    "title": "Quiz",
+    "questionProgress": "Pergunta {{current}} de {{total}}",
+    "check": "Verificar resposta",
+    "next": "Próxima pergunta",
+    "seeResults": "Ver resultados",
+    "correct": "Correto!",
+    "wrong": "Não exatamente — a resposta certa está destacada.",
+    "score": "Você acertou {{score}} de {{total}}.",
+    "passed": "Módulo concluído — você está pronto para o simulador!",
+    "failed": "Revise as lições e tente novamente.",
+    "restart": "Refazer o quiz",
+    "backToLessons": "Voltar às lições"
+  },
+  "modules": {
+    "principles-of-flight": {
+      "title": "Princípios de voo",
+      "description": "As quatro forças, os três eixos de controle e por que os aviões se mantêm no ar.",
+      "lessons": {
+        "four-forces": {
+          "title": "As quatro forças",
+          "body": "Quatro forças atuam sobre todo avião: a sustentação o empurra para cima, o peso o puxa para baixo, a tração o move para a frente e o arrasto o freia. A sustentação é gerada pelas asas quando o ar flui sobre elas — quanto mais rápido você voa, mais sustentação produz. O voo reto e nivelado é simplesmente essas quatro forças em equilíbrio."
+        },
+        "three-axes": {
+          "title": "Os três eixos de controle",
+          "body": "Um avião gira em torno de três eixos. A arfagem (profundor) sobe ou desce o nariz, a rolagem (ailerons) inclina as asas e a guinada (leme) aponta o nariz para a esquerda ou direita. Para curvar, o piloto inclina as asas e deixa a sustentação inclinada conduzir o avião pela curva."
+        },
+        "speed-and-stall": {
+          "title": "Manete, velocidade e estol",
+          "body": "A manete de potência controla a força do motor, e a potência controla a sua velocidade. As asas precisam de uma velocidade mínima para produzir sustentação suficiente: voando mais devagar que isso, a asa estola — deixa de sustentar e o nariz cai. Para recuperar de um estol, abaixe o nariz, aplique potência máxima e deixe a velocidade aumentar de novo."
+        }
+      },
+      "quiz": {
+        "q1": {
+          "question": "Qual força mantém o avião no ar?",
+          "options": ["A sustentação", "O arrasto", "O peso"]
+        },
+        "q2": {
+          "question": "Inclinar as asas com os ailerons chama-se…",
+          "options": ["Rolagem", "Guinada", "Arfagem"]
+        },
+        "q3": {
+          "question": "O que acontece se a velocidade cair abaixo da velocidade de estol?",
+          "options": [
+            "A asa deixa de produzir sustentação suficiente",
+            "O avião curva automaticamente",
+            "O motor desliga"
+          ]
+        },
+        "q4": {
+          "question": "Como se recupera de um estol?",
+          "options": [
+            "Abaixando o nariz e aplicando potência máxima",
+            "Puxando o nariz para cima com força",
+            "Cortando a potência e mantendo o manche parado"
+          ]
+        }
+      }
+    },
+    "cockpit-instruments": {
+      "title": "Instrumentos de cabine",
+      "description": "Altímetro, velocímetro e horizonte artificial — como ler o painel rapidamente."
+    }
+  }
+}

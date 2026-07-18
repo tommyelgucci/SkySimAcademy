@@ -1,0 +1,24 @@
+{
+  "appName": "AeroLearn",
+  "tagline": "Fliegen lernen, Schritt für Schritt",
+  "language": "Sprache",
+  "nav": {
+    "home": "Start",
+    "theory": "Theorie",
+    "simulator": "Simulator"
+  },
+  "home": {
+    "welcome": "Willkommen an Bord",
+    "intro": "Lerne die Grundlagen des Fliegens in kurzen Theoriemodulen und wende sie anschließend im 3D-Mini-Simulator an.",
+    "startTheory": "Mit der Theorie beginnen",
+    "openSimulator": "Simulator öffnen"
+  },
+  "actions": {
+    "back": "Zurück",
+    "continue": "Weiter",
+    "start": "Starten",
+    "previous": "Zurück",
+    "next": "Weiter"
+  },
+  "footer": "Lern-MVP — dies ist keine echte Flugausbildung."
+}

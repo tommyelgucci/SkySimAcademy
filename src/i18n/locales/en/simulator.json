@@ -1,0 +1,40 @@
+{
+  "title": "Mini simulator",
+  "description": "A 5-minute free flight to practice what you learned: take off, climb, turn and land.",
+  "briefing": {
+    "title": "Ready for takeoff?",
+    "body": "Apply full throttle to accelerate down the runway. Above 20 m/s, pull gently (S) to lift the nose. Keep your speed up — if you fly too slowly, the wing will stall.",
+    "start": "Start flight"
+  },
+  "hud": {
+    "speed": "Speed",
+    "altitude": "Altitude",
+    "heading": "Heading",
+    "throttle": "Throttle",
+    "timeLeft": "Time left",
+    "unitSpeed": "m/s",
+    "unitAltitude": "m"
+  },
+  "stallWarning": "STALL — lower the nose and add power",
+  "controls": {
+    "title": "Controls",
+    "pitch": "Pitch (nose down / up)",
+    "roll": "Roll (bank left / right)",
+    "yaw": "Yaw (rudder left / right)",
+    "throttle": "Throttle (less / more)"
+  },
+  "timeUp": {
+    "title": "Flight session complete",
+    "body": "Your 5 minutes are up. Review a theory module or start a new flight."
+  },
+  "crash": {
+    "title": "Rough landing!",
+    "body": "You hit the ground too hard or too banked. Level the wings and descend gently before touching down."
+  },
+  "stats": {
+    "maxAltitude": "Max altitude: {{value}} m",
+    "distance": "Distance flown: {{value}} km"
+  },
+  "restart": "Fly again",
+  "exit": "Exit simulator"
+}

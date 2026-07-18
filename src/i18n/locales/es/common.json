@@ -1,0 +1,24 @@
+{
+  "appName": "AeroLearn",
+  "tagline": "Aprende a volar, paso a paso",
+  "language": "Idioma",
+  "nav": {
+    "home": "Inicio",
+    "theory": "Teoría",
+    "simulator": "Simulador"
+  },
+  "home": {
+    "welcome": "Bienvenido a bordo",
+    "intro": "Domina los fundamentos del vuelo con módulos de teoría cortos y ponlos en práctica en el mini simulador 3D.",
+    "startTheory": "Empezar con la teoría",
+    "openSimulator": "Abrir el simulador"
+  },
+  "actions": {
+    "back": "Volver",
+    "continue": "Continuar",
+    "start": "Empezar",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "footer": "MVP educativo — esto no es instrucción de vuelo real."
+}
