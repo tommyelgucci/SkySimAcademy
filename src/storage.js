@@ -106,6 +106,25 @@ export function getFailedQuestions() {
     });
 }
 
+/**
+ * ¿Se ha obtenido la licencia de este nivel? (todas sus misiones completadas
+ * y todos sus módulos de teoría exigidos aprobados). Derivado del progreso
+ * ya guardado — no persiste nada nuevo.
+ * @param {{missionIds: string[], requiresModules?: string[]}} level
+ */
+export function isLevelComplete(level) {
+  return (
+    level.missionIds.every(isMissionComplete) &&
+    (level.requiresModules ?? []).every(isModulePassed)
+  );
+}
+
+/** Progreso de misiones de un nivel, para mostrar "2/3" en la UI. */
+export function levelProgress(level) {
+  const done = level.missionIds.filter(isMissionComplete).length;
+  return { done, total: level.missionIds.length };
+}
+
 /** Guarda un intento de examen; conserva los últimos 20. */
 export function recordExamResult({ score, total, passed }) {
   const data = load();

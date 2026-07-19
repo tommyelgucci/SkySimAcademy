@@ -1045,6 +1045,39 @@ body {
   margin-block: 1.2rem 0.5rem;
 }
 
+.level-group {
+  margin-block-end: 0.6rem;
+}
+
+.level-group__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block: 1rem 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+}
+
+.level-group__title {
+  flex: 1 1 auto;
+}
+
+.level-group__count {
+  font-variant-numeric: tabular-nums;
+}
+
+.level-group__license {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--color-correct);
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
 .mission-list {
   display: grid;
   gap: 0.5rem;

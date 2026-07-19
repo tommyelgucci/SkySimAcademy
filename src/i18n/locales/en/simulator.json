@@ -16,6 +16,7 @@
     "unitAltitude": "m"
   },
   "stallWarning": "STALL — lower the nose and add power",
+  "engineOutWarning": "ENGINE AT IDLE — find the runway and glide",
   "controls": {
     "title": "Controls",
     "pitch": "Pitch (nose down / up)",
@@ -23,6 +24,25 @@
     "yaw": "Yaw (rudder left / right)",
     "throttle": "Throttle (less / more)",
     "touch": "Touch screen: left joystick = pitch and roll · right slider = throttle · bottom buttons = rudder"
+  },
+  "levels": {
+    "earned": "License earned",
+    "student-pilot": {
+      "title": "Student pilot",
+      "subtitle": "First takeoffs, landings and free flight."
+    },
+    "instrument-basics": {
+      "title": "Basic instruments",
+      "subtitle": "Fly by instruments: heading, altitude, turns."
+    },
+    "navigation": {
+      "title": "Navigation",
+      "subtitle": "Cross-country legs, holding a heading by dead reckoning."
+    },
+    "emergency": {
+      "title": "Emergencies",
+      "subtitle": "Engine failure and stall recovery."
+    }
   },
   "missions": {
     "title": "Choose a mission",
@@ -52,6 +72,26 @@
     "cross-country": {
       "title": "Cross-country leg",
       "objective": "Climb above 80 m and hold heading 090° for 4 seconds."
+    },
+    "level-flight": {
+      "title": "Level flight",
+      "objective": "Above 120 m, hold level flight for 8 seconds."
+    },
+    "standard-turn": {
+      "title": "Standard turn",
+      "objective": "Above 50 m, hold a 30° right bank for 5 seconds."
+    },
+    "nav-leg": {
+      "title": "Southbound leg",
+      "objective": "Above 100 m, hold heading 180° for 6 seconds."
+    },
+    "engine-out": {
+      "title": "Engine failure",
+      "objective": "At 80 m the engine cuts out — glide and land on the runway with no power."
+    },
+    "stall-recovery": {
+      "title": "Stall recovery",
+      "objective": "Above 100 m, provoke a stall and recover flying speed before you lose altitude."
     }
   },
   "timeUp": {

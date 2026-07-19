@@ -16,6 +16,7 @@
     "unitAltitude": "m"
   },
   "stallWarning": "ESTOL — abaixe o nariz e aplique potência",
+  "engineOutWarning": "MOTOR EM MARCHA LENTA — procure a pista e planeje",
   "controls": {
     "title": "Controles",
     "pitch": "Arfagem (nariz para baixo / cima)",
@@ -23,6 +24,25 @@
     "yaw": "Guinada (leme esquerda / direita)",
     "throttle": "Potência (menos / mais)",
     "touch": "Tela sensível ao toque: joystick esquerdo = arfagem e rolagem · barra direita = potência · botões inferiores = leme"
+  },
+  "levels": {
+    "earned": "Licença obtida",
+    "student-pilot": {
+      "title": "Piloto aluno",
+      "subtitle": "Primeiras decolagens, pousos e voo livre."
+    },
+    "instrument-basics": {
+      "title": "Instrumentos básicos",
+      "subtitle": "Voe por instrumentos: proa, altitude, curvas."
+    },
+    "navigation": {
+      "title": "Navegação",
+      "subtitle": "Pernas de navegação mantendo a proa por estima."
+    },
+    "emergency": {
+      "title": "Emergências",
+      "subtitle": "Falha de motor e recuperação de estol."
+    }
   },
   "missions": {
     "title": "Escolha uma missão",
@@ -52,6 +72,26 @@
     "cross-country": {
       "title": "Perna de navegação",
       "objective": "Suba acima de 80 m e mantenha a proa 090° por 4 segundos."
+    },
+    "level-flight": {
+      "title": "Voo nivelado",
+      "objective": "Acima de 120 m, mantenha o voo nivelado por 8 segundos."
+    },
+    "standard-turn": {
+      "title": "Curva padrão",
+      "objective": "Acima de 50 m, mantenha uma inclinação de 30° à direita por 5 segundos."
+    },
+    "nav-leg": {
+      "title": "Perna ao sul",
+      "objective": "Acima de 100 m, mantenha a proa 180° por 6 segundos."
+    },
+    "engine-out": {
+      "title": "Falha de motor",
+      "objective": "A 80 m o motor para: planeje e pouse na pista sem potência."
+    },
+    "stall-recovery": {
+      "title": "Recuperação de estol",
+      "objective": "Acima de 100 m, provoque o estol e recupere a velocidade de voo antes de perder altitude."
     }
   },
   "timeUp": {

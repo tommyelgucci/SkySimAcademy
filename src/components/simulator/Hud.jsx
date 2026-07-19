@@ -14,6 +14,7 @@ export default function Hud({ hud, showText = true }) {
 
   // Los avisos (pérdida, límite del mapa) se muestran SIEMPRE, aunque el
   // usuario oculte los datos de texto: son seguridad, no decoración.
+  // Prioridad de avisos: pérdida > motor parado > límite del mapa
   if (!showText) {
     return (
       <>
@@ -22,7 +23,12 @@ export default function Hud({ hud, showText = true }) {
             <TriangleAlert size={22} aria-hidden="true" /> {t("stallWarning")}
           </div>
         )}
-        {!hud.stalled && hud.nearBoundary && (
+        {!hud.stalled && hud.engineOut && (
+          <div className="hud__stall hud__stall--boundary">
+            <TriangleAlert size={22} aria-hidden="true" /> {t("engineOutWarning")}
+          </div>
+        )}
+        {!hud.stalled && !hud.engineOut && hud.nearBoundary && (
           <div className="hud__stall hud__stall--boundary">
             <TriangleAlert size={22} aria-hidden="true" /> {t("mapWarning")}
           </div>
@@ -52,7 +58,12 @@ export default function Hud({ hud, showText = true }) {
           <TriangleAlert size={22} aria-hidden="true" /> {t("stallWarning")}
         </div>
       )}
-      {!hud.stalled && hud.nearBoundary && (
+      {!hud.stalled && hud.engineOut && (
+        <div className="hud__stall hud__stall--boundary">
+          <TriangleAlert size={22} aria-hidden="true" /> {t("engineOutWarning")}
+        </div>
+      )}
+      {!hud.stalled && !hud.engineOut && hud.nearBoundary && (
         <div className="hud__stall hud__stall--boundary">
           <TriangleAlert size={22} aria-hidden="true" /> {t("mapWarning")}
         </div>

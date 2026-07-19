@@ -14,6 +14,21 @@
  *  - { type: "altitude", target }
  *  - { type: "heading", target, tolerance, minAltitude, holdSeconds }
  *  - { type: "landing", minAltitude }  → subir y volver a tierra sin crash
+ *  - { type: "altitudeHold", target, band, holdSeconds, minAltitude? }
+ *    → mantener la altitud dentro de ±band durante holdSeconds (vuelo nivelado)
+ *  - { type: "bankTurn", bankTarget, tolerance, minAltitude, holdSeconds }
+ *    → mantener un ángulo de banco objetivo (viraje estándar); bankTarget
+ *      con signo, + = derecha
+ *  - { type: "engineOut", armAltitude, touchdownSpeed }
+ *    → al alcanzar armAltitude el ejercicio corta los gases (ver
+ *      SimulatorView); hay que planear y tocar pista por debajo de
+ *      touchdownSpeed sin motor
+ *  - { type: "stallRecovery", minAltitude, recoverSpeed }
+ *    → provocar la pérdida por encima de minAltitude y recuperar
+ *      velocidad ≥ recoverSpeed sin tocar tierra ni chocar
+ *
+ * Las misiones se agrupan en niveles con licencia en
+ * src/content/levels/index.js (LEVELS referencia estos ids).
  */
 export const MISSIONS = [
   {
@@ -46,5 +61,35 @@ export const MISSIONS = [
     icon: "map",
     requiresModule: "navigation-basics",
     goal: { type: "heading", target: 90, tolerance: 12, minAltitude: 80, holdSeconds: 4 },
+  },
+  {
+    id: "level-flight",
+    icon: "move-horizontal",
+    requiresModule: "cockpit-instruments",
+    goal: { type: "altitudeHold", target: 120, band: 15, holdSeconds: 8, minAltitude: 40 },
+  },
+  {
+    id: "standard-turn",
+    icon: "rotate-cw",
+    requiresModule: "cockpit-instruments",
+    goal: { type: "bankTurn", bankTarget: 30, tolerance: 8, minAltitude: 50, holdSeconds: 5 },
+  },
+  {
+    id: "nav-leg",
+    icon: "route",
+    requiresModule: "navigation-basics",
+    goal: { type: "heading", target: 180, tolerance: 10, minAltitude: 100, holdSeconds: 6 },
+  },
+  {
+    id: "engine-out",
+    icon: "triangle-alert",
+    requiresModule: "principles-of-flight",
+    goal: { type: "engineOut", armAltitude: 80, touchdownSpeed: 8 },
+  },
+  {
+    id: "stall-recovery",
+    icon: "life-buoy",
+    requiresModule: "principles-of-flight",
+    goal: { type: "stallRecovery", minAltitude: 100, recoverSpeed: 22 },
   },
 ];

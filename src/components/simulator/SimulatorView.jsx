@@ -12,6 +12,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
+  Award,
   Check,
   CircleCheck,
   Flag,
@@ -40,12 +41,17 @@ import { FlightEvaluator } from "../../simulator/FlightEvaluator.js";
 import { SoundEngine } from "../../simulator/SoundEngine.js";
 import TouchControls, { hasCoarsePointer } from "./TouchControls.jsx";
 import { MISSIONS } from "../../content/missions";
+import { LEVELS } from "../../content/levels";
 import {
+  isLevelComplete,
   isMissionComplete,
   isModulePassed,
+  levelProgress,
   recordMissionComplete,
 } from "../../storage.js";
 import { ContentIcon } from "../icons.jsx";
+
+const MISSION_BY_ID = new Map(MISSIONS.map((m) => [m.id, m]));
 import Hud from "./Hud.jsx";
 import InstrumentPanel from "./InstrumentPanel.jsx";
 
@@ -208,12 +214,16 @@ export default function SimulatorView({ onExit }) {
       // (valor absoluto) tienen prioridad cuando el slider se ha usado
       const kb = controls.getInput();
       const tc = touchRef.current;
+      // Ejercicio de fallo de motor ("engineOut"): el tracker arma el corte
+      // al cruzar la altitud objetivo y aquí se ignoran los gases del
+      // jugador — throttleTarget absoluto fuerza el motor a ralentí.
+      const engineCut = tracker.engineCut;
       engine.setInput({
         pitch: clampAxis(kb.pitch + tc.pitch),
         roll: clampAxis(kb.roll + tc.roll),
         yaw: clampAxis(kb.yaw + tc.yaw),
-        throttle: kb.throttle,
-        throttleTarget: tc.throttleTarget,
+        throttle: engineCut ? 0 : kb.throttle,
+        throttleTarget: engineCut ? 0 : tc.throttleTarget,
       });
       engine.update(dt);
       tracker.update(engine, dt);
@@ -249,6 +259,7 @@ export default function SimulatorView({ onExit }) {
           throttle: Math.round(engine.throttle * 100),
           timeLeft: Math.max(0, Math.ceil(SESSION_SECONDS - elapsed)),
           stalled: engine.stalled,
+          engineOut: engineCut,
           nearBoundary,
           // Datos para el cuadro de instrumentos (agujas)
           verticalSpeed: Math.round(engine.verticalSpeed * 10) / 10,
@@ -460,48 +471,69 @@ export default function SimulatorView({ onExit }) {
             </div>
 
             <h2 className="mission-list__heading">{t("missions.title")}</h2>
-            <div className="mission-list">
-              {MISSIONS.map((m) => {
-                const locked =
-                  m.requiresModule && !isModulePassed(m.requiresModule);
-                const done = isMissionComplete(m.id);
-                return (
-                  <button
-                    key={m.id}
-                    className={`mission-card ${locked ? "mission-card--locked" : ""}`}
-                    disabled={locked}
-                    onClick={() => fly(m)}
-                  >
-                    <span className="mission-card__icon">
-                      {locked ? (
-                        <Lock size={20} aria-hidden="true" />
-                      ) : (
-                        <ContentIcon name={m.icon} size={20} />
-                      )}
+            {LEVELS.map((level) => {
+              const progress = levelProgress(level);
+              const earned = isLevelComplete(level);
+              return (
+                <div key={level.id} className="level-group">
+                  <div className="level-group__header">
+                    <ContentIcon name={level.icon} size={18} aria-hidden="true" />
+                    <span className="level-group__title">{t(`levels.${level.id}.title`)}</span>
+                    <span className="level-group__count">
+                      {progress.done}/{progress.total}
                     </span>
-                    <span className="mission-card__text">
-                      <span className="mission-card__title">
-                        {t(`missions.${m.id}.title`)}
-                        {done && (
-                          <CircleCheck
-                            size={15}
-                            className="mission-card__done"
-                            aria-label={t("missions.completed")}
-                          />
-                        )}
+                    {earned && (
+                      <span className="level-group__license">
+                        <Award size={15} aria-hidden="true" /> {t("levels.earned")}
                       </span>
-                      <span className="mission-card__objective">
-                        {locked
-                          ? t("missions.locked", {
-                              module: t(`theory:modules.${m.requiresModule}.title`),
-                            })
-                          : t(`missions.${m.id}.objective`)}
-                      </span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                    )}
+                  </div>
+                  <div className="mission-list">
+                    {level.missionIds.map((id) => {
+                      const m = MISSION_BY_ID.get(id);
+                      const locked =
+                        m.requiresModule && !isModulePassed(m.requiresModule);
+                      const done = isMissionComplete(m.id);
+                      return (
+                        <button
+                          key={m.id}
+                          className={`mission-card ${locked ? "mission-card--locked" : ""}`}
+                          disabled={locked}
+                          onClick={() => fly(m)}
+                        >
+                          <span className="mission-card__icon">
+                            {locked ? (
+                              <Lock size={20} aria-hidden="true" />
+                            ) : (
+                              <ContentIcon name={m.icon} size={20} />
+                            )}
+                          </span>
+                          <span className="mission-card__text">
+                            <span className="mission-card__title">
+                              {t(`missions.${m.id}.title`)}
+                              {done && (
+                                <CircleCheck
+                                  size={15}
+                                  className="mission-card__done"
+                                  aria-label={t("missions.completed")}
+                                />
+                              )}
+                            </span>
+                            <span className="mission-card__objective">
+                              {locked
+                                ? t("missions.locked", {
+                                    module: t(`theory:modules.${m.requiresModule}.title`),
+                                  })
+                                : t(`missions.${m.id}.objective`)}
+                            </span>
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
 
             <ControlsHelp />
             <div className="simulator__panel-actions">

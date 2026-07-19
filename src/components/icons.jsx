@@ -12,11 +12,17 @@ import {
   CloudSun,
   Compass,
   Gauge,
+  GraduationCap,
   Joystick,
+  LifeBuoy,
   Map,
+  MoveHorizontal,
   PlaneLanding,
   PlaneTakeoff,
   RadioTower,
+  RotateCw,
+  Route,
+  TriangleAlert,
 } from "lucide-react";
 
 const CONTENT_ICONS = {
@@ -28,6 +34,12 @@ const CONTENT_ICONS = {
   "cloud-sun": CloudSun,
   "radio-tower": RadioTower,
   map: Map,
+  "graduation-cap": GraduationCap,
+  "life-buoy": LifeBuoy,
+  "move-horizontal": MoveHorizontal,
+  "rotate-cw": RotateCw,
+  route: Route,
+  "triangle-alert": TriangleAlert,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */

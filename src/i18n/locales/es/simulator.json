@@ -16,6 +16,7 @@
     "unitAltitude": "m"
   },
   "stallWarning": "PÉRDIDA — baja el morro y aplica potencia",
+  "engineOutWarning": "MOTOR AL RALENTÍ — busca la pista y planea",
   "controls": {
     "title": "Controles",
     "pitch": "Cabeceo (morro abajo / arriba)",
@@ -23,6 +24,25 @@
     "yaw": "Guiñada (timón izquierda / derecha)",
     "throttle": "Gases (menos / más)",
     "touch": "Pantalla táctil: joystick izquierdo = cabeceo y alabeo · barra derecha = gases · botones inferiores = timón"
+  },
+  "levels": {
+    "earned": "Licencia obtenida",
+    "student-pilot": {
+      "title": "Piloto alumno",
+      "subtitle": "Primeros despegues, aterrizajes y vuelo libre."
+    },
+    "instrument-basics": {
+      "title": "Instrumentos básicos",
+      "subtitle": "Vuela por instrumentos: rumbo, altitud, virajes."
+    },
+    "navigation": {
+      "title": "Navegación",
+      "subtitle": "Tramos de travesía manteniendo el rumbo por estima."
+    },
+    "emergency": {
+      "title": "Emergencias",
+      "subtitle": "Fallo de motor y recuperación de pérdida."
+    }
   },
   "missions": {
     "title": "Elige una misión",
@@ -52,6 +72,26 @@
     "cross-country": {
       "title": "Tramo de travesía",
       "objective": "Sube por encima de 80 m y mantén rumbo 090° durante 4 segundos."
+    },
+    "level-flight": {
+      "title": "Vuelo nivelado",
+      "objective": "Por encima de 120 m, mantén el vuelo nivelado durante 8 segundos."
+    },
+    "standard-turn": {
+      "title": "Viraje estándar",
+      "objective": "Por encima de 50 m, mantén un banco de 30° a la derecha durante 5 segundos."
+    },
+    "nav-leg": {
+      "title": "Tramo al sur",
+      "objective": "Por encima de 100 m, mantén rumbo 180° durante 6 segundos."
+    },
+    "engine-out": {
+      "title": "Fallo de motor",
+      "objective": "A 80 m se detiene el motor: planea y toma tierra en la pista sin gases."
+    },
+    "stall-recovery": {
+      "title": "Recuperación de pérdida",
+      "objective": "Por encima de 100 m, provoca la pérdida y recupera velocidad de vuelo antes de bajar."
     }
   },
   "timeUp": {

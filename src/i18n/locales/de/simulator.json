@@ -16,6 +16,7 @@
     "unitAltitude": "m"
   },
   "stallWarning": "STRÖMUNGSABRISS — Nase senken und Gas geben",
+  "engineOutWarning": "TRIEBWERK IM LEERLAUF — Landebahn suchen und gleiten",
   "controls": {
     "title": "Steuerung",
     "pitch": "Nicken (Nase runter / hoch)",
@@ -23,6 +24,25 @@
     "yaw": "Gieren (Seitenruder links / rechts)",
     "throttle": "Gas (weniger / mehr)",
     "touch": "Touchscreen: linker Joystick = Nicken und Rollen · rechter Regler = Gas · untere Tasten = Seitenruder"
+  },
+  "levels": {
+    "earned": "Lizenz erworben",
+    "student-pilot": {
+      "title": "Flugschüler",
+      "subtitle": "Erste Starts, Landungen und freier Flug."
+    },
+    "instrument-basics": {
+      "title": "Grundlegende Instrumente",
+      "subtitle": "Fliege nach Instrumenten: Kurs, Höhe, Kurven."
+    },
+    "navigation": {
+      "title": "Navigation",
+      "subtitle": "Streckenflug-Abschnitte mit Kurs nach Koppelnavigation."
+    },
+    "emergency": {
+      "title": "Notfälle",
+      "subtitle": "Triebwerksausfall und Erholung aus dem Strömungsabriss."
+    }
   },
   "missions": {
     "title": "Wähle eine Mission",
@@ -52,6 +72,26 @@
     "cross-country": {
       "title": "Streckenflug-Abschnitt",
       "objective": "Steige über 80 m und halte den Kurs 090° für 4 Sekunden."
+    },
+    "level-flight": {
+      "title": "Horizontalflug",
+      "objective": "Halte über 120 m den Horizontalflug für 8 Sekunden."
+    },
+    "standard-turn": {
+      "title": "Standardkurve",
+      "objective": "Halte über 50 m eine Schräglage von 30° nach rechts für 5 Sekunden."
+    },
+    "nav-leg": {
+      "title": "Streckenabschnitt nach Süden",
+      "objective": "Halte über 100 m den Kurs 180° für 6 Sekunden."
+    },
+    "engine-out": {
+      "title": "Triebwerksausfall",
+      "objective": "Bei 80 m fällt das Triebwerk aus: Gleite zur Landebahn und setze ohne Motorkraft auf."
+    },
+    "stall-recovery": {
+      "title": "Erholung aus dem Strömungsabriss",
+      "objective": "Über 100 m provozierst du einen Strömungsabriss und fängst wieder Fahrt auf, bevor du an Höhe verlierst."
     }
   },
   "timeUp": {
