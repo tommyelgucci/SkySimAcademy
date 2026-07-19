@@ -779,6 +779,11 @@ body {
   z-index: 6;
 }
 
+/* Botón de cámara: junto al de sonido, desplazado hacia el interior */
+.sound-toggle--camera {
+  inset-inline-end: 4.2rem;
+}
+
 /* Banner con el objetivo de la misión durante el vuelo */
 .hud-objective {
   position: absolute;

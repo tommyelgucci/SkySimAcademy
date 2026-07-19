@@ -16,6 +16,7 @@ import {
   Flag,
   Lock,
   PlaneTakeoff,
+  SwitchCamera,
   Target,
   TriangleAlert,
   Volume2,
@@ -23,7 +24,11 @@ import {
 } from "lucide-react";
 import * as THREE from "three";
 import { FlightEngine } from "../../simulator/FlightEngine.js";
-import { SceneManager, SCENARIOS } from "../../simulator/SceneManager.js";
+import {
+  SceneManager,
+  SCENARIOS,
+  TIMES_OF_DAY,
+} from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
 import { MissionTracker } from "../../simulator/MissionTracker.js";
 import { SoundEngine } from "../../simulator/SoundEngine.js";
@@ -41,8 +46,26 @@ import Hud from "./Hud.jsx";
 const SESSION_SECONDS = 5 * 60;
 const HUD_INTERVAL = 0.1; // s entre actualizaciones del HUD
 const SCENARIO_KEY = "aerolearn.scenario";
+const TIME_KEY = "aerolearn.timeofday";
 /** Fracción del radio del mapa a partir de la cual se avisa del límite. */
 const BOUNDARY_WARN_RATIO = 0.8;
+
+/** Preferencia persistida con lista de valores válidos. */
+function loadPref(key, valid, fallback) {
+  try {
+    const saved = localStorage.getItem(key);
+    return valid.includes(saved) ? saved : fallback;
+  } catch {
+    return fallback;
+  }
+}
+function savePref(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    /* sin almacenamiento: solo dura la sesión */
+  }
+}
 
 export default function SimulatorView({ onExit }) {
   const { t } = useTranslation(["simulator", "theory"]);
@@ -56,22 +79,31 @@ export default function SimulatorView({ onExit }) {
   const [stats, setStats] = useState(null);
   const [crashReason, setCrashReason] = useState(null);
 
-  // Escenario elegido (persistente entre sesiones)
-  const [scenario, setScenario] = useState(() => {
-    try {
-      const saved = localStorage.getItem(SCENARIO_KEY);
-      return SCENARIOS.includes(saved) ? saved : SCENARIOS[0];
-    } catch {
-      return SCENARIOS[0];
-    }
-  });
+  // Escenario y hora del día elegidos (persistentes entre sesiones)
+  const [scenario, setScenario] = useState(() =>
+    loadPref(SCENARIO_KEY, SCENARIOS, SCENARIOS[0])
+  );
   const selectScenario = (id) => {
     setScenario(id);
-    try {
-      localStorage.setItem(SCENARIO_KEY, id);
-    } catch {
-      /* sin almacenamiento: solo dura la sesión */
-    }
+    savePref(SCENARIO_KEY, id);
+  };
+  const [timeOfDay, setTimeOfDay] = useState(() =>
+    loadPref(TIME_KEY, TIMES_OF_DAY, TIMES_OF_DAY[0])
+  );
+  const selectTimeOfDay = (id) => {
+    setTimeOfDay(id);
+    savePref(TIME_KEY, id);
+  };
+
+  // Vista de cámara (exterior/cabina); la escena viva se controla por ref
+  const [cameraView, setCameraView] = useState("external");
+  const sceneRef = useRef(null);
+  const toggleCameraView = () => {
+    setCameraView((view) => {
+      const next = view === "external" ? "cockpit" : "external";
+      sceneRef.current?.setCameraView(next);
+      return next;
+    });
   };
 
   // Entradas táctiles: el overlay escribe aquí y el loop las lee por frame
@@ -95,10 +127,18 @@ export default function SimulatorView({ onExit }) {
 
     const engine = new FlightEngine();
     const tracker = new MissionTracker(mission);
-    const scene = new SceneManager(canvasRef.current, scenario);
+    const scene = new SceneManager(canvasRef.current, scenario, timeOfDay);
+    sceneRef.current = scene;
+    setCameraView("external");
     engine.setTerrain(scene.getTerrain()); // pistas + límite del mapa
     const controls = new KeyboardControls();
     controls.attach();
+
+    // Tecla C: alternar vista exterior/cabina (además del botón)
+    const onKeyDown = (event) => {
+      if (event.code === "KeyC") toggleCameraView();
+    };
+    window.addEventListener("keydown", onKeyDown);
 
     const clock = new THREE.Clock();
     let elapsed = 0;
@@ -178,10 +218,13 @@ export default function SimulatorView({ onExit }) {
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("keydown", onKeyDown);
       controls.detach();
       scene.dispose();
+      if (sceneRef.current === scene) sceneRef.current = null;
     };
-  }, [phase, mission, scenario]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, mission, scenario, timeOfDay]);
 
   const fly = (selectedMission) => {
     soundRef.current?.start(); // gesto del usuario: el AudioContext puede arrancar
@@ -237,6 +280,13 @@ export default function SimulatorView({ onExit }) {
             </div>
           )}
           <button
+            className="sound-toggle sound-toggle--camera"
+            aria-label={cameraView === "external" ? t("view.cockpit") : t("view.external")}
+            onClick={toggleCameraView}
+          >
+            <SwitchCamera size={20} aria-hidden="true" />
+          </button>
+          <button
             className="sound-toggle"
             aria-label={muted ? t("sound.unmute") : t("sound.mute")}
             onClick={toggleMuted}
@@ -268,6 +318,21 @@ export default function SimulatorView({ onExit }) {
                   onClick={() => selectScenario(id)}
                 >
                   {t(`scenarios.${id}`)}
+                </button>
+              ))}
+            </div>
+
+            <h2 className="mission-list__heading">{t("timeTitle")}</h2>
+            <div className="scenario-picker" role="radiogroup" aria-label={t("timeTitle")}>
+              {TIMES_OF_DAY.map((id) => (
+                <button
+                  key={id}
+                  role="radio"
+                  aria-checked={timeOfDay === id}
+                  className={`scenario-chip ${timeOfDay === id ? "scenario-chip--active" : ""}`}
+                  onClick={() => selectTimeOfDay(id)}
+                >
+                  {t(`times.${id}`)}
                 </button>
               ))}
             </div>

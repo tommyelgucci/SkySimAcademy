@@ -87,5 +87,15 @@
     "coastal": "Ilha costeira",
     "platform": "Plataforma marítima"
   },
-  "mapWarning": "Volte — mar aberto à frente"
+  "mapWarning": "Volte — mar aberto à frente",
+  "timeTitle": "Hora do dia",
+  "times": {
+    "day": "Dia",
+    "dusk": "Entardecer",
+    "night": "Noite"
+  },
+  "view": {
+    "cockpit": "Vista da cabine",
+    "external": "Vista externa"
+  }
 }

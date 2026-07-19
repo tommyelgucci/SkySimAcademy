@@ -87,5 +87,15 @@
     "coastal": "Küsteninsel",
     "platform": "Meeresplattform"
   },
-  "mapWarning": "Umkehren — offenes Meer voraus"
+  "mapWarning": "Umkehren — offenes Meer voraus",
+  "timeTitle": "Tageszeit",
+  "times": {
+    "day": "Tag",
+    "dusk": "Abenddämmerung",
+    "night": "Nacht"
+  },
+  "view": {
+    "cockpit": "Cockpit-Ansicht",
+    "external": "Außenansicht"
+  }
 }

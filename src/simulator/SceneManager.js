@@ -16,8 +16,10 @@
  * suave y nivelado en cualquier sitio es válido.
  *
  * Interfaz pública:
- *   new SceneManager(canvas, scenarioId?)  — id de SCENARIOS o null (azar)
+ *   new SceneManager(canvas, scenarioId?, timeOfDay?)
  *   .scene .camera .aircraft .scenario
+ *   .setCameraView("external"|"cockpit")  — con transición suave
+ *   .cameraView
  *   .update(state, dt)
  *   .render()
  *   .resize(width, height)
@@ -26,17 +28,50 @@
  */
 import * as THREE from "three";
 
-const SKY_TOP = 0x2f6fb0;
-const SKY_HORIZON = 0xdff2f8;
 const CAMERA_OFFSET = new THREE.Vector3(0, 3.4, 10); // detrás y encima del avión
+/** Posición del "asiento del piloto" relativa al avión (vista de cabina). */
+const COCKPIT_OFFSET = new THREE.Vector3(0, 0.45, -0.9);
 const OCEAN_RADIUS = 3800;
 
 /** Ids de escenario disponibles (la UI construye el selector con esto). */
 export const SCENARIOS = ["desert", "mountain", "coastal", "platform"];
 
+/** Horas del día disponibles (la UI construye el selector con esto). */
+export const TIMES_OF_DAY = ["day", "dusk", "night"];
+
+/**
+ * Paleta de iluminación por hora. La cúpula del cielo y la niebla usan los
+ * colores directamente; el terreno se oscurece solo porque sus materiales
+ * (Lambert/Phong) responden a las luces. Las balizas y luces de pista son
+ * MeshBasicMaterial (no responden a la luz), así que "brillan" de noche.
+ */
+const TIME_PALETTES = {
+  day: {
+    skyTop: 0x2f6fb0, horizon: 0xdff2f8,
+    hemiSky: 0xdff2f8, hemiGround: 0x4c6b3a, hemiIntensity: 1.0,
+    sunColor: 0xfff3d6, sunIntensity: 1.5, sunPos: [250, 420, 120],
+    fogFar: 2800, stars: 0,
+  },
+  dusk: {
+    skyTop: 0x2b2a5e, horizon: 0xf29a5b,
+    hemiSky: 0xf7b183, hemiGround: 0x3c4633, hemiIntensity: 0.55,
+    sunColor: 0xff9a4d, sunIntensity: 0.8, sunPos: [420, 80, -160],
+    fogFar: 2400, stars: 130,
+  },
+  night: {
+    skyTop: 0x04070f, horizon: 0x0d1626,
+    hemiSky: 0x24324a, hemiGround: 0x0a0f14, hemiIntensity: 0.22,
+    sunColor: 0x9fb8dd, sunIntensity: 0.3, sunPos: [-220, 360, 200],
+    fogFar: 2000, stars: 420,
+  },
+};
+
 // Temporales reutilizados por frame (evitan crear objetos en el loop)
 const _desired = new THREE.Vector3();
 const _lookAt = new THREE.Vector3();
+const _cockpitPos = new THREE.Vector3();
+const _cockpitLook = new THREE.Vector3();
+const _forwardTmp = new THREE.Vector3();
 
 /** PRNG determinista simple (LCG). Cada escenario arranca con una semilla
  *  distinta para que las rocas/palmeras/etc. varíen de un vuelo a otro. */
@@ -78,23 +113,33 @@ export class SceneManager {
   /**
    * @param {HTMLCanvasElement} canvas
    * @param {string|null} scenarioId Id de SCENARIOS; null/desconocido = azar.
+   * @param {string} timeOfDay "day" | "dusk" | "night" (por defecto, día).
    */
-  constructor(canvas, scenarioId = null) {
+  constructor(canvas, scenarioId = null, timeOfDay = "day") {
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+    this.timeOfDay = TIMES_OF_DAY.includes(timeOfDay) ? timeOfDay : "day";
+    this.palette = TIME_PALETTES[this.timeOfDay];
+
     this.scene = new THREE.Scene();
-    const horizon = new THREE.Color(SKY_HORIZON);
+    const horizon = new THREE.Color(this.palette.horizon);
     this.scene.background = horizon;
-    this.scene.fog = new THREE.Fog(horizon.getHex(), 450, 2800);
+    this.scene.fog = new THREE.Fog(horizon.getHex(), 450, this.palette.fogFar);
 
     this.camera = new THREE.PerspectiveCamera(60, 1, 0.1, 5000);
     this.camera.position.set(0, 5, 20);
+
+    // Cámara: "external" (persecución) o "cockpit"; _viewBlend interpola
+    this.cameraView = "external";
+    this._viewBlend = 0;
+    this._elapsed = 0; // para el estroboscopio del avión
 
     this.aircraft = buildAircraft();
     this.scene.add(this.aircraft);
 
     this.#buildSky();
+    this.#buildStars();
     this.#buildLights();
 
     /** @type {{mapRadius:number, safeZones:Array<Function>, isSafeZone:Function}|null} */
@@ -108,11 +153,16 @@ export class SceneManager {
     return this.terrain;
   }
 
+  /** Cambia la vista con transición suave (interpolada en update). */
+  setCameraView(view) {
+    if (view === "external" || view === "cockpit") this.cameraView = view;
+  }
+
   #buildSky() {
-    // Cúpula con degradado vertical (horizonte claro → cénit azul intenso).
+    // Cúpula con degradado vertical (horizonte claro → cénit oscuro).
     const geo = new THREE.SphereGeometry(2900, 24, 16);
-    const top = new THREE.Color(SKY_TOP);
-    const bottom = new THREE.Color(SKY_HORIZON);
+    const top = new THREE.Color(this.palette.skyTop);
+    const bottom = new THREE.Color(this.palette.horizon);
     const pos = geo.attributes.position;
     const colors = [];
     for (let i = 0; i < pos.count; i++) {
@@ -130,10 +180,36 @@ export class SceneManager {
     this.scene.add(new THREE.Mesh(geo, mat));
   }
 
+  /** Estrellas (solo atardecer/noche): puntos sobre la cúpula, sin assets. */
+  #buildStars() {
+    if (!this.palette.stars) return;
+    const random = makeSeededRandom(9091);
+    const positions = new Float32Array(this.palette.stars * 3);
+    for (let i = 0; i < this.palette.stars; i++) {
+      // Punto aleatorio en el hemisferio superior, justo bajo la cúpula
+      const theta = random() * Math.PI * 2;
+      const phi = Math.acos(0.05 + random() * 0.9);
+      const r = 2800;
+      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = r * Math.cos(phi);
+      positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const mat = new THREE.PointsMaterial({
+      color: 0xeef3ff,
+      size: 2.2,
+      sizeAttenuation: false,
+      fog: false,
+    });
+    this.scene.add(new THREE.Points(geo, mat));
+  }
+
   #buildLights() {
-    this.scene.add(new THREE.HemisphereLight(0xdff2f8, 0x4c6b3a, 1.0));
-    const sun = new THREE.DirectionalLight(0xfff3d6, 1.5);
-    sun.position.set(250, 420, 120);
+    const p = this.palette;
+    this.scene.add(new THREE.HemisphereLight(p.hemiSky, p.hemiGround, p.hemiIntensity));
+    const sun = new THREE.DirectionalLight(p.sunColor, p.sunIntensity);
+    sun.position.set(...p.sunPos);
     this.scene.add(sun);
   }
 
@@ -215,6 +291,28 @@ export class SceneManager {
       th.rotation.x = -Math.PI / 2;
       th.position.set(tx, 0.08, -length / 2 + 15);
       group.add(th);
+    }
+
+    // Luces de pista (MeshBasic: brillan de noche). Bordes blancos-cálidos,
+    // umbral verde en una cabecera y rojo en la otra, como una pista real.
+    const lightGeometry = new THREE.SphereGeometry(0.55, 6, 6);
+    const edgeLightMaterial = new THREE.MeshBasicMaterial({ color: 0xfff0b8 });
+    for (let d = -length / 2; d <= length / 2; d += 45) {
+      for (const side of [-1, 1]) {
+        const bulb = new THREE.Mesh(lightGeometry, edgeLightMaterial);
+        bulb.position.set(side * (width / 2 + 1.6), 0.35, d);
+        group.add(bulb);
+      }
+    }
+    const greenMaterial = new THREE.MeshBasicMaterial({ color: 0x39d353 });
+    const redMaterial = new THREE.MeshBasicMaterial({ color: 0xff4d4d });
+    for (let tx = -width / 2; tx <= width / 2; tx += width / 4) {
+      const green = new THREE.Mesh(lightGeometry, greenMaterial);
+      green.position.set(tx, 0.35, length / 2 + 3);
+      group.add(green);
+      const red = new THREE.Mesh(lightGeometry, redMaterial);
+      red.position.set(tx, 0.35, -length / 2 - 3);
+      group.add(red);
     }
 
     group.position.set(x, 0, z);
@@ -538,7 +636,8 @@ export class SceneManager {
   }
 
   /**
-   * Sincroniza el avión con la física y persigue con la cámara.
+   * Sincroniza el avión con la física y coloca la cámara según la vista
+   * activa, interpolando suavemente entre exterior y cabina.
    * @param {{position: THREE.Vector3, quaternion: THREE.Quaternion}} state
    * @param {number} dt
    */
@@ -546,12 +645,32 @@ export class SceneManager {
     this.aircraft.position.copy(state.position);
     this.aircraft.quaternion.copy(state.quaternion);
 
-    // Cámara de persecución con amortiguación exponencial (independiente de FPS)
+    // Estroboscopio del avión: destello blanco breve una vez por segundo
+    this._elapsed += dt;
+    const strobe = this.aircraft.userData.strobe;
+    if (strobe) strobe.visible = this._elapsed % 1 < 0.08;
+
+    // Transición de vista: 0 = exterior, 1 = cabina
+    const targetBlend = this.cameraView === "cockpit" ? 1 : 0;
+    this._viewBlend += (targetBlend - this._viewBlend) * Math.min(1, 5 * dt);
+    // Dentro de la cabina el fuselaje propio no debe taparlo todo
+    this.aircraft.visible = this._viewBlend < 0.7;
+
+    // Posición exterior (persecución) y de cabina (asiento del piloto)
     _desired.copy(CAMERA_OFFSET).applyQuaternion(state.quaternion).add(state.position);
     _desired.y = Math.max(_desired.y, 1.4); // que no se meta bajo el suelo
-    const smoothing = 1 - Math.exp(-4 * dt);
+    _cockpitPos.copy(COCKPIT_OFFSET).applyQuaternion(state.quaternion).add(state.position);
+    _forwardTmp.set(0, 0, -1).applyQuaternion(state.quaternion);
+    _cockpitLook.copy(_cockpitPos).addScaledVector(_forwardTmp, 120);
+
+    // Mezcla de destino y de punto de mira según la vista
+    const blend = this._viewBlend;
+    _desired.lerp(_cockpitPos, blend);
+    _lookAt.copy(state.position).lerp(_cockpitLook, blend);
+
+    // Amortiguación: suave en exterior, pegada al avión en cabina
+    const smoothing = 1 - Math.exp(-(4 + 16 * blend) * dt);
     this.camera.position.lerp(_desired, smoothing);
-    _lookAt.copy(state.position);
     this.camera.lookAt(_lookAt);
   }
 
@@ -650,6 +769,36 @@ function buildAircraft() {
     return plane;
   };
   group.add(makeTailplane(1), makeTailplane(-1));
+
+  // Luces de navegación reales: roja en punta izquierda, verde en derecha,
+  // blanca en cola + estroboscopio (parpadea desde SceneManager.update).
+  const navLightGeometry = new THREE.SphereGeometry(0.09, 6, 6);
+  const navLeft = new THREE.Mesh(
+    navLightGeometry,
+    new THREE.MeshBasicMaterial({ color: 0xff3b30 })
+  );
+  navLeft.position.set(-3.1, -0.05, 0.9);
+  group.add(navLeft);
+  const navRight = new THREE.Mesh(
+    navLightGeometry,
+    new THREE.MeshBasicMaterial({ color: 0x34c759 })
+  );
+  navRight.position.set(3.1, -0.05, 0.9);
+  group.add(navRight);
+  const tailLight = new THREE.Mesh(
+    navLightGeometry,
+    new THREE.MeshBasicMaterial({ color: 0xffffff })
+  );
+  tailLight.position.set(0, 0.4, 3.05);
+  group.add(tailLight);
+  const strobe = new THREE.Mesh(
+    new THREE.SphereGeometry(0.14, 6, 6),
+    new THREE.MeshBasicMaterial({ color: 0xffffff })
+  );
+  strobe.position.set(0, finHeight + 0.62, 2.9);
+  strobe.visible = false;
+  group.add(strobe);
+  group.userData.strobe = strobe;
 
   const makeEngine = (mirror) => {
     const nacelle = new THREE.Group();

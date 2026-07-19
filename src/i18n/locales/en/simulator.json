@@ -87,5 +87,15 @@
     "coastal": "Coastal island",
     "platform": "Sea platform"
   },
-  "mapWarning": "Turn back — open sea ahead"
+  "mapWarning": "Turn back — open sea ahead",
+  "timeTitle": "Time of day",
+  "times": {
+    "day": "Day",
+    "dusk": "Dusk",
+    "night": "Night"
+  },
+  "view": {
+    "cockpit": "Cockpit view",
+    "external": "External view"
+  }
 }
