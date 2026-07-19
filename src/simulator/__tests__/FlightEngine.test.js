@@ -105,6 +105,66 @@ describe("FlightEngine — vuelo", () => {
   });
 });
 
+describe("FlightEngine — terreno (pistas y límite del mapa)", () => {
+  // Pista de prueba: franja de 40 m de ancho a lo largo de −Z/+Z
+  const terrain = {
+    mapRadius: 500,
+    isSafeZone: (x, z) => Math.abs(x) <= 20 && z >= -300 && z <= 300,
+  };
+
+  /** Descenso suave: morro ligeramente abajo, potencia mantenida. */
+  function gentleDescent(engine) {
+    run(engine, 0.15, { pitch: -0.3, throttleTarget: 0.3 });
+    run(engine, 8, { throttleTarget: 0.3 });
+  }
+
+  it("sin terreno registrado, aterrizar en cualquier sitio sigue valiendo", () => {
+    const engine = new FlightEngine();
+    airborne(engine, { altitude: 4, airspeed: 18 });
+    engine.position.x = 200; // "fuera de pista", pero no hay terreno
+    gentleDescent(engine);
+    expect(engine.grounded).toBe(true);
+    expect(engine.crashed).toBe(false);
+  });
+
+  it("con terreno, aterrizar dentro de la pista es válido", () => {
+    const engine = new FlightEngine();
+    engine.setTerrain(terrain);
+    airborne(engine, { altitude: 4, airspeed: 18 });
+    gentleDescent(engine);
+    expect(engine.grounded).toBe(true);
+    expect(engine.crashed).toBe(false);
+  });
+
+  it("con terreno, tocar fuera de la pista es accidente 'water'", () => {
+    const engine = new FlightEngine();
+    engine.setTerrain(terrain);
+    airborne(engine, { altitude: 4, airspeed: 18 });
+    engine.position.x = 200; // sobre el agua
+    gentleDescent(engine);
+    expect(engine.crashed).toBe(true);
+    expect(engine.crashReason).toBe("water");
+  });
+
+  it("salir del radio del mapa es accidente 'bounds' a cualquier altitud", () => {
+    const engine = new FlightEngine();
+    engine.setTerrain(terrain);
+    airborne(engine, { altitude: 200, airspeed: 40 });
+    engine.position.x = 600; // más allá de mapRadius = 500
+    engine.update(1 / 60);
+    expect(engine.crashed).toBe(true);
+    expect(engine.crashReason).toBe("bounds");
+  });
+
+  it("reset() conserva el terreno (reintento en el mismo escenario)", () => {
+    const engine = new FlightEngine();
+    engine.setTerrain(terrain);
+    engine.reset();
+    expect(engine.terrain).toBe(terrain);
+    expect(engine.crashReason).toBe(null);
+  });
+});
+
 describe("FlightEngine — impactos", () => {
   it("picar contra el suelo rompe el avión", () => {
     const engine = new FlightEngine();

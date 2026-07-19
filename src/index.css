@@ -724,6 +724,43 @@ body {
   }
 }
 
+/* Aviso de límite del mapa: ámbar, menos alarmante que la pérdida */
+.hud__stall--boundary {
+  color: var(--color-accent);
+  animation-duration: 1.1s;
+}
+
+/* Selector de escenario en el briefing */
+.scenario-picker {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-block-end: 0.4rem;
+}
+
+.scenario-chip {
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-dim);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+
+.scenario-chip:hover {
+  border-color: var(--color-primary);
+}
+
+.scenario-chip--active {
+  color: var(--color-primary-ink);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 /* Botón de silencio durante el vuelo */
 .sound-toggle {
   position: absolute;

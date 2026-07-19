@@ -60,7 +60,15 @@
   },
   "crash": {
     "title": "Harte Landung!",
-    "body": "Du hast den Boden zu hart oder zu schräg berührt. Halte die Tragflächen waagerecht und sinke sanft, bevor du aufsetzt."
+    "body": "Du hast den Boden zu hart oder zu schräg berührt. Halte die Tragflächen waagerecht und sinke sanft, bevor du aufsetzt.",
+    "water": {
+      "title": "Wasserung!",
+      "body": "Du bist außerhalb der Landebahn aufgekommen. Richte dich auf die Bahn aus und lande darauf."
+    },
+    "bounds": {
+      "title": "Über offener See verloren",
+      "body": "Du hast dich zu weit vom Fluggebiet entfernt. Achte auf die Warnung und kehre rechtzeitig um."
+    }
   },
   "stats": {
     "maxAltitude": "Maximale Höhe: {{value}} m",
@@ -71,5 +79,13 @@
   "sound": {
     "mute": "Ton stummschalten",
     "unmute": "Ton einschalten"
-  }
+  },
+  "scenarioTitle": "Szenario",
+  "scenarios": {
+    "desert": "Wüsten-Flugplatz",
+    "mountain": "Gebirgspass",
+    "coastal": "Küsteninsel",
+    "platform": "Meeresplattform"
+  },
+  "mapWarning": "Umkehren — offenes Meer voraus"
 }

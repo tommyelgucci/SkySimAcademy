@@ -60,7 +60,15 @@
   },
   "crash": {
     "title": "Rough landing!",
-    "body": "You hit the ground too hard or too banked. Level the wings and descend gently before touching down."
+    "body": "You hit the ground too hard or too banked. Level the wings and descend gently before touching down.",
+    "water": {
+      "title": "Down in the water!",
+      "body": "You touched down outside the runway. Line up with the strip and land on it."
+    },
+    "bounds": {
+      "title": "Lost over open sea",
+      "body": "You flew too far from the flight area. Watch for the warning and turn back in time."
+    }
   },
   "stats": {
     "maxAltitude": "Max altitude: {{value}} m",
@@ -71,5 +79,13 @@
   "sound": {
     "mute": "Mute sound",
     "unmute": "Unmute sound"
-  }
+  },
+  "scenarioTitle": "Scenario",
+  "scenarios": {
+    "desert": "Desert aerodrome",
+    "mountain": "Mountain pass",
+    "coastal": "Coastal island",
+    "platform": "Sea platform"
+  },
+  "mapWarning": "Turn back — open sea ahead"
 }

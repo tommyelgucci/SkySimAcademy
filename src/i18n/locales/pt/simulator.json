@@ -60,7 +60,15 @@
   },
   "crash": {
     "title": "Pouso brusco!",
-    "body": "Você tocou o solo com muita força ou muito inclinado. Nivele as asas e desça suavemente antes de tocar a pista."
+    "body": "Você tocou o solo com muita força ou muito inclinado. Nivele as asas e desça suavemente antes de tocar a pista.",
+    "water": {
+      "title": "Caiu na água!",
+      "body": "Você tocou fora da pista. Alinhe-se com ela e pouse em cima."
+    },
+    "bounds": {
+      "title": "Perdido sobre o mar aberto",
+      "body": "Você se afastou demais da área de voo. Atente ao aviso e volte a tempo."
+    }
   },
   "stats": {
     "maxAltitude": "Altitude máxima: {{value}} m",
@@ -71,5 +79,13 @@
   "sound": {
     "mute": "Silenciar o som",
     "unmute": "Ativar o som"
-  }
+  },
+  "scenarioTitle": "Cenário",
+  "scenarios": {
+    "desert": "Aeródromo no deserto",
+    "mountain": "Passo de montanha",
+    "coastal": "Ilha costeira",
+    "platform": "Plataforma marítima"
+  },
+  "mapWarning": "Volte — mar aberto à frente"
 }

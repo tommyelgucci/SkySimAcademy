@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import * as THREE from "three";
 import { FlightEngine } from "../../simulator/FlightEngine.js";
-import { SceneManager } from "../../simulator/SceneManager.js";
+import { SceneManager, SCENARIOS } from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
 import { MissionTracker } from "../../simulator/MissionTracker.js";
 import { SoundEngine } from "../../simulator/SoundEngine.js";
@@ -40,6 +40,9 @@ import Hud from "./Hud.jsx";
 /** Duración máxima de una sesión de vuelo, en segundos. */
 const SESSION_SECONDS = 5 * 60;
 const HUD_INTERVAL = 0.1; // s entre actualizaciones del HUD
+const SCENARIO_KEY = "aerolearn.scenario";
+/** Fracción del radio del mapa a partir de la cual se avisa del límite. */
+const BOUNDARY_WARN_RATIO = 0.8;
 
 export default function SimulatorView({ onExit }) {
   const { t } = useTranslation(["simulator", "theory"]);
@@ -51,6 +54,25 @@ export default function SimulatorView({ onExit }) {
   const [mission, setMission] = useState(null);
   const [hud, setHud] = useState(null);
   const [stats, setStats] = useState(null);
+  const [crashReason, setCrashReason] = useState(null);
+
+  // Escenario elegido (persistente entre sesiones)
+  const [scenario, setScenario] = useState(() => {
+    try {
+      const saved = localStorage.getItem(SCENARIO_KEY);
+      return SCENARIOS.includes(saved) ? saved : SCENARIOS[0];
+    } catch {
+      return SCENARIOS[0];
+    }
+  });
+  const selectScenario = (id) => {
+    setScenario(id);
+    try {
+      localStorage.setItem(SCENARIO_KEY, id);
+    } catch {
+      /* sin almacenamiento: solo dura la sesión */
+    }
+  };
 
   // Entradas táctiles: el overlay escribe aquí y el loop las lee por frame
   const touchRef = useRef({ pitch: 0, roll: 0, yaw: 0, throttleTarget: null });
@@ -73,7 +95,8 @@ export default function SimulatorView({ onExit }) {
 
     const engine = new FlightEngine();
     const tracker = new MissionTracker(mission);
-    const scene = new SceneManager(canvasRef.current);
+    const scene = new SceneManager(canvasRef.current, scenario);
+    engine.setTerrain(scene.getTerrain()); // pistas + límite del mapa
     const controls = new KeyboardControls();
     controls.attach();
 
@@ -92,6 +115,7 @@ export default function SimulatorView({ onExit }) {
     const endSession = (finalPhase) => {
       if (finalPhase === "crashed") soundRef.current?.crash();
       if (finalPhase === "missionComplete") soundRef.current?.success();
+      setCrashReason(engine.crashReason);
       setStats({
         maxAltitude: Math.round(engine.maxAltitude),
         distanceKm: (engine.distance / 1000).toFixed(1),
@@ -124,6 +148,12 @@ export default function SimulatorView({ onExit }) {
       hudTimer += dt;
       if (hudTimer >= HUD_INTERVAL) {
         hudTimer = 0;
+        // Aviso de límite del mapa: cerca del borde, antes del accidente
+        const mapRadius = engine.terrain?.mapRadius;
+        const nearBoundary =
+          mapRadius != null &&
+          Math.hypot(engine.position.x, engine.position.z) >
+            mapRadius * BOUNDARY_WARN_RATIO;
         setHud({
           speed: Math.round(engine.airspeed),
           altitude: Math.round(engine.altitude),
@@ -131,6 +161,7 @@ export default function SimulatorView({ onExit }) {
           throttle: Math.round(engine.throttle * 100),
           timeLeft: Math.max(0, Math.ceil(SESSION_SECONDS - elapsed)),
           stalled: engine.stalled,
+          nearBoundary,
         });
       }
 
@@ -150,7 +181,7 @@ export default function SimulatorView({ onExit }) {
       controls.detach();
       scene.dispose();
     };
-  }, [phase, mission]);
+  }, [phase, mission, scenario]);
 
   const fly = (selectedMission) => {
     soundRef.current?.start(); // gesto del usuario: el AudioContext puede arrancar
@@ -167,11 +198,17 @@ export default function SimulatorView({ onExit }) {
     setPhase("briefing");
   };
 
+  // Mensaje de crash según la causa (agua, límite del mapa, o impacto/alabeo)
+  const crashKey =
+    crashReason === "water" || crashReason === "bounds"
+      ? `crash.${crashReason}`
+      : "crash";
+
   const endOverlays = {
     crashed: {
       icon: <TriangleAlert size={24} className="overlay-icon is-wrong" aria-hidden="true" />,
-      title: t("crash.title"),
-      body: t("crash.body"),
+      title: t(`${crashKey}.title`),
+      body: t(`${crashKey}.body`),
     },
     timeUp: {
       icon: <Flag size={24} className="overlay-icon" aria-hidden="true" />,
@@ -219,6 +256,21 @@ export default function SimulatorView({ onExit }) {
           <div className="simulator__panel simulator__panel--wide">
             <h1>{t("briefing.title")}</h1>
             <p>{t("briefing.body")}</p>
+
+            <h2 className="mission-list__heading">{t("scenarioTitle")}</h2>
+            <div className="scenario-picker" role="radiogroup" aria-label={t("scenarioTitle")}>
+              {SCENARIOS.map((id) => (
+                <button
+                  key={id}
+                  role="radio"
+                  aria-checked={scenario === id}
+                  className={`scenario-chip ${scenario === id ? "scenario-chip--active" : ""}`}
+                  onClick={() => selectScenario(id)}
+                >
+                  {t(`scenarios.${id}`)}
+                </button>
+              ))}
+            </div>
 
             <h2 className="mission-list__heading">{t("missions.title")}</h2>
             <div className="mission-list">

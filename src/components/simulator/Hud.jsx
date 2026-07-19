@@ -33,6 +33,11 @@ export default function Hud({ hud }) {
           <TriangleAlert size={22} aria-hidden="true" /> {t("stallWarning")}
         </div>
       )}
+      {!hud.stalled && hud.nearBoundary && (
+        <div className="hud__stall hud__stall--boundary">
+          <TriangleAlert size={22} aria-hidden="true" /> {t("mapWarning")}
+        </div>
+      )}
     </>
   );
 }

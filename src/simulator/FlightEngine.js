@@ -12,6 +12,15 @@
  *  - Por debajo de STALL_SPEED el ala "entra en pérdida": el avión se hunde
  *    y baja el morro — exactamente lo que enseña el módulo de teoría.
  *  - Alabear induce guiñada coordinada (el avión vira al inclinarse).
+ *
+ * Terreno (opcional, vía setTerrain):
+ *  - Sin terreno registrado, el comportamiento es el de siempre: cualquier
+ *    toque suave y nivelado en el suelo (y = GROUND_Y) es un aterrizaje
+ *    válido, sin importar dónde.
+ *  - Con terreno registrado (SceneManager.getTerrain()), tocar el suelo
+ *    fuera de una zona segura (agua, terreno irregular) también es un
+ *    accidente, y alejarse más de `mapRadius` del centro —a cualquier
+ *    altitud— se considera vuelo perdido sobre mar abierto.
  */
 import { Vector3, Quaternion } from "three";
 
@@ -52,6 +61,12 @@ export class FlightEngine {
      * throttleTarget no es null, tiene prioridad.
      */
     this.input = { pitch: 0, roll: 0, yaw: 0, throttle: 0, throttleTarget: null };
+    /**
+     * Terreno del escenario actual (ver setTerrain). Vive fuera de reset()
+     * a propósito: un reintento en el mismo vuelo no debe perder el mapa.
+     * @type {{mapRadius?: number, isSafeZone?: (x:number,z:number)=>boolean}|null}
+     */
+    this.terrain = null;
     this.reset();
   }
 
@@ -66,9 +81,22 @@ export class FlightEngine {
     this.grounded = true;
     this.stalled = false;
     this.crashed = false;
+    // "water" | "bounds" | "bank" | "impact" | null — motivo del accidente,
+    // útil para mostrar el mensaje correcto en la UI.
+    this.crashReason = null;
     // Estadísticas de la sesión
     this.maxAltitude = 0;
     this.distance = 0; // metros recorridos en horizontal
+  }
+
+  /**
+   * Registra el terreno del escenario actual. Se lo pasa SceneManager tras
+   * elegir uno al azar: `flightEngine.setTerrain(sceneManager.getTerrain())`.
+   * Pasar `null` (o no llamarlo nunca) restaura el comportamiento anterior.
+   * @param {{mapRadius?: number, isSafeZone?: (x:number,z:number)=>boolean}|null} terrain
+   */
+  setTerrain(terrain) {
+    this.terrain = terrain ?? null;
   }
 
   /** @param {Partial<{pitch:number, roll:number, yaw:number, throttle:number}>} partial */
@@ -148,12 +176,33 @@ export class FlightEngine {
     this.distance +=
       Math.hypot(_velocity.x, _velocity.z) * dt * (this.grounded ? 0 : 1);
 
+    // --- Límite del mapa ---------------------------------------------------
+    // Todos los escenarios están rodeados de océano abierto: alejarse
+    // demasiado del centro, a cualquier altitud, es vuelo perdido sobre
+    // mar abierto. Sin terreno registrado esto no hace nada (mapRadius
+    // no existe), igual que antes.
+    if (this.terrain?.mapRadius != null && !this.crashed) {
+      const distFromCenter = Math.hypot(this.position.x, this.position.z);
+      if (distFromCenter > this.terrain.mapRadius) {
+        this.crashed = true;
+        this.crashReason = "bounds";
+      }
+    }
+
     // --- Suelo -----------------------------------------------------------
     if (this.position.y <= FLIGHT.GROUND_Y) {
       const hardImpact = this.verticalSpeed < FLIGHT.CRASH_SINK;
       const tooBanked = Math.abs(_right.y) > FLIGHT.CRASH_BANK;
-      if (!this.grounded && (hardImpact || tooBanked)) {
+      // Sin terreno registrado, cualquier sitio vale (comportamiento de
+      // siempre). Con terreno, solo se puede tocar tierra dentro de una
+      // pista: fuera de ahí es agua (o terreno irregular), y eso también
+      // es un accidente — así no se puede "aterrizar" flotando en el mar.
+      const offSafeZone = this.terrain?.isSafeZone
+        ? !this.terrain.isSafeZone(this.position.x, this.position.z)
+        : false;
+      if (!this.grounded && !this.crashed && (hardImpact || tooBanked || offSafeZone)) {
         this.crashed = true;
+        this.crashReason = offSafeZone ? "water" : tooBanked ? "bank" : "impact";
       }
       this.position.y = FLIGHT.GROUND_Y;
       this.grounded = true;
