@@ -779,13 +779,17 @@ body {
   z-index: 6;
 }
 
-/* Botones de cámara y ajustes: en fila junto al de sonido */
-.sound-toggle--camera {
+/* Botones de cámara, pausa y ajustes: en fila junto al de sonido */
+.sound-toggle--pause {
   inset-inline-end: 4.2rem;
 }
 
-.sound-toggle--settings {
+.sound-toggle--camera {
   inset-inline-end: 7.4rem;
+}
+
+.sound-toggle--settings {
+  inset-inline-end: 10.6rem;
 }
 
 /* Panel de ocultar/mostrar grupos de interfaz */
@@ -967,6 +971,22 @@ body {
 .approach-pill--high,
 .approach-pill--low {
   color: var(--color-accent);
+}
+
+/* Mini-mapa cenital */
+.mini-map {
+  position: absolute;
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  z-index: 4;
+}
+
+/* Overlay de pausa: por encima de HUD, botones flotantes y mandos táctiles */
+.simulator__overlay--pause {
+  z-index: 9;
 }
 
 /* Informe de aterrizaje descartable */

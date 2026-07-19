@@ -153,7 +153,10 @@
     "instruments": "Instrumentos",
     "yoke": "Yoke (mando)",
     "rudder": "Botones de timón",
-    "textHud": "Datos de texto"
+    "textHud": "Datos de texto",
+    "minimap": "Mini-mapa",
+    "gyro": "Control por inclinación (giroscopio)",
+    "haptics": "Vibración en la pérdida"
   },
   "approach": {
     "onCourse": "En senda",
@@ -173,5 +176,14 @@
     "grade2": "A repetir",
     "grade1": "Duro",
     "continue": "Seguir volando"
+  },
+  "pause": {
+    "paused": "En pausa",
+    "body": "Tómate un respiro — tu vuelo está congelado. Reanuda cuando quieras.",
+    "pause": "Pausar vuelo",
+    "resume": "Reanudar vuelo"
+  },
+  "minimap": {
+    "title": "Mini-mapa"
   }
 }

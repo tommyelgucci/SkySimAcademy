@@ -153,7 +153,10 @@
     "instruments": "Instruments",
     "yoke": "Yoke",
     "rudder": "Rudder buttons",
-    "textHud": "Text readouts"
+    "textHud": "Text readouts",
+    "minimap": "Mini-map",
+    "gyro": "Tilt control (gyroscope)",
+    "haptics": "Vibration on stall"
   },
   "approach": {
     "onCourse": "On glide path",
@@ -173,5 +176,14 @@
     "grade2": "Needs another try",
     "grade1": "Rough",
     "continue": "Keep flying"
+  },
+  "pause": {
+    "paused": "Paused",
+    "body": "Take a break — your flight is frozen. Resume when you're ready.",
+    "pause": "Pause flight",
+    "resume": "Resume flight"
+  },
+  "minimap": {
+    "title": "Mini-map"
   }
 }

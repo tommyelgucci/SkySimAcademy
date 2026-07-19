@@ -170,6 +170,18 @@ export class SoundEngine {
       this.master.gain.setTargetAtTime(muted ? 0 : 1, this.ctx.currentTime, 0.05);
   }
 
+  /** Congela el audio en pausa (independiente del mute del usuario). */
+  pause() {
+    this.ctx?.suspend().catch(() => {});
+  }
+
+  /** Reanuda el audio tras una pausa. */
+  resume() {
+    if (this.ctx?.state === "suspended" && !document.hidden) {
+      this.ctx.resume().catch(() => {});
+    }
+  }
+
   /** Libera el contexto de audio. */
   dispose() {
     this.ctx?.close().catch(() => {});

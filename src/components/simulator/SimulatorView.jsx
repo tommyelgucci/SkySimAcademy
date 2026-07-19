@@ -9,7 +9,7 @@
  * (el estado de React solo se actualiza ~10 veces/segundo para el HUD),
  * así el render 3D nunca espera a un re-render de la interfaz.
  */
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Award,
@@ -19,6 +19,8 @@ import {
   Lock,
   MoveDown,
   MoveUp,
+  Pause,
+  Play,
   PlaneTakeoff,
   Settings2,
   Star,
@@ -54,6 +56,7 @@ import { ContentIcon } from "../icons.jsx";
 const MISSION_BY_ID = new Map(MISSIONS.map((m) => [m.id, m]));
 import Hud from "./Hud.jsx";
 import InstrumentPanel from "./InstrumentPanel.jsx";
+import MiniMap from "./MiniMap.jsx";
 
 /** Duración máxima de una sesión de vuelo, en segundos. */
 const SESSION_SECONDS = 5 * 60;
@@ -62,9 +65,21 @@ const SCENARIO_KEY = "aerolearn.scenario";
 const TIME_KEY = "aerolearn.timeofday";
 const UI_KEY = "aerolearn.ui";
 /** Grupos de interfaz que el usuario puede ocultar/mostrar en vuelo. */
-const DEFAULT_UI_PREFS = { instruments: true, yoke: true, rudder: true, textHud: true };
+const DEFAULT_UI_PREFS = {
+  instruments: true,
+  yoke: true,
+  rudder: true,
+  textHud: true,
+  minimap: true,
+  haptics: true,
+};
 /** Fracción del radio del mapa a partir de la cual se avisa del límite. */
 const BOUNDARY_WARN_RATIO = 0.8;
+/** Rango (grados) y zona muerta del modo giroscopio: inclinación → pitch/roll. */
+const GYRO_RANGE = 35;
+const GYRO_DEAD = 2;
+
+const clampAxis = (v) => Math.max(-1, Math.min(1, v));
 
 /** Preferencia persistida con lista de valores válidos. */
 function loadPref(key, valid, fallback) {
@@ -96,6 +111,12 @@ export default function SimulatorView({ onExit }) {
   const [crashReason, setCrashReason] = useState(null);
   /** Informe de aterrizaje (estrellas) mostrado como panel descartable. */
   const [landingDebrief, setLandingDebrief] = useState(null);
+  /** Terreno del escenario actual, solo los datos planos que necesita el mini-mapa. */
+  const [flightTerrain, setFlightTerrain] = useState(null);
+
+  // Pausa: el loop debe leerla por ref (es una clausura fuera de React)
+  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
 
   // Escenario y hora del día elegidos (persistentes entre sesiones)
   const [scenario, setScenario] = useState(() =>
@@ -148,6 +169,62 @@ export default function SimulatorView({ onExit }) {
   const touchRef = useRef({ pitch: 0, roll: 0, yaw: 0, throttleTarget: null });
   const touchDevice = hasCoarsePointer();
 
+  // Modo giroscopio: fuente alternativa de pitch/roll (inclinar el móvil).
+  // No se persiste entre recargas: activarlo exige un gesto de usuario (el
+  // permiso de iOS solo se concede dentro de un click), así que se trata
+  // como una capacidad de la sesión en curso, no una preferencia guardada.
+  const [gyroOn, setGyroOn] = useState(false);
+  const gyroOnRef = useRef(false);
+  const gyroRef = useRef({ pitch: 0, roll: 0 });
+  const gyroCalRef = useRef(null); // orientación "neutra" capturada al activar
+  useEffect(() => {
+    gyroOnRef.current = gyroOn;
+  }, [gyroOn]);
+
+  const onOrient = useCallback((event) => {
+    if (event.beta == null || event.gamma == null) return;
+    if (!gyroCalRef.current) {
+      gyroCalRef.current = { beta: event.beta, gamma: event.gamma };
+    }
+    const deltaBeta = event.beta - gyroCalRef.current.beta;
+    const deltaGamma = event.gamma - gyroCalRef.current.gamma;
+    gyroRef.current.pitch =
+      Math.abs(deltaBeta) < GYRO_DEAD ? 0 : clampAxis(deltaBeta / GYRO_RANGE);
+    gyroRef.current.roll =
+      Math.abs(deltaGamma) < GYRO_DEAD ? 0 : clampAxis(deltaGamma / GYRO_RANGE);
+  }, []);
+
+  useEffect(() => () => window.removeEventListener("deviceorientation", onOrient), [onOrient]);
+
+  const disableGyro = () => {
+    window.removeEventListener("deviceorientation", onOrient);
+    gyroRef.current = { pitch: 0, roll: 0 };
+    gyroCalRef.current = null;
+    setGyroOn(false);
+  };
+
+  const toggleGyro = async () => {
+    if (gyroOn) {
+      disableGyro();
+      return;
+    }
+    const DeviceOrientation = window.DeviceOrientationEvent;
+    if (!DeviceOrientation) return; // sin sensores: no-op silencioso
+    if (typeof DeviceOrientation.requestPermission === "function") {
+      // iOS 13+: el permiso solo se concede dentro de este gesto de usuario
+      let result;
+      try {
+        result = await DeviceOrientation.requestPermission();
+      } catch {
+        return;
+      }
+      if (result !== "granted") return;
+    }
+    gyroCalRef.current = null; // recalibrar al activar
+    window.addEventListener("deviceorientation", onOrient);
+    setGyroOn(true);
+  };
+
   // Sonido sintetizado: una instancia por montaje del simulador
   const soundRef = useRef(null);
   if (!soundRef.current) soundRef.current = new SoundEngine();
@@ -160,6 +237,22 @@ export default function SimulatorView({ onExit }) {
     setMuted(next);
   };
 
+  // Vibración de pérdida: el loop la lee por ref, se sincroniza con el ajuste
+  const hapticsRef = useRef(uiPrefs.haptics);
+  useEffect(() => {
+    hapticsRef.current = uiPrefs.haptics;
+  }, [uiPrefs.haptics]);
+
+  const togglePause = () => {
+    setPaused((prev) => {
+      const next = !prev;
+      pausedRef.current = next;
+      if (next) soundRef.current?.pause();
+      else soundRef.current?.resume();
+      return next;
+    });
+  };
+
   useEffect(() => {
     if (phase !== "flying") return;
 
@@ -168,14 +261,17 @@ export default function SimulatorView({ onExit }) {
     const scene = new SceneManager(canvasRef.current, scenario, timeOfDay);
     sceneRef.current = scene;
     setCameraView("external");
-    engine.setTerrain(scene.getTerrain()); // pistas + límite del mapa
-    const evaluator = new FlightEvaluator(scene.getTerrain()); // senda + nota
+    const terrain = scene.getTerrain(); // pistas + límite del mapa
+    engine.setTerrain(terrain);
+    setFlightTerrain({ mapRadius: terrain.mapRadius, runways: terrain.runways });
+    const evaluator = new FlightEvaluator(terrain); // senda + nota
     const controls = new KeyboardControls();
     controls.attach();
 
-    // Tecla C: alternar vista exterior/cabina (además del botón)
+    // Tecla C: alternar vista exterior/cabina · P/Esc: pausar/reanudar
     const onKeyDown = (event) => {
       if (event.code === "KeyC") toggleCameraView();
+      if (event.code === "KeyP" || event.code === "Escape") togglePause();
     };
     window.addEventListener("keydown", onKeyDown);
 
@@ -183,6 +279,7 @@ export default function SimulatorView({ onExit }) {
     let elapsed = 0;
     let hudTimer = 0;
     let frameId = 0;
+    let wasStalled = false;
 
     const resize = () => {
       const { clientWidth, clientHeight } = containerRef.current;
@@ -205,27 +302,51 @@ export default function SimulatorView({ onExit }) {
       setPhase(finalPhase);
     };
 
-    const clampAxis = (v) => Math.max(-1, Math.min(1, v));
     const loop = () => {
+      // Se drena el reloj SIEMPRE, en pausa incluida: si dejara de leerse,
+      // el primer getDelta() al reanudar devolvería toda la duración de la
+      // pausa y elapsed/física darían un salto.
       const dt = clock.getDelta();
+      if (pausedRef.current) {
+        frameId = requestAnimationFrame(loop);
+        return;
+      }
       elapsed += dt;
 
       // Fusionar teclado + táctil: los ejes se suman, los gases táctiles
-      // (valor absoluto) tienen prioridad cuando el slider se ha usado
+      // (valor absoluto) tienen prioridad cuando el slider se ha usado.
+      // Con el modo giroscopio activo, pitch/roll vienen SOLO del giroscopio
+      // (sumarlos al joystick táctil haría el avión hipersensible); gases y
+      // timón siguen viniendo de teclado/táctil igual que siempre.
       const kb = controls.getInput();
       const tc = touchRef.current;
+      const gyro = gyroOnRef.current ? gyroRef.current : null;
       // Ejercicio de fallo de motor ("engineOut"): el tracker arma el corte
       // al cruzar la altitud objetivo y aquí se ignoran los gases del
       // jugador — throttleTarget absoluto fuerza el motor a ralentí.
       const engineCut = tracker.engineCut;
       engine.setInput({
-        pitch: clampAxis(kb.pitch + tc.pitch),
-        roll: clampAxis(kb.roll + tc.roll),
+        pitch: clampAxis(gyro ? gyro.pitch : kb.pitch + tc.pitch),
+        roll: clampAxis(gyro ? gyro.roll : kb.roll + tc.roll),
         yaw: clampAxis(kb.yaw + tc.yaw),
         throttle: engineCut ? 0 : kb.throttle,
         throttleTarget: engineCut ? 0 : tc.throttleTarget,
       });
       engine.update(dt);
+
+      // Vibración de pérdida: un pulso al ENTRAR en pérdida (flanco), no un
+      // pulso por frame — la persistencia ya la cubre el aviso sonoro/HUD.
+      if (engine.stalled && !wasStalled && !engine.crashed && hapticsRef.current) {
+        if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+          try {
+            navigator.vibrate([100, 50, 100]);
+          } catch {
+            /* sin soporte real pese al feature-check: se ignora */
+          }
+        }
+      }
+      wasStalled = engine.stalled;
+
       tracker.update(engine, dt);
       evaluator.update(engine);
       scene.update(engine, dt);
@@ -266,6 +387,9 @@ export default function SimulatorView({ onExit }) {
           pitchDeg: Math.round(engine.pitchAngle * 10) / 10,
           bankDeg: Math.round(engine.bankAngle * 10) / 10,
           approach,
+          // Posición para el mini-mapa
+          posX: engine.position.x,
+          posZ: engine.position.z,
         });
       }
 
@@ -296,6 +420,8 @@ export default function SimulatorView({ onExit }) {
     setHud(null);
     setStats(null);
     setLandingDebrief(null);
+    setPaused(false);
+    pausedRef.current = false;
     touchRef.current = { pitch: 0, roll: 0, yaw: 0, throttleTarget: null };
     setPhase("flying");
   };
@@ -339,6 +465,15 @@ export default function SimulatorView({ onExit }) {
         <>
           <Hud hud={hud} showText={uiPrefs.textHud} />
           {uiPrefs.instruments && <InstrumentPanel hud={hud} />}
+          {uiPrefs.minimap && flightTerrain && (
+            <MiniMap
+              terrain={flightTerrain}
+              posX={hud.posX}
+              posZ={hud.posZ}
+              heading={hud.heading}
+              nearBoundary={hud.nearBoundary}
+            />
+          )}
           {mission?.goal && (
             <div className="hud-objective">
               <Target size={16} aria-hidden="true" />{" "}
@@ -388,6 +523,17 @@ export default function SimulatorView({ onExit }) {
             <Settings2 size={20} aria-hidden="true" />
           </button>
           <button
+            className="sound-toggle sound-toggle--pause"
+            aria-label={paused ? t("pause.resume") : t("pause.pause")}
+            onClick={togglePause}
+          >
+            {paused ? (
+              <Play size={20} aria-hidden="true" />
+            ) : (
+              <Pause size={20} aria-hidden="true" />
+            )}
+          </button>
+          <button
             className="sound-toggle sound-toggle--camera"
             aria-label={cameraView === "external" ? t("view.cockpit") : t("view.external")}
             onClick={toggleCameraView}
@@ -408,7 +554,7 @@ export default function SimulatorView({ onExit }) {
           {settingsOpen && (
             <div className="ui-settings">
               <h2>{t("uiSettings.title")}</h2>
-              {["instruments", "yoke", "rudder", "textHud"].map((key) => (
+              {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics"].map((key) => (
                 <button
                   key={key}
                   className="ui-settings__row"
@@ -422,14 +568,40 @@ export default function SimulatorView({ onExit }) {
                   {t(`uiSettings.${key}`)}
                 </button>
               ))}
+              {touchDevice && (
+                <button
+                  className="ui-settings__row"
+                  role="switch"
+                  aria-checked={gyroOn}
+                  onClick={toggleGyro}
+                >
+                  <span className={`ui-settings__check ${gyroOn ? "is-on" : ""}`}>
+                    {gyroOn && <Check size={13} aria-hidden="true" />}
+                  </span>
+                  {t("uiSettings.gyro")}
+                </button>
+              )}
             </div>
           )}
           {touchDevice && (
             <TouchControls
               inputRef={touchRef}
-              showYoke={uiPrefs.yoke}
+              showYoke={uiPrefs.yoke && !gyroOn}
               showRudder={uiPrefs.rudder}
             />
+          )}
+          {paused && (
+            <div className="simulator__overlay simulator__overlay--pause">
+              <div className="simulator__panel">
+                <h1>{t("pause.paused")}</h1>
+                <p>{t("pause.body")}</p>
+                <div className="simulator__panel-actions">
+                  <button className="button button--primary" onClick={togglePause}>
+                    <Play size={18} className="rtl-flip" aria-hidden="true" /> {t("pause.resume")}
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
         </>
       )}
