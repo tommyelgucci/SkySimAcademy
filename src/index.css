@@ -779,9 +779,140 @@ body {
   z-index: 6;
 }
 
-/* Botón de cámara: junto al de sonido, desplazado hacia el interior */
+/* Botones de cámara y ajustes: en fila junto al de sonido */
 .sound-toggle--camera {
   inset-inline-end: 4.2rem;
+}
+
+.sound-toggle--settings {
+  inset-inline-end: 7.4rem;
+}
+
+/* Panel de ocultar/mostrar grupos de interfaz */
+.ui-settings {
+  position: absolute;
+  inset-block-start: 4rem;
+  inset-inline-end: 1rem;
+  z-index: 7;
+  background: rgba(10, 18, 32, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.25rem;
+  min-width: 12rem;
+}
+
+.ui-settings h2 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+  margin: 0 0 0.25rem;
+}
+
+.ui-settings__row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.45rem;
+  cursor: pointer;
+  text-align: start;
+}
+
+.ui-settings__row:hover {
+  background: var(--color-surface-raised);
+}
+
+.ui-settings__check {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--color-border);
+  display: grid;
+  place-items: center;
+  color: var(--color-primary-ink);
+  flex-shrink: 0;
+}
+
+.ui-settings__check.is-on {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Cuadro de instrumentos (relojes SVG) */
+.instrument-panel {
+  position: absolute;
+  inset-block-end: 0.9rem;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.45rem;
+  z-index: 4;
+  background: rgba(8, 11, 18, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 0.4rem 0.55rem;
+  backdrop-filter: blur(3px);
+}
+
+[dir="rtl"] .instrument-panel {
+  transform: translateX(50%);
+}
+
+.gauge {
+  width: 76px;
+  height: 76px;
+  display: block;
+}
+
+/* Agujas y tarjetas móviles: giro suave entre muestras del HUD */
+.gauge__needle,
+.gauge__card,
+.gauge__horizon {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  transition: transform 0.12s linear;
+}
+
+/* En pantallas táctiles: encima de los mandos, como panel de cabina */
+@media (pointer: coarse) {
+  .instrument-panel {
+    inset-block-end: 12rem;
+  }
+
+  .gauge {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* Yoke dibujado dentro de la base del joystick */
+.joystick__yoke {
+  width: 84px;
+  height: 84px;
+  transition: transform 0.05s linear;
+  pointer-events: none;
+}
+
+/* Etiqueta de porcentaje sobre la palanca de gases */
+.throttle-slider__label {
+  position: absolute;
+  inset-block-start: -1.6rem;
+  inset-inline: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Banner con el objetivo de la misión durante el vuelo */
@@ -970,11 +1101,16 @@ body {
   inset-inline-end: 1.4rem;
   width: 52px;
   height: 168px;
-  border-radius: 26px;
-  background: rgba(10, 18, 32, 0.45);
+  border-radius: 14px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.14) 0 2px,
+      transparent 2px 21px
+    ),
+    rgba(10, 18, 32, 0.5);
   border: 2px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(3px);
-  overflow: hidden;
 }
 
 .throttle-slider__fill {
@@ -984,14 +1120,31 @@ body {
   background: color-mix(in srgb, var(--color-accent) 55%, transparent);
 }
 
+.throttle-slider__fill {
+  border-radius: 0 0 12px 12px;
+}
+
+/* Empuñadura tipo palanca: barra ancha con ranura central */
 .throttle-slider__grip {
   position: absolute;
-  inset-inline: 4px;
-  height: 14px;
-  margin-block-end: -7px;
-  border-radius: 7px;
+  inset-inline: -6px;
+  height: 20px;
+  margin-block-end: -10px;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #4a5568, #2c3646 45%, #4a5568);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+.throttle-slider__grip::after {
+  content: "";
+  position: absolute;
+  inset-inline: 8px;
+  inset-block-start: 50%;
+  height: 2px;
+  margin-block-start: -1px;
+  border-radius: 1px;
   background: var(--color-accent);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .touch-controls__yaw {

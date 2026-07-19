@@ -6,11 +6,30 @@
 import { useTranslation } from "react-i18next";
 import { TriangleAlert } from "lucide-react";
 
-export default function Hud({ hud }) {
+export default function Hud({ hud, showText = true }) {
   const { t, i18n } = useTranslation("simulator");
   const format = (value) => value.toLocaleString(i18n.resolvedLanguage);
   const minutes = Math.floor(hud.timeLeft / 60);
   const seconds = String(hud.timeLeft % 60).padStart(2, "0");
+
+  // Los avisos (pérdida, límite del mapa) se muestran SIEMPRE, aunque el
+  // usuario oculte los datos de texto: son seguridad, no decoración.
+  if (!showText) {
+    return (
+      <>
+        {hud.stalled && (
+          <div className="hud__stall">
+            <TriangleAlert size={22} aria-hidden="true" /> {t("stallWarning")}
+          </div>
+        )}
+        {!hud.stalled && hud.nearBoundary && (
+          <div className="hud__stall hud__stall--boundary">
+            <TriangleAlert size={22} aria-hidden="true" /> {t("mapWarning")}
+          </div>
+        )}
+      </>
+    );
+  }
 
   return (
     <>

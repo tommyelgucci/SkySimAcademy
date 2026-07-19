@@ -97,5 +97,22 @@
   "view": {
     "cockpit": "Cockpit-Ansicht",
     "external": "Außenansicht"
+  },
+  "instruments": {
+    "vsi": "Variometer",
+    "horizon": "Künstlicher Horizont",
+    "cardinals": {
+      "n": "N",
+      "e": "O",
+      "s": "S",
+      "w": "W"
+    }
+  },
+  "uiSettings": {
+    "title": "Ein-/ausblenden",
+    "instruments": "Instrumente",
+    "yoke": "Steuerhorn",
+    "rudder": "Seitenruder-Tasten",
+    "textHud": "Textanzeigen"
   }
 }

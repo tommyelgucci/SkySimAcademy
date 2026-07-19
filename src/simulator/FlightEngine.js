@@ -226,6 +226,18 @@ export class FlightEngine {
     return (deg + 360) % 360;
   }
 
+  /** Cabeceo en grados (+ = morro arriba). Alimenta el horizonte artificial. */
+  get pitchAngle() {
+    _forward.copy(AXIS_FWD).applyQuaternion(this.quaternion);
+    return (Math.asin(clamp(_forward.y, -1, 1)) * 180) / Math.PI;
+  }
+
+  /** Alabeo en grados (+ = inclinado a la derecha). */
+  get bankAngle() {
+    _right.copy(AXIS_X).applyQuaternion(this.quaternion);
+    return (-Math.asin(clamp(_right.y, -1, 1)) * 180) / Math.PI;
+  }
+
   /** Rotación alrededor de un eje LOCAL del avión. */
   #rotateLocal(axis, angle) {
     if (angle === 0) return;

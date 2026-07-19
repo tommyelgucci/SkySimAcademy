@@ -97,6 +97,19 @@ describe("FlightEngine — vuelo", () => {
     expect(residualTurn).toBeLessThan(3); // ya casi no vira
   });
 
+  it("expone cabeceo y alabeo en grados para los instrumentos", () => {
+    const engine = new FlightEngine();
+    expect(engine.pitchAngle).toBeCloseTo(0, 1);
+    expect(engine.bankAngle).toBeCloseTo(0, 1);
+
+    airborne(engine, { altitude: 300, airspeed: 45 });
+    run(engine, 0.5, { pitch: 1, throttle: 1 }); // tirar → morro arriba
+    expect(engine.pitchAngle).toBeGreaterThan(5);
+
+    run(engine, 0.4, { roll: 1, throttle: 1 }); // alabear a la derecha
+    expect(engine.bankAngle).toBeGreaterThan(5);
+  });
+
   it("registra estadísticas de la sesión", () => {
     const engine = new FlightEngine();
     run(engine, 8, { throttle: 1, pitch: 1 });

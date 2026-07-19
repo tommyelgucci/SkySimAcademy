@@ -12,10 +12,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
+  Check,
   CircleCheck,
   Flag,
   Lock,
   PlaneTakeoff,
+  Settings2,
   SwitchCamera,
   Target,
   TriangleAlert,
@@ -41,12 +43,16 @@ import {
 } from "../../storage.js";
 import { ContentIcon } from "../icons.jsx";
 import Hud from "./Hud.jsx";
+import InstrumentPanel from "./InstrumentPanel.jsx";
 
 /** Duración máxima de una sesión de vuelo, en segundos. */
 const SESSION_SECONDS = 5 * 60;
 const HUD_INTERVAL = 0.1; // s entre actualizaciones del HUD
 const SCENARIO_KEY = "aerolearn.scenario";
 const TIME_KEY = "aerolearn.timeofday";
+const UI_KEY = "aerolearn.ui";
+/** Grupos de interfaz que el usuario puede ocultar/mostrar en vuelo. */
+const DEFAULT_UI_PREFS = { instruments: true, yoke: true, rudder: true, textHud: true };
 /** Fracción del radio del mapa a partir de la cual se avisa del límite. */
 const BOUNDARY_WARN_RATIO = 0.8;
 
@@ -94,6 +100,26 @@ export default function SimulatorView({ onExit }) {
     setTimeOfDay(id);
     savePref(TIME_KEY, id);
   };
+
+  // Qué grupos de interfaz están visibles (persistente)
+  const [uiPrefs, setUiPrefs] = useState(() => {
+    try {
+      return { ...DEFAULT_UI_PREFS, ...JSON.parse(localStorage.getItem(UI_KEY) ?? "{}") };
+    } catch {
+      return DEFAULT_UI_PREFS;
+    }
+  });
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const toggleUiPref = (key) =>
+    setUiPrefs((prefs) => {
+      const next = { ...prefs, [key]: !prefs[key] };
+      try {
+        localStorage.setItem(UI_KEY, JSON.stringify(next));
+      } catch {
+        /* sin almacenamiento */
+      }
+      return next;
+    });
 
   // Vista de cámara (exterior/cabina); la escena viva se controla por ref
   const [cameraView, setCameraView] = useState("external");
@@ -202,6 +228,10 @@ export default function SimulatorView({ onExit }) {
           timeLeft: Math.max(0, Math.ceil(SESSION_SECONDS - elapsed)),
           stalled: engine.stalled,
           nearBoundary,
+          // Datos para el cuadro de instrumentos (agujas)
+          verticalSpeed: Math.round(engine.verticalSpeed * 10) / 10,
+          pitchDeg: Math.round(engine.pitchAngle * 10) / 10,
+          bankDeg: Math.round(engine.bankAngle * 10) / 10,
         });
       }
 
@@ -272,13 +302,22 @@ export default function SimulatorView({ onExit }) {
 
       {phase === "flying" && hud && (
         <>
-          <Hud hud={hud} />
+          <Hud hud={hud} showText={uiPrefs.textHud} />
+          {uiPrefs.instruments && <InstrumentPanel hud={hud} />}
           {mission?.goal && (
             <div className="hud-objective">
               <Target size={16} aria-hidden="true" />{" "}
               {t(`missions.${mission.id}.objective`)}
             </div>
           )}
+          <button
+            className="sound-toggle sound-toggle--settings"
+            aria-label={t("uiSettings.title")}
+            aria-expanded={settingsOpen}
+            onClick={() => setSettingsOpen((open) => !open)}
+          >
+            <Settings2 size={20} aria-hidden="true" />
+          </button>
           <button
             className="sound-toggle sound-toggle--camera"
             aria-label={cameraView === "external" ? t("view.cockpit") : t("view.external")}
@@ -297,7 +336,32 @@ export default function SimulatorView({ onExit }) {
               <Volume2 size={20} aria-hidden="true" />
             )}
           </button>
-          {touchDevice && <TouchControls inputRef={touchRef} />}
+          {settingsOpen && (
+            <div className="ui-settings">
+              <h2>{t("uiSettings.title")}</h2>
+              {["instruments", "yoke", "rudder", "textHud"].map((key) => (
+                <button
+                  key={key}
+                  className="ui-settings__row"
+                  role="switch"
+                  aria-checked={uiPrefs[key]}
+                  onClick={() => toggleUiPref(key)}
+                >
+                  <span className={`ui-settings__check ${uiPrefs[key] ? "is-on" : ""}`}>
+                    {uiPrefs[key] && <Check size={13} aria-hidden="true" />}
+                  </span>
+                  {t(`uiSettings.${key}`)}
+                </button>
+              ))}
+            </div>
+          )}
+          {touchDevice && (
+            <TouchControls
+              inputRef={touchRef}
+              showYoke={uiPrefs.yoke}
+              showRudder={uiPrefs.rudder}
+            />
+          )}
         </>
       )}
 

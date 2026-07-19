@@ -97,5 +97,22 @@
   "view": {
     "cockpit": "Cockpit view",
     "external": "External view"
+  },
+  "instruments": {
+    "vsi": "Vertical speed",
+    "horizon": "Attitude indicator",
+    "cardinals": {
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "W"
+    }
+  },
+  "uiSettings": {
+    "title": "Show / hide",
+    "instruments": "Instruments",
+    "yoke": "Yoke",
+    "rudder": "Rudder buttons",
+    "textHud": "Text readouts"
   }
 }

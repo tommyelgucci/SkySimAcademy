@@ -97,5 +97,22 @@
   "view": {
     "cockpit": "Vista de cabina",
     "external": "Vista exterior"
+  },
+  "instruments": {
+    "vsi": "Variómetro",
+    "horizon": "Horizonte artificial",
+    "cardinals": {
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "O"
+    }
+  },
+  "uiSettings": {
+    "title": "Mostrar u ocultar",
+    "instruments": "Instrumentos",
+    "yoke": "Yoke (mando)",
+    "rudder": "Botones de timón",
+    "textHud": "Datos de texto"
   }
 }

@@ -26,20 +26,22 @@ export function hasCoarsePointer() {
   );
 }
 
-export default function TouchControls({ inputRef }) {
+export default function TouchControls({ inputRef, showYoke = true, showRudder = true }) {
   const { t } = useTranslation("simulator");
 
   return (
     <div className="touch-controls">
-      <Joystick inputRef={inputRef} />
-      <div className="touch-controls__yaw">
-        <YawButton inputRef={inputRef} direction={1} label={t("controls.yaw")}>
-          <MoveLeft size={22} aria-hidden="true" />
-        </YawButton>
-        <YawButton inputRef={inputRef} direction={-1} label={t("controls.yaw")}>
-          <MoveRight size={22} aria-hidden="true" />
-        </YawButton>
-      </div>
+      {showYoke && <Joystick inputRef={inputRef} />}
+      {showRudder && (
+        <div className="touch-controls__yaw">
+          <YawButton inputRef={inputRef} direction={1} label={t("controls.yaw")}>
+            <MoveLeft size={22} aria-hidden="true" />
+          </YawButton>
+          <YawButton inputRef={inputRef} direction={-1} label={t("controls.yaw")}>
+            <MoveRight size={22} aria-hidden="true" />
+          </YawButton>
+        </div>
+      )}
       <ThrottleSlider inputRef={inputRef} label={t("controls.throttle")} />
     </div>
   );
@@ -82,10 +84,26 @@ function Joystick({ inputRef }) {
       onPointerUp={release}
       onPointerCancel={release}
     >
-      <div
-        className="joystick__thumb"
-        style={{ transform: `translate(${thumb.x * 34}px, ${thumb.y * 34}px)` }}
-      />
+      {/* Yoke dibujado: se desplaza con el cabeceo y GIRA con el alabeo,
+          como el volante de un avión real */}
+      <svg
+        viewBox="0 0 100 100"
+        className="joystick__yoke"
+        aria-hidden="true"
+        style={{
+          transform: `translateY(${thumb.y * 22}px) rotate(${thumb.x * 55}deg)`,
+        }}
+      >
+        <g stroke="#cfd6e4" strokeWidth="7" strokeLinecap="round" fill="none">
+          <path d="M30 62 C14 58, 12 40, 22 30" />
+          <path d="M70 62 C86 58, 88 40, 78 30" />
+          <line x1="30" y1="62" x2="70" y2="62" />
+        </g>
+        <circle cx="22" cy="30" r="6.5" fill="#38b6ff" />
+        <circle cx="78" cy="30" r="6.5" fill="#38b6ff" />
+        <circle cx="50" cy="62" r="10" fill="#3a4356" stroke="#0a0d13" strokeWidth="2" />
+        <circle cx="50" cy="62" r="3.5" fill="#38b6ff" />
+      </svg>
     </div>
   );
 }
@@ -121,6 +139,7 @@ function ThrottleSlider({ inputRef, label }) {
     >
       <div className="throttle-slider__fill" style={{ height: `${value * 100}%` }} />
       <div className="throttle-slider__grip" style={{ bottom: `${value * 100}%` }} />
+      <div className="throttle-slider__label">{Math.round(value * 100)}%</div>
     </div>
   );
 }
