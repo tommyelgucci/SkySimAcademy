@@ -114,5 +114,24 @@
     "yoke": "Yoke (mando)",
     "rudder": "Botones de timón",
     "textHud": "Datos de texto"
+  },
+  "approach": {
+    "onCourse": "En senda",
+    "high": "Alto — desciende",
+    "low": "Bajo — sube"
+  },
+  "landing": {
+    "title": "Informe de aterrizaje",
+    "verticalSpeed": "Descenso en el toque: {{value}} m/s",
+    "centered": "En el eje de pista",
+    "offCenter": "Fuera del eje: {{value}} m",
+    "aligned": "Alineado con la pista",
+    "misaligned": "Desalineado con la pista",
+    "grade5": "Excelente",
+    "grade4": "Muy bien",
+    "grade3": "Aprobado",
+    "grade2": "A repetir",
+    "grade1": "Duro",
+    "continue": "Seguir volando"
   }
 }

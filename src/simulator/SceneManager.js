@@ -98,11 +98,16 @@ function makeRectZone(cx, cz, halfLength, halfWidth, rotationY = 0) {
   };
 }
 
-/** Envuelve una lista de zonas seguras en el objeto que espera FlightEngine. */
-function makeTerrain(mapRadius, safeZones) {
+/**
+ * Envuelve las zonas seguras en el objeto que espera FlightEngine, junto con
+ * la geometría de las pistas (`runways`) que consume FlightEvaluator para la
+ * senda de planeo y la nota de aterrizaje.
+ */
+function makeTerrain(mapRadius, safeZones, runways = []) {
   return {
     mapRadius,
     safeZones,
+    runways,
     isSafeZone(x, z) {
       return this.safeZones.some((fn) => fn(x, z));
     },
@@ -319,7 +324,10 @@ export class SceneManager {
     group.rotation.y = rotationY;
     this.scene.add(group);
 
-    return makeRectZone(x, z, length / 2 + marginLength, width / 2 + marginWidth, rotationY);
+    return {
+      zone: makeRectZone(x, z, length / 2 + marginLength, width / 2 + marginWidth, rotationY),
+      runway: { x, z, length, width, rotationY },
+    };
   }
 
   /** Anillo/arco de conos rocosos: referencia visual de escala, decorativo. */
@@ -418,7 +426,7 @@ export class SceneManager {
     island.rotation.x = -Math.PI / 2;
     this.scene.add(island);
 
-    const zone = this.#buildRunway({ x: 0, z: -430, length: 900, width: 20 });
+    const { zone, runway } = this.#buildRunway({ x: 0, z: -430, length: 900, width: 20 });
     this.#buildAerodromeBuildings({ x: 0, z: 0 });
 
     this.#scatterMountains({
@@ -435,7 +443,7 @@ export class SceneManager {
     });
     this.#scatterClouds(22, random);
 
-    return makeTerrain(islandRadius + 220, [zone]);
+    return makeTerrain(islandRadius + 220, [zone], [runway]);
   }
 
   // ------------------------------------------------------------------
@@ -453,7 +461,7 @@ export class SceneManager {
     island.rotation.x = -Math.PI / 2;
     this.scene.add(island);
 
-    const zone = this.#buildRunway({ x: 0, z: -380, length: 750, width: 18 });
+    const { zone, runway } = this.#buildRunway({ x: 0, z: -380, length: 750, width: 18 });
 
     const wallColors = [0x8b8b86, 0x9c9990, 0xb8b6ad];
     for (const side of [-1, 1]) {
@@ -494,7 +502,7 @@ export class SceneManager {
     });
     this.#scatterClouds(18, random);
 
-    return makeTerrain(islandRadius + 220, [zone]);
+    return makeTerrain(islandRadius + 220, [zone], [runway]);
   }
 
   // ------------------------------------------------------------------
@@ -520,7 +528,7 @@ export class SceneManager {
     beach.position.y = 0.02;
     this.scene.add(beach);
 
-    const zone = this.#buildRunway({
+    const { zone, runway } = this.#buildRunway({
       x: -60,
       z: -260,
       length: 620,
@@ -566,7 +574,7 @@ export class SceneManager {
     });
     this.#scatterClouds(20, random);
 
-    return makeTerrain(islandRadius + 260, [zone]);
+    return makeTerrain(islandRadius + 260, [zone], [runway]);
   }
 
   // ------------------------------------------------------------------
@@ -577,7 +585,7 @@ export class SceneManager {
     const random = makeSeededRandom(Date.now());
 
     // Margen de aterrizaje reducido a propósito: es la prueba difícil.
-    const zone = this.#buildRunway({
+    const { zone, runway } = this.#buildRunway({
       x: 0,
       z: 0,
       length: 230,
@@ -632,7 +640,7 @@ export class SceneManager {
 
     this.#scatterClouds(16, random);
 
-    return makeTerrain(620, [zone]);
+    return makeTerrain(620, [zone], [runway]);
   }
 
   /**

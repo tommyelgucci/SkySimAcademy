@@ -16,8 +16,11 @@ import {
   CircleCheck,
   Flag,
   Lock,
+  MoveDown,
+  MoveUp,
   PlaneTakeoff,
   Settings2,
+  Star,
   SwitchCamera,
   Target,
   TriangleAlert,
@@ -33,6 +36,7 @@ import {
 } from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
 import { MissionTracker } from "../../simulator/MissionTracker.js";
+import { FlightEvaluator } from "../../simulator/FlightEvaluator.js";
 import { SoundEngine } from "../../simulator/SoundEngine.js";
 import TouchControls, { hasCoarsePointer } from "./TouchControls.jsx";
 import { MISSIONS } from "../../content/missions";
@@ -84,6 +88,8 @@ export default function SimulatorView({ onExit }) {
   const [hud, setHud] = useState(null);
   const [stats, setStats] = useState(null);
   const [crashReason, setCrashReason] = useState(null);
+  /** Informe de aterrizaje (estrellas) mostrado como panel descartable. */
+  const [landingDebrief, setLandingDebrief] = useState(null);
 
   // Escenario y hora del día elegidos (persistentes entre sesiones)
   const [scenario, setScenario] = useState(() =>
@@ -157,6 +163,7 @@ export default function SimulatorView({ onExit }) {
     sceneRef.current = scene;
     setCameraView("external");
     engine.setTerrain(scene.getTerrain()); // pistas + límite del mapa
+    const evaluator = new FlightEvaluator(scene.getTerrain()); // senda + nota
     const controls = new KeyboardControls();
     controls.attach();
 
@@ -185,6 +192,9 @@ export default function SimulatorView({ onExit }) {
       setStats({
         maxAltitude: Math.round(engine.maxAltitude),
         distanceKm: (engine.distance / 1000).toFixed(1),
+        // Si la sesión termina justo con un aterrizaje puntuado (p. ej. la
+        // misión de aterrizaje), la nota va en el mismo overlay final
+        landing: evaluator.consumeLanding(),
       });
       setPhase(finalPhase);
     };
@@ -207,13 +217,25 @@ export default function SimulatorView({ onExit }) {
       });
       engine.update(dt);
       tracker.update(engine, dt);
+      evaluator.update(engine);
       scene.update(engine, dt);
       scene.render();
       soundRef.current?.update(engine);
 
+      // Aterrizaje completado en pleno vuelo libre: informe descartable
+      const landing = evaluator.consumeLanding();
+      if (landing && !tracker.done) {
+        if (landing.stars >= 4) soundRef.current?.success();
+        setLandingDebrief(landing);
+      }
+
       hudTimer += dt;
       if (hudTimer >= HUD_INTERVAL) {
         hudTimer = 0;
+        // Senda de planeo para el indicador de aproximación
+        const approach = evaluator.approach.active
+          ? { status: evaluator.approach.status }
+          : null;
         // Aviso de límite del mapa: cerca del borde, antes del accidente
         const mapRadius = engine.terrain?.mapRadius;
         const nearBoundary =
@@ -232,6 +254,7 @@ export default function SimulatorView({ onExit }) {
           verticalSpeed: Math.round(engine.verticalSpeed * 10) / 10,
           pitchDeg: Math.round(engine.pitchAngle * 10) / 10,
           bankDeg: Math.round(engine.bankAngle * 10) / 10,
+          approach,
         });
       }
 
@@ -261,6 +284,7 @@ export default function SimulatorView({ onExit }) {
     setMission(selectedMission);
     setHud(null);
     setStats(null);
+    setLandingDebrief(null);
     touchRef.current = { pitch: 0, roll: 0, yaw: 0, throttleTarget: null };
     setPhase("flying");
   };
@@ -308,6 +332,40 @@ export default function SimulatorView({ onExit }) {
             <div className="hud-objective">
               <Target size={16} aria-hidden="true" />{" "}
               {t(`missions.${mission.id}.objective`)}
+            </div>
+          )}
+          {hud.approach && (
+            <div className={`approach-pill approach-pill--${hud.approach.status}`}>
+              {hud.approach.status === "high" && <MoveDown size={15} aria-hidden="true" />}
+              {hud.approach.status === "low" && <MoveUp size={15} aria-hidden="true" />}
+              {hud.approach.status === "onCourse" && <Check size={15} aria-hidden="true" />}
+              {t(`approach.${hud.approach.status}`)}
+            </div>
+          )}
+          {landingDebrief && (
+            <div className="landing-debrief">
+              <h2>{t("landing.title")}</h2>
+              <StarRating stars={landingDebrief.stars} />
+              <p className="landing-debrief__grade">
+                {t(`landing.grade${landingDebrief.stars}`)}
+              </p>
+              <ul>
+                <li>{t("landing.verticalSpeed", { value: landingDebrief.verticalSpeed })}</li>
+                <li>
+                  {landingDebrief.centered
+                    ? t("landing.centered")
+                    : t("landing.offCenter", { value: landingDebrief.offCenter })}
+                </li>
+                <li>
+                  {landingDebrief.aligned ? t("landing.aligned") : t("landing.misaligned")}
+                </li>
+              </ul>
+              <button
+                className="button button--primary"
+                onClick={() => setLandingDebrief(null)}
+              >
+                {t("landing.continue")}
+              </button>
             </div>
           )}
           <button
@@ -479,14 +537,38 @@ export default function SimulatorView({ onExit }) {
           }
         >
           {stats && (
-            <p className="simulator__stats">
-              {t("stats.maxAltitude", { value: stats.maxAltitude })}
-              {" · "}
-              {t("stats.distance", { value: stats.distanceKm })}
-            </p>
+            <>
+              {stats.landing && (
+                <div className="simulator__landing-stars">
+                  <StarRating stars={stats.landing.stars} />
+                  <span>{t(`landing.grade${stats.landing.stars}`)}</span>
+                </div>
+              )}
+              <p className="simulator__stats">
+                {t("stats.maxAltitude", { value: stats.maxAltitude })}
+                {" · "}
+                {t("stats.distance", { value: stats.distanceKm })}
+              </p>
+            </>
           )}
         </Overlay>
       )}
+    </div>
+  );
+}
+
+/** Fila de 5 estrellas, rellenas hasta la nota. */
+function StarRating({ stars }) {
+  return (
+    <div className="star-rating" role="img" aria-label={`${stars}/5`}>
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star
+          key={i}
+          size={22}
+          aria-hidden="true"
+          className={i <= stars ? "star-rating__star is-filled" : "star-rating__star"}
+        />
+      ))}
     </div>
   );
 }

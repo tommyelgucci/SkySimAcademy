@@ -940,6 +940,102 @@ body {
   flex-shrink: 0;
 }
 
+/* Indicador de senda de planeo (aproximación) */
+.approach-pill {
+  position: absolute;
+  inset-block-start: 7rem;
+  inset-inline: 0;
+  margin-inline: auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgba(10, 18, 32, 0.78);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  z-index: 5;
+}
+
+.approach-pill--onCourse {
+  color: var(--color-correct);
+}
+
+.approach-pill--high,
+.approach-pill--low {
+  color: var(--color-accent);
+}
+
+/* Informe de aterrizaje descartable */
+.landing-debrief {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 20rem;
+}
+
+[dir="rtl"] .landing-debrief {
+  transform: translate(50%, -50%);
+}
+
+.landing-debrief h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.landing-debrief__grade {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.landing-debrief ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-dim);
+  font-size: 0.88rem;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.star-rating {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.star-rating__star {
+  color: var(--color-border);
+}
+
+.star-rating__star.is-filled {
+  color: var(--color-accent);
+  fill: var(--color-accent);
+}
+
+.simulator__landing-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-block-start: 0.4rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
 /* Selector de misiones */
 .mission-list__heading {
   font-size: 0.85rem;

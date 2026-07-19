@@ -114,5 +114,24 @@
     "yoke": "Yoke",
     "rudder": "Rudder buttons",
     "textHud": "Text readouts"
+  },
+  "approach": {
+    "onCourse": "On glide path",
+    "high": "Too high — descend",
+    "low": "Too low — climb"
+  },
+  "landing": {
+    "title": "Landing report",
+    "verticalSpeed": "Touchdown sink: {{value}} m/s",
+    "centered": "On the centreline",
+    "offCenter": "Off centreline: {{value}} m",
+    "aligned": "Aligned with the runway",
+    "misaligned": "Not aligned with the runway",
+    "grade5": "Excellent",
+    "grade4": "Very good",
+    "grade3": "Passed",
+    "grade2": "Needs another try",
+    "grade1": "Rough",
+    "continue": "Keep flying"
   }
 }

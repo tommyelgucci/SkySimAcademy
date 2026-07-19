@@ -114,5 +114,24 @@
     "yoke": "Manche",
     "rudder": "Botões de leme",
     "textHud": "Dados de texto"
+  },
+  "approach": {
+    "onCourse": "Na rampa",
+    "high": "Alto demais — desça",
+    "low": "Baixo demais — suba"
+  },
+  "landing": {
+    "title": "Relatório de pouso",
+    "verticalSpeed": "Razão de descida no toque: {{value}} m/s",
+    "centered": "No eixo da pista",
+    "offCenter": "Fora do eixo: {{value}} m",
+    "aligned": "Alinhado com a pista",
+    "misaligned": "Desalinhado com a pista",
+    "grade5": "Excelente",
+    "grade4": "Muito bem",
+    "grade3": "Aprovado",
+    "grade2": "Repetir",
+    "grade1": "Duro",
+    "continue": "Continuar voando"
   }
 }

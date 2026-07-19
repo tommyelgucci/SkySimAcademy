@@ -110,7 +110,8 @@ modules.<moduleId>.quiz.<questionId>.question / .options[]
 - **Vista exterior y vista de cabina** con transición suave (tecla `C` o botón en el HUD): persecución clásica o asiento del piloto mirando por la ventana.
 - **4 escenarios seleccionables** (aeródromo desértico, paso de montaña, isla costera y plataforma marina — este último con margen de aterrizaje mínimo, el reto difícil), todos rodeados de océano. `SceneManager` expone el terreno (`getTerrain()`: pistas seguras + radio del mapa) y `FlightEngine.setTerrain()` lo aplica: **tocar tierra fuera de la pista es amerizaje forzoso** y alejarse del área de vuelo (con aviso previo en el HUD) es accidente por pérdida sobre mar abierto. Sin terreno registrado, el motor se comporta como antes — las reglas son opt-in y están testadas.
 - **Misiones**: vuelo libre siempre disponible + misiones con objetivo ("Primer despegue", "Viraje a rumbo", "Aterrizaje seguro") que se **desbloquean al aprobar el quiz** del módulo de teoría correspondiente (`requiresModule` en `src/content/missions/index.js`). El objetivo se muestra en un banner durante el vuelo y `MissionTracker` lo evalúa en cada frame.
-- **Sesión limitada a 5 minutos** con estadísticas al final (altitud máxima, distancia).
+- **Evaluador de aterrizaje tipo ILS** (`FlightEvaluator.js`): con la pista activa como referencia, calcula una senda de planeo de 3° y muestra en el HUD si vas "en senda", alto o bajo durante la aproximación. Al tocar tierra y detenerse, genera un **informe de aterrizaje** (velocidad vertical de toque, desviación del eje de pista, alineación con la pista) con una **calificación de 1 a 5 estrellas**. Un touch-and-go descarta el informe; solo cuenta el aterrizaje final de la sesión.
+- **Sesión limitada a 5 minutos** con estadísticas al final (altitud máxima, distancia, estrellas del último aterrizaje).
 - **Sonido 100 % sintetizado** (`SoundEngine.js`, Web Audio, sin archivos de audio): motor que sigue a gases y velocidad, viento, aviso intermitente de pérdida, crash y arpegio de misión cumplida. Botón de silencio persistente en el HUD. Misma política que los iconos: cero assets externos, cero copyright.
 - Despegue desde pista, viraje coordinado al alabear, detección de aterrizaje brusco/crash.
 - El "avión" es un cubo-fuselaje con alas primitivas (geometría básica, sin modelos externos) — ligero y suficiente para leer la actitud del avión.
@@ -142,5 +143,6 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Módulo de navegación básica con misión propia
 - [x] Sonido sintetizado del simulador (Web Audio, sin assets)
 - [x] `vitest` para FlightEngine/MissionTracker + `check:i18n` en CI
+- [x] Evaluador de aterrizaje tipo ILS (senda de 3°, informe y estrellas)
 - [ ] Repetición espaciada (SRS) para repaso de preguntas falladas
 - [ ] Estadísticas de estudio (racha, aciertos por tema, como en teoria-suiza)

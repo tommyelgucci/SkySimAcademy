@@ -114,5 +114,24 @@
     "yoke": "Steuerhorn",
     "rudder": "Seitenruder-Tasten",
     "textHud": "Textanzeigen"
+  },
+  "approach": {
+    "onCourse": "Auf dem Gleitpfad",
+    "high": "Zu hoch — sinken",
+    "low": "Zu tief — steigen"
+  },
+  "landing": {
+    "title": "Landebericht",
+    "verticalSpeed": "Sinkrate beim Aufsetzen: {{value}} m/s",
+    "centered": "Auf der Mittellinie",
+    "offCenter": "Neben der Mittellinie: {{value}} m",
+    "aligned": "Zur Bahn ausgerichtet",
+    "misaligned": "Nicht zur Bahn ausgerichtet",
+    "grade5": "Ausgezeichnet",
+    "grade4": "Sehr gut",
+    "grade3": "Bestanden",
+    "grade2": "Wiederholen",
+    "grade1": "Hart",
+    "continue": "Weiterfliegen"
   }
 }
