@@ -1,6 +1,6 @@
 {
-  "name": "AeroLearn — Learn to fly",
-  "short_name": "AeroLearn",
+  "name": "SkySimAcademy — Learn to fly",
+  "short_name": "SkySimAcademy",
   "description": "Learn the basics of flight: theory modules, quizzes and a 3D mini flight simulator. EN · DE · ES · PT · AR.",
   "start_url": "./",
   "scope": "./",

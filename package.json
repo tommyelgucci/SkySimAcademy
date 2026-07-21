@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "AeroLearn — MVP educativo de aviación: módulos de teoría con quiz + mini simulador de vuelo 3D. Multi-idioma (EN/DE/ES/PT/AR) desde el día 1.",
+  "description": "SkySimAcademy — MVP educativo de aviación: módulos de teoría con quiz + mini simulador de vuelo 3D. Multi-idioma (EN/DE/ES/PT/AR) desde el día 1.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

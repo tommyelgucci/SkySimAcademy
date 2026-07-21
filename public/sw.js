@@ -1,4 +1,4 @@
-/* Service worker de AeroLearn: precache del shell + stale-while-revalidate.
+/* Service worker de SkySimAcademy: precache del shell + stale-while-revalidate.
    Mismo patrón probado que el de teoria-suiza, con caché propia y alcance
    limitado a /teoria-vuelo/ (el SW se registra relativo a esta app, así que
    nunca interfiere con TheorieKI en la raíz del sitio).
