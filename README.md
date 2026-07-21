@@ -21,7 +21,8 @@ npm run build    # producción → dist/
 - **React 19 + Vite** — interfaz y build
 - **Three.js** — render 3D del simulador (importado solo en la pantalla del simulador; va en un chunk separado)
 - **i18next + react-i18next** — internacionalización con detección de idioma y persistencia en `localStorage`
-- **Lucide Icons** (`lucide-react`, licencia ISC) — TODA la iconografía de la interfaz, incluido el favicon. Sin emojis de sistema, sin imágenes con copyright, sin CDNs externos: los iconos se compilan como SVG inline. El registro de iconos de módulos vive en `src/components/icons.jsx`.
+- **Lucide Icons** (`lucide-react`, licencia ISC) — toda la iconografía funcional de la interfaz. Sin emojis de sistema, sin imágenes con copyright, sin CDNs externos: los iconos se compilan como SVG inline. El registro de iconos de módulos vive en `src/components/icons.jsx`.
+- **Logo propio** (`src/components/Logo.jsx`): marca original de SkySimAcademy (SVG vectorial, sin dependencias externas), usada en el encabezado, el favicon y los iconos de PWA — distinta de los iconos funcionales de Lucide.
 - Sin backend: todo el contenido vive en JSON estáticos
 
 ## Arquitectura de archivos
@@ -132,7 +133,7 @@ El `base: "./"` de `vite.config.js` hace que el build funcione desde cualquier s
 
 ### PWA
 
-SkySimAcademy es instalable ("Añadir a pantalla de inicio"): `public/manifest.webmanifest` + `public/sw.js` (stale-while-revalidate, caché propia `aerolearn-v1`) + iconos PNG generados a partir del icono "plane" de Lucide. El service worker se registra **relativo a la app**, así que en producción su alcance es `/teoria-vuelo/` y nunca interfiere con el de teoria-suiza en la raíz (que a su vez usa stale-while-revalidate y no bloquea esta app).
+SkySimAcademy es instalable ("Añadir a pantalla de inicio"): `public/manifest.webmanifest` + `public/sw.js` (stale-while-revalidate, caché propia `aerolearn-v1`) + iconos PNG generados a partir del logo propio (`src/components/Logo.jsx`). El service worker se registra **relativo a la app**, así que en producción su alcance es `/teoria-vuelo/` y nunca interfiere con el de teoria-suiza en la raíz (que a su vez usa stale-while-revalidate y no bloquea esta app).
 
 ## Progreso del usuario
 

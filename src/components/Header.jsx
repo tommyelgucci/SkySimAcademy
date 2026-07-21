@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Plane } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
+import Logo from "./Logo.jsx";
 
 const NAV_SCREENS = ["home", "theory", "simulator"];
 
@@ -14,7 +14,7 @@ export default function Header({ activeScreen, onNavigate }) {
   return (
     <header className="header">
       <button className="header__brand" onClick={() => onNavigate("home")}>
-        <Plane size={20} aria-hidden="true" /> {t("appName")}
+        <Logo size={28} /> {t("appName")}
       </button>
       <nav className="header__nav">
         {NAV_SCREENS.map((screen) => (
