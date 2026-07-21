@@ -139,6 +139,19 @@ body {
   padding: 1rem;
 }
 
+.app__footer p {
+  margin: 0;
+}
+
+.app__footer p + p {
+  margin-block-start: 0.4rem;
+}
+
+.app__footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* ---------- Iconos (Lucide, SVG inline) ---------- */
 
 /* Los iconos heredan el color del texto y se alinean con él */

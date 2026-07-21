@@ -44,7 +44,16 @@ export default function App() {
         {isSimulator && <SimulatorView onExit={() => goto("home")} />}
       </main>
 
-      {!isSimulator && <footer className="app__footer">{t("footer")}</footer>}
+      {!isSimulator && (
+        <footer className="app__footer">
+          <p>{t("footer")}</p>
+          <p>
+            <a href="./privacy.html" target="_blank" rel="noreferrer">
+              {t("privacyPolicy")}
+            </a>
+          </p>
+        </footer>
+      )}
     </div>
   );
 }
