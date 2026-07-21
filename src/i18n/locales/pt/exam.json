@@ -30,5 +30,20 @@
     "keep": "Ainda pendente — vai voltar.",
     "done": "Todos os erros revisados. Ótima sessão de estudo!",
     "remaining": "Faltam: {{count}}"
+  },
+  "stats": {
+    "entry": "Estatísticas",
+    "entryDescription": "Sequência, progresso por módulo e estado da revisão.",
+    "title": "As tuas estatísticas",
+    "streakTitle": "Sequência de estudo",
+    "streakDays": "Sequência de {{count}} dias",
+    "streakEmpty": "Começa a tua sequência hoje",
+    "srsTitle": "Revisão espaçada",
+    "srsDueNow": "Pendentes agora: {{count}}",
+    "srsMastered": "Dominadas: {{count}}",
+    "srsEmpty": "Ainda não há perguntas em revisão.",
+    "modulesTitle": "Progresso por módulo",
+    "modulesEmpty": "Ainda não fizeste nenhum questionário.",
+    "notAttempted": "Ainda não tentado"
   }
 }

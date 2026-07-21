@@ -30,5 +30,20 @@
     "keep": "Noch offen — sie kommt wieder.",
     "done": "Alle Fehler abgearbeitet. Starke Lernsession!",
     "remaining": "Übrig: {{count}}"
+  },
+  "stats": {
+    "entry": "Statistik",
+    "entryDescription": "Serie, Fortschritt pro Modul und Wiederholungsstatus.",
+    "title": "Deine Statistik",
+    "streakTitle": "Lernserie",
+    "streakDays": "{{count}} Tage in Folge",
+    "streakEmpty": "Starte heute deine Serie",
+    "srsTitle": "Verteilte Wiederholung",
+    "srsDueNow": "Jetzt fällig: {{count}}",
+    "srsMastered": "Beherrscht: {{count}}",
+    "srsEmpty": "Noch keine Fragen zur Wiederholung.",
+    "modulesTitle": "Fortschritt pro Modul",
+    "modulesEmpty": "Du hast noch kein Quiz versucht.",
+    "notAttempted": "Noch nicht versucht"
   }
 }

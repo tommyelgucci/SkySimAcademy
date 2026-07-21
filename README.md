@@ -139,6 +139,10 @@ SkySimAcademy es instalable ("Añadir a pantalla de inicio"): `public/manifest.w
 
 Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave versionada `aerolearn.progress.v1`) — mejores puntuaciones e intentos por quiz, módulos aprobados y misiones completadas. Los módulos aprobados muestran insignia en la lista de teoría y desbloquean sus misiones en el simulador.
 
+**Repetición espaciada (SRS):** las preguntas falladas en un quiz o el examen entran a una cola de repaso con niveles 0–5 e intervalos crecientes (0, 1, 3, 7, 14, 30 días). Acertarla sube de nivel y aleja su próxima fecha de repaso; fallarla la reinicia a nivel 0 (pendiente ya mismo). A partir del nivel 3 se considera "dominada". `ReviewView` solo muestra las preguntas realmente vencidas (`getFailedQuestions()`), no todo el historial de fallos.
+
+**Estadísticas** (`StatsView.jsx`, accesible desde Teoría): racha de días de estudio consecutivos, resumen del repaso espaciado (pendientes/dominadas), progreso por módulo (mejor puntuación) y los últimos 5 intentos de examen.
+
 ## Roadmap sugerido
 
 - [x] Persistencia de progreso (localStorage, como en teoria-suiza)
@@ -152,5 +156,5 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Evaluador de aterrizaje tipo ILS (senda de 3°, informe y estrellas)
 - [x] Escuela de vuelo: niveles/licencias y ejercicios de emergencia
 - [x] Mini-mapa, pausa, modo giroscopio y vibración de pérdida
-- [ ] Repetición espaciada (SRS) para repaso de preguntas falladas
-- [ ] Estadísticas de estudio (racha, aciertos por tema, como en teoria-suiza)
+- [x] Repetición espaciada (SRS) para repaso de preguntas falladas
+- [x] Estadísticas de estudio (racha, progreso por módulo, historial de examen)

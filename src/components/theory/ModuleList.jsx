@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { Check, GraduationCap, RotateCcw } from "lucide-react";
+import { BarChart3, Check, GraduationCap, RotateCcw } from "lucide-react";
 import { MODULES } from "../../content/modules";
 import { getFailedQuestions, isModulePassed } from "../../storage.js";
 import { ContentIcon } from "../icons.jsx";
 
-export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview }) {
+export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview, onOpenStats }) {
   const { t } = useTranslation(["theory", "exam"]);
   const failedCount = getFailedQuestions().length;
 
@@ -36,6 +36,15 @@ export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview }) {
               {failedCount === 0
                 ? t("exam:review.empty").split("—")[0].trim()
                 : t("exam:review.toReview", { count: failedCount })}
+            </span>
+          </span>
+        </button>
+        <button className="study-tool" onClick={onOpenStats}>
+          <BarChart3 size={22} aria-hidden="true" />
+          <span className="study-tool__text">
+            <span className="study-tool__title">{t("exam:stats.entry")}</span>
+            <span className="study-tool__description">
+              {t("exam:stats.entryDescription")}
             </span>
           </span>
         </button>

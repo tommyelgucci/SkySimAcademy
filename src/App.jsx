@@ -13,6 +13,7 @@ import ModuleList from "./components/theory/ModuleList.jsx";
 import ModuleView from "./components/theory/ModuleView.jsx";
 import ExamView from "./components/theory/ExamView.jsx";
 import ReviewView from "./components/theory/ReviewView.jsx";
+import StatsView from "./components/theory/StatsView.jsx";
 import SimulatorView from "./components/simulator/SimulatorView.jsx";
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
             onOpenModule={(moduleId) => goto("module", { moduleId })}
             onOpenExam={() => goto("exam")}
             onOpenReview={() => goto("review")}
+            onOpenStats={() => goto("stats")}
           />
         )}
         {screen.name === "module" && (
@@ -41,6 +43,7 @@ export default function App() {
         )}
         {screen.name === "exam" && <ExamView onBack={() => goto("theory")} />}
         {screen.name === "review" && <ReviewView onBack={() => goto("theory")} />}
+        {screen.name === "stats" && <StatsView onBack={() => goto("theory")} />}
         {isSimulator && <SimulatorView onExit={() => goto("home")} />}
       </main>
 

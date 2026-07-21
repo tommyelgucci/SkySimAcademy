@@ -30,5 +30,20 @@
     "keep": "Sigue pendiente — volverá a aparecer.",
     "done": "Todos los fallos repasados. ¡Gran sesión de estudio!",
     "remaining": "Quedan: {{count}}"
+  },
+  "stats": {
+    "entry": "Estadísticas",
+    "entryDescription": "Racha, progreso por módulo y estado del repaso.",
+    "title": "Tus estadísticas",
+    "streakTitle": "Racha de estudio",
+    "streakDays": "Racha de {{count}} días",
+    "streakEmpty": "Empieza tu racha hoy",
+    "srsTitle": "Repaso espaciado",
+    "srsDueNow": "Pendientes ahora: {{count}}",
+    "srsMastered": "Dominadas: {{count}}",
+    "srsEmpty": "Todavía no hay preguntas en repaso.",
+    "modulesTitle": "Progreso por módulo",
+    "modulesEmpty": "Aún no has hecho ningún cuestionario.",
+    "notAttempted": "Sin intentar todavía"
   }
 }

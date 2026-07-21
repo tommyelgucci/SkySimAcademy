@@ -30,5 +30,20 @@
     "keep": "Still pending — it will come back.",
     "done": "All mistakes cleared. Great study session!",
     "remaining": "Remaining: {{count}}"
+  },
+  "stats": {
+    "entry": "Stats",
+    "entryDescription": "Streak, module progress and review status.",
+    "title": "Your stats",
+    "streakTitle": "Study streak",
+    "streakDays": "{{count}} day streak",
+    "streakEmpty": "Start your streak today",
+    "srsTitle": "Spaced review",
+    "srsDueNow": "Due now: {{count}}",
+    "srsMastered": "Mastered: {{count}}",
+    "srsEmpty": "No questions in review yet.",
+    "modulesTitle": "Progress by module",
+    "modulesEmpty": "You haven't attempted any quiz yet.",
+    "notAttempted": "Not attempted yet"
   }
 }
