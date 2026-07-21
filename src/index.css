@@ -687,6 +687,20 @@ body {
   justify-content: center;
 }
 
+/* En pantallas angostas, el centrado choca con los botones flotantes
+   (ajustes/cámara/pausa/sonido) anclados al borde inline-end: se reserva
+   su ancho en vez de centrar a ciegas. */
+@media (max-width: 700px) {
+  .hud {
+    inset-inline-start: 1rem;
+    inset-inline-end: 13.5rem;
+    transform: none;
+    margin-inline: auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+}
+
 [dir="rtl"] .hud {
   transform: translateX(50%);
 }
