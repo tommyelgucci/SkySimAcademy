@@ -49,6 +49,7 @@
     "locked": "Desbloqueia ao passar em “{{module}}”",
     "completed": "Concluída",
     "backToList": "Missões",
+    "dismiss": "Entendi",
     "success": {
       "title": "Missão cumprida!",
       "body": "Bom voo. Escolha a próxima missão ou repita esta."

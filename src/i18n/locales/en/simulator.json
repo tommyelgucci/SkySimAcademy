@@ -49,6 +49,7 @@
     "locked": "Unlocks when you pass “{{module}}”",
     "completed": "Completed",
     "backToList": "Missions",
+    "dismiss": "Got it",
     "success": {
       "title": "Mission accomplished!",
       "body": "Well flown. Pick your next mission or fly this one again."

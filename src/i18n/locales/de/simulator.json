@@ -49,6 +49,7 @@
     "locked": "Wird freigeschaltet, wenn du „{{module}}“ bestehst",
     "completed": "Abgeschlossen",
     "backToList": "Missionen",
+    "dismiss": "Verstanden",
     "success": {
       "title": "Mission erfüllt!",
       "body": "Gut geflogen. Wähle deine nächste Mission oder flieg diese erneut."

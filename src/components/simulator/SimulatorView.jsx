@@ -29,6 +29,7 @@ import {
   TriangleAlert,
   Volume2,
   VolumeX,
+  X,
 } from "lucide-react";
 import * as THREE from "three";
 import { FlightEngine } from "../../simulator/FlightEngine.js";
@@ -106,6 +107,7 @@ export default function SimulatorView({ onExit }) {
   /** 'briefing' → 'flying' → ('crashed' | 'timeUp' | 'missionComplete') */
   const [phase, setPhase] = useState("briefing");
   const [mission, setMission] = useState(null);
+  const [objectiveDismissed, setObjectiveDismissed] = useState(false);
   const [hud, setHud] = useState(null);
   const [stats, setStats] = useState(null);
   const [crashReason, setCrashReason] = useState(null);
@@ -417,6 +419,7 @@ export default function SimulatorView({ onExit }) {
   const fly = (selectedMission) => {
     soundRef.current?.start(); // gesto del usuario: el AudioContext puede arrancar
     setMission(selectedMission);
+    setObjectiveDismissed(false);
     setHud(null);
     setStats(null);
     setLandingDebrief(null);
@@ -474,10 +477,18 @@ export default function SimulatorView({ onExit }) {
               nearBoundary={hud.nearBoundary}
             />
           )}
-          {mission?.goal && (
+          {mission?.goal && !objectiveDismissed && (
             <div className="hud-objective">
               <Target size={16} aria-hidden="true" />{" "}
               {t(`missions.${mission.id}.objective`)}
+              <button
+                type="button"
+                className="hud-objective__dismiss"
+                aria-label={t("missions.dismiss")}
+                onClick={() => setObjectiveDismissed(true)}
+              >
+                <X size={14} aria-hidden="true" />
+              </button>
             </div>
           )}
           {hud.approach && (

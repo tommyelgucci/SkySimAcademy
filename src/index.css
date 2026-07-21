@@ -944,6 +944,29 @@ body {
   flex-shrink: 0;
 }
 
+.hud-objective__dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: 0.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.hud-objective__dismiss:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.hud-objective__dismiss svg {
+  color: var(--color-text);
+}
+
 /* Indicador de senda de planeo (aproximación) */
 .approach-pill {
   position: absolute;
