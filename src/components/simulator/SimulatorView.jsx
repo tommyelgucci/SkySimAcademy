@@ -37,6 +37,7 @@ import {
   SceneManager,
   SCENARIOS,
   TIMES_OF_DAY,
+  FREE_ROAM_SCENARIO,
 } from "../../simulator/SceneManager.js";
 import { KeyboardControls } from "../../simulator/KeyboardControls.js";
 import { MissionTracker } from "../../simulator/MissionTracker.js";
@@ -260,7 +261,10 @@ export default function SimulatorView({ onExit }) {
 
     const engine = new FlightEngine();
     const tracker = new MissionTracker(mission);
-    const scene = new SceneManager(canvasRef.current, scenario, timeOfDay);
+    // Vuelo libre explora un archipiélago disperso de mapa mucho más grande,
+    // sin importar el escenario elegido en el selector (ver SceneManager).
+    const sceneScenario = mission.id === "free-flight" ? FREE_ROAM_SCENARIO : scenario;
+    const scene = new SceneManager(canvasRef.current, sceneScenario, timeOfDay);
     sceneRef.current = scene;
     setCameraView("external");
     const terrain = scene.getTerrain(); // pistas + límite del mapa

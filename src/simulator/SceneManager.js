@@ -9,6 +9,11 @@
  * Los nombres visibles de los escenarios NO viven aquí: la UI los resuelve
  * vía i18next con la clave `simulator:scenarios.<id>` (5 idiomas).
  *
+ * `FREE_ROAM_SCENARIO` es un scenarioId especial (no está en SCENARIOS, no
+ * tiene chip en el selector): SimulatorView lo pasa cuando la misión es
+ * "free-flight", en vez del escenario elegido en el selector, y construye
+ * un archipiélago disperso con límite de mapa mucho más grande.
+ *
  * Además de dibujar, construye una descripción del terreno (pista(s)
  * seguras + radio del mapa) que expone vía `getTerrain()`, pensada para
  * pasarse tal cual a `flightEngine.setTerrain(...)`. Si nadie hace esa
@@ -32,6 +37,17 @@ const CAMERA_OFFSET = new THREE.Vector3(0, 3.4, 10); // detrás y encima del avi
 /** Posición del "asiento del piloto" relativa al avión (vista de cabina). */
 const COCKPIT_OFFSET = new THREE.Vector3(0, 0.45, -0.9);
 const OCEAN_RADIUS = 3800;
+
+/**
+ * Escenario especial de "vuelo libre": no es uno de los SCENARIOS elegibles
+ * en el selector (no tiene chip propio), lo activa SimulatorView cuando la
+ * misión es "free-flight". Construye un archipiélago disperso en vez de un
+ * único sitio, con un límite de mapa mucho más generoso — se puede volar
+ * sobre mar abierto y toparse con otras pistas por casualidad explorando.
+ */
+export const FREE_ROAM_SCENARIO = "free-roam";
+const FREE_ROAM_MAP_RADIUS = 6000;
+const FREE_ROAM_OCEAN_RADIUS = FREE_ROAM_MAP_RADIUS + 900;
 
 /** Ids de escenario disponibles (la UI construye el selector con esto). */
 export const SCENARIOS = ["desert", "mountain", "coastal", "platform"];
@@ -220,9 +236,9 @@ export class SceneManager {
 
   /** Océano presente en TODOS los escenarios: es lo que hace de límite del
    *  mapa (fuera de las zonas seguras, tocar el suelo es tocar agua). */
-  #buildOcean() {
+  #buildOcean(radius = OCEAN_RADIUS) {
     const ocean = new THREE.Mesh(
-      new THREE.CircleGeometry(OCEAN_RADIUS, 64),
+      new THREE.CircleGeometry(radius, 64),
       new THREE.MeshPhongMaterial({ color: 0x1f7fa8, shininess: 55, specular: 0xbfe9ff })
     );
     ocean.rotation.x = -Math.PI / 2;
@@ -232,6 +248,13 @@ export class SceneManager {
 
   /** Construye el escenario pedido (o uno al azar) sobre el océano base. */
   #buildWorld(scenarioId) {
+    if (scenarioId === FREE_ROAM_SCENARIO) {
+      this.scenario = FREE_ROAM_SCENARIO;
+      this.#buildOcean(FREE_ROAM_OCEAN_RADIUS);
+      this.terrain = this.#buildFreeRoamWorld();
+      return;
+    }
+
     this.#buildOcean();
 
     const scenario = SCENARIOS.includes(scenarioId)
@@ -240,18 +263,50 @@ export class SceneManager {
     this.scenario = scenario;
 
     switch (scenario) {
-      case "mountain":
-        this.terrain = this.#buildMountainPass();
+      case "mountain": {
+        const { zone, runway, standaloneRadius } = this.#buildMountainPass();
+        this.terrain = makeTerrain(standaloneRadius, [zone], [runway]);
         break;
-      case "coastal":
-        this.terrain = this.#buildCoastalIsland();
+      }
+      case "coastal": {
+        const { zone, runway, standaloneRadius } = this.#buildCoastalIsland();
+        this.terrain = makeTerrain(standaloneRadius, [zone], [runway]);
         break;
-      case "platform":
-        this.terrain = this.#buildSeaPlatform();
+      }
+      case "platform": {
+        const { zone, runway, standaloneRadius } = this.#buildSeaPlatform();
+        this.terrain = makeTerrain(standaloneRadius, [zone], [runway]);
         break;
-      default:
-        this.terrain = this.#buildDesertAerodrome();
+      }
+      default: {
+        const { zone, runway, standaloneRadius } = this.#buildDesertAerodrome();
+        this.terrain = makeTerrain(standaloneRadius, [zone], [runway]);
+      }
     }
+  }
+
+  /**
+   * Escenario especial de vuelo libre: un archipiélago disperso en mar
+   * abierto en vez de un único sitio. La base de salida (aeródromo
+   * desértico) queda en el origen —donde arranca FlightEngine— y las otras
+   * tres pistas aparecen a varios kilómetros, en direcciones distintas, para
+   * encontrarlas explorando en vuelo recto en vez de tenerlas ya a la vista.
+   * El límite del mapa es mucho más amplio que en los escenarios normales:
+   * se puede volar largo rato sobre mar abierto antes de "perderse" de
+   * verdad.
+   */
+  #buildFreeRoamWorld() {
+    const sites = [
+      this.#buildDesertAerodrome(0, 0),
+      this.#buildCoastalIsland(2600, -2200),
+      this.#buildMountainPass(-2800, -1200),
+      this.#buildSeaPlatform(1400, 3000),
+    ];
+    return makeTerrain(
+      FREE_ROAM_MAP_RADIUS,
+      sites.map((site) => site.zone),
+      sites.map((site) => site.runway)
+    );
   }
 
   /**
@@ -331,7 +386,7 @@ export class SceneManager {
   }
 
   /** Anillo/arco de conos rocosos: referencia visual de escala, decorativo. */
-  #scatterMountains({ startDeg, endDeg, count, distMin, distMax, heightMin, heightMax, colors, snowLine, random }) {
+  #scatterMountains({ startDeg, endDeg, count, distMin, distMax, heightMin, heightMax, colors, snowLine, random, offsetX = 0, offsetZ = 0 }) {
     for (let i = 0; i < count; i++) {
       const angle = THREE.MathUtils.degToRad(startDeg + (i / count) * (endDeg - startDeg));
       const dist = distMin + random() * (distMax - distMin);
@@ -340,7 +395,7 @@ export class SceneManager {
         new THREE.ConeGeometry(55 + random() * 40, h, 6),
         new THREE.MeshLambertMaterial({ color: colors[i % colors.length] })
       );
-      cone.position.set(Math.cos(angle) * dist, h / 2 - 6, Math.sin(angle) * dist);
+      cone.position.set(offsetX + Math.cos(angle) * dist, h / 2 - 6, offsetZ + Math.sin(angle) * dist);
       cone.rotation.y = random() * Math.PI;
       this.scene.add(cone);
       if (snowLine != null && h > snowLine) {
@@ -415,7 +470,7 @@ export class SceneManager {
   // Escenario 1: aeródromo en isla desértica (el original, recoloreado a
   // tono arena para distinguirlo del paso de montaña).
   // ------------------------------------------------------------------
-  #buildDesertAerodrome() {
+  #buildDesertAerodrome(offsetX = 0, offsetZ = 0) {
     const random = makeSeededRandom(Date.now());
     const islandRadius = 950;
 
@@ -424,10 +479,16 @@ export class SceneManager {
       new THREE.MeshLambertMaterial({ color: 0xd6a869 })
     );
     island.rotation.x = -Math.PI / 2;
+    island.position.set(offsetX, 0, offsetZ);
     this.scene.add(island);
 
-    const { zone, runway } = this.#buildRunway({ x: 0, z: -430, length: 900, width: 20 });
-    this.#buildAerodromeBuildings({ x: 0, z: 0 });
+    const { zone, runway } = this.#buildRunway({
+      x: offsetX,
+      z: offsetZ - 430,
+      length: 900,
+      width: 20,
+    });
+    this.#buildAerodromeBuildings({ x: offsetX, z: offsetZ });
 
     this.#scatterMountains({
       startDeg: 140,
@@ -440,17 +501,19 @@ export class SceneManager {
       colors: [0xb9925a, 0xc7a06a, 0xd6b482],
       snowLine: null, // en el desierto no nieva
       random,
+      offsetX,
+      offsetZ,
     });
     this.#scatterClouds(22, random);
 
-    return makeTerrain(islandRadius + 220, [zone], [runway]);
+    return { zone, runway, standaloneRadius: islandRadius + 220 };
   }
 
   // ------------------------------------------------------------------
   // Escenario 2: pista angosta en un paso de montaña, flanqueada por dos
   // paredes rocosas cercanas — exige un descenso alineado y estable.
   // ------------------------------------------------------------------
-  #buildMountainPass() {
+  #buildMountainPass(offsetX = 0, offsetZ = 0) {
     const random = makeSeededRandom(Date.now());
     const islandRadius = 1000;
 
@@ -459,9 +522,15 @@ export class SceneManager {
       new THREE.MeshLambertMaterial({ color: 0x4f7a45 })
     );
     island.rotation.x = -Math.PI / 2;
+    island.position.set(offsetX, 0, offsetZ);
     this.scene.add(island);
 
-    const { zone, runway } = this.#buildRunway({ x: 0, z: -380, length: 750, width: 18 });
+    const { zone, runway } = this.#buildRunway({
+      x: offsetX,
+      z: offsetZ - 380,
+      length: 750,
+      width: 18,
+    });
 
     const wallColors = [0x8b8b86, 0x9c9990, 0xb8b6ad];
     for (const side of [-1, 1]) {
@@ -474,7 +543,7 @@ export class SceneManager {
           new THREE.ConeGeometry(50 + random() * 30, h, 6),
           new THREE.MeshLambertMaterial({ color: wallColors[i % wallColors.length] })
         );
-        cone.position.set(side * dist, h / 2 - 6, z);
+        cone.position.set(offsetX + side * dist, h / 2 - 6, offsetZ + z);
         cone.rotation.y = random() * Math.PI;
         this.scene.add(cone);
         if (h > 300) {
@@ -499,17 +568,19 @@ export class SceneManager {
       colors: wallColors,
       snowLine: 230,
       random,
+      offsetX,
+      offsetZ,
     });
     this.#scatterClouds(18, random);
 
-    return makeTerrain(islandRadius + 220, [zone], [runway]);
+    return { zone, runway, standaloneRadius: islandRadius + 220 };
   }
 
   // ------------------------------------------------------------------
   // Escenario 3: isla costera pequeña, pista junto a la playa, con
   // palmeras decorativas y un muelle que se adentra en el agua.
   // ------------------------------------------------------------------
-  #buildCoastalIsland() {
+  #buildCoastalIsland(offsetX = 0, offsetZ = 0) {
     const random = makeSeededRandom(Date.now());
     const islandRadius = 640;
 
@@ -518,6 +589,7 @@ export class SceneManager {
       new THREE.MeshLambertMaterial({ color: 0x6a9a52 })
     );
     island.rotation.x = -Math.PI / 2;
+    island.position.set(offsetX, 0, offsetZ);
     this.scene.add(island);
 
     const beach = new THREE.Mesh(
@@ -525,12 +597,12 @@ export class SceneManager {
       new THREE.MeshLambertMaterial({ color: 0xdfc98a })
     );
     beach.rotation.x = -Math.PI / 2;
-    beach.position.y = 0.02;
+    beach.position.set(offsetX, 0.02, offsetZ);
     this.scene.add(beach);
 
     const { zone, runway } = this.#buildRunway({
-      x: -60,
-      z: -260,
+      x: offsetX - 60,
+      z: offsetZ - 260,
       length: 620,
       width: 18,
       rotationY: THREE.MathUtils.degToRad(12),
@@ -541,8 +613,8 @@ export class SceneManager {
     for (let i = 0; i < 26; i++) {
       const angle = random() * Math.PI * 2;
       const dist = 120 + random() * (islandRadius - 220);
-      const x = Math.cos(angle) * dist + 250;
-      const z = Math.sin(angle) * dist;
+      const x = offsetX + Math.cos(angle) * dist + 250;
+      const z = offsetZ + Math.sin(angle) * dist;
       if (zone(x, z)) continue; // no sembrar palmeras encima de la pista
       const trunk = new THREE.Mesh(new THREE.CylinderGeometry(1, 1.4, 10, 6), trunkMaterial);
       trunk.position.set(x, 5, z);
@@ -557,7 +629,7 @@ export class SceneManager {
       new THREE.BoxGeometry(6, 0.6, 60),
       new THREE.MeshLambertMaterial({ color: 0x7a5a3a })
     );
-    pier.position.set(islandRadius - 20, 0.3, 200);
+    pier.position.set(offsetX + islandRadius - 20, 0.3, offsetZ + 200);
     this.scene.add(pier);
 
     this.#scatterMountains({
@@ -571,23 +643,25 @@ export class SceneManager {
       colors: [0x6d8a63, 0x7d9a73, 0x8dab82],
       snowLine: null,
       random,
+      offsetX,
+      offsetZ,
     });
     this.#scatterClouds(20, random);
 
-    return makeTerrain(islandRadius + 260, [zone], [runway]);
+    return { zone, runway, standaloneRadius: islandRadius + 260 };
   }
 
   // ------------------------------------------------------------------
   // Escenario 4: sin isla — plataforma flotante en mar abierto, pista
   // corta. El reto: todo alrededor es agua, cero margen lateral.
   // ------------------------------------------------------------------
-  #buildSeaPlatform() {
+  #buildSeaPlatform(offsetX = 0, offsetZ = 0) {
     const random = makeSeededRandom(Date.now());
 
     // Margen de aterrizaje reducido a propósito: es la prueba difícil.
     const { zone, runway } = this.#buildRunway({
-      x: 0,
-      z: 0,
+      x: offsetX,
+      z: offsetZ,
       length: 230,
       width: 16,
       color: 0x3b4046,
@@ -600,14 +674,14 @@ export class SceneManager {
       new THREE.MeshLambertMaterial({ color: 0x545a60 })
     );
     deckEdge.rotation.x = -Math.PI / 2;
-    deckEdge.position.y = 0.02;
+    deckEdge.position.set(offsetX, 0.02, offsetZ);
     this.scene.add(deckEdge);
 
     const legMaterial = new THREE.MeshLambertMaterial({ color: 0x3a3f44 });
     for (const cx of [-13, 13]) {
       for (const cz of [-110, 110]) {
         const leg = new THREE.Mesh(new THREE.CylinderGeometry(3, 3, 42, 10), legMaterial);
-        leg.position.set(cx, -20, cz);
+        leg.position.set(offsetX + cx, -20, offsetZ + cz);
         this.scene.add(leg);
       }
     }
@@ -633,14 +707,14 @@ export class SceneManager {
         const beacon = new THREE.Mesh(new THREE.SphereGeometry(1.1, 8, 8), beaconMaterial);
         beacon.position.y = 6 * 3.2 + 1;
         pole.add(beacon);
-        pole.position.set(cx, 0.3, cz);
+        pole.position.set(offsetX + cx, 0.3, offsetZ + cz);
         this.scene.add(pole);
       }
     }
 
     this.#scatterClouds(16, random);
 
-    return makeTerrain(620, [zone], [runway]);
+    return { zone, runway, standaloneRadius: 620 };
   }
 
   /**
