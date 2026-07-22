@@ -2,7 +2,7 @@
 
 MVP educativo de aviación: **módulos de teoría con cuestionarios** + **mini simulador de vuelo 3D** (sesiones de máx. 5 minutos), multi-idioma desde el día 1 (**EN · DE · ES · PT · AR**, con RTL completo para árabe).
 
-Módulos disponibles: **Principios de vuelo** · **Aerodinámica avanzada** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica** · **Procedimientos de emergencia** · **Peso y balance** · **Regulaciones aéreas** · **Factores humanos**. Los diez ya están en formato de curso profundo (7 lecciones con mini-quiz de 3 preguntas y explicaciones), con traducción real (no automática) a inglés, alemán, español y portugués; el árabe sigue pendiente (ver "El curso de teoría" más abajo).
+Módulos disponibles: **Principios de vuelo** · **Aerodinámica avanzada** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica** · **Procedimientos de emergencia** · **Peso y balance** · **Regulaciones aéreas** · **Factores humanos**. Los diez ya están en formato de curso profundo (7 lecciones con mini-quiz de 3 preguntas y explicaciones), con traducción real (no automática) a los 5 idiomas soportados: inglés, alemán, español, portugués y árabe.
 
 Proyecto hermano de [`teoria-suiza`](../teoria-suiza) (la app de teoría de conducir): misma filosofía —contenido en datos estáticos, sin backend— aplicada al vuelo.
 
@@ -115,7 +115,7 @@ modules.<moduleId>.quiz.<questionId>.question / .options[] / .explanation
 
 Los 10 módulos (`principles-of-flight`, `advanced-aerodynamics`, `cockpit-instruments`, `weather-basics`, `radio-alphabet`, `navigation-basics`, `emergency-procedures`, `weight-and-balance`, `regulations`, `human-factors`) ya están en el formato profundo: 7 lecciones cada uno (varios párrafos, un **key takeaway**, un **tip de simulador** que conecta el concepto con una misión/escenario real de la app, y un mini-quiz de 3 preguntas con feedback y explicación inmediatos). El quiz final del módulo ya no se escribe a mano: se deriva en tiempo de ejecución (`deriveModuleQuiz` en `src/content/schema.js`) juntando las preguntas de todas las lecciones.
 
-**Traducción:** el contenido profundo de los 10 módulos se escribió primero en inglés y ya está traducido de verdad (no copia literal) a **alemán, español y portugués** — terminología aeronáutica propia de cada idioma, mismo tono que el resto de la interfaz. El **árabe** sigue siendo por ahora una copia literal del inglés (para que `check:i18n` tenga paridad de claves), pendiente de traducción real en una pasada siguiente.
+**Traducción:** el contenido profundo de los 10 módulos se escribió primero en inglés y ya está traducido de verdad (no copia literal) a **alemán, español, portugués y árabe** — terminología aeronáutica propia de cada idioma, mismo tono que el resto de la interfaz. El árabe usa árabe estándar moderno con numerales occidentales (0-9) y respeta el layout RTL ya existente en la interfaz.
 
 ## El simulador
 
@@ -179,5 +179,4 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Curso profundo — tanda 1: Principios de vuelo (expandido a 7 lecciones) + Aerodinámica avanzada (nuevo), con mini-quiz de 3 preguntas y explicaciones por lección
 - [x] Curso profundo — tanda 2: Instrumentos de cabina, Meteorología, Radio/alfabeto y Navegación expandidos al mismo formato (7 lecciones, mini-quiz con explicaciones)
 - [x] Curso profundo — módulos nuevos: Procedimientos de emergencia, Peso y balance, Regulaciones aéreas y Factores humanos (7 lecciones cada uno, mismo formato)
-- [x] Traducción real (no copia del inglés) del contenido profundo de los 10 módulos a `de`/`es`/`pt`
-- [ ] Traducción real del contenido profundo de los 10 módulos a `ar`
+- [x] Traducción real (no copia del inglés) del contenido profundo de los 10 módulos a `de`/`es`/`pt`/`ar`
