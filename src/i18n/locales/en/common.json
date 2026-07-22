@@ -21,5 +21,12 @@
     "next": "Next"
   },
   "footer": "Educational MVP — this is not real flight instruction.",
-  "privacyPolicy": "Privacy"
+  "privacyPolicy": "Privacy",
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "body": "The app hit an unexpected error, possibly from corrupted saved data. Try reloading — if that doesn't help, you can reset the app's data on this device.",
+    "reload": "Reload",
+    "reset": "Reset app data",
+    "resetConfirm": "This deletes all progress saved on this device (quizzes, missions, stats). This cannot be undone. Continue?"
+  }
 }

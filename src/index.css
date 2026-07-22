@@ -231,6 +231,35 @@ body {
   color: var(--color-text-dim);
 }
 
+/* ---------- Error boundary ---------- */
+.error-boundary {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.error-boundary > svg {
+  color: var(--color-accent);
+}
+
+.error-boundary p {
+  max-width: 28rem;
+  color: var(--color-text-dim);
+}
+
+.error-boundary__actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-block-start: 0.6rem;
+}
+
 /* ---------- Home ---------- */
 
 .home {

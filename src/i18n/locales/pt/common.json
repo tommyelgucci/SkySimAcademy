@@ -21,5 +21,12 @@
     "next": "Seguinte"
   },
   "footer": "MVP educativo — isto não é instrução de voo real.",
-  "privacyPolicy": "Privacidade"
+  "privacyPolicy": "Privacidade",
+  "errorBoundary": {
+    "title": "Algo correu mal",
+    "body": "A app teve um erro inesperado, possivelmente por dados guardados corrompidos. Tenta recarregar — se não resultar, podes repor os dados da app neste dispositivo.",
+    "reload": "Recarregar",
+    "reset": "Repor dados da app",
+    "resetConfirm": "Isto apaga todo o progresso guardado neste dispositivo (questionários, missões, estatísticas). Não pode ser desfeito. Continuar?"
+  }
 }

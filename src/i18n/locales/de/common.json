@@ -21,5 +21,12 @@
     "next": "Weiter"
   },
   "footer": "Lern-MVP — dies ist keine echte Flugausbildung.",
-  "privacyPolicy": "Datenschutz"
+  "privacyPolicy": "Datenschutz",
+  "errorBoundary": {
+    "title": "Etwas ist schiefgelaufen",
+    "body": "In der App ist ein unerwarteter Fehler aufgetreten, möglicherweise durch beschädigte gespeicherte Daten. Versuche neu zu laden — hilft das nicht, kannst du die App-Daten auf diesem Gerät zurücksetzen.",
+    "reload": "Neu laden",
+    "reset": "App-Daten zurücksetzen",
+    "resetConfirm": "Dadurch wird der gesamte auf diesem Gerät gespeicherte Fortschritt gelöscht (Quiz, Missionen, Statistik). Das kann nicht rückgängig gemacht werden. Fortfahren?"
+  }
 }

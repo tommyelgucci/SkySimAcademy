@@ -21,5 +21,12 @@
     "next": "Siguiente"
   },
   "footer": "MVP educativo — esto no es instrucción de vuelo real.",
-  "privacyPolicy": "Privacidad"
+  "privacyPolicy": "Privacidad",
+  "errorBoundary": {
+    "title": "Algo salió mal",
+    "body": "La app tuvo un error inesperado, posiblemente por datos guardados dañados. Prueba a recargar — si no funciona, puedes borrar los datos de la app en este dispositivo.",
+    "reload": "Recargar",
+    "reset": "Borrar datos de la app",
+    "resetConfirm": "Esto elimina todo el progreso guardado en este dispositivo (cuestionarios, misiones, estadísticas). No se puede deshacer. ¿Continuar?"
+  }
 }
