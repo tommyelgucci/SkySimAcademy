@@ -260,609 +260,957 @@
     },
     "cockpit-instruments": {
       "title": "Cockpit instruments",
-      "description": "Altimeter, airspeed indicator and attitude indicator — reading the panel at a glance.",
+      "description": "Altimeter, airspeed, attitude, vertical speed, compass and coordination — reading the whole panel like a pilot, not just glancing at one gauge.",
       "lessons": {
         "altimeter": {
           "title": "The altimeter",
-          "body": "The altimeter shows your height. It works by measuring air pressure: the air gets thinner as you climb, and the instrument converts that pressure drop into an altitude reading. Always check your altitude before manoeuvring — close to the ground there is no room to correct mistakes."
+          "body": "The altimeter shows your height above sea level by measuring static air pressure: pressure drops in a very predictable way as you climb, and the instrument's internal mechanism converts that pressure into an altitude reading on the dial. Because it depends on outside air pressure, an altimeter has to be set correctly — dial in the wrong reference and the number it shows will be wrong by exactly the same amount, even though nothing about your actual height has changed.\n\nPilots set the altimeter's small adjustment window (often called the Kollsman window) to the local sea-level pressure reported by a nearby weather source, so that the dial reads actual height above sea level rather than height above some fixed standard. Fly from an area of high pressure into an area of low pressure without updating that setting, and the altimeter will read higher than your true altitude — a classic trap remembered as \"high to low, look out below.\"\n\nAltitude awareness matters most exactly when there is least room for error: close to terrain, on approach, or in mountainous areas. Checking altitude before any manoeuvre near the ground, and cross-checking it against other cues, is one of the simplest habits that prevents controlled flight into terrain — flying a perfectly good aircraft into the ground because nobody was watching the numbers.",
+          "keyTakeaway": "The altimeter converts air pressure into altitude and must be set to local pressure to read correctly; flying toward lower pressure without resetting it makes the altimeter read higher than your true altitude.",
+          "simTip": "Watch the altimeter closely on the mountain-pass scenario's approach — terrain awareness matters most exactly where the margin for error is smallest."
         },
-        "speed-horizon": {
-          "title": "Airspeed and the artificial horizon",
-          "body": "The airspeed indicator measures how fast the air flows over your wings — the speed that keeps you flying, so it is the instrument to watch to stay away from a stall. The attitude indicator shows an artificial horizon: whether the nose is above or below the horizon and how much you are banked, even when you cannot see outside."
+        "airspeed-indicator": {
+          "title": "The airspeed indicator",
+          "body": "The airspeed indicator measures how fast air is flowing over the wings and fuselage, which is the speed that actually matters for lift and stall — not your speed over the ground. It works by comparing the pressure of oncoming air, captured by a small forward-facing pitot tube, against the surrounding static air pressure; the faster you fly, the bigger that pressure difference, and the higher the needle reads.\n\nMost airspeed indicators show colored arcs that mark important limits: a white arc for flap operating range, a green arc for the normal operating range, a yellow arc for use in smooth air only, and a red line for never-exceed speed. Reading the needle against these arcs at a glance tells you immediately whether you're in a safe range for the current phase of flight, without needing to remember exact numbers.\n\nBecause airspeed is what actually keeps the wing flying, it is the single most important number to watch in the pattern and on final approach — well ahead of altitude or heading. A rushed glance at the airspeed indicator, caught early, is what turns a developing stall into a non-event instead of an emergency.",
+          "keyTakeaway": "The airspeed indicator measures speed through the air (not over the ground) by comparing pitot and static pressure; its colored arcs mark safe operating ranges at a glance.",
+          "simTip": "Keep the airspeed gauge in your primary scan throughout approach and landing in the simulator — it's the instrument most directly tied to the stall warning."
         },
-        "compass-heading": {
-          "title": "Compass and heading",
-          "body": "The compass shows the direction the nose is pointing, measured in degrees: 0° is north, 90° east, 180° south and 270° west. Pilots navigate with headings, not street names: 'turn to heading 270' simply means turn until the nose points west. You have the same heading readout in the simulator HUD."
+        "attitude-indicator": {
+          "title": "The attitude indicator",
+          "body": "The attitude indicator shows an artificial horizon: a miniature aircraft symbol fixed to the instrument case sits against a moving horizon bar, so you can read pitch (nose up or down) and bank (wings level or turned) at a glance, even with no real horizon visible outside — at night, over featureless terrain, or in cloud.\n\nTraditional attitude indicators spin a gyroscope fast enough that it resists being tilted, so it stays oriented to the real horizon no matter how the aircraft rotates around it — the instrument case (and the little aircraft symbol drawn on it) is what actually moves relative to that stable gyroscope. Losing outside visual references without a reliable attitude indicator — or without training to trust it — is one of the fastest ways an otherwise capable pilot can lose control.\n\nAn \"unusual attitude\" is any extreme pitch or bank the aircraft has been allowed to reach unintentionally. Recovery always starts with the attitude indicator: level the wings first, then adjust pitch toward level flight, then correct airspeed and altitude once the aircraft is stable again — the exact order matters much less than resisting the urge to make several corrections at once.",
+          "keyTakeaway": "The attitude indicator shows pitch and bank against a gyro-stabilized artificial horizon, letting you fly attitude even with no outside visual reference — the core instrument for any unusual-attitude recovery.",
+          "simTip": "Toggle to night in the simulator and try holding straight-and-level using only the instrument panel — with little outside horizon to see, the attitude indicator becomes your primary reference."
+        },
+        "vertical-speed-indicator": {
+          "title": "The vertical speed indicator",
+          "body": "The vertical speed indicator (VSI) shows your rate of climb or descent, typically in feet or meters per minute, by measuring how quickly static air pressure is changing. Unlike the altimeter, which shows where you are, the VSI shows how fast you're getting there — a trend instrument, not a position instrument.\n\nBecause it works by sensing a rate of pressure change rather than an absolute value, the VSI has a small natural lag — a few seconds behind what's actually happening — so it's best used to confirm a trend you've already set up with pitch and power, rather than as the very first indication that something has changed. Chasing small VSI fluctuations with constant control inputs tends to produce a worse ride than gently establishing a rate and letting the instrument confirm it.\n\nOn approach, a steady, predictable descent rate is what a stabilized approach is built on: too shallow and you'll land long or need late corrections, too steep and the flare will be rushed. Cross-checking the VSI against the intended glide path is a habit that pays off in a smoother, more consistent touchdown.",
+          "keyTakeaway": "The vertical speed indicator shows your rate of climb or descent (a trend, not a position) and lags a few seconds behind real changes — use it to confirm a rate you've already set, not to chase every fluctuation.",
+          "simTip": "During the ILS-style approach evaluator in the simulator, set a stable descent rate early and let the VSI confirm it, rather than constantly adjusting pitch in response to small readout changes."
+        },
+        "compass-and-heading": {
+          "title": "The compass and heading indicator",
+          "body": "The magnetic compass shows the direction the nose is pointing, measured in degrees clockwise from north: 0° (or 360°) is north, 90° is east, 180° is south, and 270° is west. Pilots navigate and communicate using headings rather than street names or landmarks — \"turn to heading two-seven-zero\" simply means turn until the nose points west.\n\nA simple magnetic compass is reliable in steady, straight, level flight, but it has known errors during turns and speed changes because the compass card itself swings and tilts as the aircraft maneuvers — most training aircraft therefore also carry a heading indicator, a gyro-stabilized instrument that shows heading smoothly and accurately during turns, but which needs to be periodically checked and re-aligned against the magnetic compass since its gyroscope slowly drifts.\n\nTogether, the two instruments cover each other's weaknesses: the compass is the ultimate reference (if slow and error-prone in maneuvers), and the heading indicator is smooth and precise (but needs occasional recalibration). Reading a heading precisely, and flying it precisely, is a foundational skill for every kind of navigation that follows.",
+          "keyTakeaway": "Heading is measured clockwise from north (0°/360°) in degrees; the magnetic compass is the ultimate reference but has turning errors, while the gyro heading indicator is smooth but needs periodic re-alignment against it.",
+          "simTip": "The simulator's HUD heading readout works exactly like a heading indicator — practice rolling out precisely on assigned headings during the turn-to-heading mission instead of eyeballing it."
+        },
+        "turn-coordinator-and-coordination": {
+          "title": "The turn coordinator and staying coordinated",
+          "body": "The turn coordinator combines two pieces of information in one instrument: a small miniature aircraft symbol that banks to show your rate of turn (or more precisely, a combination of roll rate and turn rate), and a ball in a curved tube below it that shows whether the flight is coordinated — flying with no sideways force on the occupants — or slipping and skidding sideways.\n\nThe ball works on simple physics: it's a heavy little ball in a curved, fluid-filled tube, and it settles wherever gravity and any sideways acceleration push it. In coordinated flight the ball sits centered; in an uncoordinated turn, sideways force pushes it to one side, and the fix is always to press the rudder pedal on the side the ball has moved toward — \"step on the ball\" is the classic memory aid.\n\nStaying coordinated matters most exactly where it's most dangerous to ignore: a skidding turn at low altitude and low airspeed, like a rushed turn from base to final, is a classic setup for an unexpected stall and spin, precisely because the uncoordinated condition hides how close the aircraft actually is to its critical angle of attack.",
+          "keyTakeaway": "The turn coordinator shows rate of turn (miniature aircraft) and coordination (the ball); an off-center ball means slipping or skidding, corrected by stepping on the rudder pedal the ball has moved toward.",
+          "simTip": "In the simulator's standard-turn mission, notice how much rudder input keeps a smooth, coordinated bank — try the same turn with too little rudder and feel how the aircraft seems to skid outward."
+        },
+        "instrument-scan": {
+          "title": "Scanning the panel like a pilot",
+          "body": "No single instrument tells the whole story on its own — the skill of instrument flying (and of flying with reference to instruments even in good visual conditions) is a continuous scan: a repeated pattern of glances across the panel that cross-checks each instrument against the others, rather than fixating on any one gauge.\n\nA simple, common approach is to treat attitude as the center of the scan — since pitch and bank drive almost everything else — and to check it frequently, glancing outward to airspeed, altitude, heading, and vertical speed to confirm the attitude is producing the result you intend, then back to attitude again. If the airspeed is falling and altitude is dropping, for instance, the attitude indicator will usually show why before the trend even becomes obvious on those other gauges.\n\nNew pilots often fixate on a single instrument — commonly airspeed, right when it matters least to stare at it — while the bigger picture (attitude, trend, coordination) drifts unnoticed. Deliberately practicing a scan, rather than letting your eyes wander, is what turns a panel of separate gauges into one coherent picture of what the aircraft is actually doing.",
+          "keyTakeaway": "No instrument works in isolation — a deliberate scan, centered on attitude and cross-checked against airspeed, altitude, heading and vertical speed, builds a coherent picture instead of tunnel vision on one gauge.",
+          "simTip": "Fly a full circuit in the simulator consciously scanning attitude, then airspeed, then altitude, then heading, back to attitude, on a loop, instead of staring at any single instrument — notice how much smoother the flight becomes."
         }
       },
       "quiz": {
-        "q1": {
-          "question": "What does the altimeter show?",
+        "altimeter-q1": {
+          "question": "What does the altimeter actually measure to determine altitude?",
           "options": [
-            "Your height",
-            "Your airspeed",
-            "Your heading"
-          ]
+            "Air pressure",
+            "Engine RPM",
+            "Ground speed"
+          ],
+          "explanation": "The altimeter senses outside air pressure and converts the predictable drop in pressure with height into an altitude reading."
         },
-        "q2": {
-          "question": "Which instrument shows your bank and pitch relative to the horizon?",
+        "altimeter-q2": {
+          "question": "What happens if you fly from high pressure into low pressure without resetting the altimeter?",
           "options": [
-            "The attitude indicator",
-            "The altimeter",
-            "The compass"
-          ]
+            "The altimeter reads higher than your true altitude",
+            "The altimeter reads lower than your true altitude",
+            "The altimeter is unaffected by pressure changes"
+          ],
+          "explanation": "This is the classic \"high to low, look out below\" trap: without resetting to the new, lower local pressure, the altimeter overreads, making you think you're higher than you actually are."
         },
-        "q3": {
-          "question": "Heading 270° means the nose points…",
+        "altimeter-q3": {
+          "question": "When is checking your altitude especially important?",
           "options": [
-            "West",
-            "East",
-            "South"
-          ]
+            "Close to terrain or on approach, where there is little room to correct mistakes",
+            "Only during cruise flight at high altitude",
+            "Only when flying over water"
+          ],
+          "explanation": "Near the ground there's little altitude margin for error, so cross-checking the altimeter before and during any manoeuvre close to terrain is critical."
         },
-        "q4": {
-          "question": "Which instrument do you watch to stay clear of a stall?",
+        "airspeed-indicator-q1": {
+          "question": "What does the airspeed indicator actually compare to determine speed?",
           "options": [
-            "The airspeed indicator",
-            "The altimeter",
-            "The compass"
-          ]
+            "Pitot (ram air) pressure against static air pressure",
+            "Engine manifold pressure against altitude",
+            "Ground speed against true airspeed"
+          ],
+          "explanation": "The pitot tube captures oncoming (\"ram\") air pressure, and the instrument compares it to static pressure — the bigger the difference, the higher the airspeed reading."
         },
-        "q5": {
-          "question": "Heading 90° means the nose points…",
+        "airspeed-indicator-q2": {
+          "question": "What does the yellow arc on an airspeed indicator generally mean?",
           "options": [
-            "East",
-            "North",
-            "South"
-          ]
+            "Use this speed range only in smooth air",
+            "This is the normal safe cruising range",
+            "The engine is running at unsafe RPM"
+          ],
+          "explanation": "The yellow arc is a caution range — structurally acceptable in calm air, but risky in turbulence, where gust loads can add unpredictable stress."
         },
-        "q6": {
-          "question": "How does the altimeter measure your altitude?",
+        "airspeed-indicator-q3": {
+          "question": "Why is airspeed the most important instrument to watch on approach?",
           "options": [
-            "By measuring air pressure",
-            "By measuring engine RPM",
-            "By measuring outside temperature"
-          ]
+            "It's the speed that keeps the wing flying and directly relates to stall margin",
+            "It shows your position relative to the runway",
+            "It indicates fuel remaining"
+          ],
+          "explanation": "Airspeed through the air determines how close you are to the stall; watching it closely on approach catches a developing problem early."
         },
-        "q7": {
-          "question": "Which instrument keeps you oriented inside a cloud?",
+        "attitude-indicator-q1": {
+          "question": "What does the attitude indicator display?",
           "options": [
-            "The attitude indicator",
-            "The compass",
-            "The altimeter"
-          ]
+            "Pitch and bank against an artificial horizon",
+            "Altitude and vertical speed",
+            "Heading and turn rate"
+          ],
+          "explanation": "The attitude indicator shows a miniature aircraft symbol against a horizon bar, directly displaying pitch (nose up/down) and bank (wings level or turned)."
         },
-        "q8": {
-          "question": "Heading 0° means the nose points…",
+        "attitude-indicator-q2": {
+          "question": "Why does the attitude indicator keep working even as the aircraft rotates around it?",
           "options": [
-            "North",
-            "South",
-            "East"
-          ]
+            "A spinning gyroscope resists being tilted, staying oriented to the real horizon",
+            "It receives a radio signal from the ground",
+            "It's connected directly to the ailerons"
+          ],
+          "explanation": "A rapidly spinning gyroscope has inertia that keeps its orientation stable in space, so the instrument case (and the aircraft symbol on it) is what moves relative to it as the aircraft maneuvers."
         },
-        "q9": {
-          "question": "Why watch your altitude closely near the ground?",
+        "attitude-indicator-q3": {
+          "question": "What is the first step in recovering from an unusual attitude?",
           "options": [
-            "There is no room to correct mistakes",
-            "The altimeter is less accurate there",
-            "The airspeed indicator stops working"
-          ]
+            "Level the wings using the attitude indicator",
+            "Add full power immediately",
+            "Check the altimeter"
+          ],
+          "explanation": "Leveling the wings first addresses the most urgent problem (an excessive bank), before adjusting pitch and then airspeed and altitude once the aircraft is under control again."
         },
-        "q10": {
-          "question": "What does the airspeed indicator measure?",
+        "vertical-speed-indicator-q1": {
+          "question": "What does the vertical speed indicator show?",
           "options": [
-            "How fast air flows over the wings",
-            "How fast the aircraft moves over the ground",
-            "The engine's power output"
-          ]
+            "Rate of climb or descent",
+            "Altitude above sea level",
+            "Airspeed through the air"
+          ],
+          "explanation": "The VSI shows how quickly altitude is changing — a rate, distinct from the altimeter's absolute altitude reading."
         },
-        "q11": {
-          "question": "Heading 180° means the nose points…",
+        "vertical-speed-indicator-q2": {
+          "question": "Why does the VSI lag a few seconds behind what's actually happening?",
           "options": [
-            "South",
-            "North",
-            "East"
-          ]
+            "It measures a rate of pressure change, which takes a moment to register",
+            "It is mechanically connected to the engine",
+            "It only updates once per minute by design"
+          ],
+          "explanation": "Because it senses how fast pressure is changing rather than reading a fixed value, there's a brief inherent delay compared to the immediate pitch change that caused it."
         },
-        "q12": {
-          "question": "Which instrument measures your height?",
+        "vertical-speed-indicator-q3": {
+          "question": "Why is a stabilized, steady descent rate valuable on approach?",
           "options": [
-            "The altimeter",
-            "The airspeed indicator",
-            "The compass"
-          ]
+            "It sets up a smoother, more predictable flare and touchdown",
+            "It reduces fuel consumption",
+            "It automatically aligns the aircraft with the runway centerline"
+          ],
+          "explanation": "A consistent, planned descent rate avoids late, large corrections near the ground, leading to a more controlled and predictable landing."
         },
-        "q13": {
-          "question": "What happens to the air as you climb?",
+        "compass-and-heading-q1": {
+          "question": "What heading corresponds to due west?",
           "options": [
-            "It gets thinner and its pressure drops",
-            "It gets denser",
-            "It stays the same"
-          ]
+            "270°",
+            "90°",
+            "180°"
+          ],
+          "explanation": "Headings are measured clockwise from north: 0°/360° north, 90° east, 180° south, and 270° west."
         },
-        "q14": {
-          "question": "Which instrument shows your bank?",
+        "compass-and-heading-q2": {
+          "question": "What is a key weakness of a simple magnetic compass?",
           "options": [
-            "The attitude indicator",
-            "The altimeter",
-            "The compass"
-          ]
+            "It shows errors during turns and speed changes",
+            "It cannot be read at night",
+            "It only works above 10,000 feet"
+          ],
+          "explanation": "The compass card swings and tilts as the aircraft maneuvers, producing temporary errors during turns and accelerations — steady, level flight is when it's most reliable."
         },
-        "q15": {
-          "question": "'Turn to heading 090' means turn until the nose points…",
+        "compass-and-heading-q3": {
+          "question": "Why does a gyro heading indicator need to be periodically re-aligned with the magnetic compass?",
           "options": [
-            "East",
-            "West",
-            "North"
-          ]
+            "Its gyroscope slowly drifts out of alignment over time",
+            "It resets itself every time the aircraft banks",
+            "It only works in the northern hemisphere"
+          ],
+          "explanation": "Unlike the compass, the heading indicator is smooth and stable during maneuvers, but its gyroscope precesses (drifts) gradually, so pilots periodically cross-check and reset it against the compass."
         },
-        "q16": {
-          "question": "Flying too slowly risks…",
+        "turn-coordinator-and-coordination-q1": {
+          "question": "What does the ball in a turn coordinator show?",
           "options": [
-            "Stalling",
-            "Exceeding the maximum speed",
-            "Losing the compass"
-          ]
+            "Whether the flight is coordinated or slipping/skidding",
+            "The aircraft's exact bank angle",
+            "The rate of climb or descent"
+          ],
+          "explanation": "The ball is a simple physical indicator of sideways force — centered means coordinated flight, off to one side means a slip or skid."
+        },
+        "turn-coordinator-and-coordination-q2": {
+          "question": "How do you correct an off-center ball?",
+          "options": [
+            "Apply rudder pressure on the side the ball has moved toward",
+            "Apply aileron toward the side the ball moved away from",
+            "Reduce power until the ball recenters"
+          ],
+          "explanation": "\"Step on the ball\" means pressing the rudder pedal on the side the ball has slid toward, which brings the flight back into coordination."
+        },
+        "turn-coordinator-and-coordination-q3": {
+          "question": "Why is a skidding turn from base to final considered especially dangerous?",
+          "options": [
+            "It hides how close the aircraft is to a stall, and can develop into a spin close to the ground",
+            "It only affects fuel efficiency",
+            "It makes the airspeed indicator unreliable"
+          ],
+          "explanation": "Uncoordinated flight at low speed and low altitude is a classic precursor to an unexpected stall and spin, with little altitude available to recover."
+        },
+        "instrument-scan-q1": {
+          "question": "What is the core idea of an instrument scan?",
+          "options": [
+            "Repeatedly cross-checking instruments against each other rather than fixating on one",
+            "Reading each instrument once at the start of the flight",
+            "Ignoring the attitude indicator in favor of the altimeter"
+          ],
+          "explanation": "A scan is a continuous, repeated cross-check across the panel — no single gauge tells the whole story on its own."
+        },
+        "instrument-scan-q2": {
+          "question": "Why is the attitude indicator often treated as the center of the scan?",
+          "options": [
+            "Pitch and bank drive most of what the other instruments show",
+            "It is the only instrument required by regulation",
+            "It never needs cross-checking against other gauges"
+          ],
+          "explanation": "Since attitude largely determines airspeed trend, climb/descent, and turn, checking it frequently and relating other instruments back to it gives an efficient, coherent scan."
+        },
+        "instrument-scan-q3": {
+          "question": "What is a common mistake new pilots make with the panel?",
+          "options": [
+            "Fixating on a single instrument while the bigger picture drifts unnoticed",
+            "Cross-checking too many instruments at once",
+            "Ignoring the airspeed indicator entirely"
+          ],
+          "explanation": "Tunnel vision on one gauge (often airspeed) lets attitude, trend, or coordination drift unnoticed — a deliberate scan prevents this."
         }
       }
     },
     "weather-basics": {
       "title": "Weather for pilots",
-      "description": "Wind, clouds and visibility — and the weather every pilot avoids.",
+      "description": "Wind, clouds, thunderstorms and icing, reading a briefing, fronts, turbulence and wind shear, and making sound go/no-go decisions.",
       "lessons": {
         "wind": {
           "title": "Wind: friend and enemy",
-          "body": "Aircraft take off and land facing the wind. A headwind shortens the take-off run and lets you touch down slower and softer; a tailwind does the opposite and can make a runway too short. A crosswind blows you sideways off the runway line, so pilots correct with rudder and bank until touchdown."
+          "body": "Aircraft take off and land facing into the wind whenever possible, because a headwind increases the airflow over the wings for a given ground speed, shortening the takeoff roll and letting the aircraft touch down slower and more gently relative to the ground. A tailwind does the exact opposite — it can turn a perfectly adequate runway into one that's uncomfortably short, which is why pilots avoid tailwind takeoffs and landings whenever there's a choice.\n\nA crosswind — wind blowing across the runway rather than along it — pushes the aircraft sideways off the runway centerline unless corrected. Pilots handle this by banking gently into the wind and applying opposite rudder to keep the nose (and the aircraft's actual path over the ground) aligned with the runway, a technique that has to be held all the way through the flare and touchdown, not just on the approach.\n\nEvery runway has a maximum crosswind component the aircraft (and pilot) can safely handle, and that component isn't simply the reported wind speed — it depends on the angle between the wind and the runway. A wind blowing directly across the runway at a given speed has a much bigger crosswind component than the same wind speed blowing at a shallow angle to the runway.",
+          "keyTakeaway": "Headwinds shorten takeoff/landing distances and slow your ground speed at touchdown; crosswinds push the aircraft off the centerline and must be corrected with bank and opposite rudder held through the flare.",
+          "simTip": "Try landing on the coastal-island scenario and notice how much correction a crosswind demands right through touchdown, not just during the approach."
         },
-        "clouds-visibility": {
+        "clouds-and-visibility": {
           "title": "Clouds and visibility",
-          "body": "Visual flying depends on seeing the horizon and the terrain. Low clouds and fog can hide both within seconds, so visual pilots keep a safe distance from clouds and never fly into them: inside a cloud, without instrument training, you quickly lose all sense of up and down."
+          "body": "Flying by visual reference depends on being able to see the horizon and the terrain well enough to control the aircraft and navigate — visual flight rules exist precisely to guarantee enough cloud clearance and visibility for that to remain true. Low clouds and fog can erase both within seconds, especially in hilly terrain or near the coast where conditions change quickly.\n\nFlying into a cloud without instrument training is dangerous in a way that surprises many new pilots: inside a cloud there is no visual horizon at all, and the inner ear cannot reliably tell \"level\" from \"turning\" without outside visual cues — sensory illusions can convince a pilot the aircraft is level when it's actually banked, or vice versa, which is how visual pilots lose control of a perfectly airworthy aircraft in cloud.\n\nFor that reason, visual pilots keep a generous, deliberate distance from cloud bases and never fly into one intentionally. Watching how clouds build and lower through a flight, rather than reacting only once visibility has already dropped, is what keeps a flight comfortably within safe margins instead of an uncomfortable surprise.",
+          "keyTakeaway": "Visual flight depends on seeing the horizon and terrain; flying into cloud removes visual references and can quickly lead to loss of control through sensory illusions, so visual pilots stay well clear of cloud bases.",
+          "simTip": "Fly the night scenario in the simulator and notice how much you rely on the instrument panel once outside visual references become limited — that's the same reliance cloud forces on an unprepared visual pilot."
         },
-        "dangerous-weather": {
-          "title": "Weather to avoid",
-          "body": "Thunderstorms are the most dangerous weather: they hide violent updrafts and downdrafts, hail and ice that can overwhelm any small aircraft. Icing is treacherous too — ice on the wings changes their shape and destroys lift. The rule is simple: check the forecast before flying, and if the weather looks doubtful, stay on the ground."
+        "thunderstorms-and-icing": {
+          "title": "Thunderstorms and icing",
+          "body": "Thunderstorms are the single most dangerous weather phenomenon a light aircraft can encounter: inside and around a storm cell there can be violent updrafts and downdrafts strong enough to overwhelm the climb or descent performance of any small aircraft, along with hail and lightning. The safe distance from a thunderstorm is measured in many kilometers or miles, not a quick detour around the visible cloud.\n\nIcing is a quieter but equally serious hazard: airframe ice forms when an aircraft flies through visible moisture — cloud or rain — at temperatures at or below freezing, and it changes the wing's shape enough to seriously degrade lift and increase drag, sometimes without the pilot noticing immediately how much performance has been lost. Even a thin, rough layer of ice can be enough to disrupt the smooth airflow a wing depends on.\n\nBoth hazards share the same practical rule: check the forecast thoroughly before flying, understand what conditions could produce thunderstorms or icing along the route, and if the picture looks doubtful, the safest decision is simply to stay on the ground or delay the flight — no schedule is worth flying into conditions that can overwhelm the aircraft.",
+          "keyTakeaway": "Thunderstorms hide violent updrafts/downdrafts, hail and lightning and demand a wide berth; icing forms in visible moisture at freezing temperatures and can seriously degrade lift even in a thin layer — both call for thorough pre-flight weather checks and a willingness to stay on the ground.",
+          "simTip": "There's no thunderstorm or icing model in the simulator, but treat the scenario and time-of-day choice as a stand-in for assessing conditions before you commit to a flight — a habit that transfers directly."
+        },
+        "reading-a-weather-briefing": {
+          "title": "Reading a weather briefing",
+          "body": "Before any flight, pilots review a weather briefing that typically includes current conditions (reported at airports as a routine observation) and a forecast for the period of the flight. Learning to read these reports in their compact, coded format is a basic skill, because the same information delivered as a spoken paragraph would take far too long to communicate every hour at every airport worldwide.\n\nA routine surface observation reports wind direction and speed, visibility, present weather (rain, fog, and so on), cloud layers with their height, temperature and dew point, and the altimeter setting — all packed into a short string of codes. The forecast product covers the same categories but projects them forward, usually in a rougher, wider-margin way than an observation of what's actually happening right now.\n\nThe habit worth building early is comparing the forecast against what you actually observe once airborne: if conditions are already worse than forecast, that's a strong signal to reconsider the flight rather than press on hoping the forecast catches up with reality. Trusting your own eyes over an hours-old forecast is a basic form of situational awareness.",
+          "keyTakeaway": "A weather briefing combines a coded current observation with a forecast for the flight period; comparing what you actually see in flight against what was forecast is a key safety habit.",
+          "simTip": "Before a simulator session, pick your scenario and time of day deliberately based on what conditions you want to practice — that mirrors the real habit of matching a flight to a weather picture rather than flying blind to it."
+        },
+        "fronts-and-air-masses": {
+          "title": "Fronts and air masses",
+          "body": "An air mass is a large body of air with fairly uniform temperature and moisture, and weather changes when one air mass is replaced by another — the boundary between them is a front. A cold front is the leading edge of cooler air pushing into warmer air; because cold air is denser, it wedges underneath the warm air sharply, often producing a narrow band of intense but relatively short-lived weather, including thunderstorms.\n\nA warm front is the leading edge of warmer air overtaking cooler air, which it slides up and over more gradually, typically producing a wider band of lower clouds, drizzle and reduced visibility over a much longer period than a cold front's passage. A stationary front is one that isn't moving in either direction, and can bring extended periods of unsettled weather until it finally moves or dissipates.\n\nFor flight planning, the practical takeaway is that fronts are where weather actually changes, so tracking a front's expected position and timing along a route matters more than just looking at the departure and destination forecasts in isolation — the middle of a long flight is exactly where a moving front can catch a pilot by surprise.",
+          "keyTakeaway": "A front is the boundary between air masses: cold fronts bring sharp, shorter-lived weather including thunderstorms; warm fronts bring gradual, longer-lived low clouds and reduced visibility — track a front's timing along the whole route, not just at the endpoints.",
+          "simTip": "Think of the simulator's time-of-day settings as a simplified stand-in for changing conditions along a route — mentally rehearsing \"what if conditions change mid-flight\" builds the same planning habit."
+        },
+        "turbulence-and-wind-shear": {
+          "title": "Turbulence and wind shear",
+          "body": "Turbulence is simply irregular air movement that jostles the aircraft, and it comes from several distinct sources: thermal turbulence from rising columns of heated air (common on hot afternoons), mechanical turbulence from wind flowing over rough terrain or buildings, and turbulence associated with fronts or thunderstorms, which tends to be the most severe.\n\nWind shear is a sudden change in wind speed or direction over a short distance, and it's especially hazardous close to the ground on approach or departure — a sudden loss of headwind (or gain of tailwind) reduces airflow over the wings just when the aircraft has the least altitude margin to recover the lost performance. Low-level wind shear is often associated with thunderstorms but can also occur near strong temperature inversions with no storm in sight.\n\nThe practical response to both is similar: expect a bumpier ride near hills, over hot ground on summer afternoons, and near any front or storm, and carry a small speed margin above the minimum during approach in conditions where wind shear is a possibility, giving a buffer against a sudden, unexpected loss of airspeed.",
+          "keyTakeaway": "Turbulence comes from thermal, mechanical, or frontal/storm sources; wind shear is a sudden wind change especially dangerous close to the ground — both call for anticipating rougher conditions and carrying a speed margin on approach when they're possible.",
+          "simTip": "The mountain-pass scenario is the simulator's closest analog to mechanical turbulence terrain — fly it expecting a bumpier, more demanding approach than the flat desert scenario."
+        },
+        "weather-decision-making": {
+          "title": "Weather decision-making and personal minimums",
+          "body": "Aircraft and regulations set minimum legal weather requirements, but a prudent pilot also sets personal minimums — stricter limits based on their own experience, recency, and comfort level — because being legal to fly is not the same as being genuinely prepared for the conditions on a specific day.\n\nA useful habit is deciding personal minimums on the ground, before a flight, rather than in the air under the pressure of a flight already underway — it's much easier to turn down a marginal flight while still parked than to admit, mid-flight, that conditions have become more than you're comfortable handling. Pilots who wait until they're airborne to make that judgment tend to talk themselves into continuing past the point they'd have accepted on the ground.\n\n\"Get-there-itis\" — the pressure to complete a flight because of a schedule, an audience, or simple reluctance to admit a plan didn't work out — is a recognized factor in weather-related accidents. The healthiest mindset treats turning back, diverting, or simply not going as a completely normal, unremarkable outcome, not a failure.",
+          "keyTakeaway": "Personal minimums, set on the ground before the flight, protect against the pressure to continue a flight into worsening conditions once already airborne — turning back or not going is a normal, sound outcome, not a failure.",
+          "simTip": "Before opening the simulator, decide which scenario and conditions you're comfortable with today and stick to that choice — practicing the decision itself is as valuable as practicing the flight."
         }
       },
       "quiz": {
-        "q1": {
-          "question": "Why do aircraft take off and land facing the wind?",
+        "wind-q1": {
+          "question": "Why do pilots prefer to take off and land facing into the wind?",
           "options": [
-            "The ground run is shorter and touchdown is slower",
-            "The view is better for the pilot",
-            "It saves fuel on the way out"
-          ]
+            "It increases airflow over the wings for a given ground speed, shortening the takeoff/landing distance",
+            "It reduces engine wear",
+            "It is required for the altimeter to work correctly"
+          ],
+          "explanation": "A headwind adds to the airflow over the wings without adding ground speed, meaning less runway is needed to reach flying speed (or to slow down after touchdown)."
         },
-        "q2": {
-          "question": "Which wind pushes you sideways off the runway line?",
+        "wind-q2": {
+          "question": "How do pilots correct for a crosswind on approach?",
           "options": [
-            "Crosswind",
-            "Headwind",
-            "Tailwind"
-          ]
+            "Bank gently into the wind and apply opposite rudder to track the runway centerline",
+            "Reduce airspeed until the crosswind has no effect",
+            "Increase flap setting only"
+          ],
+          "explanation": "Banking into the wind counters the sideways drift while opposite rudder keeps the nose aligned with the runway — this correction must be held through the flare and touchdown."
         },
-        "q3": {
-          "question": "What makes thunderstorms so dangerous?",
+        "wind-q3": {
+          "question": "What determines a runway's actual crosswind component for a given wind report?",
           "options": [
-            "Violent updrafts and downdrafts, hail and ice",
-            "The noise distracts the pilot",
-            "They only occur at night"
-          ]
+            "The angle between the wind direction and the runway direction",
+            "The wind speed alone, regardless of angle",
+            "The time of day"
+          ],
+          "explanation": "The same reported wind speed produces a much larger crosswind component when blowing directly across the runway than when blowing at a shallow angle to it."
         },
-        "q4": {
-          "question": "Why is ice on the wings dangerous?",
+        "clouds-and-visibility-q1": {
+          "question": "Why is visual flight fundamentally dependent on cloud clearance and visibility?",
           "options": [
-            "It changes the wing's shape and destroys lift",
-            "It makes the aircraft too shiny",
-            "It blocks the radio antenna"
-          ]
+            "The pilot needs to see the horizon and terrain to control the aircraft and navigate",
+            "Clouds interfere with the altimeter's pressure sensor",
+            "Visibility only affects radio reception"
+          ],
+          "explanation": "Visual flight rules rely entirely on outside visual references for both aircraft control and navigation, so adequate visibility and cloud clearance are essential."
         },
-        "q5": {
-          "question": "Why is landing with a tailwind dangerous?",
+        "clouds-and-visibility-q2": {
+          "question": "Why is flying into a cloud dangerous for a visual (non-instrument-trained) pilot?",
           "options": [
-            "You touch down much faster",
-            "The engine loses power",
-            "Visibility gets worse"
-          ]
+            "The inner ear can't reliably sense attitude without outside visual references, leading to loss of control",
+            "Clouds are electrically charged",
+            "Cloud moisture damages the engine"
+          ],
+          "explanation": "Without a visual horizon, sensory illusions can convince a pilot the aircraft is in a different attitude than it actually is, a leading cause of loss of control in cloud."
         },
-        "q6": {
-          "question": "Why does a visual pilot never fly into a cloud?",
+        "clouds-and-visibility-q3": {
+          "question": "What is the recommended approach to clouds for a visual pilot?",
           "options": [
-            "Inside it you quickly lose all sense of up and down",
-            "Clouds damage the aircraft's paint",
-            "Radios stop working inside clouds"
-          ]
+            "Keep a generous distance from cloud bases and never fly into one intentionally",
+            "Fly close to clouds to use them as navigation landmarks",
+            "Only avoid clouds below 1,000 feet"
+          ],
+          "explanation": "Maintaining a deliberate buffer from cloud, and watching how conditions evolve through the flight, keeps a visual pilot safely within the visual references they depend on."
         },
-        "q7": {
-          "question": "How does a headwind affect the take-off run?",
+        "thunderstorms-and-icing-q1": {
+          "question": "What makes thunderstorms so dangerous to light aircraft?",
           "options": [
-            "It shortens it",
-            "It lengthens it",
-            "It has no effect"
-          ]
+            "Violent updrafts, downdrafts, hail and lightning that can overwhelm the aircraft",
+            "They only affect radio communication",
+            "They lower the outside air temperature slightly"
+          ],
+          "explanation": "The internal turbulence, hail, and electrical activity in and around a thunderstorm cell can easily exceed what a small aircraft can safely handle."
         },
-        "q8": {
-          "question": "How does a pilot correct for a crosswind on landing?",
+        "thunderstorms-and-icing-q2": {
+          "question": "Under what conditions does airframe icing typically form?",
           "options": [
-            "With rudder and bank",
-            "By closing the throttle earlier",
-            "By landing faster than normal"
-          ]
+            "Flying through visible moisture (cloud or rain) at or below freezing temperatures",
+            "Flying in clear air above 10,000 feet regardless of temperature",
+            "Only when the engine is at low power"
+          ],
+          "explanation": "Icing requires both visible moisture and temperatures at or below freezing — clear, dry air at the same temperature won't produce airframe ice."
         },
-        "q9": {
-          "question": "What should a pilot do if the forecast looks doubtful?",
+        "thunderstorms-and-icing-q3": {
+          "question": "What is the recommended response if the weather forecast looks doubtful for thunderstorms or icing?",
           "options": [
-            "Stay on the ground",
-            "Fly higher to stay above the weather",
-            "Depart earlier than planned"
-          ]
+            "Stay on the ground or delay the flight",
+            "Fly at a lower altitude to avoid the worst of it",
+            "Proceed but avoid using flaps"
+          ],
+          "explanation": "When conditions are uncertain or threatening, the safest and simplest decision is to not fly, rather than trying to out-navigate a hazard that can quickly overwhelm the aircraft."
         },
-        "q10": {
-          "question": "What does icing do to a wing?",
+        "reading-a-weather-briefing-q1": {
+          "question": "What are the two main components of a typical pre-flight weather briefing?",
           "options": [
-            "It changes its shape and destroys lift",
-            "It makes it heavier but otherwise harmless",
-            "It only affects the paint"
-          ]
+            "A current observation and a forecast for the flight period",
+            "Only a 24-hour-old satellite photo",
+            "A list of nearby airports with fuel prices"
+          ],
+          "explanation": "Briefings combine what conditions are actually being reported right now with a forecast projecting how they're expected to evolve during the flight."
         },
-        "q11": {
-          "question": "What is the ideal wind for take-off and landing?",
+        "reading-a-weather-briefing-q2": {
+          "question": "Why are weather observations and forecasts delivered in a compact coded format?",
           "options": [
-            "A headwind",
-            "A tailwind",
-            "A crosswind"
-          ]
+            "The same information as full sentences would take far too long to communicate for every airport, every hour",
+            "Coded formats are required to keep the information secret",
+            "It reduces the file size for radio transmission"
+          ],
+          "explanation": "A coded format lets a huge amount of standardized weather information be reported for airports worldwide efficiently, without lengthy spoken or written paragraphs."
         },
-        "q12": {
-          "question": "What effect does a tailwind have on the take-off run?",
+        "reading-a-weather-briefing-q3": {
+          "question": "What should a pilot do if actual conditions in flight are worse than the forecast predicted?",
           "options": [
-            "It lengthens it",
-            "It shortens it",
-            "It has no effect"
-          ]
+            "Treat it as a strong signal to reconsider the flight rather than hope the forecast catches up",
+            "Continue as planned, since forecasts are always conservative",
+            "Ignore it since only the forecast at departure matters"
+          ],
+          "explanation": "Trusting direct observation over an aging forecast is a basic safety habit — deteriorating conditions worse than expected are a cue to reassess, not to press on."
         },
-        "q13": {
-          "question": "What can fog hide?",
+        "fronts-and-air-masses-q1": {
+          "question": "What is a front?",
           "options": [
-            "The horizon and the terrain",
-            "Only high clouds",
-            "The wind"
-          ]
+            "The boundary between two air masses of different temperature and moisture",
+            "A type of cloud found only over mountains",
+            "The line on a chart showing an airport's traffic pattern"
+          ],
+          "explanation": "A front marks where one air mass is being replaced by another, and that transition is where significant weather typically develops."
         },
-        "q14": {
-          "question": "What happens inside a cloud without instrument training?",
+        "fronts-and-air-masses-q2": {
+          "question": "How does a cold front typically differ from a warm front?",
           "options": [
-            "You quickly lose all sense of up and down",
-            "You fly with more precision",
-            "The engine loses power"
-          ]
+            "Cold fronts bring sharper, shorter-lived weather; warm fronts bring gradual, longer-lived low clouds and reduced visibility",
+            "Cold fronts only occur at night",
+            "Warm fronts move faster than cold fronts on average"
+          ],
+          "explanation": "Denser cold air wedges under warm air abruptly (sharp, intense weather), while warm air slides gradually up and over cooler air (a wider, longer-lasting band of low cloud and drizzle)."
         },
-        "q15": {
-          "question": "Where do you find hail and violent currents?",
+        "fronts-and-air-masses-q3": {
+          "question": "Why should a pilot track a front's position along the entire route, not just at departure and destination?",
           "options": [
-            "In thunderstorms",
-            "In fog",
-            "In a crosswind"
-          ]
+            "A moving front can change conditions significantly in the middle of a flight",
+            "Fronts only affect the departure airport",
+            "Fronts remain stationary for the duration of any flight"
+          ],
+          "explanation": "Fronts move, so a front that's well clear of both endpoints at planning time could still cross the route mid-flight if its motion isn't accounted for."
         },
-        "q16": {
-          "question": "What should always be done before flying?",
+        "turbulence-and-wind-shear-q1": {
+          "question": "What is thermal turbulence caused by?",
           "options": [
-            "Check the forecast",
-            "Wait until nightfall",
-            "Fill the tanks to the maximum"
-          ]
+            "Rising columns of heated air, common on hot afternoons",
+            "Wind flowing over mountains",
+            "Aircraft flying too close together"
+          ],
+          "explanation": "Thermal turbulence comes from convective currents of warm air rising off heated ground, most active during the warmest part of the day."
+        },
+        "turbulence-and-wind-shear-q2": {
+          "question": "Why is low-level wind shear especially hazardous on approach?",
+          "options": [
+            "A sudden loss of headwind can reduce airflow over the wings when there's little altitude to recover",
+            "It only affects the aircraft's radio reception",
+            "It causes the altimeter to read incorrectly"
+          ],
+          "explanation": "Close to the ground, there's minimal altitude margin, so a sudden performance loss from shifting wind is much more dangerous than the same shear encountered at a safe altitude."
+        },
+        "turbulence-and-wind-shear-q3": {
+          "question": "What is a reasonable precaution when wind shear is possible during approach?",
+          "options": [
+            "Carry a small airspeed margin above the minimum approach speed",
+            "Reduce flap setting to zero",
+            "Descend faster than normal to get through the shear layer quickly"
+          ],
+          "explanation": "An extra speed margin provides a buffer against a sudden, unexpected airspeed loss from shear, without otherwise changing the approach technique."
+        },
+        "weather-decision-making-q1": {
+          "question": "What are 'personal minimums'?",
+          "options": [
+            "A pilot's own stricter weather limits, based on experience and comfort, beyond the bare legal minimums",
+            "The minimum fuel required by regulation",
+            "The lowest altitude permitted over a city"
+          ],
+          "explanation": "Personal minimums are self-imposed limits that account for a pilot's actual currency and comfort, which can be more conservative than the legal minimums."
+        },
+        "weather-decision-making-q2": {
+          "question": "Why is it better to set weather-related decision limits on the ground rather than in flight?",
+          "options": [
+            "It's much easier to decline a marginal flight before departure than to admit conditions have become too much mid-flight",
+            "Weather decisions are only legally valid before takeoff",
+            "In-flight decisions are always more accurate"
+          ],
+          "explanation": "Once airborne, pressure and sunk-cost thinking make it harder to turn back; deciding limits calmly on the ground avoids that pressure entirely."
+        },
+        "weather-decision-making-q3": {
+          "question": "What is 'get-there-itis'?",
+          "options": [
+            "Pressure to complete a flight despite worsening conditions, due to schedule or reluctance to change plans",
+            "A medical condition affecting pilots at high altitude",
+            "A technical malfunction in the GPS"
+          ],
+          "explanation": "Get-there-itis describes the psychological pressure to press on with a flight as planned, which is a recognized contributing factor in weather-related accidents."
         }
       }
     },
     "radio-alphabet": {
       "title": "Radio and the spelling alphabet",
-      "description": "Alfa, Bravo, Charlie — how pilots talk so nobody misunderstands.",
+      "description": "Standard phraseology, the ICAO alphabet, numbers, call structure, ATC instructions, pattern calls and lost communications.",
       "lessons": {
         "why-standard": {
-          "title": "Why pilots talk 'funny'",
-          "body": "On a busy frequency, a misheard word can put two aircraft in the same place. That is why aviation uses standard phraseology: short fixed phrases with exactly one meaning each. It is not jargon for style — it is a safety tool shared by pilots around the world."
+          "title": "Why pilots talk \"funny\"",
+          "body": "On a busy radio frequency, a single misheard word can put two aircraft in conflict — there's no time to say \"sorry, can you repeat that?\" during a critical phase of flight, and a garbled instruction acted on incorrectly is worse than no instruction at all. Aviation solves this with standard phraseology: a fixed set of short phrases, each with exactly one meaning, used the same way by pilots and controllers everywhere.\n\nThis isn't jargon for the sake of sounding professional — every element of standard phraseology exists because some ambiguity it prevents has caused a real problem in the past. A worldwide shared vocabulary also means a pilot from one country can fly safely and communicate clearly in the airspace of a country whose everyday language they don't speak at all.\n\nLearning to speak (and listen) this way is a skill like any other: it feels stilted and slow at first, and becomes fast and natural with practice — to the point that hearing a pilot use casual, non-standard phrasing on frequency is itself a small warning sign worth noticing.",
+          "keyTakeaway": "Standard phraseology is a safety tool, not a style choice — a small, fixed vocabulary with exactly one meaning per phrase, shared worldwide regardless of the pilot's or controller's everyday language.",
+          "simTip": "There's no live ATC in the simulator, but narrating your own radio calls out loud during a mission — \"ready for departure, runway two-seven\" — builds the habit for when it counts."
         },
         "icao-alphabet": {
           "title": "The spelling alphabet",
-          "body": "Letters like B, D and E sound alike over a noisy radio, so each letter has a word: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu. The registration D-EABC is read 'Delta – Echo Alfa Bravo Charlie'."
+          "body": "Letters like B, D, E, P and T sound very similar over a noisy, low-fidelity radio channel, which is exactly the kind of mistake that matters when a single letter is the difference between two different aircraft registrations or two different runways. The ICAO spelling alphabet solves this by giving every letter a distinct, hard-to-confuse word: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliett, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, Zulu.\n\nThese words were deliberately chosen and tested internationally so that no two of them sound alike, and so that they're recognizable across different accents, languages and radio equipment quality. An aircraft registration like D-EABC is read letter by letter using these words: \"Delta – Echo Alfa Bravo Charlie\" — never as a single blended word.\n\nThe alphabet is used well beyond aircraft registrations: spelling back an unfamiliar place name, confirming a runway designator with a letter suffix, or clarifying any word that could be misheard all use the same 26 words, which is exactly why memorizing them solidly — not just recognizing them when you hear them — pays off.",
+          "keyTakeaway": "The ICAO spelling alphabet (Alfa through Zulu) replaces easily-confused letters with distinct, internationally tested words, used to spell registrations, place names and anything else at risk of being misheard.",
+          "simTip": "Practice spelling your own name or a nearby town using the full alphabet before a simulator session — fluency here transfers directly to real radio work."
         },
-        "numbers": {
+        "numbers-on-the-radio": {
           "title": "Numbers on the radio",
-          "body": "Numbers are read digit by digit: runway 27 is 'two seven', not 'twenty-seven'. Nine is pronounced 'niner' so it cannot be confused with similar-sounding words. Headings, altitudes and frequencies are all spoken this way to leave no room for doubt."
+          "body": "Aviation numbers are read digit by digit rather than as whole numbers: runway 27 is spoken \"two seven\", not \"twenty-seven\", and an altitude of 4,500 feet is \"four thousand five hundred\" — spoken in a standard way that leaves no room for a listener to mishear a compound number as a different one entirely.\n\nA few digits get special pronunciation specifically to avoid confusion: nine is pronounced \"niner\" so it's never mistaken for similar-sounding words on a noisy channel. These aren't quirks — each one exists because a specific mishearing was identified as a real risk.\n\nHeadings, altitudes, frequencies, and transponder codes are all spoken digit by digit using these conventions, which is why a controller's instruction like \"climb and maintain three thousand five hundred, turn left heading three three zero\" sounds unusual to an untrained ear but is, in fact, built for maximum clarity rather than natural-sounding speech.",
+          "keyTakeaway": "Numbers are read digit by digit (not as whole numbers), with special pronunciations like \"niner\" for nine — precision over natural-sounding speech, used consistently for headings, altitudes, frequencies and codes.",
+          "simTip": "Practice reading the simulator's heading and altitude readouts aloud digit by digit — \"heading two seven zero, altitude one thousand two hundred\" — instead of as ordinary numbers."
+        },
+        "radio-call-structure": {
+          "title": "The structure of a radio call",
+          "body": "Most radio calls follow a simple, learnable pattern: who you're calling, who you are, and then your position or intentions — for example, \"Springfield Traffic, Cessna one-two-three-Alfa-Bravo, ten miles south, inbound for landing.\" Leading with who you're calling ensures the right listeners tune in immediately, and stating your own identity (callsign) lets everyone else know exactly who is talking.\n\nAfter the opening, the content of the call depends on the situation — a position report, a request, or a readback of an instruction — but it stays brief and focused on exactly the information the listener needs to build a mental picture of where you are and what you're doing next. Padding a call with unnecessary detail clutters the frequency for everyone else waiting to transmit.\n\nListening before transmitting is just as much a part of call structure as speaking clearly: keying the microphone while someone else is already talking (\"stepping on\" a transmission) can garble both calls into unintelligible noise, so a brief pause to listen is a habit built into every good radio call, not an afterthought.",
+          "keyTakeaway": "A radio call opens with who you're calling and who you are, then states position or intent briefly and precisely — listening before transmitting to avoid \"stepping on\" another call is just as important as phrasing.",
+          "simTip": "Before departing in the simulator, say your call out loud — \"Desert Field Traffic, [your aircraft], ready for departure runway two-seven\" — to build the habit even without a live listener."
+        },
+        "common-atc-instructions": {
+          "title": "Common ATC instructions and readbacks",
+          "body": "Air traffic control issues instructions using the same standard phraseology principles: clear, structured phrases like \"climb and maintain\", \"turn left heading\", or \"cleared to land\" each have one specific, unambiguous meaning. Understanding these common instructions — rather than just recognizing key words — is what lets a pilot respond correctly and promptly.\n\nCertain instructions must be read back to the controller — repeated back in the pilot's own transmission — specifically because getting them wrong has serious consequences: runway assignments, altitude and heading instructions, and any clearance affecting separation from other traffic are classic examples. The readback isn't a formality; it's the controller's only reliable way to confirm the instruction was actually understood correctly, not just heard.\n\nA correct readback repeats the key details of the instruction and adds the aircraft's callsign, so the controller can confirm both what was heard and who is confirming it — a habit that catches errors on both ends of the transmission before they become a real conflict rather than after.",
+          "keyTakeaway": "ATC instructions use fixed, unambiguous phrases; certain ones (runway assignments, altitude/heading changes, clearances affecting separation) require a readback that repeats the key details plus your callsign, giving the controller a chance to catch a misunderstanding before it matters.",
+          "simTip": "Even flying solo in the simulator, say the equivalent readback out loud after \"receiving\" a heading or altitude change from a mission's objective banner — the muscle memory transfers directly."
+        },
+        "traffic-pattern-calls": {
+          "title": "Traffic pattern position calls",
+          "body": "At airports without a control tower, pilots broadcast their position in the traffic pattern so everyone nearby can build a shared mental picture of where each aircraft is, without needing a controller to manage that separation actively. These calls follow the pattern's own standard legs: downwind, base, and final are the most common calls, each announced as the aircraft reaches that point.\n\nA typical downwind call states the airport, aircraft identification, that you're on downwind, and the runway in use — the same structure covered earlier, applied specifically to pattern flying. Announcing intentions consistently at each leg, rather than only when something feels necessary, is what makes the whole system work: other pilots are actively listening and plotting your position from these calls, even if they never see your aircraft directly.\n\nBetween calls, listening carefully to everyone else's position reports (and looking outside for that traffic) is just as important as making your own calls — the whole system is built on mutual awareness, not any single pilot's transmissions alone. A quiet frequency can be quiet because there's no traffic, or because someone nearby simply isn't making their calls; assuming the former without a careful visual scan is a real risk.",
+          "keyTakeaway": "At non-towered airports, standard position calls (downwind, base, final) build a shared mental picture of traffic for everyone nearby; making consistent calls and listening carefully to others' calls, backed by a visual scan, is how the whole system works safely.",
+          "simTip": "Say your position out loud at each stage of the pattern during simulator circuits — \"downwind, runway two-seven\" — to build the same habit you'd need flying with real traffic nearby."
+        },
+        "lost-communications": {
+          "title": "Lost communications basics",
+          "body": "A radio failure — \"lost comms\" — doesn't mean a flight has to end badly; it means switching to a set of well-established backup procedures designed specifically for this situation. The core idea is predictability: without a working radio, the pilot follows expected, standard behavior so that controllers and other pilots can reasonably anticipate what the aircraft will do next.\n\nA dedicated transponder code exists specifically to signal a communications failure to controllers watching on radar, alerting them that the aircraft has lost its radio even though it may otherwise be flying completely normally — squawking that code is one of the first actions in a lost-comms situation in controlled airspace.\n\nAt an airport with a control tower, standard light-gun signals — different colors and patterns of light aimed at the aircraft — can convey basic instructions like cleared to land or hold position when radio communication isn't available, a reminder that aviation has built layered backups for exactly the failures that radios themselves can't prevent.",
+          "keyTakeaway": "Lost comms has established backup procedures built around predictability: a dedicated transponder code alerts controllers to the failure, and light-gun signals at towered airports provide basic instructions without radio contact.",
+          "simTip": "The simulator doesn't model radio failure, but mentally rehearsing \"what would I do with no radio right now\" during a mission builds the same procedural thinking real lost-comms situations demand."
         }
       },
       "quiz": {
-        "q1": {
-          "question": "What is the spelling-alphabet word for the letter B?",
+        "why-standard-q1": {
+          "question": "Why does aviation use standard phraseology instead of everyday conversational language?",
           "options": [
-            "Bravo",
-            "Beta",
-            "Berlin"
-          ]
+            "A fixed vocabulary with exactly one meaning per phrase reduces the chance of a dangerous misunderstanding",
+            "It sounds more professional to passengers",
+            "It's required to keep radio transmissions short for cost reasons"
+          ],
+          "explanation": "Every element of standard phraseology closes off some specific ambiguity, making the intended meaning as unmistakable as possible even under noisy radio conditions."
         },
-        "q2": {
-          "question": "How do you read runway 27 on the radio?",
+        "why-standard-q2": {
+          "question": "What is a major benefit of a worldwide-shared radio vocabulary?",
+          "options": [
+            "Pilots and controllers from different countries can communicate clearly regardless of their everyday language",
+            "It eliminates the need for a radio license",
+            "It allows pilots to skip pre-flight planning"
+          ],
+          "explanation": "Because the phrases and their meanings are standardized internationally, a pilot can operate safely in airspace where the local everyday language is completely unfamiliar to them."
+        },
+        "why-standard-q3": {
+          "question": "What does hearing casual, non-standard phrasing on frequency potentially indicate?",
+          "options": [
+            "A small warning sign worth noticing, since it departs from the shared, unambiguous standard",
+            "Nothing of significance — phrasing style doesn't matter",
+            "That the pilot is highly experienced"
+          ],
+          "explanation": "Since standard phraseology exists specifically to prevent ambiguity, a deviation from it is worth noticing as a potential (if minor) sign of reduced clarity or unfamiliarity with procedure."
+        },
+        "icao-alphabet-q1": {
+          "question": "Why does aviation use words like \"Alfa\" and \"Bravo\" instead of just saying letters?",
+          "options": [
+            "Many letters sound alike over noisy radio, and these words are chosen to be clearly distinguishable",
+            "It makes transmissions shorter",
+            "It's a historic tradition with no practical purpose today"
+          ],
+          "explanation": "Letters like B, D, and E can easily be confused on a poor-quality radio channel; the spelling alphabet words were specifically selected to minimize that risk."
+        },
+        "icao-alphabet-q2": {
+          "question": "How should the registration D-EABC be read on the radio?",
+          "options": [
+            "Delta – Echo Alfa Bravo Charlie, spoken letter by letter",
+            "As a single blended word",
+            "D dash E A B C, spoken as individual letter names"
+          ],
+          "explanation": "Each letter is replaced by its alphabet word and spoken clearly and separately — never blended together or read using plain letter names."
+        },
+        "icao-alphabet-q3": {
+          "question": "Besides aircraft registrations, what else is the spelling alphabet commonly used for?",
+          "options": [
+            "Spelling unfamiliar place names or clarifying any word at risk of being misheard",
+            "Only for reading out fuel quantities",
+            "Exclusively for emergency codes"
+          ],
+          "explanation": "The same 26 words are used any time precise, unambiguous communication of letters is needed — not just for registrations."
+        },
+        "numbers-on-the-radio-q1": {
+          "question": "How is runway 27 spoken on the radio?",
           "options": [
             "Two seven",
             "Twenty-seven",
-            "Runway almost thirty"
-          ]
+            "Runway B"
+          ],
+          "explanation": "Numbers are read digit by digit in aviation radio communication, so 27 is \"two seven\", never the compound word \"twenty-seven\"."
         },
-        "q3": {
-          "question": "Why is 9 pronounced 'niner'?",
+        "numbers-on-the-radio-q2": {
+          "question": "Why is the number nine pronounced \"niner\" on the radio?",
           "options": [
-            "To avoid confusion with similar-sounding words",
-            "It is faster to say",
-            "Tradition from the age of sail"
-          ]
+            "To avoid it being confused with similar-sounding words on a noisy channel",
+            "Because \"nine\" is difficult to pronounce in some languages",
+            "It's an old military tradition with no current purpose"
+          ],
+          "explanation": "\"Niner\" has a distinct enough sound that it resists being misheard, which is exactly the kind of small change that reduces real communication errors."
         },
-        "q4": {
-          "question": "What does 'Delta Echo' spell?",
+        "numbers-on-the-radio-q3": {
+          "question": "What is the underlying principle behind how aviation numbers are spoken?",
           "options": [
-            "DE",
-            "DC",
-            "EO"
-          ]
+            "Maximizing clarity and precision, even at the cost of sounding natural",
+            "Making transmissions as short as possible",
+            "Matching how numbers are read in everyday conversation"
+          ],
+          "explanation": "Aviation radio phrasing consistently favors unambiguous clarity over natural or efficient-sounding speech, because the cost of a misheard number can be serious."
         },
-        "q5": {
-          "question": "What is the spelling-alphabet word for the letter A?",
+        "radio-call-structure-q1": {
+          "question": "What typically comes first in a standard radio call?",
           "options": [
-            "Alfa",
-            "Bravo",
-            "Delta"
-          ]
+            "Who you are calling",
+            "Your exact altitude",
+            "Your intended landing time"
+          ],
+          "explanation": "Opening with who you're calling ensures the right listeners tune in and know the transmission is relevant to them right away."
         },
-        "q6": {
-          "question": "What is the spelling-alphabet word for the letter S?",
+        "radio-call-structure-q2": {
+          "question": "Why should a radio call stay brief and focused?",
           "options": [
-            "Sierra",
-            "Whiskey",
-            "Golf"
-          ]
+            "Unnecessary detail clutters the frequency for everyone else waiting to transmit",
+            "Long calls are against international law",
+            "Radios have a strict time limit per transmission"
+          ],
+          "explanation": "A shared frequency is a limited resource; concise calls keep it available for other traffic and controllers, and are also easier for listeners to absorb quickly."
         },
-        "q7": {
-          "question": "What is the spelling-alphabet word for the letter Z?",
+        "radio-call-structure-q3": {
+          "question": "Why is listening before transmitting an important part of making a radio call?",
           "options": [
-            "Zulu",
-            "Yankee",
-            "X-ray"
-          ]
+            "Transmitting while someone else is talking can garble both calls into unintelligible noise",
+            "It saves battery power in the radio",
+            "It is required before every single transmission by law, with no exceptions"
+          ],
+          "explanation": "Two simultaneous transmissions on the same frequency typically interfere with each other, so briefly listening first avoids stepping on another pilot's or controller's call."
         },
-        "q8": {
-          "question": "How do you read heading 270 on the radio?",
+        "common-atc-instructions-q1": {
+          "question": "What is the main purpose of reading back an ATC instruction?",
           "options": [
-            "Two seven zero",
-            "Two hundred seventy",
-            "Seventy"
-          ]
+            "To let the controller confirm the instruction was actually understood correctly",
+            "To practice pronunciation",
+            "To satisfy a minimum transmission-length requirement"
+          ],
+          "explanation": "A readback gives the controller direct confirmation that their instruction was received and understood as intended, catching a misunderstanding before it becomes a real problem."
         },
-        "q9": {
-          "question": "What does 'Kilo Mike' spell?",
+        "common-atc-instructions-q2": {
+          "question": "Which of these typically requires a readback?",
           "options": [
-            "KM",
-            "KN",
-            "MK"
-          ]
+            "A runway assignment or altitude/heading change",
+            "General chit-chat on frequency",
+            "The time of day given by an automated broadcast"
+          ],
+          "explanation": "Instructions with serious consequences if misunderstood — runway assignments, altitude, heading, clearances affecting separation — require readback; general information does not."
         },
-        "q10": {
-          "question": "Why are numbers read digit by digit on the radio?",
+        "common-atc-instructions-q3": {
+          "question": "What should a correct readback include?",
           "options": [
-            "To avoid ambiguity",
-            "It sounds more professional",
-            "It is a legacy from Morse code"
-          ]
+            "The key details of the instruction plus the aircraft's callsign",
+            "Only the word \"Roger\"",
+            "A full repeat of the entire conversation so far"
+          ],
+          "explanation": "Repeating the specific details (not just acknowledging generically) plus identifying your aircraft lets the controller verify exactly what was understood and by whom."
         },
-        "q11": {
-          "question": "What is the spelling-alphabet word for the letter C?",
+        "traffic-pattern-calls-q1": {
+          "question": "Why do pilots make position calls at non-towered airports?",
           "options": [
-            "Charlie",
-            "Kilo",
-            "Mike"
-          ]
+            "To build a shared mental picture of traffic for everyone nearby, without an active controller",
+            "Because it is required to log flight time",
+            "To test the aircraft's radio equipment"
+          ],
+          "explanation": "Without a controller actively separating traffic, pilots rely on each other's calls (and visual scanning) to maintain awareness of nearby aircraft."
         },
-        "q12": {
-          "question": "What does 'Sierra Tango' spell?",
+        "traffic-pattern-calls-q2": {
+          "question": "What are the most common traffic pattern legs announced with a position call?",
           "options": [
-            "ST",
-            "SY",
-            "TS"
-          ]
+            "Downwind, base, and final",
+            "Takeoff, cruise, and landing",
+            "North, south, east, and west"
+          ],
+          "explanation": "Downwind, base, and final are the standard legs where pilots typically announce their position in the traffic pattern."
         },
-        "q13": {
-          "question": "What is the spelling-alphabet word for the letter D?",
+        "traffic-pattern-calls-q3": {
+          "question": "Why is listening to others' calls just as important as making your own?",
           "options": [
-            "Delta",
-            "Papa",
-            "Whiskey"
-          ]
+            "The whole system depends on mutual awareness, not any single pilot's transmissions",
+            "Only the first call of the day needs to be heard by others",
+            "Listening is optional if you can see the runway clearly"
+          ],
+          "explanation": "A safe pattern relies on everyone building awareness from each other's calls and visual scanning — assuming a quiet frequency means no traffic, without confirming visually, is a real risk."
         },
-        "q14": {
-          "question": "What is the spelling-alphabet word for the letter H?",
+        "lost-communications-q1": {
+          "question": "What is the core principle behind lost-communications procedures?",
           "options": [
-            "Hotel",
-            "Golf",
-            "India"
-          ]
+            "Predictable, standard behavior so others can anticipate what the aircraft will do",
+            "Landing immediately at the nearest airport regardless of conditions",
+            "Climbing to the highest possible altitude"
+          ],
+          "explanation": "Without two-way communication, predictability is what lets controllers and other pilots reasonably anticipate the aircraft's actions and plan around it safely."
         },
-        "q15": {
-          "question": "What does 'Papa Quebec' spell?",
+        "lost-communications-q2": {
+          "question": "What is the purpose of a dedicated lost-comms transponder code?",
           "options": [
-            "PQ",
-            "PC",
-            "QP"
-          ]
+            "To alert controllers watching on radar that the aircraft has lost radio communication",
+            "To automatically land the aircraft",
+            "To boost the radio's transmission power"
+          ],
+          "explanation": "Squawking the specific lost-comms code tells controllers, via radar display alone, that the aircraft has a communications failure even without any voice contact."
         },
-        "q16": {
-          "question": "What is the spelling-alphabet word for the letter W?",
+        "lost-communications-q3": {
+          "question": "How can a towered airport communicate basic instructions to an aircraft with no working radio?",
           "options": [
-            "Whiskey",
-            "Victor",
-            "X-ray"
-          ]
-        },
-        "q17": {
-          "question": "What does 'Victor Whiskey' spell?",
-          "options": [
-            "VW",
-            "VX",
-            "WV"
-          ]
-        },
-        "q18": {
-          "question": "Why does aviation phraseology use fixed phrases?",
-          "options": [
-            "Because each one has exactly one meaning",
-            "Because they sound more formal",
-            "Because they are shorter to write"
-          ]
+            "Light-gun signals aimed at the aircraft",
+            "Flashing the runway lights in a random pattern",
+            "There is no way to communicate without radio"
+          ],
+          "explanation": "Standard light-gun colors and patterns convey basic instructions like cleared to land or hold, specifically as a backup for aircraft that can't receive radio calls."
         }
       }
     },
     "navigation-basics": {
       "title": "Basic navigation",
-      "description": "Charts, courses and finding your way — from A to B without roads.",
+      "description": "Pilotage, dead reckoning, flight planning, charts, wind correction, GPS and what to do if you get lost.",
       "lessons": {
         "pilotage": {
           "title": "Pilotage",
-          "body": "Pilotage means flying by looking outside and comparing what you see — rivers, roads, railway lines and towns — with the aeronautical chart. These large, linear features are easy to spot from the air and let you confirm your position at any moment. The golden rule is simple: you must ALWAYS know where you are on the chart."
+          "body": "Pilotage means navigating by looking outside and matching what you see — rivers, roads, railway lines, coastlines, and towns — against an aeronautical chart, rather than relying on instruments or calculations alone. Large, linear or distinctively shaped features are easy to spot from the air and let a pilot confirm their position at a glance, even without any electronic aid.\n\nThe technique works best when a pilot picks features ahead of time during flight planning — choosing landmarks that are genuinely distinctive from the air, not just prominent on the ground — and checks them off along the route as they pass, rather than waiting until feeling lost to start looking outside for clues.\n\nThe golden rule underlying pilotage, and really all navigation, is simple to say and easy to neglect under workload: you must always know roughly where you are on the chart. The moment that's no longer true, addressing it becomes the most important task in the cockpit, ahead of anything else that isn't a safety-of-flight emergency.",
+          "keyTakeaway": "Pilotage means confirming position by matching distinctive outside features to the chart; the underlying rule for all navigation is to always know roughly where you are, and to treat losing that awareness as an immediate priority.",
+          "simTip": "Fly the mountain-pass scenario and pick two or three obvious terrain features before takeoff, then check them off mentally as you pass — the same discipline pilotage requires with a real chart."
         },
         "dead-reckoning": {
           "title": "Dead reckoning",
-          "body": "Dead reckoning combines heading, airspeed and time to calculate where you will be at any given moment. Wind pushes you off your intended track, so pilots correct their heading by pointing 'into the wind' to compensate for that drift. A compass and a clock are the basic tools of dead reckoning — without them there is no calculation to make."
+          "body": "Dead reckoning calculates where you will be at a future moment using heading, airspeed, and elapsed time — starting from a known position, a pilot can predict a future position purely through arithmetic, without needing any outside visual reference or electronic aid at all.\n\nWind is the complication that makes dead reckoning more than pure arithmetic: wind pushes the aircraft off its intended track over the ground even while the heading indicator shows a perfectly steady number, so pilots calculate a wind correction angle beforehand and fly a heading that points slightly \"into\" the wind to compensate, so the actual path over the ground still follows the intended course.\n\nA compass (or heading indicator) and a clock are the only two tools dead reckoning strictly requires, which is exactly why it has remained a foundational, teachable skill for as long as aircraft have needed to navigate without external aids — everything more advanced builds on the same core idea of position, direction, speed, and time.",
+          "keyTakeaway": "Dead reckoning predicts future position from heading, airspeed and time; because wind drifts the aircraft off track, pilots pre-calculate a wind correction angle and fly a heading that compensates for it.",
+          "simTip": "During a longer free-flight session, pick a heading and hold it precisely for a set time, then compare where you actually end up to where straight math predicted — that gap is exactly what wind correction accounts for."
         },
-        "planning": {
+        "flight-planning": {
           "title": "Flight planning",
-          "body": "Before flying, pilots study the route, the expected weather, the fuel required plus a reserve, and choose an alternate aerodrome in case the destination is not usable. If you get lost in flight, climb higher: you will see more terrain and get better radio reception. Getting lost is nothing to be ashamed of — but hiding it instead of asking for help is dangerous."
+          "body": "Before any flight, pilots plan the route, study the weather expected along it, calculate the fuel required plus a safety reserve, and choose at least one alternate aerodrome in case the destination becomes unusable — whether from weather, a closed runway, or any other reason. Planning this on the ground, with time to think it through carefully, is far safer than improvising the same decisions in the air under time pressure.\n\nFuel planning in particular always includes a reserve beyond the minimum calculated for the route — unexpected headwinds, a diversion, or extra time in a holding pattern are all normal enough occurrences that the plan has to accommodate them without the flight running dangerously close to empty tanks. Treating the reserve as available \"just in case\" fuel to dip into casually defeats its entire purpose.\n\nIf a pilot does become lost or uncertain of position during a flight, climbing higher is one of the simplest and most effective first steps: greater altitude reveals more terrain and distinctive features to identify, and generally improves radio reception for reaching help. Admitting confusion and asking for help is a normal, sound decision — it's hiding a problem instead of raising it that turns a minor navigation hiccup into a real emergency.",
+          "keyTakeaway": "Flight planning covers route, weather, fuel plus reserve, and an alternate aerodrome — all decided calmly on the ground; if lost, climbing higher improves visibility and radio reception, and asking for help early is always the right call.",
+          "simTip": "Before choosing a simulator scenario, briefly decide your \"plan\": which scenario, what time of day, and what you intend to practice — a small taste of the same discipline real flight planning requires."
+        },
+        "reading-a-sectional-chart": {
+          "title": "Reading a sectional chart",
+          "body": "An aeronautical chart packs an enormous amount of information into a single page using a compact system of symbols, colors and lines: airports (with symbols that indicate whether they have services like fuel or a control tower), airspace boundaries drawn with different line styles and colors, terrain elevation shown by shading and contour lines, and obstacles like towers marked with their height.\n\nColors carry meaning just as much as symbols do: shades of blue and magenta typically distinguish different classes of controlled airspace, and darker terrain shading indicates higher ground — reading a chart fluently means recognizing these visual conventions instantly rather than having to look up a legend mid-flight.\n\nCharts are only useful if kept current, since airspace boundaries, radio frequencies, and obstacles all change over time; flying with an outdated chart can mean missing a new obstacle, an airspace change, or a frequency update, which is why checking the chart's currency is as routine a habit as checking the weather before a flight.",
+          "keyTakeaway": "Sectional charts encode airports, airspace, terrain and obstacles through a compact system of symbols, lines and colors; recognizing these conventions fluently — and keeping the chart current — is essential to using one effectively.",
+          "simTip": "Picture the simulator's mini-map as a drastically simplified \"chart\" showing runways and the flight-area boundary — the habit of relating your position to a chart-like reference transfers directly."
+        },
+        "wind-correction-angle": {
+          "title": "Wind correction angle in practice",
+          "body": "The wind correction angle is the small offset between the heading you fly and the course you intend to actually travel over the ground, calculated so that wind drift cancels out and your ground track matches your planned course. Without it, a steady crosswind component would carry the aircraft steadily off to one side of the intended route, even while the heading indicator shows a perfectly constant number.\n\nThe stronger the crosswind component (relative to airspeed) and the more nearly it blows directly across the intended course, the larger the correction angle needs to be — a headwind or tailwind alone, blowing straight along the course, needs no correction angle at all, only an adjustment to expected groundspeed and time en route.\n\nIn practice, pilots estimate or calculate this angle during flight planning using forecast winds, then refine it in the air by comparing the actual ground track (using landmarks or navigation aids) to the intended course and adjusting heading slightly if the aircraft is drifting — planning gives a good starting estimate, and observation in flight makes it precise.",
+          "keyTakeaway": "The wind correction angle offsets your heading from your intended ground course to cancel out crosswind drift; it grows with stronger, more direct crosswinds and should be refined in flight by checking actual ground track against the plan.",
+          "simTip": "In a scenario with noticeable drift, try holding a heading exactly on the compass and watch whether your ground track (relative to terrain features) drifts — that drift is exactly what a correction angle would cancel."
+        },
+        "gps-and-modern-navigation": {
+          "title": "GPS and modern navigation aids",
+          "body": "Satellite navigation (GPS) gives a precise, continuously updated position by measuring signals from multiple satellites, and modern moving-map displays plot that position directly on an electronic chart in real time — a significant leap in convenience and precision compared to pilotage and dead reckoning alone.\n\nThe tradeoff is dependence on the system working correctly: GPS signals can be lost, degraded, or (rarely) provide misleading information, and a pilot who has only ever navigated by following a moving map can be left with no effective backup if the display goes dark. This is exactly why pilotage and dead reckoning remain taught and practiced skills, not outdated ones.\n\nThe soundest approach treats GPS as a powerful aid that confirms and speeds up navigation, not a replacement for maintaining basic positional awareness by other means — glancing at the chart and terrain occasionally, even with a perfectly functioning moving map, keeps that backup skill sharp and ready if it's ever actually needed.",
+          "keyTakeaway": "GPS gives precise, continuous positioning and moving-map convenience, but it can fail or mislead; pilotage and dead reckoning remain essential backup skills, practiced deliberately rather than left to atrophy.",
+          "simTip": "Try flying a mission relying only on the simulator's compass and mini-map, deliberately not memorizing the route from repetition — it's a small taste of navigating without over-relying on a single aid."
+        },
+        "lost-procedures": {
+          "title": "What to do if you get lost",
+          "body": "Realizing you're no longer certain of your position is not itself a crisis — it's an extremely common experience, and how a pilot responds in the first minute matters far more than the fact that it happened at all. The first, most important step is simply to keep flying the aircraft: maintain altitude and a sensible heading rather than making abrupt changes while trying to figure out the problem.\n\nFrom there, the standard advice is to climb (within reason), which reveals more terrain and distinctive landmarks and improves radio reception, and to try to identify recognizable features against the chart using the last confirmed position as a starting point for dead reckoning. If minutes pass without regaining confident position awareness, asking for help over the radio — from any available facility — is a normal, appropriate action, not an admission of failure.\n\nThe single most damaging response to being lost is trying to hide it: continuing to guess silently, burning fuel and daylight while hoping the picture will clarify on its own, is what turns a minor, extremely common navigation hiccup into a genuine emergency. Every pilot who has ever flown cross-country has been uncertain of their position at some point — the ones who ask for help early are the ones who land safely without a story worth telling.",
+          "keyTakeaway": "Being lost is common and not itself dangerous — the priority order is: keep flying the aircraft, climb for better visibility and radio reception, use dead reckoning from your last known position, and ask for help early rather than hiding the problem.",
+          "simTip": "Try a free-flight session where you deliberately fly a few unplanned turns, then practice the recovery sequence — steady the aircraft, climb, and re-orient using the mini-map — rather than panicking toward the nearest edge of the flying area."
         }
       },
       "quiz": {
-        "q1": {
-          "question": "What does pilotage consist of?",
+        "pilotage-q1": {
+          "question": "What is pilotage?",
           "options": [
-            "Comparing terrain references with the chart",
-            "Following only the onboard instruments",
-            "Always flying in a straight line without checking the map"
-          ]
+            "Navigating by matching outside visual features to a chart",
+            "Navigating using only GPS coordinates",
+            "Calculating position from heading, speed and time alone"
+          ],
+          "explanation": "Pilotage is specifically about visual reference — comparing landmarks seen outside to their depiction on an aeronautical chart."
         },
-        "q2": {
-          "question": "What is the golden rule of pilotage?",
+        "pilotage-q2": {
+          "question": "What makes a good landmark for pilotage?",
           "options": [
-            "Always know where you are on the chart",
-            "Always fly at the maximum possible altitude",
-            "Never check the chart until the end of the flight"
-          ]
+            "A feature that is genuinely distinctive when viewed from the air",
+            "Any feature marked on a road map",
+            "The tallest building along the route"
+          ],
+          "explanation": "Pilotage landmarks need to be recognizable specifically from altitude and angle, which isn't always the same as what stands out at ground level."
         },
-        "q3": {
-          "question": "Which three inputs does dead reckoning combine?",
+        "pilotage-q3": {
+          "question": "What is the golden rule of navigation described in this lesson?",
           "options": [
-            "Heading, airspeed and time",
-            "Altitude, pressure and temperature",
-            "Fuel, weight and power"
-          ]
+            "Always know roughly where you are on the chart",
+            "Never change altitude during a flight",
+            "Always fly directly over roads"
+          ],
+          "explanation": "Maintaining continuous positional awareness is the foundation all navigation techniques are built on — losing it should immediately become the top priority to resolve."
         },
-        "q4": {
-          "question": "What does the wind do to your intended track?",
+        "dead-reckoning-q1": {
+          "question": "What three basic inputs does dead reckoning use to predict future position?",
           "options": [
-            "It pushes you off track; you correct by heading into the wind",
-            "It has no effect on the track at all",
-            "It only affects your speed, never your heading"
-          ]
+            "Heading, airspeed, and elapsed time",
+            "Altitude, temperature, and fuel quantity",
+            "GPS coordinates and satellite signal strength"
+          ],
+          "explanation": "Dead reckoning is fundamentally an arithmetic prediction from a known starting position using heading, speed, and how much time has passed."
         },
-        "q5": {
-          "question": "What are the basic tools of dead reckoning?",
+        "dead-reckoning-q2": {
+          "question": "Why is a wind correction angle necessary in dead reckoning?",
           "options": [
-            "A compass and a clock",
-            "An altimeter and an airspeed indicator",
-            "A radio and a transponder"
-          ]
+            "Wind drifts the aircraft off its intended ground track even while holding a steady heading",
+            "It compensates for altimeter errors",
+            "It accounts for changes in magnetic declination during the flight"
+          ],
+          "explanation": "Without correcting for wind, the aircraft's actual path over the ground drifts away from the intended course even though the heading indicator shows no change."
         },
-        "q6": {
-          "question": "What is planned before a flight?",
+        "dead-reckoning-q3": {
+          "question": "What are the two basic tools dead reckoning strictly requires?",
           "options": [
-            "The route, the weather, the fuel and an alternate",
-            "Only the departure time",
-            "Only the colour of the aircraft"
-          ]
+            "A compass (or heading indicator) and a clock",
+            "A GPS receiver and a radio",
+            "A sectional chart and a ruler only"
+          ],
+          "explanation": "At its core, dead reckoning only needs direction (compass/heading indicator) and elapsed time (a clock) to calculate a predicted position."
         },
-        "q7": {
-          "question": "Why do pilots carry reserve fuel?",
+        "flight-planning-q1": {
+          "question": "What does thorough flight planning typically include?",
           "options": [
-            "To cover the unexpected or a diversion",
-            "To make the aircraft fly faster",
-            "To save money at the destination airport"
-          ]
+            "Route, weather review, fuel plus reserve, and an alternate aerodrome",
+            "Only the route and departure time",
+            "Just the fuel calculation, since weather is checked in flight"
+          ],
+          "explanation": "Comprehensive planning covers the full picture: where you're going, expected conditions, enough fuel with margin, and a backup destination."
         },
-        "q8": {
-          "question": "What is an alternate aerodrome?",
+        "flight-planning-q2": {
+          "question": "Why is a fuel reserve included beyond the minimum calculated for the route?",
           "options": [
-            "An option to land if you cannot land at the destination",
-            "The aerodrome where the aircraft gets repaired",
-            "A runway used only for night flights"
-          ]
+            "To accommodate normal occurrences like headwinds, diversions, or holding, without running dangerously low",
+            "Because fuel gauges are always inaccurate",
+            "It's only relevant for international flights"
+          ],
+          "explanation": "A reserve exists precisely because minor deviations from the plan are common and expected — treating it as untouchable margin, not a buffer to casually use, is the point."
         },
-        "q9": {
-          "question": "What should you do if you get lost in flight?",
+        "flight-planning-q3": {
+          "question": "What is a recommended first step if a pilot becomes uncertain of their position?",
           "options": [
-            "Climb higher and ask for help by radio",
-            "Descend immediately and land anywhere",
-            "Turn off the radio to concentrate better"
-          ]
+            "Climb higher to see more terrain and improve radio reception",
+            "Descend to get a closer look at the ground",
+            "Continue on the same heading without changing anything"
+          ],
+          "explanation": "Gaining altitude typically reveals more identifiable terrain and improves radio range, both of which help resolve the uncertainty or reach assistance."
         },
-        "q10": {
-          "question": "What makes for good visual references from the air?",
+        "reading-a-sectional-chart-q1": {
+          "question": "What kind of information does an aeronautical chart typically encode through color and symbols?",
           "options": [
-            "Rivers, railway lines and towns",
-            "Small, isolated clouds",
-            "The colour of the sky at sunset"
-          ]
+            "Airports, airspace boundaries, terrain elevation, and obstacles",
+            "Only road networks for emergency ground transport",
+            "Weather forecasts for the next 24 hours"
+          ],
+          "explanation": "Sectional charts are built around exactly these categories, using a standardized system so pilots anywhere can read the same conventions."
         },
-        "q11": {
-          "question": "In flight, what is the aeronautical chart compared against?",
+        "reading-a-sectional-chart-q2": {
+          "question": "Why does darker terrain shading on a chart matter to a pilot?",
           "options": [
-            "The terrain and its features",
-            "The weather forecast",
-            "The engine manual"
-          ]
+            "It indicates higher ground, relevant to terrain and obstacle clearance",
+            "It shows areas with better radio reception",
+            "It marks restricted airspace exclusively"
+          ],
+          "explanation": "Terrain shading conveys elevation at a glance, which is directly relevant to maintaining safe clearance from high ground, especially in mountainous areas."
         },
-        "q12": {
-          "question": "What do you need to estimate your future position?",
+        "reading-a-sectional-chart-q3": {
+          "question": "Why is chart currency (using an up-to-date chart) important?",
           "options": [
-            "Heading, airspeed and time",
-            "Altitude and pressure",
-            "Fuel and weight"
-          ]
+            "Airspace boundaries, frequencies, and obstacles change over time, and an outdated chart may not reflect them",
+            "Old charts use a different measurement system",
+            "Charts expire and stop displaying any information after a fixed date"
+          ],
+          "explanation": "Real-world changes to airspace, frequencies, and obstacles mean an outdated chart could be missing or wrong about information that matters for a specific flight."
         },
-        "q13": {
-          "question": "Which way does a pilot correct heading when there is wind?",
+        "wind-correction-angle-q1": {
+          "question": "What is the purpose of a wind correction angle?",
           "options": [
-            "Into the wind",
-            "Always toward the north",
-            "It is never corrected, only speed is adjusted"
-          ]
+            "To cancel out crosswind drift so the ground track matches the intended course",
+            "To compensate for altimeter pressure errors",
+            "To adjust for changes in engine performance at altitude"
+          ],
+          "explanation": "Flying a heading offset by the correction angle keeps the actual path over the ground aligned with the planned course despite crosswind drift."
         },
-        "q14": {
-          "question": "What should fuel calculations always include?",
+        "wind-correction-angle-q2": {
+          "question": "When does a wind correction angle need to be largest?",
           "options": [
-            "A reserve",
-            "Only the direct route",
-            "Only the pilot's weight"
-          ]
+            "When the crosswind component is strong and blows nearly directly across the course",
+            "When the wind blows directly along the course as a pure headwind",
+            "When there is no wind at all"
+          ],
+          "explanation": "A pure along-course headwind or tailwind needs no correction angle at all; the angle grows specifically with the crosswind component's strength and directness."
         },
-        "q15": {
-          "question": "What is an alternate aerodrome?",
+        "wind-correction-angle-q3": {
+          "question": "How is a wind correction angle typically refined once airborne?",
           "options": [
-            "Where to go if you cannot land at the destination",
-            "The aerodrome the flight departed from",
-            "An aerodrome reserved for medical emergencies"
-          ]
+            "By comparing the actual ground track to the intended course and adjusting heading accordingly",
+            "By recalculating airspeed from the altimeter reading",
+            "It cannot be adjusted once the flight has begun"
+          ],
+          "explanation": "Planning gives an initial estimate from forecast winds, but observing actual drift in flight and adjusting heading makes the correction precise for the real conditions."
         },
-        "q16": {
-          "question": "Which linear features help with pilotage?",
+        "gps-and-modern-navigation-q1": {
+          "question": "What is the main advantage of GPS-based navigation over pilotage and dead reckoning?",
           "options": [
-            "Rivers, railway lines and roads",
-            "High clouds",
-            "The lights of other aircraft"
-          ]
+            "Precise, continuously updated position shown directly on a moving map",
+            "It requires no electrical power to operate",
+            "It works identically in every possible weather condition with zero risk"
+          ],
+          "explanation": "GPS provides a level of positional precision and real-time convenience that visual and calculated navigation methods alone can't match."
+        },
+        "gps-and-modern-navigation-q2": {
+          "question": "What is a key risk of relying exclusively on GPS for navigation?",
+          "options": [
+            "Signal loss, degradation, or rare misleading information can leave a pilot with no effective backup",
+            "GPS receivers are illegal in most countries",
+            "It cannot be used above 10,000 feet"
+          ],
+          "explanation": "Any electronic system can fail or be degraded; a pilot without practiced backup skills has no fallback if that happens."
+        },
+        "gps-and-modern-navigation-q3": {
+          "question": "What is the recommended way to use GPS according to this lesson?",
+          "options": [
+            "As a powerful aid alongside maintained pilotage and dead-reckoning skills, not a full replacement for them",
+            "As the sole means of navigation, with no other skills needed",
+            "Only during takeoff and landing"
+          ],
+          "explanation": "Treating GPS as an aid that confirms and speeds up navigation — while keeping basic positional awareness skills practiced — provides genuine redundancy if the system ever fails."
+        },
+        "lost-procedures-q1": {
+          "question": "What is the first priority if a pilot realizes they're lost?",
+          "options": [
+            "Keep flying the aircraft — maintain altitude and a sensible heading",
+            "Descend immediately to look for landmarks",
+            "Turn back toward the departure airport at maximum speed"
+          ],
+          "explanation": "Basic aircraft control always comes first; abrupt, reactive changes while confused about position can create a second, more serious problem."
+        },
+        "lost-procedures-q2": {
+          "question": "Why is climbing often recommended when a pilot is unsure of their position?",
+          "options": [
+            "It reveals more terrain and distinctive landmarks and improves radio reception",
+            "It automatically corrects any navigation error",
+            "It reduces fuel consumption significantly"
+          ],
+          "explanation": "More altitude means a wider view of terrain for identifying landmarks, plus generally better range for reaching help by radio."
+        },
+        "lost-procedures-q3": {
+          "question": "What is described as the most damaging response to being lost?",
+          "options": [
+            "Hiding the problem and continuing to guess silently instead of asking for help",
+            "Asking for help too early",
+            "Climbing to a higher altitude"
+          ],
+          "explanation": "Delaying or avoiding asking for help while conditions (fuel, daylight) continue to change is what turns a common, manageable situation into a real emergency."
         }
       }
     },

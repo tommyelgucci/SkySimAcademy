@@ -5,83 +5,78 @@
   "status": "available",
   "lessons": [
     {
-      "id": "pilotage"
+      "id": "pilotage",
+      "quiz": {
+        "questions": [
+          { "id": "pilotage-q1", "correct": 0 },
+          { "id": "pilotage-q2", "correct": 0 },
+          { "id": "pilotage-q3", "correct": 0 }
+        ]
+      }
     },
     {
-      "id": "dead-reckoning"
+      "id": "dead-reckoning",
+      "quiz": {
+        "questions": [
+          { "id": "dead-reckoning-q1", "correct": 0 },
+          { "id": "dead-reckoning-q2", "correct": 0 },
+          { "id": "dead-reckoning-q3", "correct": 0 }
+        ]
+      }
     },
     {
-      "id": "planning"
+      "id": "flight-planning",
+      "quiz": {
+        "questions": [
+          { "id": "flight-planning-q1", "correct": 0 },
+          { "id": "flight-planning-q2", "correct": 0 },
+          { "id": "flight-planning-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "reading-a-sectional-chart",
+      "quiz": {
+        "questions": [
+          { "id": "reading-a-sectional-chart-q1", "correct": 0 },
+          { "id": "reading-a-sectional-chart-q2", "correct": 0 },
+          { "id": "reading-a-sectional-chart-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "wind-correction-angle",
+      "quiz": {
+        "questions": [
+          { "id": "wind-correction-angle-q1", "correct": 0 },
+          { "id": "wind-correction-angle-q2", "correct": 0 },
+          { "id": "wind-correction-angle-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "gps-and-modern-navigation",
+      "quiz": {
+        "questions": [
+          { "id": "gps-and-modern-navigation-q1", "correct": 0 },
+          { "id": "gps-and-modern-navigation-q2", "correct": 0 },
+          { "id": "gps-and-modern-navigation-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "lost-procedures",
+      "quiz": {
+        "questions": [
+          { "id": "lost-procedures-q1", "correct": 0 },
+          { "id": "lost-procedures-q2", "correct": 0 },
+          { "id": "lost-procedures-q3", "correct": 0 }
+        ]
+      }
     }
   ],
   "quiz": {
-    "passScore": 4,
-    "sampleSize": 5,
-    "questions": [
-      {
-        "id": "q1",
-        "correct": 0
-      },
-      {
-        "id": "q2",
-        "correct": 0
-      },
-      {
-        "id": "q3",
-        "correct": 0
-      },
-      {
-        "id": "q4",
-        "correct": 0
-      },
-      {
-        "id": "q5",
-        "correct": 0
-      },
-      {
-        "id": "q6",
-        "correct": 0
-      },
-      {
-        "id": "q7",
-        "correct": 0
-      },
-      {
-        "id": "q8",
-        "correct": 0
-      },
-      {
-        "id": "q9",
-        "correct": 0
-      },
-      {
-        "id": "q10",
-        "correct": 0
-      },
-      {
-        "id": "q11",
-        "correct": 0
-      },
-      {
-        "id": "q12",
-        "correct": 0
-      },
-      {
-        "id": "q13",
-        "correct": 0
-      },
-      {
-        "id": "q14",
-        "correct": 0
-      },
-      {
-        "id": "q15",
-        "correct": 0
-      },
-      {
-        "id": "q16",
-        "correct": 0
-      }
-    ]
+    "passScore": 8,
+    "sampleSize": 10
   }
 }

@@ -5,83 +5,78 @@
   "status": "available",
   "lessons": [
     {
-      "id": "altimeter"
+      "id": "altimeter",
+      "quiz": {
+        "questions": [
+          { "id": "altimeter-q1", "correct": 0 },
+          { "id": "altimeter-q2", "correct": 0 },
+          { "id": "altimeter-q3", "correct": 0 }
+        ]
+      }
     },
     {
-      "id": "speed-horizon"
+      "id": "airspeed-indicator",
+      "quiz": {
+        "questions": [
+          { "id": "airspeed-indicator-q1", "correct": 0 },
+          { "id": "airspeed-indicator-q2", "correct": 0 },
+          { "id": "airspeed-indicator-q3", "correct": 0 }
+        ]
+      }
     },
     {
-      "id": "compass-heading"
+      "id": "attitude-indicator",
+      "quiz": {
+        "questions": [
+          { "id": "attitude-indicator-q1", "correct": 0 },
+          { "id": "attitude-indicator-q2", "correct": 0 },
+          { "id": "attitude-indicator-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "vertical-speed-indicator",
+      "quiz": {
+        "questions": [
+          { "id": "vertical-speed-indicator-q1", "correct": 0 },
+          { "id": "vertical-speed-indicator-q2", "correct": 0 },
+          { "id": "vertical-speed-indicator-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "compass-and-heading",
+      "quiz": {
+        "questions": [
+          { "id": "compass-and-heading-q1", "correct": 0 },
+          { "id": "compass-and-heading-q2", "correct": 0 },
+          { "id": "compass-and-heading-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "turn-coordinator-and-coordination",
+      "quiz": {
+        "questions": [
+          { "id": "turn-coordinator-and-coordination-q1", "correct": 0 },
+          { "id": "turn-coordinator-and-coordination-q2", "correct": 0 },
+          { "id": "turn-coordinator-and-coordination-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "instrument-scan",
+      "quiz": {
+        "questions": [
+          { "id": "instrument-scan-q1", "correct": 0 },
+          { "id": "instrument-scan-q2", "correct": 0 },
+          { "id": "instrument-scan-q3", "correct": 0 }
+        ]
+      }
     }
   ],
   "quiz": {
-    "passScore": 4,
-    "sampleSize": 5,
-    "questions": [
-      {
-        "id": "q1",
-        "correct": 0
-      },
-      {
-        "id": "q2",
-        "correct": 0
-      },
-      {
-        "id": "q3",
-        "correct": 0
-      },
-      {
-        "id": "q4",
-        "correct": 0
-      },
-      {
-        "id": "q5",
-        "correct": 0
-      },
-      {
-        "id": "q6",
-        "correct": 0
-      },
-      {
-        "id": "q7",
-        "correct": 0
-      },
-      {
-        "id": "q8",
-        "correct": 0
-      },
-      {
-        "id": "q9",
-        "correct": 0
-      },
-      {
-        "id": "q10",
-        "correct": 0
-      },
-      {
-        "id": "q11",
-        "correct": 0
-      },
-      {
-        "id": "q12",
-        "correct": 0
-      },
-      {
-        "id": "q13",
-        "correct": 0
-      },
-      {
-        "id": "q14",
-        "correct": 0
-      },
-      {
-        "id": "q15",
-        "correct": 0
-      },
-      {
-        "id": "q16",
-        "correct": 0
-      }
-    ]
+    "passScore": 8,
+    "sampleSize": 10
   }
 }

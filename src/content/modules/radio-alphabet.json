@@ -5,91 +5,78 @@
   "status": "available",
   "lessons": [
     {
-      "id": "why-standard"
+      "id": "why-standard",
+      "quiz": {
+        "questions": [
+          { "id": "why-standard-q1", "correct": 0 },
+          { "id": "why-standard-q2", "correct": 0 },
+          { "id": "why-standard-q3", "correct": 0 }
+        ]
+      }
     },
     {
-      "id": "icao-alphabet"
+      "id": "icao-alphabet",
+      "quiz": {
+        "questions": [
+          { "id": "icao-alphabet-q1", "correct": 0 },
+          { "id": "icao-alphabet-q2", "correct": 0 },
+          { "id": "icao-alphabet-q3", "correct": 0 }
+        ]
+      }
     },
     {
-      "id": "numbers"
+      "id": "numbers-on-the-radio",
+      "quiz": {
+        "questions": [
+          { "id": "numbers-on-the-radio-q1", "correct": 0 },
+          { "id": "numbers-on-the-radio-q2", "correct": 0 },
+          { "id": "numbers-on-the-radio-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "radio-call-structure",
+      "quiz": {
+        "questions": [
+          { "id": "radio-call-structure-q1", "correct": 0 },
+          { "id": "radio-call-structure-q2", "correct": 0 },
+          { "id": "radio-call-structure-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "common-atc-instructions",
+      "quiz": {
+        "questions": [
+          { "id": "common-atc-instructions-q1", "correct": 0 },
+          { "id": "common-atc-instructions-q2", "correct": 0 },
+          { "id": "common-atc-instructions-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "traffic-pattern-calls",
+      "quiz": {
+        "questions": [
+          { "id": "traffic-pattern-calls-q1", "correct": 0 },
+          { "id": "traffic-pattern-calls-q2", "correct": 0 },
+          { "id": "traffic-pattern-calls-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "lost-communications",
+      "quiz": {
+        "questions": [
+          { "id": "lost-communications-q1", "correct": 0 },
+          { "id": "lost-communications-q2", "correct": 0 },
+          { "id": "lost-communications-q3", "correct": 0 }
+        ]
+      }
     }
   ],
   "quiz": {
-    "passScore": 4,
-    "sampleSize": 5,
-    "questions": [
-      {
-        "id": "q1",
-        "correct": 0
-      },
-      {
-        "id": "q2",
-        "correct": 0
-      },
-      {
-        "id": "q3",
-        "correct": 0
-      },
-      {
-        "id": "q4",
-        "correct": 0
-      },
-      {
-        "id": "q5",
-        "correct": 0
-      },
-      {
-        "id": "q6",
-        "correct": 0
-      },
-      {
-        "id": "q7",
-        "correct": 0
-      },
-      {
-        "id": "q8",
-        "correct": 0
-      },
-      {
-        "id": "q9",
-        "correct": 0
-      },
-      {
-        "id": "q10",
-        "correct": 0
-      },
-      {
-        "id": "q11",
-        "correct": 0
-      },
-      {
-        "id": "q12",
-        "correct": 0
-      },
-      {
-        "id": "q13",
-        "correct": 0
-      },
-      {
-        "id": "q14",
-        "correct": 0
-      },
-      {
-        "id": "q15",
-        "correct": 0
-      },
-      {
-        "id": "q16",
-        "correct": 0
-      },
-      {
-        "id": "q17",
-        "correct": 0
-      },
-      {
-        "id": "q18",
-        "correct": 0
-      }
-    ]
+    "passScore": 8,
+    "sampleSize": 10
   }
 }
