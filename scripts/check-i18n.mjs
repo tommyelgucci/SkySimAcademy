@@ -25,7 +25,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const LANGS = ["en", "de", "es", "pt", "ar"];
-const NAMESPACES = ["common", "theory", "simulator", "exam"];
+const NAMESPACES = ["common", "theory", "simulator", "exam", "flashcards"];
 
 const load = (path) => JSON.parse(readFileSync(join(root, path), "utf8"));
 const flatten = (obj, prefix = "") =>
@@ -100,8 +100,34 @@ for (const lang of LANGS) {
   }
 }
 
+// --- 3. Estructura de flashcards ↔ textos de flashcards ---------------
+const { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS } = await import(
+  join(root, "src/content/flashcards/index.js")
+);
+const flashcardDecks = { instruments: INSTRUMENT_FLASHCARDS, audio: AUDIO_FLASHCARDS };
+
+for (const lang of LANGS) {
+  const flashcards = load(`src/i18n/locales/${lang}/flashcards.json`);
+  for (const [deckId, cards] of Object.entries(flashcardDecks)) {
+    const declared = new Set(cards.map((c) => c.id));
+    for (const card of cards) {
+      const text = flashcards[deckId]?.[card.id];
+      if (!text?.question || !Array.isArray(text?.options) || !text?.explanation)
+        fail(`[${lang}] flashcard sin texto: ${deckId}.${card.id}`);
+      else if (card.correct < 0 || card.correct >= text.options.length)
+        fail(`[${lang}] correct fuera de rango: flashcards.${deckId}.${card.id}`);
+    }
+    for (const id of Object.keys(flashcards[deckId] ?? {}))
+      if (!declared.has(id))
+        fail(`[${lang}] flashcard traducida no declarada en estructura: ${deckId}.${id}`);
+  }
+}
+
 if (failures) {
   console.error(`\n${failures} problema(s) de i18n/contenido.`);
   process.exit(1);
 }
-console.log(`✓ i18n OK: ${LANGS.length} idiomas × ${NAMESPACES.length} namespaces, ${modules.length} módulos.`);
+console.log(
+  `✓ i18n OK: ${LANGS.length} idiomas × ${NAMESPACES.length} namespaces, ${modules.length} módulos, ` +
+    `${INSTRUMENT_FLASHCARDS.length + AUDIO_FLASHCARDS.length} flashcards.`
+);

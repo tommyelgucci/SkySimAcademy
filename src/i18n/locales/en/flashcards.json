@@ -1,0 +1,202 @@
+{
+  "title": "Flashcards",
+  "intro": "Practice recognizing cockpit instruments and cabin audio alerts. This is free practice — it doesn't count toward module quizzes or unlock simulator missions, so repeat it as many times as you like.",
+  "exit": "Exit",
+  "decks": {
+    "instruments": {
+      "title": "Cockpit instruments",
+      "description": "{{count}} cards — recognize and read the same gauges you fly with in the simulator."
+    },
+    "audio": {
+      "title": "Cabin audio alerts",
+      "description": "{{count}} cards — listen to real GPWS/TCAS callouts and learn what each one means."
+    }
+  },
+  "instrumentAlt": "Flight instrument",
+  "playAudio": "Play audio",
+  "backToDecks": "Back to decks",
+  "cardProgress": "Card {{current}} of {{total}}",
+  "check": "Check",
+  "next": "Next",
+  "seeResults": "See results",
+  "correct": "Correct!",
+  "wrong": "Not quite.",
+  "theAlertSaid": "The alert says: “{{phrase}}”",
+  "score": "{{score}} of {{total}} correct",
+  "restart": "Practice again",
+  "instruments": {
+    "airspeed-id": {
+      "question": "Which instrument is shown here?",
+      "options": [
+        "Airspeed indicator",
+        "Altimeter",
+        "Turn coordinator"
+      ],
+      "explanation": "The needle sweeps a 270° arc with green (normal operating range) and yellow (caution) bands and a red radial line for stall speed — that's the airspeed indicator, always the first gauge to check for a safe margin above stall."
+    },
+    "airspeed-read": {
+      "question": "The needle on this airspeed indicator sits just below the red radial line near the bottom of the scale. What does that red line mark, and what's the risk here?",
+      "options": [
+        "The stall speed — flying this slowly risks the wing losing lift",
+        "The maximum structural speed of the aircraft",
+        "The best glide speed to use after an engine failure"
+      ],
+      "explanation": "The red radial line marks stall speed. A needle sitting at or below it means the aircraft is flying dangerously slowly — exactly the situation the “principles of flight” module covers in depth."
+    },
+    "attitude-id": {
+      "question": "Which instrument is shown here?",
+      "options": [
+        "Attitude indicator (artificial horizon)",
+        "Compass",
+        "Variometer"
+      ],
+      "explanation": "A blue “sky” over a brown “ground” split by a horizon line, with a fixed aircraft symbol in the middle — that's the attitude indicator, showing pitch and bank at a glance."
+    },
+    "attitude-read": {
+      "question": "The horizon on this attitude indicator is tilted with the brown ground rising to the left, and the horizon line sits below the aircraft symbol. What is the aircraft doing?",
+      "options": [
+        "Climbing in a right turn",
+        "Descending in a left turn",
+        "Flying straight and level"
+      ],
+      "explanation": "Ground rising to one side means the aircraft is banked toward that side (here, a right turn), and a horizon line below the aircraft symbol means the nose is above the horizon — climbing."
+    },
+    "altimeter-id": {
+      "question": "Which instrument is shown here?",
+      "options": [
+        "Altimeter",
+        "Airspeed indicator",
+        "Compass"
+      ],
+      "explanation": "One needle sweeping a full circle per 1,000 m of altitude, with a digital readout in the middle — that's the altimeter."
+    },
+    "altimeter-read": {
+      "question": "Roughly what altitude does this altimeter show?",
+      "options": [
+        "Just under 1,000 m",
+        "Exactly 100 m",
+        "About 10,000 m"
+      ],
+      "explanation": "The needle has almost completed a full lap of the dial, and the digital readout confirms it: just under 1,000 m, matching one full turn of the needle."
+    },
+    "variometer-id": {
+      "question": "Which instrument is shown here?",
+      "options": [
+        "Variometer (vertical speed indicator)",
+        "Attitude indicator",
+        "Airspeed indicator"
+      ],
+      "explanation": "A needle centered at zero on the left, swinging up for climb (▲) and down for descent (▼) — that's the variometer, reading rate of climb or descent in meters per second."
+    },
+    "variometer-read": {
+      "question": "This variometer's needle is swung far down, close to its maximum descent reading. What does that indicate?",
+      "options": [
+        "A strong rate of descent, in the range that would trigger a real aircraft's “sink rate” warning",
+        "A strong rate of climb",
+        "Wings level, no vertical movement at all"
+      ],
+      "explanation": "A needle deep in the descent range means a steep rate of descent — exactly the kind of reading that, on a real aircraft's ground proximity warning system, can trigger a “Sink rate” caution. Check the audio deck to hear it."
+    },
+    "compass-id": {
+      "question": "Which instrument is shown here?",
+      "options": [
+        "Compass / heading indicator",
+        "Altimeter",
+        "Attitude indicator"
+      ],
+      "explanation": "A rotating card with N/E/S/W under a fixed pointer at the top — that's the compass, showing the aircraft's current heading."
+    },
+    "compass-read": {
+      "question": "What heading does this compass show?",
+      "options": [
+        "West (270°)",
+        "North (0°)",
+        "South (180°)"
+      ],
+      "explanation": "The fixed pointer at the top lines up with W on the rotating card — the aircraft is heading 270°, due west."
+    }
+  },
+  "audio": {
+    "sink-rate": {
+      "question": "You hear this callout during a normal approach, well above the ground. What is it warning you about?",
+      "options": [
+        "An excessive rate of descent for your current altitude — ease off the descent",
+        "The landing gear is not extended",
+        "Another aircraft is on a collision course"
+      ],
+      "explanation": "“Sink rate” is a ground proximity warning system (GPWS) caution: your rate of descent is too high relative to how much altitude you have left. The fix is to reduce the descent rate, not to react to traffic or gear."
+    },
+    "dont-sink": {
+      "question": "This callout typically happens right after takeoff or during a go-around. What is it telling you?",
+      "options": [
+        "You're losing altitude when you should be climbing",
+        "You're flying too fast for the current flap setting",
+        "You're about to enter controlled airspace without clearance"
+      ],
+      "explanation": "“Don't sink” fires when the aircraft starts descending shortly after takeoff or a go-around — exactly when it should be climbing away from the ground."
+    },
+    "too-low-terrain": {
+      "question": "What does this GPWS callout warn about?",
+      "options": [
+        "You're getting close to the terrain below for this phase of flight",
+        "Your landing gear was lowered too early",
+        "Your fuel level is critically low"
+      ],
+      "explanation": "“Too low, terrain” is a general caution that the aircraft is closer to the ground than expected for where it is in the flight — not tied to a specific system like gear or flaps."
+    },
+    "too-low-gear": {
+      "question": "What is this callout specifically about?",
+      "options": [
+        "The aircraft is getting low with the landing gear still retracted",
+        "The aircraft is flying too slowly to stay level",
+        "An engine is overheating"
+      ],
+      "explanation": "“Too low, gear” is a specific reminder tied to the landing gear: at this altitude on approach, it should already be down."
+    },
+    "too-low-flaps": {
+      "question": "What is this callout specifically about?",
+      "options": [
+        "The aircraft is low with the flaps not set for landing",
+        "The landing gear is not extended",
+        "The aircraft is banked too steeply"
+      ],
+      "explanation": "“Too low, flaps” is the flap-configuration counterpart to “Too low, gear”: at this altitude, the flaps should already be in a landing setting."
+    },
+    "bank-angle": {
+      "question": "What does this callout warn about?",
+      "options": [
+        "The aircraft is banked more steeply than is safe for the current altitude",
+        "The aircraft is flying too fast",
+        "The fuel level is low"
+      ],
+      "explanation": "“Bank angle” warns that the wings are banked beyond a safe limit for how close the aircraft is to the ground — a steep bank at low altitude leaves little margin for error."
+    },
+    "terrain-pull-up": {
+      "question": "This is a more urgent callout than a plain “too low, terrain” caution. What should the pilot do?",
+      "options": [
+        "Climb immediately at maximum performance — this is an imminent collision warning, not a caution to ease into",
+        "Reduce power gently and reassess in a few seconds",
+        "Ignore it if the outside view looks clear"
+      ],
+      "explanation": "“Terrain, terrain, pull up” is a GPWS warning (not just a caution): the system believes a collision with terrain is imminent, and it requires an immediate maximum-performance climb, not a gradual response."
+    },
+    "pull-up": {
+      "question": "“Pull up” on its own is the most urgent level of GPWS alert, and can follow several different cautions (sink rate, too low terrain, and others) if the aircraft doesn't respond in time. What does it require?",
+      "options": [
+        "An immediate maximum-performance climb, regardless of which caution came before it",
+        "Only applies to terrain, never to an excessive sink rate",
+        "Lowering the nose to build up airspeed first"
+      ],
+      "explanation": "“Pull up” is the GPWS's final, most urgent warning: whatever the earlier caution was about, the response is the same — climb immediately at maximum performance."
+    },
+    "tcas-climb": {
+      "question": "This alert comes from a different aircraft system than the rest of this deck. Which one, and what should the pilot do?",
+      "options": [
+        "TCAS (collision avoidance with other aircraft) — follow its vertical guidance immediately, even if it conflicts with an ATC instruction",
+        "GPWS terrain warning — climb immediately, same as “pull up”",
+        "Stall warning — lower the nose to regain airspeed"
+      ],
+      "explanation": "“Traffic, traffic” is a TCAS advisory pointing out nearby traffic; “Climb, climb” is the resolution advisory that follows if a collision risk remains — a different system from GPWS, aimed at other aircraft instead of terrain, and its vertical guidance takes priority over ATC in the moment."
+    }
+  }
+}

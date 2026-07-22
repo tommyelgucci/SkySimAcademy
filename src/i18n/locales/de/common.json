@@ -5,7 +5,8 @@
   "nav": {
     "home": "Start",
     "theory": "Theorie",
-    "simulator": "Simulator"
+    "simulator": "Simulator",
+    "flashcards": "Karteikarten"
   },
   "home": {
     "welcome": "Willkommen an Bord",

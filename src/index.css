@@ -1138,6 +1138,80 @@ body {
   }
 }
 
+/* ---------- Flashcards (modo de repaso, fuera del curso) ---------- */
+
+.flashcards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.flashcards--decks {
+  align-items: stretch;
+  text-align: start;
+}
+
+.flashcards--decks h1,
+.flashcards--decks > p {
+  text-align: center;
+}
+
+.flashcards__back {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  color: var(--color-text-dim);
+  font: inherit;
+  cursor: pointer;
+  padding: 0.2rem 0;
+}
+
+.flashcards__back:hover {
+  color: var(--color-text);
+}
+
+.flashcards__visual {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.flashcards__visual .gauge {
+  width: 200px;
+  height: 200px;
+}
+
+.flashcards__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 1rem 1.6rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.flashcards__play:hover {
+  filter: brightness(1.1);
+}
+
+.flashcards__phrase {
+  font-style: italic;
+  color: var(--color-text-dim);
+}
+
 /* Yoke dibujado dentro de la base del joystick */
 .joystick__yoke {
   width: 84px;

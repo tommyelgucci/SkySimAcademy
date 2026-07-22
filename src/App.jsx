@@ -15,6 +15,7 @@ import ExamView from "./components/theory/ExamView.jsx";
 import ReviewView from "./components/theory/ReviewView.jsx";
 import StatsView from "./components/theory/StatsView.jsx";
 import SimulatorView from "./components/simulator/SimulatorView.jsx";
+import FlashcardsView from "./components/flashcards/FlashcardsView.jsx";
 
 export default function App() {
   const { t } = useTranslation();
@@ -45,6 +46,7 @@ export default function App() {
         {screen.name === "review" && <ReviewView onBack={() => goto("theory")} />}
         {screen.name === "stats" && <StatsView onBack={() => goto("theory")} />}
         {isSimulator && <SimulatorView onExit={() => goto("home")} />}
+        {screen.name === "flashcards" && <FlashcardsView onExit={() => goto("home")} />}
       </main>
 
       {!isSimulator && (

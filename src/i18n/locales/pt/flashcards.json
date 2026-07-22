@@ -1,0 +1,202 @@
+{
+  "title": "Flashcards",
+  "intro": "Pratique reconhecer instrumentos de cabine e alertas sonoros de cabine. Isto é treino livre — não conta para os questionários dos módulos nem desbloqueia missões do simulador, então repita quantas vezes quiser.",
+  "exit": "Sair",
+  "decks": {
+    "instruments": {
+      "title": "Instrumentos de cabine",
+      "description": "{{count}} cartões — reconheça e leia os mesmos mostradores com que você voa no simulador."
+    },
+    "audio": {
+      "title": "Alertas sonoros de cabine",
+      "description": "{{count}} cartões — ouça avisos reais de GPWS/TCAS e aprenda o que cada um significa."
+    }
+  },
+  "instrumentAlt": "Instrumento de voo",
+  "playAudio": "Reproduzir áudio",
+  "backToDecks": "Voltar aos baralhos",
+  "cardProgress": "Cartão {{current}} de {{total}}",
+  "check": "Verificar",
+  "next": "Próxima",
+  "seeResults": "Ver resultados",
+  "correct": "Correto!",
+  "wrong": "Não é bem isso.",
+  "theAlertSaid": "O alerta diz: “{{phrase}}”",
+  "score": "{{score}} de {{total}} corretas",
+  "restart": "Praticar de novo",
+  "instruments": {
+    "airspeed-id": {
+      "question": "Qual instrumento é mostrado aqui?",
+      "options": [
+        "Anemômetro (indicador de velocidade)",
+        "Altímetro",
+        "Indicador de curva"
+      ],
+      "explanation": "O ponteiro percorre um arco de 270° com faixas verde (regime normal de operação) e amarela (precaução) e um traço radial vermelho para a velocidade de estol — é o anemômetro, o primeiro instrumento a checar para manter uma margem segura acima do estol."
+    },
+    "airspeed-read": {
+      "question": "Neste anemômetro o ponteiro está logo abaixo do traço radial vermelho, perto da parte inferior da escala. O que esse traço vermelho marca, e qual é o risco aqui?",
+      "options": [
+        "A velocidade de estol — voar tão devagar arrisca a asa perder sustentação",
+        "A velocidade estrutural máxima da aeronave",
+        "A melhor velocidade de planeio após uma falha de motor"
+      ],
+      "explanation": "O traço radial vermelho marca a velocidade de estol. Um ponteiro nesse ponto ou abaixo dele significa que a aeronave está voando perigosamente devagar — exatamente a situação que o módulo \"princípios de voo\" desenvolve em profundidade."
+    },
+    "attitude-id": {
+      "question": "Qual instrumento é mostrado aqui?",
+      "options": [
+        "Horizonte artificial (indicador de atitude)",
+        "Bússola",
+        "Variômetro"
+      ],
+      "explanation": "Um \"céu\" azul sobre uma \"terra\" marrom separados por uma linha de horizonte, com um símbolo fixo do avião no centro — é o horizonte artificial, que mostra arfagem e rolagem de relance."
+    },
+    "attitude-read": {
+      "question": "Neste horizonte artificial, o horizonte está inclinado com a terra marrom subindo para a esquerda, e a linha de horizonte fica abaixo do símbolo do avião. O que a aeronave está fazendo?",
+      "options": [
+        "Subindo em uma curva à direita",
+        "Descendo em uma curva à esquerda",
+        "Voando reto e nivelado"
+      ],
+      "explanation": "A terra subindo para um lado significa que a aeronave está inclinada para esse lado (aqui, uma curva à direita), e a linha de horizonte abaixo do símbolo do avião significa que o nariz está acima do horizonte — está subindo."
+    },
+    "altimeter-id": {
+      "question": "Qual instrumento é mostrado aqui?",
+      "options": [
+        "Altímetro",
+        "Anemômetro",
+        "Bússola"
+      ],
+      "explanation": "Um ponteiro que dá uma volta completa a cada 1000 m de altitude, com uma leitura digital no centro — é o altímetro."
+    },
+    "altimeter-read": {
+      "question": "Aproximadamente que altitude este altímetro mostra?",
+      "options": [
+        "Pouco menos de 1000 m",
+        "Exatamente 100 m",
+        "Cerca de 10 000 m"
+      ],
+      "explanation": "O ponteiro quase completou uma volta inteira do mostrador, e a leitura digital confirma: pouco menos de 1000 m, condizente com uma volta completa do ponteiro."
+    },
+    "variometer-id": {
+      "question": "Qual instrumento é mostrado aqui?",
+      "options": [
+        "Variômetro (indicador de velocidade vertical)",
+        "Horizonte artificial",
+        "Anemômetro"
+      ],
+      "explanation": "Um ponteiro centrado em zero à esquerda, que sobe em subida (▲) e desce em descida (▼) — é o variômetro, que mede a razão de subida ou descida em metros por segundo."
+    },
+    "variometer-read": {
+      "question": "O ponteiro deste variômetro está bem deslocado para baixo, perto de sua leitura máxima de descida. O que isso indica?",
+      "options": [
+        "Uma razão de descida forte, na faixa que ativaria o aviso real de \"sink rate\" (razão de descida) de uma aeronave",
+        "Uma razão de subida forte",
+        "Asas niveladas, sem nenhum movimento vertical"
+      ],
+      "explanation": "Um ponteiro bem dentro da faixa de descida indica uma razão de descida acentuada — exatamente o tipo de leitura que, no sistema de alerta de proximidade do solo de uma aeronave real, pode ativar o aviso \"Sink rate\". Ouça-o no baralho de áudio."
+    },
+    "compass-id": {
+      "question": "Qual instrumento é mostrado aqui?",
+      "options": [
+        "Bússola / indicador de proa",
+        "Altímetro",
+        "Horizonte artificial"
+      ],
+      "explanation": "Uma rosa giratória com N/L/S/O sob um ponteiro fixo no topo — é a bússola, que mostra a proa atual da aeronave."
+    },
+    "compass-read": {
+      "question": "Que proa esta bússola mostra?",
+      "options": [
+        "Oeste (270°)",
+        "Norte (0°)",
+        "Sul (180°)"
+      ],
+      "explanation": "O ponteiro fixo no topo se alinha com o O na rosa giratória — a aeronave segue proa 270°, exatamente a oeste."
+    }
+  },
+  "audio": {
+    "sink-rate": {
+      "question": "Você ouve este alerta durante uma aproximação normal, bem acima do solo. Do que ele avisa?",
+      "options": [
+        "Uma razão de descida excessiva para a altitude atual — reduza a descida",
+        "O trem de pouso não está estendido",
+        "Outra aeronave está em rota de colisão"
+      ],
+      "explanation": "\"Sink rate\" é uma precaução do sistema de alerta de proximidade do solo (GPWS): sua razão de descida está alta demais para a altitude que resta. A solução é reduzir a descida, não reagir a tráfego ou ao trem de pouso."
+    },
+    "dont-sink": {
+      "question": "Este alerta costuma aparecer logo após a decolagem ou durante uma arremetida. O que ele está te dizendo?",
+      "options": [
+        "Você está perdendo altitude quando deveria estar subindo",
+        "Você está voando rápido demais para a configuração de flapes atual",
+        "Você está prestes a entrar em espaço aéreo controlado sem autorização"
+      ],
+      "explanation": "\"Don't sink\" soa quando a aeronave começa a descer pouco depois da decolagem ou de uma arremetida — justamente quando deveria estar subindo para se afastar do solo."
+    },
+    "too-low-terrain": {
+      "question": "Do que avisa este alerta de GPWS?",
+      "options": [
+        "Você está se aproximando do terreno abaixo para esta fase do voo",
+        "O trem de pouso foi baixado cedo demais",
+        "O nível de combustível está criticamente baixo"
+      ],
+      "explanation": "\"Too low, terrain\" é uma precaução geral de que a aeronave está mais perto do solo do que o esperado para o ponto do voo em que se encontra — não está ligada a um sistema específico como trem de pouso ou flapes."
+    },
+    "too-low-gear": {
+      "question": "Sobre o que este alerta trata especificamente?",
+      "options": [
+        "A aeronave está baixando com o trem de pouso ainda recolhido",
+        "A aeronave está voando devagar demais para se manter nivelada",
+        "Um motor está superaquecendo"
+      ],
+      "explanation": "\"Too low, gear\" é um lembrete específico ligado ao trem de pouso: nesta altitude de aproximação, ele já deveria estar estendido."
+    },
+    "too-low-flaps": {
+      "question": "Sobre o que este alerta trata especificamente?",
+      "options": [
+        "A aeronave está baixa com os flapes fora da configuração de pouso",
+        "O trem de pouso não está estendido",
+        "A aeronave está inclinada de forma acentuada demais"
+      ],
+      "explanation": "\"Too low, flaps\" é a contraparte de configuração de flapes de \"Too low, gear\": nesta altitude, os flapes já deveriam estar na posição de pouso."
+    },
+    "bank-angle": {
+      "question": "Do que avisa este alerta?",
+      "options": [
+        "A aeronave está inclinada mais do que é seguro para a altitude atual",
+        "A aeronave está voando rápido demais",
+        "O nível de combustível está baixo"
+      ],
+      "explanation": "\"Bank angle\" avisa que a inclinação das asas passou de um limite seguro para o quão perto a aeronave está do solo — uma inclinação acentuada em baixa altitude deixa pouca margem para erro."
+    },
+    "terrain-pull-up": {
+      "question": "Este alerta é mais urgente do que uma simples precaução \"too low, terrain\". O que o piloto deve fazer?",
+      "options": [
+        "Subir imediatamente com potência máxima — é um aviso de colisão iminente, não uma precaução para reagir aos poucos",
+        "Reduzir a potência suavemente e reavaliar em alguns segundos",
+        "Ignorar se a vista externa parecer livre"
+      ],
+      "explanation": "\"Terrain, terrain, pull up\" é um aviso de GPWS de verdade (não apenas uma precaução): o sistema considera iminente uma colisão com o terreno, e exige uma subida imediata com potência máxima, não uma resposta gradual."
+    },
+    "pull-up": {
+      "question": "\"Pull up\" sozinho é o nível mais urgente de alerta do GPWS, e pode vir depois de várias precauções diferentes (sink rate, too low terrain e outras) se a aeronave não responder a tempo. O que ele exige?",
+      "options": [
+        "Uma subida imediata com potência máxima, não importa qual foi a precaução anterior",
+        "Só se aplica a terreno, nunca a uma razão de descida excessiva",
+        "Baixar o nariz primeiro para ganhar velocidade"
+      ],
+      "explanation": "\"Pull up\" é o aviso final e mais urgente do GPWS: seja qual for a precaução anterior, a resposta é sempre a mesma — subir imediatamente com potência máxima."
+    },
+    "tcas-climb": {
+      "question": "Este alerta vem de um sistema da aeronave diferente do resto deste baralho. Qual, e o que o piloto deve fazer?",
+      "options": [
+        "TCAS (anticolisão com outras aeronaves) — seguir sua orientação vertical imediatamente, mesmo que contrarie uma instrução do controle de tráfego aéreo",
+        "Aviso de terreno do GPWS — subir imediatamente, igual a \"pull up\"",
+        "Aviso de estol — baixar o nariz para recuperar velocidade"
+      ],
+      "explanation": "\"Traffic, traffic\" é um aviso informativo do TCAS apontando tráfego próximo; \"Climb, climb\" é a resolução que vem a seguir caso o risco de colisão persista — um sistema diferente do GPWS, voltado a outras aeronaves em vez do terreno, cuja orientação vertical tem prioridade sobre o controle de tráfego aéreo naquele momento."
+    }
+  }
+}

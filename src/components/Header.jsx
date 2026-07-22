@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import Logo from "./Logo.jsx";
 
-const NAV_SCREENS = ["home", "theory", "simulator"];
+const NAV_SCREENS = ["home", "theory", "simulator", "flashcards"];
 
 export default function Header({ activeScreen, onNavigate }) {
   const { t } = useTranslation();

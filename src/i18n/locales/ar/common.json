@@ -5,7 +5,8 @@
   "nav": {
     "home": "الرئيسية",
     "theory": "النظرية",
-    "simulator": "المحاكي"
+    "simulator": "المحاكي",
+    "flashcards": "البطاقات"
   },
   "home": {
     "welcome": "أهلاً بك على متن الطائرة",

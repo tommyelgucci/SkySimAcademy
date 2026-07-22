@@ -11,6 +11,8 @@
  *  - theory:    todo el contenido educativo (lecciones + quizzes)
  *  - simulator: HUD, controles y mensajes del simulador
  *  - exam:      modo examen y repaso de fallos
+ *  - flashcards: modo de repaso de instrumentos y alertas de audio (fuera
+ *    del curso, sin storage.js)
  */
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
@@ -20,22 +22,27 @@ import enCommon from "./locales/en/common.json";
 import enTheory from "./locales/en/theory.json";
 import enSimulator from "./locales/en/simulator.json";
 import enExam from "./locales/en/exam.json";
+import enFlashcards from "./locales/en/flashcards.json";
 import deCommon from "./locales/de/common.json";
 import deTheory from "./locales/de/theory.json";
 import deSimulator from "./locales/de/simulator.json";
 import deExam from "./locales/de/exam.json";
+import deFlashcards from "./locales/de/flashcards.json";
 import esCommon from "./locales/es/common.json";
 import esTheory from "./locales/es/theory.json";
 import esSimulator from "./locales/es/simulator.json";
 import esExam from "./locales/es/exam.json";
+import esFlashcards from "./locales/es/flashcards.json";
 import ptCommon from "./locales/pt/common.json";
 import ptTheory from "./locales/pt/theory.json";
 import ptSimulator from "./locales/pt/simulator.json";
 import ptExam from "./locales/pt/exam.json";
+import ptFlashcards from "./locales/pt/flashcards.json";
 import arCommon from "./locales/ar/common.json";
 import arTheory from "./locales/ar/theory.json";
 import arSimulator from "./locales/ar/simulator.json";
 import arExam from "./locales/ar/exam.json";
+import arFlashcards from "./locales/ar/flashcards.json";
 
 /** Idiomas disponibles, con su dirección de escritura y nombre nativo. */
 export const LANGUAGES = [
@@ -47,11 +54,11 @@ export const LANGUAGES = [
 ];
 
 const resources = {
-  en: { common: enCommon, theory: enTheory, simulator: enSimulator, exam: enExam },
-  de: { common: deCommon, theory: deTheory, simulator: deSimulator, exam: deExam },
-  es: { common: esCommon, theory: esTheory, simulator: esSimulator, exam: esExam },
-  pt: { common: ptCommon, theory: ptTheory, simulator: ptSimulator, exam: ptExam },
-  ar: { common: arCommon, theory: arTheory, simulator: arSimulator, exam: arExam },
+  en: { common: enCommon, theory: enTheory, simulator: enSimulator, exam: enExam, flashcards: enFlashcards },
+  de: { common: deCommon, theory: deTheory, simulator: deSimulator, exam: deExam, flashcards: deFlashcards },
+  es: { common: esCommon, theory: esTheory, simulator: esSimulator, exam: esExam, flashcards: esFlashcards },
+  pt: { common: ptCommon, theory: ptTheory, simulator: ptSimulator, exam: ptExam, flashcards: ptFlashcards },
+  ar: { common: arCommon, theory: arTheory, simulator: arSimulator, exam: arExam, flashcards: arFlashcards },
 };
 
 i18n
@@ -62,7 +69,7 @@ i18n
     fallbackLng: "en",
     supportedLngs: LANGUAGES.map((l) => l.code),
     nonExplicitSupportedLngs: true, // "pt-BR" → "pt", "ar-EG" → "ar", etc.
-    ns: ["common", "theory", "simulator", "exam"],
+    ns: ["common", "theory", "simulator", "exam", "flashcards"],
     defaultNS: "common",
     returnObjects: true, // permite t() sobre arrays (opciones de quiz)
     interpolation: { escapeValue: false }, // React ya escapa

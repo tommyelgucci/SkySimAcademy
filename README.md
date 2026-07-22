@@ -141,6 +141,15 @@ Los 10 módulos (`principles-of-flight`, `advanced-aerodynamics`, `cockpit-instr
 - Despegue desde pista, viraje coordinado al alabear, detección de aterrizaje brusco/crash.
 - El "avión" es un cubo-fuselaje con alas primitivas (geometría básica, sin modelos externos) — ligero y suficiente para leer la actitud del avión.
 
+## Flashcards
+
+Modo de repaso independiente del curso de teoría — pestaña propia en la navegación (`FlashcardsView.jsx`), sin `storage.js`: no cuenta para aprobar módulos ni desbloquea misiones, así que se puede repetir libremente. Dos mazos:
+
+- **Instrumentos de cabina** (10 tarjetas): reconoce y lee los mismos relojes SVG del simulador (`src/components/instruments/Gauges.jsx`, extraído de `InstrumentPanel.jsx` para que ambos lo compartan — mismas "imágenes creadas por nosotros mismos", sin fotos ni assets externos). Dos tarjetas por instrumento: identificar cuál es y leer una lectura concreta (p. ej. "¿qué indica esta aguja del variómetro casi al fondo de la escala de descenso?").
+- **Alertas de audio de cabina** (9 tarjetas): alertas reales de GPWS/TCAS ("Sink rate", "Terrain, terrain, pull up", "Bank angle", "Traffic, traffic. Climb, climb!"...) sintetizadas en el momento con la **Web Speech API** del navegador (`speechSynthesis`, sin archivos de audio que alojar). La frase suena siempre en inglés —igual que en la aviación real, sea cual sea el idioma de la interfaz— y no se muestra como texto hasta comprobar la respuesta, para que sea un ejercicio de escucha de verdad.
+
+Contenido en `src/content/flashcards/index.js` (estructura: qué instrumento/valores o qué frase, más el índice de la opción correcta) + `src/i18n/locales/<idioma>/flashcards.json` (namespace `flashcards`, 5 idiomas, validado por `check-i18n.mjs` igual que los módulos de teoría).
+
 ## Despliegue (GitHub Pages)
 
 El workflow `.github/workflows/deploy-pages.yml` publica **ambas apps** en el único sitio de Pages del repo en cada push a `main` que toque `teoria-suiza/**` o `teoria-vuelo/**` (o manualmente con "Run workflow"):
