@@ -23,6 +23,7 @@ import {
   RotateCw,
   Route,
   TriangleAlert,
+  Wind,
 } from "lucide-react";
 
 const CONTENT_ICONS = {
@@ -40,6 +41,7 @@ const CONTENT_ICONS = {
   "rotate-cw": RotateCw,
   route: Route,
   "triangle-alert": TriangleAlert,
+  wind: Wind,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */

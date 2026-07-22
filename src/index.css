@@ -695,6 +695,96 @@ body {
   font-size: 1.5rem;
 }
 
+.lesson p {
+  line-height: 1.6;
+}
+
+.lesson__callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--color-surface-raised);
+  border-inline-start: 3px solid var(--color-primary);
+  border-radius: var(--radius);
+  padding: 0.8rem 1rem;
+  margin-block: 1rem;
+}
+
+.lesson__callout p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.lesson__callout svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-block-start: 0.15rem;
+}
+
+.lesson__callout--simtip {
+  border-inline-start-color: var(--color-accent);
+}
+
+.lesson__callout--simtip svg {
+  color: var(--color-accent);
+}
+
+.lesson-quiz {
+  margin-block-start: 1.6rem;
+  padding-block-start: 1.4rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.lesson-quiz__heading {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-dim);
+  margin-block-end: 0.3rem;
+}
+
+.lesson-quiz__question {
+  font-weight: 700;
+  margin-block: 0.2rem 0.8rem;
+}
+
+.lesson-quiz__feedback {
+  margin-block-start: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--color-surface-raised);
+}
+
+.lesson-quiz__feedback.is-correct {
+  border-inline-start: 3px solid var(--color-correct);
+}
+
+.lesson-quiz__feedback.is-wrong {
+  border-inline-start: 3px solid var(--color-wrong);
+}
+
+.lesson-quiz__explanation {
+  margin: 0.4rem 0 0;
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+}
+
+.lesson-quiz__actions {
+  margin-block-start: 0.8rem;
+}
+
+.lesson-quiz__done {
+  margin-block-start: 0.8rem;
+  color: var(--color-correct);
+  font-weight: 600;
+}
+
+.exam-error__explanation {
+  color: var(--color-text-dim);
+  font-size: 0.85rem;
+  margin-block: 0.3rem 0 0;
+}
+
 .module__nav {
   display: flex;
   justify-content: space-between;

@@ -5,10 +5,11 @@
  */
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Lightbulb, Joystick } from "lucide-react";
 import { getModule } from "../../content/modules";
 import { ContentIcon } from "../icons.jsx";
 import Quiz from "./Quiz.jsx";
+import LessonQuiz from "./LessonQuiz.jsx";
 
 export default function ModuleView({ moduleId, onBack }) {
   const { t } = useTranslation(["theory", "common"]);
@@ -53,7 +54,32 @@ export default function ModuleView({ moduleId, onBack }) {
 
       <article className="lesson">
         <h1>{t(`${keyBase}.lessons.${lesson.id}.title`)}</h1>
-        <p>{t(`${keyBase}.lessons.${lesson.id}.body`)}</p>
+        {t(`${keyBase}.lessons.${lesson.id}.body`)
+          .split("\n\n")
+          .map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+
+        <div className="lesson__callout lesson__callout--takeaway">
+          <Lightbulb size={18} aria-hidden="true" />
+          <p>
+            <strong>{t("keyTakeawayLabel")}:</strong>{" "}
+            {t(`${keyBase}.lessons.${lesson.id}.keyTakeaway`)}
+          </p>
+        </div>
+        <div className="lesson__callout lesson__callout--simtip">
+          <Joystick size={18} aria-hidden="true" />
+          <p>
+            <strong>{t("simTipLabel")}:</strong>{" "}
+            {t(`${keyBase}.lessons.${lesson.id}.simTip`)}
+          </p>
+        </div>
+
+        <LessonQuiz
+          moduleId={module.id}
+          lessonId={lesson.id}
+          questions={lesson.quiz.questions}
+        />
       </article>
 
       <div className="module__nav">

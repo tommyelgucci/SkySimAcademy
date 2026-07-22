@@ -9,6 +9,14 @@
  *  3. El índice `correct` de alguna pregunta queda fuera del rango de
  *     opciones traducidas.
  *
+ * Conviven dos formatos de módulo (migración gradual, ver schema.js):
+ *  - Antiguo: preguntas en `mod.quiz.questions` (nivel de módulo), sin
+ *    `keyTakeaway`/`simTip`/`explanation` obligatorios.
+ *  - Nuevo: preguntas en `lesson.quiz.questions` (nivel de lección, 3 c/u),
+ *    con `keyTakeaway`/`simTip` por lección y `explanation` por pregunta
+ *    obligatorios — un módulo usa el formato nuevo si al menos una de sus
+ *    lecciones declara su propio `quiz`.
+ *
  * Uso: node scripts/check-i18n.mjs   (o `npm run check:i18n`)
  */
 import { readFileSync, readdirSync } from "node:fs";
@@ -60,16 +68,31 @@ for (const lang of LANGS) {
       continue;
     }
     for (const lesson of mod.lessons ?? []) {
-      if (!translated.lessons?.[lesson.id]?.title || !translated.lessons?.[lesson.id]?.body)
-        fail(`[${lang}] lección incompleta: ${mod.id}.${lesson.id}`);
+      const l = translated.lessons?.[lesson.id];
+      if (!l?.title || !l?.body) fail(`[${lang}] lección incompleta: ${mod.id}.${lesson.id}`);
+      if (lesson.quiz) {
+        // formato nuevo: keyTakeaway/simTip son obligatorios
+        if (!l?.keyTakeaway) fail(`[${lang}] falta keyTakeaway: ${mod.id}.${lesson.id}`);
+        if (!l?.simTip) fail(`[${lang}] falta simTip: ${mod.id}.${lesson.id}`);
+      }
     }
-    const declared = new Set((mod.quiz?.questions ?? []).map((q) => q.id));
-    for (const q of mod.quiz?.questions ?? []) {
+
+    // Banco de preguntas: nivel de módulo (formato antiguo) + nivel de
+    // lección (formato nuevo, donde `explanation` es obligatoria).
+    const moduleLevelQuestions = mod.quiz?.questions ?? [];
+    const lessonLevelQuestions = (mod.lessons ?? []).flatMap((l) => l.quiz?.questions ?? []);
+    const allQuestions = [...moduleLevelQuestions, ...lessonLevelQuestions];
+    const lessonLevelIds = new Set(lessonLevelQuestions.map((q) => q.id));
+    const declared = new Set(allQuestions.map((q) => q.id));
+
+    for (const q of allQuestions) {
       const text = translated.quiz?.[q.id];
       if (!text?.question || !Array.isArray(text?.options))
         fail(`[${lang}] pregunta sin texto: ${mod.id}.${q.id}`);
       else if (q.correct < 0 || q.correct >= text.options.length)
         fail(`[${lang}] correct fuera de rango: ${mod.id}.${q.id}`);
+      if (lessonLevelIds.has(q.id) && !text?.explanation)
+        fail(`[${lang}] falta explanation: ${mod.id}.${q.id}`);
     }
     for (const id of Object.keys(translated.quiz ?? {}))
       if (!declared.has(id))

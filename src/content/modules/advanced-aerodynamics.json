@@ -1,0 +1,82 @@
+{
+  "id": "advanced-aerodynamics",
+  "icon": "wind",
+  "order": 2,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "angle-of-attack",
+      "quiz": {
+        "questions": [
+          { "id": "angle-of-attack-q1", "correct": 0 },
+          { "id": "angle-of-attack-q2", "correct": 0 },
+          { "id": "angle-of-attack-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "lift-drag-ratio-and-gliding",
+      "quiz": {
+        "questions": [
+          { "id": "lift-drag-ratio-and-gliding-q1", "correct": 0 },
+          { "id": "lift-drag-ratio-and-gliding-q2", "correct": 0 },
+          { "id": "lift-drag-ratio-and-gliding-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "v-speeds-and-load-limits",
+      "quiz": {
+        "questions": [
+          { "id": "v-speeds-and-load-limits-q1", "correct": 0 },
+          { "id": "v-speeds-and-load-limits-q2", "correct": 0 },
+          { "id": "v-speeds-and-load-limits-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "high-lift-devices",
+      "quiz": {
+        "questions": [
+          { "id": "high-lift-devices-q1", "correct": 0 },
+          { "id": "high-lift-devices-q2", "correct": 0 },
+          { "id": "high-lift-devices-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "adverse-yaw-and-slips",
+      "quiz": {
+        "questions": [
+          { "id": "adverse-yaw-and-slips-q1", "correct": 0 },
+          { "id": "adverse-yaw-and-slips-q2", "correct": 0 },
+          { "id": "adverse-yaw-and-slips-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "spins-and-spin-recovery",
+      "quiz": {
+        "questions": [
+          { "id": "spins-and-spin-recovery-q1", "correct": 0 },
+          { "id": "spins-and-spin-recovery-q2", "correct": 0 },
+          { "id": "spins-and-spin-recovery-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "wake-turbulence",
+      "quiz": {
+        "questions": [
+          { "id": "wake-turbulence-q1", "correct": 0 },
+          { "id": "wake-turbulence-q2", "correct": 0 },
+          { "id": "wake-turbulence-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

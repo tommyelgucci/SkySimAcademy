@@ -209,6 +209,7 @@ export default function ExamView({ onBack }) {
                   <p className="exam-error__correct">
                     {t("exam.correctAnswer")}: {options[q.correct]}
                   </p>
+                  <p className="exam-error__explanation">{t(`${base}.explanation`)}</p>
                 </article>
               );
             })}

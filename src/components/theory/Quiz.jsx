@@ -164,9 +164,14 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
       </div>
 
       {checked && (
-        <p className={`quiz__feedback ${isCorrect ? "is-correct" : "is-wrong"}`}>
-          {isCorrect ? t("quiz.correct") : t("quiz.wrong")}
-        </p>
+        <div className={`lesson-quiz__feedback ${isCorrect ? "is-correct" : "is-wrong"}`}>
+          <p className="quiz__feedback">
+            {isCorrect ? t("quiz.correct") : t("quiz.wrong")}
+          </p>
+          <p className="lesson-quiz__explanation">
+            {t(`${keyBase}.${question.id}.explanation`)}
+          </p>
+        </div>
       )}
 
       {checked ? (

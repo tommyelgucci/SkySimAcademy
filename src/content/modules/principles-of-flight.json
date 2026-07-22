@@ -4,30 +4,79 @@
   "order": 1,
   "status": "available",
   "lessons": [
-    { "id": "four-forces" },
-    { "id": "three-axes" },
-    { "id": "speed-and-stall" }
+    {
+      "id": "four-forces",
+      "quiz": {
+        "questions": [
+          { "id": "four-forces-q1", "correct": 0 },
+          { "id": "four-forces-q2", "correct": 0 },
+          { "id": "four-forces-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "lift-and-airfoils",
+      "quiz": {
+        "questions": [
+          { "id": "lift-and-airfoils-q1", "correct": 0 },
+          { "id": "lift-and-airfoils-q2", "correct": 0 },
+          { "id": "lift-and-airfoils-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "three-axes",
+      "quiz": {
+        "questions": [
+          { "id": "three-axes-q1", "correct": 0 },
+          { "id": "three-axes-q2", "correct": 0 },
+          { "id": "three-axes-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "speed-and-stall",
+      "quiz": {
+        "questions": [
+          { "id": "speed-and-stall-q1", "correct": 0 },
+          { "id": "speed-and-stall-q2", "correct": 0 },
+          { "id": "speed-and-stall-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "load-factor-and-turns",
+      "quiz": {
+        "questions": [
+          { "id": "load-factor-and-turns-q1", "correct": 0 },
+          { "id": "load-factor-and-turns-q2", "correct": 0 },
+          { "id": "load-factor-and-turns-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "stability-and-trim",
+      "quiz": {
+        "questions": [
+          { "id": "stability-and-trim-q1", "correct": 0 },
+          { "id": "stability-and-trim-q2", "correct": 0 },
+          { "id": "stability-and-trim-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "ground-effect-and-performance",
+      "quiz": {
+        "questions": [
+          { "id": "ground-effect-and-performance-q1", "correct": 0 },
+          { "id": "ground-effect-and-performance-q2", "correct": 0 },
+          { "id": "ground-effect-and-performance-q3", "correct": 0 }
+        ]
+      }
+    }
   ],
   "quiz": {
-    "passScore": 4,
-    "sampleSize": 5,
-    "questions": [
-      { "id": "q1", "correct": 0 },
-      { "id": "q2", "correct": 0 },
-      { "id": "q3", "correct": 0 },
-      { "id": "q4", "correct": 0 },
-      { "id": "q5", "correct": 0 },
-      { "id": "q6", "correct": 0 },
-      { "id": "q7", "correct": 0 },
-      { "id": "q8", "correct": 0 },
-      { "id": "q9", "correct": 0 },
-      { "id": "q10", "correct": 0 },
-      { "id": "q11", "correct": 0 },
-      { "id": "q12", "correct": 0 },
-      { "id": "q13", "correct": 0 },
-      { "id": "q14", "correct": 0 },
-      { "id": "q15", "correct": 0 },
-      { "id": "q16", "correct": 0 }
-    ]
+    "passScore": 8,
+    "sampleSize": 10
   }
 }

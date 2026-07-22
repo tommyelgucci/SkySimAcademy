@@ -21,149 +21,240 @@
   "modules": {
     "principles-of-flight": {
       "title": "Principles of flight",
-      "description": "The four forces, the three axes of control, and why airplanes stay in the air.",
+      "description": "The four forces, lift, control, stability and performance — a deep, practical foundation for everything else in ground school.",
       "lessons": {
         "four-forces": {
-          "title": "The four forces",
-          "body": "Four forces act on every aircraft: lift pushes it up, weight pulls it down, thrust moves it forward, and drag holds it back. Lift is created by the wings as air flows over them — the faster you fly, the more lift you generate. Straight and level flight is simply these four forces in balance."
+          "title": "The four forces of flight",
+          "body": "Four forces act on every aircraft in flight: lift acts upward, weight acts downward, thrust pushes forward, and drag holds back. In steady, straight-and-level flight, lift exactly balances weight and thrust exactly balances drag — the aircraft is in equilibrium, and any change to one force upsets that balance until something else changes to restore it.\n\nWeight is simple: it's gravity acting on the aircraft's total mass, always pointing straight down toward the center of the Earth, and it only changes as fuel burns off during the flight. Thrust comes from the engine and propeller, and unlike weight it can point in whatever direction the aircraft is pointing — climb, descend, or level.\n\nLift and drag are the two forces that depend on how the wing moves through the air, not just on the aircraft's weight or engine. Both grow with the square of airspeed: double your speed and you get four times the lift — and four times the drag — from the same wing at the same angle. That relationship is the reason speed control matters so much in every phase of flight.",
+          "keyTakeaway": "In steady flight the four forces balance in pairs: lift = weight, thrust = drag. Change one, and the aircraft accelerates, climbs, or descends until a new balance is found.",
+          "simTip": "Watch the airspeed and altitude readouts as you add throttle in the simulator: pushing the throttle up increases thrust without touching lift directly, so the extra thrust first shows up as more speed — and only becomes a climb once you raise the nose and trade some of that speed for altitude."
+        },
+        "lift-and-airfoils": {
+          "title": "How wings actually generate lift",
+          "body": "A wing's cross-section — its airfoil — is shaped so that air flowing over the curved top surface travels faster and at lower pressure than the air flowing along the flatter bottom surface. That pressure difference, added up over the whole wing, produces lift. The wing also deflects air downward as it passes, and by Newton's third law that downward push on the air produces an equal upward push on the wing — both descriptions are correct and describe the same physical lift.\n\nHow much lift a wing makes depends on its angle of attack — the angle between the wing's chord line and the oncoming airflow — not on how the aircraft is pointed relative to the ground. Raise the angle of attack and lift increases, up to a point. Wing area and airspeed matter too: a bigger wing or a faster wing makes more lift at the same angle of attack, which is exactly the squared-airspeed relationship from the previous lesson.\n\nEvery airfoil has a maximum angle of attack beyond which the smooth airflow over the top surface breaks away — that's the critical angle of attack, and crossing it is what causes a stall, regardless of airspeed. This is why \"slow\" and \"stalled\" are not the same idea: an aircraft can stall at any airspeed if the pilot pulls the angle of attack past the critical angle, for example in a steep turn or an abrupt pull-up.",
+          "keyTakeaway": "Lift comes from the pressure difference an airfoil creates as it deflects air, and it depends on angle of attack, wing area and airspeed — a wing stalls when angle of attack exceeds its critical value, not simply when it flies too slowly.",
+          "simTip": "In the simulator, ease the nose up gradually at low throttle and watch the stall warning: it triggers on attitude and speed together, modeling angle of attack — a sharper, faster pull-up can trigger it at a higher airspeed than a gentle one."
         },
         "three-axes": {
           "title": "The three axes of control",
-          "body": "An aircraft rotates around three axes. Pitch (elevator) raises or lowers the nose, roll (ailerons) banks the wings, and yaw (rudder) points the nose left or right. To turn, pilots bank the wings and let the tilted lift pull the aircraft around the turn."
+          "body": "An aircraft rotates around three axes that all pass through its center of gravity. The longitudinal axis runs nose to tail, and rotation around it is roll, controlled by the ailerons. The lateral axis runs wingtip to wingtip, and rotation around it is pitch, controlled by the elevator. The vertical axis runs top to bottom through the aircraft, and rotation around it is yaw, controlled by the rudder.\n\nAilerons work in opposition — as one wing's aileron deflects down (increasing that wing's lift), the other deflects up (decreasing lift on that side) — so the aircraft banks toward the wing with less lift. The elevator changes the tail's lift, which pitches the nose up or down around the lateral axis. The rudder deflects the airflow hitting the vertical fin, yawing the nose left or right.\n\nTo turn an aircraft, a pilot doesn't use the rudder alone — banking the wings with the ailerons tilts the lift vector so part of it now pulls the aircraft sideways, curving its path. The rudder's main job in a turn is to counteract adverse yaw: when the ailerons deflect, the down-going aileron creates a bit more drag than the up-going one, which yaws the nose slightly toward the outside of the turn unless the pilot applies a touch of coordinating rudder.",
+          "keyTakeaway": "Roll (ailerons), pitch (elevator) and yaw (rudder) rotate the aircraft around its longitudinal, lateral and vertical axes — turns are made primarily by banking with the ailerons, with rudder used to keep the turn coordinated.",
+          "simTip": "Try a turn using only the yoke's roll input, then the same turn adding a touch of rudder in the same direction: watch the compass and the sound of the airframe — coordinated rudder use makes the turn noticeably smoother and keeps the nose from wagging toward the outside of the turn."
         },
         "speed-and-stall": {
-          "title": "Throttle, airspeed and stall",
-          "body": "The throttle controls engine power, and power controls your airspeed. Wings need a minimum airspeed to produce enough lift: fly slower than that and the wing stalls — it stops lifting and the nose drops. To recover from a stall, lower the nose, apply full throttle and let the speed build up again."
+          "title": "Throttle, airspeed and stall recovery",
+          "body": "The throttle controls engine power, and in most phases of flight power controls your rate of climb or descent more directly than pitch does — this is the \"power for altitude, pitch for airspeed\" idea taught in most basic flight training, at least as a starting mental model. Pulling the throttle back without changing pitch will cause the aircraft to slow down and eventually descend, because the wing needs to trade altitude for the airspeed it needs to keep producing enough lift.\n\nAs covered in the lift lesson, every wing has a critical angle of attack beyond which it stalls. At low airspeed, a pilot needs a higher angle of attack — more nose-up pitch relative to the flight path — to produce the lift needed to support the aircraft's weight, so low-speed flight is inherently closer to the stall than high-speed flight, even though the stall itself is triggered by angle of attack, not speed alone.\n\nRecovering from a stall means reducing the angle of attack first: lower the nose to break the stall, then add power to rebuild airspeed and climb away. Pilots are trained to react to the earliest warning signs — buffeting, a stall horn, or a shudder through the controls — well before the wing fully stops flying, so recovery in practice is a small, prompt correction rather than a dramatic recovery from a full stall.",
+          "keyTakeaway": "Stall recovery is: reduce angle of attack (lower the nose) first, then add power and let speed rebuild — acting on the earliest warning sign keeps the recovery small.",
+          "simTip": "Fly the free-flight scenario, pull the throttle to idle, and hold the nose level: as the aircraft slows you'll feel the simulator's stall vibration warning kick in before the full stall — practice lowering the nose the instant you feel it, rather than waiting for the stall itself."
+        },
+        "load-factor-and-turns": {
+          "title": "Bank angle, load factor and turning flight",
+          "body": "In a level, coordinated turn, part of the wing's lift is used to pull the aircraft around the turn instead of holding it up against gravity — so to keep the same altitude, the wing has to produce more total lift than it does in straight-and-level flight, at the same weight. The steeper the bank, the more extra lift is needed, and that extra lift comes at a cost: load factor.\n\nLoad factor is the ratio of the lift the wings are producing to the aircraft's actual weight, expressed in \"g\" — a wing supporting exactly the aircraft's weight is at 1 g. In a level 30° bank, load factor rises to about 1.15 g; in a level 60° bank it roughly doubles to 2 g. Because stall speed rises with the square root of load factor, that 60° turn increases the stalling speed by about 40% compared to straight-and-level flight at the same weight.\n\nThis is exactly why steep turns are a core training and testing maneuver: they demand active back pressure on the elevator to maintain altitude as bank increases, and they shrink the margin between cruise speed and stall speed. A standard-rate turn used for navigation is far gentler — typically well under 30° of bank at normal cruise speeds — and carries only a small load factor penalty.",
+          "keyTakeaway": "Banking a wing to turn increases load factor and therefore stall speed; a 60° bank roughly doubles load factor to 2 g and raises stall speed by around 40%.",
+          "simTip": "Try the standard-turn mission and hold a steady 30° bank: notice how much back pressure (nose-up trim) you need to keep the altitude tape from drifting down as the bank builds — that extra back pressure is you supplying the higher load factor the turn demands."
+        },
+        "stability-and-trim": {
+          "title": "Stability, trim and center of gravity",
+          "body": "A stable aircraft is designed so that if a gust or a control input disturbs it away from its trimmed attitude, natural aerodynamic forces tend to return it toward that attitude on their own, without the pilot doing anything. This is static stability — the initial tendency to return — and how smoothly and quickly it settles back down (rather than oscillating or diverging) is dynamic stability.\n\nLongitudinal stability, the tendency to hold a steady pitch attitude, depends heavily on where the center of gravity sits relative to the wing. An aircraft loaded too far forward is very stable but heavy on the controls and needs more elevator authority to flare for landing; loaded too far aft, it becomes progressively less stable, lighter on the controls, and in extreme cases can become genuinely unstable and hard to recover from an upset.\n\nTrim doesn't add a new force — it's a small adjustable tab (or spring bias) that changes how much aerodynamic force the elevator itself needs to hold a given pitch attitude, so the pilot doesn't have to hold constant pressure on the yoke. Trimming for hands-off level flight at cruise speed, then trimming again after a big power or configuration change, is one of the simplest habits that makes an aircraft dramatically easier to fly precisely.",
+          "keyTakeaway": "A stable aircraft tends to return toward its trimmed attitude on its own; trim removes the steady control pressure needed to hold that attitude, and center of gravity position strongly affects how stable the aircraft feels.",
+          "simTip": "In the simulator, get the aircraft trimmed for level flight, then let go of the controls briefly: a well-trimmed, stable aircraft should wander only gently, giving you a couple of free seconds to check instruments or scan for traffic."
+        },
+        "ground-effect-and-performance": {
+          "title": "Ground effect and density altitude",
+          "body": "Ground effect is a measurable reduction in induced drag — and a corresponding boost in effective lift — that happens when a wing flies within roughly one wingspan of the ground. Close to the surface, the ground disrupts the wingtip vortices that normally trail off the wing, which reduces the \"induced\" component of drag and makes the wing feel more efficient than it does at altitude.\n\nThis is why aircraft can sometimes seem to \"float\" just above the runway during landing, resisting touchdown, and why they can occasionally lift off at a speed slightly below where they'd normally need to fly once out of ground effect — climbing away too early in ground effect risks settling back down if the speed isn't quite enough once clear of it.\n\nDensity altitude — pressure altitude corrected for temperature — has an even bigger practical effect on performance. Hot, high, and humid conditions all lower air density, and a wing and propeller in thinner air produce less lift and less thrust for the same speed and power setting. That means longer takeoff rolls, weaker climb rates, and less margin for error — exactly the conditions where the numbers in the aircraft's performance charts matter most, not just at high-altitude mountain airports but on ordinary hot summer afternoons.",
+          "keyTakeaway": "Ground effect reduces induced drag near the surface, which is why aircraft float near the runway; high density altitude (hot, high, humid) reduces lift and thrust and meaningfully lengthens takeoff and climb performance.",
+          "simTip": "Compare a takeoff at the desert scenario against the mountain-pass scenario at similar throttle settings, and notice how much more runway and time you need to get airborne and established in a climb at the higher-elevation field."
         }
       },
       "quiz": {
-        "q1": {
-          "question": "Which force keeps an aircraft in the air?",
+        "four-forces-q1": {
+          "question": "Which pair of forces balances in steady, straight-and-level flight?",
           "options": [
-            "Lift",
-            "Drag",
-            "Weight"
-          ]
+            "Lift and weight, thrust and drag",
+            "Lift and thrust, weight and drag",
+            "Lift and drag, thrust and weight"
+          ],
+          "explanation": "In level, unaccelerated flight lift exactly offsets weight (keeping altitude constant) and thrust exactly offsets drag (keeping speed constant). The other pairings don't describe an equilibrium."
         },
-        "q2": {
-          "question": "Banking the wings with the ailerons is called…",
+        "four-forces-q2": {
+          "question": "What happens to lift and drag if you double your airspeed at the same angle of attack?",
           "options": [
-            "Roll",
-            "Yaw",
-            "Pitch"
-          ]
+            "Both roughly quadruple",
+            "Both roughly double",
+            "Lift doubles but drag stays the same"
+          ],
+          "explanation": "Lift and drag both scale with the square of airspeed, so doubling speed roughly quadruples both — this is why high-speed flight needs disproportionately more thrust to overcome the much larger drag."
         },
-        "q3": {
-          "question": "What happens if airspeed drops below stall speed?",
+        "four-forces-q3": {
+          "question": "Which force is the only one that doesn't depend on the wing moving through the air?",
           "options": [
-            "The wing stops producing enough lift",
-            "The aircraft turns automatically",
-            "The engine shuts down"
-          ]
-        },
-        "q4": {
-          "question": "How do you recover from a stall?",
-          "options": [
-            "Lower the nose and apply full throttle",
-            "Pull the nose up as hard as you can",
-            "Cut the throttle and hold the stick still"
-          ]
-        },
-        "q5": {
-          "question": "Which force slows an aircraft down?",
-          "options": [
-            "Drag",
-            "Thrust",
-            "Lift"
-          ]
-        },
-        "q6": {
-          "question": "Which force does the engine produce?",
-          "options": [
-            "Thrust",
+            "Weight",
             "Lift",
             "Drag"
-          ]
+          ],
+          "explanation": "Weight comes purely from gravity acting on the aircraft's mass — it exists whether the aircraft is moving or sitting still. Lift and drag only exist because air is flowing over the wing."
         },
-        "q7": {
-          "question": "Straight and level flight means…",
+        "lift-and-airfoils-q1": {
+          "question": "What is angle of attack?",
           "options": [
-            "The four forces are in balance",
-            "Only lift and weight are acting",
-            "The engine is at idle power"
-          ]
+            "The angle between the wing's chord line and the oncoming airflow",
+            "The angle between the aircraft's nose and the horizon",
+            "The angle of the ailerons relative to the wing"
+          ],
+          "explanation": "Angle of attack is measured between the wing chord and the relative airflow, not between the nose and the horizon — an aircraft can be pointed level yet have a high angle of attack if it's descending, or vice versa."
         },
-        "q8": {
-          "question": "Which control surface raises or lowers the nose?",
+        "lift-and-airfoils-q2": {
+          "question": "What actually causes a wing to stall?",
           "options": [
-            "The elevator",
+            "Exceeding the airfoil's critical angle of attack",
+            "Flying below a fixed airspeed number",
+            "Reducing engine power to idle"
+          ],
+          "explanation": "A stall is an angle-of-attack event: cross the critical angle and the airflow separates, regardless of airspeed. A specific 'stall speed' only applies at one particular load factor and configuration."
+        },
+        "lift-and-airfoils-q3": {
+          "question": "If a wing's airspeed increases while its angle of attack stays the same, what happens to lift?",
+          "options": [
+            "Lift increases",
+            "Lift stays exactly the same",
+            "Lift decreases"
+          ],
+          "explanation": "Lift depends on angle of attack, wing area, and the square of airspeed — with angle of attack unchanged, more speed always means more lift from that airfoil."
+        },
+        "three-axes-q1": {
+          "question": "Which control surface is primarily responsible for roll?",
+          "options": [
             "The ailerons",
+            "The elevator",
             "The rudder"
-          ]
+          ],
+          "explanation": "The ailerons deflect in opposite directions on each wing, changing lift differentially and rolling the aircraft around its longitudinal axis."
         },
-        "q9": {
-          "question": "How does a pilot turn the aircraft?",
+        "three-axes-q2": {
+          "question": "What is the main purpose of rudder input during a turn?",
           "options": [
-            "By banking the wings with the ailerons",
-            "By pulling the nose straight up",
-            "By closing the throttle"
-          ]
+            "To counteract adverse yaw and keep the turn coordinated",
+            "To make the aircraft climb",
+            "To increase the bank angle"
+          ],
+          "explanation": "Rudder corrects for adverse yaw caused by aileron drag, keeping the nose tracking smoothly through the turn instead of skidding or slipping."
         },
-        "q10": {
-          "question": "What happens to lift as you fly faster?",
+        "three-axes-q3": {
+          "question": "Rotation around the lateral axis (wingtip to wingtip) is called…",
+          "options": [
+            "Pitch",
+            "Roll",
+            "Yaw"
+          ],
+          "explanation": "The lateral axis runs wingtip to wingtip; rotation around it — nose up or down — is pitch, controlled by the elevator."
+        },
+        "speed-and-stall-q1": {
+          "question": "As a simple starting model, what does the throttle primarily control?",
+          "options": [
+            "Rate of climb or descent",
+            "Bank angle",
+            "Heading"
+          ],
+          "explanation": "Adding power gives the aircraft the energy to climb (or maintain speed while climbing); reducing it without changing pitch leads to a descent as the aircraft trades altitude for airspeed."
+        },
+        "speed-and-stall-q2": {
+          "question": "What is the first action when recovering from a stall?",
+          "options": [
+            "Lower the nose to reduce angle of attack",
+            "Add full power immediately",
+            "Apply opposite rudder"
+          ],
+          "explanation": "The stall is an angle-of-attack problem, so the first and most important action is reducing angle of attack by lowering the nose — power alone won't unstall a wing that's still past its critical angle."
+        },
+        "speed-and-stall-q3": {
+          "question": "Why is low-speed flight inherently closer to a stall than high-speed flight?",
+          "options": [
+            "It requires a higher angle of attack to produce enough lift",
+            "The engine produces less thrust at low speed",
+            "The rudder becomes less effective at low speed"
+          ],
+          "explanation": "At low airspeed the wing needs more angle of attack to make the same amount of lift, which leaves less margin before reaching the critical angle of attack where the stall occurs."
+        },
+        "load-factor-and-turns-q1": {
+          "question": "What happens to load factor as bank angle increases in a level turn?",
           "options": [
             "It increases",
             "It stays the same",
             "It decreases"
-          ]
+          ],
+          "explanation": "A steeper bank requires more total lift to maintain altitude while some lift is diverted into turning the aircraft, so load factor rises with bank angle."
         },
-        "q11": {
-          "question": "Which force opposes thrust?",
+        "load-factor-and-turns-q2": {
+          "question": "Roughly how does a 60° level bank affect load factor compared to straight-and-level flight?",
           "options": [
-            "Drag",
-            "Weight",
-            "Lift"
-          ]
+            "It roughly doubles it, to about 2 g",
+            "It has almost no effect",
+            "It roughly triples it, to about 3 g"
+          ],
+          "explanation": "A level 60° bank produces a load factor of about 2 g — twice the wing loading of straight-and-level flight at 1 g."
         },
-        "q12": {
-          "question": "What generates lift?",
+        "load-factor-and-turns-q3": {
+          "question": "Why does stall speed increase in a steep turn?",
           "options": [
-            "Air flowing over the wings",
-            "The engine spinning faster",
-            "The aircraft's weight"
-          ]
+            "Stall speed rises with the square root of load factor, and load factor rises with bank angle",
+            "The engine produces less power in a bank",
+            "The ailerons become less effective at high bank angles"
+          ],
+          "explanation": "Since stalling happens at a fixed angle of attack, more load factor means the wing needs more speed to generate the extra lift at that same angle of attack — mathematically, stall speed scales with the square root of load factor."
         },
-        "q13": {
-          "question": "Which control surface controls yaw?",
+        "stability-and-trim-q1": {
+          "question": "What is static stability?",
           "options": [
-            "The rudder",
-            "The ailerons",
-            "The elevator"
-          ]
+            "The initial tendency of the aircraft to return toward its trimmed attitude after a disturbance",
+            "The aircraft's maximum speed in level flight",
+            "The strength of the aileron controls"
+          ],
+          "explanation": "Static stability describes only the FIRST tendency after a disturbance — whether the aircraft initially moves back toward its original attitude or continues away from it."
         },
-        "q14": {
-          "question": "Which control surfaces control roll?",
+        "stability-and-trim-q2": {
+          "question": "How does loading the center of gravity too far aft typically affect the aircraft?",
           "options": [
-            "The ailerons",
-            "The rudder",
-            "The elevator"
-          ]
+            "It reduces longitudinal stability and lightens the controls",
+            "It makes the aircraft impossible to stall",
+            "It has no effect on handling"
+          ],
+          "explanation": "An aft center of gravity reduces the stabilizing moment the tail can generate, making the aircraft less stable and lighter (sometimes too light) on the elevator."
         },
-        "q15": {
-          "question": "In straight and level flight, lift equals…",
+        "stability-and-trim-q3": {
+          "question": "What does trimming an aircraft actually do?",
           "options": [
-            "Weight",
-            "Thrust",
-            "Drag"
-          ]
+            "Reduces the steady control pressure needed to hold a given pitch attitude",
+            "Increases the aircraft's top speed",
+            "Changes the aircraft's stall speed"
+          ],
+          "explanation": "Trim biases the control surface (or its spring) so the aerodynamic forces balance at the desired attitude without the pilot holding constant pressure — it doesn't add power or change the stall speed."
         },
-        "q16": {
-          "question": "What is the first action to recover from a stall?",
+        "ground-effect-and-performance-q1": {
+          "question": "What causes ground effect?",
           "options": [
-            "Lower the nose",
-            "Pull the nose up",
-            "Cut the throttle"
-          ]
+            "The ground disrupting wingtip vortices, which reduces induced drag",
+            "The engine producing more thrust near the ground",
+            "Increased air pressure at ground level"
+          ],
+          "explanation": "Flying within about one wingspan of the surface interferes with the wingtip vortices that create induced drag, so the wing becomes temporarily more efficient — that's ground effect."
+        },
+        "ground-effect-and-performance-q2": {
+          "question": "What does high density altitude do to aircraft performance?",
+          "options": [
+            "Reduces lift and thrust, lengthening takeoff and weakening climb",
+            "Improves climb performance",
+            "Has no measurable effect on light aircraft"
+          ],
+          "explanation": "Thinner air (from heat, altitude, or humidity) means less lift for a given speed and less thrust for a given power setting, which degrades takeoff, climb, and overall performance."
+        },
+        "ground-effect-and-performance-q3": {
+          "question": "Why can climbing away too early while still in ground effect be risky?",
+          "options": [
+            "The aircraft may not yet have enough speed to sustain the climb once clear of ground effect",
+            "Ground effect makes the aircraft harder to control",
+            "It increases the stall speed"
+          ],
+          "explanation": "Ground effect can let an aircraft lift off slightly below its normal climb speed; if it climbs out of ground effect before truly reaching that speed, it can settle back toward the runway."
         }
       }
     },
@@ -774,7 +865,252 @@
           ]
         }
       }
+    },
+    "advanced-aerodynamics": {
+      "title": "Advanced aerodynamics",
+      "description": "Angle of attack, glide performance, V-speeds, high-lift devices, slips, spins and wake turbulence — the aerodynamics behind the simulator's harder missions.",
+      "lessons": {
+        "angle-of-attack": {
+          "title": "Angle of attack as the one number that matters",
+          "body": "Every important aerodynamic limit a pilot deals with — stall, maximum lift, best glide, best climb — is really a statement about angle of attack, not airspeed. Airspeed indicators are useful because, for a given weight and load factor, a certain airspeed corresponds to a certain angle of attack — but change the weight, the bank angle, or the vertical acceleration, and that correspondence shifts.\n\nThis is exactly why a fully loaded aircraft stalls at a higher indicated airspeed than a lightly loaded one at the same angle of attack: it needs more lift, so more speed, to reach the same critical angle. It's also why an aircraft can stall at a much higher airspeed than its published \"stall speed\" if it's pulled hard enough — the published number assumes 1 g, wings-level flight.\n\nSome aircraft carry a dedicated angle-of-attack indicator that shows this directly instead of leaving the pilot to infer it from airspeed, weight, and bank angle. Even without one, thinking in terms of angle of attack — \"how hard am I asking this wing to work right now\" — is a more reliable mental model for stall awareness than watching a single airspeed number, especially in turns or turbulence.",
+          "keyTakeaway": "Angle of attack, not airspeed, is what actually determines whether a wing stalls — airspeed is just a convenient proxy that only holds for a fixed weight and load factor.",
+          "simTip": "Try holding the same indicated airspeed level, then in a 45° bank: the wing is working much harder in the turn even though the airspeed reading hasn't changed, which is angle of attack rising under load."
+        },
+        "lift-drag-ratio-and-gliding": {
+          "title": "Lift-to-drag ratio and best glide",
+          "body": "The lift-to-drag ratio compares how much lift a wing produces to how much drag it creates at a given angle of attack, and it's the single number that determines how far an aircraft can glide for a given loss of altitude, engine or no engine. A lift-to-drag ratio of 10:1 means a glide of roughly 10 kilometers (or miles) for every 1,000 meters (or feet) of altitude lost, wind and technique aside.\n\nThat ratio isn't constant — it peaks at one specific angle of attack, usually a fairly low, efficient one, well below the stall. Flying faster than best-glide speed increases drag from moving through the air faster; flying slower increases drag because a higher angle of attack is needed to stay aloft. Best-glide speed is simply the one airspeed where the lift-to-drag ratio — and therefore the glide distance — is at its maximum.\n\nThis is the entire logic behind an engine-failure glide: hold best-glide speed precisely, because a few knots off in either direction measurably shortens how far the aircraft can stretch toward a landing site. It's also why pitch, not power, is the primary tool during a glide — since there's no power to manage, controlling airspeed through pitch is what protects the lift-to-drag ratio you're relying on.",
+          "keyTakeaway": "Lift-to-drag ratio peaks at one specific angle of attack (best-glide speed); holding that speed precisely is what maximizes glide distance after an engine failure.",
+          "simTip": "Practice the simulated engine-failure mission and try flying a few knots fast, then a few knots slow, on separate attempts: you'll notice the runway looks reachable at best-glide speed but slips just out of reach at either extreme."
+        },
+        "v-speeds-and-load-limits": {
+          "title": "V-speeds and structural load limits",
+          "body": "V-speeds are standardized airspeed limits, each marked on the airspeed indicator, that tell a pilot what's safe in a given situation. Va, maneuvering speed, is the fastest speed at which full, abrupt control deflection won't overstress the airframe — fly slower than Va and the wing will stall before the structure is overloaded; fly faster than Va and an abrupt full control input could damage the aircraft before it stalls.\n\nVno, the maximum structural cruising speed (the top of the airspeed indicator's green arc), is safe in smooth air but shouldn't be exceeded in turbulence, where gusts add unpredictable load spikes on top of whatever the pilot is already commanding. Vne, never-exceed speed (the red line), is an absolute limit at any time, in any air, reflecting risks like flutter that have nothing to do with turbulence loads at all.\n\nVa itself isn't fixed — it decreases at lighter weights, because a lighter aircraft stalls at a lower speed and therefore protects itself (by stalling) at a correspondingly lower speed too. This is why turbulent-air penetration speeds published for a specific weight can be conservative, and why \"slow down in turbulence\" is genuinely protective advice, not just a comfort measure.",
+          "keyTakeaway": "Va is the speed below which the wing stalls before the airframe is overstressed by a full control input; it drops at lighter weights, while Vno and Vne are separate structural limits that don't decrease with weight.",
+          "simTip": "Notice the colored arcs on the simulator's airspeed gauge — the boundary between green and yellow is essentially Vno, and the red line is Vne; treat gusty scenarios like the coastal island as a cue to fly in the lower half of the green arc."
+        },
+        "high-lift-devices": {
+          "title": "Flaps and other high-lift devices",
+          "body": "Flaps are hinged panels on the trailing edge of the wing that, when extended, increase the wing's camber and often its area, generating more lift at a given airspeed and angle of attack. That extra lift means the wing can fly — and stay controllable — at a lower airspeed, which is exactly why flaps are used for takeoff and landing, the phases of flight flown closest to stall speed.\n\nFlaps come with a trade-off: they also increase drag, often quite a lot at larger flap settings, which is genuinely useful for landing (a steeper approach path without gaining speed) but costs performance on takeoff and climb. That's why many aircraft use a small flap setting for takeoff (extra lift, modest drag penalty) and a larger setting for landing (more drag to help control the descent and slow down).\n\nExtending flaps also changes the aircraft's pitch trim and sometimes its stall behavior, since it changes the wing's effective shape — most training syllabi specifically practice flying with different flap settings so this doesn't come as a surprise close to the ground, which is exactly where extra surprises are least welcome.",
+          "keyTakeaway": "Flaps increase lift (and usually drag) at a given speed, lowering the stall speed and steepening the approach — small settings favor takeoff, larger settings favor landing.",
+          "simTip": "On final approach in the simulator, notice how the aircraft's pitch attitude and required power both shift the moment you'd conceptually 'add flaps' — thinking through that transition even in this arcade model builds the same anticipation real training emphasizes."
+        },
+        "adverse-yaw-and-slips": {
+          "title": "Adverse yaw and the forward slip",
+          "body": "Adverse yaw happens because the aileron that deflects downward (to raise its wing) also creates more drag than the aileron that deflects upward on the other wing — so right at the start of a roll, that extra drag yaws the nose toward the wing that's rising, opposite the direction of the turn, unless corrected. Coordinating rudder in the direction of the roll cancels this out, which is why turns are trained as coordinated, two-control maneuvers from the very beginning.\n\nA forward slip deliberately does the opposite of a coordinated turn: the pilot banks one way while holding opposite rudder to keep the nose pointed roughly straight ahead, presenting the fuselage sideways to the airflow. That sideways fuselage adds a lot of drag without adding speed, which lets a pilot descend steeply without gaining excess airspeed — a classic technique for losing extra altitude on a too-high final approach, especially in aircraft without flaps or with limited flap settings.\n\nA slip and a skid are easy to confuse: a slip is intentional, controlled, and shown clearly on the coordination indicator as the ball being deliberately displaced from center — a skid, by contrast, is uncoordinated flight in the opposite sense, usually unintentional, and is far more dangerous close to the ground because a skidding turn stalls more abruptly and can develop into a spin with little warning.",
+          "keyTakeaway": "Adverse yaw is corrected with coordinating rudder in normal turns; a forward slip is the deliberate opposite — cross-controlling to add drag and descend steeply without gaining speed, distinct from an unintentional, more dangerous skid.",
+          "simTip": "On the sea-platform scenario's tight approach, try a forward slip on final if you're arriving high: opposite rudder and bank, nose held on the runway, and watch the descent steepen without the airspeed climbing."
+        },
+        "spins-and-spin-recovery": {
+          "title": "Spins and how to recover from one",
+          "body": "A spin is an aggravated stall in which one wing is more stalled than the other, so instead of simply dropping its nose, the aircraft autorotates — rolling, yawing, and pitching down together around a fairly steady spin axis while both wings remain stalled. Spins almost always begin from an uncoordinated stall, most commonly a skidding or slipping turn at low airspeed, which is exactly why coordinated flight is emphasized so heavily near the stall.\n\nRecovery from a developed spin generally follows a set order: reduce power to idle (so the engine isn't adding energy to the rotation), apply full rudder opposite the direction of the spin to stop the yaw, then move the elevator forward to break the stall on both wings, and only level the wings with ailerons once the wings are flying again — using ailerons too early, while still stalled, can actually make an incipient spin worse.\n\nThe whole sequence is really just a stall recovery with an extra first step: stop the rotation, then reduce angle of attack, then recover to level flight. Practicing intentional spin entries and recoveries at a safe altitude builds the instinct to recognize an incipient spin early and react correctly, rather than freezing or making an instinctive but wrong control input under surprise.",
+          "keyTakeaway": "A spin is an autorotating stall with one wing more stalled than the other, usually from an uncoordinated stall; recovery is power idle, opposite rudder to stop rotation, elevator forward to break the stall, then wings level.",
+          "simTip": "Try the deliberate stall-recovery mission at a safe altitude and let the aircraft develop some rotation before recovering, then compare that to catching the stall at the very first buffet — noticing how much more altitude the later recovery costs."
+        },
+        "wake-turbulence": {
+          "title": "Wingtip vortices and wake turbulence",
+          "body": "Every wing generates lift by creating a pressure difference between its lower and upper surfaces, and at the wingtips that pressure difference causes air to curl around from the high-pressure underside to the low-pressure topside, forming a pair of counter-rotating vortices that trail behind the aircraft. These wingtip vortices are strongest right behind heavy, slow, clean aircraft — exactly the configuration used on approach and departure.\n\nWake vortices sink slowly after they're generated and tend to drift with any crosswind, but in still air they can persist and sink for a minute or more, settling roughly 500–900 feet below the generating aircraft's flight path. A smaller aircraft that flies into a strong wake vortex can experience a rapid, uncommanded roll that its own ailerons may not have enough authority to fully counter, especially at low altitude where there's little room to recover.\n\nThe practical guidance that follows from this is simple: stay at or above a larger aircraft's flight path, and land beyond its touchdown point (or take off before its rotation point) when operating near one — never below and behind. On a shared runway or in the traffic pattern, giving wake turbulence a healthy respect is one of the simplest ways to avoid an entirely avoidable upset.",
+          "keyTakeaway": "Wingtip vortices are strongest behind heavy, slow, clean aircraft; they sink and can persist for a minute or more, so the rule is to stay at or above a larger aircraft's path and land beyond its touchdown point, never below and behind.",
+          "simTip": "When sharing a scenario's airspace with slower or heavier traffic in mind, picture staying above and beyond its flight path on approach — the simulator won't model wake turbulence itself, but the mental habit of positioning transfers directly to real flying."
+        }
+      },
+      "quiz": {
+        "angle-of-attack-q1": {
+          "question": "What determines whether a wing stalls?",
+          "options": [
+            "Its angle of attack",
+            "Its indicated airspeed alone",
+            "The throttle setting"
+          ],
+          "explanation": "Stall is fundamentally an angle-of-attack event. Airspeed only predicts it reliably for a fixed weight and load factor."
+        },
+        "angle-of-attack-q2": {
+          "question": "Why does a heavier aircraft stall at a higher indicated airspeed than a lighter one, at the same angle of attack?",
+          "options": [
+            "It needs more lift, and therefore more speed, to reach that same angle of attack",
+            "Heavier aircraft have less powerful engines",
+            "Heavier aircraft have smaller wings"
+          ],
+          "explanation": "More weight means more lift is needed to fly at any given angle of attack, and since lift depends on speed squared, that requires a higher airspeed to reach the critical angle."
+        },
+        "angle-of-attack-q3": {
+          "question": "Why might an aircraft stall well above its published 'stall speed'?",
+          "options": [
+            "Because that number assumes 1 g, wings-level flight, and load factor can raise the actual stalling speed",
+            "Because published stall speeds are always underestimated by manufacturers",
+            "Because stall speed only applies at sea level"
+          ],
+          "explanation": "Published stall speed is a 1 g reference figure. Any maneuver that raises load factor — like a steep turn or abrupt pull-up — raises the actual speed at which the wing reaches its critical angle of attack."
+        },
+        "lift-drag-ratio-and-gliding-q1": {
+          "question": "What does lift-to-drag ratio determine?",
+          "options": [
+            "How far the aircraft can glide for a given loss of altitude",
+            "The aircraft's maximum speed",
+            "The stall speed at a given weight"
+          ],
+          "explanation": "Glide distance for a given altitude loss is set directly by the lift-to-drag ratio being flown — a higher ratio means a shallower, longer glide."
+        },
+        "lift-drag-ratio-and-gliding-q2": {
+          "question": "What happens to glide distance if you fly faster or slower than best-glide speed?",
+          "options": [
+            "It decreases in both directions",
+            "It only decreases if flying too slow",
+            "It only decreases if flying too fast"
+          ],
+          "explanation": "Best-glide speed is the single point where lift-to-drag ratio peaks; deviating either faster or slower increases drag relative to lift and shortens the achievable glide."
+        },
+        "lift-drag-ratio-and-gliding-q3": {
+          "question": "During an engine-out glide, what is the primary tool for controlling airspeed?",
+          "options": [
+            "Pitch",
+            "Power",
+            "Rudder"
+          ],
+          "explanation": "With no engine power available, pitch attitude is what controls airspeed during a glide — this is why holding best-glide pitch precisely is the core skill in an engine-failure scenario."
+        },
+        "v-speeds-and-load-limits-q1": {
+          "question": "What does maneuvering speed (Va) represent?",
+          "options": [
+            "The fastest speed at which a full, abrupt control input won't overstress the airframe",
+            "The maximum speed for cruise flight in smooth air",
+            "The absolute never-exceed speed of the aircraft"
+          ],
+          "explanation": "At or below Va, the wing stalls (shedding the load) before an abrupt full control deflection can overstress the structure. Above Va, that protection disappears."
+        },
+        "v-speeds-and-load-limits-q2": {
+          "question": "What happens to Va as aircraft weight decreases?",
+          "options": [
+            "Va decreases",
+            "Va increases",
+            "Va stays exactly the same"
+          ],
+          "explanation": "A lighter aircraft stalls at a lower speed, so the speed at which it stalls before overstressing the structure — Va — is correspondingly lower too."
+        },
+        "v-speeds-and-load-limits-q3": {
+          "question": "Why should Vno (the top of the green arc) not be exceeded in turbulence?",
+          "options": [
+            "Gusts can add unpredictable extra load on top of what the pilot is commanding",
+            "Vno only applies to takeoff and landing",
+            "The engine can't sustain that speed in rough air"
+          ],
+          "explanation": "Vno is a safe structural cruise limit only in smooth air; in turbulence, gust loads stack on top of maneuvering loads, so pilots should slow toward the middle of the green arc."
+        },
+        "high-lift-devices-q1": {
+          "question": "What is the main effect of extending flaps?",
+          "options": [
+            "More lift (and usually more drag) at a given airspeed",
+            "A higher stall speed",
+            "Reduced control authority"
+          ],
+          "explanation": "Flaps increase camber and often wing area, producing more lift at the same speed and angle of attack — which is also why they lower stall speed."
+        },
+        "high-lift-devices-q2": {
+          "question": "Why do pilots often use a smaller flap setting for takeoff than for landing?",
+          "options": [
+            "To get extra lift with a smaller drag penalty than a larger setting would cost",
+            "Because takeoff flap settings are purely cosmetic",
+            "Because larger flap settings are illegal below 1,000 feet"
+          ],
+          "explanation": "A small flap setting gives a useful lift boost without the larger drag penalty of a full flap setting, which would hurt climb performance right after takeoff."
+        },
+        "high-lift-devices-q3": {
+          "question": "Besides more lift, what else does extending flaps typically change?",
+          "options": [
+            "Pitch trim and often stall behavior",
+            "The aircraft's fuel type",
+            "The engine's maximum RPM"
+          ],
+          "explanation": "Because flaps reshape the wing, they shift the pitching moment (requiring a trim change) and can alter how the stall develops — which is why pilots practice flight at different flap settings deliberately."
+        },
+        "adverse-yaw-and-slips-q1": {
+          "question": "What causes adverse yaw?",
+          "options": [
+            "The down-going aileron creates more drag than the up-going one, yawing the nose opposite the roll",
+            "The rudder is deflected in the wrong direction",
+            "The engine produces asymmetric thrust"
+          ],
+          "explanation": "The aileron deflected downward to raise its wing also increases drag on that side, which yaws the nose away from the direction of the roll unless corrected with rudder."
+        },
+        "adverse-yaw-and-slips-q2": {
+          "question": "What is a forward slip used for?",
+          "options": [
+            "Descending steeply without gaining excess airspeed",
+            "Climbing more efficiently",
+            "Correcting for adverse yaw in a turn"
+          ],
+          "explanation": "A forward slip presents the fuselage sideways to the airflow, adding drag that allows a steep descent without the speed increase a simple dive would cause."
+        },
+        "adverse-yaw-and-slips-q3": {
+          "question": "How does a slip differ from a skid?",
+          "options": [
+            "A slip is intentional and controlled; a skid is uncoordinated flight in the opposite sense and more dangerous near the ground",
+            "They are two names for the same maneuver",
+            "A skid is used for landing; a slip is used for takeoff"
+          ],
+          "explanation": "A slip is a deliberate cross-controlled maneuver; a skid is unintentional uncoordinated flight that can stall abruptly and is a common precursor to a spin in the traffic pattern."
+        },
+        "spins-and-spin-recovery-q1": {
+          "question": "What fundamentally causes an aircraft to enter a spin?",
+          "options": [
+            "One wing is more stalled than the other, usually from an uncoordinated stall",
+            "The engine loses power suddenly",
+            "The pilot applies too much rudder in a coordinated turn"
+          ],
+          "explanation": "A spin develops when asymmetric stalling — most often from a skidding or slipping turn — causes one wing to autorotate around the other while both remain stalled."
+        },
+        "spins-and-spin-recovery-q2": {
+          "question": "What is the first step in a standard spin recovery?",
+          "options": [
+            "Reduce power to idle",
+            "Apply full aileron to level the wings",
+            "Pull back on the elevator"
+          ],
+          "explanation": "Power is reduced first so the engine isn't adding energy to the rotation; leveling the wings with ailerons or pulling back both come later, once rotation has stopped and the stall is broken."
+        },
+        "spins-and-spin-recovery-q3": {
+          "question": "Why can applying ailerons too early during spin recovery make things worse?",
+          "options": [
+            "The wings are still stalled, and aileron input can deepen the stall on one side",
+            "Ailerons have no effect during a spin",
+            "It uses up altitude needed for the rudder input"
+          ],
+          "explanation": "While the wings remain stalled, aileron deflection can increase the angle of attack (and drag) on one wing more than the other, potentially worsening the asymmetry that's driving the spin."
+        },
+        "wake-turbulence-q1": {
+          "question": "When are wingtip vortices strongest?",
+          "options": [
+            "Behind heavy, slow, clean (no flaps/gear) aircraft",
+            "Behind light, fast aircraft in cruise",
+            "Only during ground operations"
+          ],
+          "explanation": "Wake vortex strength scales with weight and inversely with speed, and is greatest in the slow, high-angle-of-attack, clean configuration typical of approach and departure."
+        },
+        "wake-turbulence-q2": {
+          "question": "How should a pilot generally position relative to a larger aircraft's flight path to avoid its wake?",
+          "options": [
+            "Stay at or above its path, and land beyond its touchdown point",
+            "Stay below and behind its path",
+            "Follow directly in its path at the same altitude"
+          ],
+          "explanation": "Wake vortices sink, so staying at or above the generating aircraft's path — and landing beyond where it touched down — keeps you clear of the sinking, drifting vortices."
+        },
+        "wake-turbulence-q3": {
+          "question": "What can happen if a smaller aircraft flies directly into a strong wake vortex?",
+          "options": [
+            "A rapid, uncommanded roll that the ailerons may not fully counter",
+            "A sudden loss of engine power",
+            "An automatic increase in airspeed"
+          ],
+          "explanation": "Wake vortices are essentially small, powerful horizontal tornadoes; flying into one can induce a roll rate beyond what the aircraft's own roll control can counteract, which is especially dangerous at low altitude."
+        }
+      }
     }
   },
-  "passedTag": "Passed"
+  "passedTag": "Passed",
+  "keyTakeawayLabel": "Key takeaway",
+  "simTipLabel": "Simulator tip",
+  "lessonQuiz": {
+    "heading": "Check your understanding",
+    "done": "Nice work — you've been through this lesson's quick check."
+  }
 }

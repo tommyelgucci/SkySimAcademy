@@ -116,15 +116,18 @@ export default function ReviewView({ onBack }) {
       </div>
 
       {checked && (
-        <p className={`quiz__feedback ${isCorrect ? "is-correct" : "is-wrong"}`}>
-          {isCorrect ? (
-            <>
-              <CircleCheck size={16} aria-hidden="true" /> {t("review.cleared")}
-            </>
-          ) : (
-            t("review.keep")
-          )}
-        </p>
+        <div className={`lesson-quiz__feedback ${isCorrect ? "is-correct" : "is-wrong"}`}>
+          <p className="quiz__feedback">
+            {isCorrect ? (
+              <>
+                <CircleCheck size={16} aria-hidden="true" /> {t("review.cleared")}
+              </>
+            ) : (
+              t("review.keep")
+            )}
+          </p>
+          <p className="lesson-quiz__explanation">{t(`${base}.explanation`)}</p>
+        </div>
       )}
 
       {checked ? (
