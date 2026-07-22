@@ -1,0 +1,82 @@
+{
+  "id": "regulations",
+  "icon": "gavel",
+  "order": 9,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "why-regulations-exist",
+      "quiz": {
+        "questions": [
+          { "id": "why-regulations-exist-q1", "correct": 0 },
+          { "id": "why-regulations-exist-q2", "correct": 0 },
+          { "id": "why-regulations-exist-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "airspace-classes",
+      "quiz": {
+        "questions": [
+          { "id": "airspace-classes-q1", "correct": 0 },
+          { "id": "airspace-classes-q2", "correct": 0 },
+          { "id": "airspace-classes-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "pilot-certificates-and-currency",
+      "quiz": {
+        "questions": [
+          { "id": "pilot-certificates-and-currency-q1", "correct": 0 },
+          { "id": "pilot-certificates-and-currency-q2", "correct": 0 },
+          { "id": "pilot-certificates-and-currency-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "aircraft-documents-and-airworthiness",
+      "quiz": {
+        "questions": [
+          { "id": "aircraft-documents-and-airworthiness-q1", "correct": 0 },
+          { "id": "aircraft-documents-and-airworthiness-q2", "correct": 0 },
+          { "id": "aircraft-documents-and-airworthiness-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "right-of-way-rules",
+      "quiz": {
+        "questions": [
+          { "id": "right-of-way-rules-q1", "correct": 0 },
+          { "id": "right-of-way-rules-q2", "correct": 0 },
+          { "id": "right-of-way-rules-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "minimum-altitudes-and-vfr-minimums",
+      "quiz": {
+        "questions": [
+          { "id": "minimum-altitudes-and-vfr-minimums-q1", "correct": 0 },
+          { "id": "minimum-altitudes-and-vfr-minimums-q2", "correct": 0 },
+          { "id": "minimum-altitudes-and-vfr-minimums-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "notams-and-flight-plans",
+      "quiz": {
+        "questions": [
+          { "id": "notams-and-flight-plans-q1", "correct": 0 },
+          { "id": "notams-and-flight-plans-q2", "correct": 0 },
+          { "id": "notams-and-flight-plans-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

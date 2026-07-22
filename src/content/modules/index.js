@@ -13,6 +13,10 @@ import cockpitInstruments from "./cockpit-instruments.json";
 import weatherBasics from "./weather-basics.json";
 import radioAlphabet from "./radio-alphabet.json";
 import navigationBasics from "./navigation-basics.json";
+import emergencyProcedures from "./emergency-procedures.json";
+import weightAndBalance from "./weight-and-balance.json";
+import regulations from "./regulations.json";
+import humanFactors from "./human-factors.json";
 
 export const MODULES = [
   principlesOfFlight,
@@ -21,6 +25,10 @@ export const MODULES = [
   weatherBasics,
   radioAlphabet,
   navigationBasics,
+  emergencyProcedures,
+  weightAndBalance,
+  regulations,
+  humanFactors,
 ]
   .map(deriveModuleQuiz)
   .map(validateModule)

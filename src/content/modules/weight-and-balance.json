@@ -1,0 +1,82 @@
+{
+  "id": "weight-and-balance",
+  "icon": "scale",
+  "order": 8,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "why-weight-and-balance-matters",
+      "quiz": {
+        "questions": [
+          { "id": "why-weight-and-balance-matters-q1", "correct": 0 },
+          { "id": "why-weight-and-balance-matters-q2", "correct": 0 },
+          { "id": "why-weight-and-balance-matters-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "weight-limits",
+      "quiz": {
+        "questions": [
+          { "id": "weight-limits-q1", "correct": 0 },
+          { "id": "weight-limits-q2", "correct": 0 },
+          { "id": "weight-limits-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "the-cg-envelope",
+      "quiz": {
+        "questions": [
+          { "id": "the-cg-envelope-q1", "correct": 0 },
+          { "id": "the-cg-envelope-q2", "correct": 0 },
+          { "id": "the-cg-envelope-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "computing-weight-and-balance",
+      "quiz": {
+        "questions": [
+          { "id": "computing-weight-and-balance-q1", "correct": 0 },
+          { "id": "computing-weight-and-balance-q2", "correct": 0 },
+          { "id": "computing-weight-and-balance-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "fuel-burn-and-cg-shift",
+      "quiz": {
+        "questions": [
+          { "id": "fuel-burn-and-cg-shift-q1", "correct": 0 },
+          { "id": "fuel-burn-and-cg-shift-q2", "correct": 0 },
+          { "id": "fuel-burn-and-cg-shift-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "density-altitude-and-performance",
+      "quiz": {
+        "questions": [
+          { "id": "density-altitude-and-performance-q1", "correct": 0 },
+          { "id": "density-altitude-and-performance-q2", "correct": 0 },
+          { "id": "density-altitude-and-performance-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "loading-scenarios-and-decisions",
+      "quiz": {
+        "questions": [
+          { "id": "loading-scenarios-and-decisions-q1", "correct": 0 },
+          { "id": "loading-scenarios-and-decisions-q2", "correct": 0 },
+          { "id": "loading-scenarios-and-decisions-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

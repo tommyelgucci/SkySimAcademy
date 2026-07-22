@@ -2,7 +2,7 @@
 
 MVP educativo de aviación: **módulos de teoría con cuestionarios** + **mini simulador de vuelo 3D** (sesiones de máx. 5 minutos), multi-idioma desde el día 1 (**EN · DE · ES · PT · AR**, con RTL completo para árabe).
 
-Módulos disponibles: **Principios de vuelo** · **Aerodinámica avanzada** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica**. Los seis ya están en formato de curso profundo (7 lecciones con mini-quiz de 3 preguntas y explicaciones). Contenido en inglés como fuente; el resto de idiomas se van traduciendo de forma progresiva (ver "El curso de teoría" más abajo).
+Módulos disponibles: **Principios de vuelo** · **Aerodinámica avanzada** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica** · **Procedimientos de emergencia** · **Peso y balance** · **Regulaciones aéreas** · **Factores humanos**. Los diez ya están en formato de curso profundo (7 lecciones con mini-quiz de 3 preguntas y explicaciones). Contenido en inglés como fuente; el resto de idiomas se van traduciendo de forma progresiva (ver "El curso de teoría" más abajo).
 
 Proyecto hermano de [`teoria-suiza`](../teoria-suiza) (la app de teoría de conducir): misma filosofía —contenido en datos estáticos, sin backend— aplicada al vuelo.
 
@@ -109,13 +109,13 @@ modules.<moduleId>.lessons.<lessonId>.keyTakeaway / .simTip
 modules.<moduleId>.quiz.<questionId>.question / .options[] / .explanation
 ```
 
-`schema.js` valida los módulos al arrancar en desarrollo y avisa por consola de estructuras malformadas. `scripts/check-i18n.mjs` exige `keyTakeaway`/`simTip`/`explanation` en todos los módulos, ya que los 6 están migrados al formato de mini-quiz por lección.
+`schema.js` valida los módulos al arrancar en desarrollo y avisa por consola de estructuras malformadas. `scripts/check-i18n.mjs` exige `keyTakeaway`/`simTip`/`explanation` en todos los módulos, ya que los 10 están migrados al formato de mini-quiz por lección.
 
 ### El curso de teoría
 
-Los 6 módulos (`principles-of-flight`, `advanced-aerodynamics`, `cockpit-instruments`, `weather-basics`, `radio-alphabet`, `navigation-basics`) ya están en el formato profundo: 7 lecciones cada uno (varios párrafos, un **key takeaway**, un **tip de simulador** que conecta el concepto con una misión/escenario real de la app, y un mini-quiz de 3 preguntas con feedback y explicación inmediatos). El quiz final del módulo ya no se escribe a mano: se deriva en tiempo de ejecución (`deriveModuleQuiz` en `src/content/schema.js`) juntando las preguntas de todas las lecciones.
+Los 10 módulos (`principles-of-flight`, `advanced-aerodynamics`, `cockpit-instruments`, `weather-basics`, `radio-alphabet`, `navigation-basics`, `emergency-procedures`, `weight-and-balance`, `regulations`, `human-factors`) ya están en el formato profundo: 7 lecciones cada uno (varios párrafos, un **key takeaway**, un **tip de simulador** que conecta el concepto con una misión/escenario real de la app, y un mini-quiz de 3 preguntas con feedback y explicación inmediatos). El quiz final del módulo ya no se escribe a mano: se deriva en tiempo de ejecución (`deriveModuleQuiz` en `src/content/schema.js`) juntando las preguntas de todas las lecciones.
 
-**Traducción pendiente:** el contenido profundo de los 6 módulos está escrito primero en inglés; en `de`/`es`/`pt`/`ar` son por ahora una copia literal del inglés (para que `check:i18n` tenga paridad de claves) en lugar de una traducción real — pendiente de traducir en una pasada siguiente.
+**Traducción pendiente:** el contenido profundo de los 10 módulos está escrito primero en inglés; en `de`/`es`/`pt`/`ar` son por ahora una copia literal del inglés (para que `check:i18n` tenga paridad de claves) en lugar de una traducción real — pendiente de traducir en una pasada siguiente.
 
 ## El simulador
 
@@ -178,6 +178,5 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Estadísticas de estudio (racha, progreso por módulo, historial de examen)
 - [x] Curso profundo — tanda 1: Principios de vuelo (expandido a 7 lecciones) + Aerodinámica avanzada (nuevo), con mini-quiz de 3 preguntas y explicaciones por lección
 - [x] Curso profundo — tanda 2: Instrumentos de cabina, Meteorología, Radio/alfabeto y Navegación expandidos al mismo formato (7 lecciones, mini-quiz con explicaciones)
-- [ ] Curso profundo — módulos nuevos: Procedimientos de emergencia, Peso y balance, Regulaciones aéreas, Factores humanos
-- [ ] Traducción real (no copia del inglés) del contenido profundo de los 6 módulos a `de`/`es`/`pt`/`ar`
-- [ ] Traducir a DE/ES/PT/AR el contenido de Principios de vuelo y Aerodinámica avanzada (hoy es una copia del inglés, pendiente de traducción real)
+- [x] Curso profundo — módulos nuevos: Procedimientos de emergencia, Peso y balance, Regulaciones aéreas y Factores humanos (7 lecciones cada uno, mismo formato)
+- [ ] Traducción real (no copia del inglés) del contenido profundo de los 10 módulos a `de`/`es`/`pt`/`ar`

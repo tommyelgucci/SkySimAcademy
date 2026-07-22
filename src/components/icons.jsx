@@ -8,10 +8,12 @@
  * Así el contenido sigue siendo datos puros y agnósticos del renderer.
  */
 import {
+  Brain,
   CircleHelp,
   CloudSun,
   Compass,
   Gauge,
+  Gavel,
   GraduationCap,
   Joystick,
   LifeBuoy,
@@ -22,6 +24,7 @@ import {
   RadioTower,
   RotateCw,
   Route,
+  Scale,
   TriangleAlert,
   Wind,
 } from "lucide-react";
@@ -42,6 +45,9 @@ const CONTENT_ICONS = {
   route: Route,
   "triangle-alert": TriangleAlert,
   wind: Wind,
+  scale: Scale,
+  gavel: Gavel,
+  brain: Brain,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */

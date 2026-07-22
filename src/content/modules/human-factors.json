@@ -1,0 +1,82 @@
+{
+  "id": "human-factors",
+  "icon": "brain",
+  "order": 10,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "the-limits-of-human-performance",
+      "quiz": {
+        "questions": [
+          { "id": "the-limits-of-human-performance-q1", "correct": 0 },
+          { "id": "the-limits-of-human-performance-q2", "correct": 0 },
+          { "id": "the-limits-of-human-performance-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "hypoxia-and-oxygen",
+      "quiz": {
+        "questions": [
+          { "id": "hypoxia-and-oxygen-q1", "correct": 0 },
+          { "id": "hypoxia-and-oxygen-q2", "correct": 0 },
+          { "id": "hypoxia-and-oxygen-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "spatial-disorientation",
+      "quiz": {
+        "questions": [
+          { "id": "spatial-disorientation-q1", "correct": 0 },
+          { "id": "spatial-disorientation-q2", "correct": 0 },
+          { "id": "spatial-disorientation-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "fatigue-and-circadian-rhythm",
+      "quiz": {
+        "questions": [
+          { "id": "fatigue-and-circadian-rhythm-q1", "correct": 0 },
+          { "id": "fatigue-and-circadian-rhythm-q2", "correct": 0 },
+          { "id": "fatigue-and-circadian-rhythm-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "stress-and-workload-management",
+      "quiz": {
+        "questions": [
+          { "id": "stress-and-workload-management-q1", "correct": 0 },
+          { "id": "stress-and-workload-management-q2", "correct": 0 },
+          { "id": "stress-and-workload-management-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "decision-making-models",
+      "quiz": {
+        "questions": [
+          { "id": "decision-making-models-q1", "correct": 0 },
+          { "id": "decision-making-models-q2", "correct": 0 },
+          { "id": "decision-making-models-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "crew-resource-management",
+      "quiz": {
+        "questions": [
+          { "id": "crew-resource-management-q1", "correct": 0 },
+          { "id": "crew-resource-management-q2", "correct": 0 },
+          { "id": "crew-resource-management-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

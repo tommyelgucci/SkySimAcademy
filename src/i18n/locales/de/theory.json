@@ -1452,6 +1452,962 @@
           "explanation": "Wake vortices are essentially small, powerful horizontal tornadoes; flying into one can induce a roll rate beyond what the aircraft's own roll control can counteract, which is especially dangerous at low altitude."
         }
       }
+    },
+    "emergency-procedures": {
+      "title": "Emergency procedures",
+      "description": "The ANC mindset, engine failures, fire in flight, system malfunctions, off-airport landings and when — and how — to declare an emergency.",
+      "lessons": {
+        "emergency-mindset": {
+          "title": "The emergency mindset: aviate, navigate, communicate",
+          "body": "The first and most important habit in any abnormal situation is keeping the aircraft flying before anything else — a rule usually summarized as \"aviate, navigate, communicate,\" in that exact order. Pilots have flown perfectly flyable aircraft into terrain while fixated on a problem in the cabin or on the radio; the airplane has to keep being flown while the problem gets worked, not instead of it.\n\nEmergency checklists split into two kinds of items. Memory items (sometimes called recall items) are the small number of truly time-critical actions performed immediately from memory, before ever reaching for a printed checklist. Everything else is worked methodically afterward, reading and confirming each step once the immediate danger is under control — treating every item as equally urgent wastes the one response that actually couldn't wait.\n\nMost emergencies are entirely survivable when handled calmly and in priority order. Panic narrows attention onto a single problem and crowds out everything else, including the basic task of flying the aircraft. The goal in training for emergencies isn't to solve every problem instantly — it's to keep control of the aircraft while working through the problem at a pace the situation actually allows.",
+          "keyTakeaway": "Aviate first, always; then navigate; then communicate — and separate the few true memory items from the rest of the checklist so the one truly time-critical response isn't lost among steps that can wait.",
+          "simTip": "Fly the simulator's engine-out mission and consciously narrate the ANC order out loud — aviate (pitch for best glide) before touching anything else — the same discipline a real emergency demands."
+        },
+        "engine-failure-after-takeoff": {
+          "title": "Engine failure right after takeoff",
+          "body": "An engine failure right after takeoff happens during one of the most demanding phases of flight: low altitude, low speed, and high workload, with very little room to maneuver. Turning back toward the departure runway from this position has a name earned the hard way — the \"impossible turn\" — because the altitude and airspeed needed to complete it safely are usually not available yet.\n\nThe default response taught to students is to land essentially straight ahead, using only minor turns to avoid obstacles, rather than trying to stretch a turn back to the runway. Maintaining best glide speed matters more here than almost anywhere else — trading speed for altitude, or altitude for a tighter turn, is exactly what has turned a survivable engine failure into a stall-spin accident.\n\nWith enough altitude and trained judgment, some pilots can safely return to the runway — but the number taught first, and the one that keeps pilots alive, is straightforward: below a safe return altitude, land ahead. The real danger in this scenario has rarely been the engine failure itself; it has almost always been a stall or spin from trying to turn back too low and too slow.",
+          "keyTakeaway": "Below a safe return altitude, land essentially straight ahead — the 'impossible turn' back to the runway has killed pilots trying to stretch a turn from too low, too slow.",
+          "simTip": "Try the engine-out mission right after a simulated takeoff and notice how little room there actually is to maneuver before your landing options run out."
+        },
+        "engine-failure-in-flight": {
+          "title": "Engine failure in cruise flight",
+          "body": "An engine failure at cruising altitude is a very different problem from one right after takeoff — there's more altitude, and therefore more time, to work with. The very first action is establishing best glide speed, which trades altitude for the maximum possible time and distance to work the rest of the problem.\n\nWith best glide established, a quick restart flow is worth attempting if time and altitude allow — checking the basics of fuel supply, ignition source, and any obvious cause rather than a random sequence of button presses. If the restart doesn't work, the priority shifts fully to finding a place to land.\n\nSelecting a landing site early, rather than waiting until low altitude forces a decision, is what separates a well-handled forced landing from a rushed one. An open, flat area that allows landing into the wind is worth favoring over a marginal option that merely looks closer — and once the aircraft is under control and a site is chosen, communicating the situation comes last, not first.",
+          "keyTakeaway": "With altitude available, establish best glide speed first, attempt a quick restart flow if time permits, then commit early to the best landing site within glide range.",
+          "simTip": "The engine-out mission cuts power at altitude specifically so you can practice trading height for both distance and decision time before committing to a landing spot."
+        },
+        "fire-in-flight": {
+          "title": "Fire in flight: engine, electrical and smoke",
+          "body": "Identifying whether a fire is engine-related or electrical matters immediately, because the correct response differs between the two. The instinct common to both is removing the source of fuel or power feeding the fire as quickly as possible, followed by managing any smoke that has entered the cabin.\n\nAn engine fire is generally addressed by cutting the fuel supply feeding it and considering the effect of airflow on the flames. An electrical fire is generally addressed by isolating the suspected circuit or, if necessary, turning off the master switch entirely — accepting the loss of electrical systems in exchange for removing the fire's power source.\n\nSmoke in the cabin adds urgency: opening a vent can help clear it but may also feed more oxygen to a fire depending on its source, which is why the decision to divert and land as soon as possible — rather than continuing the flight — is the standard response to any in-flight fire, regardless of how it started.",
+          "keyTakeaway": "Identifying whether a fire is engine or electrical decides the response (cutting fuel vs isolating power); with any fire in flight, land as soon as possible rather than delaying.",
+          "simTip": "The simulator doesn't model onboard fires, but practicing quick diversions to the nearest scenario runway builds the same habit: knowing your nearest safe landing option before you actually need it."
+        },
+        "system-malfunctions": {
+          "title": "System malfunctions: vacuum, pitot-static and electrical failures",
+          "body": "A vacuum system failure typically takes out the gyroscopic instruments on many light aircraft — commonly the attitude indicator and heading indicator — leaving the pilot to fly \"partial panel\" using the instruments that remain: airspeed, altimeter, vertical speed, compass, and an electrically powered turn coordinator if the aircraft has one.\n\nA pitot-static failure behaves differently depending on what's blocked. A blocked pitot tube affects only the airspeed indicator. A blocked static port, on the other hand, throws off the altimeter, vertical speed indicator and airspeed together, since all three rely on the same static pressure source — many aircraft carry an alternate static source specifically for this situation.\n\nAn electrical failure removes radios, lights, and any instrument that depends on electrical power, while the aircraft still has to be flown accurately using whatever remains. Recognizing which system has actually failed is what tells a pilot which instruments to stop trusting and which ones to keep flying by — partial-panel flying is a practiced skill, not improvisation under pressure.",
+          "keyTakeaway": "Recognizing which system has failed (vacuum vs pitot-static vs electrical) tells you which instruments to stop trusting and which remaining ones to fly by — partial panel flying is a practiced skill, not improvisation.",
+          "simTip": "Toggle the simulator's instrument panel off entirely for a few minutes of flight to feel how much harder attitude control gets without any panel reference — the same discipline needed for a real partial-panel failure."
+        },
+        "off-airport-landings": {
+          "title": "Off-airport and forced landings",
+          "body": "Choosing a forced-landing site comes down to a handful of priorities weighed together: length, surface, slope, obstacles, wind direction, and proximity to help. Doing this early — as soon as an engine problem makes a landing likely — leaves far more options than waiting and hoping the engine restarts.\n\nWhen altitude allows, flying a pattern-like approach to the chosen site, rather than a straight-in guess, gives much better judgment of wind and obstacles and a clearer sense of where the aircraft will actually touch down. Maintaining best glide speed until the site is assured, and using flaps late rather than early, both preserve options for as long as possible.\n\nOnce on the ground and stopped, securing the aircraft — fuel shutoff and attention to occupant safety — comes next. The entire lesson here is about the decision-making that leads up to that moment: picking the best available site early, flying it deliberately, and committing fully once the choice is made instead of second-guessing at low altitude.",
+          "keyTakeaway": "Pick the best available site early, fly a controlled approach at best glide speed with a safety margin, and commit fully once the site is chosen rather than second-guessing at low altitude.",
+          "simTip": "In the simulator's engine-out exercise, practice flying an actual pattern to your chosen landing spot instead of a straight-in guess — it gives you far better control over exactly where you touch down."
+        },
+        "declaring-an-emergency": {
+          "title": "Declaring an emergency: Mayday and Pan-Pan",
+          "body": "\"Mayday,\" repeated three times, signals grave and imminent danger requiring immediate priority handling. \"Pan-Pan\" signals urgency without immediate danger to life. Both trigger priority handling from air traffic control, which clears the way with other traffic and can arrange help — the distinction is in the level of danger, not in whether the call is worth making.\n\nThere's no penalty for declaring too early, and pilots have historically waited too long out of fear of paperwork or embarrassment rather than too soon. Declaring gives controllers time to arrange priority routing or emergency services well before they're actually needed — in areas where it applies, squawking a distress code can flag the situation even without voice contact.\n\nCommunicating is deliberately the last of the three priorities in \"aviate, navigate, communicate\" — done once the aircraft is under control, not instead of flying it. A short, clear message covering the nature of the emergency, intentions, and basics like souls on board and fuel remaining is enough; it doesn't need to be a polished, formal call to do its job.",
+          "keyTakeaway": "'Mayday' signals grave and imminent danger, 'Pan-Pan' signals urgency without immediate danger — both get you priority handling, and declaring early costs nothing but often buys you help you didn't know you needed.",
+          "simTip": "There's no live ATC in the simulator, but rehearsing a short mayday call out loud during the engine-out or stall-recovery missions builds the habit for when a real radio is listening."
+        }
+      },
+      "quiz": {
+        "emergency-mindset-q1": {
+          "question": "What is the first priority in any in-flight emergency?",
+          "options": [
+            "Keep flying the aircraft (aviate first)",
+            "Contact ATC immediately",
+            "Run the full emergency checklist immediately"
+          ],
+          "explanation": "Aviate always comes first — the aircraft has to keep being flown while any problem is worked, not instead of it."
+        },
+        "emergency-mindset-q2": {
+          "question": "What distinguishes a memory item from the rest of an emergency checklist?",
+          "options": [
+            "It's an immediate, time-critical action performed from memory before referring to the printed checklist",
+            "It's the last item performed after landing",
+            "It only applies to electrical failures"
+          ],
+          "explanation": "Memory items are the small set of truly time-critical actions done immediately from memory; everything else is worked methodically afterward."
+        },
+        "emergency-mindset-q3": {
+          "question": "Why is a panicked response to an emergency dangerous even when a pilot technically knows the procedure?",
+          "options": [
+            "Panic narrows attention and can cause fixation on one problem while the aircraft stops being flown",
+            "Panic makes radios stop working",
+            "Panic increases fuel burn"
+          ],
+          "explanation": "Panic narrows attention onto a single problem and crowds out everything else, including the basic task of flying the aircraft."
+        },
+        "engine-failure-after-takeoff-q1": {
+          "question": "What is the default response to an engine failure shortly after takeoff, before reaching a safe return altitude?",
+          "options": [
+            "Land essentially straight ahead, making only minor turns for obstacles",
+            "Turn back immediately toward the runway",
+            "Climb to troubleshoot the engine"
+          ],
+          "explanation": "Below a safe return altitude, landing essentially straight ahead avoids the stall-spin risk of trying to stretch a turn back to the runway."
+        },
+        "engine-failure-after-takeoff-q2": {
+          "question": "Why is turning back to the runway at very low altitude dangerous?",
+          "options": [
+            "It risks a stall/spin from turning too steeply at too low an airspeed and altitude",
+            "It uses too much fuel",
+            "It confuses air traffic control"
+          ],
+          "explanation": "The 'impossible turn' has killed pilots who tried to stretch a turn back to the runway from too low and too slow."
+        },
+        "engine-failure-after-takeoff-q3": {
+          "question": "What is commonly called the 'impossible turn'?",
+          "options": [
+            "Attempting to turn back to the departure runway from too low an altitude after an engine failure",
+            "Any turn made during cruise flight",
+            "A turn performed with full flaps"
+          ],
+          "explanation": "It earned the name because the altitude and airspeed needed to complete it safely usually aren't available yet at that point."
+        },
+        "engine-failure-in-flight-q1": {
+          "question": "After an engine failure at altitude, what is the very first action?",
+          "options": [
+            "Establish best glide speed",
+            "Attempt an immediate restart before doing anything else",
+            "Declare an emergency on the radio"
+          ],
+          "explanation": "Best glide speed trades altitude for the maximum possible time and distance to work the rest of the problem."
+        },
+        "engine-failure-in-flight-q2": {
+          "question": "Why establish best glide speed first, before troubleshooting?",
+          "options": [
+            "It gives you the maximum time and distance to work the problem and reach a landing site",
+            "It makes the engine restart automatically",
+            "It is required by regulation before any other action"
+          ],
+          "explanation": "More time and distance means a better chance at a successful restart attempt and a properly chosen landing site."
+        },
+        "engine-failure-in-flight-q3": {
+          "question": "When choosing a forced-landing site within gliding distance, what should be favored?",
+          "options": [
+            "An open, flat area allowing an into-wind landing",
+            "The nearest road regardless of wind or terrain",
+            "Any airport even if outside gliding range"
+          ],
+          "explanation": "An open, flat, into-wind site is worth favoring over a marginal option that merely looks closer."
+        },
+        "fire-in-flight-q1": {
+          "question": "What determines the correct initial response to an in-flight fire?",
+          "options": [
+            "Whether the fire is engine-related or electrical, since the response differs",
+            "The color of the smoke",
+            "The time of day"
+          ],
+          "explanation": "Engine fires and electrical fires call for different initial actions, so identifying the source matters immediately."
+        },
+        "fire-in-flight-q2": {
+          "question": "What is a common initial response to a suspected electrical fire?",
+          "options": [
+            "Isolate the suspected circuit or turn off the master switch as appropriate",
+            "Immediately open all cabin vents fully",
+            "Increase engine power"
+          ],
+          "explanation": "Isolating the circuit or cutting the master switch removes the electrical fire's power source."
+        },
+        "fire-in-flight-q3": {
+          "question": "What is the general rule for a fire in flight, regardless of type?",
+          "options": [
+            "Land as soon as possible rather than continuing the flight",
+            "Continue to the planned destination if the fire seems small",
+            "Climb to reduce oxygen availability first"
+          ],
+          "explanation": "Any in-flight fire calls for landing as soon as possible rather than delaying, regardless of how it started."
+        },
+        "system-malfunctions-q1": {
+          "question": "What does a vacuum system failure typically affect on light aircraft?",
+          "options": [
+            "Gyroscopic instruments such as the attitude and heading indicators",
+            "The airspeed indicator only",
+            "The engine's fuel supply"
+          ],
+          "explanation": "Many light aircraft drive their gyroscopic instruments off the vacuum system, so a failure there takes those instruments out first."
+        },
+        "system-malfunctions-q2": {
+          "question": "A blocked static port affects which instruments?",
+          "options": [
+            "Altimeter, vertical speed indicator, and airspeed together",
+            "Only the compass",
+            "Only the engine gauges"
+          ],
+          "explanation": "All three instruments rely on the same static pressure source, so a blocked static port affects them together."
+        },
+        "system-malfunctions-q3": {
+          "question": "What is the main challenge of an electrical failure in flight?",
+          "options": [
+            "Loss of radios, lights and electrically powered instruments while still needing to fly accurately",
+            "Immediate loss of engine power",
+            "Automatic activation of the autopilot"
+          ],
+          "explanation": "The aircraft still has to be flown accurately using whatever instruments and systems remain after an electrical failure."
+        },
+        "off-airport-landings-q1": {
+          "question": "What should a pilot do early when a forced landing becomes necessary?",
+          "options": [
+            "Select the best available site as early as possible rather than delaying",
+            "Continue searching for a better site until very low altitude",
+            "Focus only on communicating with ATC"
+          ],
+          "explanation": "Deciding early leaves far more options than waiting and hoping for a better site to appear at low altitude."
+        },
+        "off-airport-landings-q2": {
+          "question": "Why fly a pattern-like approach to a forced-landing site when altitude allows?",
+          "options": [
+            "It gives better judgment of wind, obstacles and touchdown point than a straight-in guess",
+            "It burns excess fuel before landing",
+            "It is required by regulation"
+          ],
+          "explanation": "A pattern-like approach gives a much clearer sense of wind, obstacles and exactly where the aircraft will touch down."
+        },
+        "off-airport-landings-q3": {
+          "question": "What speed should generally be maintained during the approach to a forced landing?",
+          "options": [
+            "Best glide speed, until certain of making the site",
+            "Maximum cruise speed",
+            "Stall speed, to land as slowly as possible"
+          ],
+          "explanation": "Best glide speed preserves options for as long as possible until the site is assured."
+        },
+        "declaring-an-emergency-q1": {
+          "question": "What does declaring 'Mayday' communicate to ATC and other aircraft?",
+          "options": [
+            "Grave and imminent danger requiring immediate priority handling",
+            "A minor request for information",
+            "A request to change frequency"
+          ],
+          "explanation": "Mayday, repeated three times, signals the most serious level of in-flight danger."
+        },
+        "declaring-an-emergency-q2": {
+          "question": "What does 'Pan-Pan' communicate, compared to 'Mayday'?",
+          "options": [
+            "Urgency without immediate danger to life",
+            "Exactly the same level of danger as Mayday",
+            "No real problem, just a formality"
+          ],
+          "explanation": "Pan-Pan still gets priority handling but signals a lower level of danger than Mayday."
+        },
+        "declaring-an-emergency-q3": {
+          "question": "Why do safety experts encourage pilots to declare an emergency early rather than waiting?",
+          "options": [
+            "Declaring early costs nothing and gives ATC time to arrange priority handling and help",
+            "It is required within the first minute of any abnormal indication",
+            "It automatically fixes the mechanical problem"
+          ],
+          "explanation": "There's no penalty for declaring too early, and it gives controllers time to arrange help well before it's actually needed."
+        }
+      }
+    },
+    "weight-and-balance": {
+      "title": "Weight and balance",
+      "description": "Why weight and balance matters, computing moments, how fuel burn shifts the CG, density altitude, and the real tradeoffs behind every loading decision.",
+      "lessons": {
+        "why-weight-and-balance-matters": {
+          "title": "Why weight and balance matters",
+          "body": "Weight and balance covers two separate concerns that get checked together before every flight. Total weight affects performance — takeoff and landing distance, climb rate, service ceiling — while balance, or center of gravity, affects controllability: stability, elevator authority, and stall or spin characteristics.\n\nBeing overweight degrades performance in ways that are often worse than expected, especially combined with a hot day, high elevation, or a short runway — takeoff roll lengthens, climb rate drops, and stall speed rises, all at once, from the same extra load.\n\nBeing outside the center of gravity limits is a controllability problem rather than a performance one. An aft CG reduces stability and can make stall or spin recovery difficult or impossible; a forward CG increases stall speed and can exceed the elevator's authority to flare properly for landing. Both are checked on every flight, not just ones that feel obviously heavy.",
+          "keyTakeaway": "Weight affects performance (distances, climb, stall speed); center of gravity affects controllability and stability — both must stay within limits on every flight, not only when 'obviously' heavy.",
+          "simTip": "The simulator's simplified physics don't model changing weight, but real aircraft performance briefings you'll do before any real flight always start with exactly this check."
+        },
+        "weight-limits": {
+          "title": "Understanding weight limits",
+          "body": "Empty weight is the aircraft itself plus unusable fuel and fluids, established by the manufacturer or by actually weighing the aircraft. Maximum gross weight is the structural and certification limit the aircraft is never meant to exceed. Useful load sits between the two.\n\nUseful load equals maximum gross weight minus empty weight, and that load has to be shared between fuel, pilot, passengers, and baggage together. A full fuel tank doesn't automatically leave room for four adults and their baggage — the useful load is one shared pool, not separate allowances.\n\nGross weight isn't just a legal number to avoid exceeding on paper — it interacts directly with structural limits in turbulence or maneuvering and with real runway performance. Checking the actual numbers against the aircraft's published charts before flight is standard practice, not optional paperwork.",
+          "keyTakeaway": "Useful load = max gross weight − empty weight, and that load must cover fuel, people and baggage together — filling the tanks can silently use up the payload available for passengers.",
+          "simTip": "Real weight-and-balance charts live in the aircraft's POH; the simulator skips this step entirely so you can focus purely on stick-and-rudder skills, but a real preflight always includes it."
+        },
+        "the-cg-envelope": {
+          "title": "The center of gravity envelope",
+          "body": "The center of gravity is the aircraft's balance point, and the \"envelope\" is a chart showing the allowable range of that balance point across different weights — a forward limit and an aft limit that can shift slightly as weight changes, often drawn as a quadrilateral rather than a simple straight range.\n\nThe forward limit exists because, beyond it, the elevator may lack the authority to flare properly for landing, and stall speed increases. The aft limit exists because, beyond it, the aircraft's stability margin shrinks, and stall or spin recovery can become genuinely difficult.\n\nThe envelope narrows for aerobatic or utility categories compared to normal category, and being close to a limit isn't automatically dangerous — it simply reduces the margin, the same logic that applies to any structural or performance limit an aircraft carries.",
+          "keyTakeaway": "The CG envelope defines a forward limit (elevator authority, stall speed) and an aft limit (stability, spin recovery) across a range of weights — staying inside it preserves the aircraft's designed handling qualities.",
+          "simTip": "The simulator always flies with a fixed, in-envelope CG so its handling stays predictable — a real check against the aircraft's envelope chart is what guarantees that in the real world."
+        },
+        "computing-weight-and-balance": {
+          "title": "Computing weight and balance: moment = weight × arm",
+          "body": "An item's \"arm\" is its distance from a reference datum point, and its \"moment\" is simply weight multiplied by arm. Summing the moments for every item on board, then dividing by the total weight, gives the aircraft's actual loaded center of gravity.\n\nA simple worked example makes this concrete: take the aircraft's empty weight and arm (giving an empty moment), then add the pilot's weight and arm, the fuel's weight and arm, and any baggage's weight and arm. Sum all the weights, sum all the moments, divide total moment by total weight, and compare the result against the CG envelope from the previous lesson.\n\nThis is exactly the worksheet a Pilot Operating Handbook walks a pilot through before every flight with a different load. Doing the arithmetic every time, rather than estimating, matters because small weight and arm differences can shift the result more than expected — especially in smaller aircraft with less margin to begin with.",
+          "keyTakeaway": "Moment = weight × arm; summing weights and moments for every item and dividing total moment by total weight gives the loaded CG — always checked against the envelope, never estimated.",
+          "simTip": "Try working through a real POH's sample loading problem alongside your simulator sessions; the arithmetic is simple, and it's the exact process a real preflight requires."
+        },
+        "fuel-burn-and-cg-shift": {
+          "title": "How fuel burn shifts the center of gravity in flight",
+          "body": "The center of gravity isn't static through a flight. As fuel burns, total weight decreases, and depending on where the fuel tanks sit relative to the aircraft's empty-weight CG, the balance point can shift as that weight disappears.\n\nIn most small aircraft with wing tanks located near the CG, this shift is small and rarely worth worrying about. In aircraft with tanks well forward or aft of the CG, or where fuel makes up a large share of the useful load, the shift over a long flight can be meaningful enough that some flight manuals require checking the envelope at both takeoff weight and the lighter landing weight.\n\nUnderstanding how CG trends over a flight also helps explain handling changes late in a long flight that might otherwise seem mysterious — it's a direct, physical consequence of exactly the arithmetic covered in the previous lesson, just recalculated for a lower weight.",
+          "keyTakeaway": "Burning fuel changes both weight and, depending on tank location relative to CG, can shift the balance point through a flight — some POHs require checking the envelope at both takeoff and landing weight.",
+          "simTip": "The simulator keeps a fixed CG throughout a flight for consistent handling; real weight-and-balance planning checks both ends of a flight because fuel burn changes the numbers."
+        },
+        "density-altitude-and-performance": {
+          "title": "Density altitude, weight and performance",
+          "body": "Density altitude is pressure altitude corrected for non-standard temperature — on a hot, high, or humid day, the air is effectively \"thinner\" than the physical altitude alone would suggest, and the aircraft performs as if it were higher than it actually is.\n\nWeight and density altitude compound each other rather than acting independently: higher weight combined with higher density altitude means a longer takeoff roll, a reduced climb rate, and a smaller margin over obstacles than either factor would produce alone.\n\nThe practical response is checking performance charts, or applying generous personal margins, that combine weight, density altitude and runway conditions before departing from a short or high-elevation strip — the same instinct behind \"just because it started doesn't mean it will perform.\"",
+          "keyTakeaway": "Density altitude (pressure altitude corrected for temperature) degrades performance on hot/high/humid days exactly like extra weight does — the two compound, and both must be checked together before departing a marginal strip.",
+          "simTip": "The simulator's desert-airfield and mountain-pass scenarios are deliberately the least forgiving on takeoff performance — notice how much more margin you want there than on the coastal-island runway."
+        },
+        "loading-scenarios-and-decisions": {
+          "title": "Real-world loading decisions",
+          "body": "Real loading decisions are full of tradeoffs: full fuel versus full seats, more baggage versus more range. \"The airplane will run\" is not the same question as \"is this flight within limits,\" and the discipline here is adjusting a loading plan — less fuel, less baggage — rather than assuming it will simply work out.\n\nPilots have accepted marginal loading under schedule or social pressure, and it's exactly the kind of go/no-go decision that overlaps with the human-factors lessons later in this course — running the actual numbers removes the ambiguity that pressure otherwise exploits.\n\nWeight and balance isn't a one-time student exercise to pass and forget. It's a decision made before every flight with a different load — which is the entire reason for learning the calculation itself, rather than memorizing a single answer that only applies to one specific loading.",
+          "keyTakeaway": "Every real loading decision is a tradeoff between fuel, people and baggage within the same useful load — running the actual numbers, every time, removes the guesswork that schedule or social pressure can otherwise exploit.",
+          "simTip": "The simulator lets you fly the same aircraft in every mission without a loading decision — treat every real preflight as the one place where that convenience disappears."
+        }
+      },
+      "quiz": {
+        "why-weight-and-balance-matters-q1": {
+          "question": "What are the two separate concerns in weight and balance?",
+          "options": [
+            "Total weight (performance) and center of gravity (controllability/stability)",
+            "Fuel type and oil pressure",
+            "Engine temperature and altitude"
+          ],
+          "explanation": "Weight affects performance figures; center of gravity affects controllability and stability — both matter independently."
+        },
+        "why-weight-and-balance-matters-q2": {
+          "question": "What is a consequence of an aircraft being overweight?",
+          "options": [
+            "Degraded performance such as longer takeoff distance, slower climb and a higher stall speed",
+            "Improved fuel efficiency",
+            "No measurable effect if the aircraft still starts"
+          ],
+          "explanation": "Extra weight lengthens takeoff distance, reduces climb rate and raises stall speed all at once."
+        },
+        "why-weight-and-balance-matters-q3": {
+          "question": "What is a consequence of the center of gravity being too far aft?",
+          "options": [
+            "Reduced stability that can make stall and spin recovery difficult",
+            "Increased structural strength",
+            "A lower stall speed with no downside"
+          ],
+          "explanation": "An aft CG reduces the aircraft's stability margin and can make stall/spin recovery genuinely difficult."
+        },
+        "weight-limits-q1": {
+          "question": "What is 'useful load'?",
+          "options": [
+            "Maximum gross weight minus empty weight — the load available for fuel, people and baggage",
+            "The weight of the aircraft with no fuel or oil at all",
+            "A fixed number that never changes between aircraft"
+          ],
+          "explanation": "Useful load is the difference between max gross weight and empty weight, shared between fuel, people and baggage."
+        },
+        "weight-limits-q2": {
+          "question": "Why can filling the fuel tanks completely be a problem for weight and balance?",
+          "options": [
+            "It can use up most or all of the useful load, leaving little margin for passengers and baggage",
+            "Fuel weight is never counted in weight and balance",
+            "It always improves the center of gravity"
+          ],
+          "explanation": "Fuel, passengers and baggage all draw from the same useful load pool, so full tanks can leave little room for anything else."
+        },
+        "weight-limits-q3": {
+          "question": "Where do pilots find the official weight and performance limits for a specific aircraft?",
+          "options": [
+            "The aircraft's Pilot Operating Handbook (POH)",
+            "A general rule that applies to all aircraft equally",
+            "Estimating visually before flight"
+          ],
+          "explanation": "The POH contains the specific, published weight and performance data for that exact aircraft."
+        },
+        "the-cg-envelope-q1": {
+          "question": "What does the CG envelope chart show?",
+          "options": [
+            "The allowable range of center of gravity positions across different aircraft weights",
+            "The maximum altitude for a given aircraft",
+            "The fuel burn rate at different power settings"
+          ],
+          "explanation": "The envelope maps the allowable forward and aft CG limits as weight changes."
+        },
+        "the-cg-envelope-q2": {
+          "question": "Why does a forward CG limit exist?",
+          "options": [
+            "Beyond it, the elevator may lack the authority to flare properly and stall speed increases",
+            "Beyond it, the aircraft becomes too light to fly",
+            "It exists purely for cosmetic balance reasons"
+          ],
+          "explanation": "Too far forward, the elevator can run out of authority to flare, and stall speed rises."
+        },
+        "the-cg-envelope-q3": {
+          "question": "Why does an aft CG limit exist?",
+          "options": [
+            "Beyond it, stability decreases and stall/spin recovery can become difficult",
+            "Beyond it, the aircraft cannot start its engine",
+            "Beyond it, fuel efficiency always improves"
+          ],
+          "explanation": "Too far aft, the aircraft's stability margin shrinks and stall/spin recovery can become genuinely difficult."
+        },
+        "computing-weight-and-balance-q1": {
+          "question": "How is an item's 'moment' calculated in weight and balance?",
+          "options": [
+            "Weight multiplied by arm",
+            "Weight divided by arm",
+            "Arm minus weight"
+          ],
+          "explanation": "Moment is defined as weight multiplied by arm for each item on board."
+        },
+        "computing-weight-and-balance-q2": {
+          "question": "How is the loaded center of gravity found from the totals?",
+          "options": [
+            "Total moment divided by total weight",
+            "Total weight divided by total moment",
+            "Total weight multiplied by total moment"
+          ],
+          "explanation": "Dividing total moment by total weight gives the actual loaded CG."
+        },
+        "computing-weight-and-balance-q3": {
+          "question": "Why is it recommended to actually calculate weight and balance rather than estimate it?",
+          "options": [
+            "Small weight and arm differences can shift the CG more than expected, especially in smaller aircraft",
+            "Regulations require a calculation only for aircraft over 50 seats",
+            "Estimating is always accurate enough for any aircraft"
+          ],
+          "explanation": "Small differences can shift the result more than expected, especially in aircraft with less margin."
+        },
+        "fuel-burn-and-cg-shift-q1": {
+          "question": "Why can the center of gravity shift during a flight?",
+          "options": [
+            "Fuel burn changes total weight, and depending on tank location it can shift the balance point",
+            "The aircraft's structure flexes and permanently changes shape",
+            "GPS position updates change the calculated CG"
+          ],
+          "explanation": "As fuel burns off, the resulting weight change shifts the balance point depending on where the tanks sit relative to the CG."
+        },
+        "fuel-burn-and-cg-shift-q2": {
+          "question": "Why might some aircraft require checking weight and balance at both takeoff and landing weight?",
+          "options": [
+            "Because fuel burn over a long flight can shift the CG enough to matter at the lighter landing weight",
+            "Because regulations require two signatures on any flight",
+            "Because the CG envelope only applies during landing"
+          ],
+          "explanation": "A long flight's fuel burn can shift the CG enough that both ends of the flight need checking."
+        },
+        "fuel-burn-and-cg-shift-q3": {
+          "question": "In most small aircraft with wing-mounted fuel tanks near the CG, how significant is the shift from fuel burn typically?",
+          "options": [
+            "Relatively small, though still worth checking on longer flights or unusual loadings",
+            "Always larger than the full useful load",
+            "Completely eliminated regardless of tank location"
+          ],
+          "explanation": "Wing tanks near the CG typically produce only a small shift, though it's still worth checking on longer flights."
+        },
+        "density-altitude-and-performance-q1": {
+          "question": "What is density altitude?",
+          "options": [
+            "Pressure altitude corrected for non-standard temperature, representing how the air 'feels' to the aircraft's performance",
+            "The exact altitude shown by GPS",
+            "The altitude at which the autopilot disengages"
+          ],
+          "explanation": "Density altitude adjusts pressure altitude for temperature to reflect how thin or dense the air actually is."
+        },
+        "density-altitude-and-performance-q2": {
+          "question": "How do high density altitude and high weight interact?",
+          "options": [
+            "They compound each other, both degrading takeoff and climb performance",
+            "They cancel each other out exactly",
+            "Density altitude only matters at sea level"
+          ],
+          "explanation": "High weight and high density altitude both degrade performance and worsen each other's effect."
+        },
+        "density-altitude-and-performance-q3": {
+          "question": "What should a pilot do before departing a short or high-elevation runway on a hot day?",
+          "options": [
+            "Check performance charts or apply generous margins combining weight and density altitude effects",
+            "Assume performance will be the same as on a cool day at sea level",
+            "Ignore density altitude since indicated airspeed is unaffected"
+          ],
+          "explanation": "Checking charts or applying generous margins accounts for the combined effect of weight and density altitude."
+        },
+        "loading-scenarios-and-decisions-q1": {
+          "question": "What is a common real-world tension in loading an aircraft?",
+          "options": [
+            "Balancing fuel, passengers and baggage within the same useful load, often trading one against another",
+            "Deciding what color to paint the aircraft",
+            "Choosing which radio frequency to use first"
+          ],
+          "explanation": "Fuel, passengers and baggage all draw from the same useful load, creating a real tradeoff on every flight."
+        },
+        "loading-scenarios-and-decisions-q2": {
+          "question": "Why is it risky to load an aircraft based on assumption rather than calculation?",
+          "options": [
+            "Marginal loading decisions made under pressure without checking the numbers have led to real accidents",
+            "Calculations are only a formality with no real safety impact",
+            "Assumptions are always more accurate than the POH charts"
+          ],
+          "explanation": "Real accidents have resulted from marginal loading decisions made under pressure without checking the actual numbers."
+        },
+        "loading-scenarios-and-decisions-q3": {
+          "question": "Why is weight and balance recalculated before every flight rather than memorized once?",
+          "options": [
+            "Because the load (fuel, passengers, baggage) is different on every flight",
+            "Because regulations require a new signature every calendar month regardless of load",
+            "Because the aircraft's empty weight changes on every flight"
+          ],
+          "explanation": "A different load on every flight means the calculation has to be redone each time, not memorized from a single past result."
+        }
+      }
+    },
+    "regulations": {
+      "title": "Air regulations",
+      "description": "Why regulations exist, airspace classes, certificates and currency, required documents, right-of-way rules, minimum altitudes and NOTAMs.",
+      "lessons": {
+        "why-regulations-exist": {
+          "title": "Why aviation regulations exist",
+          "body": "Aviation regulation is best understood as a shared safety framework built from accumulated lessons about real accidents and incidents, rather than arbitrary bureaucracy. International coordination through ICAO standards is why a pilot trained in one country can broadly operate within the framework of another, with national civil aviation authorities implementing and enforcing the detailed rules locally.\n\nThe rules cover many separate domains — airspace, certification, maintenance, operations — and each domain targets a specific category of risk that has caused real accidents historically, rather than existing for its own sake.\n\nA pilot's practical relationship with regulation is less about memorizing every paragraph and more about knowing where to look, understanding the intent behind key rules, and treating the regulatory minimum as a floor to stay well clear of, not a target to fly right up against.",
+          "keyTakeaway": "Aviation regulation is a shared, ICAO-coordinated safety framework built from historical accident lessons and enforced locally by national authorities — the regulatory minimum is a floor, not a target to fly right up against.",
+          "simTip": "The simulator's scenarios are deliberately uncontrolled airfields with no live ATC, which is itself a regulatory category (uncontrolled airspace) covered later in this module."
+        },
+        "airspace-classes": {
+          "title": "Airspace classes and VFR minimums",
+          "body": "Airspace is classified, commonly using a lettered scheme, ranging from fully controlled airspace requiring ATC clearance to uncontrolled airspace with no ATC service, where pilots self-separate using see-and-avoid.\n\nVFR cloud clearance and visibility minimums generally get stricter closer to busy controlled airspace and at higher altitudes, and more relaxed in uncontrolled airspace at lower levels — the closer to busy traffic and the higher you fly, the more room you're generally required to keep from clouds and other aircraft.\n\nChecking a current chart before a flight for exactly what airspace will be crossed is standard practice, and \"uncontrolled\" doesn't mean unregulated — self-separation still requires active vigilance, not a relaxed attitude toward traffic.",
+          "keyTakeaway": "Airspace ranges from fully controlled (ATC clearance required) to uncontrolled (pilots self-separate); VFR cloud clearance and visibility minimums generally get stricter closer to busy controlled airspace and at higher altitudes.",
+          "simTip": "All four of the simulator's scenarios are uncontrolled fields with no live ATC — exactly the kind of airspace where the see-and-avoid vigilance in this lesson matters most."
+        },
+        "pilot-certificates-and-currency": {
+          "title": "Pilot certificates, medicals and currency",
+          "body": "Full pilot privileges generally rest on three separate requirements: a certificate defining what you're allowed to do, one or more ratings adding specific privileges like instrument or multi-engine flying, and a medical certificate confirming fitness to fly.\n\n\"Currency,\" or recency, is distinct from the certificate itself — privileges like carrying passengers or flying at night typically require a minimum number of recent takeoffs and landings within a set period. The certificate doesn't expire, but specific privileges can lapse if they haven't been exercised recently enough.\n\nA pilot can be legally certificated but not currently proficient — after a long layoff from flying, for example. The regulation sets a floor, but personal judgment about actual recent practice matters at least as much as the legal minimum.",
+          "keyTakeaway": "A certificate (what you're allowed to do), ratings (added specific privileges) and a medical (fitness to fly) are three separate requirements — and specific privileges like night or passenger-carrying flight typically need ongoing recency, not just the certificate itself.",
+          "simTip": "The simulator has no certificate system, but its level/license structure mirrors the real idea: privileges (harder missions) unlock only once you've demonstrated the underlying skill, not just shown up."
+        },
+        "aircraft-documents-and-airworthiness": {
+          "title": "Required aircraft documents and airworthiness",
+          "body": "Certain categories of documents are generally expected to be aboard or available for an aircraft — an airworthiness certificate, registration, operating limitations or the POH, and weight-and-balance data among them, often remembered with a mnemonic covering these broad categories rather than any single jurisdiction's exact list.\n\nAirworthiness itself is an ongoing state, not a one-time certification — periodic inspections, required maintenance, and airworthiness directives keep an aircraft legally and actually airworthy. A valid airworthiness certificate doesn't mean an aircraft is currently airworthy if a required inspection has lapsed.\n\nChecking that required inspections are current and that the required documents are aboard is part of preflight, exactly like checking fuel or oil — treating this as a genuine safety check rather than a bureaucratic afterthought.",
+          "keyTakeaway": "Certain categories of documents (airworthiness certificate, registration, operating limitations, weight-and-balance data, among others) must be aboard, and airworthiness itself is an ongoing state maintained through inspections — not a one-time certificate.",
+          "simTip": "The simulator skips paperwork so you can focus on flying, but treat every real preflight's document and inspection check with the same seriousness as your fuel and control check."
+        },
+        "right-of-way-rules": {
+          "title": "Right-of-way rules between aircraft",
+          "body": "Right-of-way rules exist to resolve situations where two aircraft converge and only one should maneuver, following a consistent, predictable hierarchy so both pilots know what to expect from the other rather than guessing in the moment.\n\nA generic hierarchy typically applies: aircraft in distress generally have priority over all other traffic; among converging aircraft of similar category, the aircraft to the other's right generally has right of way; an overtaking aircraft generally must give way; and head-on approaches call for both aircraft to alter course to the right.\n\nHaving the right of way never removes the responsibility to actively avoid a collision — see-and-avoid remains a mutual, active duty regardless of who technically has priority, especially in uncontrolled airspace with no ATC separation service.",
+          "keyTakeaway": "Right-of-way rules create a predictable hierarchy (distress traffic first, converging traffic gives way to the aircraft on the right, overtaking traffic gives way) — but having right of way never removes the shared duty to actively see and avoid.",
+          "simTip": "All of the simulator's scenarios are uncontrolled airspace with no ATC separation — the same conditions where right-of-way rules and active scanning outside matter most in real flying."
+        },
+        "minimum-altitudes-and-vfr-minimums": {
+          "title": "Minimum safe altitudes and VFR weather minimums",
+          "body": "Minimum altitude rules generally require greater height over congested areas than over sparsely populated or open terrain, designed to guarantee an emergency landing option and to minimize risk to people on the ground below.\n\nThis same minimum-altitude thinking connects to terrain and obstacle clearance more broadly — it's why mountainous terrain demands extra margin beyond the legal minimum, not just compliance with it.\n\nVFR weather minimums define what's legal, but \"legal\" and \"comfortable for this pilot's experience on this particular day\" are different judgments — setting personal minimums stricter than the legal minimum is a hallmark of a mature pilot, not overcaution.",
+          "keyTakeaway": "Minimum safe altitude rules generally require more height over congested areas than open terrain, both to protect people on the ground and to preserve emergency-landing options — and personal weather minimums stricter than the legal minimum are a mark of good judgment, not overcaution.",
+          "simTip": "The simulator's mountain-pass scenario rewards extra altitude margin over terrain well beyond what any legal minimum would require — exactly the buffer this lesson describes."
+        },
+        "notams-and-flight-plans": {
+          "title": "NOTAMs and flight plans",
+          "body": "A NOTAM (Notice to Airmen, or Air Missions) carries time-sensitive information not yet reflected in permanent charts or publications — runway closures, obstacles, airspace restrictions, or equipment outages — and checking current NOTAMs is a standard part of preflight planning, not an optional extra.\n\nFiling a flight plan, even a simple VFR one, gives search-and-rescue services a starting point if an aircraft goes missing or becomes overdue — typically including route, altitude, fuel endurance, and souls on board, framed around the safety purpose rather than any specific form's exact fields.\n\nA thorough preflight brief combines current NOTAMs, a weather briefing, and a filed flight plan where relevant. Skipping any one of them trades a few minutes of planning for a real gap — either in legal compliance or in the search-and-rescue safety net if something goes wrong.",
+          "keyTakeaway": "NOTAMs carry time-sensitive information not yet in permanent charts (closures, hazards, restrictions), and a filed flight plan gives search-and-rescue a starting point if you go missing — both are quick, routine parts of a thorough preflight brief.",
+          "simTip": "The simulator's scenario airfields never close or change, but real preflight planning always includes checking whether today's version of that same airfield still matches the chart."
+        }
+      },
+      "quiz": {
+        "why-regulations-exist-q1": {
+          "question": "What is the main purpose of aviation regulations?",
+          "options": [
+            "To provide a shared safety framework built from accumulated lessons about real risks",
+            "To create paperwork requirements with no safety purpose",
+            "To restrict flying to professional pilots only"
+          ],
+          "explanation": "Regulations exist as a shared safety framework built from historical accident and incident lessons."
+        },
+        "why-regulations-exist-q2": {
+          "question": "What role does ICAO play in aviation regulation?",
+          "options": [
+            "It coordinates international standards that national authorities implement locally",
+            "It directly issues pilot licenses worldwide",
+            "It replaces the need for any national aviation authority"
+          ],
+          "explanation": "ICAO sets coordinated international standards; national authorities implement and enforce the detailed rules locally."
+        },
+        "why-regulations-exist-q3": {
+          "question": "How should a pilot treat the regulatory minimum for something like weather minimums or rest requirements?",
+          "options": [
+            "As a floor — a limit to stay well clear of, not a target",
+            "As a target to fly as close to as possible",
+            "As optional guidance with no real consequence"
+          ],
+          "explanation": "The regulatory minimum is meant as a floor to stay well clear of, not a target to fly right up against."
+        },
+        "airspace-classes-q1": {
+          "question": "What generally distinguishes controlled from uncontrolled airspace?",
+          "options": [
+            "Controlled airspace requires ATC clearance/service; uncontrolled airspace relies on pilots self-separating",
+            "Controlled airspace has no rules at all",
+            "Uncontrolled airspace is only found above 60,000 feet"
+          ],
+          "explanation": "Controlled airspace involves ATC clearance and service; uncontrolled airspace relies on pilot self-separation."
+        },
+        "airspace-classes-q2": {
+          "question": "How do VFR visibility and cloud clearance minimums generally change near busy controlled airspace?",
+          "options": [
+            "They generally become stricter, requiring more visibility and cloud clearance",
+            "They are completely eliminated",
+            "They apply only to IFR traffic, never VFR"
+          ],
+          "explanation": "Minimums generally tighten closer to busy controlled airspace and at higher altitudes."
+        },
+        "airspace-classes-q3": {
+          "question": "What should a pilot do before a flight to understand what airspace will be crossed?",
+          "options": [
+            "Check a current chart for the airspace along the route",
+            "Assume all airspace below 10,000 feet is identical",
+            "Rely only on GPS moving-map colors without a chart"
+          ],
+          "explanation": "Checking a current chart is the standard way to know exactly what airspace a route will cross."
+        },
+        "pilot-certificates-and-currency-q1": {
+          "question": "What are the three generally separate requirements to exercise full pilot privileges?",
+          "options": [
+            "Certificate, rating(s), and medical certificate",
+            "Only a driver's license",
+            "A single lifetime exam with no renewal"
+          ],
+          "explanation": "A certificate, applicable ratings, and a valid medical together define full pilot privileges."
+        },
+        "pilot-certificates-and-currency-q2": {
+          "question": "What does 'currency' or recency generally refer to?",
+          "options": [
+            "Having performed a minimum number of recent takeoffs/landings or similar activity within a set period to exercise a specific privilege",
+            "The total number of flight hours ever logged",
+            "The age of the aircraft being flown"
+          ],
+          "explanation": "Currency requirements are about recent activity within a set period, not lifetime totals."
+        },
+        "pilot-certificates-and-currency-q3": {
+          "question": "Can a pilot be legally certificated but not truly proficient to fly safely?",
+          "options": [
+            "Yes — the legal minimum and genuine recent proficiency are related but not the same thing",
+            "No, holding a certificate guarantees full proficiency at all times",
+            "No, currency requirements make this impossible by definition"
+          ],
+          "explanation": "The legal minimum and genuine, current proficiency are related but distinct things — a long layoff can leave a certificated pilot rusty."
+        },
+        "aircraft-documents-and-airworthiness-q1": {
+          "question": "Is an aircraft's airworthiness a one-time certification or an ongoing state?",
+          "options": [
+            "An ongoing state maintained through required inspections and maintenance",
+            "A one-time certification that never needs revisiting",
+            "Something that only matters for aircraft over a certain weight"
+          ],
+          "explanation": "Airworthiness is maintained continuously through required inspections and maintenance, not certified once and forgotten."
+        },
+        "aircraft-documents-and-airworthiness-q2": {
+          "question": "What kind of documents are generally expected to be aboard an aircraft?",
+          "options": [
+            "Categories such as airworthiness certificate, registration, operating limitations and weight-and-balance data",
+            "Only the pilot's personal logbook",
+            "Nothing — documents are only checked during manufacture"
+          ],
+          "explanation": "Airworthiness certificate, registration, operating limitations and weight-and-balance data are typical required categories."
+        },
+        "aircraft-documents-and-airworthiness-q3": {
+          "question": "What should a pilot check regarding documents and inspections during preflight?",
+          "options": [
+            "That required inspections are current and required documents are aboard",
+            "Only that the aircraft has enough fuel",
+            "Nothing — this is solely the maintenance provider's responsibility"
+          ],
+          "explanation": "Checking current inspections and required documents is part of a pilot's own preflight responsibility."
+        },
+        "right-of-way-rules-q1": {
+          "question": "What is the general purpose of right-of-way rules?",
+          "options": [
+            "To create a predictable hierarchy so pilots know who should maneuver when aircraft converge",
+            "To determine which aircraft gets priority for fuel",
+            "To decide who pays for a mid-air collision"
+          ],
+          "explanation": "Right-of-way rules give pilots a predictable, shared expectation of who should maneuver in a converging situation."
+        },
+        "right-of-way-rules-q2": {
+          "question": "In a general converging situation between aircraft of similar category, which aircraft generally has right of way?",
+          "options": [
+            "The aircraft to the other's right",
+            "The faster aircraft",
+            "The aircraft flying at a higher altitude"
+          ],
+          "explanation": "The generic rule gives right of way to the aircraft on the other's right in a converging situation."
+        },
+        "right-of-way-rules-q3": {
+          "question": "Does having the right of way remove the duty to watch for other traffic?",
+          "options": [
+            "No — see-and-avoid remains an active mutual duty regardless of right of way",
+            "Yes, the other aircraft becomes fully responsible for avoiding a collision",
+            "Right of way only matters when ATC is providing separation"
+          ],
+          "explanation": "See-and-avoid remains an active, mutual responsibility no matter who technically has the right of way."
+        },
+        "minimum-altitudes-and-vfr-minimums-q1": {
+          "question": "What is a general purpose of minimum safe altitude rules?",
+          "options": [
+            "To protect people on the ground and preserve emergency-landing options",
+            "To make navigation charts simpler to print",
+            "To reduce fuel consumption"
+          ],
+          "explanation": "Minimum altitude rules protect people below and keep an emergency-landing option available."
+        },
+        "minimum-altitudes-and-vfr-minimums-q2": {
+          "question": "How do minimum altitude requirements generally compare over congested versus open areas?",
+          "options": [
+            "Congested areas generally require greater altitude margin than open or unpopulated terrain",
+            "They are identical everywhere regardless of terrain",
+            "Open areas always require more altitude than cities"
+          ],
+          "explanation": "Congested areas generally call for greater altitude margin than open, sparsely populated terrain."
+        },
+        "minimum-altitudes-and-vfr-minimums-q3": {
+          "question": "Why might an experienced pilot set personal weather minimums stricter than the legal minimum?",
+          "options": [
+            "Legal minimums define what's allowed, not necessarily what's wise for a given pilot's experience and the day's conditions",
+            "Because legal minimums are usually set too strictly already",
+            "Because personal minimums are required by regulation"
+          ],
+          "explanation": "Legal minimums define what's allowed; personal minimums account for a specific pilot's experience and the day's actual conditions."
+        },
+        "notams-and-flight-plans-q1": {
+          "question": "What is a NOTAM?",
+          "options": [
+            "A Notice to Airmen/Air Missions carrying time-sensitive information not yet in permanent publications",
+            "A type of pilot certificate",
+            "A required radio call made only during takeoff"
+          ],
+          "explanation": "A NOTAM communicates time-sensitive changes not yet reflected in permanent charts or publications."
+        },
+        "notams-and-flight-plans-q2": {
+          "question": "What is a key safety purpose of filing a flight plan?",
+          "options": [
+            "It gives search-and-rescue services a starting point if the aircraft becomes overdue or missing",
+            "It automatically reserves airspace exclusively for that flight",
+            "It replaces the need for a weather briefing"
+          ],
+          "explanation": "A filed flight plan gives search-and-rescue a concrete starting point if a flight goes missing or overdue."
+        },
+        "notams-and-flight-plans-q3": {
+          "question": "What should a thorough preflight brief generally include?",
+          "options": [
+            "Current NOTAMs, a weather briefing, and a filed flight plan where relevant",
+            "Only checking the fuel gauge before engine start",
+            "Only a check of the aircraft's paint condition"
+          ],
+          "explanation": "A thorough brief combines current NOTAMs, weather information and a flight plan where relevant."
+        }
+      }
+    },
+    "human-factors": {
+      "title": "Human factors",
+      "description": "The limits of human performance: hypoxia, spatial disorientation, fatigue, stress and workload, decision-making models, and crew resource management.",
+      "lessons": {
+        "the-limits-of-human-performance": {
+          "title": "The limits of human performance in aviation",
+          "body": "Human factors is the study of how human physiology and psychology interact with the demands of flying. A large share of aviation accidents historically trace back to human performance limitations rather than purely mechanical failure — not a reason for fear, but the reason this is treated as seriously as stick-and-rudder skill.\n\nThe human body and mind weren't designed for flight, and vision, balance, and attention all carry specific weaknesses that aviation training addresses directly — illusions, fatigue, oxygen needs, and decision biases, each covered in turn through the rest of this module.\n\nRecognizing personal limits and building habits and tools — checklists, personal minimums, self-checks — to compensate for them is a sign of professionalism, not weakness, echoing the same instinct behind \"aviate, navigate, communicate\" in the emergency procedures module.",
+          "keyTakeaway": "A large share of aviation accidents trace back to human performance limitations, not just mechanical failure — this module treats recognizing and managing those limits as a core pilot skill, not an afterthought.",
+          "simTip": "Each lesson in this module ties back to something you can actually practice around the simulator's missions — starting with the physiology of oxygen and altitude next."
+        },
+        "hypoxia-and-oxygen": {
+          "title": "Hypoxia: when altitude affects the brain first",
+          "body": "Hypoxia is insufficient oxygen reaching body tissues, and the brain is especially sensitive to it. Early symptoms — subtle impairment of judgment, mild euphoria, tunnel vision, slower reaction time — can appear well below altitudes new pilots commonly assume, and worsen with personal factors like fatigue or smoking.\n\nWhat makes hypoxia especially dangerous is that it impairs the very judgment needed to recognize it's happening — a more insidious threat than most other physiological problems, since pilots have continued flying while significantly impaired without realizing it.\n\nMitigation starts with awareness of altitude and personal tolerance, using supplemental oxygen where required or available at higher altitudes, and descending promptly at the first suspicion of any symptom rather than trying to push through it.",
+          "keyTakeaway": "Hypoxia impairs judgment before a pilot typically feels obviously unwell, so it's more dangerous than most physiological threats — awareness of altitude, oxygen use where appropriate, and prompt descent at the first suspicion are the standard mitigations.",
+          "simTip": "The simulator doesn't model cabin altitude or oxygen, but its night scenarios are a good moment to mentally rehearse this: at real high altitude, reduced visual acuity from hypoxia would compound the challenge of a dark cockpit."
+        },
+        "spatial-disorientation": {
+          "title": "Spatial disorientation and vestibular illusions",
+          "body": "Spatial disorientation happens when what the inner ear and body sense mismatches the aircraft's actual attitude or motion, and it can happen to any pilot, trained or not, whenever outside visual references are poor — in cloud, at night, or over featureless terrain.\n\nCommon illusions include the sensation that a turn has stopped when it hasn't, or a false sense of climbing or descending during acceleration or deceleration — the core lesson isn't memorizing every illusion by name, but accepting that the inner ear can be confidently, convincingly wrong.\n\nThe standard mitigation is trusting the flight instruments over bodily sensation whenever visual references are inadequate — precisely why attitude-indicator training exists, and why \"believe the instruments\" is one of the most repeated phrases in instrument training.",
+          "keyTakeaway": "Spatial disorientation happens when bodily sensation conflicts with actual aircraft attitude, especially with poor outside visual references — the standard mitigation is trusting the flight instruments over physical sensation.",
+          "simTip": "Fly the simulator at night or try holding straight-and-level with instruments hidden — the same conflict between what you'd 'feel' and what's actually happening is why real instrument training insists on trusting the panel."
+        },
+        "fatigue-and-circadian-rhythm": {
+          "title": "Fatigue and circadian rhythm",
+          "body": "Fatigue is a measurable degradation in alertness and performance from inadequate rest or extended wakefulness — distinct from simply feeling a little tired. Circadian rhythm, the body's internal clock, affects alertness across a 24-hour cycle regardless of how many hours were actually slept.\n\nFatigue's effects mimic other threats already covered — slower reaction time, poorer judgment, tunnel vision on a single task — and self-assessment of one's own fatigue level is notoriously unreliable, since pilots consistently underestimate how impaired they've actually become.\n\nMitigation relies on personal rules of thumb: adequate rest before flying, awareness of circadian low points such as the early morning hours, and the discipline to postpone or cancel a flight when genuinely fatigued — the same self-check mindset expanded fully in the decision-making lesson later in this module.",
+          "keyTakeaway": "Fatigue degrades alertness and judgment similarly to other physiological threats, is driven by both total rest and the body's circadian rhythm, and is notoriously hard to self-assess accurately — which is why a personal rule to postpone a flight when genuinely fatigued matters more than trusting how alert you feel.",
+          "simTip": "The simulator's night mode is a good moment to notice how much harder attention feels late in a session — a small, safe echo of what real fatigue does over a much longer, higher-stakes flight."
+        },
+        "stress-and-workload-management": {
+          "title": "Stress and workload management",
+          "body": "Acute stress comes from a sudden demanding situation, like an abnormal indication, while chronic stress comes from ongoing life pressures carried into the cockpit — both consume mental capacity that's needed for flying, even when they come from very different sources.\n\nAs workload rises, pilots start shedding lower-priority tasks, sometimes without consciously choosing to. Left unmanaged, this can lead to tunneling on one problem while other important tasks — including flying the aircraft — get dropped, echoing the same ANC priority covered in the emergency procedures module.\n\nPractical workload management means prioritizing tasks explicitly (aviate first), delegating or deferring lower-priority items, using checklists to offload memory, and recognizing rising stress early enough to actively slow down and reprioritize rather than letting task saturation happen silently.",
+          "keyTakeaway": "Both acute and chronic stress consume mental capacity needed for flying, and rising workload without active management leads to task saturation — explicitly prioritizing tasks (aviate first) and offloading memory to checklists is how pilots manage it deliberately instead of letting it happen.",
+          "simTip": "The simulator's engine-out and stall-recovery missions deliberately spike your workload in a short window — notice which secondary tasks (like checking the mini-map) you naturally drop first, and whether that's the right priority."
+        },
+        "decision-making-models": {
+          "title": "Aeronautical decision-making models",
+          "body": "Aeronautical Decision Making (ADM) is a structured approach to recognizing hazards and making sound choices, contrasted with purely instinctive or habit-based decisions that don't hold up well under pressure or in novel situations.\n\nA personal-readiness self-check — covering things like illness, medication, stress, alcohol, fatigue, and emotion — is a quick tool to catch a pilot who technically holds a certificate and medical but isn't fit to fly on that specific day.\n\nA repeatable decision loop — recognize a change, gather information, consider options and consequences, decide and act, then evaluate the outcome — is the \"communicate\" and \"aviate/navigate\" of ANC applied to any changing situation, not just a declared emergency.",
+          "keyTakeaway": "A personal readiness self-check before flight and a structured decision loop (recognize, gather information, weigh options, decide, evaluate) turn decision-making into a repeatable skill rather than pure instinct — useful for any changing situation, not only declared emergencies.",
+          "simTip": "Run a quick personal readiness check on yourself before starting a simulator session — building the habit somewhere low-stakes makes it automatic before a real flight."
+        },
+        "crew-resource-management": {
+          "title": "Crew resource management, even flying solo",
+          "body": "Crew Resource Management (CRM) was originally developed for multi-crew airline operations, aiming to make better use of all available resources — communication, delegation, cross-checking — rather than relying on one person's judgment alone. Many of its principles still apply meaningfully to single-pilot operations.\n\nSingle-pilot resource management treats ATC, passengers, checklists, and even automation as \"crew\" resources to actively use rather than working every problem alone in your head. Briefing passengers so they can help — spotting traffic, staying quiet during critical phases — is a simple, real example.\n\nCRM and single-pilot resource management work because they assume any single human, however skilled, has blind spots and limits — the exact theme running through this entire module — and using every available resource deliberately turns individual human limitations into a manageable, shared problem instead of a hidden one.",
+          "keyTakeaway": "CRM principles — communication, delegation, using every available resource instead of relying on one person's judgment — apply even to single-pilot flying, by treating ATC, passengers, checklists and automation as resources to actively use.",
+          "simTip": "Even flying solo missions in the simulator, try narrating your plan out loud before each phase (takeoff, pattern, approach) — a simple habit that catches mistakes a silent internal plan can miss."
+        }
+      },
+      "quiz": {
+        "the-limits-of-human-performance-q1": {
+          "question": "What does the field of 'human factors' in aviation study?",
+          "options": [
+            "How human physiology and psychology interact with the demands of flying",
+            "Only the mechanical reliability of aircraft engines",
+            "The history of aircraft manufacturing companies"
+          ],
+          "explanation": "Human factors focuses on the interaction between human physiology/psychology and the demands of flying."
+        },
+        "the-limits-of-human-performance-q2": {
+          "question": "Historically, what has been a leading contributor to aviation accidents?",
+          "options": [
+            "Human performance limitations, at least as much as mechanical failure",
+            "Exclusively mechanical or structural failure",
+            "Weather alone, independent of pilot decisions"
+          ],
+          "explanation": "A large share of accidents trace back to human performance limitations rather than mechanical failure alone."
+        },
+        "the-limits-of-human-performance-q3": {
+          "question": "What mindset does this module encourage toward personal human limits?",
+          "options": [
+            "Recognizing them and building habits/tools to compensate, as a sign of professionalism",
+            "Ignoring them since experience eventually eliminates all human error",
+            "Treating them as a weakness best not discussed"
+          ],
+          "explanation": "Recognizing limits and building compensating habits is framed as professionalism, not weakness."
+        },
+        "hypoxia-and-oxygen-q1": {
+          "question": "What makes hypoxia particularly dangerous compared to other physiological threats?",
+          "options": [
+            "It impairs the judgment needed to recognize it's happening, making it harder to self-detect",
+            "It causes immediate loss of consciousness with no warning symptoms at all",
+            "It only affects pilots over 60 years old"
+          ],
+          "explanation": "Hypoxia's danger comes from impairing the very judgment needed to notice it's occurring."
+        },
+        "hypoxia-and-oxygen-q2": {
+          "question": "What is a typical early symptom of hypoxia?",
+          "options": [
+            "Subtle impairment of judgment or mild euphoria, along with slower reaction time",
+            "Immediate and severe chest pain",
+            "Sudden improvement in night vision"
+          ],
+          "explanation": "Early hypoxia symptoms are subtle: impaired judgment, mild euphoria, and slower reactions."
+        },
+        "hypoxia-and-oxygen-q3": {
+          "question": "What is the recommended response at the first suspicion of hypoxia symptoms?",
+          "options": [
+            "Descend promptly rather than trying to continue at the same altitude",
+            "Increase altitude to get above the affected air layer",
+            "Ignore it since symptoms are almost always false alarms"
+          ],
+          "explanation": "Descending promptly at the first suspicion is the standard, safe response to suspected hypoxia."
+        },
+        "spatial-disorientation-q1": {
+          "question": "What causes spatial disorientation?",
+          "options": [
+            "A mismatch between what the inner ear/body senses and the aircraft's actual attitude or motion",
+            "A malfunction in the aircraft's attitude indicator only",
+            "Consuming too much water before a flight"
+          ],
+          "explanation": "Spatial disorientation is a mismatch between bodily sensation and the aircraft's real attitude or motion."
+        },
+        "spatial-disorientation-q2": {
+          "question": "When is spatial disorientation most likely to occur?",
+          "options": [
+            "When outside visual references are poor, such as in cloud, at night or over featureless terrain",
+            "Only during daytime flights in clear weather",
+            "Only when flying with a passenger"
+          ],
+          "explanation": "Poor outside visual references — cloud, night, featureless terrain — are when disorientation is most likely."
+        },
+        "spatial-disorientation-q3": {
+          "question": "What is the standard mitigation for spatial disorientation?",
+          "options": [
+            "Trust the flight instruments over bodily sensation",
+            "Close your eyes briefly to reset your sense of balance",
+            "Increase speed until the sensation passes"
+          ],
+          "explanation": "Trusting the instruments over what the body senses is the standard, trained mitigation."
+        },
+        "fatigue-and-circadian-rhythm-q1": {
+          "question": "What is fatigue, in the aviation human-factors sense?",
+          "options": [
+            "A measurable degradation in alertness and performance from inadequate rest or extended wakefulness",
+            "Simply feeling slightly less energetic than usual",
+            "A condition that only affects long-haul airline pilots"
+          ],
+          "explanation": "Fatigue is a measurable performance and alertness degradation, not just mild tiredness."
+        },
+        "fatigue-and-circadian-rhythm-q2": {
+          "question": "What role does circadian rhythm play in fatigue?",
+          "options": [
+            "It affects alertness across a 24-hour cycle regardless of how many hours were actually slept",
+            "It has no measurable effect on pilot performance",
+            "It only matters for flights crossing time zones"
+          ],
+          "explanation": "Circadian rhythm affects alertness across the day independent of total sleep obtained."
+        },
+        "fatigue-and-circadian-rhythm-q3": {
+          "question": "Why is self-assessment of fatigue considered unreliable?",
+          "options": [
+            "Pilots consistently underestimate how impaired they've actually become",
+            "Fatigue is always obvious and impossible to underestimate",
+            "Fatigue does not affect judgment, only physical reflexes"
+          ],
+          "explanation": "Pilots reliably underestimate their own level of fatigue-related impairment."
+        },
+        "stress-and-workload-management-q1": {
+          "question": "What is the difference between acute and chronic stress in this context?",
+          "options": [
+            "Acute stress comes from a sudden demanding situation, while chronic stress comes from ongoing life pressures carried into the cockpit",
+            "Acute stress only affects student pilots",
+            "Chronic stress only occurs during emergencies"
+          ],
+          "explanation": "Acute stress is situational and sudden; chronic stress is ongoing pressure carried into the cockpit."
+        },
+        "stress-and-workload-management-q2": {
+          "question": "What is 'task saturation'?",
+          "options": [
+            "A state where rising workload causes a pilot to tunnel on one problem while other important tasks get dropped",
+            "A required checklist item before every takeoff",
+            "A term for having too much fuel on board"
+          ],
+          "explanation": "Task saturation is when rising workload causes tunneling on one problem while other tasks get dropped."
+        },
+        "stress-and-workload-management-q3": {
+          "question": "What is a recommended way to manage rising workload deliberately?",
+          "options": [
+            "Explicitly prioritize tasks (aviate first) and offload memory to checklists rather than relying on memory alone",
+            "Take on additional non-essential tasks to prove capability",
+            "Ignore the rising workload since it will resolve itself"
+          ],
+          "explanation": "Explicit prioritization and offloading memory to checklists actively manage rising workload."
+        },
+        "decision-making-models-q1": {
+          "question": "What does the IMSAFE checklist help a pilot evaluate?",
+          "options": [
+            "Personal fitness to fly that day, covering things like illness, stress, fatigue and emotion",
+            "The aircraft's mechanical airworthiness only",
+            "The current weather at the destination airport"
+          ],
+          "explanation": "IMSAFE-style checks evaluate personal fitness to fly on a specific day, not the aircraft itself."
+        },
+        "decision-making-models-q2": {
+          "question": "What is the value of a structured decision-making model (recognize, gather information, weigh options, decide, evaluate) over pure instinct?",
+          "options": [
+            "It holds up better under pressure and in novel situations than habit-based reactions alone",
+            "It removes the need for any checklists",
+            "It only applies to declared in-flight emergencies"
+          ],
+          "explanation": "A structured model holds up better than pure instinct in unfamiliar or high-pressure situations."
+        },
+        "decision-making-models-q3": {
+          "question": "Can a pilot be medically certificated and current, yet still fail an IMSAFE-style self-check on a given day?",
+          "options": [
+            "Yes — personal readiness on a specific day is a separate question from holding a valid certificate and medical",
+            "No, a valid medical certificate guarantees fitness to fly on every day it is valid",
+            "No, IMSAFE only applies to student pilots"
+          ],
+          "explanation": "Holding a valid certificate and medical doesn't guarantee day-to-day personal readiness to fly."
+        },
+        "crew-resource-management-q1": {
+          "question": "What was Crew Resource Management (CRM) originally developed for?",
+          "options": [
+            "Multi-crew airline operations, to make better use of all available resources rather than one person's judgment alone",
+            "Single-pilot general aviation exclusively",
+            "Air traffic control training only"
+          ],
+          "explanation": "CRM originated in multi-crew airline operations to better use all available resources."
+        },
+        "crew-resource-management-q2": {
+          "question": "How can CRM principles apply to single-pilot operations (sometimes called SRM)?",
+          "options": [
+            "By treating ATC, passengers, checklists and automation as resources to actively use, not just flying solely from memory",
+            "By ignoring all outside resources since only one pilot is aboard",
+            "By requiring a second pilot to be present at all times"
+          ],
+          "explanation": "Single-pilot resource management treats ATC, passengers, checklists and automation as active resources."
+        },
+        "crew-resource-management-q3": {
+          "question": "What underlying assumption makes CRM/SRM valuable?",
+          "options": [
+            "That any single human, however skilled, has blind spots and limits that other resources can help cover",
+            "That experienced pilots have no blind spots and don't need CRM",
+            "That CRM only matters for pilots without a copilot rating"
+          ],
+          "explanation": "CRM assumes every pilot, regardless of skill, has blind spots that other resources can help cover."
+        }
+      }
     }
   },
   "passedTag": "Bestanden",
