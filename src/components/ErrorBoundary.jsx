@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { TriangleAlert } from "lucide-react";
 import i18n from "../i18n";
+import { trackEvent } from "../analytics.js";
+import { recordCrash } from "../storage.js";
 
 /**
  * Red de seguridad: si un dato corrupto en localStorage (o cualquier otro
@@ -20,6 +22,8 @@ export default class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     console.error("ErrorBoundary caught:", error, info);
+    recordCrash(error); // sobrevive al reload, para poder inspeccionarlo después
+    trackEvent("App Crash", { message: String(error?.message ?? error) });
   }
 
   handleReset = () => {

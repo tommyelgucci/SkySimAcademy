@@ -1,14 +1,20 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./i18n"; // inicializa i18next ANTES de montar la app
 import "./index.css";
 import App from "./App.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
+// El idioma activo se carga bajo demanda (ver src/i18n/index.js); mientras
+// llega, useTranslation() suspende y este fallback cubre ese instante.
+const loadingFallback = <div className="app-loading" aria-hidden="true" />;
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ErrorBoundary>
-      <App />
+      <Suspense fallback={loadingFallback}>
+        <App />
+      </Suspense>
     </ErrorBoundary>
   </StrictMode>
 );

@@ -53,6 +53,7 @@ import {
   levelProgress,
   recordMissionComplete,
 } from "../../storage.js";
+import { trackEvent } from "../../analytics.js";
 import { ContentIcon } from "../icons.jsx";
 
 const MISSION_BY_ID = new Map(MISSIONS.map((m) => [m.id, m]));
@@ -402,6 +403,7 @@ export default function SimulatorView({ onExit }) {
       if (engine.crashed) return endSession("crashed");
       if (tracker.done) {
         recordMissionComplete(mission.id);
+        trackEvent("Mission Complete", { missionId: mission.id });
         return endSession("missionComplete");
       }
       if (elapsed >= SESSION_SECONDS) return endSession("timeUp");
