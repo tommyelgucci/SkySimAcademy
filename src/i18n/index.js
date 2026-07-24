@@ -1,10 +1,18 @@
 /**
  * Configuración de i18next.
  *
- * Los 5 idiomas soportados se cargan de forma estática (bundled) porque el
- * volumen de texto del MVP es pequeño. Cuando el contenido crezca, basta con
- * cambiar a `i18next-http-backend` y mover los JSON a /public/locales sin
- * tocar ningún componente.
+ * Los 5 idiomas se cargan bajo demanda: un backend a medida resuelve cada
+ * `(idioma, namespace)` con un `import()` dinámico, que Vite parte en un
+ * chunk propio por archivo. Antes los 5 idiomas se importaban de forma
+ * estática y viajaban todos en el bundle principal (~1.5 MB de JSON,
+ * siempre, aunque el usuario solo usara uno); ahora solo se descarga el
+ * idioma activo (+ `en` como fallback si el usuario no está en inglés).
+ * `LanguageSwitcher` no cambia: `i18n.changeLanguage()` dispara la carga
+ * del idioma nuevo automáticamente si aún no está en caché.
+ *
+ * `react: { useSuspense: true }` es la otra mitad: los componentes que usan
+ * `useTranslation()` suspenden mientras su namespace carga, así que el
+ * árbol se envuelve en `<Suspense>` una sola vez en `main.jsx`.
  *
  * Namespaces:
  *  - common:    interfaz general (navegación, botones, home)
@@ -18,32 +26,6 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
-import enCommon from "./locales/en/common.json";
-import enTheory from "./locales/en/theory.json";
-import enSimulator from "./locales/en/simulator.json";
-import enExam from "./locales/en/exam.json";
-import enFlashcards from "./locales/en/flashcards.json";
-import deCommon from "./locales/de/common.json";
-import deTheory from "./locales/de/theory.json";
-import deSimulator from "./locales/de/simulator.json";
-import deExam from "./locales/de/exam.json";
-import deFlashcards from "./locales/de/flashcards.json";
-import esCommon from "./locales/es/common.json";
-import esTheory from "./locales/es/theory.json";
-import esSimulator from "./locales/es/simulator.json";
-import esExam from "./locales/es/exam.json";
-import esFlashcards from "./locales/es/flashcards.json";
-import ptCommon from "./locales/pt/common.json";
-import ptTheory from "./locales/pt/theory.json";
-import ptSimulator from "./locales/pt/simulator.json";
-import ptExam from "./locales/pt/exam.json";
-import ptFlashcards from "./locales/pt/flashcards.json";
-import arCommon from "./locales/ar/common.json";
-import arTheory from "./locales/ar/theory.json";
-import arSimulator from "./locales/ar/simulator.json";
-import arExam from "./locales/ar/exam.json";
-import arFlashcards from "./locales/ar/flashcards.json";
-
 /** Idiomas disponibles, con su dirección de escritura y nombre nativo. */
 export const LANGUAGES = [
   { code: "en", label: "English", dir: "ltr" },
@@ -53,26 +35,31 @@ export const LANGUAGES = [
   { code: "ar", label: "العربية", dir: "rtl" },
 ];
 
-const resources = {
-  en: { common: enCommon, theory: enTheory, simulator: enSimulator, exam: enExam, flashcards: enFlashcards },
-  de: { common: deCommon, theory: deTheory, simulator: deSimulator, exam: deExam, flashcards: deFlashcards },
-  es: { common: esCommon, theory: esTheory, simulator: esSimulator, exam: esExam, flashcards: esFlashcards },
-  pt: { common: ptCommon, theory: ptTheory, simulator: ptSimulator, exam: ptExam, flashcards: ptFlashcards },
-  ar: { common: arCommon, theory: arTheory, simulator: arSimulator, exam: arExam, flashcards: arFlashcards },
+const NAMESPACES = ["common", "theory", "simulator", "exam", "flashcards"];
+
+/** Backend a medida: cada (idioma, namespace) es un `import()` dinámico. */
+const dynamicImportBackend = {
+  type: "backend",
+  read(language, namespace, callback) {
+    import(`./locales/${language}/${namespace}.json`)
+      .then((mod) => callback(null, mod.default))
+      .catch((error) => callback(error, null));
+  },
 };
 
-i18n
+export const i18nReady = i18n
+  .use(dynamicImportBackend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources,
     fallbackLng: "en",
     supportedLngs: LANGUAGES.map((l) => l.code),
     nonExplicitSupportedLngs: true, // "pt-BR" → "pt", "ar-EG" → "ar", etc.
-    ns: ["common", "theory", "simulator", "exam", "flashcards"],
+    ns: NAMESPACES,
     defaultNS: "common",
     returnObjects: true, // permite t() sobre arrays (opciones de quiz)
     interpolation: { escapeValue: false }, // React ya escapa
+    react: { useSuspense: true },
     detection: {
       order: ["localStorage", "navigator"],
       caches: ["localStorage"],

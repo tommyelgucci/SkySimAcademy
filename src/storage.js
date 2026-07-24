@@ -189,6 +189,26 @@ export function getStudyDays() {
   return load().studyDays ?? [];
 }
 
+/**
+ * Registra un crash atrapado por ErrorBoundary (mensaje + stack, sin PII);
+ * conserva los últimos 10. Sin backend no hay forma de ver esto salvo que
+ * el propio usuario lo comparta, pero al menos sobrevive a un reload y se
+ * puede inspeccionar desde la consola o un futuro export de diagnóstico.
+ */
+export function recordCrash(error) {
+  const data = load();
+  data.crashes = [
+    ...(data.crashes ?? []),
+    { message: String(error?.message ?? error), stack: error?.stack ?? null, at: Date.now() },
+  ].slice(-10);
+  save(data);
+}
+
+/** Crashes registrados, del más antiguo al más reciente. */
+export function getCrashLog() {
+  return load().crashes ?? [];
+}
+
 /** Racha actual de días consecutivos de estudio (puede terminar hoy o ayer). */
 export function getStreak() {
   const days = new Set(getStudyDays());

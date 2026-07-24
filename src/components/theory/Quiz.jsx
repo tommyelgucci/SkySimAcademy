@@ -13,6 +13,7 @@ import {
   recordFailedQuestion,
   recordQuizResult,
 } from "../../storage.js";
+import { trackEvent } from "../../analytics.js";
 
 /** Baraja de Fisher-Yates sin mutar el original. */
 function shuffled(array) {
@@ -118,11 +119,9 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
   const next = () => {
     if (isLast) {
       // Persistir el intento: desbloquea misiones y marca el módulo aprobado
-      recordQuizResult(module.id, {
-        score,
-        total: questions.length,
-        passed: score >= module.quiz.passScore,
-      });
+      const passed = score >= module.quiz.passScore;
+      recordQuizResult(module.id, { score, total: questions.length, passed });
+      if (passed) trackEvent("Module Passed", { moduleId: module.id });
       setFinished(true);
     } else {
       setQuestionIndex((i) => i + 1);
