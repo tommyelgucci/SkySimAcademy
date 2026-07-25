@@ -2416,5 +2416,63 @@
   "lessonQuiz": {
     "heading": "Verifica a tua compreensão",
     "done": "Bom trabalho — completaste a revisão rápida desta lição."
+  },
+  "diagrams": {
+    "four-forces": {
+      "caption": "As quatro forças em voo reto e nivelado: pares opostos, cada um em equilíbrio.",
+      "alt": "Diagrama das quatro forças que agem sobre uma aeronave",
+      "lift": "Sustentação",
+      "weight": "Peso",
+      "thrust": "Tração",
+      "drag": "Arrasto"
+    },
+    "angle-of-attack": {
+      "caption": "O ângulo de ataque é o ângulo entre a corda e o vento relativo — não o ângulo em relação ao solo.",
+      "alt": "Perfil de asa mostrando o ângulo entre a corda e o vento relativo",
+      "relativeWind": "Vento relativo",
+      "chord": "Corda",
+      "angle": "Ângulo de ataque"
+    },
+    "three-axes": {
+      "caption": "Três eixos, três comandos: ailerons rolam, profundor arfa, leme guina.",
+      "alt": "Aeronave vista de cima com seus três eixos de rotação",
+      "roll": "Rolagem (longitudinal)",
+      "pitch": "Arfagem (lateral)",
+      "yaw": "Guinada (vertical)"
+    },
+    "glide-ratio": {
+      "caption": "A razão de planeio é distância percorrida por altura perdida — 10:1 são 10 km a partir de 1 km de altura.",
+      "alt": "Trajetória de planeio com altura perdida frente à distância percorrida",
+      "height": "Altura perdida",
+      "distance": "Distância percorrida",
+      "ratio": "Razão de planeio"
+    },
+    "glideslope": {
+      "caption": "Uma aproximação estável segue uma só trajetória. Alto é passar do ponto; baixo é ficar aquém.",
+      "alt": "Trajetórias de aproximação: na rampa, alto demais e baixo demais",
+      "onCourse": "Na rampa",
+      "high": "Alto demais",
+      "low": "Baixo demais",
+      "runway": "Pista"
+    },
+    "moment": {
+      "caption": "Momento = peso × braço. A distância de cada carga ao datum decide o quanto desloca o CG.",
+      "alt": "Cargas a distâncias diferentes do datum e o centro de gravidade resultante",
+      "datum": "Datum",
+      "front": "Frente",
+      "rear": "Trás",
+      "arm": "Braço",
+      "cg": "Centro de gravidade",
+      "formula": "Momento = peso × braço"
+    },
+    "airspace": {
+      "caption": "O espaço aéreo é em camadas: quanto mais alto e movimentado, mais rígidos os requisitos de entrada.",
+      "alt": "Classes de espaço aéreo empilhadas por altitude sobre um aeródromo",
+      "upper": "Controlado, regras mais rígidas",
+      "middle": "Controlado, com autorização",
+      "lower": "Mais baixo",
+      "ground": "Aeródromo",
+      "higher": "Mais alto"
+    }
   }
 }

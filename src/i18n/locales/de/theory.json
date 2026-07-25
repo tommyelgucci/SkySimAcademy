@@ -2416,5 +2416,63 @@
   "lessonQuiz": {
     "heading": "Verständnischeck",
     "done": "Gut gemacht — du hast den Verständnischeck dieser Lektion abgeschlossen."
+  },
+  "diagrams": {
+    "four-forces": {
+      "caption": "Die vier Kräfte im Geradeausflug: gegenläufige Paare, jeweils im Gleichgewicht.",
+      "alt": "Diagramm der vier auf ein Flugzeug wirkenden Kräfte",
+      "lift": "Auftrieb",
+      "weight": "Gewicht",
+      "thrust": "Schub",
+      "drag": "Widerstand"
+    },
+    "angle-of-attack": {
+      "caption": "Der Anstellwinkel liegt zwischen Profilsehne und relativem Wind — nicht zwischen Flugzeug und Boden.",
+      "alt": "Tragflächenprofil mit dem Winkel zwischen Profilsehne und relativem Wind",
+      "relativeWind": "Relativer Wind",
+      "chord": "Profilsehne",
+      "angle": "Anstellwinkel"
+    },
+    "three-axes": {
+      "caption": "Drei Achsen, drei Ruder: Querruder rollt, Höhenruder nickt, Seitenruder giert.",
+      "alt": "Flugzeug von oben mit seinen drei Drehachsen",
+      "roll": "Rollen (Längsachse)",
+      "pitch": "Nicken (Querachse)",
+      "yaw": "Gieren (Hochachse)"
+    },
+    "glide-ratio": {
+      "caption": "Die Gleitzahl ist zurückgelegte Strecke pro verlorener Höhe — 10:1 heißt 10 km aus 1 km Höhe.",
+      "alt": "Gleitpfad mit verlorener Höhe und zurückgelegter Strecke",
+      "height": "Höhenverlust",
+      "distance": "Zurückgelegte Strecke",
+      "ratio": "Gleitzahl"
+    },
+    "glideslope": {
+      "caption": "Ein stabiler Anflug folgt einem Pfad. Zu hoch heißt überschießen, zu tief heißt zu kurz kommen.",
+      "alt": "Anflugpfade: auf Kurs, zu hoch und zu tief",
+      "onCourse": "Auf Kurs",
+      "high": "Zu hoch",
+      "low": "Zu tief",
+      "runway": "Piste"
+    },
+    "moment": {
+      "caption": "Moment = Gewicht × Hebelarm. Der Abstand jeder Last zum Bezugspunkt bestimmt die Schwerpunktverschiebung.",
+      "alt": "Lasten in unterschiedlichem Abstand zum Bezugspunkt und der resultierende Schwerpunkt",
+      "datum": "Bezugspunkt",
+      "front": "Vorne",
+      "rear": "Hinten",
+      "arm": "Hebelarm",
+      "cg": "Schwerpunkt",
+      "formula": "Moment = Gewicht × Hebelarm"
+    },
+    "airspace": {
+      "caption": "Luftraum ist geschichtet: je höher und belebter, desto strenger die Zugangsvoraussetzungen.",
+      "alt": "Luftraumklassen nach Höhe über einem Flugplatz gestapelt",
+      "upper": "Kontrolliert, strengste Regeln",
+      "middle": "Kontrolliert, Freigabe nötig",
+      "lower": "Tiefer",
+      "ground": "Flugplatz",
+      "higher": "Höher"
+    }
   }
 }

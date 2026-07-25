@@ -10,6 +10,7 @@ import { getModule } from "../../content/modules";
 import { ContentIcon } from "../icons.jsx";
 import Quiz from "./Quiz.jsx";
 import LessonQuiz from "./LessonQuiz.jsx";
+import LessonDiagram from "./LessonDiagram.jsx";
 
 export default function ModuleView({ moduleId, onBack }) {
   const { t } = useTranslation(["theory", "common"]);
@@ -54,6 +55,7 @@ export default function ModuleView({ moduleId, onBack }) {
 
       <article className="lesson">
         <h1>{t(`${keyBase}.lessons.${lesson.id}.title`)}</h1>
+        {lesson.diagram && <LessonDiagram id={lesson.diagram} />}
         {t(`${keyBase}.lessons.${lesson.id}.body`)
           .split("\n\n")
           .map((paragraph, i) => (

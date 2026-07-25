@@ -100,7 +100,29 @@ for (const lang of LANGS) {
   }
 }
 
-// --- 3. Estructura de flashcards ↔ textos de flashcards ---------------
+// --- 3. Diagramas: ids declarados ↔ etiquetas traducidas ---------------
+// Los diagramas se atan a una lección con `"diagram": "<id>"` en el JSON de
+// estructura. Aquí se comprueba que ese id exista de verdad y que tenga sus
+// textos: si no, el diagrama saldría mudo (o no saldría) en producción.
+const { DIAGRAM_IDS } = await import(join(root, "src/content/diagrams.js"));
+const knownDiagrams = new Set(DIAGRAM_IDS);
+
+for (const mod of modules) {
+  for (const lesson of mod.lessons ?? []) {
+    if (lesson.diagram && !knownDiagrams.has(lesson.diagram))
+      fail(`diagrama desconocido: ${mod.id}.${lesson.id} -> ${lesson.diagram}`);
+  }
+}
+for (const lang of LANGS) {
+  const theory = load(`src/i18n/locales/${lang}/theory.json`);
+  for (const id of DIAGRAM_IDS) {
+    const labels = theory.diagrams?.[id];
+    if (!labels?.caption || !labels?.alt)
+      fail(`[${lang}] diagrama sin caption/alt: ${id}`);
+  }
+}
+
+// --- 4. Estructura de flashcards ↔ textos de flashcards ---------------
 const { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS } = await import(
   join(root, "src/content/flashcards/index.js")
 );

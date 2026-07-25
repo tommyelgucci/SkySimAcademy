@@ -8,9 +8,18 @@
       "id": "emergency-mindset",
       "quiz": {
         "questions": [
-          { "id": "emergency-mindset-q1", "correct": 0 },
-          { "id": "emergency-mindset-q2", "correct": 0 },
-          { "id": "emergency-mindset-q3", "correct": 0 }
+          {
+            "id": "emergency-mindset-q1",
+            "correct": 0
+          },
+          {
+            "id": "emergency-mindset-q2",
+            "correct": 0
+          },
+          {
+            "id": "emergency-mindset-q3",
+            "correct": 0
+          }
         ]
       }
     },
@@ -18,19 +27,38 @@
       "id": "engine-failure-after-takeoff",
       "quiz": {
         "questions": [
-          { "id": "engine-failure-after-takeoff-q1", "correct": 0 },
-          { "id": "engine-failure-after-takeoff-q2", "correct": 0 },
-          { "id": "engine-failure-after-takeoff-q3", "correct": 0 }
+          {
+            "id": "engine-failure-after-takeoff-q1",
+            "correct": 0
+          },
+          {
+            "id": "engine-failure-after-takeoff-q2",
+            "correct": 0
+          },
+          {
+            "id": "engine-failure-after-takeoff-q3",
+            "correct": 0
+          }
         ]
       }
     },
     {
       "id": "engine-failure-in-flight",
+      "diagram": "glideslope",
       "quiz": {
         "questions": [
-          { "id": "engine-failure-in-flight-q1", "correct": 0 },
-          { "id": "engine-failure-in-flight-q2", "correct": 0 },
-          { "id": "engine-failure-in-flight-q3", "correct": 0 }
+          {
+            "id": "engine-failure-in-flight-q1",
+            "correct": 0
+          },
+          {
+            "id": "engine-failure-in-flight-q2",
+            "correct": 0
+          },
+          {
+            "id": "engine-failure-in-flight-q3",
+            "correct": 0
+          }
         ]
       }
     },
@@ -38,9 +66,18 @@
       "id": "fire-in-flight",
       "quiz": {
         "questions": [
-          { "id": "fire-in-flight-q1", "correct": 0 },
-          { "id": "fire-in-flight-q2", "correct": 0 },
-          { "id": "fire-in-flight-q3", "correct": 0 }
+          {
+            "id": "fire-in-flight-q1",
+            "correct": 0
+          },
+          {
+            "id": "fire-in-flight-q2",
+            "correct": 0
+          },
+          {
+            "id": "fire-in-flight-q3",
+            "correct": 0
+          }
         ]
       }
     },
@@ -48,9 +85,18 @@
       "id": "system-malfunctions",
       "quiz": {
         "questions": [
-          { "id": "system-malfunctions-q1", "correct": 0 },
-          { "id": "system-malfunctions-q2", "correct": 0 },
-          { "id": "system-malfunctions-q3", "correct": 0 }
+          {
+            "id": "system-malfunctions-q1",
+            "correct": 0
+          },
+          {
+            "id": "system-malfunctions-q2",
+            "correct": 0
+          },
+          {
+            "id": "system-malfunctions-q3",
+            "correct": 0
+          }
         ]
       }
     },
@@ -58,9 +104,18 @@
       "id": "off-airport-landings",
       "quiz": {
         "questions": [
-          { "id": "off-airport-landings-q1", "correct": 0 },
-          { "id": "off-airport-landings-q2", "correct": 0 },
-          { "id": "off-airport-landings-q3", "correct": 0 }
+          {
+            "id": "off-airport-landings-q1",
+            "correct": 0
+          },
+          {
+            "id": "off-airport-landings-q2",
+            "correct": 0
+          },
+          {
+            "id": "off-airport-landings-q3",
+            "correct": 0
+          }
         ]
       }
     },
@@ -68,9 +123,18 @@
       "id": "declaring-an-emergency",
       "quiz": {
         "questions": [
-          { "id": "declaring-an-emergency-q1", "correct": 0 },
-          { "id": "declaring-an-emergency-q2", "correct": 0 },
-          { "id": "declaring-an-emergency-q3", "correct": 0 }
+          {
+            "id": "declaring-an-emergency-q1",
+            "correct": 0
+          },
+          {
+            "id": "declaring-an-emergency-q2",
+            "correct": 0
+          },
+          {
+            "id": "declaring-an-emergency-q3",
+            "correct": 0
+          }
         ]
       }
     }

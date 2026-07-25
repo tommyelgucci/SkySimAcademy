@@ -2416,5 +2416,63 @@
   "lessonQuiz": {
     "heading": "Comprueba tu comprensión",
     "done": "Buen trabajo — completaste el repaso rápido de esta lección."
+  },
+  "diagrams": {
+    "four-forces": {
+      "caption": "Las cuatro fuerzas en vuelo recto y nivelado: pares opuestos, cada uno en equilibrio.",
+      "alt": "Diagrama de las cuatro fuerzas que actúan sobre un avión",
+      "lift": "Sustentación",
+      "weight": "Peso",
+      "thrust": "Empuje",
+      "drag": "Resistencia"
+    },
+    "angle-of-attack": {
+      "caption": "El ángulo de ataque es el que forman la cuerda y el viento relativo — no el ángulo respecto al suelo.",
+      "alt": "Perfil alar mostrando el ángulo entre la cuerda y el viento relativo",
+      "relativeWind": "Viento relativo",
+      "chord": "Cuerda",
+      "angle": "Ángulo de ataque"
+    },
+    "three-axes": {
+      "caption": "Tres ejes, tres mandos: los alerones alabean, el timón de profundidad cabecea, el de dirección guiña.",
+      "alt": "Avión visto desde arriba con sus tres ejes de rotación",
+      "roll": "Alabeo (longitudinal)",
+      "pitch": "Cabeceo (lateral)",
+      "yaw": "Guiñada (vertical)"
+    },
+    "glide-ratio": {
+      "caption": "La relación de planeo es distancia recorrida por altura perdida — 10:1 son 10 km desde 1 km de altura.",
+      "alt": "Trayectoria de planeo con la altura perdida frente a la distancia recorrida",
+      "height": "Altura perdida",
+      "distance": "Distancia recorrida",
+      "ratio": "Relación de planeo"
+    },
+    "glideslope": {
+      "caption": "Una aproximación estable sigue una sola senda. Alto es pasarse; bajo es quedarse corto.",
+      "alt": "Sendas de aproximación: en senda, demasiado alto y demasiado bajo",
+      "onCourse": "En senda",
+      "high": "Demasiado alto",
+      "low": "Demasiado bajo",
+      "runway": "Pista"
+    },
+    "moment": {
+      "caption": "Momento = peso × brazo. La distancia de cada carga al datum decide cuánto desplaza el centro de gravedad.",
+      "alt": "Cargas a distintas distancias del datum y el centro de gravedad resultante",
+      "datum": "Datum",
+      "front": "Delante",
+      "rear": "Detrás",
+      "arm": "Brazo",
+      "cg": "Centro de gravedad",
+      "formula": "Momento = peso × brazo"
+    },
+    "airspace": {
+      "caption": "El espacio aéreo va por capas: cuanto más alto y transitado, más estrictos los requisitos de entrada.",
+      "alt": "Clases de espacio aéreo apiladas por altitud sobre un aeródromo",
+      "upper": "Controlado, reglas más estrictas",
+      "middle": "Controlado, con autorización",
+      "lower": "Más bajo",
+      "ground": "Aeródromo",
+      "higher": "Más alto"
+    }
   }
 }

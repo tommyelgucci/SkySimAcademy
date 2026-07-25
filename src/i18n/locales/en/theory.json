@@ -2416,5 +2416,63 @@
   "lessonQuiz": {
     "heading": "Check your understanding",
     "done": "Nice work — you've been through this lesson's quick check."
+  },
+  "diagrams": {
+    "four-forces": {
+      "caption": "The four forces in straight and level flight: opposite pairs, each in balance.",
+      "alt": "Diagram of the four forces acting on an aircraft",
+      "lift": "Lift",
+      "weight": "Weight",
+      "thrust": "Thrust",
+      "drag": "Drag"
+    },
+    "angle-of-attack": {
+      "caption": "Angle of attack is the angle between the chord line and the relative wind — not the angle to the ground.",
+      "alt": "Airfoil showing the angle between chord line and relative wind",
+      "relativeWind": "Relative wind",
+      "chord": "Chord line",
+      "angle": "Angle of attack"
+    },
+    "three-axes": {
+      "caption": "Three axes, three controls: ailerons roll, elevator pitches, rudder yaws.",
+      "alt": "Aircraft seen from above with its three axes of rotation",
+      "roll": "Roll (longitudinal)",
+      "pitch": "Pitch (lateral)",
+      "yaw": "Yaw (vertical)"
+    },
+    "glide-ratio": {
+      "caption": "Glide ratio is distance covered per unit of height lost — a 10:1 glide covers 10 km from 1 km up.",
+      "alt": "Glide path showing height lost against distance covered",
+      "height": "Height lost",
+      "distance": "Distance covered",
+      "ratio": "Glide ratio"
+    },
+    "glideslope": {
+      "caption": "A stable approach follows one path. High means overshooting, low means landing short.",
+      "alt": "Approach paths: on course, too high and too low",
+      "onCourse": "On course",
+      "high": "Too high",
+      "low": "Too low",
+      "runway": "Runway"
+    },
+    "moment": {
+      "caption": "Moment = weight × arm. Each load's distance from the datum decides how much it shifts the CG.",
+      "alt": "Loads at different distances from the datum and the resulting centre of gravity",
+      "datum": "Datum",
+      "front": "Front",
+      "rear": "Rear",
+      "arm": "Arm",
+      "cg": "Centre of gravity",
+      "formula": "Moment = weight × arm"
+    },
+    "airspace": {
+      "caption": "Airspace is layered: the higher and busier it gets, the stricter the entry requirements.",
+      "alt": "Airspace classes stacked by altitude above an aerodrome",
+      "upper": "Controlled, strictest rules",
+      "middle": "Controlled, clearance required",
+      "lower": "Lower",
+      "ground": "Aerodrome",
+      "higher": "Higher"
+    }
   }
 }
