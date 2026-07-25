@@ -1,0 +1,82 @@
+{
+  "id": "cockpit-instruments",
+  "icon": "gauge",
+  "order": 3,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "altimeter",
+      "quiz": {
+        "questions": [
+          { "id": "altimeter-q1", "correct": 0 },
+          { "id": "altimeter-q2", "correct": 0 },
+          { "id": "altimeter-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "airspeed-indicator",
+      "quiz": {
+        "questions": [
+          { "id": "airspeed-indicator-q1", "correct": 0 },
+          { "id": "airspeed-indicator-q2", "correct": 0 },
+          { "id": "airspeed-indicator-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "attitude-indicator",
+      "quiz": {
+        "questions": [
+          { "id": "attitude-indicator-q1", "correct": 0 },
+          { "id": "attitude-indicator-q2", "correct": 0 },
+          { "id": "attitude-indicator-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "vertical-speed-indicator",
+      "quiz": {
+        "questions": [
+          { "id": "vertical-speed-indicator-q1", "correct": 0 },
+          { "id": "vertical-speed-indicator-q2", "correct": 0 },
+          { "id": "vertical-speed-indicator-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "compass-and-heading",
+      "quiz": {
+        "questions": [
+          { "id": "compass-and-heading-q1", "correct": 0 },
+          { "id": "compass-and-heading-q2", "correct": 0 },
+          { "id": "compass-and-heading-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "turn-coordinator-and-coordination",
+      "quiz": {
+        "questions": [
+          { "id": "turn-coordinator-and-coordination-q1", "correct": 0 },
+          { "id": "turn-coordinator-and-coordination-q2", "correct": 0 },
+          { "id": "turn-coordinator-and-coordination-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "instrument-scan",
+      "quiz": {
+        "questions": [
+          { "id": "instrument-scan-q1", "correct": 0 },
+          { "id": "instrument-scan-q2", "correct": 0 },
+          { "id": "instrument-scan-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

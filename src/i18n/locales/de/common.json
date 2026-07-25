@@ -1,0 +1,51 @@
+{
+  "appName": "SkySimAcademy",
+  "tagline": "Fliegen lernen, Schritt für Schritt",
+  "language": "Sprache",
+  "nav": {
+    "home": "Start",
+    "theory": "Theorie",
+    "simulator": "Simulator",
+    "flashcards": "Karteikarten"
+  },
+  "home": {
+    "welcome": "Willkommen an Bord",
+    "intro": "Lerne die Grundlagen des Fliegens in kurzen Theoriemodulen und wende sie anschließend im 3D-Mini-Simulator an.",
+    "startTheory": "Mit der Theorie beginnen",
+    "openSimulator": "Simulator öffnen",
+    "highlights": {
+      "theory": {
+        "value": "{{modules}} Module · {{lessons}} Lektionen",
+        "label": "Ausführlicher Theoriekurs mit Quiz und Erklärungen"
+      },
+      "simulator": {
+        "value": "{{missions}} Missionen",
+        "label": "3D-Flugsimulator, um das Gelesene gleich zu üben"
+      },
+      "flashcards": {
+        "value": "{{cards}} Karteikarten",
+        "label": "Cockpit-Instrumente und echte akustische Warnsignale"
+      },
+      "languages": {
+        "value": "{{count}} Sprachen",
+        "label": "Echt übersetzt, mit vollständigem RTL für Arabisch"
+      }
+    }
+  },
+  "actions": {
+    "back": "Zurück",
+    "continue": "Weiter",
+    "start": "Starten",
+    "previous": "Zurück",
+    "next": "Weiter"
+  },
+  "footer": "Lern-MVP — dies ist keine echte Flugausbildung.",
+  "privacyPolicy": "Datenschutz",
+  "errorBoundary": {
+    "title": "Etwas ist schiefgelaufen",
+    "body": "In der App ist ein unerwarteter Fehler aufgetreten, möglicherweise durch beschädigte gespeicherte Daten. Versuche neu zu laden — hilft das nicht, kannst du die App-Daten auf diesem Gerät zurücksetzen.",
+    "reload": "Neu laden",
+    "reset": "App-Daten zurücksetzen",
+    "resetConfirm": "Dadurch wird der gesamte auf diesem Gerät gespeicherte Fortschritt gelöscht (Quiz, Missionen, Statistik). Das kann nicht rückgängig gemacht werden. Fortfahren?"
+  }
+}

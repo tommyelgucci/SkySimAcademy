@@ -1,0 +1,82 @@
+{
+  "id": "weather-basics",
+  "icon": "cloud-sun",
+  "order": 4,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "wind",
+      "quiz": {
+        "questions": [
+          { "id": "wind-q1", "correct": 0 },
+          { "id": "wind-q2", "correct": 0 },
+          { "id": "wind-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "clouds-and-visibility",
+      "quiz": {
+        "questions": [
+          { "id": "clouds-and-visibility-q1", "correct": 0 },
+          { "id": "clouds-and-visibility-q2", "correct": 0 },
+          { "id": "clouds-and-visibility-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "thunderstorms-and-icing",
+      "quiz": {
+        "questions": [
+          { "id": "thunderstorms-and-icing-q1", "correct": 0 },
+          { "id": "thunderstorms-and-icing-q2", "correct": 0 },
+          { "id": "thunderstorms-and-icing-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "reading-a-weather-briefing",
+      "quiz": {
+        "questions": [
+          { "id": "reading-a-weather-briefing-q1", "correct": 0 },
+          { "id": "reading-a-weather-briefing-q2", "correct": 0 },
+          { "id": "reading-a-weather-briefing-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "fronts-and-air-masses",
+      "quiz": {
+        "questions": [
+          { "id": "fronts-and-air-masses-q1", "correct": 0 },
+          { "id": "fronts-and-air-masses-q2", "correct": 0 },
+          { "id": "fronts-and-air-masses-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "turbulence-and-wind-shear",
+      "quiz": {
+        "questions": [
+          { "id": "turbulence-and-wind-shear-q1", "correct": 0 },
+          { "id": "turbulence-and-wind-shear-q2", "correct": 0 },
+          { "id": "turbulence-and-wind-shear-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "weather-decision-making",
+      "quiz": {
+        "questions": [
+          { "id": "weather-decision-making-q1", "correct": 0 },
+          { "id": "weather-decision-making-q2", "correct": 0 },
+          { "id": "weather-decision-making-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

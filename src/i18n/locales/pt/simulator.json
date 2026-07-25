@@ -1,0 +1,191 @@
+{
+  "title": "Mini simulador",
+  "description": "Um voo livre de 5 minutos para praticar o que aprendeu: decole, suba, curve e pouse.",
+  "briefing": {
+    "title": "Pronto para decolar?",
+    "body": "Aplique potência máxima para acelerar na pista. Acima de 20 m/s, puxe suavemente (S) para levantar o nariz. Mantenha a velocidade — se voar devagar demais, a asa vai estolar.",
+    "start": "Iniciar voo"
+  },
+  "hud": {
+    "speed": "Velocidade",
+    "altitude": "Altitude",
+    "heading": "Proa",
+    "throttle": "Potência",
+    "timeLeft": "Tempo restante",
+    "unitSpeed": "m/s",
+    "unitAltitude": "m"
+  },
+  "stallWarning": "ESTOL — abaixe o nariz e aplique potência",
+  "engineOutWarning": "MOTOR EM MARCHA LENTA — procure a pista e planeje",
+  "controls": {
+    "title": "Controles",
+    "pitch": "Arfagem (nariz para baixo / cima)",
+    "roll": "Rolagem (inclinar esquerda / direita)",
+    "yaw": "Guinada (leme esquerda / direita)",
+    "throttle": "Potência (menos / mais)",
+    "touch": "Tela sensível ao toque: joystick esquerdo = arfagem e rolagem · barra direita = potência · botões inferiores = leme"
+  },
+  "levels": {
+    "earned": "Licença obtida",
+    "student-pilot": {
+      "title": "Piloto aluno",
+      "subtitle": "Primeiras decolagens, pousos e voo livre."
+    },
+    "instrument-basics": {
+      "title": "Instrumentos básicos",
+      "subtitle": "Voe por instrumentos: proa, altitude, curvas."
+    },
+    "navigation": {
+      "title": "Navegação",
+      "subtitle": "Pernas de navegação mantendo a proa por estima."
+    },
+    "emergency": {
+      "title": "Emergências",
+      "subtitle": "Falha de motor e recuperação de estol."
+    }
+  },
+  "missions": {
+    "title": "Escolha uma missão",
+    "locked": "Desbloqueia ao passar em “{{module}}”",
+    "completed": "Concluída",
+    "backToList": "Missões",
+    "dismiss": "Entendi",
+    "success": {
+      "title": "Missão cumprida!",
+      "body": "Bom voo. Escolha a próxima missão ou repita esta."
+    },
+    "free-flight": {
+      "title": "Voo livre",
+      "objective": "5 minutos de céu aberto — pratique o que quiser."
+    },
+    "first-takeoff": {
+      "title": "Primeira decolagem",
+      "objective": "Decole e suba até 100 m."
+    },
+    "heading-turn": {
+      "title": "Curva para a proa",
+      "objective": "Acima de 40 m, mantenha a proa 270° por 3 segundos."
+    },
+    "safe-landing": {
+      "title": "Pouso seguro",
+      "objective": "Suba acima de 60 m e pouse suavemente de volta."
+    },
+    "cross-country": {
+      "title": "Perna de navegação",
+      "objective": "Suba acima de 80 m e mantenha a proa 090° por 4 segundos."
+    },
+    "level-flight": {
+      "title": "Voo nivelado",
+      "objective": "Acima de 120 m, mantenha o voo nivelado por 8 segundos."
+    },
+    "standard-turn": {
+      "title": "Curva padrão",
+      "objective": "Acima de 50 m, mantenha uma inclinação de 30° à direita por 5 segundos."
+    },
+    "nav-leg": {
+      "title": "Perna ao sul",
+      "objective": "Acima de 100 m, mantenha a proa 180° por 6 segundos."
+    },
+    "engine-out": {
+      "title": "Falha de motor",
+      "objective": "A 80 m o motor para: planeje e pouse na pista sem potência."
+    },
+    "stall-recovery": {
+      "title": "Recuperação de estol",
+      "objective": "Acima de 100 m, provoque o estol e recupere a velocidade de voo antes de perder altitude."
+    }
+  },
+  "timeUp": {
+    "title": "Sessão de voo concluída",
+    "body": "Seus 5 minutos acabaram. Revise um módulo de teoria ou inicie um novo voo."
+  },
+  "crash": {
+    "title": "Pouso brusco!",
+    "body": "Você tocou o solo com muita força ou muito inclinado. Nivele as asas e desça suavemente antes de tocar a pista.",
+    "water": {
+      "title": "Caiu na água!",
+      "body": "Você tocou fora da pista. Alinhe-se com ela e pouse em cima."
+    },
+    "bounds": {
+      "title": "Perdido sobre o mar aberto",
+      "body": "Você se afastou demais da área de voo. Atente ao aviso e volte a tempo."
+    }
+  },
+  "stats": {
+    "maxAltitude": "Altitude máxima: {{value}} m",
+    "distance": "Distância percorrida: {{value}} km"
+  },
+  "restart": "Voar de novo",
+  "exit": "Sair do simulador",
+  "sound": {
+    "mute": "Silenciar o som",
+    "unmute": "Ativar o som"
+  },
+  "scenarioTitle": "Cenário",
+  "scenarios": {
+    "desert": "Aeródromo no deserto",
+    "mountain": "Passo de montanha",
+    "coastal": "Ilha costeira",
+    "platform": "Plataforma marítima"
+  },
+  "mapWarning": "Volte — mar aberto à frente",
+  "timeTitle": "Hora do dia",
+  "times": {
+    "day": "Dia",
+    "dusk": "Entardecer",
+    "night": "Noite"
+  },
+  "view": {
+    "cockpit": "Vista da cabine",
+    "external": "Vista externa"
+  },
+  "instruments": {
+    "vsi": "Variômetro",
+    "horizon": "Horizonte artificial",
+    "cardinals": {
+      "n": "N",
+      "e": "L",
+      "s": "S",
+      "w": "O"
+    }
+  },
+  "uiSettings": {
+    "title": "Mostrar/ocultar",
+    "instruments": "Instrumentos",
+    "yoke": "Manche",
+    "rudder": "Botões de leme",
+    "textHud": "Dados de texto",
+    "minimap": "Mini-mapa",
+    "gyro": "Controle por inclinação (giroscópio)",
+    "haptics": "Vibração no estol",
+    "shadows": "Sombras (visual melhor, menos FPS)"
+  },
+  "approach": {
+    "onCourse": "Na rampa",
+    "high": "Alto demais — desça",
+    "low": "Baixo demais — suba"
+  },
+  "landing": {
+    "title": "Relatório de pouso",
+    "verticalSpeed": "Razão de descida no toque: {{value}} m/s",
+    "centered": "No eixo da pista",
+    "offCenter": "Fora do eixo: {{value}} m",
+    "aligned": "Alinhado com a pista",
+    "misaligned": "Desalinhado com a pista",
+    "grade5": "Excelente",
+    "grade4": "Muito bem",
+    "grade3": "Aprovado",
+    "grade2": "Repetir",
+    "grade1": "Duro",
+    "continue": "Continuar voando"
+  },
+  "pause": {
+    "paused": "Em pausa",
+    "body": "Faça uma pausa — seu voo está congelado. Retome quando quiser.",
+    "pause": "Pausar voo",
+    "resume": "Retomar voo"
+  },
+  "minimap": {
+    "title": "Mini-mapa"
+  }
+}
