@@ -1,0 +1,202 @@
+{
+  "title": "Karteikarten",
+  "intro": "Übe das Erkennen von Cockpit-Instrumenten und akustischen Warnsignalen. Das ist freies Üben — es zählt nicht für die Modul-Quiz und schaltet keine Simulator-Missionen frei, also wiederhole es so oft du willst.",
+  "exit": "Verlassen",
+  "decks": {
+    "instruments": {
+      "title": "Cockpit-Instrumente",
+      "description": "{{count}} Karten — erkenne und lies dieselben Anzeigen, mit denen du im Simulator fliegst."
+    },
+    "audio": {
+      "title": "Akustische Warnsignale",
+      "description": "{{count}} Karten — höre echte GPWS-/TCAS-Ansagen und lerne, was jede davon bedeutet."
+    }
+  },
+  "instrumentAlt": "Fluginstrument",
+  "playAudio": "Audio abspielen",
+  "backToDecks": "Zurück zu den Kartensätzen",
+  "cardProgress": "Karte {{current}} von {{total}}",
+  "check": "Prüfen",
+  "next": "Weiter",
+  "seeResults": "Ergebnisse ansehen",
+  "correct": "Richtig!",
+  "wrong": "Nicht ganz.",
+  "theAlertSaid": "Die Ansage lautet: „{{phrase}}“",
+  "score": "{{score}} von {{total}} richtig",
+  "restart": "Nochmal üben",
+  "instruments": {
+    "airspeed-id": {
+      "question": "Welches Instrument ist hier zu sehen?",
+      "options": [
+        "Fahrtmesser (Geschwindigkeitsanzeige)",
+        "Höhenmesser",
+        "Wendezeiger"
+      ],
+      "explanation": "Der Zeiger überstreicht einen 270°-Bogen mit grünem (normaler Betriebsbereich) und gelbem (Vorsicht) Band sowie einer roten Strichmarke für die Überziehgeschwindigkeit — das ist der Fahrtmesser, das erste Instrument, um einen sicheren Abstand über der Überziehgeschwindigkeit zu prüfen."
+    },
+    "airspeed-read": {
+      "question": "Der Zeiger dieses Fahrtmessers steht knapp unter der roten Strichmarke am unteren Ende der Skala. Was markiert diese rote Linie, und worin liegt hier das Risiko?",
+      "options": [
+        "Die Überziehgeschwindigkeit — bei so geringer Fahrt droht der Auftrieb der Tragfläche abzureißen",
+        "Die maximale strukturelle Geschwindigkeit des Flugzeugs",
+        "Die beste Gleitgeschwindigkeit nach einem Triebwerksausfall"
+      ],
+      "explanation": "Die rote Strichmarke markiert die Überziehgeschwindigkeit. Steht der Zeiger dort oder darunter, fliegt das Flugzeug gefährlich langsam — genau die Situation, die das Modul „Grundlagen des Fliegens“ ausführlich behandelt."
+    },
+    "attitude-id": {
+      "question": "Welches Instrument ist hier zu sehen?",
+      "options": [
+        "Fluglageanzeiger (künstlicher Horizont)",
+        "Kompass",
+        "Variometer"
+      ],
+      "explanation": "Ein blauer „Himmel“ über einer braunen „Erde“, getrennt durch eine Horizontlinie, mit einem festen Flugzeugsymbol in der Mitte — das ist der Fluglageanzeiger, der Längs- und Querneigung auf einen Blick zeigt."
+    },
+    "attitude-read": {
+      "question": "Auf diesem Fluglageanzeiger ist der Horizont geneigt, die braune Erde steigt nach links an, und die Horizontlinie liegt unterhalb des Flugzeugsymbols. Was macht das Flugzeug?",
+      "options": [
+        "Es steigt in einer Rechtskurve",
+        "Es sinkt in einer Linkskurve",
+        "Es fliegt geradeaus und im Horizontalflug"
+      ],
+      "explanation": "Steigt die Erde zu einer Seite an, ist das Flugzeug zu dieser Seite geneigt (hier: eine Rechtskurve), und liegt die Horizontlinie unterhalb des Flugzeugsymbols, steht die Nase über dem Horizont — das Flugzeug steigt."
+    },
+    "altimeter-id": {
+      "question": "Welches Instrument ist hier zu sehen?",
+      "options": [
+        "Höhenmesser",
+        "Fahrtmesser",
+        "Kompass"
+      ],
+      "explanation": "Ein Zeiger, der pro 1.000 m Höhe eine volle Umdrehung macht, mit einer digitalen Anzeige in der Mitte — das ist der Höhenmesser."
+    },
+    "altimeter-read": {
+      "question": "Welche Höhe zeigt dieser Höhenmesser ungefähr?",
+      "options": [
+        "Knapp unter 1.000 m",
+        "Genau 100 m",
+        "Etwa 10.000 m"
+      ],
+      "explanation": "Der Zeiger hat fast eine volle Runde des Zifferblatts vollendet, und die digitale Anzeige bestätigt es: knapp unter 1.000 m, passend zu einer vollen Zeigerumdrehung."
+    },
+    "variometer-id": {
+      "question": "Welches Instrument ist hier zu sehen?",
+      "options": [
+        "Variometer (Vertikalgeschwindigkeitsanzeiger)",
+        "Fluglageanzeiger",
+        "Fahrtmesser"
+      ],
+      "explanation": "Ein Zeiger, der links bei Null zentriert ist und beim Steigen nach oben (▲) und beim Sinken nach unten (▼) ausschlägt — das ist das Variometer, es zeigt die Steig- oder Sinkrate in Metern pro Sekunde."
+    },
+    "variometer-read": {
+      "question": "Der Zeiger dieses Variometers ist weit nach unten ausgeschlagen, nahe seinem maximalen Sinkwert. Was zeigt das an?",
+      "options": [
+        "Eine starke Sinkrate, in dem Bereich, der bei einem echten Flugzeug die Warnung „Sink rate“ auslösen würde",
+        "Eine starke Steigrate",
+        "Waagerechte Fluglage, gar keine vertikale Bewegung"
+      ],
+      "explanation": "Ein Zeiger tief im Sinkbereich bedeutet eine starke Sinkrate — genau die Art Anzeige, die beim Bodennäherungswarnsystem eines echten Flugzeugs die Warnung „Sink rate“ auslösen kann. Im Audio-Kartensatz kannst du sie dir anhören."
+    },
+    "compass-id": {
+      "question": "Welches Instrument ist hier zu sehen?",
+      "options": [
+        "Kompass / Kursanzeiger",
+        "Höhenmesser",
+        "Fluglageanzeiger"
+      ],
+      "explanation": "Eine drehbare Kompassrose mit N/O/S/W unter einem festen Zeiger oben — das ist der Kompass, er zeigt den aktuellen Kurs des Flugzeugs."
+    },
+    "compass-read": {
+      "question": "Welchen Kurs zeigt dieser Kompass?",
+      "options": [
+        "West (270°)",
+        "Nord (0°)",
+        "Süd (180°)"
+      ],
+      "explanation": "Der feste Zeiger oben fluchtet mit dem W auf der drehbaren Kompassrose — das Flugzeug fliegt Kurs 270°, also genau West."
+    }
+  },
+  "audio": {
+    "sink-rate": {
+      "question": "Du hörst diese Ansage während eines normalen Anflugs, noch deutlich über dem Boden. Wovor warnt sie?",
+      "options": [
+        "Eine überhöhte Sinkrate für die aktuelle Höhe — den Sinkflug abflachen",
+        "Das Fahrwerk ist nicht ausgefahren",
+        "Ein anderes Flugzeug befindet sich auf Kollisionskurs"
+      ],
+      "explanation": "„Sink rate“ ist eine Vorsichtsmeldung des Bodennäherungswarnsystems (GPWS): die Sinkrate ist zu hoch für die verbleibende Höhe. Die richtige Reaktion ist, den Sinkflug zu verringern — nicht auf Verkehr oder das Fahrwerk zu reagieren."
+    },
+    "dont-sink": {
+      "question": "Diese Ansage kommt typischerweise kurz nach dem Start oder bei einem Durchstartmanöver. Was sagt sie dir?",
+      "options": [
+        "Du verlierst an Höhe, obwohl du eigentlich steigen solltest",
+        "Du fliegst zu schnell für die aktuelle Klappenstellung",
+        "Du fliegst gleich ohne Freigabe in kontrollierten Luftraum ein"
+      ],
+      "explanation": "„Don't sink“ ertönt, wenn das Flugzeug kurz nach dem Start oder einem Durchstartmanöver zu sinken beginnt — genau dann, wenn es eigentlich vom Boden wegsteigen sollte."
+    },
+    "too-low-terrain": {
+      "question": "Wovor warnt diese GPWS-Ansage?",
+      "options": [
+        "Du kommst dem Gelände darunter für diese Flugphase zu nahe",
+        "Das Fahrwerk wurde zu früh ausgefahren",
+        "Der Kraftstoffstand ist kritisch niedrig"
+      ],
+      "explanation": "„Too low, terrain“ ist eine allgemeine Vorsichtsmeldung, dass das Flugzeug dem Boden näher ist als für diesen Punkt im Flug erwartet — nicht an ein bestimmtes System wie Fahrwerk oder Klappen gebunden."
+    },
+    "too-low-gear": {
+      "question": "Worauf bezieht sich diese Ansage konkret?",
+      "options": [
+        "Das Flugzeug sinkt tief, das Fahrwerk ist noch eingefahren",
+        "Das Flugzeug fliegt zu langsam, um im Horizontalflug zu bleiben",
+        "Ein Triebwerk überhitzt"
+      ],
+      "explanation": "„Too low, gear“ ist eine gezielte Erinnerung an das Fahrwerk: auf diesem Anflughöhe sollte es bereits ausgefahren sein."
+    },
+    "too-low-flaps": {
+      "question": "Worauf bezieht sich diese Ansage konkret?",
+      "options": [
+        "Das Flugzeug ist niedrig, die Landeklappen sind nicht in Landestellung",
+        "Das Fahrwerk ist nicht ausgefahren",
+        "Das Flugzeug ist zu steil geneigt"
+      ],
+      "explanation": "„Too low, flaps“ ist das Gegenstück zu „Too low, gear“ für die Klappenstellung: auf dieser Höhe sollten die Landeklappen bereits in Landestellung sein."
+    },
+    "bank-angle": {
+      "question": "Wovor warnt diese Ansage?",
+      "options": [
+        "Das Flugzeug ist steiler geneigt, als für die aktuelle Höhe sicher ist",
+        "Das Flugzeug fliegt zu schnell",
+        "Der Kraftstoffstand ist niedrig"
+      ],
+      "explanation": "„Bank angle“ warnt davor, dass die Querneigung ein sicheres Limit überschreitet, gemessen an der Bodennähe des Flugzeugs — eine steile Querneigung in geringer Höhe lässt wenig Spielraum für Fehler."
+    },
+    "terrain-pull-up": {
+      "question": "Diese Ansage ist dringlicher als eine einfache „Too low, terrain“-Vorsichtsmeldung. Was sollte die Pilotin oder der Pilot tun?",
+      "options": [
+        "Sofort mit maximaler Leistung steigen — das ist eine Warnung vor unmittelbarer Kollision, keine Vorsichtsmeldung zum langsamen Reagieren",
+        "Die Leistung sanft reduzieren und in ein paar Sekunden neu bewerten",
+        "Ignorieren, wenn der Blick nach draußen frei erscheint"
+      ],
+      "explanation": "„Terrain, terrain, pull up“ ist eine echte GPWS-Warnung (keine bloße Vorsichtsmeldung): das System hält eine Kollision mit dem Gelände für unmittelbar bevorstehend und verlangt einen sofortigen Steigflug mit maximaler Leistung, keine allmähliche Reaktion."
+    },
+    "pull-up": {
+      "question": "„Pull up“ allein ist die dringlichste Stufe der GPWS-Warnung und kann auf mehrere unterschiedliche Vorsichtsmeldungen folgen (Sink rate, Too low terrain und andere), wenn das Flugzeug nicht rechtzeitig reagiert. Was verlangt sie?",
+      "options": [
+        "Einen sofortigen Steigflug mit maximaler Leistung, egal welche Vorsichtsmeldung vorausging",
+        "Sie gilt nur für Gelände, nie für eine überhöhte Sinkrate",
+        "Zunächst die Nase senken, um Fahrt aufzubauen"
+      ],
+      "explanation": "„Pull up“ ist die letzte, dringlichste Warnung des GPWS: unabhängig davon, worum es bei der vorausgehenden Vorsichtsmeldung ging, ist die Reaktion immer dieselbe — sofort mit maximaler Leistung steigen."
+    },
+    "tcas-climb": {
+      "question": "Diese Ansage stammt von einem anderen Flugzeugsystem als der Rest dieses Kartensatzes. Von welchem, und was sollte die Pilotin oder der Pilot tun?",
+      "options": [
+        "TCAS (Kollisionsvermeidung mit anderen Flugzeugen) — sofort der vertikalen Anweisung folgen, auch wenn sie einer Anweisung der Flugsicherung widerspricht",
+        "GPWS-Geländewarnung — sofort steigen, genau wie bei „pull up“",
+        "Überziehwarnung — die Nase senken, um wieder Fahrt aufzunehmen"
+      ],
+      "explanation": "„Traffic, traffic“ ist ein TCAS-Hinweis auf Verkehr in der Nähe; „Climb, climb“ ist die darauffolgende Ausweichanweisung, falls die Kollisionsgefahr bestehen bleibt — ein anderes System als GPWS, gerichtet auf andere Flugzeuge statt auf Gelände, dessen vertikale Anweisung in diesem Moment Vorrang vor der Flugsicherung hat."
+    }
+  }
+}

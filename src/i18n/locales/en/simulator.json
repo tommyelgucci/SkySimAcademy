@@ -1,0 +1,191 @@
+{
+  "title": "Mini simulator",
+  "description": "A 5-minute free flight to practice what you learned: take off, climb, turn and land.",
+  "briefing": {
+    "title": "Ready for takeoff?",
+    "body": "Apply full throttle to accelerate down the runway. Above 20 m/s, pull gently (S) to lift the nose. Keep your speed up — if you fly too slowly, the wing will stall.",
+    "start": "Start flight"
+  },
+  "hud": {
+    "speed": "Speed",
+    "altitude": "Altitude",
+    "heading": "Heading",
+    "throttle": "Throttle",
+    "timeLeft": "Time left",
+    "unitSpeed": "m/s",
+    "unitAltitude": "m"
+  },
+  "stallWarning": "STALL — lower the nose and add power",
+  "engineOutWarning": "ENGINE AT IDLE — find the runway and glide",
+  "controls": {
+    "title": "Controls",
+    "pitch": "Pitch (nose down / up)",
+    "roll": "Roll (bank left / right)",
+    "yaw": "Yaw (rudder left / right)",
+    "throttle": "Throttle (less / more)",
+    "touch": "Touch screen: left joystick = pitch and roll · right slider = throttle · bottom buttons = rudder"
+  },
+  "levels": {
+    "earned": "License earned",
+    "student-pilot": {
+      "title": "Student pilot",
+      "subtitle": "First takeoffs, landings and free flight."
+    },
+    "instrument-basics": {
+      "title": "Basic instruments",
+      "subtitle": "Fly by instruments: heading, altitude, turns."
+    },
+    "navigation": {
+      "title": "Navigation",
+      "subtitle": "Cross-country legs, holding a heading by dead reckoning."
+    },
+    "emergency": {
+      "title": "Emergencies",
+      "subtitle": "Engine failure and stall recovery."
+    }
+  },
+  "missions": {
+    "title": "Choose a mission",
+    "locked": "Unlocks when you pass “{{module}}”",
+    "completed": "Completed",
+    "backToList": "Missions",
+    "dismiss": "Got it",
+    "success": {
+      "title": "Mission accomplished!",
+      "body": "Well flown. Pick your next mission or fly this one again."
+    },
+    "free-flight": {
+      "title": "Free flight",
+      "objective": "5 minutes of open sky — practice whatever you like."
+    },
+    "first-takeoff": {
+      "title": "First takeoff",
+      "objective": "Take off and climb to 100 m."
+    },
+    "heading-turn": {
+      "title": "Turn to heading",
+      "objective": "Above 40 m, hold heading 270° for 3 seconds."
+    },
+    "safe-landing": {
+      "title": "Safe landing",
+      "objective": "Climb above 60 m, then land gently back on the ground."
+    },
+    "cross-country": {
+      "title": "Cross-country leg",
+      "objective": "Climb above 80 m and hold heading 090° for 4 seconds."
+    },
+    "level-flight": {
+      "title": "Level flight",
+      "objective": "Above 120 m, hold level flight for 8 seconds."
+    },
+    "standard-turn": {
+      "title": "Standard turn",
+      "objective": "Above 50 m, hold a 30° right bank for 5 seconds."
+    },
+    "nav-leg": {
+      "title": "Southbound leg",
+      "objective": "Above 100 m, hold heading 180° for 6 seconds."
+    },
+    "engine-out": {
+      "title": "Engine failure",
+      "objective": "At 80 m the engine cuts out — glide and land on the runway with no power."
+    },
+    "stall-recovery": {
+      "title": "Stall recovery",
+      "objective": "Above 100 m, provoke a stall and recover flying speed before you lose altitude."
+    }
+  },
+  "timeUp": {
+    "title": "Flight session complete",
+    "body": "Your 5 minutes are up. Review a theory module or start a new flight."
+  },
+  "crash": {
+    "title": "Rough landing!",
+    "body": "You hit the ground too hard or too banked. Level the wings and descend gently before touching down.",
+    "water": {
+      "title": "Down in the water!",
+      "body": "You touched down outside the runway. Line up with the strip and land on it."
+    },
+    "bounds": {
+      "title": "Lost over open sea",
+      "body": "You flew too far from the flight area. Watch for the warning and turn back in time."
+    }
+  },
+  "stats": {
+    "maxAltitude": "Max altitude: {{value}} m",
+    "distance": "Distance flown: {{value}} km"
+  },
+  "restart": "Fly again",
+  "exit": "Exit simulator",
+  "sound": {
+    "mute": "Mute sound",
+    "unmute": "Unmute sound"
+  },
+  "scenarioTitle": "Scenario",
+  "scenarios": {
+    "desert": "Desert aerodrome",
+    "mountain": "Mountain pass",
+    "coastal": "Coastal island",
+    "platform": "Sea platform"
+  },
+  "mapWarning": "Turn back — open sea ahead",
+  "timeTitle": "Time of day",
+  "times": {
+    "day": "Day",
+    "dusk": "Dusk",
+    "night": "Night"
+  },
+  "view": {
+    "cockpit": "Cockpit view",
+    "external": "External view"
+  },
+  "instruments": {
+    "vsi": "Vertical speed",
+    "horizon": "Attitude indicator",
+    "cardinals": {
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "W"
+    }
+  },
+  "uiSettings": {
+    "title": "Show / hide",
+    "instruments": "Instruments",
+    "yoke": "Yoke",
+    "rudder": "Rudder buttons",
+    "textHud": "Text readouts",
+    "minimap": "Mini-map",
+    "gyro": "Tilt control (gyroscope)",
+    "haptics": "Vibration on stall",
+    "shadows": "Shadows (better looks, lower FPS)"
+  },
+  "approach": {
+    "onCourse": "On glide path",
+    "high": "Too high — descend",
+    "low": "Too low — climb"
+  },
+  "landing": {
+    "title": "Landing report",
+    "verticalSpeed": "Touchdown sink: {{value}} m/s",
+    "centered": "On the centreline",
+    "offCenter": "Off centreline: {{value}} m",
+    "aligned": "Aligned with the runway",
+    "misaligned": "Not aligned with the runway",
+    "grade5": "Excellent",
+    "grade4": "Very good",
+    "grade3": "Passed",
+    "grade2": "Needs another try",
+    "grade1": "Rough",
+    "continue": "Keep flying"
+  },
+  "pause": {
+    "paused": "Paused",
+    "body": "Take a break — your flight is frozen. Resume when you're ready.",
+    "pause": "Pause flight",
+    "resume": "Resume flight"
+  },
+  "minimap": {
+    "title": "Mini-map"
+  }
+}

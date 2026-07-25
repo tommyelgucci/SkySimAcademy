@@ -1,0 +1,147 @@
+{
+  "id": "principles-of-flight",
+  "icon": "plane-takeoff",
+  "order": 1,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "four-forces",
+      "diagram": "four-forces",
+      "quiz": {
+        "questions": [
+          {
+            "id": "four-forces-q1",
+            "correct": 0
+          },
+          {
+            "id": "four-forces-q2",
+            "correct": 0
+          },
+          {
+            "id": "four-forces-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "lift-and-airfoils",
+      "quiz": {
+        "questions": [
+          {
+            "id": "lift-and-airfoils-q1",
+            "correct": 0
+          },
+          {
+            "id": "lift-and-airfoils-q2",
+            "correct": 0
+          },
+          {
+            "id": "lift-and-airfoils-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "three-axes",
+      "diagram": "three-axes",
+      "quiz": {
+        "questions": [
+          {
+            "id": "three-axes-q1",
+            "correct": 0
+          },
+          {
+            "id": "three-axes-q2",
+            "correct": 0
+          },
+          {
+            "id": "three-axes-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "speed-and-stall",
+      "quiz": {
+        "questions": [
+          {
+            "id": "speed-and-stall-q1",
+            "correct": 0
+          },
+          {
+            "id": "speed-and-stall-q2",
+            "correct": 0
+          },
+          {
+            "id": "speed-and-stall-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "load-factor-and-turns",
+      "quiz": {
+        "questions": [
+          {
+            "id": "load-factor-and-turns-q1",
+            "correct": 0
+          },
+          {
+            "id": "load-factor-and-turns-q2",
+            "correct": 0
+          },
+          {
+            "id": "load-factor-and-turns-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "stability-and-trim",
+      "quiz": {
+        "questions": [
+          {
+            "id": "stability-and-trim-q1",
+            "correct": 0
+          },
+          {
+            "id": "stability-and-trim-q2",
+            "correct": 0
+          },
+          {
+            "id": "stability-and-trim-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "ground-effect-and-performance",
+      "quiz": {
+        "questions": [
+          {
+            "id": "ground-effect-and-performance-q1",
+            "correct": 0
+          },
+          {
+            "id": "ground-effect-and-performance-q2",
+            "correct": 0
+          },
+          {
+            "id": "ground-effect-and-performance-q3",
+            "correct": 0
+          }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

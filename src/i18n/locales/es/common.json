@@ -1,0 +1,51 @@
+{
+  "appName": "SkySimAcademy",
+  "tagline": "Aprende a volar, paso a paso",
+  "language": "Idioma",
+  "nav": {
+    "home": "Inicio",
+    "theory": "Teoría",
+    "simulator": "Simulador",
+    "flashcards": "Flashcards"
+  },
+  "home": {
+    "welcome": "Bienvenido a bordo",
+    "intro": "Domina los fundamentos del vuelo con módulos de teoría cortos y ponlos en práctica en el mini simulador 3D.",
+    "startTheory": "Empezar con la teoría",
+    "openSimulator": "Abrir el simulador",
+    "highlights": {
+      "theory": {
+        "value": "{{modules}} módulos · {{lessons}} lecciones",
+        "label": "Curso de teoría profundo con quizzes y explicaciones"
+      },
+      "simulator": {
+        "value": "{{missions}} misiones",
+        "label": "Simulador de vuelo 3D para practicar lo que acabas de leer"
+      },
+      "flashcards": {
+        "value": "{{cards}} flashcards",
+        "label": "Instrumentos de cabina y alertas de audio reales"
+      },
+      "languages": {
+        "value": "{{count}} idiomas",
+        "label": "Traducidos de verdad, con árabe RTL completo"
+      }
+    }
+  },
+  "actions": {
+    "back": "Volver",
+    "continue": "Continuar",
+    "start": "Empezar",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "footer": "MVP educativo — esto no es instrucción de vuelo real.",
+  "privacyPolicy": "Privacidad",
+  "errorBoundary": {
+    "title": "Algo salió mal",
+    "body": "La app tuvo un error inesperado, posiblemente por datos guardados dañados. Prueba a recargar — si no funciona, puedes borrar los datos de la app en este dispositivo.",
+    "reload": "Recargar",
+    "reset": "Borrar datos de la app",
+    "resetConfirm": "Esto elimina todo el progreso guardado en este dispositivo (cuestionarios, misiones, estadísticas). No se puede deshacer. ¿Continuar?"
+  }
+}

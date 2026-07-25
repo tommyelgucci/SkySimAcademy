@@ -1,0 +1,191 @@
+{
+  "title": "Mini simulador",
+  "description": "Un vuelo libre de 5 minutos para practicar lo aprendido: despega, sube, vira y aterriza.",
+  "briefing": {
+    "title": "¿Listo para despegar?",
+    "body": "Aplica gases a fondo para acelerar por la pista. Por encima de 20 m/s, tira suavemente (S) para levantar el morro. Mantén la velocidad: si vuelas demasiado lento, el ala entrará en pérdida.",
+    "start": "Iniciar vuelo"
+  },
+  "hud": {
+    "speed": "Velocidad",
+    "altitude": "Altitud",
+    "heading": "Rumbo",
+    "throttle": "Gases",
+    "timeLeft": "Tiempo restante",
+    "unitSpeed": "m/s",
+    "unitAltitude": "m"
+  },
+  "stallWarning": "PÉRDIDA — baja el morro y aplica potencia",
+  "engineOutWarning": "MOTOR AL RALENTÍ — busca la pista y planea",
+  "controls": {
+    "title": "Controles",
+    "pitch": "Cabeceo (morro abajo / arriba)",
+    "roll": "Alabeo (inclinar izquierda / derecha)",
+    "yaw": "Guiñada (timón izquierda / derecha)",
+    "throttle": "Gases (menos / más)",
+    "touch": "Pantalla táctil: joystick izquierdo = cabeceo y alabeo · barra derecha = gases · botones inferiores = timón"
+  },
+  "levels": {
+    "earned": "Licencia obtenida",
+    "student-pilot": {
+      "title": "Piloto alumno",
+      "subtitle": "Primeros despegues, aterrizajes y vuelo libre."
+    },
+    "instrument-basics": {
+      "title": "Instrumentos básicos",
+      "subtitle": "Vuela por instrumentos: rumbo, altitud, virajes."
+    },
+    "navigation": {
+      "title": "Navegación",
+      "subtitle": "Tramos de travesía manteniendo el rumbo por estima."
+    },
+    "emergency": {
+      "title": "Emergencias",
+      "subtitle": "Fallo de motor y recuperación de pérdida."
+    }
+  },
+  "missions": {
+    "title": "Elige una misión",
+    "locked": "Se desbloquea al aprobar «{{module}}»",
+    "completed": "Completada",
+    "backToList": "Misiones",
+    "dismiss": "Listo",
+    "success": {
+      "title": "¡Misión cumplida!",
+      "body": "Buen vuelo. Elige tu próxima misión o repite esta."
+    },
+    "free-flight": {
+      "title": "Vuelo libre",
+      "objective": "5 minutos de cielo abierto — practica lo que quieras."
+    },
+    "first-takeoff": {
+      "title": "Primer despegue",
+      "objective": "Despega y sube a 100 m."
+    },
+    "heading-turn": {
+      "title": "Viraje a rumbo",
+      "objective": "Por encima de 40 m, mantén rumbo 270° durante 3 segundos."
+    },
+    "safe-landing": {
+      "title": "Aterrizaje seguro",
+      "objective": "Sube por encima de 60 m y aterriza suavemente de vuelta."
+    },
+    "cross-country": {
+      "title": "Tramo de travesía",
+      "objective": "Sube por encima de 80 m y mantén rumbo 090° durante 4 segundos."
+    },
+    "level-flight": {
+      "title": "Vuelo nivelado",
+      "objective": "Por encima de 120 m, mantén el vuelo nivelado durante 8 segundos."
+    },
+    "standard-turn": {
+      "title": "Viraje estándar",
+      "objective": "Por encima de 50 m, mantén un banco de 30° a la derecha durante 5 segundos."
+    },
+    "nav-leg": {
+      "title": "Tramo al sur",
+      "objective": "Por encima de 100 m, mantén rumbo 180° durante 6 segundos."
+    },
+    "engine-out": {
+      "title": "Fallo de motor",
+      "objective": "A 80 m se detiene el motor: planea y toma tierra en la pista sin gases."
+    },
+    "stall-recovery": {
+      "title": "Recuperación de pérdida",
+      "objective": "Por encima de 100 m, provoca la pérdida y recupera velocidad de vuelo antes de bajar."
+    }
+  },
+  "timeUp": {
+    "title": "Sesión de vuelo completada",
+    "body": "Tus 5 minutos han terminado. Repasa un módulo de teoría o inicia un vuelo nuevo."
+  },
+  "crash": {
+    "title": "¡Aterrizaje brusco!",
+    "body": "Tocaste el suelo demasiado fuerte o demasiado inclinado. Nivela las alas y desciende con suavidad antes de tocar tierra.",
+    "water": {
+      "title": "¡Caíste al agua!",
+      "body": "Tocaste fuera de la pista. Alinéate con ella y aterriza encima."
+    },
+    "bounds": {
+      "title": "Perdido sobre mar abierto",
+      "body": "Te alejaste demasiado del área de vuelo. Atiende al aviso y da la vuelta a tiempo."
+    }
+  },
+  "stats": {
+    "maxAltitude": "Altitud máxima: {{value}} m",
+    "distance": "Distancia recorrida: {{value}} km"
+  },
+  "restart": "Volar de nuevo",
+  "exit": "Salir del simulador",
+  "sound": {
+    "mute": "Silenciar sonido",
+    "unmute": "Activar sonido"
+  },
+  "scenarioTitle": "Escenario",
+  "scenarios": {
+    "desert": "Aeródromo desértico",
+    "mountain": "Paso de montaña",
+    "coastal": "Isla costera",
+    "platform": "Plataforma marina"
+  },
+  "mapWarning": "Da la vuelta — mar abierto por delante",
+  "timeTitle": "Hora del día",
+  "times": {
+    "day": "Día",
+    "dusk": "Atardecer",
+    "night": "Noche"
+  },
+  "view": {
+    "cockpit": "Vista de cabina",
+    "external": "Vista exterior"
+  },
+  "instruments": {
+    "vsi": "Variómetro",
+    "horizon": "Horizonte artificial",
+    "cardinals": {
+      "n": "N",
+      "e": "E",
+      "s": "S",
+      "w": "O"
+    }
+  },
+  "uiSettings": {
+    "title": "Mostrar u ocultar",
+    "instruments": "Instrumentos",
+    "yoke": "Yoke (mando)",
+    "rudder": "Botones de timón",
+    "textHud": "Datos de texto",
+    "minimap": "Mini-mapa",
+    "gyro": "Control por inclinación (giroscopio)",
+    "haptics": "Vibración en la pérdida",
+    "shadows": "Sombras (mejor aspecto, menos FPS)"
+  },
+  "approach": {
+    "onCourse": "En senda",
+    "high": "Alto — desciende",
+    "low": "Bajo — sube"
+  },
+  "landing": {
+    "title": "Informe de aterrizaje",
+    "verticalSpeed": "Descenso en el toque: {{value}} m/s",
+    "centered": "En el eje de pista",
+    "offCenter": "Fuera del eje: {{value}} m",
+    "aligned": "Alineado con la pista",
+    "misaligned": "Desalineado con la pista",
+    "grade5": "Excelente",
+    "grade4": "Muy bien",
+    "grade3": "Aprobado",
+    "grade2": "A repetir",
+    "grade1": "Duro",
+    "continue": "Seguir volando"
+  },
+  "pause": {
+    "paused": "En pausa",
+    "body": "Tómate un respiro — tu vuelo está congelado. Reanuda cuando quieras.",
+    "pause": "Pausar vuelo",
+    "resume": "Reanudar vuelo"
+  },
+  "minimap": {
+    "title": "Mini-mapa"
+  }
+}

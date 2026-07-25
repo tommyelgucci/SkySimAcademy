@@ -1,0 +1,82 @@
+{
+  "id": "navigation-basics",
+  "icon": "map",
+  "order": 6,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "pilotage",
+      "quiz": {
+        "questions": [
+          { "id": "pilotage-q1", "correct": 0 },
+          { "id": "pilotage-q2", "correct": 0 },
+          { "id": "pilotage-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "dead-reckoning",
+      "quiz": {
+        "questions": [
+          { "id": "dead-reckoning-q1", "correct": 0 },
+          { "id": "dead-reckoning-q2", "correct": 0 },
+          { "id": "dead-reckoning-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "flight-planning",
+      "quiz": {
+        "questions": [
+          { "id": "flight-planning-q1", "correct": 0 },
+          { "id": "flight-planning-q2", "correct": 0 },
+          { "id": "flight-planning-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "reading-a-sectional-chart",
+      "quiz": {
+        "questions": [
+          { "id": "reading-a-sectional-chart-q1", "correct": 0 },
+          { "id": "reading-a-sectional-chart-q2", "correct": 0 },
+          { "id": "reading-a-sectional-chart-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "wind-correction-angle",
+      "quiz": {
+        "questions": [
+          { "id": "wind-correction-angle-q1", "correct": 0 },
+          { "id": "wind-correction-angle-q2", "correct": 0 },
+          { "id": "wind-correction-angle-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "gps-and-modern-navigation",
+      "quiz": {
+        "questions": [
+          { "id": "gps-and-modern-navigation-q1", "correct": 0 },
+          { "id": "gps-and-modern-navigation-q2", "correct": 0 },
+          { "id": "gps-and-modern-navigation-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "lost-procedures",
+      "quiz": {
+        "questions": [
+          { "id": "lost-procedures-q1", "correct": 0 },
+          { "id": "lost-procedures-q2", "correct": 0 },
+          { "id": "lost-procedures-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

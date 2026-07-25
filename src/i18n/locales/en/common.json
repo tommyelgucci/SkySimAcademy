@@ -1,0 +1,51 @@
+{
+  "appName": "SkySimAcademy",
+  "tagline": "Learn to fly, step by step",
+  "language": "Language",
+  "nav": {
+    "home": "Home",
+    "theory": "Theory",
+    "simulator": "Simulator",
+    "flashcards": "Flashcards"
+  },
+  "home": {
+    "welcome": "Welcome aboard",
+    "intro": "Master the basics of flight with short theory modules, then put them into practice in the 3D mini simulator.",
+    "startTheory": "Start with the theory",
+    "openSimulator": "Open the simulator",
+    "highlights": {
+      "theory": {
+        "value": "{{modules}} modules · {{lessons}} lessons",
+        "label": "Deep ground-school course with quizzes and explanations"
+      },
+      "simulator": {
+        "value": "{{missions}} missions",
+        "label": "3D flight simulator to practise what you just read"
+      },
+      "flashcards": {
+        "value": "{{cards}} flashcards",
+        "label": "Cockpit instruments and real cabin audio alerts"
+      },
+      "languages": {
+        "value": "{{count}} languages",
+        "label": "Genuinely translated, with full right-to-left Arabic"
+      }
+    }
+  },
+  "actions": {
+    "back": "Back",
+    "continue": "Continue",
+    "start": "Start",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "footer": "Educational MVP — this is not real flight instruction.",
+  "privacyPolicy": "Privacy",
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "body": "The app hit an unexpected error, possibly from corrupted saved data. Try reloading — if that doesn't help, you can reset the app's data on this device.",
+    "reload": "Reload",
+    "reset": "Reset app data",
+    "resetConfirm": "This deletes all progress saved on this device (quizzes, missions, stats). This cannot be undone. Continue?"
+  }
+}
