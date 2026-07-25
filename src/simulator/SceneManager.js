@@ -36,7 +36,19 @@ import * as THREE from "three";
 const CAMERA_OFFSET = new THREE.Vector3(0, 3.4, 10); // detrás y encima del avión
 /** Posición del "asiento del piloto" relativa al avión (vista de cabina). */
 const COCKPIT_OFFSET = new THREE.Vector3(0, 0.45, -0.9);
-const OCEAN_RADIUS = 3800;
+/**
+ * El mar no es un disco gigante sino un parche teselado que se recentra bajo
+ * el avión (ver `#buildOcean`). Tamaño y densidad son un compromiso: el borde
+ * (3000 m del centro) debe caer siempre más allá de la niebla (fogFar máx.
+ * 2800) para que no se vea, y la celda (`SIZE / SEGMENTS` ≈ 62 m) bastante
+ * menor que la ola más corta (~300 m) para que la cresta no se vea
+ * escalonada. Subir SEGMENTS es lo primero que se nota en el frame rate:
+ * el desplazamiento se recalcula por vértice en cada frame.
+ */
+const OCEAN_PATCH_SIZE = 6000;
+const OCEAN_SEGMENTS = 96;
+/** Altura base del mar: bajo el nivel de las islas, con sitio para las olas. */
+const OCEAN_LEVEL = -5;
 
 /**
  * Escenario especial de "vuelo libre": no es uno de los SCENARIOS elegibles
@@ -47,7 +59,6 @@ const OCEAN_RADIUS = 3800;
  */
 export const FREE_ROAM_SCENARIO = "free-roam";
 const FREE_ROAM_MAP_RADIUS = 6000;
-const FREE_ROAM_OCEAN_RADIUS = FREE_ROAM_MAP_RADIUS + 900;
 
 /** Ids de escenario disponibles (la UI construye el selector con esto). */
 export const SCENARIOS = ["desert", "mountain", "coastal", "platform"];
@@ -63,22 +74,32 @@ export const TIMES_OF_DAY = ["day", "dusk", "night"];
  */
 const TIME_PALETTES = {
   day: {
-    skyTop: 0x2f6fb0, horizon: 0xdff2f8,
-    hemiSky: 0xdff2f8, hemiGround: 0x4c6b3a, hemiIntensity: 1.0,
-    sunColor: 0xfff3d6, sunIntensity: 1.5, sunPos: [250, 420, 120],
+    skyTop: 0x1d6ec4, horizon: 0xe8f6fb,
+    hemiSky: 0xdff2f8, hemiGround: 0x6b8a52, hemiIntensity: 1.35,
+    sunColor: 0xfff3d6, sunIntensity: 2.3, sunPos: [250, 420, 120],
     fogFar: 2800, stars: 0,
+    water: 0x1a6f9c, waterDeep: 0x0d3f5e, waterSpecular: 0xcdefff,
+    waterShininess: 110, sunDisc: 0xfff6d8, sunDiscSize: 210, exposure: 1.45,
   },
   dusk: {
-    skyTop: 0x2b2a5e, horizon: 0xf29a5b,
-    hemiSky: 0xf7b183, hemiGround: 0x3c4633, hemiIntensity: 0.55,
-    sunColor: 0xff9a4d, sunIntensity: 0.8, sunPos: [420, 80, -160],
+    // El atardecer se va de las manos con facilidad: si el horizonte y la
+    // luz hemisférica van los dos muy saturados, el naranja tiñe cada
+    // superficie y la escena pierde el color propio. Naranja solo en el
+    // cielo y en el sol; la luz ambiente casi neutra.
+    skyTop: 0x35377a, horizon: 0xf2a878,
+    hemiSky: 0xd9bda8, hemiGround: 0x4a5340, hemiIntensity: 0.95,
+    sunColor: 0xffb877, sunIntensity: 1.25, sunPos: [420, 80, -160],
     fogFar: 2400, stars: 130,
+    water: 0x27496e, waterDeep: 0x142639, waterSpecular: 0xffc79a,
+    waterShininess: 150, sunDisc: 0xff9a52, sunDiscSize: 300, exposure: 1.25,
   },
   night: {
-    skyTop: 0x04070f, horizon: 0x0d1626,
-    hemiSky: 0x24324a, hemiGround: 0x0a0f14, hemiIntensity: 0.22,
-    sunColor: 0x9fb8dd, sunIntensity: 0.3, sunPos: [-220, 360, 200],
+    skyTop: 0x04070f, horizon: 0x101d33,
+    hemiSky: 0x24324a, hemiGround: 0x0a0f14, hemiIntensity: 0.34,
+    sunColor: 0x9fb8dd, sunIntensity: 0.5, sunPos: [-220, 360, 200],
     fogFar: 2000, stars: 420,
+    water: 0x0c1a2e, waterDeep: 0x04080f, waterSpecular: 0x7f9fd4,
+    waterShininess: 90, sunDisc: 0xd8e4ff, sunDiscSize: 120, exposure: 1.3,
   },
 };
 
@@ -114,6 +135,31 @@ function makeRectZone(cx, cz, halfLength, halfWidth, rotationY = 0) {
   };
 }
 
+const smoothstep = (edge0, edge1, x) => {
+  const t = Math.min(1, Math.max(0, (x - edge0) / (edge1 - edge0)));
+  return t * t * (3 - 2 * t);
+};
+
+/**
+ * Máscara suave de "esto tiene que estar llano": 1 dentro del rectángulo
+ * (una pista con su margen) y bajando a 0 a lo largo de `feather` metros
+ * alrededor. Sirve para hundir el relieve del terreno justo donde se
+ * aterriza, sin que se note un escalón en el borde.
+ */
+function makeRectFlatness(cx, cz, halfLength, halfWidth, rotationY, feather) {
+  const cos = Math.cos(rotationY);
+  const sin = Math.sin(rotationY);
+  return (x, z) => {
+    const dx = x - cx;
+    const dz = z - cz;
+    const localX = Math.abs(dx * cos - dz * sin);
+    const localZ = Math.abs(dx * sin + dz * cos);
+    // Distancia (positiva fuera) al rectángulo, por el eje que más sobresale
+    const outside = Math.max(localX - halfWidth, localZ - halfLength, 0);
+    return 1 - smoothstep(0, feather, outside);
+  };
+}
+
 /**
  * Envuelve las zonas seguras en el objeto que espera FlightEngine, junto con
  * la geometría de las pistas (`runways`) que consume FlightEvaluator para la
@@ -135,13 +181,27 @@ export class SceneManager {
    * @param {HTMLCanvasElement} canvas
    * @param {string|null} scenarioId Id de SCENARIOS; null/desconocido = azar.
    * @param {string} timeOfDay "day" | "dusk" | "night" (por defecto, día).
+   * @param {{shadows?: boolean}} [options] `shadows` activa la sombra
+   *   proyectada del avión. Se puede cambiar en vuelo con
+   *   `setShadowsEnabled`; lo decide la UI, no esta clase (ver
+   *   SimulatorView: por defecto va apagada en dispositivos táctiles).
    */
-  constructor(canvas, scenarioId = null, timeOfDay = "day") {
+  constructor(canvas, scenarioId = null, timeOfDay = "day", options = {}) {
     this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     this.timeOfDay = TIMES_OF_DAY.includes(timeOfDay) ? timeOfDay : "day";
     this.palette = TIME_PALETTES[this.timeOfDay];
+
+    // Tone mapping filmico + exposición por hora del día: es lo que separa
+    // el "azul plano de WebGL" de una imagen con rango dinámico creíble.
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = this.palette.exposure;
+    // Sombra del sol; la cámara de sombras sigue al avión (ver update).
+    // PCF simple y no PCFSoft: el filtrado suave multiplica las muestras por
+    // píxel receptor y en GPU integrada se nota más que la mejora de calidad.
+    this.renderer.shadowMap.enabled = options.shadows !== false;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap;
 
     this.scene = new THREE.Scene();
     const horizon = new THREE.Color(this.palette.horizon);
@@ -155,8 +215,15 @@ export class SceneManager {
     this.cameraView = "external";
     this._viewBlend = 0;
     this._elapsed = 0; // para el estroboscopio del avión
+    /** Reloj compartido con el shader del mar (olas animadas en GPU). */
+    this._waterTime = { value: 0 };
 
     this.aircraft = buildAircraft();
+    this.aircraft.traverse((part) => {
+      // Las luces de navegación y el estroboscopio son MeshBasic: proyectar
+      // sombra desde ellas dejaría manchas sueltas bajo el avión.
+      if (part.isMesh && !part.material?.isMeshBasicMaterial) part.castShadow = true;
+    });
     this.scene.add(this.aircraft);
 
     this.#buildSky();
@@ -179,6 +246,23 @@ export class SceneManager {
     if (view === "external" || view === "cockpit") this.cameraView = view;
   }
 
+  /**
+   * Enciende o apaga las sombras proyectadas en pleno vuelo, sin reconstruir
+   * la escena (y por tanto sin reiniciar el vuelo en curso). Three compila el
+   * soporte de sombras dentro de cada shader, así que al cambiar el flag hay
+   * que marcar los materiales para recompilar.
+   */
+  setShadowsEnabled(enabled) {
+    if (this.renderer.shadowMap.enabled === enabled) return;
+    this.renderer.shadowMap.enabled = enabled;
+    this.scene.traverse((object) => {
+      const material = object.material;
+      if (!material) return;
+      if (Array.isArray(material)) material.forEach((m) => (m.needsUpdate = true));
+      else material.needsUpdate = true;
+    });
+  }
+
   #buildSky() {
     // Cúpula con degradado vertical (horizonte claro → cénit oscuro).
     const geo = new THREE.SphereGeometry(2900, 24, 16);
@@ -199,6 +283,42 @@ export class SceneManager {
       fog: false,
     });
     this.scene.add(new THREE.Mesh(geo, mat));
+    this.#buildSunDisc();
+  }
+
+  /**
+   * Disco solar con halo: un sprite con degradado radial pintado en canvas
+   * (sin imágenes externas, misma política que el resto). Da un punto de
+   * referencia real en el cielo y hace que el brillo del mar tenga origen.
+   */
+  #buildSunDisc() {
+    const size = 128;
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    const color = new THREE.Color(this.palette.sunDisc);
+    const rgb = `${Math.round(color.r * 255)}, ${Math.round(color.g * 255)}, ${Math.round(color.b * 255)}`;
+    const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+    gradient.addColorStop(0, `rgba(${rgb}, 1)`);
+    gradient.addColorStop(0.16, `rgba(${rgb}, 0.95)`);
+    gradient.addColorStop(0.38, `rgba(${rgb}, 0.28)`);
+    gradient.addColorStop(1, `rgba(${rgb}, 0)`);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, size, size);
+
+    const sprite = new THREE.Sprite(
+      new THREE.SpriteMaterial({
+        map: new THREE.CanvasTexture(canvas),
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        fog: false,
+      })
+    );
+    // Colocado en la dirección de la luz direccional, justo dentro de la cúpula
+    const dir = new THREE.Vector3(...this.palette.sunPos).normalize();
+    sprite.position.copy(dir).multiplyScalar(2750);
+    sprite.scale.setScalar(this.palette.sunDiscSize * 4);
+    this.scene.add(sprite);
   }
 
   /** Estrellas (solo atardecer/noche): puntos sobre la cúpula, sin assets. */
@@ -229,28 +349,146 @@ export class SceneManager {
   #buildLights() {
     const p = this.palette;
     this.scene.add(new THREE.HemisphereLight(p.hemiSky, p.hemiGround, p.hemiIntensity));
+
     const sun = new THREE.DirectionalLight(p.sunColor, p.sunIntensity);
     sun.position.set(...p.sunPos);
+    // La sombra del avión sobre la pista es lo que más "vende" la escala y la
+    // altura real. Un mapa de sombras global sobre kilómetros sería inútil de
+    // grueso, así que la cámara de sombras es pequeña y sigue al avión
+    // (`#updateSunShadow`), que es donde de verdad se mira.
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(512, 512);
+    sun.shadow.camera.near = 20;
+    sun.shadow.camera.far = 1400;
+    sun.shadow.camera.left = -110;
+    sun.shadow.camera.right = 110;
+    sun.shadow.camera.top = 110;
+    sun.shadow.camera.bottom = -110;
+    sun.shadow.bias = -0.0012;
+    sun.shadow.normalBias = 0.6;
     this.scene.add(sun);
+    this.scene.add(sun.target);
+    this.sun = sun;
+    /** Dirección normalizada del sol, reutilizada al mover la sombra. */
+    this._sunDir = new THREE.Vector3(...p.sunPos).normalize();
   }
 
-  /** Océano presente en TODOS los escenarios: es lo que hace de límite del
-   *  mapa (fuera de las zonas seguras, tocar el suelo es tocar agua). */
-  #buildOcean(radius = OCEAN_RADIUS) {
-    const ocean = new THREE.Mesh(
-      new THREE.CircleGeometry(radius, 64),
-      new THREE.MeshPhongMaterial({ color: 0x1f7fa8, shininess: 55, specular: 0xbfe9ff })
+  /** Centra el volumen de sombras sobre el avión (ver `#buildLights`). */
+  #updateSunShadow(position) {
+    if (!this.sun) return;
+    this.sun.target.position.set(position.x, 0, position.z);
+    this.sun.target.updateMatrixWorld();
+    this.sun.position.copy(this._sunDir).multiplyScalar(700).add(this.sun.target.position);
+  }
+
+  /**
+   * Océano presente en TODOS los escenarios: es lo que hace de límite del
+   * mapa (fuera de las zonas seguras, tocar el suelo es tocar agua).
+   *
+   * Las olas se calculan en el VERTEX SHADER (coste de CPU cero) a partir de
+   * la posición en MUNDO, no en el modelo. Eso permite el truco de abajo: la
+   * malla es solo un parche que se recentra bajo el avión en cada frame
+   * (`update`), y como el patrón está anclado al mundo, no "se arrastra" con
+   * él — se ve un mar infinito y con detalle a cualquier distancia, sin
+   * teselar kilómetros de geometría. El borde del parche cae siempre más
+   * lejos que la niebla, así que nunca se ve.
+   */
+  #buildOcean() {
+    const p = this.palette;
+    const geometry = new THREE.PlaneGeometry(
+      OCEAN_PATCH_SIZE,
+      OCEAN_PATCH_SIZE,
+      OCEAN_SEGMENTS,
+      OCEAN_SEGMENTS
     );
+    const material = new THREE.MeshPhongMaterial({
+      color: p.water,
+      specular: p.waterSpecular,
+      shininess: p.waterShininess,
+    });
+
+    const time = this._waterTime;
+    const deep = { value: new THREE.Color(p.waterDeep) };
+    material.onBeforeCompile = (shader) => {
+      shader.uniforms.uTime = time;
+      shader.uniforms.uDeep = deep;
+      shader.vertexShader = shader.vertexShader
+        .replace(
+          "#include <common>",
+          `#include <common>
+           uniform float uTime;
+           varying float vWave;
+           // Suma de senoides cruzadas: barato y sin textura, pero con
+           // suficiente interferencia como para no verse un patrón repetido.
+           // Tres senoides cruzadas: el mínimo para que no se lea un patrón
+           // repetido. Se calcula por vértice en cada frame, así que cada
+           // término extra se paga en toda la malla — se quedan tres.
+           float oceanWave(vec2 q) {
+             return sin(q.x * 0.021 + uTime * 0.90) * 1.15
+                  + sin(q.y * 0.017 - uTime * 0.70) * 1.35
+                  + sin((q.x + q.y) * 0.009 + uTime * 0.45) * 1.80;
+           }
+           // Derivadas analíticas de oceanWave: sin esto la iluminación
+           // quedaría plana y el mar no reflejaría el sol al ondular.
+           vec2 oceanSlope(vec2 q) {
+             float shared = cos((q.x + q.y) * 0.009 + uTime * 0.45) * 1.80 * 0.009;
+             return vec2(
+               cos(q.x * 0.021 + uTime * 0.90) * 1.15 * 0.021 + shared,
+               cos(q.y * 0.017 - uTime * 0.70) * 1.35 * 0.017 + shared
+             );
+           }`
+        )
+        .replace(
+          "#include <beginnormal_vertex>",
+          `#include <beginnormal_vertex>
+           vec2 wWorld = (modelMatrix * vec4(position, 1.0)).xz;
+           vec2 wSlope = oceanSlope(wWorld);
+           objectNormal = normalize(vec3(-wSlope.x, wSlope.y, 1.0));`
+        )
+        .replace(
+          "#include <begin_vertex>",
+          `#include <begin_vertex>
+           float wHeight = oceanWave(wWorld);
+           transformed.z += wHeight;
+           vWave = wHeight;`
+        );
+      shader.fragmentShader = shader.fragmentShader
+        .replace(
+          "#include <common>",
+          `#include <common>
+           uniform vec3 uDeep;
+           varying float vWave;`
+        )
+        .replace(
+          "#include <color_fragment>",
+          `#include <color_fragment>
+           // Los senos van más oscuros (agua profunda) y las crestas más
+           // claras: da volumen sin necesidad de espuma ni texturas.
+           diffuseColor.rgb = mix(uDeep, diffuseColor.rgb, smoothstep(-2.6, 2.6, vWave));`
+        );
+    };
+
+    const ocean = new THREE.Mesh(geometry, material);
     ocean.rotation.x = -Math.PI / 2;
-    ocean.position.y = -3;
+    ocean.position.y = OCEAN_LEVEL;
+    // Sin receiveShadow a propósito: el mar cubre la pantalla entera, así que
+    // activarlo obliga a un muestreo de sombras por píxel visible y hunde el
+    // frame rate a la mitad — a cambio de una sombra sobre el agua que
+    // apenas se distingue. Las sombras que importan (avión sobre pista) caen
+    // sobre terreno y asfalto, que sí la reciben.
+    ocean.receiveShadow = false;
+    // El parche se recoloca bajo el avión cada frame; sin esto Three lo
+    // descartaría del render al alejarse su centro original de la cámara.
+    ocean.frustumCulled = false;
     this.scene.add(ocean);
+    this.ocean = ocean;
   }
 
   /** Construye el escenario pedido (o uno al azar) sobre el océano base. */
   #buildWorld(scenarioId) {
     if (scenarioId === FREE_ROAM_SCENARIO) {
       this.scenario = FREE_ROAM_SCENARIO;
-      this.#buildOcean(FREE_ROAM_OCEAN_RADIUS);
+      this.#buildOcean();
       this.terrain = this.#buildFreeRoamWorld();
       return;
     }
@@ -325,6 +563,7 @@ export class SceneManager {
     color = 0x33363c,
     marginLength = 30,
     marginWidth = 14,
+    apron: withApron = true,
   }) {
     const group = new THREE.Group();
 
@@ -334,7 +573,25 @@ export class SceneManager {
     );
     surface.rotation.x = -Math.PI / 2;
     surface.position.y = 0.05;
+    // Recibe la sombra del avión: es la referencia visual de altura más útil
+    // que hay en una aproximación.
+    surface.receiveShadow = true;
     group.add(surface);
+
+    // Explanada alrededor de la pista, para que no nazca de la nada sobre el
+    // terreno: un rectángulo algo más ancho y con tono intermedio. No aplica
+    // a la plataforma marina, donde la pista ES la cubierta y no hay tierra
+    // alrededor que allanar.
+    if (withApron) {
+      const apron = new THREE.Mesh(
+        new THREE.PlaneGeometry(width + 30, length + 70),
+        new THREE.MeshLambertMaterial({ color: 0xa39781 })
+      );
+      apron.rotation.x = -Math.PI / 2;
+      apron.position.y = 0.01;
+      apron.receiveShadow = true;
+      group.add(apron);
+    }
 
     const dashMaterial = new THREE.MeshLambertMaterial({ color: 0xe8e8e8 });
     const dashGeometry = new THREE.PlaneGeometry(0.8, 8);
@@ -355,23 +612,28 @@ export class SceneManager {
 
     // Luces de pista (MeshBasic: brillan de noche). Bordes blancos-cálidos,
     // umbral verde en una cabecera y rojo en la otra, como una pista real.
-    const lightGeometry = new THREE.SphereGeometry(0.55, 6, 6);
+    //
+    // Radio pequeño a propósito: el avión aparece justo sobre una de las
+    // cabeceras, así que sus luces de umbral quedan a unos metros de la
+    // cámara. Con esferas grandes se leen como cúpulas de plástico delante
+    // del morro en vez de como puntos de luz.
+    const lightGeometry = new THREE.SphereGeometry(0.32, 6, 6);
     const edgeLightMaterial = new THREE.MeshBasicMaterial({ color: 0xfff0b8 });
     for (let d = -length / 2; d <= length / 2; d += 45) {
       for (const side of [-1, 1]) {
         const bulb = new THREE.Mesh(lightGeometry, edgeLightMaterial);
-        bulb.position.set(side * (width / 2 + 1.6), 0.35, d);
+        bulb.position.set(side * (width / 2 + 1.6), 0.3, d);
         group.add(bulb);
       }
     }
     const greenMaterial = new THREE.MeshBasicMaterial({ color: 0x39d353 });
     const redMaterial = new THREE.MeshBasicMaterial({ color: 0xff4d4d });
-    for (let tx = -width / 2; tx <= width / 2; tx += width / 4) {
+    for (let tx = -width / 2; tx <= width / 2; tx += width / 3) {
       const green = new THREE.Mesh(lightGeometry, greenMaterial);
-      green.position.set(tx, 0.35, length / 2 + 3);
+      green.position.set(tx, 0.3, length / 2 + 3);
       group.add(green);
       const red = new THREE.Mesh(lightGeometry, redMaterial);
-      red.position.set(tx, 0.35, -length / 2 - 3);
+      red.position.set(tx, 0.3, -length / 2 - 3);
       group.add(red);
     }
 
@@ -385,8 +647,103 @@ export class SceneManager {
     };
   }
 
+  /**
+   * Isla con relieve real, en lugar de un disco plano.
+   *
+   * Se teselan anillos concéntricos (`RingGeometry`, que sí tiene divisiones
+   * radiales, al revés que `CircleGeometry`) y se desplaza cada vértice en
+   * altura con una suma de senoides deterministas. Dos reglas mandan sobre el
+   * relieve:
+   *   1. Donde se aterriza tiene que estar LLANO — `flatness` hunde el
+   *      relieve a cero sobre la pista y lo reintroduce suavemente alrededor,
+   *      así que el suelo plano que asume FlightEngine sigue siendo cierto
+   *      donde importa.
+   *   2. El borde baja bajo el nivel del mar, de modo que la costa la dibuja
+   *      el propio corte con el agua (playa) y no un anillo pegado encima.
+   *
+   * El color va por vértice (arena en la orilla, tierra adentro, roca en las
+   * cotas altas): da variedad sin una sola textura ni asset externo.
+   *
+   * @returns {(x:number, z:number) => number} altura del terreno en mundo,
+   *   para posar encima props (palmeras, edificios) sin que floten.
+   */
+  #buildIsland({
+    offsetX = 0,
+    offsetZ = 0,
+    radius,
+    inland,
+    shore,
+    rock = null,
+    amplitude = 14,
+    flatness = null,
+    random,
+  }) {
+    const RINGS = 44;
+    const SEGMENTS = 108;
+    const phase1 = random() * Math.PI * 2;
+    const phase2 = random() * Math.PI * 2;
+    const phase3 = random() * Math.PI * 2;
+
+    /** Altura del terreno en coordenadas de MUNDO. */
+    const heightAt = (x, z) => {
+      const lx = x - offsetX;
+      const lz = z - offsetZ;
+      const t = Math.min(1, Math.hypot(lx, lz) / radius);
+      let h =
+        Math.sin(lx * 0.0042 + phase1) * Math.cos(lz * 0.0071 + phase2) * amplitude +
+        Math.sin((lx + lz) * 0.0113 + phase3) * amplitude * 0.4;
+      h *= 1 - t * t; // el relieve se apaga hacia la costa
+      h -= smoothstep(0.82, 1, t) * (amplitude + 18); // playa que entra al agua
+      if (flatness) h *= 1 - flatness(x, z);
+      return h;
+    };
+
+    const geometry = new THREE.RingGeometry(radius * 0.015, radius, SEGMENTS, RINGS);
+    const position = geometry.attributes.position;
+    const inlandColor = new THREE.Color(inland);
+    const shoreColor = new THREE.Color(shore);
+    const rockColor = rock != null ? new THREE.Color(rock) : null;
+    const colors = new Float32Array(position.count * 3);
+    const vertexColor = new THREE.Color();
+
+    for (let i = 0; i < position.count; i++) {
+      // El anillo vive en el plano XY y se tumba con rotation.x = -PI/2, que
+      // manda (lx, ly, lz) local a (lx, lz, -ly) en mundo.
+      const lx = position.getX(i);
+      const ly = position.getY(i);
+      const worldX = offsetX + lx;
+      const worldZ = offsetZ - ly;
+      const height = heightAt(worldX, worldZ);
+      position.setZ(i, height);
+
+      const t = Math.min(1, Math.hypot(lx, ly) / radius);
+      // Arena en la franja de costa, tierra adentro en el interior…
+      vertexColor.copy(shoreColor).lerp(inlandColor, smoothstep(0.62, 0.82, 1 - t));
+      // …y roca asomando en las cotas altas, si el escenario la usa.
+      if (rockColor) {
+        vertexColor.lerp(rockColor, smoothstep(amplitude * 0.35, amplitude * 0.9, height));
+      }
+      colors[i * 3] = vertexColor.r;
+      colors[i * 3 + 1] = vertexColor.g;
+      colors[i * 3 + 2] = vertexColor.b;
+    }
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    geometry.computeVertexNormals();
+
+    const island = new THREE.Mesh(
+      geometry,
+      new THREE.MeshLambertMaterial({ vertexColors: true })
+    );
+    island.rotation.x = -Math.PI / 2;
+    island.position.set(offsetX, 0, offsetZ);
+    island.receiveShadow = true;
+    this.scene.add(island);
+
+    return heightAt;
+  }
+
   /** Anillo/arco de conos rocosos: referencia visual de escala, decorativo. */
-  #scatterMountains({ startDeg, endDeg, count, distMin, distMax, heightMin, heightMax, colors, snowLine, random, offsetX = 0, offsetZ = 0 }) {
+  #scatterMountains({ startDeg, endDeg, count, distMin, distMax, heightMin, heightMax, colors, snowLine, random, offsetX = 0, offsetZ = 0, groundAt = null }) {
     for (let i = 0; i < count; i++) {
       const angle = THREE.MathUtils.degToRad(startDeg + (i / count) * (endDeg - startDeg));
       const dist = distMin + random() * (distMax - distMin);
@@ -395,74 +752,110 @@ export class SceneManager {
         new THREE.ConeGeometry(55 + random() * 40, h, 6),
         new THREE.MeshLambertMaterial({ color: colors[i % colors.length] })
       );
-      cone.position.set(offsetX + Math.cos(angle) * dist, h / 2 - 6, offsetZ + Math.sin(angle) * dist);
+      const cx = offsetX + Math.cos(angle) * dist;
+      const cz = offsetZ + Math.sin(angle) * dist;
+      // Con relieve, la base se hunde hasta donde esté el terreno: así no
+      // quedan conos flotando sobre la playa o el agua.
+      const base = groundAt ? Math.min(0, groundAt(cx, cz)) : 0;
+      cone.position.set(cx, base + h / 2 - 6, cz);
       cone.rotation.y = random() * Math.PI;
+      // Sin castShadow a propósito: son el anillo lejano (>700 m) y el
+      // volumen de sombras solo cubre ±160 m alrededor del avión, así que
+      // pagarían el paso de sombras sin aportar un solo píxel.
+      cone.receiveShadow = true;
       this.scene.add(cone);
       if (snowLine != null && h > snowLine) {
         const cap = new THREE.Mesh(
           new THREE.ConeGeometry(20, 38, 6),
           new THREE.MeshBasicMaterial({ color: 0xffffff })
         );
-        cap.position.set(cone.position.x, h - 15, cone.position.z);
+        cap.position.set(cone.position.x, cone.position.y + h / 2 - 15, cone.position.z);
         this.scene.add(cap);
       }
     }
   }
 
-  /** Nubes esparcidas por el cielo: referencia de altitud, decorativas. */
+  /**
+   * Nubes esparcidas por el cielo: referencia de altitud, decorativas.
+   *
+   * Cúmulos de esferas a dos alturas (una capa baja densa y otra alta y
+   * dispersa) con tamaño y opacidad variables. Se tiñen con el color del
+   * horizonte de la paleta para que al atardecer no queden blancas y planas
+   * sobre un cielo naranja.
+   */
   #scatterClouds(count, random) {
+    const tint = new THREE.Color(0xffffff).lerp(new THREE.Color(this.palette.horizon), 0.45);
     const cloudMaterial = new THREE.MeshLambertMaterial({
-      color: 0xffffff,
+      color: tint,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.9,
+      depthWrite: false,
     });
     for (let i = 0; i < count; i++) {
       const cloud = new THREE.Group();
-      const puffCount = 3 + Math.floor(random() * 2);
+      const high = random() > 0.62; // capa alta: más grande y más tenue
+      const puffCount = 5 + Math.floor(random() * 5);
+      const scale = high ? 2.6 + random() * 1.6 : 1 + random() * 0.9;
       for (let p = 0; p < puffCount; p++) {
         const puff = new THREE.Mesh(
-          new THREE.SphereGeometry(9 + random() * 9, 8, 8),
+          new THREE.SphereGeometry(10 + random() * 12, 9, 7),
           cloudMaterial
         );
-        puff.position.set(p * 13 - 16, random() * 4, random() * 8);
+        // Se agrupan en horizontal y se aplastan: un cúmulo real es mucho
+        // más ancho que alto.
+        puff.position.set(
+          (p - puffCount / 2) * (11 + random() * 9),
+          (random() - 0.5) * 9,
+          (random() - 0.5) * 22
+        );
+        puff.scale.set(1, 0.62 + random() * 0.22, 1);
         cloud.add(puff);
       }
+      cloud.scale.setScalar(scale);
       cloud.position.set(
-        (random() - 0.5) * 2600,
-        150 + random() * 200,
-        (random() - 0.5) * 2600 - 150
+        (random() - 0.5) * 3400,
+        (high ? 430 : 165) + random() * 190,
+        (random() - 0.5) * 3400 - 150
       );
+      cloud.rotation.y = random() * Math.PI;
       this.scene.add(cloud);
     }
   }
 
   /** Hangar + torre de control, reutilizados en los escenarios de aeródromo. */
-  #buildAerodromeBuildings({ x, z, hangarColor = 0x8a2f2f, roofColor = 0xc7c9cc, towerColor = 0x345b7a }) {
+  #buildAerodromeBuildings({ x, z, hangarColor = 0x8a2f2f, roofColor = 0xc7c9cc, towerColor = 0x345b7a, groundAt = null }) {
+    const hangarGround = groundAt ? groundAt(x + 65, z - 20) : 0;
     const hangarBody = new THREE.Mesh(
       new THREE.BoxGeometry(36, 13, 24),
       new THREE.MeshLambertMaterial({ color: hangarColor })
     );
-    hangarBody.position.set(x + 65, 6.5, z - 20);
+    hangarBody.position.set(x + 65, hangarGround + 6.5, z - 20);
+    hangarBody.castShadow = true;
+    hangarBody.receiveShadow = true;
     this.scene.add(hangarBody);
     const hangarRoof = new THREE.Mesh(
       new THREE.CylinderGeometry(12, 12, 36, 16, 1, false, 0, Math.PI),
       new THREE.MeshLambertMaterial({ color: roofColor })
     );
     hangarRoof.rotation.z = Math.PI / 2;
-    hangarRoof.position.set(x + 65, 13, z - 20);
+    hangarRoof.position.set(x + 65, hangarGround + 13, z - 20);
+    hangarRoof.castShadow = true;
     this.scene.add(hangarRoof);
 
+    const towerGround = groundAt ? groundAt(x - 55, z - 60) : 0;
     const towerBase = new THREE.Mesh(
       new THREE.CylinderGeometry(3, 4, 40, 10),
       new THREE.MeshLambertMaterial({ color: 0x9a8465 })
     );
-    towerBase.position.set(x - 55, 20, z - 60);
+    towerBase.position.set(x - 55, towerGround + 20, z - 60);
+    towerBase.castShadow = true;
     this.scene.add(towerBase);
     const towerTop = new THREE.Mesh(
       new THREE.CylinderGeometry(8.5, 8.5, 6.5, 10),
       new THREE.MeshLambertMaterial({ color: towerColor })
     );
-    towerTop.position.set(x - 55, 43, z - 60);
+    towerTop.position.set(x - 55, towerGround + 43, z - 60);
+    towerTop.castShadow = true;
     this.scene.add(towerTop);
   }
 
@@ -474,13 +867,17 @@ export class SceneManager {
     const random = makeSeededRandom(Date.now());
     const islandRadius = 950;
 
-    const island = new THREE.Mesh(
-      new THREE.CircleGeometry(islandRadius, 48),
-      new THREE.MeshLambertMaterial({ color: 0xd6a869 })
-    );
-    island.rotation.x = -Math.PI / 2;
-    island.position.set(offsetX, 0, offsetZ);
-    this.scene.add(island);
+    const groundAt = this.#buildIsland({
+      offsetX,
+      offsetZ,
+      radius: islandRadius,
+      inland: 0xc9975a,
+      shore: 0xe8d4a0,
+      rock: 0xa87c4c,
+      amplitude: 18,
+      flatness: makeRectFlatness(offsetX, offsetZ - 430, 520, 130, 0, 260),
+      random,
+    });
 
     const { zone, runway } = this.#buildRunway({
       x: offsetX,
@@ -488,7 +885,7 @@ export class SceneManager {
       length: 900,
       width: 20,
     });
-    this.#buildAerodromeBuildings({ x: offsetX, z: offsetZ });
+    this.#buildAerodromeBuildings({ x: offsetX, z: offsetZ, groundAt });
 
     this.#scatterMountains({
       startDeg: 140,
@@ -503,6 +900,7 @@ export class SceneManager {
       random,
       offsetX,
       offsetZ,
+      groundAt,
     });
     this.#scatterClouds(22, random);
 
@@ -517,13 +915,17 @@ export class SceneManager {
     const random = makeSeededRandom(Date.now());
     const islandRadius = 1000;
 
-    const island = new THREE.Mesh(
-      new THREE.CircleGeometry(islandRadius, 48),
-      new THREE.MeshLambertMaterial({ color: 0x4f7a45 })
-    );
-    island.rotation.x = -Math.PI / 2;
-    island.position.set(offsetX, 0, offsetZ);
-    this.scene.add(island);
+    const groundAt = this.#buildIsland({
+      offsetX,
+      offsetZ,
+      radius: islandRadius,
+      inland: 0x4f7a45,
+      shore: 0x9aa46a,
+      rock: 0x8d8b80,
+      amplitude: 22,
+      flatness: makeRectFlatness(offsetX, offsetZ - 380, 450, 120, 0, 240),
+      random,
+    });
 
     const { zone, runway } = this.#buildRunway({
       x: offsetX,
@@ -543,15 +945,19 @@ export class SceneManager {
           new THREE.ConeGeometry(50 + random() * 30, h, 6),
           new THREE.MeshLambertMaterial({ color: wallColors[i % wallColors.length] })
         );
-        cone.position.set(offsetX + side * dist, h / 2 - 6, offsetZ + z);
+        const cx = offsetX + side * dist;
+        const cz = offsetZ + z;
+        cone.position.set(cx, h / 2 - 6 + Math.min(0, groundAt(cx, cz)), cz);
         cone.rotation.y = random() * Math.PI;
+        cone.castShadow = true;
+        cone.receiveShadow = true;
         this.scene.add(cone);
         if (h > 300) {
           const cap = new THREE.Mesh(
             new THREE.ConeGeometry(18, 34, 6),
             new THREE.MeshBasicMaterial({ color: 0xffffff })
           );
-          cap.position.set(cone.position.x, h - 12, cone.position.z);
+          cap.position.set(cone.position.x, cone.position.y + h / 2 - 12, cone.position.z);
           this.scene.add(cap);
         }
       }
@@ -570,6 +976,7 @@ export class SceneManager {
       random,
       offsetX,
       offsetZ,
+      groundAt,
     });
     this.#scatterClouds(18, random);
 
@@ -584,21 +991,24 @@ export class SceneManager {
     const random = makeSeededRandom(Date.now());
     const islandRadius = 640;
 
-    const island = new THREE.Mesh(
-      new THREE.CircleGeometry(islandRadius, 48),
-      new THREE.MeshLambertMaterial({ color: 0x6a9a52 })
-    );
-    island.rotation.x = -Math.PI / 2;
-    island.position.set(offsetX, 0, offsetZ);
-    this.scene.add(island);
-
-    const beach = new THREE.Mesh(
-      new THREE.RingGeometry(islandRadius - 60, islandRadius, 48),
-      new THREE.MeshLambertMaterial({ color: 0xdfc98a })
-    );
-    beach.rotation.x = -Math.PI / 2;
-    beach.position.set(offsetX, 0.02, offsetZ);
-    this.scene.add(beach);
+    const groundAt = this.#buildIsland({
+      offsetX,
+      offsetZ,
+      radius: islandRadius,
+      inland: 0x6a9a52,
+      shore: 0xe4d3a1,
+      rock: null, // isla baja: sin roca asomando
+      amplitude: 12,
+      flatness: makeRectFlatness(
+        offsetX - 60,
+        offsetZ - 260,
+        380,
+        110,
+        THREE.MathUtils.degToRad(12),
+        200
+      ),
+      random,
+    });
 
     const { zone, runway } = this.#buildRunway({
       x: offsetX - 60,
@@ -616,12 +1026,16 @@ export class SceneManager {
       const x = offsetX + Math.cos(angle) * dist + 250;
       const z = offsetZ + Math.sin(angle) * dist;
       if (zone(x, z)) continue; // no sembrar palmeras encima de la pista
+      const base = groundAt(x, z);
+      if (base < -1) continue; // ni en la playa sumergida
       const trunk = new THREE.Mesh(new THREE.CylinderGeometry(1, 1.4, 10, 6), trunkMaterial);
-      trunk.position.set(x, 5, z);
+      trunk.position.set(x, base + 5, z);
+      trunk.castShadow = true;
       this.scene.add(trunk);
       const leaves = new THREE.Mesh(new THREE.SphereGeometry(4.5, 6, 5), leafMaterial);
-      leaves.position.set(x, 10.5, z);
+      leaves.position.set(x, base + 10.5, z);
       leaves.scale.set(1, 0.5, 1);
+      leaves.castShadow = true;
       this.scene.add(leaves);
     }
 
@@ -630,6 +1044,7 @@ export class SceneManager {
       new THREE.MeshLambertMaterial({ color: 0x7a5a3a })
     );
     pier.position.set(offsetX + islandRadius - 20, 0.3, offsetZ + 200);
+    pier.castShadow = true;
     this.scene.add(pier);
 
     this.#scatterMountains({
@@ -645,6 +1060,7 @@ export class SceneManager {
       random,
       offsetX,
       offsetZ,
+      groundAt,
     });
     this.#scatterClouds(20, random);
 
@@ -667,6 +1083,7 @@ export class SceneManager {
       color: 0x3b4046,
       marginLength: 15,
       marginWidth: 6,
+      apron: false,
     });
 
     const deckEdge = new THREE.Mesh(
@@ -727,6 +1144,16 @@ export class SceneManager {
     this.aircraft.position.copy(state.position);
     this.aircraft.quaternion.copy(state.quaternion);
 
+    // Mar: avanza el reloj del shader de olas y recentra el parche bajo el
+    // avión. El patrón se calcula en coordenadas de mundo, así que mover la
+    // malla NO arrastra las olas — solo mantiene geometría donde se ve.
+    this._waterTime.value += dt;
+    if (this.ocean) {
+      this.ocean.position.x = state.position.x;
+      this.ocean.position.z = state.position.z;
+    }
+    this.#updateSunShadow(state.position);
+
     // Estroboscopio del avión: destello blanco breve una vez por segundo
     this._elapsed += dt;
     const strobe = this.aircraft.userData.strobe;
@@ -769,10 +1196,16 @@ export class SceneManager {
 
   /** Libera memoria GPU al desmontar el componente. */
   dispose() {
+    const disposeMaterial = (material) => {
+      // El disco solar lleva una CanvasTexture propia; el resto de materiales
+      // no tienen mapas, pero comprobarlo es gratis y evita fugas futuras.
+      material.map?.dispose();
+      material.dispose();
+    };
     this.scene.traverse((object) => {
       object.geometry?.dispose();
-      if (Array.isArray(object.material)) object.material.forEach((m) => m.dispose());
-      else object.material?.dispose();
+      if (Array.isArray(object.material)) object.material.forEach(disposeMaterial);
+      else if (object.material) disposeMaterial(object.material);
     });
     this.renderer.dispose();
   }

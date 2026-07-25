@@ -157,7 +157,8 @@
     "textHud": "Text readouts",
     "minimap": "Mini-map",
     "gyro": "Tilt control (gyroscope)",
-    "haptics": "Vibration on stall"
+    "haptics": "Vibration on stall",
+    "shadows": "Shadows (better looks, lower FPS)"
   },
   "approach": {
     "onCourse": "On glide path",

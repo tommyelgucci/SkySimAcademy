@@ -67,7 +67,16 @@ const HUD_INTERVAL = 0.1; // s entre actualizaciones del HUD
 const SCENARIO_KEY = "aerolearn.scenario";
 const TIME_KEY = "aerolearn.timeofday";
 const UI_KEY = "aerolearn.ui";
-/** Grupos de interfaz que el usuario puede ocultar/mostrar en vuelo. */
+/**
+ * Grupos de interfaz que el usuario puede ocultar/mostrar en vuelo, más el
+ * ajuste de calidad `shadows`.
+ *
+ * Las sombras proyectadas son lo más caro de la escena (cada superficie que
+ * las recibe muestrea el mapa por píxel), así que arrancan APAGADAS en
+ * dispositivos táctiles —teléfonos y tablets, donde la GPU es más justa y el
+ * simulador ya compite con los mandos en pantalla— y encendidas en escritorio.
+ * En ambos casos el usuario manda: es un interruptor más del panel de ajustes.
+ */
 const DEFAULT_UI_PREFS = {
   instruments: true,
   yoke: true,
@@ -75,6 +84,7 @@ const DEFAULT_UI_PREFS = {
   textHud: true,
   minimap: true,
   haptics: true,
+  shadows: !hasCoarsePointer(),
 };
 /** Fracción del radio del mapa a partir de la cual se avisa del límite. */
 const BOUNDARY_WARN_RATIO = 0.8;
@@ -247,6 +257,18 @@ export default function SimulatorView({ onExit }) {
     hapticsRef.current = uiPrefs.haptics;
   }, [uiPrefs.haptics]);
 
+  // Los ajustes se leen por ref al construir la escena, para que cambiarlos
+  // NO entre en las dependencias del efecto de vuelo (eso reiniciaría el vuelo)
+  const uiPrefsRef = useRef(uiPrefs);
+  useEffect(() => {
+    uiPrefsRef.current = uiPrefs;
+  }, [uiPrefs]);
+
+  // Sombras: se aplican sobre la escena viva, sin reconstruirla
+  useEffect(() => {
+    sceneRef.current?.setShadowsEnabled(uiPrefs.shadows);
+  }, [uiPrefs.shadows]);
+
   const togglePause = () => {
     setPaused((prev) => {
       const next = !prev;
@@ -265,7 +287,9 @@ export default function SimulatorView({ onExit }) {
     // Vuelo libre explora un archipiélago disperso de mapa mucho más grande,
     // sin importar el escenario elegido en el selector (ver SceneManager).
     const sceneScenario = mission.id === "free-flight" ? FREE_ROAM_SCENARIO : scenario;
-    const scene = new SceneManager(canvasRef.current, sceneScenario, timeOfDay);
+    const scene = new SceneManager(canvasRef.current, sceneScenario, timeOfDay, {
+      shadows: uiPrefsRef.current.shadows,
+    });
     sceneRef.current = scene;
     setCameraView("external");
     const terrain = scene.getTerrain(); // pistas + límite del mapa
@@ -571,7 +595,7 @@ export default function SimulatorView({ onExit }) {
           {settingsOpen && (
             <div className="ui-settings">
               <h2>{t("uiSettings.title")}</h2>
-              {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics"].map((key) => (
+              {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics", "shadows"].map((key) => (
                 <button
                   key={key}
                   className="ui-settings__row"

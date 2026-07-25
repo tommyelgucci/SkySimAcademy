@@ -157,7 +157,8 @@
     "textHud": "Dados de texto",
     "minimap": "Mini-mapa",
     "gyro": "Controle por inclinação (giroscópio)",
-    "haptics": "Vibração no estol"
+    "haptics": "Vibração no estol",
+    "shadows": "Sombras (visual melhor, menos FPS)"
   },
   "approach": {
     "onCourse": "Na rampa",

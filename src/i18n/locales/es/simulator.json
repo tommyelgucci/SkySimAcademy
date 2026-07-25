@@ -157,7 +157,8 @@
     "textHud": "Datos de texto",
     "minimap": "Mini-mapa",
     "gyro": "Control por inclinación (giroscopio)",
-    "haptics": "Vibración en la pérdida"
+    "haptics": "Vibración en la pérdida",
+    "shadows": "Sombras (mejor aspecto, menos FPS)"
   },
   "approach": {
     "onCourse": "En senda",

@@ -157,7 +157,8 @@
     "textHud": "Textanzeigen",
     "minimap": "Mini-Karte",
     "gyro": "Neigungssteuerung (Gyroskop)",
-    "haptics": "Vibration bei Strömungsabriss"
+    "haptics": "Vibration bei Strömungsabriss",
+    "shadows": "Schatten (schöner, weniger FPS)"
   },
   "approach": {
     "onCourse": "Auf dem Gleitpfad",
