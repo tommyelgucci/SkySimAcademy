@@ -12,7 +12,25 @@
     "welcome": "Welcome aboard",
     "intro": "Master the basics of flight with short theory modules, then put them into practice in the 3D mini simulator.",
     "startTheory": "Start with the theory",
-    "openSimulator": "Open the simulator"
+    "openSimulator": "Open the simulator",
+    "highlights": {
+      "theory": {
+        "value": "{{modules}} modules · {{lessons}} lessons",
+        "label": "Deep ground-school course with quizzes and explanations"
+      },
+      "simulator": {
+        "value": "{{missions}} missions",
+        "label": "3D flight simulator to practise what you just read"
+      },
+      "flashcards": {
+        "value": "{{cards}} flashcards",
+        "label": "Cockpit instruments and real cabin audio alerts"
+      },
+      "languages": {
+        "value": "{{count}} languages",
+        "label": "Genuinely translated, with full right-to-left Arabic"
+      }
+    }
   },
   "actions": {
     "back": "Back",

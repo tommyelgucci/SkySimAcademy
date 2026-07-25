@@ -12,7 +12,25 @@
     "welcome": "Willkommen an Bord",
     "intro": "Lerne die Grundlagen des Fliegens in kurzen Theoriemodulen und wende sie anschließend im 3D-Mini-Simulator an.",
     "startTheory": "Mit der Theorie beginnen",
-    "openSimulator": "Simulator öffnen"
+    "openSimulator": "Simulator öffnen",
+    "highlights": {
+      "theory": {
+        "value": "{{modules}} Module · {{lessons}} Lektionen",
+        "label": "Ausführlicher Theoriekurs mit Quiz und Erklärungen"
+      },
+      "simulator": {
+        "value": "{{missions}} Missionen",
+        "label": "3D-Flugsimulator, um das Gelesene gleich zu üben"
+      },
+      "flashcards": {
+        "value": "{{cards}} Karteikarten",
+        "label": "Cockpit-Instrumente und echte akustische Warnsignale"
+      },
+      "languages": {
+        "value": "{{count}} Sprachen",
+        "label": "Echt übersetzt, mit vollständigem RTL für Arabisch"
+      }
+    }
   },
   "actions": {
     "back": "Zurück",

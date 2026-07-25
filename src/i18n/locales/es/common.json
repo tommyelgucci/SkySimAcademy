@@ -12,7 +12,25 @@
     "welcome": "Bienvenido a bordo",
     "intro": "Domina los fundamentos del vuelo con módulos de teoría cortos y ponlos en práctica en el mini simulador 3D.",
     "startTheory": "Empezar con la teoría",
-    "openSimulator": "Abrir el simulador"
+    "openSimulator": "Abrir el simulador",
+    "highlights": {
+      "theory": {
+        "value": "{{modules}} módulos · {{lessons}} lecciones",
+        "label": "Curso de teoría profundo con quizzes y explicaciones"
+      },
+      "simulator": {
+        "value": "{{missions}} misiones",
+        "label": "Simulador de vuelo 3D para practicar lo que acabas de leer"
+      },
+      "flashcards": {
+        "value": "{{cards}} flashcards",
+        "label": "Instrumentos de cabina y alertas de audio reales"
+      },
+      "languages": {
+        "value": "{{count}} idiomas",
+        "label": "Traducidos de verdad, con árabe RTL completo"
+      }
+    }
   },
   "actions": {
     "back": "Volver",
