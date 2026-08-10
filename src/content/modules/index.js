@@ -17,6 +17,7 @@ import emergencyProcedures from "./emergency-procedures.json";
 import weightAndBalance from "./weight-and-balance.json";
 import regulations from "./regulations.json";
 import humanFactors from "./human-factors.json";
+import flightPlanning from "./flight-planning.json";
 
 export const MODULES = [
   principlesOfFlight,
@@ -29,6 +30,7 @@ export const MODULES = [
   weightAndBalance,
   regulations,
   humanFactors,
+  flightPlanning,
 ]
   .map(deriveModuleQuiz)
   .map(validateModule)
