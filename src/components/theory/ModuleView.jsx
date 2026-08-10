@@ -42,8 +42,7 @@ export default function ModuleView({ moduleId, onBack }) {
   return (
     <section className="module">
       <button className="button button--ghost" onClick={onBack}>
-        <ArrowLeft size={18} className="rtl-flip" aria-hidden="true" />{" "}
-        {t("common:actions.back")}
+        <ArrowLeft size={18} className="rtl-flip" aria-hidden="true" /> {t("common:actions.back")}
       </button>
 
       <p className="module__eyebrow">
@@ -72,16 +71,11 @@ export default function ModuleView({ moduleId, onBack }) {
         <div className="lesson__callout lesson__callout--simtip">
           <Joystick size={18} aria-hidden="true" />
           <p>
-            <strong>{t("simTipLabel")}:</strong>{" "}
-            {t(`${keyBase}.lessons.${lesson.id}.simTip`)}
+            <strong>{t("simTipLabel")}:</strong> {t(`${keyBase}.lessons.${lesson.id}.simTip`)}
           </p>
         </div>
 
-        <LessonQuiz
-          moduleId={module.id}
-          lessonId={lesson.id}
-          questions={lesson.quiz.questions}
-        />
+        <LessonQuiz key={lesson.id} moduleId={module.id} questions={lesson.quiz.questions} />
       </article>
 
       <div className="module__nav">
@@ -94,14 +88,10 @@ export default function ModuleView({ moduleId, onBack }) {
         </button>
         {isLast ? (
           <button className="button button--primary" onClick={() => setInQuiz(true)}>
-            {t("goToQuiz")}{" "}
-            <ArrowRight size={18} className="rtl-flip" aria-hidden="true" />
+            {t("goToQuiz")} <ArrowRight size={18} className="rtl-flip" aria-hidden="true" />
           </button>
         ) : (
-          <button
-            className="button button--primary"
-            onClick={() => setLessonIndex((i) => i + 1)}
-          >
+          <button className="button button--primary" onClick={() => setLessonIndex((i) => i + 1)}>
             {t("common:actions.next")}
           </button>
         )}

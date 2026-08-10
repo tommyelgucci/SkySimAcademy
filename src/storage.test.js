@@ -44,9 +44,7 @@ afterEach(() => {
 describe("repetición espaciada (SRS)", () => {
   it("una pregunta recién fallada queda pendiente de repaso de inmediato", () => {
     recordFailedQuestion("principles-of-flight", "q1");
-    expect(getFailedQuestions()).toEqual([
-      { moduleId: "principles-of-flight", questionId: "q1" },
-    ]);
+    expect(getFailedQuestions()).toEqual([{ moduleId: "principles-of-flight", questionId: "q1" }]);
   });
 
   it("acertar una pregunta nunca fallada no hace nada (no hay nada que dominar)", () => {
@@ -61,9 +59,7 @@ describe("repetición espaciada (SRS)", () => {
     expect(getFailedQuestions()).toEqual([]);
 
     vi.setSystemTime(new Date(Date.now() + DAY_MS + 1000));
-    expect(getFailedQuestions()).toEqual([
-      { moduleId: "principles-of-flight", questionId: "q1" },
-    ]);
+    expect(getFailedQuestions()).toEqual([{ moduleId: "principles-of-flight", questionId: "q1" }]);
   });
 
   it("subir de nivel repetidamente aumenta el intervalo hasta considerarla dominada", () => {
@@ -82,9 +78,7 @@ describe("repetición espaciada (SRS)", () => {
     recordFailedQuestion("principles-of-flight", "q1");
     clearFailedQuestion("principles-of-flight", "q1"); // nivel 1, vence en 1 día
     recordFailedQuestion("principles-of-flight", "q1"); // fallo de nuevo: vuelve a nivel 0
-    expect(getFailedQuestions()).toEqual([
-      { moduleId: "principles-of-flight", questionId: "q1" },
-    ]);
+    expect(getFailedQuestions()).toEqual([{ moduleId: "principles-of-flight", questionId: "q1" }]);
   });
 });
 

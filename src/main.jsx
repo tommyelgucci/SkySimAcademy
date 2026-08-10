@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
         <App />
       </Suspense>
     </ErrorBoundary>
-  </StrictMode>
+  </StrictMode>,
 );
 
 // PWA: registrar el service worker relativo a esta app (alcance

@@ -27,11 +27,7 @@
   "instruments": {
     "airspeed-id": {
       "question": "¿Qué instrumento se muestra aquí?",
-      "options": [
-        "Anemómetro (indicador de velocidad)",
-        "Altímetro",
-        "Indicador de viraje"
-      ],
+      "options": ["Anemómetro (indicador de velocidad)", "Altímetro", "Indicador de viraje"],
       "explanation": "La aguja recorre un arco de 270° con bandas verde (rango normal de operación) y amarilla (precaución) y una línea radial roja para la velocidad de pérdida — es el anemómetro, el primer instrumento a revisar para mantener un margen seguro por encima de la pérdida."
     },
     "airspeed-read": {
@@ -45,11 +41,7 @@
     },
     "attitude-id": {
       "question": "¿Qué instrumento se muestra aquí?",
-      "options": [
-        "Horizonte artificial (indicador de actitud)",
-        "Brújula",
-        "Variómetro"
-      ],
+      "options": ["Horizonte artificial (indicador de actitud)", "Brújula", "Variómetro"],
       "explanation": "Un \"cielo\" azul sobre una \"tierra\" marrón separados por una línea de horizonte, con un símbolo fijo del avión en el centro — es el horizonte artificial, que muestra cabeceo y alabeo de un vistazo."
     },
     "attitude-read": {
@@ -63,20 +55,12 @@
     },
     "altimeter-id": {
       "question": "¿Qué instrumento se muestra aquí?",
-      "options": [
-        "Altímetro",
-        "Anemómetro",
-        "Brújula"
-      ],
+      "options": ["Altímetro", "Anemómetro", "Brújula"],
       "explanation": "Una aguja que da una vuelta completa cada 1000 m de altitud, con una lectura digital en el centro — es el altímetro."
     },
     "altimeter-read": {
       "question": "¿Qué altitud muestra aproximadamente este altímetro?",
-      "options": [
-        "Justo por debajo de 1000 m",
-        "Exactamente 100 m",
-        "Unos 10 000 m"
-      ],
+      "options": ["Justo por debajo de 1000 m", "Exactamente 100 m", "Unos 10 000 m"],
       "explanation": "La aguja casi ha completado una vuelta completa de la esfera, y la lectura digital lo confirma: justo por debajo de 1000 m, coincidiendo con una vuelta completa de la aguja."
     },
     "variometer-id": {
@@ -99,20 +83,12 @@
     },
     "compass-id": {
       "question": "¿Qué instrumento se muestra aquí?",
-      "options": [
-        "Brújula / indicador de rumbo",
-        "Altímetro",
-        "Horizonte artificial"
-      ],
+      "options": ["Brújula / indicador de rumbo", "Altímetro", "Horizonte artificial"],
       "explanation": "Una rosa giratoria con N/E/S/O bajo un puntero fijo arriba — es la brújula, que muestra el rumbo actual de la aeronave."
     },
     "compass-read": {
       "question": "¿Qué rumbo muestra esta brújula?",
-      "options": [
-        "Oeste (270°)",
-        "Norte (0°)",
-        "Sur (180°)"
-      ],
+      "options": ["Oeste (270°)", "Norte (0°)", "Sur (180°)"],
       "explanation": "El puntero fijo de arriba se alinea con la O en la rosa giratoria — la aeronave lleva rumbo 270°, oeste."
     }
   },

@@ -105,14 +105,14 @@ export class SoundEngine {
     this.engineGain.gain.setTargetAtTime(
       engine.crashed ? 0 : 0.035 + engine.throttle * 0.11,
       t,
-      0.1
+      0.1,
     );
 
     // Viento: crece cuadráticamente con la velocidad
     this.windGain.gain.setTargetAtTime(
       engine.crashed ? 0 : speedFactor * speedFactor * 0.14,
       t,
-      0.15
+      0.15,
     );
 
     // Pérdida: pitido intermitente ~4 Hz
@@ -127,8 +127,7 @@ export class SoundEngine {
     const burst = ctx.createBufferSource();
     const buffer = ctx.createBuffer(1, ctx.sampleRate * 0.6, ctx.sampleRate);
     const data = buffer.getChannelData(0);
-    for (let i = 0; i < data.length; i++)
-      data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+    for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
     burst.buffer = buffer;
     const gain = ctx.createGain();
     gain.gain.setValueAtTime(0.5, ctx.currentTime);
@@ -166,8 +165,7 @@ export class SoundEngine {
     } catch {
       /* sin almacenamiento: solo afecta a la sesión */
     }
-    if (this.ctx)
-      this.master.gain.setTargetAtTime(muted ? 0 : 1, this.ctx.currentTime, 0.05);
+    if (this.ctx) this.master.gain.setTargetAtTime(muted ? 0 : 1, this.ctx.currentTime, 0.05);
   }
 
   /** Congela el audio en pausa (independiente del mute del usuario). */
