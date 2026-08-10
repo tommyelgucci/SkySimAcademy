@@ -24,17 +24,27 @@ historial de sesiones de trabajo y decisiones recientes, ver
 
 ```bash
 npm install
-npm run dev         # servidor de desarrollo
+npm run dev          # servidor de desarrollo
 npm run build        # build de producción → dist/
 npm run preview      # sirve el build de producción
-npm test              # vitest run (FlightEngine, MissionTracker, FlightEvaluator, storage, Quiz)
+npm test             # vitest run (FlightEngine, MissionTracker, FlightEvaluator, storage, componentes)
 npm run check:i18n   # valida que los 5 idiomas tengan las mismas claves y que los módulos cumplan el esquema
+npm run lint         # ESLint (eslint.config.js)
+npm run format       # Prettier — reescribe los archivos
+npm run format:check # Prettier — solo verifica, no toca nada (el que corre CI)
 ```
 
-**Antes de dar por terminado cualquier cambio, corre los tres**: `npm test`,
-`npm run check:i18n` y `npm run build`. Es exactamente lo que corre
-`.github/workflows/ci.yml` en cada push/PR — si falla ahí, falla en local
-primero.
+**Antes de dar por terminado cualquier cambio, corre los cinco**: `npm run
+lint`, `npm run format:check`, `npm run check:i18n`, `npm test` y `npm run
+build`. Es exactamente lo que corre `.github/workflows/ci.yml` en cada
+push/PR — si falla ahí, falla en local primero.
+
+**Sobre las reglas de ESLint en warn en vez de error** (`react-hooks/refs`,
+`react-hooks/set-state-in-effect`, comentado en `eslint.config.js`): son
+reglas de "preparación para el React Compiler" que el proyecto no usa; no
+las subas a error sin revisar caso por caso — varias de las instancias
+existentes son patrones que la propia documentación de React recomienda
+(ref perezosa, sincronizar estado con un sistema externo desde un efecto).
 
 ## Convenciones que no hay que romper
 
@@ -88,7 +98,7 @@ primero.
 
 ```
 src/App.jsx                    mini-router por estado (home/theory/module/simulator/…)
-src/content/modules/*.json     estructura de los 10 módulos de teoría
+src/content/modules/*.json     estructura de los 11 módulos de teoría
 src/content/missions/index.js  misiones del simulador + requiresModule
 src/content/levels/index.js    4 niveles/licencias de la escuela de vuelo
 src/content/flashcards/index.js  2 mazos de flashcards
