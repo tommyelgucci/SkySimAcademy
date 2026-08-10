@@ -32,7 +32,7 @@ const flatten = (obj, prefix = "") =>
   Object.entries(obj).flatMap(([key, value]) =>
     typeof value === "object" && value !== null && !Array.isArray(value)
       ? flatten(value, `${prefix}${key}.`)
-      : [`${prefix}${key}`]
+      : [`${prefix}${key}`],
   );
 
 let failures = 0;
@@ -46,8 +46,7 @@ for (const ns of NAMESPACES) {
   const reference = new Set(flatten(load(`src/i18n/locales/en/${ns}.json`)));
   for (const lang of LANGS.filter((l) => l !== "en")) {
     const keys = new Set(flatten(load(`src/i18n/locales/${lang}/${ns}.json`)));
-    for (const k of reference)
-      if (!keys.has(k)) fail(`[${lang}/${ns}] falta la clave: ${k}`);
+    for (const k of reference) if (!keys.has(k)) fail(`[${lang}/${ns}] falta la clave: ${k}`);
     for (const k of keys)
       if (!reference.has(k)) fail(`[${lang}/${ns}] clave sobrante (no está en en): ${k}`);
   }
@@ -55,7 +54,7 @@ for (const ns of NAMESPACES) {
 
 // --- 2. Estructura de módulos ↔ textos de teoría ----------------------
 const moduleFiles = readdirSync(join(root, "src/content/modules")).filter((f) =>
-  f.endsWith(".json")
+  f.endsWith(".json"),
 );
 const modules = moduleFiles.map((f) => load(`src/content/modules/${f}`));
 
@@ -117,8 +116,7 @@ for (const lang of LANGS) {
   const theory = load(`src/i18n/locales/${lang}/theory.json`);
   for (const id of DIAGRAM_IDS) {
     const labels = theory.diagrams?.[id];
-    if (!labels?.caption || !labels?.alt)
-      fail(`[${lang}] diagrama sin caption/alt: ${id}`);
+    if (!labels?.caption || !labels?.alt) fail(`[${lang}] diagrama sin caption/alt: ${id}`);
   }
 }
 
@@ -151,5 +149,5 @@ if (failures) {
 }
 console.log(
   `✓ i18n OK: ${LANGS.length} idiomas × ${NAMESPACES.length} namespaces, ${modules.length} módulos, ` +
-    `${INSTRUMENT_FLASHCARDS.length + AUDIO_FLASHCARDS.length} flashcards.`
+    `${INSTRUMENT_FLASHCARDS.length + AUDIO_FLASHCARDS.length} flashcards.`,
 );

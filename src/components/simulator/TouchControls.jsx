@@ -20,10 +20,7 @@ const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
 /** ¿El dispositivo tiene entrada táctil / puntero grueso? */
 export function hasCoarsePointer() {
-  return (
-    window.matchMedia?.("(pointer: coarse)").matches ||
-    navigator.maxTouchPoints > 0
-  );
+  return window.matchMedia?.("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
 }
 
 export default function TouchControls({ inputRef, showYoke = true, showRudder = true }) {

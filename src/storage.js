@@ -149,8 +149,7 @@ export function getSrsSummary() {
  */
 export function isLevelComplete(level) {
   return (
-    level.missionIds.every(isMissionComplete) &&
-    (level.requiresModules ?? []).every(isModulePassed)
+    level.missionIds.every(isMissionComplete) && (level.requiresModules ?? []).every(isModulePassed)
   );
 }
 

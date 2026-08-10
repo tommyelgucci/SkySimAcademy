@@ -7,16 +7,12 @@ import { LANGUAGES } from "../i18n";
 
 export default function LanguageSwitcher() {
   const { i18n, t } = useTranslation();
-  const current =
-    LANGUAGES.find((l) => i18n.resolvedLanguage?.startsWith(l.code))?.code ?? "en";
+  const current = LANGUAGES.find((l) => i18n.resolvedLanguage?.startsWith(l.code))?.code ?? "en";
 
   return (
     <label className="lang-switcher">
       <span className="visually-hidden">{t("language")}</span>
-      <select
-        value={current}
-        onChange={(event) => i18n.changeLanguage(event.target.value)}
-      >
+      <select value={current} onChange={(event) => i18n.changeLanguage(event.target.value)}>
         {LANGUAGES.map(({ code, label }) => (
           <option key={code} value={code}>
             {label}

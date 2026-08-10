@@ -87,11 +87,7 @@
         },
         "four-forces-q3": {
           "question": "Welche Kraft hängt als einzige nicht davon ab, dass sich der Flügel durch die Luft bewegt?",
-          "options": [
-            "Gewicht",
-            "Auftrieb",
-            "Widerstand"
-          ],
+          "options": ["Gewicht", "Auftrieb", "Widerstand"],
           "explanation": "Gewicht entsteht allein aus der Schwerkraft, die auf die Masse des Flugzeugs wirkt — es existiert, ob das Flugzeug sich bewegt oder stillsteht. Auftrieb und Widerstand entstehen nur, weil Luft über den Flügel strömt."
         },
         "lift-and-airfoils-q1": {
@@ -123,11 +119,7 @@
         },
         "three-axes-q1": {
           "question": "Welche Steuerfläche ist hauptsächlich für das Rollen zuständig?",
-          "options": [
-            "Die Querruder",
-            "Das Höhenruder",
-            "Das Seitenruder"
-          ],
+          "options": ["Die Querruder", "Das Höhenruder", "Das Seitenruder"],
           "explanation": "Die Querruder schlagen an jedem Flügel gegensätzlich aus, verändern den Auftrieb unterschiedlich und rollen das Flugzeug um seine Längsachse."
         },
         "three-axes-q2": {
@@ -141,20 +133,12 @@
         },
         "three-axes-q3": {
           "question": "Die Drehung um die Querachse (von Flügelspitze zu Flügelspitze) nennt man…",
-          "options": [
-            "Nicken",
-            "Rollen",
-            "Gieren"
-          ],
+          "options": ["Nicken", "Rollen", "Gieren"],
           "explanation": "Die Querachse verläuft von Flügelspitze zu Flügelspitze; die Drehung darum — Nase hoch oder runter — ist das Nicken, gesteuert durch das Höhenruder."
         },
         "speed-and-stall-q1": {
           "question": "Was steuert der Gashebel als einfaches Grundmodell in erster Linie?",
-          "options": [
-            "Die Steig- oder Sinkrate",
-            "Die Querlage",
-            "Den Steuerkurs"
-          ],
+          "options": ["Die Steig- oder Sinkrate", "Die Querlage", "Den Steuerkurs"],
           "explanation": "Mehr Leistung gibt dem Flugzeug die Energie zum Steigen (oder um beim Steigen die Geschwindigkeit zu halten); reduziert man sie ohne Änderung der Fluglage, sinkt das Flugzeug, weil es Höhe gegen Fahrt eintauscht."
         },
         "speed-and-stall-q2": {
@@ -177,11 +161,7 @@
         },
         "load-factor-and-turns-q1": {
           "question": "Was passiert mit dem Lastvielfachen, wenn die Querlage in einer horizontalen Kurve zunimmt?",
-          "options": [
-            "Es steigt",
-            "Es bleibt gleich",
-            "Es sinkt"
-          ],
+          "options": ["Es steigt", "Es bleibt gleich", "Es sinkt"],
           "explanation": "Eine steilere Querlage erfordert mehr Gesamtauftrieb, um die Höhe zu halten, während ein Teil des Auftriebs zum Kurven verwendet wird, sodass das Lastvielfache mit der Querlage steigt."
         },
         "load-factor-and-turns-q2": {
@@ -308,11 +288,7 @@
       "quiz": {
         "altimeter-q1": {
           "question": "Was misst der Höhenmesser tatsächlich, um die Höhe zu bestimmen?",
-          "options": [
-            "Luftdruck",
-            "Triebwerksdrehzahl",
-            "Geschwindigkeit über Grund"
-          ],
+          "options": ["Luftdruck", "Triebwerksdrehzahl", "Geschwindigkeit über Grund"],
           "explanation": "Der Höhenmesser erfasst den Außenluftdruck und wandelt den vorhersehbaren Druckabfall mit der Höhe in eine Höhenanzeige um."
         },
         "altimeter-q2": {
@@ -416,11 +392,7 @@
         },
         "compass-and-heading-q1": {
           "question": "Welcher Steuerkurs entspricht genau Westen?",
-          "options": [
-            "270°",
-            "90°",
-            "180°"
-          ],
+          "options": ["270°", "90°", "180°"],
           "explanation": "Steuerkurse werden im Uhrzeigersinn ab Norden gemessen: 0°/360° Norden, 90° Osten, 180° Süden und 270° Westen."
         },
         "compass-and-heading-q2": {
@@ -840,11 +812,7 @@
         },
         "numbers-on-the-radio-q1": {
           "question": "Wie wird Piste 27 im Funk gesprochen?",
-          "options": [
-            "Zwei sieben",
-            "Siebenundzwanzig",
-            "Piste B"
-          ],
+          "options": ["Zwei sieben", "Siebenundzwanzig", "Piste B"],
           "explanation": "Zahlen werden in der Luftfahrt-Funkkommunikation Ziffer für Ziffer gelesen, daher ist 27 'zwei sieben', nie das zusammengesetzte Wort 'siebenundzwanzig'."
         },
         "numbers-on-the-radio-q2": {
@@ -867,11 +835,7 @@
         },
         "radio-call-structure-q1": {
           "question": "Was kommt typischerweise zuerst in einem Standard-Funkspruch?",
-          "options": [
-            "Wen du rufst",
-            "Deine genaue Höhe",
-            "Deine geplante Landezeit"
-          ],
+          "options": ["Wen du rufst", "Deine genaue Höhe", "Deine geplante Landezeit"],
           "explanation": "Mit dem Angerufenen zu beginnen stellt sicher, dass die richtigen Zuhörer sofort aufmerksam werden und wissen, dass die Sendung für sie relevant ist."
         },
         "radio-call-structure-q2": {
@@ -1309,11 +1273,7 @@
         },
         "lift-drag-ratio-and-gliding-q3": {
           "question": "Was ist während eines Gleitflugs bei Triebwerksausfall das primäre Werkzeug zur Steuerung der Fluggeschwindigkeit?",
-          "options": [
-            "Die Fluglage",
-            "Die Leistung",
-            "Das Seitenruder"
-          ],
+          "options": ["Die Fluglage", "Die Leistung", "Das Seitenruder"],
           "explanation": "Ohne verfügbare Triebwerksleistung steuert die Fluglage die Fluggeschwindigkeit während eines Gleitflugs — deshalb ist das präzise Halten der besten Gleitfluglage die Kernfertigkeit bei Triebwerksausfall."
         },
         "v-speeds-and-load-limits-q1": {
@@ -1327,11 +1287,7 @@
         },
         "v-speeds-and-load-limits-q2": {
           "question": "Was passiert mit Va, wenn das Gewicht des Flugzeugs abnimmt?",
-          "options": [
-            "Va sinkt",
-            "Va steigt",
-            "Va bleibt genau gleich"
-          ],
+          "options": ["Va sinkt", "Va steigt", "Va bleibt genau gleich"],
           "explanation": "Ein leichteres Flugzeug überzieht bei einer niedrigeren Geschwindigkeit, daher ist auch die Geschwindigkeit, bei der es überzieht, bevor die Struktur überlastet wird — Va —, entsprechend niedriger."
         },
         "v-speeds-and-load-limits-q3": {

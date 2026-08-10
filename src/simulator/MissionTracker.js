@@ -32,9 +32,7 @@ export class MissionTracker {
           break;
         }
         // Diferencia angular mínima (maneja el cruce 359°→0°)
-        const diff = Math.abs(
-          ((engine.heading - this.goal.target + 540) % 360) - 180
-        );
+        const diff = Math.abs(((engine.heading - this.goal.target + 540) % 360) - 180);
         if (diff <= this.goal.tolerance) {
           this.holdTime += dt;
           if (this.holdTime >= this.goal.holdSeconds) this.done = true;
@@ -46,12 +44,7 @@ export class MissionTracker {
 
       case "landing":
         if (engine.altitude >= this.goal.minAltitude) this.wasAirborne = true;
-        if (
-          this.wasAirborne &&
-          engine.grounded &&
-          !engine.crashed &&
-          engine.airspeed < 6
-        ) {
+        if (this.wasAirborne && engine.grounded && !engine.crashed && engine.airspeed < 6) {
           this.done = true;
         }
         break;

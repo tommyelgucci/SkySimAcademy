@@ -119,11 +119,7 @@ export class FlightEngine {
       const maxStep = FLIGHT.THROTTLE_RATE * 2 * dt;
       this.throttle += clamp(target - this.throttle, -maxStep, maxStep);
     } else {
-      this.throttle = clamp(
-        this.throttle + this.input.throttle * FLIGHT.THROTTLE_RATE * dt,
-        0,
-        1
-      );
+      this.throttle = clamp(this.throttle + this.input.throttle * FLIGHT.THROTTLE_RATE * dt, 0, 1);
     }
     const targetSpeed = this.throttle * FLIGHT.MAX_SPEED;
     this.airspeed += (targetSpeed - this.airspeed) * 0.45 * dt;
@@ -173,8 +169,7 @@ export class FlightEngine {
     _velocity.y += sink;
     this.verticalSpeed = _velocity.y;
     this.position.addScaledVector(_velocity, dt);
-    this.distance +=
-      Math.hypot(_velocity.x, _velocity.z) * dt * (this.grounded ? 0 : 1);
+    this.distance += Math.hypot(_velocity.x, _velocity.z) * dt * (this.grounded ? 0 : 1);
 
     // --- Límite del mapa ---------------------------------------------------
     // Todos los escenarios están rodeados de océano abierto: alejarse

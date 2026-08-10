@@ -107,11 +107,7 @@ export class FlightEvaluator {
   #evaluateGlideslope(engine) {
     const inactive = { active: false, status: "onCourse", deviation: 0 };
     const runway = this.#nearestRunway(engine.position.x, engine.position.z);
-    const { localX, localZ } = toRunwayLocal(
-      runway,
-      engine.position.x,
-      engine.position.z
-    );
+    const { localX, localZ } = toRunwayLocal(runway, engine.position.x, engine.position.z);
 
     // Distancia hasta la cabecera más próxima a lo largo del eje
     const distToThreshold = Math.abs(localZ) - runway.length / 2;
@@ -126,25 +122,17 @@ export class FlightEvaluator {
     // Solo cuenta como aproximación si el morro apunta hacia la pista
     const towardRunway = Math.sign(-localZ); // sentido hacia el centro
     const headingToRunway =
-      ((Math.atan2(
-        runway.x - engine.position.x,
-        -(runway.z - engine.position.z)
-      ) *
-        180) /
-        Math.PI +
+      ((Math.atan2(runway.x - engine.position.x, -(runway.z - engine.position.z)) * 180) / Math.PI +
         360) %
       360;
-    const headingDiff = Math.abs(
-      ((engine.heading - headingToRunway + 540) % 360) - 180
-    );
+    const headingDiff = Math.abs(((engine.heading - headingToRunway + 540) % 360) - 180);
     if (headingDiff > 60 || towardRunway === 0) return inactive;
 
     // Desviación respecto a la senda de 3°: + = alto, − = bajo
     const ideal = distToThreshold * GLIDESLOPE_TAN;
     const deviation = engine.altitude - ideal;
     const tolerance = Math.max(8, distToThreshold * 0.022);
-    const status =
-      deviation > tolerance ? "high" : deviation < -tolerance ? "low" : "onCourse";
+    const status = deviation > tolerance ? "high" : deviation < -tolerance ? "low" : "onCourse";
     return { active: true, status, deviation: Math.round(deviation) };
   }
 

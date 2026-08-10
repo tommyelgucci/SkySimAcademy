@@ -19,16 +19,10 @@ export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview, onO
           <GraduationCap size={22} aria-hidden="true" />
           <span className="study-tool__text">
             <span className="study-tool__title">{t("exam:exam.entry")}</span>
-            <span className="study-tool__description">
-              {t("exam:exam.entryDescription")}
-            </span>
+            <span className="study-tool__description">{t("exam:exam.entryDescription")}</span>
           </span>
         </button>
-        <button
-          className="study-tool"
-          disabled={failedCount === 0}
-          onClick={onOpenReview}
-        >
+        <button className="study-tool" disabled={failedCount === 0} onClick={onOpenReview}>
           <RotateCcw size={22} aria-hidden="true" />
           <span className="study-tool__text">
             <span className="study-tool__title">{t("exam:review.entry")}</span>
@@ -43,9 +37,7 @@ export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview, onO
           <BarChart3 size={22} aria-hidden="true" />
           <span className="study-tool__text">
             <span className="study-tool__title">{t("exam:stats.entry")}</span>
-            <span className="study-tool__description">
-              {t("exam:stats.entryDescription")}
-            </span>
+            <span className="study-tool__description">{t("exam:stats.entryDescription")}</span>
           </span>
         </button>
       </div>
@@ -64,15 +56,11 @@ export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview, onO
               <span className="module-card__icon">
                 <ContentIcon name={module.icon} size={30} />
               </span>
-              <span className="module-card__title">
-                {t(`modules.${module.id}.title`)}
-              </span>
+              <span className="module-card__title">{t(`modules.${module.id}.title`)}</span>
               <span className="module-card__description">
                 {t(`modules.${module.id}.description`)}
               </span>
-              {!available && (
-                <span className="module-card__badge">{t("comingSoon")}</span>
-              )}
+              {!available && <span className="module-card__badge">{t("comingSoon")}</span>}
               {passed && (
                 <span className="module-card__badge module-card__badge--passed">
                   <Check size={12} aria-hidden="true" /> {t("passedTag")}

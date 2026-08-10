@@ -12,6 +12,7 @@ commit.
 ## 2026-08-10 — Revisión de estado + documentación de contexto
 
 **Qué se hizo:**
+
 - Se clonó el repo y se revisó el estado completo del proyecto: código,
   README, historial de git, issues/PRs en GitHub.
 - Se corrieron los tres chequeos de CI en local: `npm test` (53 tests, 5

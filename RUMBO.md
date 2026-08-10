@@ -28,6 +28,7 @@ priorizar con el dueño del proyecto, no un plan cerrado. Marca con `[x]`
 lo que se decida perseguir y anota la decisión abajo en "Decisiones".
 
 ### Contenido
+
 - [ ] Nuevos módulos de teoría más allá de los 10 actuales (candidatos:
       planificación de vuelo/despacho, sistemas de aeronave, ATC avanzado)
 - [ ] Más escenarios/misiones en el simulador (vuelo IFR simplificado,
@@ -35,6 +36,7 @@ lo que se decida perseguir y anota la decisión abajo en "Decisiones".
 - [ ] Más mazos de flashcards (además de instrumentos y alertas de cabina)
 
 ### Producto / crecimiento
+
 - [ ] Activar analítica (`VITE_PLAUSIBLE_DOMAIN`) para entender uso real
       antes de decidir qué priorizar — hoy está desactivada por defecto
 - [ ] Validar con usuarios reales (pilotos/alumnos) — es un MVP educativo
@@ -44,6 +46,7 @@ lo que se decida perseguir y anota la decisión abajo en "Decisiones".
       actual, así que requiere decisión explícita antes de tocar código
 
 ### Calidad / infraestructura
+
 - [ ] Lint/formateo automatizado (ESLint/Prettier) — hoy CI corre
       `check:i18n` + `test` + `build`, pero no hay linting
 - [ ] Auditoría de accesibilidad (lectores de pantalla, navegación por

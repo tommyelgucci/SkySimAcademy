@@ -27,11 +27,7 @@
   "instruments": {
     "airspeed-id": {
       "question": "Qual instrumento é mostrado aqui?",
-      "options": [
-        "Anemômetro (indicador de velocidade)",
-        "Altímetro",
-        "Indicador de curva"
-      ],
+      "options": ["Anemômetro (indicador de velocidade)", "Altímetro", "Indicador de curva"],
       "explanation": "O ponteiro percorre um arco de 270° com faixas verde (regime normal de operação) e amarela (precaução) e um traço radial vermelho para a velocidade de estol — é o anemômetro, o primeiro instrumento a checar para manter uma margem segura acima do estol."
     },
     "airspeed-read": {
@@ -45,11 +41,7 @@
     },
     "attitude-id": {
       "question": "Qual instrumento é mostrado aqui?",
-      "options": [
-        "Horizonte artificial (indicador de atitude)",
-        "Bússola",
-        "Variômetro"
-      ],
+      "options": ["Horizonte artificial (indicador de atitude)", "Bússola", "Variômetro"],
       "explanation": "Um \"céu\" azul sobre uma \"terra\" marrom separados por uma linha de horizonte, com um símbolo fixo do avião no centro — é o horizonte artificial, que mostra arfagem e rolagem de relance."
     },
     "attitude-read": {
@@ -63,20 +55,12 @@
     },
     "altimeter-id": {
       "question": "Qual instrumento é mostrado aqui?",
-      "options": [
-        "Altímetro",
-        "Anemômetro",
-        "Bússola"
-      ],
+      "options": ["Altímetro", "Anemômetro", "Bússola"],
       "explanation": "Um ponteiro que dá uma volta completa a cada 1000 m de altitude, com uma leitura digital no centro — é o altímetro."
     },
     "altimeter-read": {
       "question": "Aproximadamente que altitude este altímetro mostra?",
-      "options": [
-        "Pouco menos de 1000 m",
-        "Exatamente 100 m",
-        "Cerca de 10 000 m"
-      ],
+      "options": ["Pouco menos de 1000 m", "Exatamente 100 m", "Cerca de 10 000 m"],
       "explanation": "O ponteiro quase completou uma volta inteira do mostrador, e a leitura digital confirma: pouco menos de 1000 m, condizente com uma volta completa do ponteiro."
     },
     "variometer-id": {
@@ -99,20 +83,12 @@
     },
     "compass-id": {
       "question": "Qual instrumento é mostrado aqui?",
-      "options": [
-        "Bússola / indicador de proa",
-        "Altímetro",
-        "Horizonte artificial"
-      ],
+      "options": ["Bússola / indicador de proa", "Altímetro", "Horizonte artificial"],
       "explanation": "Uma rosa giratória com N/L/S/O sob um ponteiro fixo no topo — é a bússola, que mostra a proa atual da aeronave."
     },
     "compass-read": {
       "question": "Que proa esta bússola mostra?",
-      "options": [
-        "Oeste (270°)",
-        "Norte (0°)",
-        "Sul (180°)"
-      ],
+      "options": ["Oeste (270°)", "Norte (0°)", "Sul (180°)"],
       "explanation": "O ponteiro fixo no topo se alinha com o O na rosa giratória — a aeronave segue proa 270°, exatamente a oeste."
     }
   },
