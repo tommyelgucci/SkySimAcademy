@@ -6,7 +6,7 @@
  * mismo sistema de repetición espaciada que el quiz y el examen: fallar una
  * pregunta aquí también la manda al repaso.
  */
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Check, CircleCheck, CircleX } from "lucide-react";
 import { clearFailedQuestion, recordFailedQuestion } from "../../storage.js";
@@ -20,20 +20,16 @@ function shuffled(array) {
   return copy;
 }
 
-export default function LessonQuiz({ moduleId, lessonId, questions }) {
+export default function LessonQuiz({ moduleId, questions }) {
   const { t } = useTranslation("theory");
   const keyBase = `modules.${moduleId}.quiz`;
 
+  // El padre monta una instancia nueva por lección (key={lesson.id} en
+  // ModuleView), así que este estado ya nace en cero para cada una — sin
+  // necesidad de un efecto que lo reinicie a mano.
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [checked, setChecked] = useState(false);
-
-  // La lección cambió (navegación previous/next): reinicia el mini-quiz.
-  useEffect(() => {
-    setIndex(0);
-    setSelected(null);
-    setChecked(false);
-  }, [lessonId]);
 
   const optionOrder = useMemo(() => {
     const question = questions[index];
@@ -117,11 +113,7 @@ export default function LessonQuiz({ moduleId, lessonId, questions }) {
             </button>
           )
         ) : (
-          <button
-            className="button button--secondary"
-            disabled={selected === null}
-            onClick={check}
-          >
+          <button className="button button--secondary" disabled={selected === null} onClick={check}>
             <Check size={16} aria-hidden="true" /> {t("quiz.check")}
           </button>
         )}

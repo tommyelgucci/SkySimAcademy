@@ -133,15 +133,13 @@ export default function SimulatorView({ onExit }) {
   const pausedRef = useRef(false);
 
   // Escenario y hora del día elegidos (persistentes entre sesiones)
-  const [scenario, setScenario] = useState(() =>
-    loadPref(SCENARIO_KEY, SCENARIOS, SCENARIOS[0])
-  );
+  const [scenario, setScenario] = useState(() => loadPref(SCENARIO_KEY, SCENARIOS, SCENARIOS[0]));
   const selectScenario = (id) => {
     setScenario(id);
     savePref(SCENARIO_KEY, id);
   };
   const [timeOfDay, setTimeOfDay] = useState(() =>
-    loadPref(TIME_KEY, TIMES_OF_DAY, TIMES_OF_DAY[0])
+    loadPref(TIME_KEY, TIMES_OF_DAY, TIMES_OF_DAY[0]),
   );
   const selectTimeOfDay = (id) => {
     setTimeOfDay(id);
@@ -202,8 +200,7 @@ export default function SimulatorView({ onExit }) {
     }
     const deltaBeta = event.beta - gyroCalRef.current.beta;
     const deltaGamma = event.gamma - gyroCalRef.current.gamma;
-    gyroRef.current.pitch =
-      Math.abs(deltaBeta) < GYRO_DEAD ? 0 : clampAxis(deltaBeta / GYRO_RANGE);
+    gyroRef.current.pitch = Math.abs(deltaBeta) < GYRO_DEAD ? 0 : clampAxis(deltaBeta / GYRO_RANGE);
     gyroRef.current.roll =
       Math.abs(deltaGamma) < GYRO_DEAD ? 0 : clampAxis(deltaGamma / GYRO_RANGE);
   }, []);
@@ -395,15 +392,12 @@ export default function SimulatorView({ onExit }) {
       if (hudTimer >= HUD_INTERVAL) {
         hudTimer = 0;
         // Senda de planeo para el indicador de aproximación
-        const approach = evaluator.approach.active
-          ? { status: evaluator.approach.status }
-          : null;
+        const approach = evaluator.approach.active ? { status: evaluator.approach.status } : null;
         // Aviso de límite del mapa: cerca del borde, antes del accidente
         const mapRadius = engine.terrain?.mapRadius;
         const nearBoundary =
           mapRadius != null &&
-          Math.hypot(engine.position.x, engine.position.z) >
-            mapRadius * BOUNDARY_WARN_RATIO;
+          Math.hypot(engine.position.x, engine.position.z) > mapRadius * BOUNDARY_WARN_RATIO;
         setHud({
           speed: Math.round(engine.airspeed),
           altitude: Math.round(engine.altitude),
@@ -443,7 +437,6 @@ export default function SimulatorView({ onExit }) {
       scene.dispose();
       if (sceneRef.current === scene) sceneRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, mission, scenario, timeOfDay]);
 
   const fly = (selectedMission) => {
@@ -467,9 +460,7 @@ export default function SimulatorView({ onExit }) {
 
   // Mensaje de crash según la causa (agua, límite del mapa, o impacto/alabeo)
   const crashKey =
-    crashReason === "water" || crashReason === "bounds"
-      ? `crash.${crashReason}`
-      : "crash";
+    crashReason === "water" || crashReason === "bounds" ? `crash.${crashReason}` : "crash";
 
   const endOverlays = {
     crashed: {
@@ -509,8 +500,7 @@ export default function SimulatorView({ onExit }) {
           )}
           {mission?.goal && !objectiveDismissed && (
             <div className="hud-objective">
-              <Target size={16} aria-hidden="true" />{" "}
-              {t(`missions.${mission.id}.objective`)}
+              <Target size={16} aria-hidden="true" /> {t(`missions.${mission.id}.objective`)}
               <button
                 type="button"
                 className="hud-objective__dismiss"
@@ -533,9 +523,7 @@ export default function SimulatorView({ onExit }) {
             <div className="landing-debrief">
               <h2>{t("landing.title")}</h2>
               <StarRating stars={landingDebrief.stars} />
-              <p className="landing-debrief__grade">
-                {t(`landing.grade${landingDebrief.stars}`)}
-              </p>
+              <p className="landing-debrief__grade">{t(`landing.grade${landingDebrief.stars}`)}</p>
               <ul>
                 <li>{t("landing.verticalSpeed", { value: landingDebrief.verticalSpeed })}</li>
                 <li>
@@ -543,14 +531,9 @@ export default function SimulatorView({ onExit }) {
                     ? t("landing.centered")
                     : t("landing.offCenter", { value: landingDebrief.offCenter })}
                 </li>
-                <li>
-                  {landingDebrief.aligned ? t("landing.aligned") : t("landing.misaligned")}
-                </li>
+                <li>{landingDebrief.aligned ? t("landing.aligned") : t("landing.misaligned")}</li>
               </ul>
-              <button
-                className="button button--primary"
-                onClick={() => setLandingDebrief(null)}
-              >
+              <button className="button button--primary" onClick={() => setLandingDebrief(null)}>
                 {t("landing.continue")}
               </button>
             </div>
@@ -595,20 +578,22 @@ export default function SimulatorView({ onExit }) {
           {settingsOpen && (
             <div className="ui-settings">
               <h2>{t("uiSettings.title")}</h2>
-              {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics", "shadows"].map((key) => (
-                <button
-                  key={key}
-                  className="ui-settings__row"
-                  role="switch"
-                  aria-checked={uiPrefs[key]}
-                  onClick={() => toggleUiPref(key)}
-                >
-                  <span className={`ui-settings__check ${uiPrefs[key] ? "is-on" : ""}`}>
-                    {uiPrefs[key] && <Check size={13} aria-hidden="true" />}
-                  </span>
-                  {t(`uiSettings.${key}`)}
-                </button>
-              ))}
+              {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics", "shadows"].map(
+                (key) => (
+                  <button
+                    key={key}
+                    className="ui-settings__row"
+                    role="switch"
+                    aria-checked={uiPrefs[key]}
+                    onClick={() => toggleUiPref(key)}
+                  >
+                    <span className={`ui-settings__check ${uiPrefs[key] ? "is-on" : ""}`}>
+                      {uiPrefs[key] && <Check size={13} aria-hidden="true" />}
+                    </span>
+                    {t(`uiSettings.${key}`)}
+                  </button>
+                ),
+              )}
               {touchDevice && (
                 <button
                   className="ui-settings__row"
@@ -704,8 +689,7 @@ export default function SimulatorView({ onExit }) {
                   <div className="mission-list">
                     {level.missionIds.map((id) => {
                       const m = MISSION_BY_ID.get(id);
-                      const locked =
-                        m.requiresModule && !isModulePassed(m.requiresModule);
+                      const locked = m.requiresModule && !isModulePassed(m.requiresModule);
                       const done = isMissionComplete(m.id);
                       return (
                         <button
@@ -769,8 +753,7 @@ export default function SimulatorView({ onExit }) {
           actions={
             <>
               <button className="button button--primary" onClick={() => fly(mission)}>
-                <PlaneTakeoff size={18} className="rtl-flip" aria-hidden="true" />{" "}
-                {t("restart")}
+                <PlaneTakeoff size={18} className="rtl-flip" aria-hidden="true" /> {t("restart")}
               </button>
               <button className="button button--secondary" onClick={backToMissions}>
                 {t("missions.backToList")}

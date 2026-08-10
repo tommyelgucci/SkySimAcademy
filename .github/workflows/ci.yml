@@ -21,6 +21,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Lint (ESLint)
+        run: npm run lint
+      - name: Formato (Prettier)
+        run: npm run format:check
       - name: Validar i18n y contenido
         run: npm run check:i18n
       - name: Tests unitarios (FlightEngine, MissionTracker, FlightEvaluator)
