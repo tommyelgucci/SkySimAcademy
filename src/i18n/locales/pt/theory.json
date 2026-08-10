@@ -87,11 +87,7 @@
         },
         "four-forces-q3": {
           "question": "Qual força é a única que não depende da asa se mover pelo ar?",
-          "options": [
-            "Peso",
-            "Sustentação",
-            "Arrasto"
-          ],
+          "options": ["Peso", "Sustentação", "Arrasto"],
           "explanation": "O peso vem puramente da gravidade agindo sobre a massa da aeronave — existe mesmo que a aeronave esteja se movendo ou parada. A sustentação e o arrasto só existem porque o ar flui sobre a asa."
         },
         "lift-and-airfoils-q1": {
@@ -123,11 +119,7 @@
         },
         "three-axes-q1": {
           "question": "Qual superfície de comando é principalmente responsável pelo rolamento?",
-          "options": [
-            "Os ailerons",
-            "O profundor",
-            "O leme"
-          ],
+          "options": ["Os ailerons", "O profundor", "O leme"],
           "explanation": "Os ailerons deflectem em direções opostas em cada asa, mudando a sustentação de forma diferencial e rolando a aeronave em torno de seu eixo longitudinal."
         },
         "three-axes-q2": {
@@ -141,20 +133,12 @@
         },
         "three-axes-q3": {
           "question": "A rotação em torno do eixo lateral (de ponta a ponta de asa) é chamada de…",
-          "options": [
-            "Arfagem",
-            "Rolamento",
-            "Guinada"
-          ],
+          "options": ["Arfagem", "Rolamento", "Guinada"],
           "explanation": "O eixo lateral vai de ponta a ponta de asa; a rotação em torno dele — nariz para cima ou para baixo — é a arfagem, controlada pelo profundor."
         },
         "speed-and-stall-q1": {
           "question": "Como um modelo simples inicial, o que a manete de potência controla principalmente?",
-          "options": [
-            "A taxa de subida ou descida",
-            "O ângulo de inclinação",
-            "A proa"
-          ],
+          "options": ["A taxa de subida ou descida", "O ângulo de inclinação", "A proa"],
           "explanation": "Adicionar potência dá à aeronave a energia para subir (ou manter a velocidade enquanto sobe); reduzi-la sem mudar a atitude leva a uma descida enquanto a aeronave troca altitude por velocidade."
         },
         "speed-and-stall-q2": {
@@ -177,11 +161,7 @@
         },
         "load-factor-and-turns-q1": {
           "question": "O que acontece com o fator de carga à medida que o ângulo de inclinação aumenta em uma curva nivelada?",
-          "options": [
-            "Aumenta",
-            "Permanece o mesmo",
-            "Diminui"
-          ],
+          "options": ["Aumenta", "Permanece o mesmo", "Diminui"],
           "explanation": "Uma inclinação mais acentuada requer mais sustentação total para manter a altitude enquanto parte da sustentação é desviada para curvar a aeronave, então o fator de carga sobe com o ângulo de inclinação."
         },
         "load-factor-and-turns-q2": {
@@ -308,11 +288,7 @@
       "quiz": {
         "altimeter-q1": {
           "question": "O que o altímetro realmente mede para determinar a altitude?",
-          "options": [
-            "Pressão do ar",
-            "RPM do motor",
-            "Velocidade em relação ao solo"
-          ],
+          "options": ["Pressão do ar", "RPM do motor", "Velocidade em relação ao solo"],
           "explanation": "O altímetro detecta a pressão externa do ar e converte a queda previsível de pressão com a altura em uma leitura de altitude."
         },
         "altimeter-q2": {
@@ -416,11 +392,7 @@
         },
         "compass-and-heading-q1": {
           "question": "Qual proa corresponde ao oeste exato?",
-          "options": [
-            "270°",
-            "90°",
-            "180°"
-          ],
+          "options": ["270°", "90°", "180°"],
           "explanation": "As proas são medidas no sentido horário a partir do norte: 0°/360° norte, 90° leste, 180° sul e 270° oeste."
         },
         "compass-and-heading-q2": {
@@ -840,11 +812,7 @@
         },
         "numbers-on-the-radio-q1": {
           "question": "Como a pista 27 é falada no rádio?",
-          "options": [
-            "Dois sete",
-            "Vinte e sete",
-            "Pista B"
-          ],
+          "options": ["Dois sete", "Vinte e sete", "Pista B"],
           "explanation": "Os números são lidos dígito por dígito na comunicação de rádio de aviação, então 27 é 'dois sete', nunca a palavra composta 'vinte e sete'."
         },
         "numbers-on-the-radio-q2": {
@@ -1309,11 +1277,7 @@
         },
         "lift-drag-ratio-and-gliding-q3": {
           "question": "Durante um planeio por falha de motor, qual é a ferramenta principal para controlar a velocidade?",
-          "options": [
-            "Atitude",
-            "Potência",
-            "Leme"
-          ],
+          "options": ["Atitude", "Potência", "Leme"],
           "explanation": "Sem potência de motor disponível, a atitude é o que controla a velocidade durante um planeio — por isso manter a atitude de melhor planeio com precisão é a habilidade central em um cenário de falha de motor."
         },
         "v-speeds-and-load-limits-q1": {
@@ -1327,11 +1291,7 @@
         },
         "v-speeds-and-load-limits-q2": {
           "question": "O que acontece com Va quando o peso da aeronave diminui?",
-          "options": [
-            "Va diminui",
-            "Va aumenta",
-            "Va permanece exatamente a mesma"
-          ],
+          "options": ["Va diminui", "Va aumenta", "Va permanece exatamente a mesma"],
           "explanation": "Uma aeronave mais leve entra em perda em uma velocidade mais baixa, então a velocidade na qual ela entra em perda antes de sobrecarregar a estrutura —Va— também é correspondentemente mais baixa."
         },
         "v-speeds-and-load-limits-q3": {

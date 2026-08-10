@@ -53,10 +53,7 @@ export default function Home({ onNavigate }) {
         <button className="button button--primary" onClick={() => onNavigate("theory")}>
           <BookOpen size={18} aria-hidden="true" /> {t("home.startTheory")}
         </button>
-        <button
-          className="button button--secondary"
-          onClick={() => onNavigate("simulator")}
-        >
+        <button className="button button--secondary" onClick={() => onNavigate("simulator")}>
           <Joystick size={18} aria-hidden="true" /> {t("home.openSimulator")}
         </button>
       </div>

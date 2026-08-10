@@ -100,7 +100,7 @@ describe("FlightEvaluator — nota de aterrizaje", () => {
         heading,
         airspeed: 25,
         grounded: false,
-      })
+      }),
     );
     evaluator.update(
       fakeEngine({
@@ -109,10 +109,10 @@ describe("FlightEvaluator — nota de aterrizaje", () => {
         airspeed: 22,
         verticalSpeed: -verticalSpeed,
         grounded: true,
-      })
+      }),
     );
     evaluator.update(
-      fakeEngine({ position: { x, y: FLIGHT.GROUND_Y, z: -430 }, heading, airspeed: 3 })
+      fakeEngine({ position: { x, y: FLIGHT.GROUND_Y, z: -430 }, heading, airspeed: 3 }),
     );
     return evaluator.consumeLanding();
   }
@@ -147,11 +147,34 @@ describe("FlightEvaluator — nota de aterrizaje", () => {
 
   it("un touch & go no genera informe", () => {
     const evaluator = new FlightEvaluator(terrain);
-    evaluator.update(fakeEngine({ position: { x: 0, y: 30, z: -430 }, altitude: 30, grounded: false, airspeed: 25 }));
-    evaluator.update(fakeEngine({ position: { x: 0, y: FLIGHT.GROUND_Y, z: -430 }, airspeed: 24, verticalSpeed: -1, grounded: true }));
+    evaluator.update(
+      fakeEngine({
+        position: { x: 0, y: 30, z: -430 },
+        altitude: 30,
+        grounded: false,
+        airspeed: 25,
+      }),
+    );
+    evaluator.update(
+      fakeEngine({
+        position: { x: 0, y: FLIGHT.GROUND_Y, z: -430 },
+        airspeed: 24,
+        verticalSpeed: -1,
+        grounded: true,
+      }),
+    );
     // vuelve a despegar sin frenar
-    evaluator.update(fakeEngine({ position: { x: 0, y: 8, z: -500 }, altitude: 8, grounded: false, airspeed: 28 }));
-    evaluator.update(fakeEngine({ position: { x: 0, y: 12, z: -520 }, altitude: 12, grounded: false, airspeed: 30 }));
+    evaluator.update(
+      fakeEngine({ position: { x: 0, y: 8, z: -500 }, altitude: 8, grounded: false, airspeed: 28 }),
+    );
+    evaluator.update(
+      fakeEngine({
+        position: { x: 0, y: 12, z: -520 },
+        altitude: 12,
+        grounded: false,
+        airspeed: 30,
+      }),
+    );
     expect(evaluator.consumeLanding()).toBe(null);
   });
 });
@@ -165,9 +188,13 @@ describe("FlightEvaluator — integración con el motor real", () => {
     // Corto final estabilizado: 700 m del umbral, sobre la senda, morro al
     // norte con actitud fija de −3° (la senda de planeo)
     const dist = 700;
-    engine.position.set(0, dist * Math.tan((3 * Math.PI) / 180) + FLIGHT.GROUND_Y, runway.z + runway.length / 2 + dist);
+    engine.position.set(
+      0,
+      dist * Math.tan((3 * Math.PI) / 180) + FLIGHT.GROUND_Y,
+      runway.z + runway.length / 2 + dist,
+    );
     engine.quaternion.copy(
-      new Quaternion().setFromAxisAngle(new Vector3(1, 0, 0), (-3 * Math.PI) / 180)
+      new Quaternion().setFromAxisAngle(new Vector3(1, 0, 0), (-3 * Math.PI) / 180),
     );
     engine.airspeed = 20;
     engine.throttle = 0.3;
@@ -179,8 +206,7 @@ describe("FlightEvaluator — integración con el motor real", () => {
     for (let i = 0; i < 60 * 60 && !engine.grounded; i++) {
       engine.update(1 / 60);
       evaluator.update(engine);
-      if (evaluator.approach.active && evaluator.approach.status === "onCourse")
-        sawOnCourse = true;
+      if (evaluator.approach.active && evaluator.approach.status === "onCourse") sawOnCourse = true;
     }
     // Rodadura hasta frenar
     engine.setInput({ pitch: 0, roll: 0, yaw: 0, throttle: 0, throttleTarget: 0 });

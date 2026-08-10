@@ -4,20 +4,9 @@
  * lectura (los valores se recalculan al montar).
  */
 import { useTranslation } from "react-i18next";
-import {
-  BarChart3,
-  CircleCheck,
-  CircleX,
-  Flame,
-  RotateCcw,
-} from "lucide-react";
+import { BarChart3, CircleCheck, CircleX, Flame, RotateCcw } from "lucide-react";
 import { MODULES } from "../../content/modules";
-import {
-  getExamHistory,
-  getQuizResult,
-  getSrsSummary,
-  getStreak,
-} from "../../storage.js";
+import { getExamHistory, getQuizResult, getSrsSummary, getStreak } from "../../storage.js";
 
 export default function StatsView({ onBack }) {
   const { t, i18n } = useTranslation(["exam", "theory"]);
@@ -77,9 +66,7 @@ export default function StatsView({ onBack }) {
             const result = getQuizResult(module.id);
             return (
               <li key={module.id} className="stats__module-row">
-                <span className="stats__module-name">
-                  {t(`theory:modules.${module.id}.title`)}
-                </span>
+                <span className="stats__module-name">{t(`theory:modules.${module.id}.title`)}</span>
                 {result ? (
                   <span className={result.passed ? "is-correct" : "is-wrong"}>
                     {result.passed ? (
@@ -90,9 +77,7 @@ export default function StatsView({ onBack }) {
                     {format(result.bestScore)}/{format(result.total)}
                   </span>
                 ) : (
-                  <span className="stats__module-empty">
-                    {t("exam:stats.notAttempted")}
-                  </span>
+                  <span className="stats__module-empty">{t("exam:stats.notAttempted")}</span>
                 )}
               </li>
             );

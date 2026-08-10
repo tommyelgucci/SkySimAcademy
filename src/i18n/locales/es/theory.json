@@ -87,11 +87,7 @@
         },
         "four-forces-q3": {
           "question": "¿Qué fuerza es la única que no depende de que el ala se mueva por el aire?",
-          "options": [
-            "El peso",
-            "La sustentación",
-            "La resistencia"
-          ],
+          "options": ["El peso", "La sustentación", "La resistencia"],
           "explanation": "El peso proviene únicamente de la gravedad actuando sobre la masa del avión — existe tanto si el avión se mueve como si está parado. La sustentación y la resistencia solo existen porque el aire fluye sobre el ala."
         },
         "lift-and-airfoils-q1": {
@@ -123,11 +119,7 @@
         },
         "three-axes-q1": {
           "question": "¿Qué superficie de mando es principalmente responsable del alabeo?",
-          "options": [
-            "Los alerones",
-            "El timón de profundidad",
-            "El timón de dirección"
-          ],
+          "options": ["Los alerones", "El timón de profundidad", "El timón de dirección"],
           "explanation": "Los alerones se deflectan en direcciones opuestas en cada ala, cambiando la sustentación de forma diferencial y alabeando el avión alrededor de su eje longitudinal."
         },
         "three-axes-q2": {
@@ -141,20 +133,12 @@
         },
         "three-axes-q3": {
           "question": "El giro alrededor del eje lateral (de punta a punta de ala) se llama…",
-          "options": [
-            "Cabeceo",
-            "Alabeo",
-            "Guiñada"
-          ],
+          "options": ["Cabeceo", "Alabeo", "Guiñada"],
           "explanation": "El eje lateral va de punta a punta de ala; el giro alrededor de él —nariz arriba o abajo— es el cabeceo, controlado por el timón de profundidad."
         },
         "speed-and-stall-q1": {
           "question": "Como modelo simple de partida, ¿qué controla principalmente la palanca de gases?",
-          "options": [
-            "El régimen de ascenso o descenso",
-            "El ángulo de alabeo",
-            "El rumbo"
-          ],
+          "options": ["El régimen de ascenso o descenso", "El ángulo de alabeo", "El rumbo"],
           "explanation": "Añadir potencia le da al avión la energía para ascender (o mantener la velocidad mientras asciende); reducirla sin cambiar la actitud lleva a un descenso mientras el avión cambia altitud por velocidad."
         },
         "speed-and-stall-q2": {
@@ -177,11 +161,7 @@
         },
         "load-factor-and-turns-q1": {
           "question": "¿Qué pasa con el factor de carga a medida que aumenta el ángulo de alabeo en un viraje nivelado?",
-          "options": [
-            "Aumenta",
-            "Se mantiene igual",
-            "Disminuye"
-          ],
+          "options": ["Aumenta", "Se mantiene igual", "Disminuye"],
           "explanation": "Un alabeo más pronunciado requiere más sustentación total para mantener la altitud mientras parte de la sustentación se desvía a virar el avión, así que el factor de carga sube con el ángulo de alabeo."
         },
         "load-factor-and-turns-q2": {
@@ -308,11 +288,7 @@
       "quiz": {
         "altimeter-q1": {
           "question": "¿Qué mide realmente el altímetro para determinar la altitud?",
-          "options": [
-            "La presión del aire",
-            "Las RPM del motor",
-            "La velocidad respecto al suelo"
-          ],
+          "options": ["La presión del aire", "Las RPM del motor", "La velocidad respecto al suelo"],
           "explanation": "El altímetro detecta la presión del aire exterior y convierte la caída predecible de presión con la altura en una lectura de altitud."
         },
         "altimeter-q2": {
@@ -416,11 +392,7 @@
         },
         "compass-and-heading-q1": {
           "question": "¿Qué rumbo corresponde al oeste exacto?",
-          "options": [
-            "270°",
-            "90°",
-            "180°"
-          ],
+          "options": ["270°", "90°", "180°"],
           "explanation": "Los rumbos se miden en sentido horario desde el norte: 0°/360° norte, 90° este, 180° sur y 270° oeste."
         },
         "compass-and-heading-q2": {
@@ -840,11 +812,7 @@
         },
         "numbers-on-the-radio-q1": {
           "question": "¿Cómo se dice la pista 27 en la radio?",
-          "options": [
-            "Dos siete",
-            "Veintisiete",
-            "Pista B"
-          ],
+          "options": ["Dos siete", "Veintisiete", "Pista B"],
           "explanation": "Los números se leen dígito por dígito en la comunicación de radio de aviación, así que 27 es 'dos siete', nunca la palabra compuesta 'veintisiete'."
         },
         "numbers-on-the-radio-q2": {
@@ -1309,11 +1277,7 @@
         },
         "lift-drag-ratio-and-gliding-q3": {
           "question": "Durante un planeo por fallo de motor, ¿cuál es la herramienta principal para controlar la velocidad?",
-          "options": [
-            "La actitud",
-            "La potencia",
-            "El timón de dirección"
-          ],
+          "options": ["La actitud", "La potencia", "El timón de dirección"],
           "explanation": "Sin potencia de motor disponible, la actitud de cabeceo es lo que controla la velocidad durante un planeo — por eso mantener con precisión la actitud de mejor planeo es la habilidad clave en un escenario de fallo de motor."
         },
         "v-speeds-and-load-limits-q1": {
@@ -1327,11 +1291,7 @@
         },
         "v-speeds-and-load-limits-q2": {
           "question": "¿Qué le pasa a Va cuando disminuye el peso del avión?",
-          "options": [
-            "Va disminuye",
-            "Va aumenta",
-            "Va se mantiene exactamente igual"
-          ],
+          "options": ["Va disminuye", "Va aumenta", "Va se mantiene exactamente igual"],
           "explanation": "Un avión más ligero entra en pérdida a una velocidad más baja, así que la velocidad a la que entra en pérdida antes de sobrecargar la estructura —Va— también es correspondientemente más baja."
         },
         "v-speeds-and-load-limits-q3": {

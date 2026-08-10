@@ -18,15 +18,11 @@ const keyBase = `modules.${module_.id}.quiz`;
 /** El quiz sortea preguntas y opciones; para responder a propósito hay que
  * mapear el texto mostrado de vuelta al id de pregunta del banco. */
 function findQuestionByRenderedText(text) {
-  return module_.quiz.questions.find(
-    (q) => i18n.t(`theory:${keyBase}.${q.id}.question`) === text
-  );
+  return module_.quiz.questions.find((q) => i18n.t(`theory:${keyBase}.${q.id}.question`) === text);
 }
 
 function optionText(question, optionIndex) {
-  return i18n.t(`theory:${keyBase}.${question.id}.options`, { returnObjects: true })[
-    optionIndex
-  ];
+  return i18n.t(`theory:${keyBase}.${question.id}.options`, { returnObjects: true })[optionIndex];
 }
 
 async function answerAllQuestions(user, { correctly }) {
@@ -41,9 +37,7 @@ async function answerAllQuestions(user, { correctly }) {
     await user.click(screen.getByRole("button", { name: i18n.t("theory:quiz.check") }));
 
     const isLast = i === module_.quiz.sampleSize - 1;
-    const nextLabel = isLast
-      ? i18n.t("theory:quiz.seeResults")
-      : i18n.t("theory:quiz.next");
+    const nextLabel = isLast ? i18n.t("theory:quiz.seeResults") : i18n.t("theory:quiz.next");
     await user.click(screen.getByRole("button", { name: nextLabel }));
   }
 }

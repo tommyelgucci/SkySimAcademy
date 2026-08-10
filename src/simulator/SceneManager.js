@@ -74,32 +74,65 @@ export const TIMES_OF_DAY = ["day", "dusk", "night"];
  */
 const TIME_PALETTES = {
   day: {
-    skyTop: 0x1d6ec4, horizon: 0xe8f6fb,
-    hemiSky: 0xdff2f8, hemiGround: 0x6b8a52, hemiIntensity: 1.35,
-    sunColor: 0xfff3d6, sunIntensity: 2.3, sunPos: [250, 420, 120],
-    fogFar: 2800, stars: 0,
-    water: 0x1a6f9c, waterDeep: 0x0d3f5e, waterSpecular: 0xcdefff,
-    waterShininess: 110, sunDisc: 0xfff6d8, sunDiscSize: 210, exposure: 1.45,
+    skyTop: 0x1d6ec4,
+    horizon: 0xe8f6fb,
+    hemiSky: 0xdff2f8,
+    hemiGround: 0x6b8a52,
+    hemiIntensity: 1.35,
+    sunColor: 0xfff3d6,
+    sunIntensity: 2.3,
+    sunPos: [250, 420, 120],
+    fogFar: 2800,
+    stars: 0,
+    water: 0x1a6f9c,
+    waterDeep: 0x0d3f5e,
+    waterSpecular: 0xcdefff,
+    waterShininess: 110,
+    sunDisc: 0xfff6d8,
+    sunDiscSize: 210,
+    exposure: 1.45,
   },
   dusk: {
     // El atardecer se va de las manos con facilidad: si el horizonte y la
     // luz hemisférica van los dos muy saturados, el naranja tiñe cada
     // superficie y la escena pierde el color propio. Naranja solo en el
     // cielo y en el sol; la luz ambiente casi neutra.
-    skyTop: 0x35377a, horizon: 0xf2a878,
-    hemiSky: 0xd9bda8, hemiGround: 0x4a5340, hemiIntensity: 0.95,
-    sunColor: 0xffb877, sunIntensity: 1.25, sunPos: [420, 80, -160],
-    fogFar: 2400, stars: 130,
-    water: 0x27496e, waterDeep: 0x142639, waterSpecular: 0xffc79a,
-    waterShininess: 150, sunDisc: 0xff9a52, sunDiscSize: 300, exposure: 1.25,
+    skyTop: 0x35377a,
+    horizon: 0xf2a878,
+    hemiSky: 0xd9bda8,
+    hemiGround: 0x4a5340,
+    hemiIntensity: 0.95,
+    sunColor: 0xffb877,
+    sunIntensity: 1.25,
+    sunPos: [420, 80, -160],
+    fogFar: 2400,
+    stars: 130,
+    water: 0x27496e,
+    waterDeep: 0x142639,
+    waterSpecular: 0xffc79a,
+    waterShininess: 150,
+    sunDisc: 0xff9a52,
+    sunDiscSize: 300,
+    exposure: 1.25,
   },
   night: {
-    skyTop: 0x04070f, horizon: 0x101d33,
-    hemiSky: 0x24324a, hemiGround: 0x0a0f14, hemiIntensity: 0.34,
-    sunColor: 0x9fb8dd, sunIntensity: 0.5, sunPos: [-220, 360, 200],
-    fogFar: 2000, stars: 420,
-    water: 0x0c1a2e, waterDeep: 0x04080f, waterSpecular: 0x7f9fd4,
-    waterShininess: 90, sunDisc: 0xd8e4ff, sunDiscSize: 120, exposure: 1.3,
+    skyTop: 0x04070f,
+    horizon: 0x101d33,
+    hemiSky: 0x24324a,
+    hemiGround: 0x0a0f14,
+    hemiIntensity: 0.34,
+    sunColor: 0x9fb8dd,
+    sunIntensity: 0.5,
+    sunPos: [-220, 360, 200],
+    fogFar: 2000,
+    stars: 420,
+    water: 0x0c1a2e,
+    waterDeep: 0x04080f,
+    waterSpecular: 0x7f9fd4,
+    waterShininess: 90,
+    sunDisc: 0xd8e4ff,
+    sunDiscSize: 120,
+    exposure: 1.3,
   },
 };
 
@@ -312,7 +345,7 @@ export class SceneManager {
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         fog: false,
-      })
+      }),
     );
     // Colocado en la dirección de la luz direccional, justo dentro de la cúpula
     const dir = new THREE.Vector3(...this.palette.sunPos).normalize();
@@ -399,7 +432,7 @@ export class SceneManager {
       OCEAN_PATCH_SIZE,
       OCEAN_PATCH_SIZE,
       OCEAN_SEGMENTS,
-      OCEAN_SEGMENTS
+      OCEAN_SEGMENTS,
     );
     const material = new THREE.MeshPhongMaterial({
       color: p.water,
@@ -436,35 +469,35 @@ export class SceneManager {
                cos(q.x * 0.021 + uTime * 0.90) * 1.15 * 0.021 + shared,
                cos(q.y * 0.017 - uTime * 0.70) * 1.35 * 0.017 + shared
              );
-           }`
+           }`,
         )
         .replace(
           "#include <beginnormal_vertex>",
           `#include <beginnormal_vertex>
            vec2 wWorld = (modelMatrix * vec4(position, 1.0)).xz;
            vec2 wSlope = oceanSlope(wWorld);
-           objectNormal = normalize(vec3(-wSlope.x, wSlope.y, 1.0));`
+           objectNormal = normalize(vec3(-wSlope.x, wSlope.y, 1.0));`,
         )
         .replace(
           "#include <begin_vertex>",
           `#include <begin_vertex>
            float wHeight = oceanWave(wWorld);
            transformed.z += wHeight;
-           vWave = wHeight;`
+           vWave = wHeight;`,
         );
       shader.fragmentShader = shader.fragmentShader
         .replace(
           "#include <common>",
           `#include <common>
            uniform vec3 uDeep;
-           varying float vWave;`
+           varying float vWave;`,
         )
         .replace(
           "#include <color_fragment>",
           `#include <color_fragment>
            // Los senos van más oscuros (agua profunda) y las crestas más
            // claras: da volumen sin necesidad de espuma ni texturas.
-           diffuseColor.rgb = mix(uDeep, diffuseColor.rgb, smoothstep(-2.6, 2.6, vWave));`
+           diffuseColor.rgb = mix(uDeep, diffuseColor.rgb, smoothstep(-2.6, 2.6, vWave));`,
         );
     };
 
@@ -543,7 +576,7 @@ export class SceneManager {
     return makeTerrain(
       FREE_ROAM_MAP_RADIUS,
       sites.map((site) => site.zone),
-      sites.map((site) => site.runway)
+      sites.map((site) => site.runway),
     );
   }
 
@@ -569,7 +602,7 @@ export class SceneManager {
 
     const surface = new THREE.Mesh(
       new THREE.PlaneGeometry(width, length),
-      new THREE.MeshLambertMaterial({ color })
+      new THREE.MeshLambertMaterial({ color }),
     );
     surface.rotation.x = -Math.PI / 2;
     surface.position.y = 0.05;
@@ -585,7 +618,7 @@ export class SceneManager {
     if (withApron) {
       const apron = new THREE.Mesh(
         new THREE.PlaneGeometry(width + 30, length + 70),
-        new THREE.MeshLambertMaterial({ color: 0xa39781 })
+        new THREE.MeshLambertMaterial({ color: 0xa39781 }),
       );
       apron.rotation.x = -Math.PI / 2;
       apron.position.y = 0.01;
@@ -730,10 +763,7 @@ export class SceneManager {
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
     geometry.computeVertexNormals();
 
-    const island = new THREE.Mesh(
-      geometry,
-      new THREE.MeshLambertMaterial({ vertexColors: true })
-    );
+    const island = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ vertexColors: true }));
     island.rotation.x = -Math.PI / 2;
     island.position.set(offsetX, 0, offsetZ);
     island.receiveShadow = true;
@@ -743,14 +773,28 @@ export class SceneManager {
   }
 
   /** Anillo/arco de conos rocosos: referencia visual de escala, decorativo. */
-  #scatterMountains({ startDeg, endDeg, count, distMin, distMax, heightMin, heightMax, colors, snowLine, random, offsetX = 0, offsetZ = 0, groundAt = null }) {
+  #scatterMountains({
+    startDeg,
+    endDeg,
+    count,
+    distMin,
+    distMax,
+    heightMin,
+    heightMax,
+    colors,
+    snowLine,
+    random,
+    offsetX = 0,
+    offsetZ = 0,
+    groundAt = null,
+  }) {
     for (let i = 0; i < count; i++) {
       const angle = THREE.MathUtils.degToRad(startDeg + (i / count) * (endDeg - startDeg));
       const dist = distMin + random() * (distMax - distMin);
       const h = heightMin + random() * (heightMax - heightMin);
       const cone = new THREE.Mesh(
         new THREE.ConeGeometry(55 + random() * 40, h, 6),
-        new THREE.MeshLambertMaterial({ color: colors[i % colors.length] })
+        new THREE.MeshLambertMaterial({ color: colors[i % colors.length] }),
       );
       const cx = offsetX + Math.cos(angle) * dist;
       const cz = offsetZ + Math.sin(angle) * dist;
@@ -767,7 +811,7 @@ export class SceneManager {
       if (snowLine != null && h > snowLine) {
         const cap = new THREE.Mesh(
           new THREE.ConeGeometry(20, 38, 6),
-          new THREE.MeshBasicMaterial({ color: 0xffffff })
+          new THREE.MeshBasicMaterial({ color: 0xffffff }),
         );
         cap.position.set(cone.position.x, cone.position.y + h / 2 - 15, cone.position.z);
         this.scene.add(cap);
@@ -799,14 +843,14 @@ export class SceneManager {
       for (let p = 0; p < puffCount; p++) {
         const puff = new THREE.Mesh(
           new THREE.SphereGeometry(10 + random() * 12, 9, 7),
-          cloudMaterial
+          cloudMaterial,
         );
         // Se agrupan en horizontal y se aplastan: un cúmulo real es mucho
         // más ancho que alto.
         puff.position.set(
           (p - puffCount / 2) * (11 + random() * 9),
           (random() - 0.5) * 9,
-          (random() - 0.5) * 22
+          (random() - 0.5) * 22,
         );
         puff.scale.set(1, 0.62 + random() * 0.22, 1);
         cloud.add(puff);
@@ -815,7 +859,7 @@ export class SceneManager {
       cloud.position.set(
         (random() - 0.5) * 3400,
         (high ? 430 : 165) + random() * 190,
-        (random() - 0.5) * 3400 - 150
+        (random() - 0.5) * 3400 - 150,
       );
       cloud.rotation.y = random() * Math.PI;
       this.scene.add(cloud);
@@ -823,11 +867,18 @@ export class SceneManager {
   }
 
   /** Hangar + torre de control, reutilizados en los escenarios de aeródromo. */
-  #buildAerodromeBuildings({ x, z, hangarColor = 0x8a2f2f, roofColor = 0xc7c9cc, towerColor = 0x345b7a, groundAt = null }) {
+  #buildAerodromeBuildings({
+    x,
+    z,
+    hangarColor = 0x8a2f2f,
+    roofColor = 0xc7c9cc,
+    towerColor = 0x345b7a,
+    groundAt = null,
+  }) {
     const hangarGround = groundAt ? groundAt(x + 65, z - 20) : 0;
     const hangarBody = new THREE.Mesh(
       new THREE.BoxGeometry(36, 13, 24),
-      new THREE.MeshLambertMaterial({ color: hangarColor })
+      new THREE.MeshLambertMaterial({ color: hangarColor }),
     );
     hangarBody.position.set(x + 65, hangarGround + 6.5, z - 20);
     hangarBody.castShadow = true;
@@ -835,7 +886,7 @@ export class SceneManager {
     this.scene.add(hangarBody);
     const hangarRoof = new THREE.Mesh(
       new THREE.CylinderGeometry(12, 12, 36, 16, 1, false, 0, Math.PI),
-      new THREE.MeshLambertMaterial({ color: roofColor })
+      new THREE.MeshLambertMaterial({ color: roofColor }),
     );
     hangarRoof.rotation.z = Math.PI / 2;
     hangarRoof.position.set(x + 65, hangarGround + 13, z - 20);
@@ -845,14 +896,14 @@ export class SceneManager {
     const towerGround = groundAt ? groundAt(x - 55, z - 60) : 0;
     const towerBase = new THREE.Mesh(
       new THREE.CylinderGeometry(3, 4, 40, 10),
-      new THREE.MeshLambertMaterial({ color: 0x9a8465 })
+      new THREE.MeshLambertMaterial({ color: 0x9a8465 }),
     );
     towerBase.position.set(x - 55, towerGround + 20, z - 60);
     towerBase.castShadow = true;
     this.scene.add(towerBase);
     const towerTop = new THREE.Mesh(
       new THREE.CylinderGeometry(8.5, 8.5, 6.5, 10),
-      new THREE.MeshLambertMaterial({ color: towerColor })
+      new THREE.MeshLambertMaterial({ color: towerColor }),
     );
     towerTop.position.set(x - 55, towerGround + 43, z - 60);
     towerTop.castShadow = true;
@@ -943,7 +994,7 @@ export class SceneManager {
         const h = 220 + random() * 220;
         const cone = new THREE.Mesh(
           new THREE.ConeGeometry(50 + random() * 30, h, 6),
-          new THREE.MeshLambertMaterial({ color: wallColors[i % wallColors.length] })
+          new THREE.MeshLambertMaterial({ color: wallColors[i % wallColors.length] }),
         );
         const cx = offsetX + side * dist;
         const cz = offsetZ + z;
@@ -955,7 +1006,7 @@ export class SceneManager {
         if (h > 300) {
           const cap = new THREE.Mesh(
             new THREE.ConeGeometry(18, 34, 6),
-            new THREE.MeshBasicMaterial({ color: 0xffffff })
+            new THREE.MeshBasicMaterial({ color: 0xffffff }),
           );
           cap.position.set(cone.position.x, cone.position.y + h / 2 - 12, cone.position.z);
           this.scene.add(cap);
@@ -1005,7 +1056,7 @@ export class SceneManager {
         380,
         110,
         THREE.MathUtils.degToRad(12),
-        200
+        200,
       ),
       random,
     });
@@ -1041,7 +1092,7 @@ export class SceneManager {
 
     const pier = new THREE.Mesh(
       new THREE.BoxGeometry(6, 0.6, 60),
-      new THREE.MeshLambertMaterial({ color: 0x7a5a3a })
+      new THREE.MeshLambertMaterial({ color: 0x7a5a3a }),
     );
     pier.position.set(offsetX + islandRadius - 20, 0.3, offsetZ + 200);
     pier.castShadow = true;
@@ -1088,7 +1139,7 @@ export class SceneManager {
 
     const deckEdge = new THREE.Mesh(
       new THREE.PlaneGeometry(30, 250),
-      new THREE.MeshLambertMaterial({ color: 0x545a60 })
+      new THREE.MeshLambertMaterial({ color: 0x545a60 }),
     );
     deckEdge.rotation.x = -Math.PI / 2;
     deckEdge.position.set(offsetX, 0.02, offsetZ);
@@ -1116,7 +1167,7 @@ export class SceneManager {
         for (let s = 0; s < 6; s++) {
           const seg = new THREE.Mesh(
             new THREE.CylinderGeometry(0.5, 0.5, 3.2, 8),
-            stripeMaterials[s % 2]
+            stripeMaterials[s % 2],
           );
           seg.position.y = s * 3.2;
           pole.add(seg);
@@ -1224,10 +1275,7 @@ function buildAircraft() {
   const silverMaterial = new THREE.MeshPhongMaterial({ color: 0xb9bec4 });
   const glassMaterial = new THREE.MeshPhongMaterial({ color: 0x1c232b });
 
-  const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.38, 0.38, 3.0, 14),
-    fuselageMaterial
-  );
+  const body = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 3.0, 14), fuselageMaterial);
   body.rotation.x = Math.PI / 2;
   group.add(body);
 
@@ -1290,25 +1338,25 @@ function buildAircraft() {
   const navLightGeometry = new THREE.SphereGeometry(0.09, 6, 6);
   const navLeft = new THREE.Mesh(
     navLightGeometry,
-    new THREE.MeshBasicMaterial({ color: 0xff3b30 })
+    new THREE.MeshBasicMaterial({ color: 0xff3b30 }),
   );
   navLeft.position.set(-3.1, -0.05, 0.9);
   group.add(navLeft);
   const navRight = new THREE.Mesh(
     navLightGeometry,
-    new THREE.MeshBasicMaterial({ color: 0x34c759 })
+    new THREE.MeshBasicMaterial({ color: 0x34c759 }),
   );
   navRight.position.set(3.1, -0.05, 0.9);
   group.add(navRight);
   const tailLight = new THREE.Mesh(
     navLightGeometry,
-    new THREE.MeshBasicMaterial({ color: 0xffffff })
+    new THREE.MeshBasicMaterial({ color: 0xffffff }),
   );
   tailLight.position.set(0, 0.4, 3.05);
   group.add(tailLight);
   const strobe = new THREE.Mesh(
     new THREE.SphereGeometry(0.14, 6, 6),
-    new THREE.MeshBasicMaterial({ color: 0xffffff })
+    new THREE.MeshBasicMaterial({ color: 0xffffff }),
   );
   strobe.position.set(0, finHeight + 0.62, 2.9);
   strobe.visible = false;
@@ -1319,13 +1367,13 @@ function buildAircraft() {
     const nacelle = new THREE.Group();
     const cowling = new THREE.Mesh(
       new THREE.CylinderGeometry(0.17, 0.17, 1.05, 12),
-      silverMaterial
+      silverMaterial,
     );
     cowling.rotation.x = Math.PI / 2;
     nacelle.add(cowling);
     const intake = new THREE.Mesh(
       new THREE.RingGeometry(0.06, 0.17, 12),
-      new THREE.MeshBasicMaterial({ color: 0x0e1116, side: THREE.DoubleSide })
+      new THREE.MeshBasicMaterial({ color: 0x0e1116, side: THREE.DoubleSide }),
     );
     intake.position.z = -0.53;
     nacelle.add(intake);

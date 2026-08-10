@@ -87,11 +87,7 @@
         },
         "four-forces-q3": {
           "question": "Which force is the only one that doesn't depend on the wing moving through the air?",
-          "options": [
-            "Weight",
-            "Lift",
-            "Drag"
-          ],
+          "options": ["Weight", "Lift", "Drag"],
           "explanation": "Weight comes purely from gravity acting on the aircraft's mass — it exists whether the aircraft is moving or sitting still. Lift and drag only exist because air is flowing over the wing."
         },
         "lift-and-airfoils-q1": {
@@ -114,20 +110,12 @@
         },
         "lift-and-airfoils-q3": {
           "question": "If a wing's airspeed increases while its angle of attack stays the same, what happens to lift?",
-          "options": [
-            "Lift increases",
-            "Lift stays exactly the same",
-            "Lift decreases"
-          ],
+          "options": ["Lift increases", "Lift stays exactly the same", "Lift decreases"],
           "explanation": "Lift depends on angle of attack, wing area, and the square of airspeed — with angle of attack unchanged, more speed always means more lift from that airfoil."
         },
         "three-axes-q1": {
           "question": "Which control surface is primarily responsible for roll?",
-          "options": [
-            "The ailerons",
-            "The elevator",
-            "The rudder"
-          ],
+          "options": ["The ailerons", "The elevator", "The rudder"],
           "explanation": "The ailerons deflect in opposite directions on each wing, changing lift differentially and rolling the aircraft around its longitudinal axis."
         },
         "three-axes-q2": {
@@ -141,20 +129,12 @@
         },
         "three-axes-q3": {
           "question": "Rotation around the lateral axis (wingtip to wingtip) is called…",
-          "options": [
-            "Pitch",
-            "Roll",
-            "Yaw"
-          ],
+          "options": ["Pitch", "Roll", "Yaw"],
           "explanation": "The lateral axis runs wingtip to wingtip; rotation around it — nose up or down — is pitch, controlled by the elevator."
         },
         "speed-and-stall-q1": {
           "question": "As a simple starting model, what does the throttle primarily control?",
-          "options": [
-            "Rate of climb or descent",
-            "Bank angle",
-            "Heading"
-          ],
+          "options": ["Rate of climb or descent", "Bank angle", "Heading"],
           "explanation": "Adding power gives the aircraft the energy to climb (or maintain speed while climbing); reducing it without changing pitch leads to a descent as the aircraft trades altitude for airspeed."
         },
         "speed-and-stall-q2": {
@@ -177,11 +157,7 @@
         },
         "load-factor-and-turns-q1": {
           "question": "What happens to load factor as bank angle increases in a level turn?",
-          "options": [
-            "It increases",
-            "It stays the same",
-            "It decreases"
-          ],
+          "options": ["It increases", "It stays the same", "It decreases"],
           "explanation": "A steeper bank requires more total lift to maintain altitude while some lift is diverted into turning the aircraft, so load factor rises with bank angle."
         },
         "load-factor-and-turns-q2": {
@@ -308,11 +284,7 @@
       "quiz": {
         "altimeter-q1": {
           "question": "What does the altimeter actually measure to determine altitude?",
-          "options": [
-            "Air pressure",
-            "Engine RPM",
-            "Ground speed"
-          ],
+          "options": ["Air pressure", "Engine RPM", "Ground speed"],
           "explanation": "The altimeter senses outside air pressure and converts the predictable drop in pressure with height into an altitude reading."
         },
         "altimeter-q2": {
@@ -416,11 +388,7 @@
         },
         "compass-and-heading-q1": {
           "question": "What heading corresponds to due west?",
-          "options": [
-            "270°",
-            "90°",
-            "180°"
-          ],
+          "options": ["270°", "90°", "180°"],
           "explanation": "Headings are measured clockwise from north: 0°/360° north, 90° east, 180° south, and 270° west."
         },
         "compass-and-heading-q2": {
@@ -840,11 +808,7 @@
         },
         "numbers-on-the-radio-q1": {
           "question": "How is runway 27 spoken on the radio?",
-          "options": [
-            "Two seven",
-            "Twenty-seven",
-            "Runway B"
-          ],
+          "options": ["Two seven", "Twenty-seven", "Runway B"],
           "explanation": "Numbers are read digit by digit in aviation radio communication, so 27 is \"two seven\", never the compound word \"twenty-seven\"."
         },
         "numbers-on-the-radio-q2": {
@@ -867,11 +831,7 @@
         },
         "radio-call-structure-q1": {
           "question": "What typically comes first in a standard radio call?",
-          "options": [
-            "Who you are calling",
-            "Your exact altitude",
-            "Your intended landing time"
-          ],
+          "options": ["Who you are calling", "Your exact altitude", "Your intended landing time"],
           "explanation": "Opening with who you're calling ensures the right listeners tune in and know the transmission is relevant to them right away."
         },
         "radio-call-structure-q2": {
@@ -1309,11 +1269,7 @@
         },
         "lift-drag-ratio-and-gliding-q3": {
           "question": "During an engine-out glide, what is the primary tool for controlling airspeed?",
-          "options": [
-            "Pitch",
-            "Power",
-            "Rudder"
-          ],
+          "options": ["Pitch", "Power", "Rudder"],
           "explanation": "With no engine power available, pitch attitude is what controls airspeed during a glide — this is why holding best-glide pitch precisely is the core skill in an engine-failure scenario."
         },
         "v-speeds-and-load-limits-q1": {
@@ -1327,11 +1283,7 @@
         },
         "v-speeds-and-load-limits-q2": {
           "question": "What happens to Va as aircraft weight decreases?",
-          "options": [
-            "Va decreases",
-            "Va increases",
-            "Va stays exactly the same"
-          ],
+          "options": ["Va decreases", "Va increases", "Va stays exactly the same"],
           "explanation": "A lighter aircraft stalls at a lower speed, so the speed at which it stalls before overstressing the structure — Va — is correspondingly lower too."
         },
         "v-speeds-and-load-limits-q3": {
@@ -1823,11 +1775,7 @@
         },
         "computing-weight-and-balance-q1": {
           "question": "How is an item's 'moment' calculated in weight and balance?",
-          "options": [
-            "Weight multiplied by arm",
-            "Weight divided by arm",
-            "Arm minus weight"
-          ],
+          "options": ["Weight multiplied by arm", "Weight divided by arm", "Arm minus weight"],
           "explanation": "Moment is defined as weight multiplied by arm for each item on board."
         },
         "computing-weight-and-balance-q2": {

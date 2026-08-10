@@ -27,12 +27,10 @@ export default function ReviewView({ onBack }) {
   const [queue, setQueue] = useState(() =>
     getFailedQuestions()
       .map(({ moduleId, questionId }) => {
-        const question = getModule(moduleId)?.quiz?.questions.find(
-          (q) => q.id === questionId
-        );
+        const question = getModule(moduleId)?.quiz?.questions.find((q) => q.id === questionId);
         return question ? { moduleId, ...question } : null;
       })
-      .filter(Boolean)
+      .filter(Boolean),
   );
   const [selected, setSelected] = useState(null);
   const [checked, setChecked] = useState(false);
@@ -43,9 +41,7 @@ export default function ReviewView({ onBack }) {
   // Orden de opciones de la pregunta actual (re-sortea al cambiar)
   const optionOrder = useMemo(() => {
     if (!current) return [];
-    const count = t(
-      `theory:modules.${current.moduleId}.quiz.${current.id}.options`
-    ).length;
+    const count = t(`theory:modules.${current.moduleId}.quiz.${current.id}.options`).length;
     return shuffled([...Array(count).keys()]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current?.moduleId, current?.id, queue.length]);
@@ -84,8 +80,7 @@ export default function ReviewView({ onBack }) {
   return (
     <section className="review">
       <button className="button button--ghost" onClick={onBack}>
-        <ArrowLeft size={18} className="rtl-flip" aria-hidden="true" />{" "}
-        {t("common:actions.back")}
+        <ArrowLeft size={18} className="rtl-flip" aria-hidden="true" /> {t("common:actions.back")}
       </button>
       <p className="module__eyebrow">
         <RotateCcw size={18} aria-hidden="true" /> {t("review.title")}
@@ -135,11 +130,7 @@ export default function ReviewView({ onBack }) {
           {t("common:actions.next")}
         </button>
       ) : (
-        <button
-          className="button button--primary"
-          disabled={selected === null}
-          onClick={check}
-        >
+        <button className="button button--primary" disabled={selected === null} onClick={check}>
           {t("theory:quiz.check")}
         </button>
       )}
