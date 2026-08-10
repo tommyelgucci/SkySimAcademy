@@ -2408,6 +2408,245 @@
           "explanation": "CRM geht davon aus, dass jeder Pilot, unabhängig vom Können, blinde Flecken hat, die andere Ressourcen abdecken können."
         }
       }
+    },
+    "flight-planning": {
+      "title": "Flugplanung",
+      "description": "Eine Route aus Kontrollpunkten aufbauen, Kraftstoff und Reserven planen, einen Ausweichflugplatz wählen, NOTAMs und Wetterbriefings lesen, einen Flugplan aufgeben, und die Go/No-Go-Entscheidung, die alles zusammenführt.",
+      "lessons": {
+        "why-flight-planning-matters": {
+          "title": "Warum Flugplanung zählt",
+          "body": "Flugplanung ist die Arbeit vor dem Anlassen des Motors, die aus \"ich möchte von A nach B fliegen\" einen konkreten, überprüfbaren Plan macht: Route, Höhe, Kraftstoff, Wetter, und einen legalen und sicheren Weg dorthin. Es ist eine eigene Disziplin, getrennt vom eigentlichen Fliegen mit Steuerhorn und Pedalen, und sie zu überspringen zeigt sich nicht sofort als Problem — erst dann, wenn es in der Luft schon zu spät ist, es zu korrigieren.\n\nEin nützlicher Blickwinkel: Alles, was sonst in diesem Kurs behandelt wird — Wetter, Masse und Schwerpunkt, Navigation, Vorschriften — wird für einen konkreten Flug an einem konkreten Tag zusammengeführt. Flugplanung ist weniger ein neues Thema als der Moment, in dem alle anderen Themen gleichzeitig angewendet werden, mit echten Zahlen statt allgemeiner Regeln.\n\nDas Ergebnis einer guten Flugplanung ist kein Gefühl der Bereitschaft — es ist eine konkrete Route mit Kontrollpunkten, eine konkrete Kraftstoffzahl mit Reserven, ein konkreter Ausweichflugplatz falls das Wetter nicht mitspielt, und ein konkreter Punkt, an dem der Flug schlicht nicht stattfindet. Der Rest dieses Moduls baut jedes dieser Teile auf.",
+          "keyTakeaway": "Flugplanung kombiniert Wetter, Masse und Schwerpunkt, Navigation und Vorschriften zu einem konkreten, überprüfbaren Plan für einen bestimmten Flug — kein eigenständiges Thema, sondern der Ort, an dem die anderen angewendet werden.",
+          "simTip": "Der Simulator überspringt die Planung vollständig und setzt dich direkt ins Flugzeug — behandle jeden echten Flug so, als würde er Stunden vorher am Schreibtisch beginnen, mit einer Karte und einer Kraftstoffberechnung."
+        },
+        "route-and-charts": {
+          "title": "Eine Route wählen und die Karte lesen",
+          "body": "Eine Route ist mehr als eine gerade Linie zwischen zwei Flugplätzen. Sie besteht aus Kontrollpunkten — Geländemerkmalen, Navigationshilfen oder GPS-Wegpunkten — die so verteilt sind, dass ein Pilot unterwegs den Fortschritt bestätigen kann, plus einer Reiseflughöhe, gewählt für Geländefreiheit, Wind und Luftraum.\n\nKarten zeigen mehr als Gelände: Grenzen kontrollierten Luftraums, Hindernisse, Sperr- oder Verbotszonen, und Mindestsicherheitshöhen für jeden Abschnitt. Eine gerade Linie auf der Karte, die effizient aussieht, kann Luftraum durchqueren, der eine Freigabe erfordert, oder näher an hohem Gelände vorbeiführen, als angenehm ist — die Karte deckt das vor dem Start auf, nicht danach.\n\nFür jeden Abschnitt zwischen Kontrollpunkten errechnet ein vollständiger Plan wahren Kurs, missweisenden Steuerkurs (korrigiert für Wind und Missweisung), Distanz und geschätzte Zeit — genau die Koppelnavigations-Grundlagen aus dem Navigationsmodul, angewendet auf diese konkrete Route statt auf eine allgemeine Übung.",
+          "keyTakeaway": "Eine Route sind Kontrollpunkte plus eine Höhe, gewählt für Gelände, Wind und Luftraum — nicht nur eine gerade Linie —, und die Karte deckt Sperrluftraum oder hohes Gelände auf, das eine gerade Linie sonst verbergen würde.",
+          "simTip": "Die Mini-Karte des Simulators zeigt die Grenze des Fluggebiets und die Pisten genauso, wie eine echte Karte Kontrollpunkte und Luftraum zeigt — gewöhne dich daran, sie zu lesen, bevor du sie im Notfall brauchst."
+        },
+        "fuel-planning-and-reserves": {
+          "title": "Kraftstoffplanung und Reserven",
+          "body": "Die Kraftstoffplanung beginnt mit dem Streckenkraftstoff — der Menge, die vom Anlassen bis zur Landung am Ziel verbraucht wird, basierend auf dem bekannten Verbrauch des Flugzeugs und der geplanten Flugzeit. Diese Zahl allein ist nie die mitzuführende Gesamtmenge.\n\nReservekraftstoff wird zusätzlich zum Streckenkraftstoff eingeplant, damit eine unerwartete Verzögerung — Verkehr, ein Fehlanflug, ein Ausweichen — nicht zum Notfall wird. Die VFR-Flugplanung nutzt üblicherweise eine Reserve, gemessen in Minuten Flugzeit bei normaler Reiseflugleistung, die als Kraftstoff behandelt wird, der nie als für die Strecke verfügbar gezählt wird.\n\nDer insgesamt benötigte Kraftstoff ist Streckenkraftstoff plus Reserve, plus etwaiger Kraftstoff, um einen Ausweichflugplatz zu erreichen, falls einer nötig ist (Thema der nächsten Lektion), plus eine Zulage für Rollen und Motorlauf. Diese Summe mit dem nutzbaren Kraftstoff des Flugzeugs zu vergleichen — nicht nur mit der Tankgröße — entscheidet, ob der geplante Flug tatsächlich geflogen werden kann.",
+          "keyTakeaway": "Der insgesamt benötigte Kraftstoff ist Streckenkraftstoff plus eine Reserve, die nie als verfügbar zählt, plus Kraftstoff zum Ausweichflugplatz falls nötig — dieser Vergleich mit dem nutzbaren Kraftstoff entscheidet, ob der geplante Flug wirklich funktioniert.",
+          "simTip": "Die Überziehwarnung des Simulators ist sofortiges Feedback für ausgehende Fahrt; im echten Flug ausgehender Kraftstoff ist ein Planungsfehler, der ganz ohne Warnung auftritt — respektiere die Reserve auf dem Papier, bevor du sie in der Luft je brauchst."
+        },
+        "alternates-and-weather-minimums": {
+          "title": "Ausweichflugplätze und Wettermindestbedingungen",
+          "body": "Ein Ausweichflugplatz ist ein zweites, im Voraus geplantes Ziel mit eigener Kraftstoffzulage, das genutzt wird, wenn das ursprüngliche Ziel nicht erreicht werden kann — meist weil das Wetter dort unter das für die Landung Nötige gefallen ist.\n\nOb ein Ausweichflugplatz erforderlich ist und welche Plätze infrage kommen, hängt vom vorhergesagten Wetter am Ziel um die geplante Ankunftszeit ab. Eine Zielprognose deutlich über den Mindestwerten braucht möglicherweise gar keinen benannten Ausweichflugplatz; eine nahe an oder unter den Mindestwerten schon — und der Ausweichflugplatz selbst hat eigene Mindestwerte, um als nutzbar zu gelten.\n\nEinen Ausweichflugplatz zu wählen bedeutet nicht einfach \"der nächstgelegene Flugplatz\" — er sollte ein Wetter haben, das realistisch besser als am Ziel erwartet wird, eine für das Flugzeug geeignete Piste, und Kraftstoff, um ihn zu erreichen, eingerechnet in die Summe aus der vorigen Lektion. Ein gewählter, aber nie ernsthaft geprüfter Ausweichflugplatz ist kein echter Plan.",
+          "keyTakeaway": "Ein Ausweichflugplatz ist ein zweites Ziel mit eigenen Wettermindestbedingungen und Kraftstoffzulage, nötig wenn die Zielprognose an oder unter den Mindestwerten liegt — bewusst gewählt, nicht einfach der nächstgelegene Flugplatz auf der Karte.",
+          "simTip": "Stell dir im Simulator die vier Szenarien vor derselben Frage vor: Wenn der Landeplatz des aktiven Szenarios unbrauchbar würde, welchen der anderen könntest du mit dem Kraftstoff und der Höhe, die du hast, tatsächlich erreichen?"
+        },
+        "notams-and-briefings": {
+          "title": "NOTAMs und Wetterbriefings",
+          "body": "Ein NOTAM (Notice to Airmen) ist eine kurze, zeitgestempelte Meldung über etwas Vorübergehendes oder Unerwartetes, das noch nicht in einer Karte steht — eine gesperrte Piste, eine außer Betrieb befindliche Navigationshilfe, unmarkierte Bauarbeiten nahe einem Flugplatz, oder ein vorübergehend für eine Veranstaltung gesperrter Luftraum.\n\nEin Wetterbriefing vor dem Flug geht über den Blick aus dem Fenster hinaus: aktuelle Bedingungen und Vorhersagen entlang der Route und am Ziel, bedeutsame Wetterwarnungen und Höhenwinde werden zusammen geprüft und dann mit den persönlichen Mindestwerten aus der letzten Lektion dieses Moduls verglichen.\n\nNOTAMs und Wetterbriefings haben einen gemeinsamen roten Faden — beide decken Dinge ab, die eine gedruckte Karte allein nicht zeigen kann, weil sie sich zu häufig ändern, um gedruckt zu werden. Diesen Schritt zu überspringen bedeutet, mit einem Plan zu fliegen, der schon veraltet sein könnte, in dem Moment, in dem er auf Papier gezeichnet wird.",
+          "keyTakeaway": "NOTAMs decken vorübergehende Änderungen ab, die eine Karte nicht zeigen kann (gesperrte Pisten, ausgefallene Hilfen, vorübergehende Sperrungen); ein Wetterbriefing ergänzt aktuelle Bedingungen und Vorhersagen — beide werden geprüft, weil eine gedruckte Karte allein schnell veraltet.",
+          "simTip": "Die Szenarien des Simulators ändern sich während einer Sitzung nie unter dir — genau die Annahme, die ein echter NOTAM- und Wettercheck vor jedem echten Flug infrage stellen soll."
+        },
+        "filing-and-following-a-flight-plan": {
+          "title": "Einen Flugplan aufgeben und einhalten",
+          "body": "Einen Flugplan aufzugeben bedeutet, Route, Höhe, Flugzeugdaten, mitgeführten Kraftstoff und Personenzahl an Bord vor dem Start formell bei der Flugverkehrsdienststelle zu hinterlegen — getrennt von jeder ATC-Freigabe, die nötig ist, um tatsächlich eine bestimmte Route oder Höhe zu fliegen.\n\nDer Kernzweck ist Suche und Rettung: Wenn sich ein Flug nicht meldet oder seinen Plan nicht innerhalb einer festgelegten Zeit nach der geschätzten Ankunft schließt, wird ein Alarm ausgelöst und eine Suche kann entlang der zuletzt bekannten Route beginnen — ein Zweck, der nur funktioniert, wenn der Plan beim Start tatsächlich aktiviert und bei der Ankunft geschlossen wird.\n\nEin aufgegebener Flugplan ist nicht in Stein gemeißelt; echte Flüge werden in der Luft angepasst — ein Ausweichen zum Alternate, eine Routenänderung wegen Wetter — und die übliche Praxis ist, die Flugverkehrsdienststelle zu aktualisieren, wenn sich ein aufgegebener Plan bedeutend ändert, damit das oben beschriebene Sicherheitsnetz weiterhin dorthin zeigt, wo der Flug tatsächlich ist.",
+          "keyTakeaway": "Ein Flugplan wird vor allem für Suche und Rettung aufgegeben — er funktioniert nur, wenn er beim Start aktiviert und bei der Ankunft geschlossen wird, und sollte in der Luft aktualisiert werden, wenn der Flug bedeutend vom aufgegebenen Plan abweicht.",
+          "simTip": "Die Sitzungszusammenfassung des Simulators am Ende eines Flugs ist ein kleines Echo des \"Schließens\" eines Flugplans — ein echter zählt weit mehr, denn bis er geschlossen ist, sucht am Ende vielleicht jemand nach dir."
+        },
+        "the-go-no-go-decision": {
+          "title": "Die Go/No-Go-Entscheidung",
+          "body": "Jedes Teil dieses Moduls — Route, Kraftstoff, Ausweichflugplatz, Wetterbriefing, aufgegebener Plan — fließt in eine letzte Entscheidung ein, die vor dem Start getroffen und während des gesamten Flugs überprüft wird: fliegen, oder nicht. Persönliche Mindestwerte sind die eigenen, oft konservativeren, im Voraus festgelegten Grenzen des Piloten, genau damit sie im Moment unter Druck nicht wegverhandelt werden.\n\nEine Go/No-Go-Entscheidung wird nicht nur einmal am Flugplatz getroffen. Sie wird bei jedem Kontrollpunkt neu geprüft: Stimmt der Kraftstoffverbrauch mit dem Plan überein, stimmt das Wetter mit der Vorhersage überein, liegt der Flug noch bequem innerhalb der persönlichen Mindestwerte — und ein Plan, der beim Start sinnvoll war, kann eine Stunde später keinen Sinn mehr ergeben.\n\nDie Disziplin, die das funktionieren lässt, ist, die Kriterien im Voraus am Boden festzulegen, statt in der Luft unter Zeit- oder sozialem Druck zu entscheiden — dasselbe Prinzip, das im Modul Menschliche Faktoren aus einem anderen Blickwinkel behandelt wird, hier speziell angewendet auf die Planungsentscheidung selbst.",
+          "keyTakeaway": "Go/No-Go ist eine Entscheidung, die bei jedem Kontrollpunkt neu getroffen wird, nicht nur einmal vor dem Start — persönliche Mindestwerte, im Voraus am Boden festgelegt, sind es, die diese Entscheidung davor bewahren, in der Luft unter Druck wegverhandelt zu werden.",
+          "simTip": "Jede Mission des Simulators ist jederzeit verfügbar und gefahrlos zu versuchen — eine echte Go/No-Go-Entscheidung hat diesen Luxus nicht, und genau deshalb zählt es, die Kriterien im Voraus festzulegen."
+        }
+      },
+      "quiz": {
+        "why-flight-planning-matters-q1": {
+          "question": "Wozu macht die Flugplanung eine allgemeine Flugidee?",
+          "options": [
+            "Zu einem konkreten, überprüfbaren Plan: Route, Höhe, Kraftstoff, Wetter und ein legaler Weg dorthin",
+            "Zu einem groben Gefühl, dass der Flug schon gut gehen wird",
+            "Zu einer einzigen Zahl: der Gesamtdistanz in Meilen"
+          ],
+          "explanation": "Flugplanung erzeugt konkrete, überprüfbare Zahlen und Entscheidungen, kein allgemeines Bereitschaftsgefühl."
+        },
+        "why-flight-planning-matters-q2": {
+          "question": "Wie hängt Flugplanung mit den anderen Themen dieses Kurses zusammen (Wetter, Masse und Schwerpunkt, Navigation, Vorschriften)?",
+          "options": [
+            "Sie ist der Punkt, an dem alle zusammen auf einen konkreten Flug angewendet werden",
+            "Sie ersetzt die Notwendigkeit, eines davon zu kennen",
+            "Sie gilt nur für Flüge über 500 Meilen"
+          ],
+          "explanation": "Flugplanung ist kein eigenständiges Thema — dort werden Wetter, Masse und Schwerpunkt, Navigation und Vorschriften auf einen echten Flug angewendet."
+        },
+        "why-flight-planning-matters-q3": {
+          "question": "Was ist das eigentliche Ergebnis einer guten Flugplanung?",
+          "options": [
+            "Eine konkrete Route, eine Kraftstoffzahl mit Reserven, ein Ausweichflugplatz und ein klarer Punkt, an dem der Flug nicht stattfindet",
+            "Eine mündliche Bestätigung, dass das Wetter gut aussieht",
+            "Eine Schätzung, wie viel Kraftstoff wohl nötig sein könnte"
+          ],
+          "explanation": "Ein guter Plan liefert konkrete, überprüfbare Zahlen und eine klare No-Go-Schwelle, keine vagen Eindrücke."
+        },
+        "route-and-charts-q1": {
+          "question": "Woraus besteht eine Route über eine gerade Linie zwischen Flugplätzen hinaus?",
+          "options": [
+            "Kontrollpunkten zur Fortschrittsbestätigung, plus einer Höhe, gewählt für Gelände, Wind und Luftraum",
+            "Nur der Gesamtdistanz in Seemeilen",
+            "Einem einzigen Kompasskurs, der den ganzen Flug über gehalten wird"
+          ],
+          "explanation": "Eine echte Route besteht aus Kontrollpunkten und einer bewusst gewählten Höhe, nicht nur aus Distanz und einem Kurs."
+        },
+        "route-and-charts-q2": {
+          "question": "Warum kann eine gerade Linie zwischen zwei Flugplätzen eine schlechte Routenwahl sein?",
+          "options": [
+            "Sie kann kontrollierten Luftraum durchqueren, der eine Freigabe erfordert, oder nahe an hohem Gelände vorbeiführen",
+            "Gerade Linien sind immer die sicherste Option",
+            "Karten zeigen nur gerade Routen als gültig an"
+          ],
+          "explanation": "Eine gerade Linie kann Luftraum oder Gelände durchqueren, das eine Karte vor dem Start aufdeckt und eine Routenänderung nahelegt."
+        },
+        "route-and-charts-q3": {
+          "question": "Was wird für jeden Abschnitt zwischen Kontrollpunkten in einem vollständigen Routenplan errechnet?",
+          "options": [
+            "Wahrer Kurs, für Wind korrigierter missweisender Steuerkurs, Distanz und geschätzte Zeit",
+            "Nur der gesamte für den Flug verbrauchte Kraftstoff",
+            "Die Farbe des Geländes auf der Karte"
+          ],
+          "explanation": "Jeder Abschnitt bekommt seinen eigenen Kurs, windkorrigierten Steuerkurs, Distanz und Zeitschätzung — die Koppelnavigation pro Abschnitt angewendet."
+        },
+        "fuel-planning-and-reserves-q1": {
+          "question": "Was ist \"Streckenkraftstoff\"?",
+          "options": [
+            "Der Kraftstoff, der vom Anlassen bis zur Landung am Ziel verbraucht wird",
+            "Die gesamte Kraftstoffkapazität der Tanks des Flugzeugs",
+            "Eine gesetzlich festgelegte feste Menge unabhängig von der Distanz"
+          ],
+          "explanation": "Streckenkraftstoff ist speziell der für den geplanten Flug verbrauchte Kraftstoff, basierend auf Verbrauch und Flugzeit."
+        },
+        "fuel-planning-and-reserves-q2": {
+          "question": "Warum wird Reservekraftstoff getrennt vom Streckenkraftstoff gehalten, statt einfach etwas zur Summe hinzuzufügen?",
+          "options": [
+            "Damit er nie als für die Strecke verfügbar gezählt wird und so vor Verzögerungen wie Verkehr oder einem Fehlanflug schützt",
+            "Weil Vorschriften vorschreiben, ihn in einem separaten Tank zu lagern",
+            "Reservekraftstoff ist nur bei internationalen Flügen relevant"
+          ],
+          "explanation": "Die Reserve als unantastbar zu behandeln schützt vor echten Verzögerungen, statt still während des Flugs verbraucht zu werden."
+        },
+        "fuel-planning-and-reserves-q3": {
+          "question": "Womit sollte der insgesamt benötigte Kraftstoff verglichen werden, um zu entscheiden, ob ein Flug wie geplant geflogen werden kann?",
+          "options": [
+            "Mit dem nutzbaren Kraftstoff des Flugzeugs, nicht nur mit der physischen Tankgröße",
+            "Mit der Distanz zum nächsten großen Flugplatz",
+            "Mit den gesamten Flugstunden des Piloten"
+          ],
+          "explanation": "Nutzbarer Kraftstoff (ohne den in den Tanks gefangenen, nicht nutzbaren Rest) ist die reale Zahl, die entscheidet, ob der Plan funktioniert."
+        },
+        "alternates-and-weather-minimums-q1": {
+          "question": "Was ist ein Ausweichflugplatz?",
+          "options": [
+            "Ein zweites, im Voraus geplantes Ziel mit eigener Kraftstoffzulage, genutzt, wenn das ursprüngliche Ziel nicht erreicht werden kann",
+            "Jeder auf der Karte entlang der Route sichtbare Flugplatz",
+            "Eine Ausweichpiste am selben Flugplatz wie das Ziel"
+          ],
+          "explanation": "Ein Ausweichflugplatz ist ein konkretes, geplantes zweites Ziel — nicht irgendein naher Flugplatz."
+        },
+        "alternates-and-weather-minimums-q2": {
+          "question": "Was bestimmt typischerweise, ob ein Flug einen benannten Ausweichflugplatz braucht?",
+          "options": [
+            "Ob das vorhergesagte Wetter am Ziel um die Ankunftszeit an oder unter den erforderlichen Mindestwerten liegt",
+            "Die Gesamtzahl der Passagiere an Bord",
+            "Ob der Flug länger als zwei Stunden dauert"
+          ],
+          "explanation": "Die Wettervorhersage am Ziel im Verhältnis zu den Mindestwerten bestimmt die Notwendigkeit eines Ausweichflugplatzes."
+        },
+        "alternates-and-weather-minimums-q3": {
+          "question": "Was sollte bei der Wahl eines Ausweichflugplatzes bedacht werden?",
+          "options": [
+            "Realistisch besseres Wetter als am Ziel, eine geeignete Piste, und Kraftstoff, um ihn zu erreichen",
+            "Nur, dass er der nächstgelegene Flugplatz auf der Karte ist",
+            "Ob er denselben Namen wie der Startflugplatz trägt"
+          ],
+          "explanation": "Eine echte Wahl des Ausweichflugplatzes wägt Wetter, geeignete Piste und Kraftstoff ab — nicht nur die Nähe."
+        },
+        "notams-and-briefings-q1": {
+          "question": "Was meldet ein NOTAM typischerweise?",
+          "options": [
+            "Eine vorübergehende oder unerwartete Änderung, die noch nicht auf einer Karte steht, wie eine gesperrte Piste oder eine ausgefallene Navigationshilfe",
+            "Die planmäßige Wartungshistorie eines Flugzeugs",
+            "Eine dauerhafte Änderung der Pistennummerierung eines Flugplatzes"
+          ],
+          "explanation": "NOTAMs decken speziell vorübergehende oder unerwartete Änderungen ab, die gedruckte Karten noch nicht wiedergeben können."
+        },
+        "notams-and-briefings-q2": {
+          "question": "Was enthält ein Wetterbriefing vor dem Flug typischerweise über aktuelle Bedingungen hinaus?",
+          "options": [
+            "Vorhersagen entlang der Route und am Ziel, bedeutsame Wetterwarnungen und Höhenwinde",
+            "Nur die Temperatur am Startflugplatz",
+            "Die persönliche Flughistorie des Piloten"
+          ],
+          "explanation": "Ein vollständiges Briefing deckt Vorhersagen und Warnungen entlang der gesamten Route ab, nicht nur aktuelle Bedingungen beim Start."
+        },
+        "notams-and-briefings-q3": {
+          "question": "Warum werden NOTAMs und Wetterbriefings in der Flugplanung zusammen behandelt?",
+          "options": [
+            "Beide decken Informationen ab, die sich zu häufig ändern, als dass eine gedruckte Karte sie zeigen könnte",
+            "Beide sind nur bei internationalen Flügen relevant",
+            "Beide sind optionale Schritte ohne Sicherheitsauswirkung"
+          ],
+          "explanation": "Sie teilen denselben Grund: Karten können Informationen nicht erfassen, die sich so häufig ändern wie NOTAMs und Wetter."
+        },
+        "filing-and-following-a-flight-plan-q1": {
+          "question": "Was ist der Hauptzweck, einen Flugplan aufzugeben?",
+          "options": [
+            "Suche und Rettung — ein Alarm wird ausgelöst, wenn sich der Flug nicht meldet oder seinen Plan nicht schließt",
+            "Er ersetzt die Notwendigkeit jeder ATC-Freigabe",
+            "Er reserviert automatisch einen Parkplatz am Ziel"
+          ],
+          "explanation": "Der Kernzweck ist, Suche und Rettung zu ermöglichen, falls sich der Flug nicht wie erwartet abschließt."
+        },
+        "filing-and-following-a-flight-plan-q2": {
+          "question": "Was muss geschehen, damit der Sicherheitszweck eines aufgegebenen Flugplans tatsächlich funktioniert?",
+          "options": [
+            "Er muss beim Start aktiviert und bei der Ankunft geschlossen werden",
+            "Er muss nur aufgegeben werden, ohne weitere Handlung",
+            "Er muss während des Flugs jede Stunde neu aufgegeben werden"
+          ],
+          "explanation": "Ein nicht aktivierter oder nicht geschlossener Plan löst nicht den Suche-und-Rettung-Alarm aus, für den er gedacht ist."
+        },
+        "filing-and-following-a-flight-plan-q3": {
+          "question": "Was sollte geschehen, wenn ein Flug bedeutend von seinem aufgegebenen Plan abweicht, etwa durch Ausweichen zum Alternate?",
+          "options": [
+            "Die Flugverkehrsdienststelle sollte aktualisiert werden, damit der Plan weiterhin widerspiegelt, wo der Flug tatsächlich ist",
+            "Nichts — der ursprüngliche Plan ist rechtlich bindend und kann nicht geändert werden",
+            "Der Flugplan sollte vollständig storniert und nie neu aufgegeben werden"
+          ],
+          "explanation": "Die Flugverkehrsdienststelle zu aktualisieren hält das Sicherheitsnetz des Flugplans dem echten Flug entsprechend."
+        },
+        "the-go-no-go-decision-q1": {
+          "question": "Was sind \"persönliche Mindestwerte\"?",
+          "options": [
+            "Die eigenen, oft konservativeren Grenzen des Piloten, im Voraus festgelegt, bevor die eigentliche Entscheidung ansteht",
+            "Die gesetzlich vorgeschriebenen Mindestflugstunden für eine Lizenz",
+            "Der vom Flugzeughersteller vorgeschriebene Mindestkraftstoff"
+          ],
+          "explanation": "Persönliche Mindestwerte sind vom Piloten im Voraus festgelegte Grenzen, genau damit sie nicht im Moment verhandelt werden."
+        },
+        "the-go-no-go-decision-q2": {
+          "question": "Wann sollte die Go/No-Go-Entscheidung während eines Flugs neu geprüft werden?",
+          "options": [
+            "Bei jedem Kontrollpunkt, nicht nur einmal vor dem Start",
+            "Nur wenn der Motor eine Warnleuchte zeigt",
+            "Nie — einmal in der Luft, bleibt die ursprüngliche Entscheidung bestehen"
+          ],
+          "explanation": "Bedingungen können sich ändern, deshalb wird die Entscheidung bei jedem Kontrollpunkt während des Flugs erneut geprüft."
+        },
+        "the-go-no-go-decision-q3": {
+          "question": "Warum wird empfohlen, die Go/No-Go-Kriterien im Voraus am Boden festzulegen, statt in der Luft zu entscheiden?",
+          "options": [
+            "Es verhindert, dass die Entscheidung im Moment unter Zeit- oder sozialem Druck wegverhandelt wird",
+            "Vorschriften verlangen, dass alle Entscheidungen vor dem Anlassen getroffen werden",
+            "In der Luft festgelegte Kriterien sind immer genauer"
+          ],
+          "explanation": "Im Voraus zu entscheiden schützt die Entscheidung vor Druck, der das Urteilsvermögen im Moment tendenziell untergräbt."
+        }
+      }
     }
   },
   "passedTag": "Bestanden",

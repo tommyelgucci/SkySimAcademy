@@ -2408,6 +2408,245 @@
           "explanation": "La CRM asume que cada piloto, sin importar la habilidad, tiene puntos ciegos que otros recursos pueden ayudar a cubrir."
         }
       }
+    },
+    "flight-planning": {
+      "title": "Planificación de vuelo",
+      "description": "Construir una ruta con puntos de control, planificar combustible y reservas, elegir un aeródromo alterno, leer NOTAM y partes meteorológicos, presentar un plan de vuelo, y la decisión de ir/no ir que une todo.",
+      "lessons": {
+        "why-flight-planning-matters": {
+          "title": "Por qué importa la planificación de vuelo",
+          "body": "La planificación de vuelo es el trabajo que se hace antes de arrancar el motor y que convierte \"me gustaría volar de A a B\" en un plan concreto y verificable: ruta, altitud, combustible, meteorología, y una forma legal y segura de llegar. Es una disciplina separada de pilotar con palanca y pedales, y saltársela no se nota como problema hasta que ya es demasiado tarde para corregirlo en el aire.\n\nUna forma útil de pensarlo: todo lo que se cubre en otras partes de este curso —meteorología, peso y balance, navegación, regulaciones— se junta en un solo vuelo concreto, en un día concreto. La planificación de vuelo no es tanto un tema nuevo como el momento en que todos los demás se aplican a la vez, contra números reales en lugar de reglas generales.\n\nEl resultado de una buena planificación no es una sensación de estar listo — es una ruta concreta con puntos de control, una cifra de combustible concreta con reservas, un alterno concreto si el tiempo no coopera, y un punto concreto en el que el vuelo simplemente no se hace. El resto de este módulo construye cada una de esas piezas.",
+          "keyTakeaway": "La planificación de vuelo combina meteorología, peso y balance, navegación y regulaciones en un plan concreto y verificable para un vuelo concreto — no es un tema aparte, sino el lugar donde se aplican los demás.",
+          "simTip": "El simulador se salta la planificación por completo y te deja directo en la aeronave — trata cada vuelo real como si empezara horas antes, en un escritorio, con una carta y un cálculo de combustible."
+        },
+        "route-and-charts": {
+          "title": "Elegir una ruta y leer la carta",
+          "body": "Una ruta es más que una línea recta entre dos aeródromos. Se construye con puntos de control —accidentes del terreno, ayudas a la navegación, o waypoints GPS— espaciados para que el piloto pueda confirmar su progreso en el camino, más una altitud de crucero elegida por el margen sobre el terreno, el viento y el espacio aéreo.\n\nLas cartas muestran más que el terreno: límites de espacio aéreo controlado, obstáculos, zonas restringidas o prohibidas, y altitudes mínimas de seguridad para cada tramo. Una línea recta en el mapa que parece eficiente puede cruzar espacio aéreo que exige autorización, o pasar más cerca de terreno elevado de lo cómodo — la carta es lo que detecta eso antes de despegar, no después.\n\nPara cada tramo entre puntos de control, un plan completo calcula rumbo verdadero, rumbo magnético (corrigiendo por viento y variación), distancia y tiempo estimado — exactamente las técnicas de navegación estimada del módulo de navegación, aplicadas a esta ruta concreta en vez de a un ejercicio genérico.",
+          "keyTakeaway": "Una ruta son puntos de control más una altitud elegida por terreno, viento y espacio aéreo — no solo una línea recta — y la carta es lo que revela espacio aéreo restringido o terreno elevado que una línea recta ocultaría.",
+          "simTip": "El mini-mapa del simulador muestra el límite del área de vuelo y las pistas de la misma forma que una carta muestra puntos de control y espacio aéreo — acostúmbrate a leerlo antes de necesitarlo en una emergencia."
+        },
+        "fuel-planning-and-reserves": {
+          "title": "Planificación de combustible y reservas",
+          "body": "La planificación de combustible empieza con el combustible de viaje — la cantidad quemada desde el arranque del motor hasta el aterrizaje en el destino, basada en el consumo conocido de la aeronave y el tiempo de vuelo previsto. Esa cifra sola nunca es el total a llevar.\n\nSe añade combustible de reserva por encima del de viaje precisamente para que un retraso inesperado —tráfico, una aproximación frustrada, un desvío— no se convierta en una emergencia. La planificación VFR suele usar una reserva medida en minutos de vuelo a potencia de crucero normal, guardada como combustible que nunca se cuenta como disponible para el viaje en sí.\n\nEl combustible total requerido es el de viaje, más la reserva, más el combustible para llegar a un alterno si hace falta uno (visto en la próxima lección), más una previsión para rodaje y prueba de motores. Comparar ese total con el combustible utilizable de la aeronave —no solo el tamaño de los depósitos— es lo que decide si el vuelo, tal como está planificado, se puede volar de verdad.",
+          "keyTakeaway": "El combustible total requerido es el de viaje más una reserva que nunca se cuenta como disponible, más combustible al alterno si hace falta — comparar ese total con el combustible utilizable decide si el vuelo planificado realmente funciona.",
+          "simTip": "El aviso de pérdida del simulador es una señal instantánea de quedarse sin velocidad; quedarse sin combustible en vuelo real es un fallo de planificación que no da ningún aviso — respeta la reserva sobre el papel antes de necesitarla en el aire."
+        },
+        "alternates-and-weather-minimums": {
+          "title": "Alternos y mínimos meteorológicos",
+          "body": "Un aeródromo alterno es un segundo destino, planificado de antemano con su propia reserva de combustible, para usar si no se puede llegar al destino original — casi siempre porque el tiempo allí ha caído por debajo de lo necesario para aterrizar.\n\nQue haga falta un alterno, y qué aeródromos son válidos, depende de la meteorología prevista en el destino alrededor de la hora estimada de llegada. Un pronóstico de destino cómodamente por encima de mínimos puede no necesitar ningún alterno nombrado; uno cercano o por debajo de mínimos sí lo necesita, y el propio alterno tiene sus propios mínimos para calificar como utilizable.\n\nElegir un alterno no es solo \"el aeródromo más cercano\" — debe tener un tiempo que se espere razonablemente mejor que el del destino, una pista adecuada para la aeronave, y combustible para llegar incluido en el total de la lección anterior. Un alterno elegido pero nunca evaluado en serio no es un plan real.",
+          "keyTakeaway": "Un alterno es un segundo destino con sus propios mínimos meteorológicos y reserva de combustible, necesario cuando el pronóstico del destino está en o cerca de mínimos — elegido a propósito, no solo como el aeródromo más cercano en el mapa.",
+          "simTip": "En el simulador, piensa en los cuatro escenarios como si enfrentaran la misma disyuntiva: si el lugar de aterrizaje del escenario activo dejara de ser utilizable, ¿a cuál de los otros podrías llegar de verdad con el combustible y la altitud que tienes?"
+        },
+        "notams-and-briefings": {
+          "title": "NOTAM y partes meteorológicos",
+          "body": "Un NOTAM (aviso a los aviadores) es una alerta breve y fechada sobre algo temporal o inesperado que todavía no está en ninguna carta — una pista cerrada, una ayuda a la navegación fuera de servicio, obras sin señalizar cerca de un aeródromo, o espacio aéreo restringido temporalmente por un evento.\n\nUn parte meteorológico antes del vuelo va más allá de comprobar si se ve despejado fuera: condiciones actuales y pronósticos a lo largo de la ruta y en el destino, avisos meteorológicos significativos, y viento en altura se revisan todos juntos, y luego se comparan con los mínimos personales vistos en la última lección de este módulo.\n\nLos NOTAM y los partes meteorológicos comparten un hilo común — ambos cubren cosas que una carta impresa, por sí sola, no puede mostrar porque cambian demasiado a menudo para imprimirse. Saltarse este paso significa volar con un plan que puede estar desactualizado desde el momento mismo en que se dibuja en papel.",
+          "keyTakeaway": "Los NOTAM cubren cambios temporales que una carta no puede mostrar (pistas cerradas, ayudas fuera de servicio, restricciones temporales); un parte meteorológico añade condiciones actuales y pronósticos — ambos se revisan porque una carta impresa sola queda obsoleta rápido.",
+          "simTip": "Los escenarios del simulador nunca cambian bajo tus pies a mitad de sesión, que es exactamente la suposición que un NOTAM y un parte meteorológico reales existen para poner a prueba antes de cada vuelo de verdad."
+        },
+        "filing-and-following-a-flight-plan": {
+          "title": "Presentar y seguir un plan de vuelo",
+          "body": "Presentar un plan de vuelo significa registrar formalmente la ruta, la altitud, los datos de la aeronave, el combustible a bordo y el número de personas a bordo ante los servicios de tránsito aéreo antes de despegar — algo distinto de cualquier autorización de ATC necesaria para volar de verdad una ruta o altitud concretas.\n\nSu propósito principal es la búsqueda y rescate: si un vuelo no se comunica o no cierra su plan dentro de un plazo fijado tras la hora estimada de llegada, se dispara una alerta y puede empezar una búsqueda desde la última ruta conocida — un propósito que solo funciona si el plan realmente se activa al despegar y se cierra al llegar.\n\nUn plan de vuelo presentado no es inamovible; los vuelos reales se revisan en el aire —un desvío al alterno, un cambio de ruta por el tiempo— y la práctica estándar es actualizar a los servicios de tránsito aéreo cuando un plan presentado cambia de forma relevante, para que la red de seguridad descrita arriba siga apuntando a donde el vuelo realmente está.",
+          "keyTakeaway": "Presentar un plan de vuelo existe sobre todo para la búsqueda y rescate — solo funciona si se activa al despegar y se cierra al llegar, y debe actualizarse en el aire si el vuelo se desvía de forma relevante de lo presentado.",
+          "simTip": "El resumen de sesión del simulador al final de un vuelo es un pequeño eco de \"cerrar\" un plan de vuelo — uno real importa muchísimo más, porque hasta que se cierra, alguien puede acabar buscándote."
+        },
+        "the-go-no-go-decision": {
+          "title": "La decisión de ir o no ir",
+          "body": "Cada pieza de este módulo —ruta, combustible, alterno, parte meteorológico, plan presentado— alimenta una decisión final tomada antes de despegar y revisada durante todo el vuelo: ir, o no ir. Los mínimos personales son los límites propios del piloto, a menudo más conservadores, fijados de antemano, precisamente para que no se negocien en el momento bajo presión.\n\nLa decisión de ir/no ir no se toma solo una vez en el aeródromo. Se revisa en cada punto de control: ¿el consumo de combustible coincide con lo planificado?, ¿el tiempo coincide con el pronóstico?, ¿el vuelo sigue cómodamente dentro de los mínimos personales? — y un plan que tenía sentido al despegar puede dejar de tenerlo una hora después.\n\nLa disciplina que hace que esto funcione es decidir los criterios de antemano, en tierra, en lugar de decidir en el aire bajo presión de tiempo o social — el mismo principio visto desde otro ángulo en el módulo de factores humanos, aplicado aquí específicamente a la propia decisión de planificación.",
+          "keyTakeaway": "Ir/no ir es una decisión que se revisa en cada punto de control, no solo una vez antes de despegar — los mínimos personales fijados de antemano, en tierra, son lo que impide que esa decisión se negocie bajo presión en el aire.",
+          "simTip": "Cada misión del simulador está disponible y es segura para intentarla cuando quieras — una decisión real de ir/no ir no tiene ese lujo, y es exactamente por eso que fijar los criterios de antemano importa."
+        }
+      },
+      "quiz": {
+        "why-flight-planning-matters-q1": {
+          "question": "¿En qué convierte la planificación de vuelo una idea general de volar?",
+          "options": [
+            "En un plan concreto y verificable: ruta, altitud, combustible, meteorología y una forma legal de llegar",
+            "En una sensación general de que el vuelo debería salir bien",
+            "En una sola cifra: la distancia total en millas"
+          ],
+          "explanation": "La planificación de vuelo produce cifras y decisiones concretas y verificables, no una sensación general de estar listo."
+        },
+        "why-flight-planning-matters-q2": {
+          "question": "¿Cómo se relaciona la planificación de vuelo con los demás temas del curso (meteorología, peso y balance, navegación, regulaciones)?",
+          "options": [
+            "Es el momento en que todos ellos se aplican juntos a un vuelo concreto",
+            "Sustituye la necesidad de conocer cualquiera de ellos",
+            "Solo se aplica a vuelos de más de 500 millas"
+          ],
+          "explanation": "La planificación de vuelo no es un tema aparte — es donde meteorología, peso y balance, navegación y regulaciones se aplican todos a un vuelo real."
+        },
+        "why-flight-planning-matters-q3": {
+          "question": "¿Cuál es el resultado real de una buena planificación de vuelo?",
+          "options": [
+            "Una ruta concreta, una cifra de combustible con reservas, un alterno y un punto claro en el que el vuelo no se hace",
+            "Una confirmación verbal de que el tiempo parece bueno",
+            "Una estimación aproximada de cuánto combustible podría hacer falta"
+          ],
+          "explanation": "Un buen plan produce cifras concretas y verificables y un umbral claro de no ir, no impresiones vagas."
+        },
+        "route-and-charts-q1": {
+          "question": "¿Qué incluye una ruta además de una línea recta entre aeródromos?",
+          "options": [
+            "Puntos de control para confirmar el progreso, más una altitud elegida por terreno, viento y espacio aéreo",
+            "Solo la distancia total en millas náuticas",
+            "Un único rumbo de compás mantenido durante todo el vuelo"
+          ],
+          "explanation": "Una ruta real se construye con puntos de control y una altitud elegida a propósito, no solo con distancia y un rumbo."
+        },
+        "route-and-charts-q2": {
+          "question": "¿Por qué una línea recta entre dos aeródromos puede ser una mala elección de ruta?",
+          "options": [
+            "Puede cruzar espacio aéreo controlado que exige autorización, o pasar cerca de terreno elevado",
+            "Las líneas rectas siempre son la opción más segura",
+            "Las cartas solo muestran como válidas las rutas en línea recta"
+          ],
+          "explanation": "Una línea recta puede cruzar espacio aéreo o terreno que la carta revela antes de despegar, lo que lleva a cambiar la ruta."
+        },
+        "route-and-charts-q3": {
+          "question": "¿Qué se calcula para cada tramo entre puntos de control en un plan de ruta completo?",
+          "options": [
+            "Rumbo verdadero, rumbo magnético corregido por viento, distancia y tiempo estimado",
+            "Solo el combustible total quemado en todo el vuelo",
+            "El color del terreno en la carta"
+          ],
+          "explanation": "Cada tramo tiene su propio rumbo, rumbo corregido por viento, distancia y tiempo estimado — la navegación estimada aplicada tramo a tramo."
+        },
+        "fuel-planning-and-reserves-q1": {
+          "question": "¿Qué es el \"combustible de viaje\"?",
+          "options": [
+            "El combustible quemado desde el arranque del motor hasta el aterrizaje en el destino",
+            "La capacidad total de combustible de los depósitos de la aeronave",
+            "Una cantidad fija exigida por ley sin importar la distancia"
+          ],
+          "explanation": "El combustible de viaje es específicamente el consumido para el vuelo planificado, según el consumo y el tiempo en ruta."
+        },
+        "fuel-planning-and-reserves-q2": {
+          "question": "¿Por qué se mantiene la reserva de combustible separada del combustible de viaje en lugar de simplemente añadir un extra al total?",
+          "options": [
+            "Para que nunca se cuente como disponible para el viaje, protegiendo ante retrasos como tráfico o una aproximación frustrada",
+            "Porque las regulaciones exigen guardarla en un depósito separado",
+            "La reserva de combustible solo importa en vuelos internacionales"
+          ],
+          "explanation": "Tratar la reserva como intocable protege ante retrasos reales en lugar de consumirla poco a poco durante el vuelo."
+        },
+        "fuel-planning-and-reserves-q3": {
+          "question": "¿Con qué debe compararse el combustible total requerido para decidir si un vuelo se puede volar tal como está planificado?",
+          "options": [
+            "Con el combustible utilizable de la aeronave, no solo el tamaño físico de los depósitos",
+            "Con la distancia al aeródromo grande más cercano",
+            "Con el total de horas de vuelo del piloto"
+          ],
+          "explanation": "El combustible utilizable (sin contar el atrapado en los depósitos) es la cifra real que determina si el plan funciona."
+        },
+        "alternates-and-weather-minimums-q1": {
+          "question": "¿Qué es un aeródromo alterno?",
+          "options": [
+            "Un segundo destino planificado de antemano, con su propia reserva de combustible, usado si no se puede llegar al destino original",
+            "Cualquier aeródromo visible en la carta a lo largo de la ruta",
+            "Una pista de respaldo en el mismo aeródromo de destino"
+          ],
+          "explanation": "Un alterno es un segundo destino concreto y planificado — no cualquier aeródromo cercano."
+        },
+        "alternates-and-weather-minimums-q2": {
+          "question": "¿Qué suele determinar si un vuelo necesita un alterno nombrado?",
+          "options": [
+            "Si la meteorología prevista en el destino está en o por debajo de los mínimos requeridos alrededor de la hora de llegada",
+            "El número total de pasajeros a bordo",
+            "Si el vuelo dura más de dos horas"
+          ],
+          "explanation": "El pronóstico meteorológico del destino respecto a los mínimos es lo que determina la necesidad de un alterno."
+        },
+        "alternates-and-weather-minimums-q3": {
+          "question": "¿Qué debe considerarse al elegir qué aeródromo usar como alterno?",
+          "options": [
+            "Un tiempo razonablemente mejor que el del destino, una pista adecuada y combustible para llegar",
+            "Solo que sea el aeródromo más cercano en la carta",
+            "Que tenga el mismo nombre que el aeródromo de salida"
+          ],
+          "explanation": "Elegir un alterno de verdad pesa la meteorología, la pista adecuada y el combustible — no solo la cercanía."
+        },
+        "notams-and-briefings-q1": {
+          "question": "¿Qué suele comunicar un NOTAM?",
+          "options": [
+            "Un cambio temporal o inesperado que aún no está en una carta, como una pista cerrada o una ayuda a la navegación fuera de servicio",
+            "El historial de mantenimiento programado de una aeronave",
+            "Un cambio permanente en la numeración de las pistas de un aeródromo"
+          ],
+          "explanation": "Los NOTAM cubren específicamente cambios temporales o inesperados que las cartas, al estar impresas, todavía no reflejan."
+        },
+        "notams-and-briefings-q2": {
+          "question": "¿Qué suele incluir un parte meteorológico previo al vuelo además de las condiciones actuales?",
+          "options": [
+            "Pronósticos a lo largo de la ruta y en el destino, avisos meteorológicos significativos, y viento en altura",
+            "Solo la temperatura en el aeródromo de salida",
+            "El historial de vuelo personal del piloto"
+          ],
+          "explanation": "Un parte completo cubre pronósticos y avisos en toda la ruta, no solo las condiciones actuales en la salida."
+        },
+        "notams-and-briefings-q3": {
+          "question": "¿Por qué se agrupan los NOTAM y los partes meteorológicos en la planificación de vuelo?",
+          "options": [
+            "Ambos cubren información que cambia demasiado a menudo para que una carta impresa la muestre",
+            "Ambos solo son relevantes en vuelos internacionales",
+            "Ambos son pasos opcionales sin impacto en la seguridad"
+          ],
+          "explanation": "Comparten la misma razón de fondo: las cartas no pueden capturar información que cambia tan a menudo como los NOTAM y el tiempo."
+        },
+        "filing-and-following-a-flight-plan-q1": {
+          "question": "¿Cuál es el propósito principal de presentar un plan de vuelo?",
+          "options": [
+            "Búsqueda y rescate — se dispara una alerta si el vuelo no se comunica o no cierra su plan",
+            "Sustituye la necesidad de cualquier autorización de ATC",
+            "Reserva automáticamente un lugar de estacionamiento en el destino"
+          ],
+          "explanation": "El propósito principal es permitir la búsqueda y rescate si el vuelo no cierra como se esperaba."
+        },
+        "filing-and-following-a-flight-plan-q2": {
+          "question": "¿Qué tiene que pasar para que el propósito de seguridad de un plan de vuelo presentado funcione de verdad?",
+          "options": [
+            "Debe activarse al despegar y cerrarse al llegar",
+            "Solo hace falta presentarlo, sin ninguna acción posterior",
+            "Debe volver a presentarse cada hora durante el vuelo"
+          ],
+          "explanation": "Un plan no activado o no cerrado no dispara la alerta de búsqueda y rescate para la que está diseñado."
+        },
+        "filing-and-following-a-flight-plan-q3": {
+          "question": "¿Qué debería pasar si un vuelo se desvía de forma relevante de su plan presentado, por ejemplo al desviarse al alterno?",
+          "options": [
+            "Debería actualizarse a los servicios de tránsito aéreo para que el plan siga reflejando dónde está el vuelo de verdad",
+            "Nada — el plan original es vinculante y no se puede cambiar",
+            "El plan de vuelo debería cancelarse por completo y no volver a presentarse"
+          ],
+          "explanation": "Actualizar a los servicios de tránsito aéreo mantiene la red de seguridad del plan de vuelo fiel al vuelo real."
+        },
+        "the-go-no-go-decision-q1": {
+          "question": "¿Qué son los \"mínimos personales\"?",
+          "options": [
+            "Los límites propios del piloto, a menudo más conservadores, fijados de antemano antes de enfrentar la decisión real",
+            "Las horas de vuelo mínimas exigidas legalmente para una licencia",
+            "El combustible mínimo exigido por el fabricante de la aeronave"
+          ],
+          "explanation": "Los mínimos personales son límites fijados por el piloto de antemano, precisamente para que no se negocien en el momento."
+        },
+        "the-go-no-go-decision-q2": {
+          "question": "¿Cuándo debe revisarse la decisión de ir/no ir durante un vuelo?",
+          "options": [
+            "En cada punto de control, no solo una vez antes de despegar",
+            "Solo si el motor muestra una luz de aviso",
+            "Nunca — una vez en el aire, la decisión original se mantiene"
+          ],
+          "explanation": "Las condiciones pueden cambiar, así que la decisión se revisa de nuevo en cada punto de control durante el vuelo."
+        },
+        "the-go-no-go-decision-q3": {
+          "question": "¿Por qué se recomienda fijar los criterios de ir/no ir en tierra de antemano en lugar de decidir en el aire?",
+          "options": [
+            "Evita que la decisión se negocie bajo presión de tiempo o social en el momento",
+            "Las regulaciones exigen que todas las decisiones se tomen antes de arrancar el motor",
+            "Los criterios fijados en el aire siempre son más precisos"
+          ],
+          "explanation": "Decidir de antemano protege la decisión de la presión que tiende a erosionar el juicio en el momento."
+        }
+      }
     }
   },
   "passedTag": "Aprobado",

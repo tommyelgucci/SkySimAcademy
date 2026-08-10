@@ -1,0 +1,145 @@
+{
+  "id": "flight-planning",
+  "icon": "clipboard-list",
+  "order": 11,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "why-flight-planning-matters",
+      "quiz": {
+        "questions": [
+          {
+            "id": "why-flight-planning-matters-q1",
+            "correct": 0
+          },
+          {
+            "id": "why-flight-planning-matters-q2",
+            "correct": 0
+          },
+          {
+            "id": "why-flight-planning-matters-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "route-and-charts",
+      "quiz": {
+        "questions": [
+          {
+            "id": "route-and-charts-q1",
+            "correct": 0
+          },
+          {
+            "id": "route-and-charts-q2",
+            "correct": 0
+          },
+          {
+            "id": "route-and-charts-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "fuel-planning-and-reserves",
+      "quiz": {
+        "questions": [
+          {
+            "id": "fuel-planning-and-reserves-q1",
+            "correct": 0
+          },
+          {
+            "id": "fuel-planning-and-reserves-q2",
+            "correct": 0
+          },
+          {
+            "id": "fuel-planning-and-reserves-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "alternates-and-weather-minimums",
+      "quiz": {
+        "questions": [
+          {
+            "id": "alternates-and-weather-minimums-q1",
+            "correct": 0
+          },
+          {
+            "id": "alternates-and-weather-minimums-q2",
+            "correct": 0
+          },
+          {
+            "id": "alternates-and-weather-minimums-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "notams-and-briefings",
+      "quiz": {
+        "questions": [
+          {
+            "id": "notams-and-briefings-q1",
+            "correct": 0
+          },
+          {
+            "id": "notams-and-briefings-q2",
+            "correct": 0
+          },
+          {
+            "id": "notams-and-briefings-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "filing-and-following-a-flight-plan",
+      "quiz": {
+        "questions": [
+          {
+            "id": "filing-and-following-a-flight-plan-q1",
+            "correct": 0
+          },
+          {
+            "id": "filing-and-following-a-flight-plan-q2",
+            "correct": 0
+          },
+          {
+            "id": "filing-and-following-a-flight-plan-q3",
+            "correct": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "the-go-no-go-decision",
+      "quiz": {
+        "questions": [
+          {
+            "id": "the-go-no-go-decision-q1",
+            "correct": 0
+          },
+          {
+            "id": "the-go-no-go-decision-q2",
+            "correct": 0
+          },
+          {
+            "id": "the-go-no-go-decision-q3",
+            "correct": 0
+          }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

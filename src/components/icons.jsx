@@ -10,6 +10,7 @@
 import {
   Brain,
   CircleHelp,
+  ClipboardList,
   CloudSun,
   Compass,
   Gauge,
@@ -48,6 +49,7 @@ const CONTENT_ICONS = {
   scale: Scale,
   gavel: Gavel,
   brain: Brain,
+  "clipboard-list": ClipboardList,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */
