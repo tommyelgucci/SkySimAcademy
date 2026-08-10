@@ -60,7 +60,8 @@ function speakEnglish(phrase) {
 function InstrumentFace({ card, label }) {
   const { gauge, props } = card;
   if (gauge === "airspeed") return <AirspeedIndicator value={props.value} label={label} />;
-  if (gauge === "attitude") return <AttitudeIndicator pitch={props.pitch} bank={props.bank} label={label} />;
+  if (gauge === "attitude")
+    return <AttitudeIndicator pitch={props.pitch} bank={props.bank} label={label} />;
   if (gauge === "altimeter") return <Altimeter value={props.value} label={label} locale="en" />;
   if (gauge === "variometer") return <Variometer value={props.value} label={label} />;
   if (gauge === "compass") {
@@ -98,7 +99,7 @@ export default function FlashcardsView({ onExit }) {
         return shuffled([...Array(count).keys()]);
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [cards]
+    [cards],
   );
 
   const openDeck = (id) => {
@@ -262,11 +263,7 @@ export default function FlashcardsView({ onExit }) {
           {isLast ? t("seeResults") : t("next")}
         </button>
       ) : (
-        <button
-          className="button button--primary"
-          disabled={selected === null}
-          onClick={check}
-        >
+        <button className="button button--primary" disabled={selected === null} onClick={check}>
           {t("check")}
         </button>
       )}

@@ -96,7 +96,13 @@ describe("MissionTracker", () => {
   });
 
   it("bankTurn exige mantener el ángulo de banco objetivo", () => {
-    const goal = { type: "bankTurn", bankTarget: 30, tolerance: 8, minAltitude: 50, holdSeconds: 5 };
+    const goal = {
+      type: "bankTurn",
+      bankTarget: 30,
+      tolerance: 8,
+      minAltitude: 50,
+      holdSeconds: 5,
+    };
     const tracker = new MissionTracker({ goal });
     const banked = engineState({ altitude: 100, bankAngle: 28, grounded: false });
     tracker.update(banked, 3);
@@ -109,7 +115,13 @@ describe("MissionTracker", () => {
   });
 
   it("bankTurn en sentido contrario (banco negativo) no cuenta", () => {
-    const goal = { type: "bankTurn", bankTarget: 30, tolerance: 8, minAltitude: 50, holdSeconds: 1 };
+    const goal = {
+      type: "bankTurn",
+      bankTarget: 30,
+      tolerance: 8,
+      minAltitude: 50,
+      holdSeconds: 1,
+    };
     const tracker = new MissionTracker({ goal });
     tracker.update(engineState({ altitude: 100, bankAngle: -30, grounded: false }), 5);
     expect(tracker.done).toBe(false);
@@ -134,10 +146,7 @@ describe("MissionTracker", () => {
     const goal = { type: "engineOut", armAltitude: 80, touchdownSpeed: 8 };
     const tracker = new MissionTracker({ goal });
     tracker.update(engineState({ altitude: 85, grounded: false, airspeed: 30 }), 1);
-    tracker.update(
-      engineState({ altitude: 0, grounded: true, airspeed: 6, crashed: true }),
-      1
-    );
+    tracker.update(engineState({ altitude: 0, grounded: true, airspeed: 6, crashed: true }), 1);
     expect(tracker.done).toBe(false);
   });
 
@@ -145,13 +154,19 @@ describe("MissionTracker", () => {
     const goal = { type: "stallRecovery", minAltitude: 100, recoverSpeed: 22 };
     const tracker = new MissionTracker({ goal });
     // Recuperar sin haber entrado antes en pérdida no cuenta
-    tracker.update(engineState({ altitude: 150, stalled: false, airspeed: 30, grounded: false }), 1);
+    tracker.update(
+      engineState({ altitude: 150, stalled: false, airspeed: 30, grounded: false }),
+      1,
+    );
     expect(tracker.done).toBe(false);
     // Entra en pérdida por encima de la altitud mínima
     tracker.update(engineState({ altitude: 150, stalled: true, airspeed: 10, grounded: false }), 1);
     expect(tracker.done).toBe(false);
     // Recupera velocidad suficiente sin tocar tierra
-    tracker.update(engineState({ altitude: 120, stalled: false, airspeed: 25, grounded: false }), 1);
+    tracker.update(
+      engineState({ altitude: 120, stalled: false, airspeed: 25, grounded: false }),
+      1,
+    );
     expect(tracker.done).toBe(true);
   });
 

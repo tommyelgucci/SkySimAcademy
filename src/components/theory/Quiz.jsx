@@ -8,11 +8,7 @@
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BookOpen, Check, Trophy } from "lucide-react";
-import {
-  clearFailedQuestion,
-  recordFailedQuestion,
-  recordQuizResult,
-} from "../../storage.js";
+import { clearFailedQuestion, recordFailedQuestion, recordQuizResult } from "../../storage.js";
 import { trackEvent } from "../../analytics.js";
 
 /** Baraja de Fisher-Yates sin mutar el original. */
@@ -54,7 +50,7 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
         return shuffled([...Array(count).keys()]);
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [questions]
+    [questions],
   );
 
   const restart = () => {
@@ -77,9 +73,7 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
             <BookOpen size={56} aria-hidden="true" />
           )}
         </div>
-        <p className="quiz__score">
-          {t("quiz.score", { score, total: questions.length })}
-        </p>
+        <p className="quiz__score">{t("quiz.score", { score, total: questions.length })}</p>
         <p>{passed ? t("quiz.passed") : t("quiz.failed")}</p>
         <div className="quiz__actions">
           {!passed && (
@@ -164,12 +158,8 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
 
       {checked && (
         <div className={`lesson-quiz__feedback ${isCorrect ? "is-correct" : "is-wrong"}`}>
-          <p className="quiz__feedback">
-            {isCorrect ? t("quiz.correct") : t("quiz.wrong")}
-          </p>
-          <p className="lesson-quiz__explanation">
-            {t(`${keyBase}.${question.id}.explanation`)}
-          </p>
+          <p className="quiz__feedback">{isCorrect ? t("quiz.correct") : t("quiz.wrong")}</p>
+          <p className="lesson-quiz__explanation">{t(`${keyBase}.${question.id}.explanation`)}</p>
         </div>
       )}
 
@@ -178,11 +168,7 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
           {isLast ? t("quiz.seeResults") : t("quiz.next")}
         </button>
       ) : (
-        <button
-          className="button button--primary"
-          disabled={selected === null}
-          onClick={check}
-        >
+        <button className="button button--primary" disabled={selected === null} onClick={check}>
           {t("quiz.check")}
         </button>
       )}

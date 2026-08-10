@@ -93,10 +93,11 @@ export function validateModule(module) {
       if (!lesson.quiz) return; // formato antiguo: el banco vive a nivel de módulo
       const questions = lesson.quiz.questions ?? [];
       if (questions.length !== 3)
-        problems.push(`lección "${lesson.id}" no tiene exactamente 3 preguntas (tiene ${questions.length})`);
+        problems.push(
+          `lección "${lesson.id}" no tiene exactamente 3 preguntas (tiene ${questions.length})`,
+        );
       questions.forEach((q) => {
-        if (typeof q.correct !== "number")
-          problems.push(`pregunta ${q.id} sin índice \`correct\``);
+        if (typeof q.correct !== "number") problems.push(`pregunta ${q.id} sin índice \`correct\``);
         if (seenIds.has(q.id)) problems.push(`id de pregunta repetido en el módulo: ${q.id}`);
         seenIds.add(q.id);
       });
@@ -107,7 +108,6 @@ export function validateModule(module) {
     if (size != null && module.quiz.passScore > size)
       problems.push(`passScore (${module.quiz.passScore}) > sampleSize (${size})`);
   }
-  if (problems.length)
-    console.warn(`[content] Módulo "${module.id}" malformado:`, problems);
+  if (problems.length) console.warn(`[content] Módulo "${module.id}" malformado:`, problems);
   return module;
 }

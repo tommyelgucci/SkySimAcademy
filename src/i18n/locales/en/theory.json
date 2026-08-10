@@ -87,11 +87,7 @@
         },
         "four-forces-q3": {
           "question": "Which force is the only one that doesn't depend on the wing moving through the air?",
-          "options": [
-            "Weight",
-            "Lift",
-            "Drag"
-          ],
+          "options": ["Weight", "Lift", "Drag"],
           "explanation": "Weight comes purely from gravity acting on the aircraft's mass — it exists whether the aircraft is moving or sitting still. Lift and drag only exist because air is flowing over the wing."
         },
         "lift-and-airfoils-q1": {
@@ -114,20 +110,12 @@
         },
         "lift-and-airfoils-q3": {
           "question": "If a wing's airspeed increases while its angle of attack stays the same, what happens to lift?",
-          "options": [
-            "Lift increases",
-            "Lift stays exactly the same",
-            "Lift decreases"
-          ],
+          "options": ["Lift increases", "Lift stays exactly the same", "Lift decreases"],
           "explanation": "Lift depends on angle of attack, wing area, and the square of airspeed — with angle of attack unchanged, more speed always means more lift from that airfoil."
         },
         "three-axes-q1": {
           "question": "Which control surface is primarily responsible for roll?",
-          "options": [
-            "The ailerons",
-            "The elevator",
-            "The rudder"
-          ],
+          "options": ["The ailerons", "The elevator", "The rudder"],
           "explanation": "The ailerons deflect in opposite directions on each wing, changing lift differentially and rolling the aircraft around its longitudinal axis."
         },
         "three-axes-q2": {
@@ -141,20 +129,12 @@
         },
         "three-axes-q3": {
           "question": "Rotation around the lateral axis (wingtip to wingtip) is called…",
-          "options": [
-            "Pitch",
-            "Roll",
-            "Yaw"
-          ],
+          "options": ["Pitch", "Roll", "Yaw"],
           "explanation": "The lateral axis runs wingtip to wingtip; rotation around it — nose up or down — is pitch, controlled by the elevator."
         },
         "speed-and-stall-q1": {
           "question": "As a simple starting model, what does the throttle primarily control?",
-          "options": [
-            "Rate of climb or descent",
-            "Bank angle",
-            "Heading"
-          ],
+          "options": ["Rate of climb or descent", "Bank angle", "Heading"],
           "explanation": "Adding power gives the aircraft the energy to climb (or maintain speed while climbing); reducing it without changing pitch leads to a descent as the aircraft trades altitude for airspeed."
         },
         "speed-and-stall-q2": {
@@ -177,11 +157,7 @@
         },
         "load-factor-and-turns-q1": {
           "question": "What happens to load factor as bank angle increases in a level turn?",
-          "options": [
-            "It increases",
-            "It stays the same",
-            "It decreases"
-          ],
+          "options": ["It increases", "It stays the same", "It decreases"],
           "explanation": "A steeper bank requires more total lift to maintain altitude while some lift is diverted into turning the aircraft, so load factor rises with bank angle."
         },
         "load-factor-and-turns-q2": {
@@ -308,11 +284,7 @@
       "quiz": {
         "altimeter-q1": {
           "question": "What does the altimeter actually measure to determine altitude?",
-          "options": [
-            "Air pressure",
-            "Engine RPM",
-            "Ground speed"
-          ],
+          "options": ["Air pressure", "Engine RPM", "Ground speed"],
           "explanation": "The altimeter senses outside air pressure and converts the predictable drop in pressure with height into an altitude reading."
         },
         "altimeter-q2": {
@@ -416,11 +388,7 @@
         },
         "compass-and-heading-q1": {
           "question": "What heading corresponds to due west?",
-          "options": [
-            "270°",
-            "90°",
-            "180°"
-          ],
+          "options": ["270°", "90°", "180°"],
           "explanation": "Headings are measured clockwise from north: 0°/360° north, 90° east, 180° south, and 270° west."
         },
         "compass-and-heading-q2": {
@@ -840,11 +808,7 @@
         },
         "numbers-on-the-radio-q1": {
           "question": "How is runway 27 spoken on the radio?",
-          "options": [
-            "Two seven",
-            "Twenty-seven",
-            "Runway B"
-          ],
+          "options": ["Two seven", "Twenty-seven", "Runway B"],
           "explanation": "Numbers are read digit by digit in aviation radio communication, so 27 is \"two seven\", never the compound word \"twenty-seven\"."
         },
         "numbers-on-the-radio-q2": {
@@ -867,11 +831,7 @@
         },
         "radio-call-structure-q1": {
           "question": "What typically comes first in a standard radio call?",
-          "options": [
-            "Who you are calling",
-            "Your exact altitude",
-            "Your intended landing time"
-          ],
+          "options": ["Who you are calling", "Your exact altitude", "Your intended landing time"],
           "explanation": "Opening with who you're calling ensures the right listeners tune in and know the transmission is relevant to them right away."
         },
         "radio-call-structure-q2": {
@@ -1309,11 +1269,7 @@
         },
         "lift-drag-ratio-and-gliding-q3": {
           "question": "During an engine-out glide, what is the primary tool for controlling airspeed?",
-          "options": [
-            "Pitch",
-            "Power",
-            "Rudder"
-          ],
+          "options": ["Pitch", "Power", "Rudder"],
           "explanation": "With no engine power available, pitch attitude is what controls airspeed during a glide — this is why holding best-glide pitch precisely is the core skill in an engine-failure scenario."
         },
         "v-speeds-and-load-limits-q1": {
@@ -1327,11 +1283,7 @@
         },
         "v-speeds-and-load-limits-q2": {
           "question": "What happens to Va as aircraft weight decreases?",
-          "options": [
-            "Va decreases",
-            "Va increases",
-            "Va stays exactly the same"
-          ],
+          "options": ["Va decreases", "Va increases", "Va stays exactly the same"],
           "explanation": "A lighter aircraft stalls at a lower speed, so the speed at which it stalls before overstressing the structure — Va — is correspondingly lower too."
         },
         "v-speeds-and-load-limits-q3": {
@@ -1823,11 +1775,7 @@
         },
         "computing-weight-and-balance-q1": {
           "question": "How is an item's 'moment' calculated in weight and balance?",
-          "options": [
-            "Weight multiplied by arm",
-            "Weight divided by arm",
-            "Arm minus weight"
-          ],
+          "options": ["Weight multiplied by arm", "Weight divided by arm", "Arm minus weight"],
           "explanation": "Moment is defined as weight multiplied by arm for each item on board."
         },
         "computing-weight-and-balance-q2": {
@@ -2406,6 +2354,245 @@
             "That CRM only matters for pilots without a copilot rating"
           ],
           "explanation": "CRM assumes every pilot, regardless of skill, has blind spots that other resources can help cover."
+        }
+      }
+    },
+    "flight-planning": {
+      "title": "Flight planning",
+      "description": "Building a route from checkpoints, planning fuel and reserves, choosing an alternate, reading NOTAMs and weather briefings, filing a flight plan, and the go/no-go decision that ties it all together.",
+      "lessons": {
+        "why-flight-planning-matters": {
+          "title": "Why flight planning matters",
+          "body": "Flight planning is the work done before engine start that turns \"I'd like to fly from A to B\" into a specific, checkable plan: route, altitude, fuel, weather, and a legal and safe way to get there. It's a separate discipline from stick-and-rudder flying, and skipping it doesn't show up as a problem until it's already too late to fix in the air.\n\nA useful way to think about it: everything covered elsewhere in this course — weather, weight and balance, navigation, regulations — gets pulled together into one specific flight on one specific day. Flight planning isn't a new topic so much as the moment all the others get applied at once, against real numbers instead of general rules.\n\nThe output of a good flight plan isn't a feeling of readiness — it's a specific route with checkpoints, a specific fuel number with reserves, a specific alternate if the weather doesn't cooperate, and a specific point at which the flight doesn't happen at all. The rest of this module builds each of those pieces.",
+          "keyTakeaway": "Flight planning combines weather, weight and balance, navigation and regulations into one specific, checkable plan for one specific flight — not a separate topic, but where the others get applied.",
+          "simTip": "The simulator skips planning entirely and drops you straight into the aircraft — treat every real flight as starting hours earlier, at a desk, with a chart and a fuel calculation."
+        },
+        "route-and-charts": {
+          "title": "Choosing a route and reading the chart",
+          "body": "A route is more than a straight line between two airports. It's built from checkpoints — landmarks, navigation aids, or GPS waypoints — spaced so a pilot can confirm progress along the way, plus a cruising altitude chosen for terrain clearance, winds, and airspace.\n\nCharts show more than terrain: controlled airspace boundaries, obstacles, restricted or prohibited areas, and minimum safe altitudes for each segment. A straight line on a map that looks efficient can cross airspace that requires a clearance, or pass closer to high terrain than is comfortable — the chart is what catches that before departure, not after.\n\nFor each leg between checkpoints, a full plan works out true course, magnetic heading (correcting for wind and variation), distance, and estimated time — exactly the dead-reckoning skills from the navigation module, applied to this specific route instead of a generic exercise.",
+          "keyTakeaway": "A route is checkpoints plus altitude chosen for terrain, wind and airspace — not just a straight line — and the chart is what reveals restricted airspace or high terrain a straight line would otherwise hide.",
+          "simTip": "The simulator's mini-map shows the flight area boundary and runways the same way a chart shows checkpoints and airspace — get used to reading it before you need it in an emergency."
+        },
+        "fuel-planning-and-reserves": {
+          "title": "Fuel planning and reserves",
+          "body": "Fuel planning starts with trip fuel — the amount burned from engine start to landing at the destination, based on the aircraft's known fuel burn rate and the planned time en route. That number alone is never the total to carry.\n\nReserve fuel is added on top of trip fuel specifically so that an unexpected delay — traffic, a missed approach, a diversion — doesn't turn into an emergency. VFR flight planning commonly uses a reserve measured in minutes of flight time at normal cruise power, kept as fuel that is never counted as available for the trip itself.\n\nTotal fuel required is trip fuel, plus reserve, plus any fuel to reach an alternate if one is needed (covered in the next lesson), plus a taxi and runup allowance. Comparing that total against the aircraft's usable fuel — not just the size of the tanks — is what decides whether the flight, as planned, can actually be flown.",
+          "keyTakeaway": "Total fuel required is trip fuel plus a reserve that is never counted as available, plus alternate fuel if needed — comparing that total against usable fuel decides whether the planned flight actually works.",
+          "simTip": "The simulator's stall warning is instant feedback for running out of airspeed; running out of fuel in real flying is a planning failure that shows up with no warning at all — respect the reserve on paper before you ever need it in the air."
+        },
+        "alternates-and-weather-minimums": {
+          "title": "Alternates and weather minimums",
+          "body": "An alternate airport is a second destination, planned in advance with its own fuel allowance, to use if the original destination can't be reached — most often because the weather there has dropped below what's needed to land.\n\nWhether an alternate is required, and which airports qualify, depends on the forecast weather at the destination around the planned arrival time. A destination forecast comfortably above minimums may not need a named alternate at all; one close to or below minimums does, and the alternate itself has its own minimums to qualify as usable.\n\nChoosing an alternate isn't just \"the nearest airport\" — it should have weather realistically expected to be better than the destination, a runway suited to the aircraft, and fuel to reach it factored into the total from the previous lesson. An alternate chosen but never seriously evaluated is not a real plan.",
+          "keyTakeaway": "An alternate is a second destination with its own weather minimums and fuel allowance, needed when the destination forecast is at or near minimums — chosen deliberately, not just as the nearest airport on the map.",
+          "simTip": "In the simulator, think of the four scenarios as facing the same choice: if the active scenario's landing site became unusable, which of the others could you actually reach with the fuel and altitude you have?"
+        },
+        "notams-and-briefings": {
+          "title": "NOTAMs and weather briefings",
+          "body": "A NOTAM (Notice to Airmen) is a short, time-stamped alert about something temporary or unexpected that isn't yet on a chart — a closed runway, an inoperative navigation aid, unmarked construction near an airport, or airspace temporarily restricted for an event.\n\nA weather briefing before flight goes beyond checking whether it looks clear outside: current conditions and forecasts along the route and at the destination, significant weather advisories, and winds aloft all get checked together, then compared against the personal minimums covered in the last lesson of this module.\n\nNOTAMs and weather briefings share a common thread — both cover things that a printed chart, by itself, cannot show because they change too often to print. Skipping this step means flying with a plan that might already be outdated the moment it's drawn on paper.",
+          "keyTakeaway": "NOTAMs cover temporary changes a chart can't show (closed runways, inoperative aids, temporary restrictions); a weather briefing adds current conditions and forecasts — both are checked because a printed chart alone goes stale fast.",
+          "simTip": "The simulator's scenarios never change underneath you mid-session, which is exactly the assumption a real NOTAM and weather check exists to challenge before every real flight."
+        },
+        "filing-and-following-a-flight-plan": {
+          "title": "Filing and following a flight plan",
+          "body": "Filing a flight plan means formally recording the route, altitude, aircraft details, fuel on board, and number of people aboard with air traffic services before departure — separate from any ATC clearance needed to actually fly a specific route or altitude.\n\nThe core purpose is search and rescue: if a flight doesn't check in or close its plan within a set time after the estimated arrival, an alert is triggered and a search can begin from the last known route — a purpose that only works if the plan is actually activated at departure and closed on arrival.\n\nA filed flight plan isn't fixed in stone; real flights get revised in the air — a diversion to the alternate, a route change around weather — and the standard practice is updating air traffic services when a filed plan changes meaningfully, so the safety net described above still points to where the flight actually is.",
+          "keyTakeaway": "Filing a flight plan exists mainly for search and rescue — it only works if activated at departure and closed at arrival, and it should be updated in the air if the flight meaningfully diverges from what was filed.",
+          "simTip": "The simulator's session summary at the end of a flight is a small echo of \"closing\" a flight plan — a real one matters far more, because until it's closed, someone may eventually start looking for you."
+        },
+        "the-go-no-go-decision": {
+          "title": "The go/no-go decision",
+          "body": "Every piece of this module — route, fuel, alternate, weather briefing, filed plan — feeds into one final decision made before takeoff and revisited throughout the flight: go, or no-go. Personal minimums are the pilot's own, often more conservative, limits set in advance, precisely so they don't get negotiated away in the moment under pressure.\n\nA go/no-go decision isn't only made once at the airport. It's revisited at each checkpoint: is fuel burn matching the plan, is the weather matching the forecast, is the flight still comfortably within personal minimums — and a plan that made sense at departure can stop making sense an hour into the flight.\n\nThe discipline that makes this work is deciding the criteria in advance, on the ground, rather than deciding in the air under time or social pressure — the same principle covered from a different angle in the human factors module, applied here specifically to the planning decision itself.",
+          "keyTakeaway": "Go/no-go is a decision revisited at every checkpoint, not just once before takeoff — personal minimums set in advance, on the ground, are what keep that decision from being negotiated away under pressure in the air.",
+          "simTip": "Every simulator mission is available and safe to attempt on demand — a real go/no-go decision doesn't have that luxury, which is exactly why deciding the criteria in advance matters."
+        }
+      },
+      "quiz": {
+        "why-flight-planning-matters-q1": {
+          "question": "What does flight planning turn a general idea for a flight into?",
+          "options": [
+            "A specific, checkable plan: route, altitude, fuel, weather and a legal way to get there",
+            "A rough feeling that the flight should be fine",
+            "A single number: the total distance in miles"
+          ],
+          "explanation": "Flight planning produces specific, checkable numbers and decisions, not a general sense of readiness."
+        },
+        "why-flight-planning-matters-q2": {
+          "question": "How does flight planning relate to the other topics in this course (weather, weight and balance, navigation, regulations)?",
+          "options": [
+            "It's the point where all of them get applied together to one specific flight",
+            "It replaces the need to know any of them",
+            "It only applies to flights longer than 500 miles"
+          ],
+          "explanation": "Flight planning isn't a separate topic — it's where weather, weight and balance, navigation and regulations all get applied to one real flight."
+        },
+        "why-flight-planning-matters-q3": {
+          "question": "What is the real output of a good flight plan?",
+          "options": [
+            "A specific route, fuel number with reserves, alternate, and a clear point where the flight doesn't happen",
+            "A verbal confirmation that the weather looks fine",
+            "A guess at how much fuel might be needed"
+          ],
+          "explanation": "A good plan produces specific, checkable numbers and a clear no-go threshold, not vague impressions."
+        },
+        "route-and-charts-q1": {
+          "question": "What does a route consist of beyond a straight line between airports?",
+          "options": [
+            "Checkpoints for confirming progress, plus an altitude chosen for terrain, wind and airspace",
+            "Only the total distance in nautical miles",
+            "A single compass heading held for the entire flight"
+          ],
+          "explanation": "A real route is built from checkpoints and a deliberately chosen altitude, not just distance and one heading."
+        },
+        "route-and-charts-q2": {
+          "question": "Why might a straight line between two airports be a poor route choice?",
+          "options": [
+            "It can cross controlled airspace requiring clearance or pass close to high terrain",
+            "Straight lines are always the safest option",
+            "Charts only show straight-line routes as valid"
+          ],
+          "explanation": "A straight line can cross airspace or terrain that a chart reveals before departure, prompting a route change."
+        },
+        "route-and-charts-q3": {
+          "question": "What is worked out for each leg between checkpoints in a full route plan?",
+          "options": [
+            "True course, magnetic heading corrected for wind, distance and estimated time",
+            "Only the total fuel burned for the whole flight",
+            "The color of the terrain on the chart"
+          ],
+          "explanation": "Each leg gets its own course, wind-corrected heading, distance and time estimate — the dead-reckoning basics applied per leg."
+        },
+        "fuel-planning-and-reserves-q1": {
+          "question": "What is \"trip fuel\"?",
+          "options": [
+            "The fuel burned from engine start to landing at the destination",
+            "The total fuel capacity of the aircraft's tanks",
+            "A fixed amount required by law regardless of distance"
+          ],
+          "explanation": "Trip fuel is specifically the fuel consumed for the planned flight itself, based on burn rate and time en route."
+        },
+        "fuel-planning-and-reserves-q2": {
+          "question": "Why is reserve fuel kept separate from trip fuel rather than just adding extra to the total?",
+          "options": [
+            "So it's never counted as available for the trip, protecting against delays like traffic or a missed approach",
+            "Because regulations require it to be stored in a separate tank",
+            "Reserve fuel is only relevant for international flights"
+          ],
+          "explanation": "Treating reserve as untouchable protects against real delays instead of quietly being burned into during the flight."
+        },
+        "fuel-planning-and-reserves-q3": {
+          "question": "What should total fuel required be compared against to decide if a flight can be flown as planned?",
+          "options": [
+            "The aircraft's usable fuel, not just the physical size of the tanks",
+            "The distance to the nearest large airport",
+            "The pilot's total flight hours"
+          ],
+          "explanation": "Usable fuel (not unusable fuel trapped in the tanks) is the real number that determines whether the plan works."
+        },
+        "alternates-and-weather-minimums-q1": {
+          "question": "What is an alternate airport?",
+          "options": [
+            "A second, pre-planned destination with its own fuel allowance, used if the original destination can't be reached",
+            "Any airport visible on the chart along the route",
+            "A backup runway at the same airport as the destination"
+          ],
+          "explanation": "An alternate is a specific, planned second destination — not just any nearby airport."
+        },
+        "alternates-and-weather-minimums-q2": {
+          "question": "What typically determines whether a flight needs a named alternate?",
+          "options": [
+            "Whether the forecast weather at the destination is at or below the required minimums around arrival time",
+            "The total number of passengers on board",
+            "Whether the flight is longer than two hours"
+          ],
+          "explanation": "Destination weather forecast relative to minimums is what drives the need for an alternate."
+        },
+        "alternates-and-weather-minimums-q3": {
+          "question": "What should be considered when choosing which airport to use as an alternate?",
+          "options": [
+            "Weather realistically better than the destination, a suitable runway, and fuel to reach it",
+            "Only that it's the closest airport on the chart",
+            "Whether it has the same name as the departure airport"
+          ],
+          "explanation": "A real alternate choice weighs weather, runway suitability and fuel — not just proximity."
+        },
+        "notams-and-briefings-q1": {
+          "question": "What does a NOTAM typically communicate?",
+          "options": [
+            "A temporary or unexpected change not yet on a chart, like a closed runway or inoperative navigation aid",
+            "The scheduled maintenance history of an aircraft",
+            "A permanent change to an airport's runway numbers"
+          ],
+          "explanation": "NOTAMs specifically cover temporary or unexpected changes that charts, being printed, can't reflect yet."
+        },
+        "notams-and-briefings-q2": {
+          "question": "What does a preflight weather briefing typically include beyond current conditions?",
+          "options": [
+            "Forecasts along the route and at the destination, significant weather advisories, and winds aloft",
+            "Only the temperature at the departure airport",
+            "The pilot's personal flight history"
+          ],
+          "explanation": "A full briefing covers forecasts and advisories along the whole route, not just current conditions at departure."
+        },
+        "notams-and-briefings-q3": {
+          "question": "Why are NOTAMs and weather briefings grouped together in flight planning?",
+          "options": [
+            "Both cover information that changes too often for a printed chart to show",
+            "Both are only relevant for international flights",
+            "Both are optional steps with no safety impact"
+          ],
+          "explanation": "They share the same underlying reason: charts can't capture information that changes as frequently as NOTAMs and weather."
+        },
+        "filing-and-following-a-flight-plan-q1": {
+          "question": "What is the main purpose of filing a flight plan?",
+          "options": [
+            "Search and rescue — an alert triggers if the flight doesn't check in or close its plan",
+            "It replaces the need for any ATC clearance",
+            "It automatically reserves parking at the destination"
+          ],
+          "explanation": "The core purpose is enabling search and rescue if the flight doesn't close out as expected."
+        },
+        "filing-and-following-a-flight-plan-q2": {
+          "question": "What has to happen for a filed flight plan's safety purpose to actually work?",
+          "options": [
+            "It must be activated at departure and closed on arrival",
+            "It only needs to be filed, with no further action required",
+            "It must be refiled every hour during the flight"
+          ],
+          "explanation": "An unactivated or unclosed plan doesn't trigger the search-and-rescue alert it's designed for."
+        },
+        "filing-and-following-a-flight-plan-q3": {
+          "question": "What should happen if a flight diverges meaningfully from its filed plan, such as diverting to an alternate?",
+          "options": [
+            "Air traffic services should be updated so the plan still reflects where the flight actually is",
+            "Nothing — the original plan is legally binding and cannot be changed",
+            "The flight plan should be canceled entirely and never refiled"
+          ],
+          "explanation": "Updating air traffic services keeps the safety-net purpose of the flight plan accurate to the real flight."
+        },
+        "the-go-no-go-decision-q1": {
+          "question": "What are \"personal minimums\"?",
+          "options": [
+            "A pilot's own, often more conservative limits, set in advance before facing the actual decision",
+            "The legal minimum flight hours required for a license",
+            "The minimum fuel required by the aircraft manufacturer"
+          ],
+          "explanation": "Personal minimums are pilot-set limits decided in advance, precisely so they aren't negotiated in the moment."
+        },
+        "the-go-no-go-decision-q2": {
+          "question": "When should the go/no-go decision be revisited during a flight?",
+          "options": [
+            "At each checkpoint, not just once before takeoff",
+            "Only if the engine shows a warning light",
+            "Never — once airborne, the original decision stands"
+          ],
+          "explanation": "Conditions can change, so the decision is checked again at each checkpoint throughout the flight."
+        },
+        "the-go-no-go-decision-q3": {
+          "question": "Why is it recommended to set go/no-go criteria on the ground in advance rather than deciding in the air?",
+          "options": [
+            "It avoids the decision being negotiated away under time or social pressure in the moment",
+            "Regulations require all decisions to be made before engine start",
+            "Criteria set in the air are always more accurate"
+          ],
+          "explanation": "Deciding in advance protects the decision from pressure that tends to erode judgment in the moment."
         }
       }
     }

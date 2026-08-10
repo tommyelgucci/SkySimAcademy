@@ -2,7 +2,7 @@
 
 MVP educativo de aviación: **módulos de teoría con cuestionarios** + **mini simulador de vuelo 3D** (sesiones de máx. 5 minutos), multi-idioma desde el día 1 (**EN · DE · ES · PT · AR**, con RTL completo para árabe).
 
-Módulos disponibles: **Principios de vuelo** · **Aerodinámica avanzada** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica** · **Procedimientos de emergencia** · **Peso y balance** · **Regulaciones aéreas** · **Factores humanos**. Los diez ya están en formato de curso profundo (7 lecciones con mini-quiz de 3 preguntas y explicaciones), con traducción real (no automática) a los 5 idiomas soportados: inglés, alemán, español, portugués y árabe.
+Módulos disponibles: **Principios de vuelo** · **Aerodinámica avanzada** · **Instrumentos de cabina** · **Meteorología para pilotos** · **Radio y alfabeto fonético** · **Navegación básica** · **Procedimientos de emergencia** · **Peso y balance** · **Regulaciones aéreas** · **Factores humanos** · **Planificación de vuelo**. Los once ya están en formato de curso profundo (7 lecciones con mini-quiz de 3 preguntas y explicaciones), con traducción real (no automática) a los 5 idiomas soportados: inglés, alemán, español, portugués y árabe.
 
 Proyecto hermano de [`teoria-suiza`](../teoria-suiza) (la app de teoría de conducir): misma filosofía —contenido en datos estáticos, sin backend— aplicada al vuelo.
 
@@ -12,8 +12,12 @@ Proyecto hermano de [`teoria-suiza`](../teoria-suiza) (la app de teoría de cond
 
 ```bash
 npm install
-npm run dev      # desarrollo
-npm run build    # producción → dist/
+npm run dev          # desarrollo
+npm run build        # producción → dist/
+npm test             # vitest
+npm run check:i18n   # valida contenido + los 5 idiomas
+npm run lint         # ESLint
+npm run format       # Prettier (CI usa format:check)
 ```
 
 ## Stack
@@ -109,24 +113,24 @@ modules.<moduleId>.lessons.<lessonId>.keyTakeaway / .simTip
 modules.<moduleId>.quiz.<questionId>.question / .options[] / .explanation
 ```
 
-`schema.js` valida los módulos al arrancar en desarrollo y avisa por consola de estructuras malformadas. `scripts/check-i18n.mjs` exige `keyTakeaway`/`simTip`/`explanation` en todos los módulos, ya que los 10 están migrados al formato de mini-quiz por lección.
+`schema.js` valida los módulos al arrancar en desarrollo y avisa por consola de estructuras malformadas. `scripts/check-i18n.mjs` exige `keyTakeaway`/`simTip`/`explanation` en todos los módulos, ya que los 11 están migrados al formato de mini-quiz por lección.
 
 ### El curso de teoría
 
-Los 10 módulos (`principles-of-flight`, `advanced-aerodynamics`, `cockpit-instruments`, `weather-basics`, `radio-alphabet`, `navigation-basics`, `emergency-procedures`, `weight-and-balance`, `regulations`, `human-factors`) ya están en el formato profundo: 7 lecciones cada uno (varios párrafos, un **key takeaway**, un **tip de simulador** que conecta el concepto con una misión/escenario real de la app, y un mini-quiz de 3 preguntas con feedback y explicación inmediatos). El quiz final del módulo ya no se escribe a mano: se deriva en tiempo de ejecución (`deriveModuleQuiz` en `src/content/schema.js`) juntando las preguntas de todas las lecciones.
+Los 11 módulos (`principles-of-flight`, `advanced-aerodynamics`, `cockpit-instruments`, `weather-basics`, `radio-alphabet`, `navigation-basics`, `emergency-procedures`, `weight-and-balance`, `regulations`, `human-factors`, `flight-planning`) ya están en el formato profundo: 7 lecciones cada uno (varios párrafos, un **key takeaway**, un **tip de simulador** que conecta el concepto con una misión/escenario real de la app, y un mini-quiz de 3 preguntas con feedback y explicación inmediatos). El quiz final del módulo ya no se escribe a mano: se deriva en tiempo de ejecución (`deriveModuleQuiz` en `src/content/schema.js`) juntando las preguntas de todas las lecciones.
 
 **Diagramas:** algunas lecciones llevan una ilustración SVG dibujada a mano (`src/components/theory/LessonDiagram.jsx`) — las cuatro fuerzas, el ángulo de ataque, los tres ejes, la relación de planeo, la senda de aproximación, momento/centro de gravedad y las clases de espacio aéreo. Misma política que los iconos y los relojes del simulador: cero imágenes, cero assets externos, cero copyright. Las **etiquetas se traducen** como cualquier otra cadena (`theory:diagrams.<id>.*`), pero el dibujo no se espeja en RTL a propósito: un perfil alar con el viento entrando por la izquierda es una convención técnica, no una cuestión de idioma. Un diagrama se ata a una lección con `"diagram": "<id>"` en el JSON del módulo, y `check:i18n` valida que el id exista y que tenga sus textos en los 5 idiomas.
 
-**Traducción:** el contenido profundo de los 10 módulos se escribió primero en inglés y ya está traducido de verdad (no copia literal) a **alemán, español, portugués y árabe** — terminología aeronáutica propia de cada idioma, mismo tono que el resto de la interfaz. El árabe usa árabe estándar moderno con numerales occidentales (0-9) y respeta el layout RTL ya existente en la interfaz.
+**Traducción:** el contenido profundo de los 11 módulos se escribió primero en inglés y ya está traducido de verdad (no copia literal) a **alemán, español, portugués y árabe** — terminología aeronáutica propia de cada idioma, mismo tono que el resto de la interfaz. El árabe usa árabe estándar moderno con numerales occidentales (0-9) y respeta el layout RTL ya existente en la interfaz.
 
 ## El simulador
 
 - **Controles de teclado**: `W/S` cabeceo · `A/D` alabeo · `Q/E` guiñada · `Shift/Ctrl` gases (también flechas).
 - **Controles táctiles** (`TouchControls.jsx`, se muestran solo en dispositivos con puntero grueso): joystick izquierdo (cabeceo/alabeo, arrastrar abajo = tirar = morro arriba), slider vertical derecho (gases con valor absoluto) y botones de timón. Escriben en un ref compartido que el game loop lee por frame — arrastrar no fuerza re-renders. Teclado y táctil se fusionan, así que un portátil táctil puede usar ambos.
-- **Física simplificada e intencionadamente pedagógica**: la velocidad depende de los gases, subir "cuesta" velocidad, los mandos pierden autoridad a baja velocidad y por debajo de la velocidad de pérdida el ala deja de sustentar — exactamente lo que enseña el módulo *Principios de vuelo*.
+- **Física simplificada e intencionadamente pedagógica**: la velocidad depende de los gases, subir "cuesta" velocidad, los mandos pierden autoridad a baja velocidad y por debajo de la velocidad de pérdida el ala deja de sustentar — exactamente lo que enseña el módulo _Principios de vuelo_.
 - **Cuadro de instrumentos con agujas** (`InstrumentPanel.jsx`): anemómetro con arcos de color y raya roja de pérdida, horizonte artificial, altímetro con lectura digital, variómetro y brújula — SVG paramétrico propio, calibrado a nuestra física, con giro suavizado por CSS. Los mismos instrumentos que enseña el módulo de teoría.
 - **Mandos de alta fidelidad**: yoke dibujado que gira con el alabeo y se desplaza con el cabeceo, y palanca de gases con muescas y porcentaje.
-- **Mar animado y terreno con relieve** (`SceneManager.js`): el océano no es un disco plano sino un parche teselado cuyas olas se calculan en el **vertex shader** a partir de la posición en *mundo* (coste de CPU cero), con normales analíticas para que el sol se refleje al ondular y los senos más oscuros que las crestas. El parche se recentra bajo el avión en cada frame: como el patrón está anclado al mundo, no se arrastra, y se ve un mar infinito sin teselar kilómetros. Las islas son anillos teselados desplazados en altura, **llanos donde se aterriza** (una máscara suave hunde el relieve sobre la pista, así el suelo plano que asume `FlightEngine` sigue siendo cierto donde importa) y hundidos bajo el agua en la costa, de modo que la playa la dibuja el propio corte con el mar. El color va por vértice (arena en la orilla, tierra adentro, roca en las cotas altas) — sin una sola textura ni asset externo.
+- **Mar animado y terreno con relieve** (`SceneManager.js`): el océano no es un disco plano sino un parche teselado cuyas olas se calculan en el **vertex shader** a partir de la posición en _mundo_ (coste de CPU cero), con normales analíticas para que el sol se refleje al ondular y los senos más oscuros que las crestas. El parche se recentra bajo el avión en cada frame: como el patrón está anclado al mundo, no se arrastra, y se ve un mar infinito sin teselar kilómetros. Las islas son anillos teselados desplazados en altura, **llanos donde se aterriza** (una máscara suave hunde el relieve sobre la pista, así el suelo plano que asume `FlightEngine` sigue siendo cierto donde importa) y hundidos bajo el agua en la costa, de modo que la playa la dibuja el propio corte con el mar. El color va por vértice (arena en la orilla, tierra adentro, roca en las cotas altas) — sin una sola textura ni asset externo.
 - **Iluminación cinematográfica**: tone mapping ACES con exposición propia por hora del día, sol visible en el cielo (sprite con degradado pintado en canvas) y **sombra proyectada del avión**, que es la mejor referencia de altura que hay en una aproximación. La cámara de sombras es pequeña y sigue al avión, en vez de cubrir kilómetros con un mapa inútil de grueso.
 - **Ocultar/mostrar interfaz** (botón de ajustes en vuelo): instrumentos, yoke, timón y datos de texto, cada uno persistente. Los avisos de pérdida y de límite del mapa se muestran siempre. Ahí vive también el ajuste de **sombras**: son lo más caro de la escena (cada superficie que las recibe muestrea el mapa por píxel), así que arrancan apagadas en dispositivos táctiles y encendidas en escritorio, y se pueden cambiar en vuelo sin reiniciarlo.
 - **Hora del día seleccionable** (día / atardecer / noche): paleta de cielo, luz y niebla por franja, estrellas, **luces de borde y umbral de pista** (verdes/rojas, brillan de noche) y luces de navegación del avión (roja/verde en las puntas, blanca de cola y estroboscopio). De noche, el vuelo por referencias exteriores se complica a propósito — el terreno perfecto para valorar los instrumentos.
@@ -167,6 +171,17 @@ El `base: "./"` de `vite.config.js` hace que el build funcione desde cualquier s
 
 SkySimAcademy es instalable ("Añadir a pantalla de inicio"): `public/manifest.webmanifest` + `public/sw.js` (stale-while-revalidate, caché propia `aerolearn-v1`) + iconos PNG generados a partir del logo propio (`src/components/Logo.jsx`). El service worker se registra **relativo a la app**, así que en producción su alcance es `/teoria-vuelo/` y nunca interfiere con el de teoria-suiza en la raíz (que a su vez usa stale-while-revalidate y no bloquea esta app).
 
+### Activar la analítica opcional (Plausible)
+
+Desactivada por defecto — sin `VITE_PLAUSIBLE_DOMAIN`, `src/analytics.js` no carga ningún script ni hace ninguna petición de red (ver ese archivo y `.env.example`). Para activarla:
+
+1. Crear una cuenta en [plausible.io](https://plausible.io) (o self-host) y dar de alta el sitio con el dominio donde se publica la app (p. ej. `<usuario>.github.io`).
+2. En **Settings → Secrets and variables → Actions** del repo de GitHub, añadir una _variable_ (no secret, no es sensible) `VITE_PLAUSIBLE_DOMAIN` con ese dominio.
+3. En `.github/workflows/deploy-pages.yml`, pasar la variable como env del paso `npm run build`: `env: { VITE_PLAUSIBLE_DOMAIN: ${{ vars.VITE_PLAUSIBLE_DOMAIN }} }` (Vite solo expone al bundle las variables que empiezan con `VITE_`, y solo las que existen en el momento del build).
+4. Redesplegar (push a `main` o "Run workflow").
+
+Sin este paso no hace falta tocar nada más — la ausencia de la variable es el estado "apagado" por diseño, no un error a corregir.
+
 ## Progreso del usuario
 
 Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave versionada `aerolearn.progress.v1`) — mejores puntuaciones e intentos por quiz, módulos aprobados y misiones completadas. Los módulos aprobados muestran insignia en la lista de teoría y desbloquean sus misiones en el simulador.
@@ -194,3 +209,5 @@ Sin backend: el progreso se guarda en `localStorage` (`src/storage.js`, clave ve
 - [x] Curso profundo — tanda 2: Instrumentos de cabina, Meteorología, Radio/alfabeto y Navegación expandidos al mismo formato (7 lecciones, mini-quiz con explicaciones)
 - [x] Curso profundo — módulos nuevos: Procedimientos de emergencia, Peso y balance, Regulaciones aéreas y Factores humanos (7 lecciones cada uno, mismo formato)
 - [x] Traducción real (no copia del inglés) del contenido profundo de los 10 módulos a `de`/`es`/`pt`/`ar`
+- [x] ESLint + Prettier con CI, y tests de componentes React más allá del quiz (`ErrorBoundary`, `LanguageSwitcher`)
+- [x] 11º módulo de teoría: Planificación de vuelo (ruta y cartas, combustible y reservas, alternos, NOTAM/partes, presentar un plan, decisión de ir/no ir)

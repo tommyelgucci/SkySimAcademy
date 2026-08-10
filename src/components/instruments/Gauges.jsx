@@ -54,10 +54,7 @@ function Bezel({ children, label }) {
 function Needle({ angle, length = 34, width = 2.4, color = "#f2f2f0" }) {
   return (
     <g className="gauge__needle" style={{ transform: `rotate(${angle}deg)` }}>
-      <polygon
-        points={`${50 - width} 54, 50 ${50 - length}, ${50 + width} 54`}
-        fill={color}
-      />
+      <polygon points={`${50 - width} 54, 50 ${50 - length}, ${50 + width} 54`} fill={color} />
       <circle cx="50" cy="50" r="4" fill="#3a4356" stroke="#0a0d13" strokeWidth="1" />
     </g>
   );
@@ -77,11 +74,23 @@ export function AirspeedIndicator({ value, label }) {
   const [sx2, sy2] = polar(50, 50, 31, angle(FLIGHT.STALL_SPEED));
   return (
     <Bezel label={label}>
-      <path d={arcPath(50, 50, 37, angle(FLIGHT.ROTATE_SPEED), angle(FLIGHT.MAX_SPEED))} stroke="#35c759" strokeWidth="4" fill="none" />
-      <path d={arcPath(50, 50, 37, angle(FLIGHT.MAX_SPEED), angle(MAX))} stroke="#ffb703" strokeWidth="4" fill="none" />
+      <path
+        d={arcPath(50, 50, 37, angle(FLIGHT.ROTATE_SPEED), angle(FLIGHT.MAX_SPEED))}
+        stroke="#35c759"
+        strokeWidth="4"
+        fill="none"
+      />
+      <path
+        d={arcPath(50, 50, 37, angle(FLIGHT.MAX_SPEED), angle(MAX))}
+        stroke="#ffb703"
+        strokeWidth="4"
+        fill="none"
+      />
       {ticks}
       <line x1={sx1} y1={sy1} x2={sx2} y2={sy2} stroke="#ff4d4d" strokeWidth="3" />
-      <text x="50" y="74" textAnchor="middle" fontSize="9" fill="#9fb0c9">m/s</text>
+      <text x="50" y="74" textAnchor="middle" fontSize="9" fill="#9fb0c9">
+        m/s
+      </text>
       <Needle angle={angle(value)} />
     </Bezel>
   );
@@ -102,8 +111,22 @@ export function AttitudeIndicator({ pitch, bank, label }) {
           <line x1="-40" y1="50" x2="140" y2="50" stroke="#f2f2f0" strokeWidth="1.6" />
           {[10, 20].map((p) => (
             <g key={p}>
-              <line x1="38" y1={50 - p * 1.1} x2="62" y2={50 - p * 1.1} stroke="#f2f2f0" strokeWidth="1" />
-              <line x1="38" y1={50 + p * 1.1} x2="62" y2={50 + p * 1.1} stroke="#f2f2f0" strokeWidth="1" />
+              <line
+                x1="38"
+                y1={50 - p * 1.1}
+                x2="62"
+                y2={50 - p * 1.1}
+                stroke="#f2f2f0"
+                strokeWidth="1"
+              />
+              <line
+                x1="38"
+                y1={50 + p * 1.1}
+                x2="62"
+                y2={50 + p * 1.1}
+                stroke="#f2f2f0"
+                strokeWidth="1"
+              />
             </g>
           ))}
         </g>
@@ -134,7 +157,9 @@ export function Altimeter({ value, label, locale }) {
       <text x="50" y="76" textAnchor="middle" fontSize="10" fill="#eef3fb" fontWeight="700">
         {Math.round(value).toLocaleString(locale)}
       </text>
-      <text x="50" y="85" textAnchor="middle" fontSize="7" fill="#9fb0c9">m</text>
+      <text x="50" y="85" textAnchor="middle" fontSize="7" fill="#9fb0c9">
+        m
+      </text>
       <Needle angle={angle} />
     </Bezel>
   );
@@ -152,8 +177,12 @@ export function Variometer({ value, label }) {
   return (
     <Bezel label={label}>
       {marks}
-      <text x="70" y="38" fontSize="8" fill="#35c759">▲</text>
-      <text x="70" y="68" fontSize="8" fill="#ff4d4d">▼</text>
+      <text x="70" y="38" fontSize="8" fill="#35c759">
+        ▲
+      </text>
+      <text x="70" y="68" fontSize="8" fill="#ff4d4d">
+        ▼
+      </text>
       <Needle angle={angle} />
     </Bezel>
   );
@@ -163,7 +192,10 @@ export function Variometer({ value, label }) {
 export function CompassGauge({ heading, label, cardinals }) {
   const continuous = useContinuousAngle(heading);
   const points = [
-    [0, cardinals.n], [90, cardinals.e], [180, cardinals.s], [270, cardinals.w],
+    [0, cardinals.n],
+    [90, cardinals.e],
+    [180, cardinals.s],
+    [270, cardinals.w],
   ];
   return (
     <Bezel label={label}>
@@ -171,9 +203,16 @@ export function CompassGauge({ heading, label, cardinals }) {
         {points.map(([deg, letter]) => {
           const [x, y] = polar(50, 50, 34, deg);
           return (
-            <text key={deg} x={x} y={y + 3} textAnchor="middle" fontSize="10"
-              fontWeight="700" fill={deg === 0 ? "#ff8f5c" : "#eef3fb"}
-              transform={`rotate(${deg} ${x} ${y})`}>
+            <text
+              key={deg}
+              x={x}
+              y={y + 3}
+              textAnchor="middle"
+              fontSize="10"
+              fontWeight="700"
+              fill={deg === 0 ? "#ff8f5c" : "#eef3fb"}
+              transform={`rotate(${deg} ${x} ${y})`}
+            >
               {letter}
             </text>
           );
@@ -181,7 +220,9 @@ export function CompassGauge({ heading, label, cardinals }) {
         {Array.from({ length: 12 }, (_, i) => i * 30).map((deg) => {
           const [x1, y1] = polar(50, 50, 44, deg);
           const [x2, y2] = polar(50, 50, 41, deg);
-          return <line key={deg} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#cfd6e4" strokeWidth="1.4" />;
+          return (
+            <line key={deg} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#cfd6e4" strokeWidth="1.4" />
+          );
         })}
       </g>
       <polygon points="50 4, 47 12, 53 12" fill="#ffb703" />

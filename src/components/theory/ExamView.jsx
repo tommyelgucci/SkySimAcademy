@@ -46,7 +46,7 @@ export default function ExamView({ onBack }) {
     const pool = MODULES.filter((m) => m.status === "available").flatMap((m) =>
       shuffled(m.quiz.questions)
         .slice(0, QUESTIONS_PER_MODULE)
-        .map((q) => ({ moduleId: m.id, ...q }))
+        .map((q) => ({ moduleId: m.id, ...q })),
     );
     return shuffled(pool);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,7 +60,7 @@ export default function ExamView({ onBack }) {
         return shuffled([...Array(count).keys()]);
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [questions]
+    [questions],
   );
 
   const finish = (finalAnswers) => {
@@ -86,7 +86,9 @@ export default function ExamView({ onBack }) {
 
   // Temporizador: al agotarse, el examen se entrega solo
   const answersRef = useRef(answers);
-  answersRef.current = answers;
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
   useEffect(() => {
     if (phase !== "running") return;
     const interval = setInterval(() => {

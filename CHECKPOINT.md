@@ -9,9 +9,62 @@ commit.
 
 ---
 
+## 2026-08-10 (2) — Módulo nuevo, ESLint/Prettier, tests, auditoría a11y
+
+**Qué se hizo** (priorizado por el dueño del proyecto: Contenido nuevo +
+Calidad/infraestructura + documentar analítica sin activarla — ver
+`RUMBO.md` → Decisiones):
+
+- **Contenido:** 11º módulo de teoría, "Planificación de vuelo"
+  (`src/content/modules/flight-planning.json`, orden 11, icono
+  `clipboard-list`). 7 lecciones (por qué importa, ruta y cartas,
+  combustible y reservas, alternos y mínimos meteorológicos, NOTAM y
+  partes, presentar y seguir un plan, decisión de ir/no ir), mini-quiz de
+  3 preguntas c/u, traducido de verdad a los 5 idiomas.
+- **ESLint + Prettier:** `eslint.config.js` (flat config, react +
+  react-hooks + react-refresh), `.prettierrc.json`, scripts `lint` /
+  `format` / `format:check`, integrados a `ci.yml`. El lint encontró y se
+  corrigieron 3 problemas reales (ver commits); las 2 reglas nuevas de
+  "preparación para React Compiler" de eslint-plugin-react-hooks v7
+  quedaron en `warn` con la justificación en `eslint.config.js` y
+  `CLAUDE.md` (el proyecto no usa el Compiler; los patrones flagged son
+  los que la propia documentación de React recomienda para este caso).
+  Reformateo completo del repo con Prettier en un commit `style:` aparte.
+- **Tests de componentes:** `ErrorBoundary.test.jsx` y
+  `LanguageSwitcher.test.jsx` (antes solo `Quiz.test.jsx`). De paso se
+  encontró y arregló una falta de `afterEach(cleanup)` en
+  `src/test/setup.js` — sin `test.globals: true`, RTL no limpiaba el DOM
+  entre tests del mismo archivo.
+- **Auditoría de accesibilidad** (manual, sin herramienta automatizada):
+  botones de solo-icono con `aria-label`, toggles con `role="switch"` +
+  `aria-checked`, radiogroups con roles correctos, iconos `aria-hidden`,
+  sin `<div>`/`<span>` con `onClick` y sin equivalente de teclado,
+  contraste de color calculado con la fórmula WCAG para los pares
+  texto/fondo del tema (todos ≥ 6.4:1, muy por encima del mínimo AA de
+  4.5:1), jerarquía de encabezados coherente con el patrón de mini-router
+  (un `<h1>` por pantalla). Sin hallazgos que corregir.
+- **Analítica:** documentado en el README (sección "Activar la analítica
+  opcional") el paso a paso para activar `VITE_PLAUSIBLE_DOMAIN` cuando
+  el dueño del proyecto tenga un dominio de Plausible — no se activó
+  nada, a pedido explícito.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings documentados),
+`npm run format:check`, `npm run check:i18n` (11 módulos), `npm test`
+(59/59) y `npm run build`, todos en verde. 4 commits en
+`claude/skysimacademy-proyecto-gudxjy` (módulo nuevo · ESLint/Prettier +
+fixes · reformateo · tests de componentes) más este de documentación.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — quedan sin marcar "más
+módulos", "más misiones/escenarios", "más flashcards", "validar con
+usuarios reales" y la versión "instructor" (esta última requiere decidir
+si se rompe la filosofía sin-backend antes de tocar código).
+
+---
+
 ## 2026-08-10 — Revisión de estado + documentación de contexto
 
 **Qué se hizo:**
+
 - Se clonó el repo y se revisó el estado completo del proyecto: código,
   README, historial de git, issues/PRs en GitHub.
 - Se corrieron los tres chequeos de CI en local: `npm test` (53 tests, 5

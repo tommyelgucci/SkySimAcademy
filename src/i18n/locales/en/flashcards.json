@@ -27,11 +27,7 @@
   "instruments": {
     "airspeed-id": {
       "question": "Which instrument is shown here?",
-      "options": [
-        "Airspeed indicator",
-        "Altimeter",
-        "Turn coordinator"
-      ],
+      "options": ["Airspeed indicator", "Altimeter", "Turn coordinator"],
       "explanation": "The needle sweeps a 270° arc with green (normal operating range) and yellow (caution) bands and a red radial line for stall speed — that's the airspeed indicator, always the first gauge to check for a safe margin above stall."
     },
     "airspeed-read": {
@@ -45,11 +41,7 @@
     },
     "attitude-id": {
       "question": "Which instrument is shown here?",
-      "options": [
-        "Attitude indicator (artificial horizon)",
-        "Compass",
-        "Variometer"
-      ],
+      "options": ["Attitude indicator (artificial horizon)", "Compass", "Variometer"],
       "explanation": "A blue “sky” over a brown “ground” split by a horizon line, with a fixed aircraft symbol in the middle — that's the attitude indicator, showing pitch and bank at a glance."
     },
     "attitude-read": {
@@ -63,20 +55,12 @@
     },
     "altimeter-id": {
       "question": "Which instrument is shown here?",
-      "options": [
-        "Altimeter",
-        "Airspeed indicator",
-        "Compass"
-      ],
+      "options": ["Altimeter", "Airspeed indicator", "Compass"],
       "explanation": "One needle sweeping a full circle per 1,000 m of altitude, with a digital readout in the middle — that's the altimeter."
     },
     "altimeter-read": {
       "question": "Roughly what altitude does this altimeter show?",
-      "options": [
-        "Just under 1,000 m",
-        "Exactly 100 m",
-        "About 10,000 m"
-      ],
+      "options": ["Just under 1,000 m", "Exactly 100 m", "About 10,000 m"],
       "explanation": "The needle has almost completed a full lap of the dial, and the digital readout confirms it: just under 1,000 m, matching one full turn of the needle."
     },
     "variometer-id": {
@@ -99,20 +83,12 @@
     },
     "compass-id": {
       "question": "Which instrument is shown here?",
-      "options": [
-        "Compass / heading indicator",
-        "Altimeter",
-        "Attitude indicator"
-      ],
+      "options": ["Compass / heading indicator", "Altimeter", "Attitude indicator"],
       "explanation": "A rotating card with N/E/S/W under a fixed pointer at the top — that's the compass, showing the aircraft's current heading."
     },
     "compass-read": {
       "question": "What heading does this compass show?",
-      "options": [
-        "West (270°)",
-        "North (0°)",
-        "South (180°)"
-      ],
+      "options": ["West (270°)", "North (0°)", "South (180°)"],
       "explanation": "The fixed pointer at the top lines up with W on the rotating card — the aircraft is heading 270°, due west."
     }
   },
