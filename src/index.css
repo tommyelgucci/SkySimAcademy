@@ -1172,11 +1172,20 @@ h3 {
   border-color: var(--color-primary);
 }
 
-/* Botón de silencio durante el vuelo */
-.sound-toggle {
+/* Barra de iconos flotante (ajustes, cámara, pausa, sonido): un solo
+   contenedor arrastrable (ver useDraggableHud.js) en vez de cuatro
+   botones anclados cada uno a su propio borde — así se mueven juntos y el
+   panel de ajustes (.ui-settings) puede colgar de ella. */
+.hud-toolbar {
   position: absolute;
   inset-block-start: 1rem;
   inset-inline-end: 1rem;
+  display: flex;
+  gap: 0.8rem;
+  z-index: 6;
+}
+
+.sound-toggle {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -1187,27 +1196,15 @@ h3 {
   display: grid;
   place-items: center;
   cursor: pointer;
-  z-index: 6;
+  flex-shrink: 0;
 }
 
-/* Botones de cámara, pausa y ajustes: en fila junto al de sonido */
-.sound-toggle--pause {
-  inset-inline-end: 4.2rem;
-}
-
-.sound-toggle--camera {
-  inset-inline-end: 7.4rem;
-}
-
-.sound-toggle--settings {
-  inset-inline-end: 10.6rem;
-}
-
-/* Panel de ocultar/mostrar grupos de interfaz */
+/* Panel de ocultar/mostrar grupos de interfaz: cuelga del toolbar (su
+   ancestro posicionado), así sigue a la barra de iconos si se arrastra. */
 .ui-settings {
   position: absolute;
-  inset-block-start: 4rem;
-  inset-inline-end: 1rem;
+  inset-block-start: calc(100% + 0.6rem);
+  inset-inline-end: 0;
   z-index: 7;
   background: rgba(10, 18, 32, 0.92);
   backdrop-filter: blur(6px);
@@ -1506,15 +1503,45 @@ h3 {
   color: var(--color-accent);
 }
 
+/* Contenedores flotantes del HUD que se pueden arrastrar (ver
+   useDraggableHud.js): sin scroll/zoom táctil del navegador de por medio
+   mientras se arrastra, y el cursor avisa que se puede mover. */
+.hud-draggable {
+  touch-action: none;
+  cursor: grab;
+}
+
+.hud-draggable:active {
+  cursor: grabbing;
+}
+
 /* Mini-mapa cenital */
-.mini-map {
+.mini-map-wrap {
   position: absolute;
   inset-block-start: 1rem;
   inset-inline-start: 1rem;
   border-radius: 50%;
+  z-index: 4;
+}
+
+/* En pantallas angostas el HUD numérico (velocidad/altitud/…) se apila en
+   una sola columna alta y ocupa toda la esquina superior izquierda: por
+   defecto el mini-mapa arranca del otro lado, justo debajo de la barra de
+   iconos (esquina superior derecha), que es la zona libre en ese ancho.
+   Con el arrastre el jugador lo puede mover donde quiera de todos modos. */
+@media (max-width: 700px) {
+  .mini-map-wrap {
+    inset-inline-start: auto;
+    inset-inline-end: 1rem;
+    inset-block-start: 4.6rem;
+  }
+}
+
+.mini-map {
+  display: block;
+  border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-  z-index: 4;
 }
 
 /* Overlay de pausa: por encima de HUD, botones flotantes y mandos táctiles */

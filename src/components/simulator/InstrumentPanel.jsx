@@ -14,12 +14,14 @@ import {
   Variometer,
   CompassGauge,
 } from "../instruments/Gauges.jsx";
+import { useDraggableHud } from "./useDraggableHud.js";
 
 export default function InstrumentPanel({ hud }) {
   const { t, i18n } = useTranslation("simulator");
   const locale = i18n.resolvedLanguage;
+  const { ref, style, handlers } = useDraggableHud("aerolearn.hudPos.instruments");
   return (
-    <div className="instrument-panel">
+    <div ref={ref} className="instrument-panel hud-draggable" style={style} {...handlers}>
       <AirspeedIndicator value={hud.speed} label={t("hud.speed")} />
       <AttitudeIndicator pitch={hud.pitchDeg} bank={hud.bankDeg} label={t("instruments.horizon")} />
       <Altimeter value={hud.altitude} label={t("hud.altitude")} locale={locale} />
