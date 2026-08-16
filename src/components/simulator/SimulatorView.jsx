@@ -44,7 +44,6 @@ import { MissionTracker } from "../../simulator/MissionTracker.js";
 import { FlightEvaluator } from "../../simulator/FlightEvaluator.js";
 import { SoundEngine } from "../../simulator/SoundEngine.js";
 import TouchControls, { hasCoarsePointer } from "./TouchControls.jsx";
-import { useDraggableHud } from "./useDraggableHud.js";
 import { MISSIONS } from "../../content/missions";
 import { LEVELS } from "../../content/levels";
 import {
@@ -156,11 +155,6 @@ export default function SimulatorView({ onExit }) {
     }
   });
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const {
-    ref: toolbarDragRef,
-    style: toolbarDragStyle,
-    handlers: toolbarDragHandlers,
-  } = useDraggableHud("aerolearn.hudPos.toolbar");
   const toggleUiPref = (key) =>
     setUiPrefs((prefs) => {
       const next = { ...prefs, [key]: !prefs[key] };
@@ -544,84 +538,77 @@ export default function SimulatorView({ onExit }) {
               </button>
             </div>
           )}
-          <div
-            ref={toolbarDragRef}
-            className="hud-toolbar hud-draggable"
-            style={toolbarDragStyle}
-            {...toolbarDragHandlers}
+          <button
+            className="sound-toggle sound-toggle--settings"
+            aria-label={t("uiSettings.title")}
+            aria-expanded={settingsOpen}
+            onClick={() => setSettingsOpen((open) => !open)}
           >
-            <button
-              className="sound-toggle"
-              aria-label={t("uiSettings.title")}
-              aria-expanded={settingsOpen}
-              onClick={() => setSettingsOpen((open) => !open)}
-            >
-              <Settings2 size={20} aria-hidden="true" />
-            </button>
-            <button
-              className="sound-toggle"
-              aria-label={cameraView === "external" ? t("view.cockpit") : t("view.external")}
-              onClick={toggleCameraView}
-            >
-              <SwitchCamera size={20} aria-hidden="true" />
-            </button>
-            <button
-              className="sound-toggle"
-              aria-label={paused ? t("pause.resume") : t("pause.pause")}
-              onClick={togglePause}
-            >
-              {paused ? (
-                <Play size={20} aria-hidden="true" />
-              ) : (
-                <Pause size={20} aria-hidden="true" />
-              )}
-            </button>
-            <button
-              className="sound-toggle"
-              aria-label={muted ? t("sound.unmute") : t("sound.mute")}
-              onClick={toggleMuted}
-            >
-              {muted ? (
-                <VolumeX size={20} aria-hidden="true" />
-              ) : (
-                <Volume2 size={20} aria-hidden="true" />
-              )}
-            </button>
-            {settingsOpen && (
-              <div className="ui-settings">
-                <h2>{t("uiSettings.title")}</h2>
-                {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics", "shadows"].map(
-                  (key) => (
-                    <button
-                      key={key}
-                      className="ui-settings__row"
-                      role="switch"
-                      aria-checked={uiPrefs[key]}
-                      onClick={() => toggleUiPref(key)}
-                    >
-                      <span className={`ui-settings__check ${uiPrefs[key] ? "is-on" : ""}`}>
-                        {uiPrefs[key] && <Check size={13} aria-hidden="true" />}
-                      </span>
-                      {t(`uiSettings.${key}`)}
-                    </button>
-                  ),
-                )}
-                {touchDevice && (
+            <Settings2 size={20} aria-hidden="true" />
+          </button>
+          <button
+            className="sound-toggle sound-toggle--pause"
+            aria-label={paused ? t("pause.resume") : t("pause.pause")}
+            onClick={togglePause}
+          >
+            {paused ? (
+              <Play size={20} aria-hidden="true" />
+            ) : (
+              <Pause size={20} aria-hidden="true" />
+            )}
+          </button>
+          <button
+            className="sound-toggle sound-toggle--camera"
+            aria-label={cameraView === "external" ? t("view.cockpit") : t("view.external")}
+            onClick={toggleCameraView}
+          >
+            <SwitchCamera size={20} aria-hidden="true" />
+          </button>
+          <button
+            className="sound-toggle"
+            aria-label={muted ? t("sound.unmute") : t("sound.mute")}
+            onClick={toggleMuted}
+          >
+            {muted ? (
+              <VolumeX size={20} aria-hidden="true" />
+            ) : (
+              <Volume2 size={20} aria-hidden="true" />
+            )}
+          </button>
+          {settingsOpen && (
+            <div className="ui-settings">
+              <h2>{t("uiSettings.title")}</h2>
+              {["instruments", "yoke", "rudder", "textHud", "minimap", "haptics", "shadows"].map(
+                (key) => (
                   <button
+                    key={key}
                     className="ui-settings__row"
                     role="switch"
-                    aria-checked={gyroOn}
-                    onClick={toggleGyro}
+                    aria-checked={uiPrefs[key]}
+                    onClick={() => toggleUiPref(key)}
                   >
-                    <span className={`ui-settings__check ${gyroOn ? "is-on" : ""}`}>
-                      {gyroOn && <Check size={13} aria-hidden="true" />}
+                    <span className={`ui-settings__check ${uiPrefs[key] ? "is-on" : ""}`}>
+                      {uiPrefs[key] && <Check size={13} aria-hidden="true" />}
                     </span>
-                    {t("uiSettings.gyro")}
+                    {t(`uiSettings.${key}`)}
                   </button>
-                )}
-              </div>
-            )}
-          </div>
+                ),
+              )}
+              {touchDevice && (
+                <button
+                  className="ui-settings__row"
+                  role="switch"
+                  aria-checked={gyroOn}
+                  onClick={toggleGyro}
+                >
+                  <span className={`ui-settings__check ${gyroOn ? "is-on" : ""}`}>
+                    {gyroOn && <Check size={13} aria-hidden="true" />}
+                  </span>
+                  {t("uiSettings.gyro")}
+                </button>
+              )}
+            </div>
+          )}
           {touchDevice && (
             <TouchControls
               inputRef={touchRef}
