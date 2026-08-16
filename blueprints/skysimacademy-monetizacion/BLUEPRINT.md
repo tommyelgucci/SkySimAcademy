@@ -21,15 +21,15 @@ bajo el mismo modelo).
 
 ## 2. Stack (versiones verificadas en npm registry, no de memoria)
 
-| Pieza | Elección | Versión verificada |
-|---|---|---|
-| Frontend | React + Vite (sin cambios) | ya en el repo: `react@19.1.0`, `vite@6.3.5` |
-| Auth | Firebase Auth (email/password) | `firebase@12.17.1` (SDK cliente) |
-| Base de datos | Firestore | incluido en `firebase@12.17.1` |
-| Backend de pago | Cloud Functions (2 funciones) | `firebase-functions@7.3.2`, `firebase-admin@14.2.0` |
-| Pagos | Stripe Checkout (hosted, pago único) | `stripe@22.5.0` (SDK Node, usado solo en Functions) |
-| CLI de infra | Firebase CLI | `firebase-tools@15.27.0` |
-| Hosting | Firebase Hosting (reemplaza GitHub Pages) | — |
+| Pieza           | Elección                                  | Versión verificada                                  |
+| --------------- | ----------------------------------------- | --------------------------------------------------- |
+| Frontend        | React + Vite (sin cambios)                | ya en el repo: `react@19.1.0`, `vite@6.3.5`         |
+| Auth            | Firebase Auth (email/password)            | `firebase@12.17.1` (SDK cliente)                    |
+| Base de datos   | Firestore                                 | incluido en `firebase@12.17.1`                      |
+| Backend de pago | Cloud Functions (2 funciones)             | `firebase-functions@7.3.2`, `firebase-admin@14.2.0` |
+| Pagos           | Stripe Checkout (hosted, pago único)      | `stripe@22.5.0` (SDK Node, usado solo en Functions) |
+| CLI de infra    | Firebase CLI                              | `firebase-tools@15.27.0`                            |
+| Hosting         | Firebase Hosting (reemplaza GitHub Pages) | —                                                   |
 
 No se cambia: Three.js (`three@0.177.0`), i18next, estructura de
 `src/content/`, motor puro de `src/simulator/`.
@@ -170,8 +170,7 @@ migrar, `storage.js` pasa a leer/escribir contra Firestore con
 
 **Paso 7 — Cloud Function `createCheckoutSession`**
 HTTPS Callable Function. Requiere usuario autenticado (`context.auth`).
-Crea una sesión de Stripe Checkout (`mode: "payment"`, precio fijo USD
-18) con `client_reference_id = uid`. Devuelve la URL de la sesión.
+Crea una sesión de Stripe Checkout (`mode: "payment"`, precio fijo USD 18) con `client_reference_id = uid`. Devuelve la URL de la sesión.
 
 - WHEN un usuario autenticado la invoca, THE SYSTEM SHALL devolver una
   URL de Stripe Checkout válida asociada a ese `uid`.
