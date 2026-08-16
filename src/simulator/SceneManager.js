@@ -32,6 +32,10 @@
  *   .getTerrain()       -> { mapRadius, isSafeZone(x,z) }
  */
 import * as THREE from "three";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 
 const CAMERA_OFFSET = new THREE.Vector3(0, 3.4, 10); // detrás y encima del avión
 /** Posición del "asiento del piloto" relativa al avión (vista de cabina). */
@@ -142,6 +146,17 @@ const _lookAt = new THREE.Vector3();
 const _cockpitPos = new THREE.Vector3();
 const _cockpitLook = new THREE.Vector3();
 const _forwardTmp = new THREE.Vector3();
+
+// Temporales reutilizados al construir InstancedMesh (montañas, palmeras):
+// una matriz/vector por escenario, no por instancia.
+const _instMatrix = new THREE.Matrix4();
+const _instPos = new THREE.Vector3();
+const _instQuat = new THREE.Quaternion();
+const _instScale = new THREE.Vector3();
+const _instColor = new THREE.Color();
+const _upAxis = new THREE.Vector3(0, 1, 0);
+const _identityQuat = new THREE.Quaternion();
+const _leafScale = new THREE.Vector3(1, 0.5, 1);
 
 /** PRNG determinista simple (LCG). Cada escenario arranca con una semilla
  *  distinta para que las rocas/palmeras/etc. varíen de un vuelo a otro. */
@@ -262,10 +277,19 @@ export class SceneManager {
     this.#buildSky();
     this.#buildStars();
     this.#buildLights();
+    this.#buildEnvMap();
+    this.#buildContactShadow();
+    this.#buildComposer();
 
     /** @type {{mapRadius:number, safeZones:Array<Function>, isSafeZone:Function}|null} */
     this.terrain = null;
     this.scenario = null;
+    // Geometría de cono unitario (radio 1, altura 1) compartida por todas
+    // las montañas instanciadas de esta escena: cada instancia consigue su
+    // radio/altura propios escalando la matriz, no con geometría nueva (ver
+    // #scatterMountains). Vive en la instancia, no a nivel de módulo, para
+    // que su dispose() no afecte a otro SceneManager en paralelo.
+    this._unitCone = new THREE.ConeGeometry(1, 1, 6);
     this.#buildWorld(scenarioId);
   }
 
@@ -294,6 +318,94 @@ export class SceneManager {
       if (Array.isArray(material)) material.forEach((m) => (m.needsUpdate = true));
       else material.needsUpdate = true;
     });
+  }
+
+  /**
+   * Pipeline de post-procesado: RenderPass normal + bloom selectivo (solo lo
+   * que ya es muy brillante después del tone-mapping — disco solar, balizas
+   * y luces de pista de noche — pasa el umbral) + OutputPass (aplica
+   * tone-mapping/espacio de color al resultado final del composer, que si
+   * no se pierde al pasar por el bloom). Umbral/fuerza ajustados a ojo para
+   * que el cielo y el mar en pleno sol NO exploten en blanco.
+   */
+  #buildComposer() {
+    this.composer = new EffectComposer(this.renderer);
+    this.composer.addPass(new RenderPass(this.scene, this.camera));
+    this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.45, 0.4, 0.86);
+    this.composer.addPass(this.bloomPass);
+    this.composer.addPass(new OutputPass());
+  }
+
+  /**
+   * Mapa de entorno procedural (sin HDRI externo) para los reflejos del
+   * fuselaje: una cúpula de cielo en miniatura, renderizada aparte (nunca la
+   * escena real, que ya tiene el propio avión dentro) y convertida a
+   * irradiance map con PMREMGenerator. Se aplica a los materiales del avión
+   * que sean MeshStandardMaterial — las luces (MeshBasic) no reciben nada.
+   */
+  #buildEnvMap() {
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+
+    const envScene = new THREE.Scene();
+    const geo = new THREE.SphereGeometry(1, 16, 12);
+    const top = new THREE.Color(this.palette.skyTop);
+    const bottom = new THREE.Color(this.palette.hemiGround);
+    const pos = geo.attributes.position;
+    const colors = [];
+    for (let i = 0; i < pos.count; i++) {
+      const t = THREE.MathUtils.clamp(pos.getY(i) / 2 + 0.5, 0, 1);
+      const c = bottom.clone().lerp(top, t);
+      colors.push(c.r, c.g, c.b);
+    }
+    geo.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+    const mat = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide });
+    envScene.add(new THREE.Mesh(geo, mat));
+
+    const target = pmrem.fromScene(envScene, 0.04);
+    this.envMap = target.texture;
+    this.aircraft.traverse((part) => {
+      if (part.isMesh && part.material?.isMeshStandardMaterial) {
+        part.material.envMap = this.envMap;
+        part.material.needsUpdate = true;
+      }
+    });
+
+    pmrem.dispose();
+    geo.dispose();
+    mat.dispose();
+  }
+
+  /**
+   * Blob de sombra suave (radial gradient en canvas, sin assets) que sigue
+   * al avión en X/Z y se desvanece con la altitud. Dos motivos para que
+   * exista además de la sombra proyectada real: el mar NUNCA recibe sombra
+   * (`ocean.receiveShadow = false`, ver #buildOcean) y en móvil las sombras
+   * proyectadas arrancan apagadas — sin esto, volar bajo sobre agua o con
+   * sombras desactivadas pierde toda referencia de altura.
+   */
+  #buildContactShadow() {
+    const size = 128;
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = size;
+    const ctx = canvas.getContext("2d");
+    const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+    gradient.addColorStop(0, "rgba(0,0,0,0.55)");
+    gradient.addColorStop(0.7, "rgba(0,0,0,0.22)");
+    gradient.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, size, size);
+
+    const material = new THREE.MeshBasicMaterial({
+      map: new THREE.CanvasTexture(canvas),
+      transparent: true,
+      depthWrite: false,
+      fog: false,
+    });
+    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(6, 6), material);
+    mesh.rotation.x = -Math.PI / 2;
+    mesh.renderOrder = 1;
+    this.scene.add(mesh);
+    this.contactShadow = mesh;
   }
 
   #buildSky() {
@@ -763,7 +875,43 @@ export class SceneManager {
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
     geometry.computeVertexNormals();
 
-    const island = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ vertexColors: true }));
+    const material = new THREE.MeshLambertMaterial({ vertexColors: true });
+    // Grano procedural (dos octavas de value-noise en coordenadas de mundo,
+    // igual de barato que las olas del mar): sin esto el color por vértice
+    // se ve perfectamente liso a poca altura. Sin textura ni asset externo.
+    material.onBeforeCompile = (shader) => {
+      shader.vertexShader = shader.vertexShader
+        .replace("#include <common>", `#include <common>\nvarying vec2 vGrainXZ;`)
+        .replace(
+          "#include <begin_vertex>",
+          `#include <begin_vertex>\nvGrainXZ = (modelMatrix * vec4(position, 1.0)).xz;`,
+        );
+      shader.fragmentShader = shader.fragmentShader
+        .replace(
+          "#include <common>",
+          `#include <common>
+           varying vec2 vGrainXZ;
+           float grainHash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+           float grainNoise(vec2 p) {
+             vec2 i = floor(p);
+             vec2 f = fract(p);
+             float a = grainHash(i);
+             float b = grainHash(i + vec2(1.0, 0.0));
+             float c = grainHash(i + vec2(0.0, 1.0));
+             float d = grainHash(i + vec2(1.0, 1.0));
+             vec2 u = f * f * (3.0 - 2.0 * f);
+             return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
+           }`,
+        )
+        .replace(
+          "#include <color_fragment>",
+          `#include <color_fragment>
+           float grain = grainNoise(vGrainXZ * 0.4) * 0.65 + grainNoise(vGrainXZ * 1.9) * 0.35;
+           diffuseColor.rgb *= 0.88 + 0.22 * grain;`,
+        );
+    };
+
+    const island = new THREE.Mesh(geometry, material);
     island.rotation.x = -Math.PI / 2;
     island.position.set(offsetX, 0, offsetZ);
     island.receiveShadow = true;
@@ -772,7 +920,13 @@ export class SceneManager {
     return heightAt;
   }
 
-  /** Anillo/arco de conos rocosos: referencia visual de escala, decorativo. */
+  /**
+   * Anillo/arco de conos rocosos: referencia visual de escala, decorativo.
+   *
+   * Instanciado (InstancedMesh sobre `this._unitCone`, radio/altura por
+   * matriz de instancia) en vez de una malla nueva por cono: mismo aspecto,
+   * una sola draw call para hasta 48 conos por escenario en vez de 48.
+   */
   #scatterMountains({
     startDeg,
     endDeg,
@@ -788,34 +942,52 @@ export class SceneManager {
     offsetZ = 0,
     groundAt = null,
   }) {
+    if (count === 0) return;
+    const material = new THREE.MeshLambertMaterial({ color: 0xffffff });
+    const cones = new THREE.InstancedMesh(this._unitCone, material, count);
+    // Sin castShadow a propósito: son el anillo lejano (>700 m) y el
+    // volumen de sombras solo cubre ±160 m alrededor del avión, así que
+    // pagarían el paso de sombras sin aportar un solo píxel.
+    cones.receiveShadow = true;
+
+    const snowCapSpots = [];
     for (let i = 0; i < count; i++) {
       const angle = THREE.MathUtils.degToRad(startDeg + (i / count) * (endDeg - startDeg));
       const dist = distMin + random() * (distMax - distMin);
       const h = heightMin + random() * (heightMax - heightMin);
-      const cone = new THREE.Mesh(
-        new THREE.ConeGeometry(55 + random() * 40, h, 6),
-        new THREE.MeshLambertMaterial({ color: colors[i % colors.length] }),
-      );
+      const radius = 55 + random() * 40;
       const cx = offsetX + Math.cos(angle) * dist;
       const cz = offsetZ + Math.sin(angle) * dist;
       // Con relieve, la base se hunde hasta donde esté el terreno: así no
       // quedan conos flotando sobre la playa o el agua.
       const base = groundAt ? Math.min(0, groundAt(cx, cz)) : 0;
-      cone.position.set(cx, base + h / 2 - 6, cz);
-      cone.rotation.y = random() * Math.PI;
-      // Sin castShadow a propósito: son el anillo lejano (>700 m) y el
-      // volumen de sombras solo cubre ±160 m alrededor del avión, así que
-      // pagarían el paso de sombras sin aportar un solo píxel.
-      cone.receiveShadow = true;
-      this.scene.add(cone);
-      if (snowLine != null && h > snowLine) {
-        const cap = new THREE.Mesh(
-          new THREE.ConeGeometry(20, 38, 6),
-          new THREE.MeshBasicMaterial({ color: 0xffffff }),
-        );
-        cap.position.set(cone.position.x, cone.position.y + h / 2 - 15, cone.position.z);
-        this.scene.add(cap);
-      }
+      const cy = base + h / 2 - 6;
+      _instPos.set(cx, cy, cz);
+      _instQuat.setFromAxisAngle(_upAxis, random() * Math.PI);
+      _instScale.set(radius, h, radius);
+      _instMatrix.compose(_instPos, _instQuat, _instScale);
+      cones.setMatrixAt(i, _instMatrix);
+      _instColor.set(colors[i % colors.length]);
+      cones.setColorAt(i, _instColor);
+      if (snowLine != null && h > snowLine) snowCapSpots.push({ x: cx, y: cy + h / 2 - 15, z: cz });
+    }
+    cones.instanceMatrix.needsUpdate = true;
+    if (cones.instanceColor) cones.instanceColor.needsUpdate = true;
+    this.scene.add(cones);
+
+    if (snowCapSpots.length) {
+      const capMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const caps = new THREE.InstancedMesh(
+        new THREE.ConeGeometry(20, 38, 6),
+        capMaterial,
+        snowCapSpots.length,
+      );
+      snowCapSpots.forEach((spot, i) => {
+        _instMatrix.makeTranslation(spot.x, spot.y, spot.z);
+        caps.setMatrixAt(i, _instMatrix);
+      });
+      caps.instanceMatrix.needsUpdate = true;
+      this.scene.add(caps);
     }
   }
 
@@ -829,29 +1001,39 @@ export class SceneManager {
    */
   #scatterClouds(count, random) {
     const tint = new THREE.Color(0xffffff).lerp(new THREE.Color(this.palette.horizon), 0.45);
-    const cloudMaterial = new THREE.MeshLambertMaterial({
-      color: tint,
-      transparent: true,
-      opacity: 0.9,
-      depthWrite: false,
-    });
+    // Top/bottom de cada cúmulo, no un gris parejo: los puffs de arriba
+    // (los que de verdad mira el sol) van más claros y algo más cálidos,
+    // los de abajo más oscuros y algo más fríos — falso rebote de luz, el
+    // mismo tipo de truco barato que ya usa el mar (sin textura ni asset).
+    const topTint = tint.clone().lerp(new THREE.Color(0xffffff), 0.4);
+    const bottomTint = tint.clone().lerp(new THREE.Color(this.palette.hemiGround), 0.22);
+    const geometryCache = new Map();
+    const puffGeometry = (radius) => {
+      const key = Math.round(radius * 4);
+      let geo = geometryCache.get(key);
+      if (!geo) {
+        geo = new THREE.SphereGeometry(radius, 9, 7);
+        geometryCache.set(key, geo);
+      }
+      return geo;
+    };
     for (let i = 0; i < count; i++) {
       const cloud = new THREE.Group();
       const high = random() > 0.62; // capa alta: más grande y más tenue
       const puffCount = 5 + Math.floor(random() * 5);
       const scale = high ? 2.6 + random() * 1.6 : 1 + random() * 0.9;
       for (let p = 0; p < puffCount; p++) {
-        const puff = new THREE.Mesh(
-          new THREE.SphereGeometry(10 + random() * 12, 9, 7),
-          cloudMaterial,
-        );
+        const puffY = (random() - 0.5) * 9;
+        const puffMaterial = new THREE.MeshLambertMaterial({
+          color: bottomTint.clone().lerp(topTint, THREE.MathUtils.clamp(puffY / 4.5 + 0.5, 0, 1)),
+          transparent: true,
+          opacity: 0.9,
+          depthWrite: false,
+        });
+        const puff = new THREE.Mesh(puffGeometry(10 + random() * 12), puffMaterial);
         // Se agrupan en horizontal y se aplastan: un cúmulo real es mucho
         // más ancho que alto.
-        puff.position.set(
-          (p - puffCount / 2) * (11 + random() * 9),
-          (random() - 0.5) * 9,
-          (random() - 0.5) * 22,
-        );
+        puff.position.set((p - puffCount / 2) * (11 + random() * 9), puffY, (random() - 0.5) * 22);
         puff.scale.set(1, 0.62 + random() * 0.22, 1);
         cloud.add(puff);
       }
@@ -1069,8 +1251,10 @@ export class SceneManager {
       rotationY: THREE.MathUtils.degToRad(12),
     });
 
-    const trunkMaterial = new THREE.MeshLambertMaterial({ color: 0x8a6a45 });
-    const leafMaterial = new THREE.MeshLambertMaterial({ color: 0x2f8f4f });
+    // Posiciones válidas primero (fuera de la pista, fuera de la playa
+    // sumergida); tronco y copa van cada uno en su propio InstancedMesh —
+    // misma pinta que 52 meshes individuales, dos draw calls en vez de 52.
+    const palmSpots = [];
     for (let i = 0; i < 26; i++) {
       const angle = random() * Math.PI * 2;
       const dist = 120 + random() * (islandRadius - 220);
@@ -1079,15 +1263,33 @@ export class SceneManager {
       if (zone(x, z)) continue; // no sembrar palmeras encima de la pista
       const base = groundAt(x, z);
       if (base < -1) continue; // ni en la playa sumergida
-      const trunk = new THREE.Mesh(new THREE.CylinderGeometry(1, 1.4, 10, 6), trunkMaterial);
-      trunk.position.set(x, base + 5, z);
-      trunk.castShadow = true;
-      this.scene.add(trunk);
-      const leaves = new THREE.Mesh(new THREE.SphereGeometry(4.5, 6, 5), leafMaterial);
-      leaves.position.set(x, base + 10.5, z);
-      leaves.scale.set(1, 0.5, 1);
+      palmSpots.push({ x, z, base });
+    }
+    if (palmSpots.length) {
+      const trunkMaterial = new THREE.MeshLambertMaterial({ color: 0x8a6a45 });
+      const leafMaterial = new THREE.MeshLambertMaterial({ color: 0x2f8f4f });
+      const trunks = new THREE.InstancedMesh(
+        new THREE.CylinderGeometry(1, 1.4, 10, 6),
+        trunkMaterial,
+        palmSpots.length,
+      );
+      const leaves = new THREE.InstancedMesh(
+        new THREE.SphereGeometry(4.5, 6, 5),
+        leafMaterial,
+        palmSpots.length,
+      );
+      trunks.castShadow = true;
       leaves.castShadow = true;
-      this.scene.add(leaves);
+      palmSpots.forEach((spot, i) => {
+        _instMatrix.makeTranslation(spot.x, spot.base + 5, spot.z);
+        trunks.setMatrixAt(i, _instMatrix);
+        _instPos.set(spot.x, spot.base + 10.5, spot.z);
+        _instMatrix.compose(_instPos, _identityQuat, _leafScale);
+        leaves.setMatrixAt(i, _instMatrix);
+      });
+      trunks.instanceMatrix.needsUpdate = true;
+      leaves.instanceMatrix.needsUpdate = true;
+      this.scene.add(trunks, leaves);
     }
 
     const pier = new THREE.Mesh(
@@ -1232,17 +1434,30 @@ export class SceneManager {
     const smoothing = 1 - Math.exp(-(4 + 16 * blend) * dt);
     this.camera.position.lerp(_desired, smoothing);
     this.camera.lookAt(_lookAt);
+
+    // Sombra de contacto: sigue al avión en planta y se desvanece con la
+    // altitud (a 50 m ya no aporta nada — a esa altura la sombra proyectada
+    // real, si está activa, es la referencia).
+    if (this.contactShadow) {
+      const altitude = Math.max(0, state.position.y);
+      const fade = 1 - smoothstep(0, 50, altitude);
+      this.contactShadow.visible = fade > 0.02;
+      this.contactShadow.material.opacity = fade;
+      this.contactShadow.position.set(state.position.x, 0.12, state.position.z);
+      this.contactShadow.scale.setScalar(1 + Math.min(altitude, 50) * 0.05);
+    }
   }
 
   render() {
-    this.renderer.render(this.scene, this.camera);
+    this.composer.render();
   }
 
-  /** Ajusta el tamaño del render al contenedor. */
+  /** Ajusta el tamaño del render (y del pipeline de post-procesado) al contenedor. */
   resize(width, height) {
     this.renderer.setSize(width, height, false);
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
+    this.composer.setSize(width, height);
   }
 
   /** Libera memoria GPU al desmontar el componente. */
@@ -1258,6 +1473,9 @@ export class SceneManager {
       if (Array.isArray(object.material)) object.material.forEach(disposeMaterial);
       else if (object.material) disposeMaterial(object.material);
     });
+    this.envMap?.dispose();
+    this.composer?.dispose();
+    this.bloomPass?.dispose();
     this.renderer.dispose();
   }
 }
@@ -1270,10 +1488,31 @@ export class SceneManager {
 function buildAircraft() {
   const group = new THREE.Group();
 
-  const fuselageMaterial = new THREE.MeshPhongMaterial({ color: 0xf2f2f0 });
-  const navyMaterial = new THREE.MeshPhongMaterial({ color: 0x1f3557 });
-  const silverMaterial = new THREE.MeshPhongMaterial({ color: 0xb9bec4 });
-  const glassMaterial = new THREE.MeshPhongMaterial({ color: 0x1c232b });
+  // MeshStandardMaterial (PBR): SceneManager les asigna un envMap procedural
+  // después de construir la escena (#buildEnvMap), así el fuselaje refleja
+  // el cielo/mar en vez de verse plano. roughness/metalness aproximan
+  // pintura aeronáutica (fuselaje/franja), metal pulido (motores) y vidrio
+  // tintado (cabina) sin ninguna textura externa.
+  const fuselageMaterial = new THREE.MeshStandardMaterial({
+    color: 0xf2f2f0,
+    roughness: 0.38,
+    metalness: 0.12,
+  });
+  const navyMaterial = new THREE.MeshStandardMaterial({
+    color: 0x1f3557,
+    roughness: 0.42,
+    metalness: 0.08,
+  });
+  const silverMaterial = new THREE.MeshStandardMaterial({
+    color: 0xb9bec4,
+    roughness: 0.25,
+    metalness: 0.85,
+  });
+  const glassMaterial = new THREE.MeshStandardMaterial({
+    color: 0x0c1116,
+    roughness: 0.08,
+    metalness: 0.9,
+  });
 
   const body = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 3.0, 14), fuselageMaterial);
   body.rotation.x = Math.PI / 2;
