@@ -117,7 +117,23 @@ export function useDraggableHud(storageKey) {
     event.stopPropagation();
   }, []);
 
-  const style = pos ? { position: "fixed", left: pos.x, top: pos.y, transform: "none" } : undefined;
+  // `right`/`bottom` explícitos en "auto": el CSS por defecto de estos
+  // elementos ancla algunos por el borde opuesto (p. ej. el cuadro de
+  // instrumentos usa `inset-block-end` porque nace centrado abajo). Si acá
+  // solo se pisara `left`/`top`, ese anclaje opuesto seguiría activo y con
+  // los dos bordes fijados a la vez (sin alto/ancho explícito) el navegador
+  // ESTIRA la caja para cumplir ambos — el fondo del panel arrastrado
+  // "crecía" en vez de moverse. Fijar los cuatro lados corta ese conflicto.
+  const style = pos
+    ? {
+        position: "fixed",
+        left: pos.x,
+        top: pos.y,
+        right: "auto",
+        bottom: "auto",
+        transform: "none",
+      }
+    : undefined;
 
   return {
     ref,
