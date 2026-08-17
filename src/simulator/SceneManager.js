@@ -79,14 +79,20 @@ export const TIMES_OF_DAY = ["day", "dusk", "night"];
 const TIME_PALETTES = {
   day: {
     skyTop: 0x1d6ec4,
-    horizon: 0xe8f6fb,
+    // Antes casi blanco (0xe8f6fb): a media distancia sobre mar abierto, la
+    // niebla toma este color y el cielo se lava a un blanco plano sin
+    // ninguna referencia visual — un celeste con más cuerpo mantiene el
+    // horizonte legible.
+    horizon: 0xbfe0ef,
     hemiSky: 0xdff2f8,
     hemiGround: 0x6b8a52,
     hemiIntensity: 1.35,
     sunColor: 0xfff3d6,
     sunIntensity: 2.3,
     sunPos: [250, 420, 120],
-    fogFar: 2800,
+    // Más lejos que antes (2800): el mar conserva su azul más tiempo antes
+    // de fundirse con el horizonte, en vez de desaparecer enseguida.
+    fogFar: 3400,
     stars: 0,
     water: 0x1a6f9c,
     waterDeep: 0x0d3f5e,
@@ -94,7 +100,9 @@ const TIME_PALETTES = {
     waterShininess: 110,
     sunDisc: 0xfff6d8,
     sunDiscSize: 210,
-    exposure: 1.45,
+    // Antes 1.45: combinado con el tone-mapping ACES, un horizonte ya claro
+    // quedaba sobre-expuesto y perdía todo detalle a distancia.
+    exposure: 1.2,
   },
   dusk: {
     // El atardecer se va de las manos con facilidad: si el horizonte y la
@@ -331,7 +339,7 @@ export class SceneManager {
   #buildComposer() {
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
-    this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.45, 0.4, 0.86);
+    this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.45, 0.4, 0.93);
     this.composer.addPass(this.bloomPass);
     this.composer.addPass(new OutputPass());
   }
