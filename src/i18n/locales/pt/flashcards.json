@@ -10,6 +10,10 @@
     "audio": {
       "title": "Alertas sonoros de cabine",
       "description": "{{count}} cartões — ouça avisos reais de GPWS/TCAS e aprenda o que cada um significa."
+    },
+    "radioAlphabet": {
+      "title": "Alfabeto radiofônico",
+      "description": "{{count}} cartões — soletre qualquer letra com o alfabeto fonético OACI, as mesmas 26 palavras usadas no rádio de verdade."
     }
   },
   "instrumentAlt": "Instrumento de voo",
@@ -173,6 +177,138 @@
         "Aviso de estol — baixar o nariz para recuperar velocidade"
       ],
       "explanation": "\"Traffic, traffic\" é um aviso informativo do TCAS apontando tráfego próximo; \"Climb, climb\" é a resolução que vem a seguir caso o risco de colisão persista — um sistema diferente do GPWS, voltado a outras aeronaves em vez do terreno, cuja orientação vertical tem prioridade sobre o controle de tráfego aéreo naquele momento."
+    }
+  },
+  "radioAlphabet": {
+    "letter-a": {
+      "question": "Como você soletra a letra A pelo rádio?",
+      "options": ["Alfa", "Foxtrot", "Mike", "Tango"],
+      "explanation": "“Alfa” é a palavra OACI para a letra A — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-b": {
+      "question": "Como você soletra a letra B pelo rádio?",
+      "options": ["Bravo", "Golf", "November", "Uniform"],
+      "explanation": "“Bravo” é a palavra OACI para a letra B — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-c": {
+      "question": "Como você soletra a letra C pelo rádio?",
+      "options": ["Charlie", "Hotel", "Oscar", "Victor"],
+      "explanation": "“Charlie” é a palavra OACI para a letra C — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-d": {
+      "question": "Como você soletra a letra D pelo rádio?",
+      "options": ["Delta", "India", "Papa", "Whiskey"],
+      "explanation": "“Delta” é a palavra OACI para a letra D — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-e": {
+      "question": "Como você soletra a letra E pelo rádio?",
+      "options": ["Echo", "Juliett", "Quebec", "X-ray"],
+      "explanation": "“Echo” é a palavra OACI para a letra E — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-f": {
+      "question": "Como você soletra a letra F pelo rádio?",
+      "options": ["Foxtrot", "Kilo", "Romeo", "Yankee"],
+      "explanation": "“Foxtrot” é a palavra OACI para a letra F — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-g": {
+      "question": "Como você soletra a letra G pelo rádio?",
+      "options": ["Golf", "Lima", "Sierra", "Zulu"],
+      "explanation": "“Golf” é a palavra OACI para a letra G — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-h": {
+      "question": "Como você soletra a letra H pelo rádio?",
+      "options": ["Hotel", "Mike", "Tango", "Alfa"],
+      "explanation": "“Hotel” é a palavra OACI para a letra H — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-i": {
+      "question": "Como você soletra a letra I pelo rádio?",
+      "options": ["India", "November", "Uniform", "Bravo"],
+      "explanation": "“India” é a palavra OACI para a letra I — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-j": {
+      "question": "Como você soletra a letra J pelo rádio?",
+      "options": ["Juliett", "Oscar", "Victor", "Charlie"],
+      "explanation": "“Juliett” é a palavra OACI para a letra J — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-k": {
+      "question": "Como você soletra a letra K pelo rádio?",
+      "options": ["Kilo", "Papa", "Whiskey", "Delta"],
+      "explanation": "“Kilo” é a palavra OACI para a letra K — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-l": {
+      "question": "Como você soletra a letra L pelo rádio?",
+      "options": ["Lima", "Quebec", "X-ray", "Echo"],
+      "explanation": "“Lima” é a palavra OACI para a letra L — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-m": {
+      "question": "Como você soletra a letra M pelo rádio?",
+      "options": ["Mike", "Romeo", "Yankee", "Foxtrot"],
+      "explanation": "“Mike” é a palavra OACI para a letra M — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-n": {
+      "question": "Como você soletra a letra N pelo rádio?",
+      "options": ["November", "Sierra", "Zulu", "Golf"],
+      "explanation": "“November” é a palavra OACI para a letra N — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-o": {
+      "question": "Como você soletra a letra O pelo rádio?",
+      "options": ["Oscar", "Tango", "Alfa", "Hotel"],
+      "explanation": "“Oscar” é a palavra OACI para a letra O — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-p": {
+      "question": "Como você soletra a letra P pelo rádio?",
+      "options": ["Papa", "Uniform", "Bravo", "India"],
+      "explanation": "“Papa” é a palavra OACI para a letra P — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-q": {
+      "question": "Como você soletra a letra Q pelo rádio?",
+      "options": ["Quebec", "Victor", "Charlie", "Juliett"],
+      "explanation": "“Quebec” é a palavra OACI para a letra Q — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-r": {
+      "question": "Como você soletra a letra R pelo rádio?",
+      "options": ["Romeo", "Whiskey", "Delta", "Kilo"],
+      "explanation": "“Romeo” é a palavra OACI para a letra R — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-s": {
+      "question": "Como você soletra a letra S pelo rádio?",
+      "options": ["Sierra", "X-ray", "Echo", "Lima"],
+      "explanation": "“Sierra” é a palavra OACI para a letra S — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-t": {
+      "question": "Como você soletra a letra T pelo rádio?",
+      "options": ["Tango", "Yankee", "Foxtrot", "Mike"],
+      "explanation": "“Tango” é a palavra OACI para a letra T — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-u": {
+      "question": "Como você soletra a letra U pelo rádio?",
+      "options": ["Uniform", "Zulu", "Golf", "November"],
+      "explanation": "“Uniform” é a palavra OACI para a letra U — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-v": {
+      "question": "Como você soletra a letra V pelo rádio?",
+      "options": ["Victor", "Alfa", "Hotel", "Oscar"],
+      "explanation": "“Victor” é a palavra OACI para a letra V — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-w": {
+      "question": "Como você soletra a letra W pelo rádio?",
+      "options": ["Whiskey", "Bravo", "India", "Papa"],
+      "explanation": "“Whiskey” é a palavra OACI para a letra W — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-x": {
+      "question": "Como você soletra a letra X pelo rádio?",
+      "options": ["X-ray", "Charlie", "Juliett", "Quebec"],
+      "explanation": "“X-ray” é a palavra OACI para a letra X — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-y": {
+      "question": "Como você soletra a letra Y pelo rádio?",
+      "options": ["Yankee", "Delta", "Kilo", "Romeo"],
+      "explanation": "“Yankee” é a palavra OACI para a letra Y — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    },
+    "letter-z": {
+      "question": "Como você soletra a letra Z pelo rádio?",
+      "options": ["Zulu", "Echo", "Lima", "Sierra"],
+      "explanation": "“Zulu” é a palavra OACI para a letra Z — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
     }
   }
 }

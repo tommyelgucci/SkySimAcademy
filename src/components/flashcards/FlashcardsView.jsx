@@ -17,8 +17,12 @@
  */
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft, Gauge, RotateCcw, Volume2 } from "lucide-react";
-import { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS } from "../../content/flashcards/index.js";
+import { ArrowLeft, Gauge, RadioTower, RotateCcw, Volume2 } from "lucide-react";
+import {
+  INSTRUMENT_FLASHCARDS,
+  AUDIO_FLASHCARDS,
+  RADIO_ALPHABET_FLASHCARDS,
+} from "../../content/flashcards/index.js";
 import {
   AirspeedIndicator,
   AttitudeIndicator,
@@ -30,6 +34,7 @@ import {
 const DECKS = {
   instruments: INSTRUMENT_FLASHCARDS,
   audio: AUDIO_FLASHCARDS,
+  radioAlphabet: RADIO_ALPHABET_FLASHCARDS,
 };
 
 /** Baraja de Fisher-Yates sin mutar el original (igual que Quiz.jsx). */
@@ -149,6 +154,17 @@ export default function FlashcardsView({ onExit }) {
               </span>
             </span>
           </button>
+          <button className="mission-card" onClick={() => openDeck("radioAlphabet")}>
+            <span className="mission-card__icon">
+              <RadioTower size={20} aria-hidden="true" />
+            </span>
+            <span className="mission-card__text">
+              <span className="mission-card__title">{t("decks.radioAlphabet.title")}</span>
+              <span className="mission-card__objective">
+                {t("decks.radioAlphabet.description", { count: RADIO_ALPHABET_FLASHCARDS.length })}
+              </span>
+            </span>
+          </button>
         </div>
         <div className="simulator__panel-actions">
           <button className="button button--ghost" onClick={onExit}>
@@ -222,6 +238,13 @@ export default function FlashcardsView({ onExit }) {
         >
           <Volume2 size={22} aria-hidden="true" /> {t("playAudio")}
         </button>
+      )}
+      {deckId === "radioAlphabet" && (
+        <div className="flashcards__visual">
+          <span className="flashcards__letter" aria-hidden="true">
+            {card.letter}
+          </span>
+        </div>
       )}
 
       <h1 className="quiz__question">{t(`${keyBase}.question`)}</h1>

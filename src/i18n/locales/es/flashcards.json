@@ -10,6 +10,10 @@
     "audio": {
       "title": "Alertas de audio de cabina",
       "description": "{{count}} tarjetas — escucha alertas reales de GPWS/TCAS y aprende qué significa cada una."
+    },
+    "radioAlphabet": {
+      "title": "Alfabeto radiotelefónico",
+      "description": "{{count}} tarjetas — deletrea cualquier letra con el alfabeto fonético OACI, las mismas 26 palabras que se usan en la radio real."
     }
   },
   "instrumentAlt": "Instrumento de vuelo",
@@ -173,6 +177,138 @@
         "Aviso de pérdida — bajar el morro para recuperar velocidad"
       ],
       "explanation": "\"Traffic, traffic\" es un aviso informativo de TCAS que señala tráfico cercano; \"Climb, climb\" es la resolución que sigue si persiste el riesgo de colisión — un sistema distinto al GPWS, dirigido a otras aeronaves en vez de al terreno, y cuya guía vertical tiene prioridad sobre el control de tráfico aéreo en ese momento."
+    }
+  },
+  "radioAlphabet": {
+    "letter-a": {
+      "question": "¿Cómo deletreas la letra A por radio?",
+      "options": ["Alfa", "Foxtrot", "Mike", "Tango"],
+      "explanation": "«Alfa» es la palabra OACI para la letra A — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-b": {
+      "question": "¿Cómo deletreas la letra B por radio?",
+      "options": ["Bravo", "Golf", "November", "Uniform"],
+      "explanation": "«Bravo» es la palabra OACI para la letra B — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-c": {
+      "question": "¿Cómo deletreas la letra C por radio?",
+      "options": ["Charlie", "Hotel", "Oscar", "Victor"],
+      "explanation": "«Charlie» es la palabra OACI para la letra C — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-d": {
+      "question": "¿Cómo deletreas la letra D por radio?",
+      "options": ["Delta", "India", "Papa", "Whiskey"],
+      "explanation": "«Delta» es la palabra OACI para la letra D — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-e": {
+      "question": "¿Cómo deletreas la letra E por radio?",
+      "options": ["Echo", "Juliett", "Quebec", "X-ray"],
+      "explanation": "«Echo» es la palabra OACI para la letra E — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-f": {
+      "question": "¿Cómo deletreas la letra F por radio?",
+      "options": ["Foxtrot", "Kilo", "Romeo", "Yankee"],
+      "explanation": "«Foxtrot» es la palabra OACI para la letra F — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-g": {
+      "question": "¿Cómo deletreas la letra G por radio?",
+      "options": ["Golf", "Lima", "Sierra", "Zulu"],
+      "explanation": "«Golf» es la palabra OACI para la letra G — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-h": {
+      "question": "¿Cómo deletreas la letra H por radio?",
+      "options": ["Hotel", "Mike", "Tango", "Alfa"],
+      "explanation": "«Hotel» es la palabra OACI para la letra H — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-i": {
+      "question": "¿Cómo deletreas la letra I por radio?",
+      "options": ["India", "November", "Uniform", "Bravo"],
+      "explanation": "«India» es la palabra OACI para la letra I — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-j": {
+      "question": "¿Cómo deletreas la letra J por radio?",
+      "options": ["Juliett", "Oscar", "Victor", "Charlie"],
+      "explanation": "«Juliett» es la palabra OACI para la letra J — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-k": {
+      "question": "¿Cómo deletreas la letra K por radio?",
+      "options": ["Kilo", "Papa", "Whiskey", "Delta"],
+      "explanation": "«Kilo» es la palabra OACI para la letra K — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-l": {
+      "question": "¿Cómo deletreas la letra L por radio?",
+      "options": ["Lima", "Quebec", "X-ray", "Echo"],
+      "explanation": "«Lima» es la palabra OACI para la letra L — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-m": {
+      "question": "¿Cómo deletreas la letra M por radio?",
+      "options": ["Mike", "Romeo", "Yankee", "Foxtrot"],
+      "explanation": "«Mike» es la palabra OACI para la letra M — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-n": {
+      "question": "¿Cómo deletreas la letra N por radio?",
+      "options": ["November", "Sierra", "Zulu", "Golf"],
+      "explanation": "«November» es la palabra OACI para la letra N — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-o": {
+      "question": "¿Cómo deletreas la letra O por radio?",
+      "options": ["Oscar", "Tango", "Alfa", "Hotel"],
+      "explanation": "«Oscar» es la palabra OACI para la letra O — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-p": {
+      "question": "¿Cómo deletreas la letra P por radio?",
+      "options": ["Papa", "Uniform", "Bravo", "India"],
+      "explanation": "«Papa» es la palabra OACI para la letra P — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-q": {
+      "question": "¿Cómo deletreas la letra Q por radio?",
+      "options": ["Quebec", "Victor", "Charlie", "Juliett"],
+      "explanation": "«Quebec» es la palabra OACI para la letra Q — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-r": {
+      "question": "¿Cómo deletreas la letra R por radio?",
+      "options": ["Romeo", "Whiskey", "Delta", "Kilo"],
+      "explanation": "«Romeo» es la palabra OACI para la letra R — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-s": {
+      "question": "¿Cómo deletreas la letra S por radio?",
+      "options": ["Sierra", "X-ray", "Echo", "Lima"],
+      "explanation": "«Sierra» es la palabra OACI para la letra S — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-t": {
+      "question": "¿Cómo deletreas la letra T por radio?",
+      "options": ["Tango", "Yankee", "Foxtrot", "Mike"],
+      "explanation": "«Tango» es la palabra OACI para la letra T — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-u": {
+      "question": "¿Cómo deletreas la letra U por radio?",
+      "options": ["Uniform", "Zulu", "Golf", "November"],
+      "explanation": "«Uniform» es la palabra OACI para la letra U — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-v": {
+      "question": "¿Cómo deletreas la letra V por radio?",
+      "options": ["Victor", "Alfa", "Hotel", "Oscar"],
+      "explanation": "«Victor» es la palabra OACI para la letra V — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-w": {
+      "question": "¿Cómo deletreas la letra W por radio?",
+      "options": ["Whiskey", "Bravo", "India", "Papa"],
+      "explanation": "«Whiskey» es la palabra OACI para la letra W — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-x": {
+      "question": "¿Cómo deletreas la letra X por radio?",
+      "options": ["X-ray", "Charlie", "Juliett", "Quebec"],
+      "explanation": "«X-ray» es la palabra OACI para la letra X — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-y": {
+      "question": "¿Cómo deletreas la letra Y por radio?",
+      "options": ["Yankee", "Delta", "Kilo", "Romeo"],
+      "explanation": "«Yankee» es la palabra OACI para la letra Y — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    },
+    "letter-z": {
+      "question": "¿Cómo deletreas la letra Z por radio?",
+      "options": ["Zulu", "Echo", "Lima", "Sierra"],
+      "explanation": "«Zulu» es la palabra OACI para la letra Z — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
     }
   }
 }

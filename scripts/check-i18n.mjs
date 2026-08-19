@@ -121,10 +121,14 @@ for (const lang of LANGS) {
 }
 
 // --- 4. Estructura de flashcards ↔ textos de flashcards ---------------
-const { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS } = await import(
+const { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS, RADIO_ALPHABET_FLASHCARDS } = await import(
   join(root, "src/content/flashcards/index.js")
 );
-const flashcardDecks = { instruments: INSTRUMENT_FLASHCARDS, audio: AUDIO_FLASHCARDS };
+const flashcardDecks = {
+  instruments: INSTRUMENT_FLASHCARDS,
+  audio: AUDIO_FLASHCARDS,
+  radioAlphabet: RADIO_ALPHABET_FLASHCARDS,
+};
 
 for (const lang of LANGS) {
   const flashcards = load(`src/i18n/locales/${lang}/flashcards.json`);
@@ -147,7 +151,8 @@ if (failures) {
   console.error(`\n${failures} problema(s) de i18n/contenido.`);
   process.exit(1);
 }
+const totalFlashcards = Object.values(flashcardDecks).reduce((sum, deck) => sum + deck.length, 0);
 console.log(
   `✓ i18n OK: ${LANGS.length} idiomas × ${NAMESPACES.length} namespaces, ${modules.length} módulos, ` +
-    `${INSTRUMENT_FLASHCARDS.length + AUDIO_FLASHCARDS.length} flashcards.`,
+    `${totalFlashcards} flashcards.`,
 );
