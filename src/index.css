@@ -1382,6 +1382,17 @@ h3 {
   height: 200px;
 }
 
+/* Letra grande del mazo de alfabeto radiotelefónico: sin SVG, tipografía
+   propia (mismo criterio que el resto del proyecto — cero assets externos). */
+.flashcards__letter {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  padding: 1.4rem 2.2rem;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
 .flashcards__play {
   display: inline-flex;
   align-items: center;

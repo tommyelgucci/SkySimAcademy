@@ -10,6 +10,10 @@
     "audio": {
       "title": "Cabin audio alerts",
       "description": "{{count}} cards — listen to real GPWS/TCAS callouts and learn what each one means."
+    },
+    "radioAlphabet": {
+      "title": "Radio alphabet",
+      "description": "{{count}} cards — spell any letter with the ICAO phonetic alphabet, the same 26 words used in real radio calls."
     }
   },
   "instrumentAlt": "Flight instrument",
@@ -173,6 +177,138 @@
         "Stall warning — lower the nose to regain airspeed"
       ],
       "explanation": "“Traffic, traffic” is a TCAS advisory pointing out nearby traffic; “Climb, climb” is the resolution advisory that follows if a collision risk remains — a different system from GPWS, aimed at other aircraft instead of terrain, and its vertical guidance takes priority over ATC in the moment."
+    }
+  },
+  "radioAlphabet": {
+    "letter-a": {
+      "question": "How do you spell the letter A over the radio?",
+      "options": ["Alfa", "Foxtrot", "Mike", "Tango"],
+      "explanation": "“Alfa” is the ICAO word for A — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-b": {
+      "question": "How do you spell the letter B over the radio?",
+      "options": ["Bravo", "Golf", "November", "Uniform"],
+      "explanation": "“Bravo” is the ICAO word for B — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-c": {
+      "question": "How do you spell the letter C over the radio?",
+      "options": ["Charlie", "Hotel", "Oscar", "Victor"],
+      "explanation": "“Charlie” is the ICAO word for C — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-d": {
+      "question": "How do you spell the letter D over the radio?",
+      "options": ["Delta", "India", "Papa", "Whiskey"],
+      "explanation": "“Delta” is the ICAO word for D — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-e": {
+      "question": "How do you spell the letter E over the radio?",
+      "options": ["Echo", "Juliett", "Quebec", "X-ray"],
+      "explanation": "“Echo” is the ICAO word for E — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-f": {
+      "question": "How do you spell the letter F over the radio?",
+      "options": ["Foxtrot", "Kilo", "Romeo", "Yankee"],
+      "explanation": "“Foxtrot” is the ICAO word for F — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-g": {
+      "question": "How do you spell the letter G over the radio?",
+      "options": ["Golf", "Lima", "Sierra", "Zulu"],
+      "explanation": "“Golf” is the ICAO word for G — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-h": {
+      "question": "How do you spell the letter H over the radio?",
+      "options": ["Hotel", "Mike", "Tango", "Alfa"],
+      "explanation": "“Hotel” is the ICAO word for H — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-i": {
+      "question": "How do you spell the letter I over the radio?",
+      "options": ["India", "November", "Uniform", "Bravo"],
+      "explanation": "“India” is the ICAO word for I — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-j": {
+      "question": "How do you spell the letter J over the radio?",
+      "options": ["Juliett", "Oscar", "Victor", "Charlie"],
+      "explanation": "“Juliett” is the ICAO word for J — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-k": {
+      "question": "How do you spell the letter K over the radio?",
+      "options": ["Kilo", "Papa", "Whiskey", "Delta"],
+      "explanation": "“Kilo” is the ICAO word for K — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-l": {
+      "question": "How do you spell the letter L over the radio?",
+      "options": ["Lima", "Quebec", "X-ray", "Echo"],
+      "explanation": "“Lima” is the ICAO word for L — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-m": {
+      "question": "How do you spell the letter M over the radio?",
+      "options": ["Mike", "Romeo", "Yankee", "Foxtrot"],
+      "explanation": "“Mike” is the ICAO word for M — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-n": {
+      "question": "How do you spell the letter N over the radio?",
+      "options": ["November", "Sierra", "Zulu", "Golf"],
+      "explanation": "“November” is the ICAO word for N — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-o": {
+      "question": "How do you spell the letter O over the radio?",
+      "options": ["Oscar", "Tango", "Alfa", "Hotel"],
+      "explanation": "“Oscar” is the ICAO word for O — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-p": {
+      "question": "How do you spell the letter P over the radio?",
+      "options": ["Papa", "Uniform", "Bravo", "India"],
+      "explanation": "“Papa” is the ICAO word for P — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-q": {
+      "question": "How do you spell the letter Q over the radio?",
+      "options": ["Quebec", "Victor", "Charlie", "Juliett"],
+      "explanation": "“Quebec” is the ICAO word for Q — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-r": {
+      "question": "How do you spell the letter R over the radio?",
+      "options": ["Romeo", "Whiskey", "Delta", "Kilo"],
+      "explanation": "“Romeo” is the ICAO word for R — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-s": {
+      "question": "How do you spell the letter S over the radio?",
+      "options": ["Sierra", "X-ray", "Echo", "Lima"],
+      "explanation": "“Sierra” is the ICAO word for S — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-t": {
+      "question": "How do you spell the letter T over the radio?",
+      "options": ["Tango", "Yankee", "Foxtrot", "Mike"],
+      "explanation": "“Tango” is the ICAO word for T — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-u": {
+      "question": "How do you spell the letter U over the radio?",
+      "options": ["Uniform", "Zulu", "Golf", "November"],
+      "explanation": "“Uniform” is the ICAO word for U — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-v": {
+      "question": "How do you spell the letter V over the radio?",
+      "options": ["Victor", "Alfa", "Hotel", "Oscar"],
+      "explanation": "“Victor” is the ICAO word for V — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-w": {
+      "question": "How do you spell the letter W over the radio?",
+      "options": ["Whiskey", "Bravo", "India", "Papa"],
+      "explanation": "“Whiskey” is the ICAO word for W — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-x": {
+      "question": "How do you spell the letter X over the radio?",
+      "options": ["X-ray", "Charlie", "Juliett", "Quebec"],
+      "explanation": "“X-ray” is the ICAO word for X — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-y": {
+      "question": "How do you spell the letter Y over the radio?",
+      "options": ["Yankee", "Delta", "Kilo", "Romeo"],
+      "explanation": "“Yankee” is the ICAO word for Y — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    },
+    "letter-z": {
+      "question": "How do you spell the letter Z over the radio?",
+      "options": ["Zulu", "Echo", "Lima", "Sierra"],
+      "explanation": "“Zulu” is the ICAO word for Z — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
     }
   }
 }

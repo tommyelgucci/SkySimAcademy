@@ -10,6 +10,10 @@
     "audio": {
       "title": "Akustische Warnsignale",
       "description": "{{count}} Karten — höre echte GPWS-/TCAS-Ansagen und lerne, was jede davon bedeutet."
+    },
+    "radioAlphabet": {
+      "title": "Buchstabieralphabet",
+      "description": "{{count}} Karten — buchstabiere jeden Buchstaben mit dem ICAO-Buchstabieralphabet, denselben 26 Wörtern wie im echten Funkverkehr."
     }
   },
   "instrumentAlt": "Fluginstrument",
@@ -173,6 +177,138 @@
         "Überziehwarnung — die Nase senken, um wieder Fahrt aufzunehmen"
       ],
       "explanation": "„Traffic, traffic“ ist ein TCAS-Hinweis auf Verkehr in der Nähe; „Climb, climb“ ist die darauffolgende Ausweichanweisung, falls die Kollisionsgefahr bestehen bleibt — ein anderes System als GPWS, gerichtet auf andere Flugzeuge statt auf Gelände, dessen vertikale Anweisung in diesem Moment Vorrang vor der Flugsicherung hat."
+    }
+  },
+  "radioAlphabet": {
+    "letter-a": {
+      "question": "Wie buchstabierst du den Buchstaben A über Funk?",
+      "options": ["Alfa", "Foxtrot", "Mike", "Tango"],
+      "explanation": "„Alfa“ ist das ICAO-Buchstabierwort für A — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-b": {
+      "question": "Wie buchstabierst du den Buchstaben B über Funk?",
+      "options": ["Bravo", "Golf", "November", "Uniform"],
+      "explanation": "„Bravo“ ist das ICAO-Buchstabierwort für B — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-c": {
+      "question": "Wie buchstabierst du den Buchstaben C über Funk?",
+      "options": ["Charlie", "Hotel", "Oscar", "Victor"],
+      "explanation": "„Charlie“ ist das ICAO-Buchstabierwort für C — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-d": {
+      "question": "Wie buchstabierst du den Buchstaben D über Funk?",
+      "options": ["Delta", "India", "Papa", "Whiskey"],
+      "explanation": "„Delta“ ist das ICAO-Buchstabierwort für D — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-e": {
+      "question": "Wie buchstabierst du den Buchstaben E über Funk?",
+      "options": ["Echo", "Juliett", "Quebec", "X-ray"],
+      "explanation": "„Echo“ ist das ICAO-Buchstabierwort für E — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-f": {
+      "question": "Wie buchstabierst du den Buchstaben F über Funk?",
+      "options": ["Foxtrot", "Kilo", "Romeo", "Yankee"],
+      "explanation": "„Foxtrot“ ist das ICAO-Buchstabierwort für F — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-g": {
+      "question": "Wie buchstabierst du den Buchstaben G über Funk?",
+      "options": ["Golf", "Lima", "Sierra", "Zulu"],
+      "explanation": "„Golf“ ist das ICAO-Buchstabierwort für G — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-h": {
+      "question": "Wie buchstabierst du den Buchstaben H über Funk?",
+      "options": ["Hotel", "Mike", "Tango", "Alfa"],
+      "explanation": "„Hotel“ ist das ICAO-Buchstabierwort für H — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-i": {
+      "question": "Wie buchstabierst du den Buchstaben I über Funk?",
+      "options": ["India", "November", "Uniform", "Bravo"],
+      "explanation": "„India“ ist das ICAO-Buchstabierwort für I — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-j": {
+      "question": "Wie buchstabierst du den Buchstaben J über Funk?",
+      "options": ["Juliett", "Oscar", "Victor", "Charlie"],
+      "explanation": "„Juliett“ ist das ICAO-Buchstabierwort für J — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-k": {
+      "question": "Wie buchstabierst du den Buchstaben K über Funk?",
+      "options": ["Kilo", "Papa", "Whiskey", "Delta"],
+      "explanation": "„Kilo“ ist das ICAO-Buchstabierwort für K — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-l": {
+      "question": "Wie buchstabierst du den Buchstaben L über Funk?",
+      "options": ["Lima", "Quebec", "X-ray", "Echo"],
+      "explanation": "„Lima“ ist das ICAO-Buchstabierwort für L — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-m": {
+      "question": "Wie buchstabierst du den Buchstaben M über Funk?",
+      "options": ["Mike", "Romeo", "Yankee", "Foxtrot"],
+      "explanation": "„Mike“ ist das ICAO-Buchstabierwort für M — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-n": {
+      "question": "Wie buchstabierst du den Buchstaben N über Funk?",
+      "options": ["November", "Sierra", "Zulu", "Golf"],
+      "explanation": "„November“ ist das ICAO-Buchstabierwort für N — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-o": {
+      "question": "Wie buchstabierst du den Buchstaben O über Funk?",
+      "options": ["Oscar", "Tango", "Alfa", "Hotel"],
+      "explanation": "„Oscar“ ist das ICAO-Buchstabierwort für O — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-p": {
+      "question": "Wie buchstabierst du den Buchstaben P über Funk?",
+      "options": ["Papa", "Uniform", "Bravo", "India"],
+      "explanation": "„Papa“ ist das ICAO-Buchstabierwort für P — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-q": {
+      "question": "Wie buchstabierst du den Buchstaben Q über Funk?",
+      "options": ["Quebec", "Victor", "Charlie", "Juliett"],
+      "explanation": "„Quebec“ ist das ICAO-Buchstabierwort für Q — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-r": {
+      "question": "Wie buchstabierst du den Buchstaben R über Funk?",
+      "options": ["Romeo", "Whiskey", "Delta", "Kilo"],
+      "explanation": "„Romeo“ ist das ICAO-Buchstabierwort für R — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-s": {
+      "question": "Wie buchstabierst du den Buchstaben S über Funk?",
+      "options": ["Sierra", "X-ray", "Echo", "Lima"],
+      "explanation": "„Sierra“ ist das ICAO-Buchstabierwort für S — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-t": {
+      "question": "Wie buchstabierst du den Buchstaben T über Funk?",
+      "options": ["Tango", "Yankee", "Foxtrot", "Mike"],
+      "explanation": "„Tango“ ist das ICAO-Buchstabierwort für T — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-u": {
+      "question": "Wie buchstabierst du den Buchstaben U über Funk?",
+      "options": ["Uniform", "Zulu", "Golf", "November"],
+      "explanation": "„Uniform“ ist das ICAO-Buchstabierwort für U — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-v": {
+      "question": "Wie buchstabierst du den Buchstaben V über Funk?",
+      "options": ["Victor", "Alfa", "Hotel", "Oscar"],
+      "explanation": "„Victor“ ist das ICAO-Buchstabierwort für V — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-w": {
+      "question": "Wie buchstabierst du den Buchstaben W über Funk?",
+      "options": ["Whiskey", "Bravo", "India", "Papa"],
+      "explanation": "„Whiskey“ ist das ICAO-Buchstabierwort für W — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-x": {
+      "question": "Wie buchstabierst du den Buchstaben X über Funk?",
+      "options": ["X-ray", "Charlie", "Juliett", "Quebec"],
+      "explanation": "„X-ray“ ist das ICAO-Buchstabierwort für X — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-y": {
+      "question": "Wie buchstabierst du den Buchstaben Y über Funk?",
+      "options": ["Yankee", "Delta", "Kilo", "Romeo"],
+      "explanation": "„Yankee“ ist das ICAO-Buchstabierwort für Y — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    },
+    "letter-z": {
+      "question": "Wie buchstabierst du den Buchstaben Z über Funk?",
+      "options": ["Zulu", "Echo", "Lima", "Sierra"],
+      "explanation": "„Zulu“ ist das ICAO-Buchstabierwort für Z — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
     }
   }
 }

@@ -1,7 +1,7 @@
 /**
  * Flashcards — modo de repaso independiente del curso de teoría (no cuenta
  * para aprobar módulos ni desbloquear misiones del simulador, ver
- * FlashcardsView.jsx). Dos mazos:
+ * FlashcardsView.jsx). Tres mazos:
  *
  *  - INSTRUMENT_FLASHCARDS: reconocer y leer los mismos relojes SVG del
  *    cuadro de instrumentos del simulador (ver ../../components/instruments/
@@ -11,11 +11,17 @@
  *    TCAS) sintetizadas en vuelo con la Web Speech API — "phrase" es SIEMPRE
  *    en inglés a propósito, igual que en la aviación real sea cual sea el
  *    idioma de la interfaz.
+ *  - RADIO_ALPHABET_FLASHCARDS: deletrear las 26 letras con el alfabeto
+ *    fonético OACI (mismo deletreo que el módulo de teoría "radio-alphabet":
+ *    Alfa, Bravo, Charlie… Juliett con dos T) — "letter" es la letra grande
+ *    que se muestra en la tarjeta, siempre en mayúscula latina sin importar
+ *    el idioma de la interfaz (el alfabeto OACI deletrea matrículas y
+ *    designadores, que usan letras latinas en cualquier idioma).
  *
  * Los textos (question/options/explanation) viven en i18next, namespace
- * "flashcards", claves `instruments.<id>` / `audio.<id>` (5 idiomas). Como
- * en el resto del proyecto, la opción en el índice 0 es siempre la
- * correcta en la estructura; la UI la baraja solo para mostrarla.
+ * "flashcards", claves `instruments.<id>` / `audio.<id>` / `radioAlphabet.<id>`
+ * (5 idiomas). Como en el resto del proyecto, la opción en el índice 0 es
+ * siempre la correcta en la estructura; la UI la baraja solo para mostrarla.
  */
 export const INSTRUMENT_FLASHCARDS = [
   { id: "airspeed-id", gauge: "airspeed", props: { value: 45 }, correct: 0 },
@@ -41,3 +47,9 @@ export const AUDIO_FLASHCARDS = [
   { id: "pull-up", phrase: "Pull up! Pull up!", correct: 0 },
   { id: "tcas-climb", phrase: "Traffic, traffic. Climb, climb!", correct: 0 },
 ];
+
+export const RADIO_ALPHABET_FLASHCARDS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => ({
+  id: `letter-${letter.toLowerCase()}`,
+  letter,
+  correct: 0,
+}));
