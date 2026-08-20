@@ -1,0 +1,82 @@
+{
+  "id": "aircraft-systems",
+  "icon": "wrench",
+  "order": 12,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "the-powerplant",
+      "quiz": {
+        "questions": [
+          { "id": "the-powerplant-q1", "correct": 0 },
+          { "id": "the-powerplant-q2", "correct": 0 },
+          { "id": "the-powerplant-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "the-fuel-system",
+      "quiz": {
+        "questions": [
+          { "id": "the-fuel-system-q1", "correct": 0 },
+          { "id": "the-fuel-system-q2", "correct": 0 },
+          { "id": "the-fuel-system-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "the-electrical-system",
+      "quiz": {
+        "questions": [
+          { "id": "the-electrical-system-q1", "correct": 0 },
+          { "id": "the-electrical-system-q2", "correct": 0 },
+          { "id": "the-electrical-system-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "flight-controls",
+      "quiz": {
+        "questions": [
+          { "id": "flight-controls-q1", "correct": 0 },
+          { "id": "flight-controls-q2", "correct": 0 },
+          { "id": "flight-controls-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "landing-gear-and-brakes",
+      "quiz": {
+        "questions": [
+          { "id": "landing-gear-and-brakes-q1", "correct": 0 },
+          { "id": "landing-gear-and-brakes-q2", "correct": 0 },
+          { "id": "landing-gear-and-brakes-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "pitot-static-and-avionics",
+      "quiz": {
+        "questions": [
+          { "id": "pitot-static-and-avionics-q1", "correct": 0 },
+          { "id": "pitot-static-and-avionics-q2", "correct": 0 },
+          { "id": "pitot-static-and-avionics-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "redundancy-and-system-failures",
+      "quiz": {
+        "questions": [
+          { "id": "redundancy-and-system-failures-q1", "correct": 0 },
+          { "id": "redundancy-and-system-failures-q2", "correct": 0 },
+          { "id": "redundancy-and-system-failures-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}
