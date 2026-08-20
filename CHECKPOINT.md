@@ -9,6 +9,46 @@ commit.
 
 ---
 
+## 2026-08-20 — Dos módulos de teoría nuevos: Aircraft systems y Advanced ATC
+
+**Qué se hizo** (siguiendo la instrucción de trabajar el backlog de más
+fácil a más difícil — ver entradas anteriores para tests/flashcards/misión
+de este mismo ciclo):
+
+- **Contenido:** 2 módulos nuevos, 12º y 13º del catálogo.
+  - `aircraft-systems` (icono `wrench`, orden 12): motor, sistema de
+    combustible, sistema eléctrico, mandos de vuelo, tren de aterrizaje y
+    frenos, pitot-estática/aviónica, redundancia y fallos de sistema.
+  - `advanced-atc` (icono `tower-control`, orden 13): qué exige cada clase
+    de espacio aéreo, autorizaciones VFR/IFR, fraseología avanzada, radar
+    y flight following, esperas, procedimientos de emergencia con ATC,
+    diferencias internacionales/OACI. Construye explícitamente sobre
+    `regulations` sin duplicar contenido (la lección de clases de espacio
+    aéreo cubre ahí los requisitos de ATC, no los mínimos meteorológicos
+    ya vistos en `regulations`).
+  - 7 lecciones × 3 preguntas cada módulo, quiz derivado como siempre.
+    Iconos `Wrench` y `TowerControl` añadidos a `icons.jsx`.
+  - Traducción real a los 5 idiomas (de/es/pt/ar), verificada contra
+    `flight-planning` y `regulations` para mantener tono y terminología;
+    el árabe se revisó explícitamente en RTL en navegador (sin
+    numerales arábigo-índicos, según la convención del proyecto).
+  - A petición explícita del dueño del proyecto, el contenido en inglés
+    se construyó y verificó primero, y las traducciones se hicieron en un
+    segundo commit separado — así el trabajo quedó revisable por partes
+    aunque ambos terminaron en la misma sesión.
+
+**Estado al cierre:** `npm run lint`, `npm run format:check`, `npm run
+check:i18n` (13 módulos × 5 idiomas), `npm test` (72/72) y `npm run
+build`, todos en verde. 2 commits en `claude/skysimacademy-proyecto-727t5j`
+(módulos en inglés · traducciones a los 4 idiomas restantes), pusheados.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — con 13 módulos y 11 misiones
+cubiertos, quedan "validar con usuarios reales" y la versión "instructor"
+(requiere decidir si rompe la filosofía sin-backend) como los pendientes
+más grandes sin empezar.
+
+---
+
 ## 2026-08-10 (2) — Módulo nuevo, ESLint/Prettier, tests, auditoría a11y
 
 **Qué se hizo** (priorizado por el dueño del proyecto: Contenido nuevo +
