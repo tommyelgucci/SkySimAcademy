@@ -2603,6 +2603,484 @@
           "explanation": "Im Voraus zu entscheiden schützt die Entscheidung vor Druck, der das Urteilsvermögen im Moment tendenziell untergräbt."
         }
       }
+    },
+    "aircraft-systems": {
+      "title": "Flugzeugsysteme",
+      "description": "Wie ein Leichtflugzeug wirklich funktioniert: Triebwerk, Kraftstoffsystem, elektrisches System, Flugsteuerung, Fahrwerk und Bremsen, Pitot-statische Instrumente und Avionik — und was Redundanz, oder ihr Fehlen, bei einem einmotorigen Flugzeug bedeutet.",
+      "lessons": {
+        "the-powerplant": {
+          "title": "Das Triebwerk",
+          "body": "Ein typisches Schulflugzeug wird von einem Kolbenmotor angetrieben, der einen Propeller mit fester oder konstanter Drehzahl dreht. Kraftstoff und Luft werden gemischt, verdichtet, von einer Zündkerze gezündet, und die entstehende Expansion treibt die mit einer Kurbelwelle verbundenen Kolben an — derselbe Viertaktzyklus wie bei einem Automotor, nur so gebaut, dass er stundenlang zuverlässig mit hoher, konstanter Leistung läuft.\n\nDie Gemischregelung erlaubt es, das Kraftstoff-Luft-Verhältnis an die Luftdichte in der jeweiligen Höhe anzupassen — Abmagern mit zunehmender Höhe hält den Motor effizient, statt unnötig fett zu laufen. Vergaservereisung, verursacht durch den plötzlichen Druckabfall und die Kraftstoffverdunstung im Vergaser selbst, tritt auch bei Außentemperaturen über null Grad auf und ist eine Gefahr, die spezifisch für Vergasermotoren ist — die Vergaservorwärmung schützt davor.\n\nMotorinstrumente — Öldruck, Öltemperatur, Drehzahl (oder Ladedruck bei Verstellpropellern), Zylinderkopftemperatur — gibt es, weil der Motor lange bevor er sichtbar ausfällt beschädigt werden kann. Ein Pilot, der erst bei unrundem Lauf oder Stillstand reagiert, liest die Instrumente zu spät; der Sinn des Scans ist es, einen abweichenden Öldruck oder eine abweichende Temperatur zu erkennen, solange noch Zeit zum Handeln bleibt.",
+          "keyTakeaway": "Der Motor ist ein Viertakt-Kolbenmotor, der einen Propeller dreht, gesteuert über Gemisch und (bei Vergasermotoren) Vergaservorwärmung — seine Instrumente sollen ein sich entwickelndes Problem lange erkennen, bevor der Motor tatsächlich ausfällt.",
+          "simTip": "Die Triebwerksausfall-Mission des Simulators schaltet die Leistung abrupt ab, statt einen allmählichen Öldruckabfall zu simulieren — betrachte jedes reale Motorinstrument als die Frühwarnung, die dir der Simulator nicht gibt."
+        },
+        "the-fuel-system": {
+          "title": "Das Kraftstoffsystem",
+          "body": "Der Kraftstoff wird in Flügel- oder Rumpftanks gespeichert und erreicht den Motor entweder durch Schwerkraft (Tanks über dem Motor montiert, üblich bei Hochdeckern) oder durch eine motor- oder elektrisch angetriebene Pumpe (üblich bei Tiefdeckern, wo Schwerkraft allein nicht ausreichen würde). Der Kraftstoffwahlschalter bestimmt, welcher Tank den Motor versorgt — links, rechts, beide oder aus — und ihn richtig zu bedienen ist genauso wichtig wie überhaupt genug Kraftstoff an Bord zu haben.\n\nKraftstoffanzeigen in Leichtflugzeugen sind notorisch ungenau und müssen nur bei leerem Tank exakt sein; die verlässliche Zahl ist die, die am Boden berechnet wird — bekannter Kraftstoff an Bord, bekannter Verbrauch, verstrichene Zeit — nicht der Zeiger im Flug. Genau das ist die Berechnung des Gesamtkraftstoffbedarfs aus dem Modul Flugplanung, und sie existiert genau deshalb, weil die Anzeige allein nicht vertrauenswürdig ist.\n\nDie Kraftstoffkontrolle vor dem Flug geht über die Menge hinaus: Eine Probe aus dem Ablasshahn jedes Tanks zu nehmen prüft auf Wasser (das sich unter dem Kraftstoff absetzt, da es dichter ist) und Verunreinigungen, und die Bestätigung, dass die richtige Kraftstoffsorte getankt wurde, ist wichtig — der falsche Kraftstoff kann ernsthafte Motorprobleme verursachen, manchmal ohne unmittelbare Warnung.",
+          "keyTakeaway": "Kraftstoff erreicht den Motor je nach Tankposition durch Schwerkraft oder Pumpe, der Kraftstoffwahlschalter bestimmt, welcher Tank tatsächlich versorgt, und die Anzeige ist ein Backup — die verlässliche Zahl ist die, die am Boden berechnet wird.",
+          "simTip": "Der Simulator gibt dir bewusst unbegrenzten Kraftstoff und kann Kraftstoffmanagement daher nicht direkt vermitteln — sieh die Berechnung des Gesamtkraftstoffbedarfs aus dem Modul Flugplanung als die eigentliche Lektion, auf Papier vor jedem echten Flug."
+        },
+        "the-electrical-system": {
+          "title": "Das elektrische System",
+          "body": "Eine Batterie liefert Strom für den Motorstart und als Backup, während ein Generator oder Alternator, vom laufenden Motor angetrieben, im Flug Strom liefert und die Batterie nachlädt. Der Hauptschalter (Master Switch) steuert beides — ihn auszuschalten, ob absichtlich oder als Teil eines Notfall-Checklistenpunkts, trennt fast alles Elektrische gleichzeitig vom Strom.\n\nElektrische Verbraucher werden unterteilt in das, was zum Weiterfliegen unverzichtbar ist, und das, was es nicht ist: elektrisch versorgte Fluginstrumente, Positions- und Landelichter sowie die Überziehwarnung sind unverzichtbar; Kabinenbeleuchtung und Teile der Avionik sind es nicht. Ein separater Avionik-Schalter oder -Sicherungsautomat erlaubt es, Funkgeräte und andere Elektronik unabhängig vom Hauptschalter abzuschalten — wichtig, wenn man ein Problem eingrenzen oder die Last bei einem elektrischen Fehler reduzieren will.\n\nSicherungsautomaten schützen einzelne Stromkreise ähnlich wie der Sicherungskasten zu Hause — dass einer auslöst, ist das System, das seine Aufgabe erfüllt und einen fehlerhaften Stromkreis abschaltet, bevor daraus ein Kabelbrand wird, kein zufälliger Defekt, den man einfach zurücksetzt und ignoriert. Ein vollständiger Stromausfall stoppt den Motor nicht (der über die Zündung seiner eigenen Magnetzünder läuft, siehe die folgende Lektion zur Redundanz), nimmt aber Funkgeräte, einige Lichter und einige Instrumente weg — genau deshalb haben manche Instrumente ein nichtelektrisches Backup.",
+          "keyTakeaway": "Batterie und Generator liefern den Strom, der Hauptschalter steuert alles auf einmal, und ein auslösender Sicherungsautomat schützt einen fehlerhaften Stromkreis — kein Grund, ihn einfach ohne zu wissen warum zurückzusetzen.",
+          "simTip": "Der Simulator modelliert weder elektrische Ausfälle noch Sicherungsautomaten — diese Lektion hat also keine entsprechende Mission; sieh sie als Hintergrundwissen für eine echte Checkliste, wo ein Verfahren bei Elektrobrand oder Generatorausfall genau dieses Wissen voraussetzt."
+        },
+        "flight-controls": {
+          "title": "Die Flugsteuerung",
+          "body": "Die primären Steuerorgane — Querruder, Höhenruder und Seitenruder — bewegen die Steuerflächen, die das Flugzeug um seine drei Achsen drehen, verbunden mit Steuerhorn oder Steuerknüppel und Seitenruderpedalen über Seilzüge, Gestänge oder, bei moderneren Flugzeugen, elektrische Signale. Es ist dieselbe Roll-Nick-Gier-Beziehung wie im Modul Grundlagen des Fliegens, nur geht es hier um die Hardware, die das umsetzt, nicht nur um die Aerodynamik.\n\nSekundäre Steuerorgane verändern, wie das Flugzeug fliegt, ohne direkt eine Drehung zu befehlen. Klappen fahren aus der Flügelhinterkante aus, um bei niedrigeren Geschwindigkeiten mehr Auftrieb und Widerstand zu erzeugen, was den Anflug steiler macht und die Überziehgeschwindigkeit für die Landung senkt — deshalb ist eine Klappenstellung Teil eines stabilisierten Anflugs, kein optionales Extra. Trimmung bewegt keine Steuerfläche, um ein Manöver zu befehlen; sie nimmt den ständigen Steuerdruck weg, der nötig ist, um eine bestimmte Nicklage zu halten, sodass freihändig bei einer gewählten Geschwindigkeit geflogen werden kann, statt während des ganzen Flugs gegen denselben Druck anzukämpfen.\n\nEin Steuereingang erreicht seine Fläche über eine physische oder elektrische Kette, und jedes Glied dieser Kette — ein Seilzug, ein Gestänge, eine Verbindung — ist ein potenzieller Ausfallpunkt. Das ist mit ein Grund, warum die Ruderkontrolle («frei und richtig») ein Standardpunkt vor jedem Start ist: die gesamte Kette wird noch am Boden bestätigt, wo ein Problem unbequem ist statt gefährlich.",
+          "keyTakeaway": "Primäre Steuerorgane (Querruder, Höhenruder, Seitenruder) befehlen Drehungen um die drei Achsen; Klappen und Trimmung sind sekundäre Steuerorgane, die Auftrieb/Widerstand ändern oder den Steuerdruck wegnehmen, ohne selbst ein Manöver zu befehlen.",
+          "simTip": "Die Steuerung im Simulator reagiert sofort, ohne Seilzugspiel oder Gestängegefühl — eine echte Ruderkontrolle vor dem Flug gibt es genau deshalb, um ein Problem zu erkennen, das der Simulator gar nicht abbilden kann."
+        },
+        "landing-gear-and-brakes": {
+          "title": "Fahrwerk und Bremsen",
+          "body": "Die meisten Schulflugzeuge haben ein festes Bugradfahrwerk — ein Bugrad und zwei Hauptfahrwerke, dauerhaft ausgefahren —, das einfacher und bei der Landung nachsichtiger ist als das Spornradfahrwerk eines Taildraggers mit zwei Haupträdern und einem kleinen Spornrad, oder ein Einziehfahrwerk, das den Widerstand (und die Komplexität, und die Ausfallpunkte) des festen Fahrwerks gegen Reisegeschwindigkeit eintauscht — auf Kosten der realen Möglichkeit einer Bauchlandung, wenn der Pilot es vergisst oder der Mechanismus versagt.\n\nDie Bodenlenkung erfolgt meist über das Bugrad (bei vielen Schulflugzeugen mit den Seitenruderpedalen verbunden) für sanfte Kurven, unterstützt durch differenzielles Bremsen — ein Hauptrad stärker bremsen als das andere — für engere Kurven oder bei Flugzeugen ohne direkte Bugradkopplung. Differenzielles Bremsen beim normalen Ausrollen nach der Landung dient nicht nur dem Lenken, sondern auch der Richtungskontrolle, falls ein Seitenwind oder eine Böe das Flugzeug nach dem Aufsetzen von der Mittellinie drückt.\n\nBei einem Flugzeug mit Einziehfahrwerk ist die Bestätigung «Fahrwerk unten und verriegelt» ein Pflichtpunkt im Endanflug, genau weil es der einzige Landekonfigurationspunkt ist, der sich nicht spürbar bemerkbar macht — alles andere (Klappen, Geschwindigkeit, Sinkrate) gibt dem Piloten direktes Feedback, während ein Fahrwerk, das lautlos nicht ausgefahren ist, bis zum Aufsetzen keines gibt.",
+          "keyTakeaway": "Festes Bugradfahrwerk ist einfach und nachsichtig; Einziehfahrwerk tauscht diese Einfachheit gegen Reisegeschwindigkeit ein — genau deshalb ist die Bestätigung «Fahrwerk unten» im Endanflug bei solchen Flugzeugen ein Pflichtpunkt, der nicht offensichtlich ist.",
+          "simTip": "Das Flugzeug im Simulator hat ein festes Fahrwerk, es gibt also kein Bauchlandungsrisiko zu üben — am nächsten kommt die Präzisionslandungs-Mission mit ihrem zentrierten, ausgerichteten Aufsetzpunkt, also genau der Teil der Landung, von dem ein festes Fahrwerk nicht befreit."
+        },
+        "pitot-static-and-avionics": {
+          "title": "Pitot-statische Instrumente und Avionik",
+          "body": "Fahrtmesser, Höhenmesser und Variometer — im Modul Cockpit-Instrumente aus der Ablese-Perspektive behandelt — werden von zwei sehr einfachen Eingängen gespeist: dem Pitotrohr, das den Druck der anströmenden Luft erfasst, und der statischen Öffnung, die den ungestörten Außenluftdruck in der aktuellen Höhe des Flugzeugs erfasst. Fast jeder Pitot-statische Ausfall lässt sich auf eine dieser beiden blockierten Öffnungen zurückführen.\n\nEin blockiertes Pitotrohr — meist durch Eis, Insekten oder eine vergessene Abdeckung — betrifft vor allem den Fahrtmesser, weshalb Flugzeuge, die in sichtbarer Feuchtigkeit nahe dem Gefrierpunkt fliegen, eine Pitotheizung haben, um die Öffnung frei zu halten. Eine blockierte statische Öffnung betrifft alle drei Instrumente gleichzeitig, weshalb Flugzeuge eine alternative statische Quelle mitführen: einen Ersatzanschluss, meist in der Kabine, der bei blockierter Hauptquelle angewählt werden kann.\n\nAvionik — Kommunikations- und Navigationsfunkgeräte, der Transponder, der ATC-Radar Position und Höhe des Flugzeugs meldet, GPS und bei besser ausgestatteten Flugzeugen ein Autopilot — sitzt nachgelagert zum elektrischen System aus einer früheren Lektion und ist eine Hilfe zum Fliegen, kein Ersatz dafür. Ein Autopilot, der genau das tut, was ihm gesagt wurde, braucht trotzdem einen Piloten, der beobachtet, was ihm gesagt wurde.",
+          "keyTakeaway": "Pitotrohr und statische Öffnung speisen Fahrtmesser, Höhenmesser und Variometer; ein blockiertes Pitotrohr betrifft vor allem die Geschwindigkeit (behoben mit Pitotheizung), eine blockierte statische Öffnung betrifft alle drei (behoben mit einer alternativen statischen Quelle).",
+          "simTip": "Die Instrumente im Simulator sind immer perfekt genau, Vereisung oder Blockade gibt es nicht — lies diese Lektion als den realen Vorbehalt hinter jeder Zahl, die dir das HUD des Simulators ohne Zweifel anzeigt."
+        },
+        "redundancy-and-system-failures": {
+          "title": "Redundanz und Systemausfälle",
+          "body": "Ein einmotoriges Kolbenflugzeug hat reale Grenzen bei der Redundanz: ein Motor, ein einziger Satz Steuerorgane, oft nur ein Generator. Etwas Redundanz gibt es trotzdem innerhalb dessen — die meisten Motoren haben zwei unabhängige Magnetzünder (jeder allein in der Lage, den Motor am Laufen zu halten), und manche Instrumente haben ein nichtelektrisches Backup, wie in der Lektion zu Pitot-statischen Instrumenten behandelt. Aber ein Triebwerksausfall bei einem einmotorigen Flugzeug bedeutet, anders als bei einem mehrmotorigen Flugzeug oder Verkehrsflugzeug, dass der Flug sehr bald irgendwo am Boden endet, geplant oder nicht.\n\nDas ist die Logik hinter dem Aufbau der Triebwerksausfall-Mission: Sobald der Motor ausfällt, lautet die Prioritätsreihenfolge zuerst das Flugzeug fliegen (Bestgleitgeschwindigkeit einstellen), dann einen erreichbaren Landeplatz wählen, und erst dann, falls Zeit bleibt, eine Wiederstart-Checkliste abarbeiten — nicht umgekehrt. Ein Pilot, der die ersten kostbaren Sekunden nach einem Triebwerksausfall mit Fehlersuche statt mit Fliegen verbringt, kann aus einer überlebbaren Notlandung einen Strömungsabriss-Trudel-Unfall machen.\n\nDie übergeordnete Gewohnheit, auf die dieses Modul hinweist, ist eine Checklisten-Mentalität: auswendig gelernte Sofortmaßnahmen für die ersten Sekunden eines Notfalls, danach eine gedruckte Checkliste (oder ein Quick-Reference-Handbuch) für alles Weitere. Das Systemwissen aus diesem ganzen Modul — was Triebwerk, Kraftstoff-, elektrisches und Steuerungssystem wirklich tun — ist das, was einen Checklistenpunkt sinnvoll macht, statt ihn blind abzuarbeiten.",
+          "keyTakeaway": "Ein einmotoriges Flugzeug hat begrenzte Redundanz, daher gehen beim Triebwerksausfall Fliegen und Landeplatzwahl vor Fehlersuche — und Systemwissen ist das, was einen Checklistenpunkt sinnvoll macht, statt ihn blind abzuarbeiten.",
+          "simTip": "Die Triebwerksausfall-Mission des Simulators ist genau dieses Szenario: den Gleitflug fliegen, die Bahn wählen und runterkommen — bewertet wird die richtige Prioritätsreihenfolge, nicht der Wiederstart des Motors."
+        }
+      },
+      "quiz": {
+        "the-powerplant-q1": {
+          "question": "Wofür wird die Gemischregelung hauptsächlich verwendet?",
+          "options": [
+            "Um das Kraftstoff-Luft-Verhältnis an die Luftdichte in der jeweiligen Höhe anzupassen",
+            "Um zu steuern, wie viel Kraftstoff in jedem Tank gespeichert wird",
+            "Um zwischen linkem und rechtem Magnetzünder umzuschalten"
+          ],
+          "explanation": "Abmagern mit zunehmender Höhe hält den Motor effizient für die dünnere Luft, statt unnötig fett zu laufen."
+        },
+        "the-powerplant-q2": {
+          "question": "Warum tritt Vergaservereisung auch bei Außentemperaturen über null Grad auf?",
+          "options": [
+            "Der Druckabfall und die Kraftstoffverdunstung im Vergaser verursachen dort einen starken lokalen Temperaturabfall",
+            "Sie tritt nur beim Flug durch sichtbare Wolken auf",
+            "Sie wird durch Wasserverunreinigung im Kraftstofftank verursacht"
+          ],
+          "explanation": "Der Druckabfall und die Verdunstung im Vergaser selbst können ihn intern unter den Gefrierpunkt kühlen, unabhängig von der Außentemperatur."
+        },
+        "the-powerplant-q3": {
+          "question": "Warum sind Motorinstrumente wie Öldruck und Öltemperatur wichtig, wenn der Motor gut läuft?",
+          "options": [
+            "Sie können ein sich entwickelndes Problem lange erkennen, bevor der Motor sichtbar ausfällt",
+            "Sie sind nur bei Motoren über einer bestimmten Größe vorgeschrieben",
+            "Sie dienen ausschließlich der Berechnung des Kraftstoffverbrauchs"
+          ],
+          "explanation": "Ein Pilot, der erst bei unrundem Motorlauf reagiert, liest die Instrumente zu spät — der Scan soll einen abweichenden Wert früh erkennen."
+        },
+        "the-fuel-system-q1": {
+          "question": "Warum sind Kraftstoffanzeigen in Leichtflugzeugen nicht die primäre Methode, den Kraftstoff im Flug zu überwachen?",
+          "options": [
+            "Sie müssen nur bei leerem Tank exakt sein — berechneter Verbrauch und verstrichene Zeit sind verlässlicher",
+            "Sie funktionieren nur am Boden korrekt",
+            "Sie werden vollständig durch die Stellung des Kraftstoffwahlschalters ersetzt"
+          ],
+          "explanation": "Die verlässliche Kraftstoffzahl kommt aus bekanntem Kraftstoff an Bord, bekanntem Verbrauch und verstrichener Zeit — nicht aus der Anzeige im Flug."
+        },
+        "the-fuel-system-q2": {
+          "question": "Worauf wird bei der Kraftstoffprobe aus dem Ablasshahn jedes Tanks vor dem Flug geprüft?",
+          "options": [
+            "Wasser (das sich unter dem Kraftstoff absetzt) und Verunreinigungen",
+            "Die exakte verbleibende Kraftstoffmenge",
+            "Ob der Kraftstoffwahlschalter auf «beide» steht"
+          ],
+          "explanation": "Wasser ist dichter als Kraftstoff und setzt sich am Boden ab — genau dort, wo der Probeablass zum Auffangen positioniert ist."
+        },
+        "the-fuel-system-q3": {
+          "question": "Was bestimmt, ob Kraftstoff durch Schwerkraft oder durch eine Pumpe zum Motor gelangt?",
+          "options": [
+            "Ob die Tanks über dem Motor montiert sind (Schwerkraft) oder nicht (Pumpe)",
+            "Ob das Flugzeug ein Einzieh- oder festes Fahrwerk hat",
+            "Die Kraftstoffsorte, die in die Tanks gefüllt wurde"
+          ],
+          "explanation": "Hochdecker mit Tanks über dem Motor können per Schwerkraft versorgt werden; Tiefdecker brauchen meist eine motor- oder elektrisch angetriebene Pumpe."
+        },
+        "the-electrical-system-q1": {
+          "question": "Was passiert, wenn der Hauptschalter ausgeschaltet wird?",
+          "options": [
+            "Fast alles Elektrische verliert gleichzeitig den Strom",
+            "Nur die Kabinenbeleuchtung geht aus",
+            "Der Motor bleibt stehen"
+          ],
+          "explanation": "Der Hauptschalter steuert den Batterie- und Generatorkreis als Ganzes, daher trennt sein Ausschalten fast alle elektrischen Systeme gleichzeitig vom Strom."
+        },
+        "the-electrical-system-q2": {
+          "question": "Was zeigt ein auslösender Sicherungsautomat üblicherweise an?",
+          "options": [
+            "Das System schützt einen fehlerhaften Stromkreis, bevor daraus ein größeres Problem wird",
+            "Einen zufälligen Defekt, den man zurücksetzen und ignorieren kann",
+            "Dass die Batterie vollständig entladen ist"
+          ],
+          "explanation": "Ein auslösender Automat ist der Schutzmechanismus, der wie vorgesehen funktioniert — erst nach Verständnis, nicht nach Vermutung, warum er ausgelöst hat, zurücksetzen."
+        },
+        "the-electrical-system-q3": {
+          "question": "Warum läuft der Motor bei einem vollständigen Stromausfall weiter?",
+          "options": [
+            "Er läuft über die Zündung seiner eigenen Magnetzünder, unabhängig vom elektrischen System des Flugzeugs",
+            "Er schaltet automatisch auf reinen Batteriebetrieb um",
+            "Stromausfälle betreffen nur Flugzeuge am Boden"
+          ],
+          "explanation": "Die Magnetzündung ist eigenständig und hängt nicht von Batterie oder Generator des Flugzeugs ab — deshalb stoppt ein Stromausfall den Motor nicht."
+        },
+        "flight-controls-q1": {
+          "question": "Was ist der Unterschied zwischen primären und sekundären Steuerorganen?",
+          "options": [
+            "Primäre Steuerorgane (Querruder, Höhenruder, Seitenruder) befehlen Drehungen; sekundäre Steuerorgane (Klappen, Trimmung) ändern, wie das Flugzeug fliegt, ohne eine Drehung zu befehlen",
+            "Primäre Steuerorgane sind elektrisch, sekundäre mechanisch",
+            "Sekundäre Steuerorgane gibt es nur bei Flugzeugen mit Einziehfahrwerk"
+          ],
+          "explanation": "Querruder, Höhenruder und Seitenruder drehen das Flugzeug um seine Achsen; Klappen und Trimmung passen stattdessen Auftrieb/Widerstand oder den Steuerdruck an."
+        },
+        "flight-controls-q2": {
+          "question": "Was bewirkt Trimmung tatsächlich?",
+          "options": [
+            "Sie nimmt den ständigen Steuerdruck weg, der nötig ist, um eine bestimmte Nicklage zu halten",
+            "Sie befiehlt direkt einen Steig- oder Sinkflug",
+            "Sie erhöht Auftrieb und Widerstand für die Landung"
+          ],
+          "explanation": "Trimmung erlaubt freihändiges Fliegen bei einer gewählten Geschwindigkeit, indem sie den ständigen Druck wegnimmt — sie befiehlt kein Manöver von selbst."
+        },
+        "flight-controls-q3": {
+          "question": "Warum wird vor jedem Start eine Ruderkontrolle («frei und richtig») durchgeführt?",
+          "options": [
+            "Um zu bestätigen, dass die gesamte mechanische Kette vom Steuerorgan bis zur Fläche noch am Boden korrekt funktioniert",
+            "Sie ist nur nach einer Wartung vorgeschrieben",
+            "Sie prüft das elektrische System, nicht die Flugsteuerung"
+          ],
+          "explanation": "Jedes Glied der Steuerkette — Seilzug, Gestänge, Verbindung — ist ein potenzieller Ausfallpunkt, und ein Problem lässt sich am Boden weit besser finden."
+        },
+        "landing-gear-and-brakes-q1": {
+          "question": "Was ist der Hauptkompromiss eines Einziehfahrwerks gegenüber einem festen Fahrwerk?",
+          "options": [
+            "Höhere Reisegeschwindigkeit durch geringeren Widerstand, auf Kosten von Komplexität und dem Risiko einer Bauchlandung",
+            "Einziehfahrwerk ist immer leichter als festes Fahrwerk",
+            "Einziehfahrwerk macht Bremsen überflüssig"
+          ],
+          "explanation": "Das Einfahren des Fahrwerks verringert den Widerstand für mehr Reisegeschwindigkeit, fügt aber einen Mechanismus hinzu, der ausfallen kann, und ein reales Risiko einer Bauchlandung, falls es vergessen wird oder der Mechanismus versagt."
+        },
+        "landing-gear-and-brakes-q2": {
+          "question": "Wie hilft differenzielles Bremsen bei Bodenoperationen?",
+          "options": [
+            "Ein Hauptrad stärker zu bremsen als das andere verengt Kurven und unterstützt die Richtungskontrolle nach dem Aufsetzen",
+            "Es funktioniert nur, wenn das Bugrad eingefahren ist",
+            "Es macht die Seitenruderpedale völlig überflüssig"
+          ],
+          "explanation": "Differenzielles Bremsen unterstützt die Bugradlenkung bei engen Kurven und hilft, die Mittellinie zu halten, falls Seitenwind oder eine Böe das Flugzeug nach der Landung vom Kurs abbringt."
+        },
+        "landing-gear-and-brakes-q3": {
+          "question": "Warum ist die Bestätigung «Fahrwerk unten und verriegelt» im Endanflug bei Flugzeugen mit Einziehfahrwerk vorgeschrieben?",
+          "options": [
+            "Es ist der einzige Landekonfigurationspunkt, der bei stillem Ausfall keine direkte Rückmeldung gibt",
+            "Sie ist nur bei Seitenwindbedingungen vorgeschrieben",
+            "Sie ersetzt die Notwendigkeit, im Anflug die Geschwindigkeit zu prüfen"
+          ],
+          "explanation": "Klappen, Geschwindigkeit und Sinkrate geben alle direkte Rückmeldung; ein Fahrwerk, das nicht ausgefahren ist, gibt bis zum Aufsetzen keine — deshalb braucht es eine bewusste Kontrolle."
+        },
+        "pitot-static-and-avionics-q1": {
+          "question": "Was erfassen Pitotrohr und statische Öffnung jeweils?",
+          "options": [
+            "Das Pitotrohr erfasst den Druck der anströmenden Luft; die statische Öffnung erfasst den ungestörten Außenluftdruck",
+            "Beide erfassen denselben Druck als eingebaute Redundanz",
+            "Das Pitotrohr erfasst die Höhe, die statische Öffnung die Geschwindigkeit"
+          ],
+          "explanation": "Die Geschwindigkeit ergibt sich aus dem Vergleich von Pitot- (Staudruck) und statischem Druck; Höhe und Vertikalgeschwindigkeit kommen allein aus dem statischen Druck."
+        },
+        "pitot-static-and-avionics-q2": {
+          "question": "Was ist der entscheidende Unterschied zwischen einem blockierten Pitotrohr und einer blockierten statischen Öffnung?",
+          "options": [
+            "Ein blockiertes Pitotrohr betrifft vor allem die Geschwindigkeit; eine blockierte statische Öffnung betrifft Geschwindigkeit, Höhe und Variometer gemeinsam",
+            "Ein blockiertes Pitotrohr betrifft nur den Höhenmesser",
+            "Beide verursachen exakt dieselben Instrumentenfehler"
+          ],
+          "explanation": "Die statische Öffnung speist alle drei pitot-statischen Instrumente, daher betrifft eine Blockade alle drei gleichzeitig — deshalb gibt es eine alternative statische Quelle."
+        },
+        "pitot-static-and-avionics-q3": {
+          "question": "Wie ist das Verhältnis zwischen Avionik wie dem Autopilot und dem Piloten?",
+          "options": [
+            "Avionik ist eine Hilfe zum Fliegen, kein Ersatz für einen Piloten, der sie überwacht",
+            "Nach dem Einschalten macht der Autopilot die Überwachung durch den Piloten überflüssig",
+            "Avionik arbeitet unabhängig vom elektrischen System"
+          ],
+          "explanation": "Ein Autopilot tut zuverlässig genau das, was ihm gesagt wurde — ein Pilot muss trotzdem beobachten, was ihm gesagt wurde, und bereit sein einzugreifen."
+        },
+        "redundancy-and-system-failures-q1": {
+          "question": "Was ist die richtige Prioritätsreihenfolge unmittelbar nach einem Triebwerksausfall bei einem einmotorigen Flugzeug?",
+          "options": [
+            "Zuerst das Flugzeug fliegen (Bestgleitgeschwindigkeit), dann einen Landeplatz wählen, dann bei verbleibender Zeit eine Wiederstart-Checkliste abarbeiten",
+            "Sofort mit der Wiederstart-Checkliste beginnen, noch vor allem anderen",
+            "Zuerst ATC kontaktieren, um den Notfall zu erklären"
+          ],
+          "explanation": "Die ersten Sekunden mit Fehlersuche statt mit Fliegen zu verbringen, kann aus einer überlebbaren Notlandung einen Strömungsabriss-Trudel-Unfall machen."
+        },
+        "redundancy-and-system-failures-q2": {
+          "question": "Warum hat ein einmotoriges Flugzeug reale Grenzen bei der Redundanz im Vergleich zu einem mehrmotorigen Flugzeug?",
+          "options": [
+            "Ein Triebwerksausfall beendet den Flug sehr bald am Boden, geplant oder nicht",
+            "Einmotorige Flugzeuge haben überhaupt keine Backup-Systeme",
+            "Redundanz gilt nur für elektrische Systeme"
+          ],
+          "explanation": "Anders als ein mehrmotoriges Flugzeug, das mit dem verbleibenden Triebwerk weiterfliegen kann, hat ein einmotoriges Flugzeug diese Option nicht mehr, sobald sein einziger Motor ausfällt."
+        },
+        "redundancy-and-system-failures-q3": {
+          "question": "Was ist der Zweck einer Checklisten-Mentalität für Notfälle?",
+          "options": [
+            "Zuerst auswendig gelernte Sofortmaßnahmen, danach eine gedruckte Checkliste für alles Weitere — aufgebaut auf Systemverständnis, nicht auf blinden Schritten",
+            "Systemwissen ganz zu vermeiden",
+            "Die Notwendigkeit zu ersetzen, das Flugzeug während eines Notfalls zu fliegen"
+          ],
+          "explanation": "Systemwissen macht jeden Checklistenpunkt sinnvoll, statt ihn als Schritt abzuarbeiten, dessen Grund man nicht versteht."
+        }
+      }
+    },
+    "advanced-atc": {
+      "title": "Erweiterte Flugsicherung",
+      "description": "Aufbauend auf dem Modul Luftrecht: was jede Luftraumklasse von einem Piloten tatsächlich verlangt, IFR- versus VFR-Freigaben, erweiterte Sprechfunkverfahren, Radardienste und Flight Following, Warteschleifen, Notfallverfahren mit der Flugsicherung, und wie sich das außerhalb des eigenen Landes unterscheidet.",
+      "lessons": {
+        "airspace-and-atc-requirements": {
+          "title": "Was jede Luftraumklasse wirklich verlangt",
+          "body": "Das Modul Luftrecht behandelte Luftraumklassen von der Seite der Wolkenabstände und Selbststaffelung — wie weit man sich von Wolken fernhält, und wo ein Pilot für seine eigene Staffelung verantwortlich ist. Diese Lektion behandelt die andere Hälfte: was jede Klasse vor dem Einflug tatsächlich verlangt, und was ein Lotse von einem Piloten darin erwartet.\n\nDer Einflug in kontrollierten Luftraum verlangt in der Regel eine hergestellte zweiseitige Funkverbindung mit der zuständigen Stelle vor dem Einflug — nicht nur ein Anruf, sondern eine erhaltene Antwort, denn ein Anruf ohne Antwort ist keine Freigabe. Manche Klassen verlangen eine ausdrückliche Freigabe (eine aktive Anweisung des Lotsen zum Einflug oder Betrieb); andere verlangen nur, dass die Verbindung hergestellt ist, ohne weitere Antwort, sofern der Lotse nichts anderes mitteilt. Ausrüstungsanforderungen — etwa ein funktionierender Transponder mit Höhenmeldung — gelten oft ab bestimmten Höhen oder innerhalb bestimmter Entfernungen zu verkehrsreichen Flugplätzen, unabhängig von der Luftraumklasse.\n\nDie praktische Gewohnheit, die sich daraus ergibt, ist es, eine Karte nicht nur auf Wettermindestwerte zu prüfen, sondern genau darauf, welche Anforderung vor dem Übertritt in eine neue Klasse gilt: Ist das eine Grenze «anrufen und auf Antwort warten» oder eine Grenze «anrufen und ausdrückliche Freigabe erhalten»? Beides gleichzusetzen ist ein häufiger, vermeidbarer Fehler.",
+          "keyTakeaway": "Kontrollierter Luftraum verlangt mindestens eine hergestellte zweiseitige Funkverbindung, manche Klassen zusätzlich eine ausdrückliche Freigabe — zu wissen, was an einer bestimmten Grenze gilt, bevor man sie überfliegt, ist die praktische Fähigkeit.",
+          "simTip": "Der Simulator bildet Anforderungen an die Funkverbindung mit der Flugsicherung überhaupt nicht ab — sieh diese Lektion als genau die Ebene des realen Fliegens, die der Freiflugmodus des Simulators komplett auslässt."
+        },
+        "vfr-and-ifr-clearances": {
+          "title": "VFR- und IFR-Freigaben",
+          "body": "Ein VFR-Flug operiert grundsätzlich unter Sicht-und-Ausweich-Staffelung und braucht keine Freigabe, um einfach zu fliegen, auch wenn bestimmter Luftraum, wie in der vorigen Lektion behandelt, Funkverbindung oder Freigabe für den Einflug verlangen kann. Ein IFR-Flug ist bewusst anders angelegt: Er operiert unter einer vollständigen ATC-Freigabe für die gesamte Strecke, Höhe und jede Änderung an beidem, weil IFR davon ausgeht, dass der Pilot anderen Verkehr oder Gelände möglicherweise überhaupt nicht sehen kann.\n\nEine IFR-Freigabe wird zurückgelesen (Readback), nicht nur bestätigt, genau weil eine missverstandene und nicht zurückgelesene Freigabe direkt zu einem Konflikt führen kann — Strecke, Höhe und jede Einschränkung werden bei den wichtigen Teilen (mindestens Strecke, Höhe und Squawk-Code) wortgetreu wiederholt.\n\nVFR Flight Following ist ein Mittelweg: Ein VFR-Flug, der weiterhin nach denselben Regeln wie jeder VFR-Flug selbst staffelt, kann bei der Flugsicherung Verkehrshinweise anfordern, soweit es die Arbeitslast zulässt. Es ist ein Dienst, keine Freigabe — der Pilot bleibt für die Staffelung verantwortlich und kann jederzeit aus dem Dienst entlassen werden, auch wenn nie eine Freigabe erteilt wurde.",
+          "keyTakeaway": "IFR operiert unter einer vollständigen Freigabe für Strecke und Höhe, die zur Bestätigung des korrekten Verständnisses zurückgelesen wird; VFR Flight Following ist ein Verkehrshinweisdienst, keine Freigabe, und die Staffelung bleibt in beiden Fällen Sache des Piloten.",
+          "simTip": "Die Missionen des Simulators verlangen nie eine Freigabe, um zu starten oder fortzufahren — echtes IFR-Fliegen ist vollständig um Freigaben herum aufgebaut, für die der Simulator kein Äquivalent hat. Das sollte man sich bewusst machen, bevor man annimmt, die Flugsicherung funktioniere wie im Freiflugmodus des Simulators (der, anders gesagt, gar nicht funktioniert)."
+        },
+        "advanced-phraseology": {
+          "title": "Erweiterte Sprechfunkverfahren",
+          "body": "Standardphraseologie gibt es, damit eine kurze, präzise Formulierung nicht mit einer anderen verwechselt werden kann — «frei zur Landung» und «frei für die Option» klingen ähnlich genug, dass jede Abweichung von der exakten Standardformulierung genau in dem Moment Verwirrung einlädt, in dem sie am wenigsten leistbar ist. Zahlen werden einzeln gesprochen («eins zwei null» statt «hundertzwanzig») aus demselben Grund: weniger Möglichkeiten, eine Zahl mit einer anderen zu verwechseln.\n\nReadbacks sind keine optionale Höflichkeit — für bestimmte Punkte (Bahnzuweisungen, Höhenzuweisungen, Frequenzwechsel und jede Anweisung, vor einer Position zu halten) bestätigt ein Readback, dass die Anweisung korrekt verstanden wurde, und ein Lotse, der den erwarteten Readback nicht hört, fragt in der Regel nach, statt Verständnis anzunehmen. «Roger» bestätigt nur den Empfang einer Übertragung, nicht dass eine Anweisung befolgt wird — es anstelle eines vorgeschriebenen Readbacks zu verwenden, ist ein häufiger, verwirrender Fehler.\n\nWenn Standardphraseologie nicht ausreicht — eine ungewohnte Situation, ein nicht-muttersprachlicher Sprecher auf einer der beiden Seiten, eine überlastete Frequenz — ist Klartext die richtige Ausweichlösung, nicht Schweigen. Ziel der Phraseologie ist immer klare Kommunikation, und Standardformulierungen sind dafür das Standardwerkzeug, kein Regelwerk, das über dem Verständlichmachen steht, wenn etwas nicht ins Standardmuster passt.",
+          "keyTakeaway": "Standardphraseologie und einzeln gesprochene Zahlen gibt es, um zu verhindern, dass Anweisungen missverstanden werden; vorgeschriebene Punkte werden ausdrücklich zurückgelesen, und «Roger» ersetzt keinen vorgeschriebenen Readback.",
+          "simTip": "Der Simulator hat überhaupt keine Funkkommunikation zum Üben — Phraseologie ist eine Fähigkeit, die aus echtem Ausbildungsmaterial und echter Praxis gelernt werden muss, nicht aus diesem Simulator."
+        },
+        "radar-services-and-flight-following": {
+          "title": "Radardienste und Flight Following",
+          "body": "Das Radar der Flugsicherung zeigt dem Lotsen die Position jedes Flugzeugs, und bei entsprechend ausgerüsteten Flugzeugen zusätzlich Höhe und Kennung — genau das macht Dienste wie Verkehrshinweise, Sequenzierung und Vektoring (eine konkrete Kursanweisung, um Verkehr zu umfliegen oder einen Punkt anzusteuern) überhaupt erst möglich. Nicht jedes Flugzeug muss einen Transponder mitführen, aber wo einer vorgeschrieben ist, liegt das genau daran, dass radargestützte Staffelung davon abhängt.\n\nFlight Following (in der vorigen Lektion zu Freigaben eingeführt) ist einer von mehreren Radardiensten: Verkehrshinweise nach Arbeitslast für einen VFR-Flug, im Gegensatz zur Radarstaffelung für IFR-Flüge, die ein aktiver, durchgehender Dienst ist, keine Kulanz, die nur bei freier Kapazität des Lotsen gewährt wird.\n\nEin Squawk-Code — der vierstellige, am Transponder eingestellte Code — erlaubt es, ein bestimmtes Flugzeug auf dem Radarbild des Lotsen unter allen anderen zu identifizieren. Standardcodes gibt es für VFR-Flüge ohne konkreten Dienst, und spezifische Notfallcodes (in der nächsten Lektion behandelt) existieren genau dafür, dass ein Lotse ein in Not befindliches Flugzeug allein am Radarbild erkennen kann, ohne einen Funkruf zu brauchen, um zu wissen, dass etwas nicht stimmt.",
+          "keyTakeaway": "Radardienste hängen von Transponder-Ausrüstung ab; Flight Following sind Verkehrshinweise nach Arbeitslast für VFR, während IFR-Staffelung ein aktiver, durchgehender Dienst ist — und ein Squawk-Code identifiziert ein bestimmtes Flugzeug auf dem Bild.",
+          "simTip": "HUD und Minikarte des Simulators zeigen dir bereits genau, wo du bist — echte Radardienste gibt es, weil ein Lotse und andere Piloten diese Information ohne Transponder und Funkverbindung, die sie liefern, nicht sehen können."
+        },
+        "holding-patterns": {
+          "title": "Warteschleifen",
+          "body": "Eine Warteschleife ist ein rennbahnförmiges Muster um einen festen Punkt — ein Navigationshilfsmittel oder einen GPS-Wegpunkt —, das ein Flugzeug in einem definierten Luftraumabschnitt hält, meist wegen Verkehr voraus, einer noch nicht verfügbaren Bahn, oder Zeit für einen Anflug, der noch nicht geflogen werden kann. Sie ist kein Manöver, das der Pilot wählt; sie wird von der Flugsicherung zugewiesen, mit Punkt, Kurvenrichtung und Beinlänge oder Zeitvorgabe festgelegt.\n\nDer korrekte Einflug in eine Warteschleife hängt vom Kurs des Flugzeugs relativ zum Warteschleifenkurs bei Erreichen des Punkts ab — drei Standardeinflugarten (direkt, Teardrop und Parallel) decken jeden möglichen Anflugwinkel ab, jede so gestaltet, dass man auf der Rennbahn etabliert wird, ohne auf die falsche Seite des Musters hinauszuschießen.\n\nWarteschleifen gibt es, weil Luftraum und Landebahnen endliche, gemeinsam genutzte Ressourcen sind — ein Flugzeug kann nicht einfach an Ort und Stelle warten, deshalb bekommt es stattdessen ein definiertes Stück Himmel zum Kreisen zugewiesen, das den Luftraum davor für das freimacht, worauf es wartet. Eine zugewiesene Warteschleife ist kein Zeichen, dass etwas schiefgelaufen ist — sie ist die Flugsicherung, die eine endliche Ressource mit den verfügbaren Mitteln verwaltet.",
+          "keyTakeaway": "Eine Warteschleife ist ein von der Flugsicherung zugewiesenes Rennbahnmuster um einen Punkt, in das je nach Anflugkurs auf eine von drei Standardarten eingeflogen wird — sie dient der Verwaltung endlichen Luftraums oder endlicher Bahnverfügbarkeit, kein Manöver, das der Pilot selbst wählt.",
+          "simTip": "Das Fluggebiet des Simulators ist immer sofort verfügbar, es gibt nichts, worauf man warten müsste — eine echte Warteschleife ist die direkte Folge von gemeinsam genutztem, endlichem Luftraum und endlichen Bahnen, für die der überfüllungsfreie Himmel des Simulators nie einen Bedarf schafft."
+        },
+        "emergency-atc-procedures": {
+          "title": "Notfallverfahren mit der Flugsicherung",
+          "body": "Der Flugsicherung einen Notfall zu melden — mit dem Wort «Mayday» für eine Notlage (Leben oder Flugzeug unmittelbar gefährdet) oder «Pan-Pan» für eine dringliche, aber noch keine Notlage — gibt dem Lotsen die ausdrückliche Befugnis, diesen Flug zu bevorzugen: anderer Verkehr kann umgelenkt, eine Bahn freigemacht, und normale Verfahren nach Bedarf beiseitegelegt werden. Der spezifische Notfall-Transpondercode (unterschieden vom Standardcode aus der Lektion zu Radardiensten) tut dasselbe passiv und markiert das Flugzeug auf dem Radar auch ohne Funkruf.\n\nEin Pilot muss nicht die Erlaubnis eines Lotsen abwarten, um einen Notfall zu erklären, und muss ihn im Moment auch nicht ausführlich per Funk begründen — eine kurze, klare Aussage zu Problem, Position und Absichten genügt; die vollständige Erklärung kann warten, bis die unmittelbare Situation bewältigt ist. Das spiegelt dieselbe Priorität «zuerst das Flugzeug fliegen» aus der Redundanz-Lektion des Moduls Flugzeugsysteme wider, hier auf den Funkruf statt auf die Flugsteuerung angewendet.\n\nNach einem Notfall wird ein Lotse in der Regel um mehr Details bitten, sobald es die unmittelbare Situation erlaubt — für Such- und Rettungszwecke, falls nötig, oder einfach um zu verstehen, was passiert ist. Nichts davon ändert die Priorität der ersten Reaktion: fliegen, navigieren, kommunizieren, in dieser Reihenfolge, wobei die Notfallmeldung selbst Teil von «kommunizieren» ist, nicht etwas, das vor den anderen beiden geschehen muss.",
+          "keyTakeaway": "«Mayday» (Notlage) und «Pan-Pan» (Dringlichkeit) geben der Flugsicherung ausdrückliche Befugnis, einen Flug zu bevorzugen; eine Notfallmeldung braucht keine Erlaubnis oder ausführliche Erklärung — eine kurze Aussage zu Problem, Position und Absichten genügt, nachdem zuerst das Flugzeug geflogen wurde.",
+          "simTip": "Die Triebwerksausfall- und Strömungsabriss-Erholungs-Missionen des Simulators sind die «Fliegen»-Hälfte dieser Lektion ohne die «Kommunizieren»-Hälfte — es gibt keine Flugsicherung zum Anrufen, sieh also jede Mission als Übung für den Teil, der auf einen echten Notruf folgen würde."
+        },
+        "international-differences": {
+          "title": "Internationale und ICAO-Unterschiede",
+          "body": "Die ICAO (Internationale Zivilluftfahrt-Organisation) legt Standards und empfohlene Verfahren fest, auf denen die meisten Länder ihre eigenen Luftfahrtvorschriften aufbauen — deshalb sind Phraseologie, Luftraumklassen und viele Verfahren weltweit weitgehend ähnlich. Aber «weitgehend ähnlich» heißt nicht «identisch», und ein Pilot, der in ungewohnten Luftraum fliegt, muss die konkreten Unterschiede prüfen, statt anzunehmen, die Regeln des eigenen Landes gälten überall.\n\nZu den häufigen Unterschieden zählen Einheiten (Höhe in Fuß ist nahezu universell, manche Länder verwenden aber metrische Höhen oder QFE- statt QNH-Höhenmessereinstellungen), konkrete Abweichungen in der Phraseologie, und Unterschiede darin, was für den Einflug in eine bestimmte Luftraumklasse verlangt wird, selbst wenn der Klassenbuchstabe derselbe ist. VFR-Mindestwerte, Ausrüstungsanforderungen und sogar, auf welcher Seite einer Bahn anderer Verkehr zu erwarten ist, können je nach Land auf eine Weise variieren, die sich aus allgemeinem Luftfahrtwissen allein nicht erschließt.\n\nDie praktische Konsequenz ist nicht, die Regeln jedes Landes auswendig zu lernen — es ist, sich die Gewohnheit anzueignen, vor einem Flug in unbekanntes Gebiet gezielt zu prüfen, was anders ist, genauso wie die NOTAM- und Briefing-Gewohnheit aus dem Modul Flugplanung vor jedem ungewohnten Flug gilt, hier erweitert auf das regulatorische Umfeld selbst statt nur auf Wetter und vorübergehende Gefahren.",
+          "keyTakeaway": "ICAO-Standards machen die Luftfahrt weltweit weitgehend ähnlich, aber nicht identisch — Höhenmessereinstellungen, Details der Phraseologie und Luftraumanforderungen können je nach Land variieren, sodass das gezielte Prüfen konkreter Unterschiede vor einem Flug in unbekanntes Gebiet die eigentliche Fähigkeit ist.",
+          "simTip": "Der Simulator verwendet überall im Fluggebiet dieselben Konventionen — echtes internationales Fliegen erfordert aktives Prüfen vor dem Abflug, was anders ist, eine Gewohnheit, die dieser Simulator nicht üben lässt."
+        }
+      },
+      "quiz": {
+        "airspace-and-atc-requirements-q1": {
+          "question": "Was verlangt der Einflug in kontrollierten Luftraum grundsätzlich mindestens?",
+          "options": [
+            "Eine vor dem Einflug hergestellte zweiseitige Funkverbindung mit der zuständigen Stelle",
+            "Einen aufgegebenen Flugplan, unabhängig von der Luftraumklasse",
+            "Einen Transponder mit dem Standard-VFR-Code"
+          ],
+          "explanation": "Die Verbindung muss tatsächlich hergestellt sein — eine erhaltene Antwort, nicht nur ein Anruf ohne Antwort —, bevor man in die meisten kontrollierten Lufträume einfliegt."
+        },
+        "airspace-and-atc-requirements-q2": {
+          "question": "Was ist der Unterschied zwischen Luftraum, der «hergestellte Verbindung» verlangt, und solchem, der eine «ausdrückliche Freigabe» verlangt?",
+          "options": [
+            "Manche Klassen verlangen nur eine hergestellte Verbindung ohne weitere Antwort, sofern der Lotse nichts anderes sagt; andere verlangen eine aktive Freigabeanweisung",
+            "Es gibt keinen Unterschied — aller kontrollierte Luftraum verlangt eine ausdrückliche Freigabe",
+            "Eine ausdrückliche Freigabe wird nur bei IFR-Flügen verlangt, nie bei VFR"
+          ],
+          "explanation": "Unterschiedliche Luftraumklassen setzen unterschiedliche Anforderungen, und eine Grenze mit reiner Verbindungspflicht wie eine mit Freigabepflicht zu behandeln, ist ein häufiger Fehler."
+        },
+        "airspace-and-atc-requirements-q3": {
+          "question": "Warum können Ausrüstungsanforderungen wie ein funktionierender Transponder unabhängig von der Luftraumklasse gelten?",
+          "options": [
+            "Sie gelten oft nach Höhe oder Nähe zu verkehrsreichen Flugplätzen, unabhängig von der Luftraumklasse selbst",
+            "Ein Transponder ist nur im Luftraum der Klasse A vorgeschrieben",
+            "Ausrüstungsanforderungen legt jeder Pilot individuell fest"
+          ],
+          "explanation": "Höhen- und näheabhängige Ausrüstungsanforderungen bestehen zusätzlich zu den luftraumklassenabhängigen Anforderungen, nicht nur innerhalb davon."
+        },
+        "vfr-and-ifr-clearances-q1": {
+          "question": "Warum ist für IFR eine Freigabe für die gesamte Strecke und Höhe vorgeschrieben, anders als bei typischen VFR-Operationen?",
+          "options": [
+            "IFR geht davon aus, dass der Pilot anderen Verkehr oder Gelände möglicherweise überhaupt nicht sehen kann",
+            "IFR-Flüge finden immer nachts statt",
+            "IFR-Freigaben sind optional, aber empfohlen"
+          ],
+          "explanation": "Weil IFR nicht auf visueller Staffelung beruht, verwaltet die Flugsicherung die gesamte Strecke und Höhe aktiv über eine Freigabe, statt die Staffelung dem Sehen-und-Ausweichen zu überlassen."
+        },
+        "vfr-and-ifr-clearances-q2": {
+          "question": "Warum wird eine IFR-Freigabe zurückgelesen statt nur bestätigt?",
+          "options": [
+            "Eine missverstandene, nicht zurückgelesene Freigabe kann direkt zu einem Konflikt führen",
+            "Readbacks sind nur beim VFR Flight Following vorgeschrieben",
+            "Es ist eine Höflichkeit ohne operativen Zweck"
+          ],
+          "explanation": "Das Zurücklesen von Strecke, Höhe und Squawk-Code bestätigt, dass die Freigabe korrekt verstanden wurde, bevor danach gehandelt wird."
+        },
+        "vfr-and-ifr-clearances-q3": {
+          "question": "Was ist VFR Flight Following?",
+          "options": [
+            "Ein Verkehrshinweisdienst, angeboten nach verfügbarer Arbeitslast, keine Freigabe",
+            "Eine für alle VFR-Flüge vorgeschriebene Freigabe",
+            "Das VFR-Äquivalent zur IFR-Radarstaffelung"
+          ],
+          "explanation": "Flight Following ist ein Dienst, keine Freigabe — der VFR-Pilot bleibt für die Staffelung verantwortlich und kann jederzeit aus dem Dienst entlassen werden."
+        },
+        "advanced-phraseology-q1": {
+          "question": "Warum werden Zahlen einzeln gesprochen («eins zwei null») statt als ganze Zahl?",
+          "options": [
+            "Es verringert die Möglichkeiten, eine Zahl mit einer anderen zu verwechseln",
+            "Es ist schneller zu sagen als die ganze Zahl",
+            "Das gilt nur für Höhenzuweisungen, nie für Frequenzen"
+          ],
+          "explanation": "Ziffern einzeln zu lesen ist eine bewusste Wahl, um die Wahrscheinlichkeit zu verringern, dass eine Zahl unter Funkbedingungen mit einer anderen verwechselt wird."
+        },
+        "advanced-phraseology-q2": {
+          "question": "Warum ist «Roger» kein akzeptabler Ersatz für einen vorgeschriebenen Readback?",
+          "options": [
+            "«Roger» bestätigt nur den Empfang einer Übertragung, nicht dass eine Anweisung befolgt wird",
+            "«Roger» ist überhaupt keine Standardphraseologie",
+            "Readbacks sind unabhängig von der Anweisung immer optional"
+          ],
+          "explanation": "Ein Lotse braucht die Bestätigung, dass die konkrete Anweisung korrekt verstanden wurde, was «Roger» allein nicht liefert."
+        },
+        "advanced-phraseology-q3": {
+          "question": "Was ist der richtige Ausweg, wenn Standardphraseologie nicht ausreicht?",
+          "options": [
+            "Klartext, da das Ziel immer klare Kommunikation ist",
+            "Schweigen, bis Standardphraseologie wieder korrekt eingesetzt werden kann",
+            "Dieselbe Standardformulierung lauter wiederholen"
+          ],
+          "explanation": "Standardphraseologie ist ein Werkzeug für Klarheit, kein Regelwerk, das über dem Verständlichmachen steht, wenn eine Situation nicht ins Standardmuster passt."
+        },
+        "radar-services-and-flight-following-q1": {
+          "question": "Was macht Dienste wie Vektoring und Verkehrshinweise überhaupt möglich?",
+          "options": [
+            "Das Radar der Flugsicherung zeigt die Flugzeugposition, und bei entsprechend ausgerüsteten Flugzeugen zusätzlich Höhe und Kennung per Transponder",
+            "Dass jedes Flugzeug einen IFR-Flugplan aufgeben muss",
+            "Dass Piloten ihre eigene Position alle paar Minuten per Funk melden"
+          ],
+          "explanation": "Radargestützte Dienste hängen davon ab, dass das Flugzeug auf dem Bild des Lotsen sichtbar ist, was für Höhe und Kennung die passende Transponder-Ausrüstung erfordert."
+        },
+        "radar-services-and-flight-following-q2": {
+          "question": "Wie unterscheidet sich Flight Following von der IFR-Radarstaffelung?",
+          "options": [
+            "Flight Following wird nach verfügbarer Arbeitslast angeboten; die IFR-Staffelung ist ein aktiver, durchgehender Dienst",
+            "Es ist derselbe Dienst unter zwei verschiedenen Namen",
+            "Flight Following steht nur IFR-Flügen zur Verfügung"
+          ],
+          "explanation": "Die IFR-Staffelung ist ein garantierter, durchgehender Dienst; VFR Flight Following ist eine Kulanz, die bei freier Kapazität des Lotsen gewährt wird."
+        },
+        "radar-services-and-flight-following-q3": {
+          "question": "Wozu dient ein Squawk-Code?",
+          "options": [
+            "Er erlaubt es, ein bestimmtes Flugzeug auf dem Radarbild des Lotsen unter allen anderen zu identifizieren",
+            "Er legt die zugewiesene Reiseflughöhe des Flugzeugs fest",
+            "Er wird nur bei einem Notfall verwendet"
+          ],
+          "explanation": "Ein vierstelliger Squawk-Code unterscheidet ein Flugzeug von anderen auf dem Radar; auch für Standard-VFR-Flüge und für Notfälle sind spezifische Codes reserviert."
+        },
+        "holding-patterns-q1": {
+          "question": "Warum wird eine Warteschleife geflogen, und wer entscheidet über den Einflug?",
+          "options": [
+            "Um ein Flugzeug in einem definierten Luftraumabschnitt zu halten, wenn eine Bahn oder Strecke voraus noch nicht verfügbar ist — zugewiesen von der Flugsicherung, nicht vom Piloten gewählt",
+            "Es ist ein Manöver, das ein Pilot jederzeit zum Üben wählt",
+            "Es wird nur bei einem Triebwerksausfall verwendet"
+          ],
+          "explanation": "Eine Warteschleife verwaltet endlichen Luftraum und endliche Bahnverfügbarkeit und wird von der Flugsicherung mit Punkt, Kurvenrichtung und Beinlänge oder Zeitvorgabe konkret zugewiesen."
+        },
+        "holding-patterns-q2": {
+          "question": "Was bestimmt, welche der drei Standardeinflugarten in eine Warteschleife ein Pilot verwendet?",
+          "options": [
+            "Der Kurs des Flugzeugs relativ zum Warteschleifenkurs bei Erreichen des Punkts",
+            "Die persönliche Vorliebe des Piloten",
+            "Ob der Flug VFR oder IFR ist"
+          ],
+          "explanation": "Direkter, Teardrop- und Paralleleinflug entsprechen jeweils einem anderen Anflugwinkel und decken zusammen jeden möglichen Anflug auf den Punkt ab."
+        },
+        "holding-patterns-q3": {
+          "question": "Was zeigt eine zugewiesene Warteschleife im Allgemeinen an?",
+          "options": [
+            "Die Flugsicherung verwaltet eine endliche gemeinsame Ressource wie Luftraum oder eine Bahn — kein Zeichen, dass etwas schiefgelaufen ist",
+            "Dass die Freigabe des Flugs vollständig verweigert wurde",
+            "Dass das Flugzeug eine Systemstörung hat"
+          ],
+          "explanation": "Eine Warteschleife ist ein normales Werkzeug der Verkehrssteuerung, kein Zeichen eines Problems mit dem Flug."
+        },
+        "emergency-atc-procedures-q1": {
+          "question": "Was ist der Unterschied zwischen «Mayday» und «Pan-Pan»?",
+          "options": [
+            "«Mayday» steht für eine Notlage (Leben oder Flugzeug unmittelbar gefährdet); «Pan-Pan» für Dringlichkeit, die noch keine Notlage ist",
+            "Sie bedeuten in unterschiedlichen Ländern dasselbe",
+            "«Pan-Pan» wird nur für medizinische Notfälle verwendet"
+          ],
+          "explanation": "Beide geben der Flugsicherung die Befugnis, den Flug zu bevorzugen, signalisieren dem Lotsen aber unterschiedliche Schweregrade."
+        },
+        "emergency-atc-procedures-q2": {
+          "question": "Braucht ein Pilot die Erlaubnis eines Lotsen, um einen Notfall zu erklären?",
+          "options": [
+            "Nein — ein Pilot kann einen Notfall erklären und eine kurze Aussage zu Problem, Position und Absichten geben, ohne auf Erlaubnis zu warten",
+            "Ja, und zunächst ist eine ausführliche schriftliche Begründung erforderlich",
+            "Nur IFR-Flüge dürfen einen Notfall erklären"
+          ],
+          "explanation": "Eine Notfallmeldung erfordert keine vorherige Erlaubnis; eine kurze, klare Aussage genügt, die vollständigen Details folgen, sobald es die Situation erlaubt."
+        },
+        "emergency-atc-procedures-q3": {
+          "question": "Wo steht die Notfallmeldung in der Priorität Fliegen-Navigieren-Kommunizieren?",
+          "options": [
+            "Sie ist Teil von «Kommunizieren» — zuerst kommen Fliegen und Navigieren",
+            "Sie muss in jedem Fall vor dem Fliegen des Flugzeugs erfolgen",
+            "Sie ersetzt die Notwendigkeit, zu einem sicheren Landeplatz zu navigieren"
+          ],
+          "explanation": "Das Fliegen des Flugzeugs und das Navigieren zur Sicherheit haben Vorrang; die Notfallmeldung ist der darauffolgende Kommunikationsschritt."
+        },
+        "international-differences-q1": {
+          "question": "Welche Rolle spielt die ICAO in der internationalen Luftfahrt?",
+          "options": [
+            "Sie legt Standards und empfohlene Verfahren fest, auf denen die meisten Länder ihre eigenen Vorschriften aufbauen",
+            "Sie kontrolliert den Luftverkehr in jedem Mitgliedsland direkt",
+            "Sie gilt nur für den Linienflugbetrieb, nicht für die allgemeine Luftfahrt"
+          ],
+          "explanation": "ICAO-Standards machen die Luftfahrt weltweit weitgehend ähnlich, weshalb Phraseologie und Luftraumklassen über Grenzen hinweg vertraut wirken — aber sie sind nicht überall identisch."
+        },
+        "international-differences-q2": {
+          "question": "Welches davon ist ein reales Beispiel für einen Unterschied von Land zu Land, dem ein Pilot begegnen könnte?",
+          "options": [
+            "Metrische Höhen oder QFE- statt QNH-Höhenmessereinstellungen in Fuß",
+            "Die drei Rotationsachsen des Flugzeugs",
+            "Der Viertaktzyklus des Motors"
+          ],
+          "explanation": "Höhenmessereinstellungen und Höheneinheiten sind ein häufiger realer Unterschied zwischen Ländern; grundlegende Aerodynamik und Motorbetrieb sind es nicht."
+        },
+        "international-differences-q3": {
+          "question": "Welche praktische Gewohnheit empfiehlt diese Lektion vor einem Flug in ungewohntes Gebiet?",
+          "options": [
+            "Aktiv prüfen, was konkret in den Verfahren dieses Landes anders ist, statt anzunehmen, dass die Regeln des eigenen Landes gelten",
+            "Vorab die vollständigen Vorschriften jedes Landes auswendig lernen",
+            "Internationale Flüge ganz meiden, bis jede lokale Regel vollständig beherrscht wird"
+          ],
+          "explanation": "Der realistische Ansatz ist, konkrete Unterschiede vor einem ungewohnten Flug zu prüfen — dieselbe Gewohnheit wie NOTAM- und Wetterbriefing, hier auf das regulatorische Umfeld angewendet."
+        }
+      }
     }
   },
   "passedTag": "Bestanden",

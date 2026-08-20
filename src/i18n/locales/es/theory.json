@@ -2607,6 +2607,484 @@
           "explanation": "Decidir de antemano protege la decisión de la presión que tiende a erosionar el juicio en el momento."
         }
       }
+    },
+    "aircraft-systems": {
+      "title": "Sistemas de la aeronave",
+      "description": "Cómo funciona realmente una aeronave ligera: el motor, el sistema de combustible, el sistema eléctrico, los mandos de vuelo, el tren de aterrizaje y los frenos, los instrumentos pitot-estática y la aviónica, y qué significa la redundancia — o su ausencia — en una aeronave monomotor.",
+      "lessons": {
+        "the-powerplant": {
+          "title": "El motor",
+          "body": "Una aeronave de entrenamiento típica lleva un motor de pistones que mueve una hélice de paso fijo o de velocidad constante. El combustible y el aire se mezclan, se comprimen, se encienden con una bujía, y la expansión resultante mueve los pistones conectados a un cigüeñal — el mismo ciclo de cuatro tiempos que un motor de coche, solo que construido para funcionar de forma fiable a una potencia alta y estable durante horas seguidas.\n\nEl control de mezcla permite ajustar la relación combustible-aire según la densidad del aire a la altitud — empobrecerla al subir mantiene el motor funcionando de forma eficiente en lugar de quemar más combustible del necesario. La formación de hielo en el carburador, causada por la caída brusca de presión y la vaporización del combustible dentro del propio carburador incluso con temperatura exterior por encima de cero, es un riesgo específico de los motores carburados y se gestiona con el calefactor de carburador.\n\nLos instrumentos del motor — presión y temperatura de aceite, RPM (o presión de admisión en hélices de velocidad constante), temperatura de culata — existen porque el motor puede dañarse mucho antes de fallar de forma evidente. Un piloto que solo reacciona cuando el motor empieza a fallar o se detiene está leyendo los instrumentos demasiado tarde; el objetivo del escaneo es detectar una presión o temperatura que se está desviando mientras todavía hay tiempo de actuar.",
+          "keyTakeaway": "El motor es un motor de pistones de cuatro tiempos que mueve una hélice, gestionado con la mezcla y (en motores carburados) el calefactor de carburador, y sus instrumentos existen para detectar un problema en desarrollo mucho antes de que el motor falle de verdad.",
+          "simTip": "La misión de fallo de motor del simulador corta la potencia de golpe en lugar de simular una caída gradual de la presión de aceite — trata cada instrumento real del motor como el aviso previo que el simulador no te da."
+        },
+        "the-fuel-system": {
+          "title": "El sistema de combustible",
+          "body": "El combustible se almacena en depósitos de ala o de fuselaje y llega al motor por gravedad (depósitos montados por encima del motor, habitual en aviones de ala alta) o mediante una bomba accionada por el motor o eléctrica (habitual en aviones de ala baja, donde la gravedad sola no bastaría). El selector de combustible permite elegir qué depósito alimenta al motor — izquierdo, derecho, ambos o cerrado — y gestionarlo correctamente importa tanto como llevar suficiente combustible desde el principio.\n\nLos indicadores de combustible en aeronaves ligeras son notoriamente imprecisos, y solo están obligados a ser exactos cuando el depósito marca vacío; el dato fiable es el que se calcula en tierra — combustible conocido a bordo, consumo conocido, tiempo transcurrido — no la aguja en vuelo. Es exactamente el cálculo de combustible total necesario que se cubre en el módulo de planificación de vuelo, y existe precisamente porque el indicador por sí solo no es de fiar.\n\nLas comprobaciones de combustible antes del vuelo van más allá de la cantidad: tomar una muestra del drenaje de cada depósito permite detectar agua (que se asienta bajo el combustible, al ser más densa) y contaminación, y confirmar que se ha cargado el grado de combustible correcto importa porque el combustible equivocado puede causar problemas graves de motor, a veces sin ningún aviso inmediato.",
+          "keyTakeaway": "El combustible llega al motor por gravedad o por bomba según la posición del depósito, el selector de combustible determina qué depósito alimenta realmente al motor, y el indicador es un respaldo — el dato fiable es el que se calcula en tierra.",
+          "simTip": "El simulador te da combustible ilimitado por diseño, así que no puede enseñar gestión de combustible directamente — trata el cálculo de combustible total necesario del módulo de planificación de vuelo como la lección real, hecha en papel antes de cada vuelo real."
+        },
+        "the-electrical-system": {
+          "title": "El sistema eléctrico",
+          "body": "Una batería suministra energía eléctrica para el arranque del motor y como respaldo, mientras que un alternador (o generador, en aeronaves más antiguas), accionado por el motor una vez en marcha, suministra energía y recarga la batería en vuelo. El interruptor maestro controla ambos — apagarlo, ya sea de forma intencionada o como parte de una lista de emergencia, deja sin corriente casi todo lo eléctrico de golpe.\n\nLas cargas eléctricas se dividen entre lo esencial para seguir volando y lo que no lo es: los instrumentos de vuelo alimentados eléctricamente, las luces de posición y de aterrizaje, y el avisador de pérdida son esenciales; la iluminación de cabina y parte de la aviónica no lo son. Un interruptor o disyuntor de aviónica independiente permite apagar radios y otros equipos electrónicos sin usar el interruptor maestro, algo que importa al aislar un problema o reducir la carga durante un fallo eléctrico.\n\nLos disyuntores protegen cada circuito de forma parecida a como lo hace el cuadro eléctrico de una casa — que salte un disyuntor es el sistema haciendo su trabajo, cortando la corriente a un circuito con fallo antes de que se convierta en un incendio eléctrico, no un fallo aleatorio que se puede simplemente rearmar e ignorar. Un fallo eléctrico total no detiene el motor (que funciona con el encendido de sus propios magnetos, tratado en la lección de redundancia siguiente) pero sí quita radios, algunas luces y algunos instrumentos — que es exactamente por qué algunos instrumentos tienen un respaldo no eléctrico.",
+          "keyTakeaway": "La batería y el alternador suministran energía eléctrica, el interruptor maestro la controla toda de golpe, y que salte un disyuntor es el sistema protegiendo un circuito con fallo — no algo para rearmar sin más sin saber por qué saltó.",
+          "simTip": "El simulador no modela fallos eléctricos ni disyuntores, así que esta lección no tiene misión equivalente — tómala como base para leer la lista de un avión real, donde un procedimiento de fuego eléctrico o fallo de alternador dará por hecho exactamente este conocimiento."
+        },
+        "flight-controls": {
+          "title": "Los mandos de vuelo",
+          "body": "Los mandos de vuelo primarios — alerones, timón de profundidad y timón de dirección — mueven las superficies de control que giran la aeronave sobre sus tres ejes, conectados al bastón o volante y a los pedales mediante cables, varillajes o, en aeronaves más avanzadas, señales eléctricas. Es la misma relación alabeo-cabeceo-guiñada que se cubre en el módulo de principios de vuelo, solo que aquí se trata del hardware que lo hace posible, no solo de la aerodinámica.\n\nLos mandos de vuelo secundarios cambian cómo vuela la aeronave sin ordenar directamente un giro. Los flaps se extienden desde el borde de salida del ala para aumentar sustentación y resistencia a baja velocidad, haciendo más pronunciada la aproximación y reduciendo la velocidad de pérdida para el aterrizaje — por eso una configuración de flaps forma parte de una aproximación estabilizada, no un extra opcional. El trim no mueve una superficie de control para ordenar una maniobra; alivia la presión constante necesaria para mantener una actitud de cabeceo determinada, permitiendo volar con las manos sueltas a una velocidad elegida en lugar de luchar contra la misma presión durante todo el vuelo.\n\nUna orden de mando llega a su superficie a través de una cadena física o eléctrica, y cualquier eslabón de esa cadena — un cable, un varillaje, una unión — es un punto de fallo potencial, lo que en parte explica por qué la comprobación de mandos («libres y correctos») es un elemento estándar antes de cada despegue: confirmar que toda la cadena funciona correctamente mientras todavía se está en tierra, donde un problema es un inconveniente y no un peligro.",
+          "keyTakeaway": "Los mandos primarios (alerones, timón de profundidad, timón de dirección) ordenan el giro sobre los tres ejes; flaps y trim son mandos secundarios que cambian sustentación/resistencia o alivian la presión de mando sin ordenar una maniobra por sí solos.",
+          "simTip": "Los mandos del simulador responden al instante, sin holgura de cables ni sensación de varillaje — una comprobación de mandos real antes del vuelo existe precisamente para detectar un problema que el simulador no tiene forma de reproducir."
+        },
+        "landing-gear-and-brakes": {
+          "title": "El tren de aterrizaje y los frenos",
+          "body": "La mayoría de aeronaves de entrenamiento llevan tren triciclo fijo — una rueda de morro y dos ruedas principales, siempre desplegadas — más simple y tolerante en el aterrizaje que el tren de dos ruedas principales y una pequeña rueda de cola de un taildragger, o que el tren retráctil, que cambia la resistencia (y la complejidad, y los puntos de fallo) del tren fijo por más velocidad de crucero a costa de que un aterrizaje con el tren recogido sea una posibilidad real si el piloto se olvida o el mecanismo falla.\n\nEl guiado en tierra suele venir de la rueda de morro (conectada a los pedales en muchos entrenadores) para giros suaves, respaldado por el frenado diferencial — frenar más una rueda principal que la otra — para giros más cerrados o en aeronaves sin conexión directa a la rueda de morro. El frenado diferencial durante la carrera de aterrizaje normal, además de para girar, también forma parte del control direccional si una racha o viento cruzado empuja la aeronave fuera del eje después de tomar tierra.\n\nEn una aeronave con tren retráctil, confirmar que el tren está bajado y bloqueado es un elemento obligatorio en la final precisamente porque es el único elemento de configuración de aterrizaje que no resulta evidente al tacto — todo lo demás (flaps, velocidad, régimen de descenso) da al piloto una retroalimentación directa, mientras que un tren que falló al extenderse en silencio no da ninguna hasta el contacto.",
+          "keyTakeaway": "El tren triciclo fijo es simple y tolerante; el tren retráctil cambia esa simplicidad por velocidad de crucero, que es exactamente por qué confirmar el tren bajado en la final es una comprobación obligatoria y no evidente en esas aeronaves.",
+          "simTip": "La aeronave del simulador tiene tren fijo, así que no hay riesgo de tren recogido que practicar — lo más parecido es la misión de aterrizaje de precisión, con su toma centrada y alineada, que es la parte del aterrizaje de la que el tren fijo no te libra."
+        },
+        "pitot-static-and-avionics": {
+          "title": "Instrumentos pitot-estática y aviónica",
+          "body": "El anemómetro, el altímetro y el variómetro — cubiertos desde el lado de la lectura en el módulo de instrumentos de cabina — se alimentan de dos entradas muy simples: el tubo pitot, que detecta la presión del aire que llega de frente, y la toma estática, que detecta la presión del aire exterior sin perturbar a la altitud actual de la aeronave. Casi todo fallo pitot-estática se remonta a una de esas dos aberturas bloqueada.\n\nUn tubo pitot bloqueado — normalmente por hielo, insectos o una funda olvidada — afecta sobre todo al anemómetro, por lo que las aeronaves que vuelan en humedad visible cerca de cero grados llevan calefacción pitot para mantener la abertura despejada. Una toma estática bloqueada afecta a los tres instrumentos a la vez, por lo que las aeronaves llevan una fuente estática alternativa: una toma de respaldo, normalmente dentro de la cabina, que se puede seleccionar si la principal está bloqueada.\n\nLa aviónica — radios de comunicación y navegación, el transpondedor que informa a ATC por radar de la posición y altitud de la aeronave, GPS, y en aeronaves más equipadas un piloto automático — está aguas abajo del sistema eléctrico visto en una lección anterior, y es una ayuda para volar la aeronave, no un sustituto de hacerlo. Un piloto automático que hace exactamente lo que se le ordenó sigue necesitando un piloto que vigile qué se le ordenó.",
+          "keyTakeaway": "El tubo pitot y la toma estática alimentan el anemómetro, el altímetro y el variómetro; un pitot bloqueado afecta sobre todo a la velocidad (se soluciona con calefacción pitot), mientras que una estática bloqueada afecta a los tres (se soluciona con una fuente estática alternativa).",
+          "simTip": "Los instrumentos del simulador son siempre perfectamente exactos, sin posibilidad de hielo o bloqueo — lee esta lección como el matiz del mundo real detrás de cada dato que el HUD del simulador te muestra sin ponerlo en duda."
+        },
+        "redundancy-and-system-failures": {
+          "title": "Redundancia y fallos de sistema",
+          "body": "Una aeronave monomotor de pistones tiene límites reales de redundancia: un motor, un único juego de mandos de vuelo, a menudo un solo alternador. Aun así, existe algo de redundancia dentro de eso — la mayoría de motores llevan magnetos dobles (sistemas de encendido independientes, cada uno capaz de mantener el motor en marcha por sí solo), y algunos instrumentos tienen un respaldo no eléctrico, como se vio en la lección de pitot-estática. Pero un fallo de motor en una aeronave monomotor, a diferencia de en una bimotor o en un avión de línea, significa que el vuelo va a terminar en tierra en algún sitio muy pronto, planeado o no.\n\nEse es el razonamiento detrás de la estructura de la misión de fallo de motor: una vez falla el motor, el orden de prioridad es volar la aeronave primero (establecer la velocidad de mejor planeo), elegir un lugar de aterrizaje al alcance, y luego trabajar cualquier lista de reencendido si hay tiempo — no al revés. Un piloto que pasa los primeros segundos preciosos tras un fallo de motor intentando solucionar el problema en lugar de volar la aeronave puede convertir un aterrizaje forzoso superviviente en un accidente de entrada en pérdida y barrena.\n\nEl hábito más amplio hacia el que apunta este módulo es una mentalidad de lista de comprobación: elementos memorizados de acción inmediata para los primeros segundos de una emergencia, y luego una lista impresa (o manual de referencia rápida) para todo lo demás. El conocimiento de sistemas de todo este módulo — qué hacen realmente el motor, el combustible, el sistema eléctrico y los mandos — es lo que hace que un elemento de la lista tenga sentido en lugar de ser un paso seguido a ciegas.",
+          "keyTakeaway": "Una aeronave monomotor tiene redundancia limitada, así que un fallo de motor implica volar la aeronave y elegir un lugar de aterrizaje antes de solucionar el problema — y el conocimiento de sistemas es lo que da sentido a una lista de comprobación en lugar de ser un paso seguido a ciegas.",
+          "simTip": "La misión de fallo de motor del simulador es exactamente este escenario: volar el planeo, elegir la pista y bajar — la misión se evalúa por acertar ese orden de prioridad, no por reencender el motor."
+        }
+      },
+      "quiz": {
+        "the-powerplant-q1": {
+          "question": "¿Para qué sirve principalmente el control de mezcla?",
+          "options": [
+            "Para ajustar la relación combustible-aire según la densidad del aire a la altitud",
+            "Para controlar cuánto combustible se almacena en cada depósito",
+            "Para cambiar entre el magneto izquierdo y el derecho"
+          ],
+          "explanation": "Empobrecer la mezcla al subir mantiene el motor funcionando de forma eficiente para el aire más enrarecido, en lugar de quemar más combustible del necesario."
+        },
+        "the-powerplant-q2": {
+          "question": "¿Por qué se forma hielo en el carburador incluso con temperatura exterior por encima de cero?",
+          "options": [
+            "La caída de presión y la vaporización del combustible dentro del carburador provocan una fuerte caída de temperatura local",
+            "Solo ocurre al volar dentro de nubes visibles",
+            "Lo causa la contaminación por agua en los depósitos de combustible"
+          ],
+          "explanation": "La propia caída de presión y vaporización del combustible en el carburador puede enfriarlo por debajo de cero internamente, sin importar la temperatura exterior."
+        },
+        "the-powerplant-q3": {
+          "question": "¿Por qué importan instrumentos como la presión y temperatura de aceite si el motor funciona bien?",
+          "options": [
+            "Pueden detectar un problema en desarrollo mucho antes de que el motor falle de forma visible",
+            "Solo son obligatorios en motores por encima de cierta cilindrada",
+            "Existen únicamente para calcular el consumo de combustible"
+          ],
+          "explanation": "Un piloto que solo reacciona cuando el motor empieza a fallar está leyendo los instrumentos demasiado tarde — el escaneo existe para detectar un valor que se desvía a tiempo."
+        },
+        "the-fuel-system-q1": {
+          "question": "¿Por qué los indicadores de combustible en aeronaves ligeras no son la forma principal de controlar el combustible en vuelo?",
+          "options": [
+            "Solo están obligados a ser exactos cuando el depósito marca vacío — el consumo calculado y el tiempo transcurrido son más fiables",
+            "Solo funcionan correctamente en tierra",
+            "Los sustituye por completo la posición del selector de combustible"
+          ],
+          "explanation": "El dato de combustible fiable viene del combustible conocido a bordo, el consumo conocido y el tiempo transcurrido — no de la lectura del indicador en vuelo."
+        },
+        "the-fuel-system-q2": {
+          "question": "¿Qué se comprueba al tomar una muestra del drenaje de combustible de cada depósito antes del vuelo?",
+          "options": [
+            "Agua (que se asienta bajo el combustible) y contaminación",
+            "La cantidad exacta de combustible restante",
+            "Si el selector de combustible está en la posición «ambos»"
+          ],
+          "explanation": "El agua es más densa que el combustible y se asienta en el fondo, que es exactamente donde está situado el drenaje de la muestra para detectarla."
+        },
+        "the-fuel-system-q3": {
+          "question": "¿Qué determina si el combustible llega al motor por gravedad o por bomba?",
+          "options": [
+            "Si los depósitos están montados por encima del motor (gravedad) o no (bomba)",
+            "Si la aeronave tiene tren retráctil o fijo",
+            "El grado de combustible cargado en los depósitos"
+          ],
+          "explanation": "Las aeronaves de ala alta con depósitos por encima del motor pueden alimentar por gravedad; las de ala baja generalmente necesitan una bomba accionada por el motor o eléctrica."
+        },
+        "the-electrical-system-q1": {
+          "question": "¿Qué ocurre al apagar el interruptor maestro?",
+          "options": [
+            "Casi todo lo eléctrico pierde corriente de golpe",
+            "Solo se apagan las luces de cabina",
+            "El motor se detiene"
+          ],
+          "explanation": "El interruptor maestro controla el circuito de batería y alternador como conjunto, así que apagarlo deja sin corriente a casi todos los sistemas eléctricos a la vez."
+        },
+        "the-electrical-system-q2": {
+          "question": "¿Qué suele indicar que salte un disyuntor?",
+          "options": [
+            "El sistema está protegiendo un circuito con fallo antes de que se convierta en un problema mayor",
+            "Un fallo aleatorio que se puede rearmar e ignorar",
+            "La batería está completamente descargada"
+          ],
+          "explanation": "Que salte un disyuntor es el sistema de protección funcionando como está diseñado — rearmar solo después de entender, no de suponer, por qué saltó."
+        },
+        "the-electrical-system-q3": {
+          "question": "¿Por qué sigue funcionando el motor durante un fallo eléctrico total?",
+          "options": [
+            "Funciona con el encendido de sus propios magnetos, independiente del sistema eléctrico de la aeronave",
+            "Cambia automáticamente a alimentación solo con batería",
+            "Los fallos eléctricos solo afectan a aeronaves en tierra"
+          ],
+          "explanation": "El encendido por magneto es autónomo y no depende de la batería ni del alternador de la aeronave, por lo que un fallo eléctrico no detiene el motor."
+        },
+        "flight-controls-q1": {
+          "question": "¿Cuál es la diferencia entre mandos de vuelo primarios y secundarios?",
+          "options": [
+            "Los primarios (alerones, timón de profundidad, timón de dirección) ordenan el giro; los secundarios (flaps, trim) cambian cómo vuela la aeronave sin ordenar un giro",
+            "Los primarios son eléctricos y los secundarios mecánicos",
+            "Los mandos secundarios solo existen en aeronaves con tren retráctil"
+          ],
+          "explanation": "Alerones, timón de profundidad y timón de dirección giran la aeronave sobre sus ejes; flaps y trim ajustan sustentación/resistencia o la presión de mando en su lugar."
+        },
+        "flight-controls-q2": {
+          "question": "¿Qué hace realmente el trim?",
+          "options": [
+            "Alivia la presión constante necesaria para mantener una actitud de cabeceo determinada",
+            "Ordena directamente un ascenso o descenso",
+            "Aumenta sustentación y resistencia para el aterrizaje"
+          ],
+          "explanation": "El trim permite volar con las manos sueltas a una velocidad elegida al eliminar la presión constante — no ordena una maniobra por sí mismo."
+        },
+        "flight-controls-q3": {
+          "question": "¿Por qué se hace una comprobación de mandos «libres y correctos» antes de cada despegue?",
+          "options": [
+            "Para confirmar que toda la cadena mecánica desde el mando hasta la superficie funciona correctamente mientras se está en tierra",
+            "Solo es obligatoria después de un mantenimiento",
+            "Comprueba el sistema eléctrico, no los mandos de vuelo"
+          ],
+          "explanation": "Cualquier eslabón de la cadena de mando — cable, varillaje, unión — es un punto de fallo potencial, y es mucho mejor encontrar un problema en tierra."
+        },
+        "landing-gear-and-brakes-q1": {
+          "question": "¿Cuál es la principal contrapartida del tren de aterrizaje retráctil frente al fijo?",
+          "options": [
+            "Más velocidad de crucero por menor resistencia, a costa de complejidad y riesgo de aterrizaje con el tren recogido",
+            "El tren retráctil siempre es más ligero que el fijo",
+            "El tren retráctil elimina la necesidad de frenos"
+          ],
+          "explanation": "Recoger el tren reduce la resistencia para ganar velocidad de crucero, pero añade un mecanismo que puede fallar y un riesgo real de aterrizar con el tren recogido si se olvida o el mecanismo falla."
+        },
+        "landing-gear-and-brakes-q2": {
+          "question": "¿Cómo ayuda el frenado diferencial durante las operaciones en tierra?",
+          "options": [
+            "Frenar más una rueda principal que la otra cierra los giros y ayuda al control direccional tras la toma de contacto",
+            "Solo funciona cuando la rueda de morro está retraída",
+            "Sustituye por completo la necesidad de los pedales"
+          ],
+          "explanation": "El frenado diferencial respalda el guiado por rueda de morro en giros cerrados y ayuda a mantener el eje si una racha o viento cruzado empuja la aeronave fuera de rumbo tras aterrizar."
+        },
+        "landing-gear-and-brakes-q3": {
+          "question": "¿Por qué confirmar «tren bajado y bloqueado» es obligatorio en la final en aeronaves con tren retráctil?",
+          "options": [
+            "Es el único elemento de configuración de aterrizaje que no da retroalimentación directa si falló en silencio",
+            "Solo es obligatorio en condiciones de viento cruzado",
+            "Sustituye la necesidad de comprobar la velocidad en la aproximación"
+          ],
+          "explanation": "Flaps, velocidad y régimen de descenso dan retroalimentación directa; un tren que falló al extenderse no da ninguna hasta la toma de contacto, por eso necesita una comprobación deliberada."
+        },
+        "pitot-static-and-avionics-q1": {
+          "question": "¿Qué detecta cada uno, el tubo pitot y la toma estática?",
+          "options": [
+            "El pitot detecta la presión del aire de frente; la toma estática detecta la presión del aire exterior sin perturbar",
+            "Ambos detectan la misma presión como redundancia integrada",
+            "El pitot detecta la altitud y la toma estática la velocidad"
+          ],
+          "explanation": "La velocidad se obtiene comparando la presión del pitot (aire de impacto) con la presión estática; la altitud y el régimen vertical vienen solo de la presión estática."
+        },
+        "pitot-static-and-avionics-q2": {
+          "question": "¿Cuál es la diferencia clave entre un pitot bloqueado y una toma estática bloqueada?",
+          "options": [
+            "Un pitot bloqueado afecta sobre todo a la velocidad; una estática bloqueada afecta a velocidad, altitud y variómetro a la vez",
+            "Un pitot bloqueado solo afecta al altímetro",
+            "Ambos producen exactamente los mismos errores de instrumento"
+          ],
+          "explanation": "La toma estática alimenta los tres instrumentos pitot-estática, así que bloquearla afecta a los tres a la vez — por eso existe una fuente estática alternativa."
+        },
+        "pitot-static-and-avionics-q3": {
+          "question": "¿Cuál es la relación entre la aviónica como el piloto automático y el piloto?",
+          "options": [
+            "La aviónica es una ayuda para volar la aeronave, no un sustituto de un piloto que la vigile",
+            "Una vez conectado, el piloto automático elimina la necesidad de vigilancia del piloto",
+            "La aviónica funciona de forma independiente del sistema eléctrico"
+          ],
+          "explanation": "Un piloto automático hace fielmente lo que se le ordenó — el piloto todavía tiene que vigilar qué se le ordenó, y estar listo para intervenir."
+        },
+        "redundancy-and-system-failures-q1": {
+          "question": "¿Cuál es el orden de prioridad correcto justo tras un fallo de motor en una aeronave monomotor?",
+          "options": [
+            "Volar la aeronave (velocidad de mejor planeo) primero, luego elegir un lugar de aterrizaje, y trabajar una lista de reencendido si hay tiempo",
+            "Empezar de inmediato la lista de reencendido antes que nada",
+            "Contactar con ATC primero para declarar la emergencia"
+          ],
+          "explanation": "Pasar los primeros segundos intentando solucionar el problema en lugar de volar la aeronave puede convertir un aterrizaje forzoso superviviente en un accidente de entrada en pérdida y barrena."
+        },
+        "redundancy-and-system-failures-q2": {
+          "question": "¿Por qué tiene una aeronave monomotor límites reales de redundancia frente a una bimotor?",
+          "options": [
+            "Un fallo de motor termina el vuelo en tierra muy pronto, planeado o no",
+            "Las aeronaves monomotor no tienen ningún sistema de respaldo",
+            "La redundancia solo se aplica a los sistemas eléctricos"
+          ],
+          "explanation": "A diferencia de una aeronave bimotor, que puede seguir volando con el motor restante, una monomotor no tiene esa opción una vez falla su único motor."
+        },
+        "redundancy-and-system-failures-q3": {
+          "question": "¿Cuál es el propósito de una mentalidad de lista de comprobación para emergencias?",
+          "options": [
+            "Elementos memorizados de acción inmediata primero, luego una lista impresa para todo lo demás — construida sobre el conocimiento de los sistemas, no sobre pasos ciegos",
+            "Evitar tener que conocer los sistemas por completo",
+            "Sustituir la necesidad de volar la aeronave durante una emergencia"
+          ],
+          "explanation": "El conocimiento de sistemas es lo que hace que cada elemento de la lista tenga sentido, en lugar de ser un paso seguido sin entender por qué."
+        }
+      }
+    },
+    "advanced-atc": {
+      "title": "ATC avanzado",
+      "description": "Sobre la base del módulo de regulaciones: qué exige realmente cada clase de espacio aéreo a un piloto, autorizaciones IFR frente a VFR, fraseología avanzada, servicios de radar y flight following, esperas, procedimientos de emergencia con ATC, y cómo cambian las cosas fuera de tu país.",
+      "lessons": {
+        "airspace-and-atc-requirements": {
+          "title": "Qué exige realmente cada clase de espacio aéreo",
+          "body": "El módulo de regulaciones cubrió las clases de espacio aéreo desde el lado de las distancias a nubes y la autoseparación — a qué distancia mantenerse de las nubes, y dónde el piloto es responsable de su propia separación. Esta lección cubre la otra mitad: qué exige realmente cada clase antes de entrar en ella, y qué espera un controlador de un piloto dentro de ella.\n\nEntrar en espacio aéreo controlado generalmente exige tener establecida comunicación radio bidireccional con la dependencia correspondiente antes de entrar — no basta con hacer la llamada, hace falta recibir respuesta, ya que una llamada sin respuesta no es una autorización. Algunas clases exigen una autorización explícita (una instrucción activa del controlador para entrar u operar); otras solo exigen que la comunicación esté establecida, sin necesidad de más respuesta salvo que el controlador diga lo contrario. Los requisitos de equipamiento — un transpondedor en funcionamiento que informe de la altitud, por ejemplo — suelen aplicarse por encima de ciertas altitudes o dentro de ciertas distancias de aeropuertos concurridos, independientemente de la clase de espacio aéreo.\n\nEl hábito práctico que esto genera es revisar una carta no solo por los mínimos meteorológicos, sino para saber exactamente qué requisito aplica antes de que un vuelo cruce a una nueva clase: ¿es un límite de «llamar y esperar respuesta», o un límite de «llamar y obtener una autorización explícita»? Tratar ambos como si fueran lo mismo es un error común y evitable.",
+          "keyTakeaway": "El espacio aéreo controlado exige comunicación bidireccional establecida como mínimo, y algunas clases exigen además una autorización explícita — saber cuál aplica a un límite concreto antes de cruzarlo es la habilidad práctica.",
+          "simTip": "El simulador no modela en absoluto los requisitos de comunicación con ATC — trata esta lección como el relleno exacto de la capa de vuelo real que el modo de vuelo libre del simulador se salta por completo."
+        },
+        "vfr-and-ifr-clearances": {
+          "title": "Autorizaciones VFR e IFR",
+          "body": "Un vuelo VFR opera generalmente bajo separación por ver y evitar y no necesita autorización para volar simplemente, aunque cierto espacio aéreo específico puede exigir comunicación o autorización para entrar, como se vio en la lección anterior. Un vuelo IFR es distinto por diseño: opera bajo una autorización ATC completa para toda la ruta, la altitud y cualquier cambio en ambas, porque IFR parte de la base de que el piloto puede no ser capaz de ver otro tráfico ni el terreno en absoluto.\n\nUna autorización IFR se repite al controlador (readback), no solo se confirma con un acuse de recibo, precisamente porque una autorización mal entendida y no repetida puede llevar directamente a un conflicto — la ruta, la altitud y cualquier restricción se repiten palabra por palabra en las partes que importan (ruta, altitud y código de transpondedor, como mínimo).\n\nEl flight following VFR es un punto intermedio: un vuelo VFR, que sigue autoseparándose bajo las mismas reglas que cualquier vuelo VFR, puede solicitar a ATC avisos de tráfico según la carga de trabajo del controlador lo permita. Es un servicio, no una autorización — el piloto sigue siendo responsable de la separación y puede ser, y a veces es, retirado del servicio sin que se haya emitido nunca una autorización.",
+          "keyTakeaway": "IFR opera bajo una autorización completa para ruta y altitud, que se repite para confirmar que se entendió correctamente; el flight following VFR es un servicio de avisos de tráfico, no una autorización, y la separación sigue siendo responsabilidad del piloto en ambos casos.",
+          "simTip": "Las misiones del simulador nunca exigen una autorización para empezar o continuar — el vuelo IFR real se construye enteramente alrededor de autorizaciones para las que el simulador no tiene equivalente, algo que conviene recordar antes de asumir que ATC funciona como en el modo de vuelo libre del simulador (que es, dicho de otro modo, no funciona en absoluto)."
+        },
+        "advanced-phraseology": {
+          "title": "Fraseología avanzada",
+          "body": "La fraseología estándar existe para que una frase corta y precisa no pueda confundirse con otra distinta — «autorizado a aterrizar» y «autorizado para la opción» suenan lo bastante parecido como para que usar cualquier cosa que no sea la frase estándar exacta invite a la confusión justo en el momento en que menos se puede permitir. Los números se leen dígito a dígito («uno dos cero» en vez de «ciento veinte») por la misma razón: menos formas de que un número se confunda con otro distinto.\n\nLas repeticiones (readback) no son cortesía opcional — para elementos concretos (asignaciones de pista, asignaciones de altitud, cambios de frecuencia, y cualquier instrucción de mantener posición), una repetición confirma que la instrucción se entendió correctamente, y un controlador que no oye la repetición esperada normalmente la pedirá en lugar de dar por hecho que se entendió. «Recibido» solo confirma que se recibió una transmisión, no que se va a seguir una instrucción — usarlo en lugar de una repetición obligatoria es un error común y confuso.\n\nCuando la fraseología no basta — una situación poco habitual, un interlocutor no nativo en cualquiera de los dos extremos, una frecuencia saturada — el lenguaje llano es el recurso correcto, no el silencio. El objetivo de la fraseología siempre es la comunicación clara, y las frases estándar son la herramienta por defecto para eso, no un reglamento que prevalezca sobre hacerse entender cuando algo no encaja en el patrón estándar.",
+          "keyTakeaway": "La fraseología estándar y los números leídos dígito a dígito existen para evitar que una instrucción se confunda con otra; los elementos obligatorios se repiten explícitamente, y «recibido» no sustituye a una repetición obligatoria.",
+          "simTip": "El simulador no tiene comunicación por radio que practicar en absoluto — la fraseología es una habilidad que hay que aprender con material de formación real y práctica, no con este simulador."
+        },
+        "radar-services-and-flight-following": {
+          "title": "Servicios de radar y flight following",
+          "body": "El radar de ATC muestra al controlador la posición de cada aeronave, y para las que llevan el equipo de transpondedor adecuado, también la altitud y la identificación — lo que hace posibles servicios como avisos de tráfico, secuenciación y vectorización (una instrucción de rumbo concreta para rodear tráfico o dirigirse a un punto) en primer lugar. No todas las aeronaves están obligadas a llevar transpondedor, pero donde se exige uno, es precisamente porque la separación basada en radar depende de él.\n\nEl flight following (introducido en la lección anterior sobre autorizaciones) es uno de varios servicios de radar: avisos de tráfico según la carga de trabajo lo permita para un vuelo VFR, frente a la separación radar para vuelos IFR, que es un servicio activo y continuo, no una cortesía que se ofrece cuando al controlador le sobra capacidad.\n\nUn código de transpondedor — el código de cuatro dígitos configurado en el transpondedor — permite identificar a una aeronave concreta en la pantalla de radar del controlador entre todas las demás. Existen códigos estándar para vuelos VFR que no reciben un servicio concreto, y códigos de emergencia específicos (tratados en la lección siguiente) existen precisamente para que un controlador pueda identificar a una aeronave en dificultades solo con la pantalla de radar, sin necesitar una llamada por radio para saber que algo va mal.",
+          "keyTakeaway": "Los servicios de radar dependen del equipo de transpondedor; el flight following son avisos de tráfico ofrecidos según la carga de trabajo para VFR, mientras que la separación IFR es un servicio activo y continuo — y un código de transpondedor es cómo se identifica a una aeronave concreta en la pantalla.",
+          "simTip": "El HUD y el mini-mapa del simulador ya te muestran exactamente dónde estás — los servicios de radar reales existen porque un controlador y otros pilotos no pueden ver esa información sin un transpondedor y comunicación por radio que la proporcionen."
+        },
+        "holding-patterns": {
+          "title": "Patrones de espera",
+          "body": "Una espera es un patrón en forma de óvalo que se vuela alrededor de un punto fijo — una ayuda a la navegación o un punto GPS — usado para mantener a una aeronave dentro de un espacio aéreo definido, normalmente por tráfico por delante, una pista aún no disponible, o el tiempo necesario para una aproximación que todavía no está lista para volarse. No es una maniobra que el piloto elija; la asigna ATC, con un punto, un sentido de giro y una duración de tramo o cronometraje especificados.\n\nEntrar correctamente en una espera depende del rumbo de la aeronave respecto al rumbo de la espera en el momento de llegar al punto — tres tipos de entrada estándar (directa, en trompo y en paralelo) cubren cualquier ángulo de llegada posible, cada uno pensado para quedar establecido en el óvalo sin pasarse al lado equivocado del patrón.\n\nLas esperas existen porque el espacio aéreo y las pistas son recursos compartidos y finitos — una aeronave no puede simplemente esperar en el sitio, así que se le asigna un trozo de cielo definido en el que dar vueltas, liberando el espacio de delante para lo que sea que esté esperando a estar disponible. Que te asignen una espera no es señal de que algo haya ido mal; es ATC gestionando un recurso finito con las herramientas disponibles.",
+          "keyTakeaway": "Una espera es un patrón en óvalo asignado por ATC alrededor de un punto, al que se entra por uno de tres tipos estándar según el rumbo de llegada, usado para gestionar espacio aéreo o disponibilidad de pista finitos — no algo que el piloto elige por su cuenta.",
+          "simTip": "El área de vuelo del simulador siempre está disponible al instante y no hay nada que esperar — una espera real es la consecuencia directa de un espacio aéreo y unas pistas compartidos y finitos, algo que los cielos despejados del simulador nunca llegan a necesitar."
+        },
+        "emergency-atc-procedures": {
+          "title": "Procedimientos de emergencia con ATC",
+          "body": "Declarar una emergencia a ATC — usando la palabra «Mayday» para una situación de socorro (vida o aeronave en riesgo inmediato) o «Pan-Pan» para una situación urgente que todavía no es de socorro — da al controlador autoridad explícita para dar prioridad a ese vuelo: se puede desviar otro tráfico, despejar una pista, y dejar de lado los procedimientos normales según haga falta. El código de emergencia específico del transpondedor (distinto del código estándar visto en la lección de servicios de radar) hace lo mismo de forma pasiva, marcando la aeronave en el radar incluso sin una llamada por radio.\n\nUn piloto no necesita esperar el permiso de un controlador para declarar una emergencia, ni necesita justificarla extensamente por radio en el momento — basta con una declaración breve y clara del problema, la posición y las intenciones; la explicación completa puede esperar a que la situación inmediata esté resuelta. Esto refleja la misma prioridad de volar la aeronave primero que aparece en la lección de redundancia del módulo de sistemas de la aeronave, aplicada aquí a la llamada por radio en lugar de a los mandos de vuelo.\n\nTras una emergencia, un controlador normalmente pedirá más detalles en cuanto la situación inmediata lo permita — para fines de búsqueda y rescate si hace falta, o simplemente para entender qué pasó. Nada de eso cambia la prioridad de la primera respuesta: volar, navegar, comunicar, en ese orden, siendo la propia declaración de emergencia parte de «comunicar», no algo que tenga que ocurrir antes que las otras dos.",
+          "keyTakeaway": "«Mayday» (socorro) y «Pan-Pan» (urgencia) dan a ATC autoridad explícita para dar prioridad a un vuelo; declarar uno no exige permiso ni una explicación larga — basta una declaración breve de problema, posición e intenciones, después de volar la aeronave primero.",
+          "simTip": "Las misiones de fallo de motor y recuperación de pérdida del simulador son la mitad de «volar» de esta lección sin la mitad de «comunicar» — no hay ATC a quien llamar, así que trata cada misión como práctica para la parte que vendría después de una llamada de emergencia real."
+        },
+        "international-differences": {
+          "title": "Diferencias internacionales y de la OACI",
+          "body": "La OACI (Organización de Aviación Civil Internacional) establece normas y prácticas recomendadas en las que la mayoría de países basan sus propias regulaciones de aviación, lo que explica por qué la fraseología, las clases de espacio aéreo y muchos procedimientos son ampliamente similares en todo el mundo — pero «ampliamente similares» no es «idénticos», y un piloto que vuele hacia espacio aéreo poco familiar necesita revisar las diferencias concretas en lugar de asumir que se aplican las reglas de su propio país en todas partes.\n\nEntre las diferencias habituales están las unidades (la altitud en pies es casi universal, pero algunos países usan altitudes métricas o ajustes de altímetro QFE en vez de QNH), variaciones concretas de fraseología, y diferencias en lo que se exige para entrar en una clase de espacio aéreo dada, incluso cuando la letra de la clase es la misma. Los mínimos VFR, los requisitos de equipamiento, e incluso a qué lado de una pista esperar otro tráfico pueden variar según el país de formas que no resultan obvias solo con conocimientos generales de aviación.\n\nLa conclusión práctica no es memorizar las reglas de cada país — es construir el hábito de comprobar, específicamente, qué es distinto antes de volar a un sitio nuevo, del mismo modo que el hábito de NOTAM y briefing del módulo de planificación de vuelo se aplica antes de cualquier vuelo poco familiar, extendido aquí para cubrir el propio entorno regulatorio y no solo el tiempo y los peligros temporales.",
+          "keyTakeaway": "Los estándares de la OACI hacen que la aviación sea ampliamente similar en todo el mundo pero no idéntica — los ajustes de altímetro, los detalles de fraseología y los requisitos de espacio aéreo pueden variar según el país, así que comprobar las diferencias concretas antes de volar a un sitio nuevo es la habilidad real.",
+          "simTip": "El simulador usa un mismo conjunto de convenciones en toda su área de vuelo — el vuelo internacional real exige comprobar activamente qué es distinto antes de salir, un hábito que este simulador no tiene forma de ejercitar."
+        }
+      },
+      "quiz": {
+        "airspace-and-atc-requirements-q1": {
+          "question": "¿Qué exige generalmente entrar en espacio aéreo controlado como mínimo?",
+          "options": [
+            "Comunicación radio bidireccional establecida con la dependencia correspondiente antes de entrar",
+            "Un plan de vuelo presentado, independientemente de la clase de espacio aéreo",
+            "Un transpondedor emitiendo el código VFR estándar"
+          ],
+          "explanation": "La comunicación debe estar realmente establecida — recibir respuesta, no solo hacer una llamada sin contestación — antes de entrar en la mayoría del espacio aéreo controlado."
+        },
+        "airspace-and-atc-requirements-q2": {
+          "question": "¿Cuál es la diferencia entre un espacio aéreo que exige «comunicación establecida» y uno que exige «autorización explícita»?",
+          "options": [
+            "Algunas clases solo exigen comunicación establecida, sin necesitar más respuesta salvo que el controlador diga lo contrario; otras exigen una instrucción activa de autorización",
+            "No hay diferencia — todo el espacio aéreo controlado exige una autorización explícita",
+            "La autorización explícita solo se exige a vuelos IFR, nunca VFR"
+          ],
+          "explanation": "Distintas clases de espacio aéreo fijan requisitos distintos, y tratar un límite de solo comunicación como si exigiera autorización es un error común."
+        },
+        "airspace-and-atc-requirements-q3": {
+          "question": "¿Por qué pueden aplicarse requisitos de equipamiento como un transpondedor en funcionamiento independientemente de la clase de espacio aéreo?",
+          "options": [
+            "Suelen aplicarse por altitud o proximidad a aeropuertos concurridos, con independencia de la propia clase de espacio aéreo",
+            "El transpondedor solo se exige dentro del espacio aéreo Clase A",
+            "Los requisitos de equipamiento los fija cada piloto individualmente"
+          ],
+          "explanation": "Los requisitos de equipamiento basados en altitud y proximidad existen junto a los requisitos de clase de espacio aéreo, no solo dentro de ellos."
+        },
+        "vfr-and-ifr-clearances-q1": {
+          "question": "¿Por qué se exige una autorización IFR para toda la ruta y altitud, a diferencia de las operaciones VFR típicas?",
+          "options": [
+            "IFR parte de la base de que el piloto puede no ser capaz de ver otro tráfico ni el terreno en absoluto",
+            "Los vuelos IFR siempre se realizan de noche",
+            "Las autorizaciones IFR son opcionales pero recomendadas"
+          ],
+          "explanation": "Como IFR no depende de la separación visual, ATC gestiona activamente toda la ruta y la altitud mediante una autorización en lugar de dejar la separación al ver y evitar."
+        },
+        "vfr-and-ifr-clearances-q2": {
+          "question": "¿Por qué se repite (readback) una autorización IFR en lugar de solo confirmarla?",
+          "options": [
+            "Una autorización mal entendida y no repetida puede llevar directamente a un conflicto",
+            "Las repeticiones solo se exigen para el flight following VFR",
+            "Es una cortesía sin propósito operativo"
+          ],
+          "explanation": "Repetir ruta, altitud y código de transpondedor confirma que la autorización se entendió correctamente antes de actuar conforme a ella."
+        },
+        "vfr-and-ifr-clearances-q3": {
+          "question": "¿Qué es el flight following VFR?",
+          "options": [
+            "Un servicio de avisos de tráfico ofrecido según la carga de trabajo lo permita, no una autorización",
+            "Una autorización obligatoria exigida a todos los vuelos VFR",
+            "El equivalente VFR de la separación radar IFR"
+          ],
+          "explanation": "El flight following es un servicio, no una autorización — el piloto VFR sigue siendo responsable de la separación y puede ser retirado del servicio en cualquier momento."
+        },
+        "advanced-phraseology-q1": {
+          "question": "¿Por qué se leen los números dígito a dígito («uno dos cero») en vez de como número completo?",
+          "options": [
+            "Reduce las formas en que un número puede confundirse con otro distinto",
+            "Es más rápido de decir que el número completo",
+            "Solo se hace para asignaciones de altitud, nunca para frecuencias"
+          ],
+          "explanation": "Leer los dígitos por separado es una elección deliberada para minimizar la posibilidad de confundir un número con otro en condiciones de radio."
+        },
+        "advanced-phraseology-q2": {
+          "question": "¿Por qué «recibido» no es un sustituto aceptable de una repetición obligatoria?",
+          "options": [
+            "«Recibido» solo confirma que se recibió una transmisión, no que se va a seguir la instrucción",
+            "«Recibido» no es fraseología estándar en absoluto",
+            "Las repeticiones siempre son opcionales sin importar la instrucción"
+          ],
+          "explanation": "Un controlador necesita confirmación de que la instrucción concreta se entendió correctamente, algo que «recibido» por sí solo no proporciona."
+        },
+        "advanced-phraseology-q3": {
+          "question": "¿Cuál es el recurso correcto cuando la fraseología estándar no basta?",
+          "options": [
+            "El lenguaje llano, ya que el objetivo siempre es la comunicación clara",
+            "El silencio, hasta poder usar correctamente la fraseología estándar",
+            "Repetir la misma frase estándar más alto"
+          ],
+          "explanation": "La fraseología estándar es una herramienta para la claridad, no un reglamento que prevalezca sobre hacerse entender cuando una situación no encaja en el patrón estándar."
+        },
+        "radar-services-and-flight-following-q1": {
+          "question": "¿Qué hace posibles servicios como la vectorización y los avisos de tráfico?",
+          "options": [
+            "El radar de ATC mostrando la posición de la aeronave, y para las equipadas, altitud e identificación vía transpondedor",
+            "Que todas las aeronaves estén obligadas a presentar un plan de vuelo IFR",
+            "Que los pilotos informen de su propia posición por radio cada pocos minutos"
+          ],
+          "explanation": "Los servicios basados en radar dependen de que la aeronave sea visible en la pantalla del controlador, lo que para altitud e identificación exige el equipo de transpondedor adecuado."
+        },
+        "radar-services-and-flight-following-q2": {
+          "question": "¿En qué se diferencia el flight following de la separación radar IFR?",
+          "options": [
+            "El flight following se ofrece según la carga de trabajo lo permita; la separación IFR es un servicio activo y continuo",
+            "Son el mismo servicio con dos nombres distintos",
+            "El flight following solo está disponible para vuelos IFR"
+          ],
+          "explanation": "La separación IFR es un servicio continuo y garantizado; el flight following VFR es una cortesía que se ofrece cuando al controlador le sobra capacidad."
+        },
+        "radar-services-and-flight-following-q3": {
+          "question": "¿Cuál es el propósito de un código de transpondedor?",
+          "options": [
+            "Permite identificar a una aeronave concreta en la pantalla de radar del controlador entre todas las demás",
+            "Fija la altitud de crucero asignada a la aeronave",
+            "Solo se usa durante una emergencia"
+          ],
+          "explanation": "Un código de transpondedor de cuatro dígitos distingue a una aeronave de las demás en el radar; también hay códigos específicos reservados para vuelo VFR estándar y para emergencias."
+        },
+        "holding-patterns-q1": {
+          "question": "¿Por qué se vuela una espera, y quién decide entrar en una?",
+          "options": [
+            "Para mantener a una aeronave dentro de un espacio aéreo definido cuando una pista o ruta por delante todavía no está disponible — la asigna ATC, no la elige el piloto",
+            "Es una maniobra que el piloto elige para practicar en cualquier momento",
+            "Solo se usa durante un fallo de motor"
+          ],
+          "explanation": "Una espera gestiona la disponibilidad finita de espacio aéreo y pista, y la asigna específicamente ATC con un punto, sentido de giro y duración de tramo o cronometraje."
+        },
+        "holding-patterns-q2": {
+          "question": "¿Qué determina cuál de las tres entradas estándar de espera usa un piloto?",
+          "options": [
+            "El rumbo de la aeronave respecto al rumbo de la espera al llegar al punto",
+            "La preferencia personal del piloto",
+            "Si el vuelo es VFR o IFR"
+          ],
+          "explanation": "Las entradas directa, en trompo y en paralelo corresponden cada una a un ángulo de llegada distinto, cubriendo entre las tres cualquier aproximación posible al punto."
+        },
+        "holding-patterns-q3": {
+          "question": "¿Qué indica generalmente que asignen una espera a un vuelo?",
+          "options": [
+            "Que ATC está gestionando un recurso compartido finito como el espacio aéreo o una pista, no que algo haya ido mal",
+            "Que se ha denegado por completo la autorización del vuelo",
+            "Que la aeronave tiene una avería del sistema"
+          ],
+          "explanation": "Una espera es una herramienta normal de gestión de tráfico, no una señal de un problema con el vuelo."
+        },
+        "emergency-atc-procedures-q1": {
+          "question": "¿Cuál es la diferencia entre «Mayday» y «Pan-Pan»?",
+          "options": [
+            "«Mayday» es para socorro (vida o aeronave en riesgo inmediato); «Pan-Pan» es para urgencia que todavía no es socorro",
+            "Significan lo mismo en distintos países",
+            "«Pan-Pan» solo se usa para emergencias médicas"
+          ],
+          "explanation": "Ambos dan a ATC autoridad para priorizar el vuelo, pero indican al controlador niveles de gravedad distintos."
+        },
+        "emergency-atc-procedures-q2": {
+          "question": "¿Necesita un piloto el permiso de un controlador para declarar una emergencia?",
+          "options": [
+            "No — un piloto puede declarar una emergencia y dar una breve declaración de problema, posición e intenciones sin esperar permiso",
+            "Sí, y primero se exige una justificación completa por escrito",
+            "Solo los vuelos IFR pueden declarar una emergencia"
+          ],
+          "explanation": "Declarar una emergencia no requiere permiso previo; basta una declaración breve y clara, con el detalle completo llegando en cuanto la situación lo permita."
+        },
+        "emergency-atc-procedures-q3": {
+          "question": "¿Dónde encaja declarar una emergencia en la prioridad volar-navegar-comunicar?",
+          "options": [
+            "Forma parte de «comunicar» — antes van volar la aeronave y navegar",
+            "Debe ocurrir antes de volar la aeronave en todos los casos",
+            "Sustituye la necesidad de navegar hacia un lugar seguro de aterrizaje"
+          ],
+          "explanation": "Volar la aeronave y navegar hacia la seguridad tienen prioridad; declarar la emergencia es el paso de comunicar que viene después."
+        },
+        "international-differences-q1": {
+          "question": "¿Qué papel juega la OACI en la aviación internacional?",
+          "options": [
+            "Establece normas y prácticas recomendadas en las que la mayoría de países basan sus propias regulaciones",
+            "Controla directamente el tráfico aéreo en cada país miembro",
+            "Solo se aplica a operaciones de líneas aéreas, no a la aviación general"
+          ],
+          "explanation": "Los estándares de la OACI hacen que la aviación sea ampliamente similar en todo el mundo, por lo que la fraseología y las clases de espacio aéreo resultan familiares al cruzar fronteras — pero no son idénticas en todas partes."
+        },
+        "international-differences-q2": {
+          "question": "¿Cuál de estas es un ejemplo real de diferencia de un país a otro que puede encontrarse?",
+          "options": [
+            "Altitudes métricas o ajustes de altímetro QFE en vez de QNH en pies",
+            "Los tres ejes de rotación de la aeronave",
+            "El ciclo de cuatro tiempos del motor"
+          ],
+          "explanation": "Las convenciones de ajuste de altímetro y las unidades de altitud son una diferencia real habitual entre países; la aerodinámica básica y el funcionamiento del motor no lo son."
+        },
+        "international-differences-q3": {
+          "question": "¿Cuál es el hábito práctico que recomienda esta lección antes de volar a un sitio poco familiar?",
+          "options": [
+            "Comprobar activamente qué es concretamente distinto en los procedimientos de ese país, en lugar de asumir que se aplican las reglas del propio",
+            "Memorizar de antemano toda la regulación de cada país",
+            "Evitar por completo los vuelos internacionales hasta dominar con fluidez cada regla local"
+          ],
+          "explanation": "El enfoque realista es comprobar las diferencias concretas antes de un vuelo poco familiar, el mismo hábito de NOTAM y briefing meteorológico aplicado al entorno regulatorio."
+        }
+      }
     }
   },
   "passedTag": "Aprobado",
