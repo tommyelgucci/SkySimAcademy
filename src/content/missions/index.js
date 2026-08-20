@@ -26,6 +26,10 @@
  *  - { type: "stallRecovery", minAltitude, recoverSpeed }
  *    → provocar la pérdida por encima de minAltitude y recuperar
  *      velocidad ≥ recoverSpeed sin tocar tierra ni chocar
+ *  - { type: "precisionLanding", maxVerticalSpeed, maxOffCenter }
+ *    → aterrizar con el mismo criterio que una nota de 4-5★ del informe de
+ *      aterrizaje (FlightEvaluator): suave, centrado y alineado con el eje
+ *      de la pista, no solo "tocar despacio" como exige "landing"
  *
  * Las misiones se agrupan en niveles con licencia en
  * src/content/levels/index.js (LEVELS referencia estos ids).
@@ -91,5 +95,11 @@ export const MISSIONS = [
     icon: "life-buoy",
     requiresModule: "principles-of-flight",
     goal: { type: "stallRecovery", minAltitude: 100, recoverSpeed: 22 },
+  },
+  {
+    id: "precision-landing",
+    icon: "target",
+    requiresModule: "principles-of-flight",
+    goal: { type: "precisionLanding", maxVerticalSpeed: 3, maxOffCenter: 5 },
   },
 ];

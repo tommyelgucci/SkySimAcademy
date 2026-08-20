@@ -26,6 +26,7 @@ import {
   RotateCw,
   Route,
   Scale,
+  Target,
   TriangleAlert,
   Wind,
 } from "lucide-react";
@@ -44,6 +45,7 @@ const CONTENT_ICONS = {
   "move-horizontal": MoveHorizontal,
   "rotate-cw": RotateCw,
   route: Route,
+  target: Target,
   "triangle-alert": TriangleAlert,
   wind: Wind,
   scale: Scale,

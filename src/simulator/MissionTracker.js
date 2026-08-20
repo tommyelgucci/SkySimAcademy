@@ -15,6 +15,26 @@ export class MissionTracker {
   }
 
   /**
+   * Para `type: "precisionLanding"` — el toque se evalúa con las mismas
+   * métricas que la nota de estrellas (ver FlightEvaluator#grade), no con
+   * lo que ve MissionTracker por sí solo (que no conoce la posición de la
+   * pista). SimulatorView llama a esto con el informe que ya consume del
+   * evaluador para el HUD, en vez de que cada uno mida el aterrizaje por su
+   * cuenta.
+   * @param {{verticalSpeed:number, offCenter:number, aligned:boolean}|null} landing
+   */
+  checkLanding(landing) {
+    if (!landing || this.done || this.goal?.type !== "precisionLanding") return;
+    if (
+      landing.verticalSpeed <= this.goal.maxVerticalSpeed &&
+      landing.offCenter <= this.goal.maxOffCenter &&
+      landing.aligned
+    ) {
+      this.done = true;
+    }
+  }
+
+  /**
    * @param {import("./FlightEngine.js").FlightEngine} engine
    * @param {number} dt
    */

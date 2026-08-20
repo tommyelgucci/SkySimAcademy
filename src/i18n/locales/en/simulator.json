@@ -93,6 +93,10 @@
     "stall-recovery": {
       "title": "Stall recovery",
       "objective": "Above 100 m, provoke a stall and recover flying speed before you lose altitude."
+    },
+    "precision-landing": {
+      "title": "Precision landing",
+      "objective": "Land smoothly, centered and aligned with the runway — the same standard as a 4-5★ landing grade."
     }
   },
   "timeUp": {

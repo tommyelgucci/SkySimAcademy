@@ -93,6 +93,10 @@
     "stall-recovery": {
       "title": "Erholung aus dem Strömungsabriss",
       "objective": "Über 100 m provozierst du einen Strömungsabriss und fängst wieder Fahrt auf, bevor du an Höhe verlierst."
+    },
+    "precision-landing": {
+      "title": "Punktlandung",
+      "objective": "Lande sanft, mittig und in der Landebahnachse ausgerichtet — derselbe Maßstab wie eine 4-5★-Bewertung."
     }
   },
   "timeUp": {
