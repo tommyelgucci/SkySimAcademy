@@ -1,0 +1,82 @@
+{
+  "id": "advanced-atc",
+  "icon": "tower-control",
+  "order": 13,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "airspace-and-atc-requirements",
+      "quiz": {
+        "questions": [
+          { "id": "airspace-and-atc-requirements-q1", "correct": 0 },
+          { "id": "airspace-and-atc-requirements-q2", "correct": 0 },
+          { "id": "airspace-and-atc-requirements-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "vfr-and-ifr-clearances",
+      "quiz": {
+        "questions": [
+          { "id": "vfr-and-ifr-clearances-q1", "correct": 0 },
+          { "id": "vfr-and-ifr-clearances-q2", "correct": 0 },
+          { "id": "vfr-and-ifr-clearances-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "advanced-phraseology",
+      "quiz": {
+        "questions": [
+          { "id": "advanced-phraseology-q1", "correct": 0 },
+          { "id": "advanced-phraseology-q2", "correct": 0 },
+          { "id": "advanced-phraseology-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "radar-services-and-flight-following",
+      "quiz": {
+        "questions": [
+          { "id": "radar-services-and-flight-following-q1", "correct": 0 },
+          { "id": "radar-services-and-flight-following-q2", "correct": 0 },
+          { "id": "radar-services-and-flight-following-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "holding-patterns",
+      "quiz": {
+        "questions": [
+          { "id": "holding-patterns-q1", "correct": 0 },
+          { "id": "holding-patterns-q2", "correct": 0 },
+          { "id": "holding-patterns-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "emergency-atc-procedures",
+      "quiz": {
+        "questions": [
+          { "id": "emergency-atc-procedures-q1", "correct": 0 },
+          { "id": "emergency-atc-procedures-q2", "correct": 0 },
+          { "id": "emergency-atc-procedures-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "international-differences",
+      "quiz": {
+        "questions": [
+          { "id": "international-differences-q1", "correct": 0 },
+          { "id": "international-differences-q2", "correct": 0 },
+          { "id": "international-differences-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

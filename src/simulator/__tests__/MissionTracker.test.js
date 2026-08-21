@@ -177,4 +177,44 @@ describe("MissionTracker", () => {
     tracker.update(engineState({ altitude: 60, stalled: false, airspeed: 25, grounded: false }), 1);
     expect(tracker.done).toBe(false);
   });
+
+  describe("precisionLanding (informe de FlightEvaluator, no de engineState)", () => {
+    const goal = { type: "precisionLanding", maxVerticalSpeed: 3, maxOffCenter: 5 };
+
+    it("se completa con un aterrizaje suave, centrado y alineado", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.checkLanding({ verticalSpeed: 2, offCenter: 3, aligned: true });
+      expect(tracker.done).toBe(true);
+    });
+
+    it("no cuenta si el descenso fue demasiado brusco", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.checkLanding({ verticalSpeed: 5, offCenter: 3, aligned: true });
+      expect(tracker.done).toBe(false);
+    });
+
+    it("no cuenta si tocó lejos del centro de la pista", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.checkLanding({ verticalSpeed: 2, offCenter: 8, aligned: true });
+      expect(tracker.done).toBe(false);
+    });
+
+    it("no cuenta si no quedó alineado con el eje de la pista", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.checkLanding({ verticalSpeed: 2, offCenter: 3, aligned: false });
+      expect(tracker.done).toBe(false);
+    });
+
+    it("sin informe (null) no hace nada", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.checkLanding(null);
+      expect(tracker.done).toBe(false);
+    });
+
+    it("un aterrizaje de otra misión no completa precisionLanding", () => {
+      const tracker = new MissionTracker({ goal: { type: "landing", minAltitude: 60 } });
+      tracker.checkLanding({ verticalSpeed: 1, offCenter: 1, aligned: true });
+      expect(tracker.done).toBe(false);
+    });
+  });
 });

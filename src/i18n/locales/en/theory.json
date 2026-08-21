@@ -2595,6 +2595,484 @@
           "explanation": "Deciding in advance protects the decision from pressure that tends to erode judgment in the moment."
         }
       }
+    },
+    "aircraft-systems": {
+      "title": "Aircraft systems",
+      "description": "How a light aircraft actually works: the powerplant, fuel system, electrical system, flight controls, landing gear and brakes, pitot-static instruments and avionics, and what redundancy — or the lack of it — means for a single-engine aircraft.",
+      "lessons": {
+        "the-powerplant": {
+          "title": "The powerplant",
+          "body": "A typical training aircraft is powered by a piston engine turning a fixed or constant-speed propeller. Fuel and air are mixed, compressed, ignited by a spark plug, and the resulting expansion drives pistons connected to a crankshaft — the same four-stroke cycle as a car engine, just built to run reliably at a steady high power setting for hours at a time.\n\nThe mixture control lets the pilot adjust the fuel-to-air ratio for the air density at altitude — leaning it as altitude increases keeps the engine running efficiently instead of running unnecessarily rich. Carburetor ice, caused by the sudden pressure drop and fuel vaporization inside the carburetor even in above-freezing outside air, is a hazard specific to carbureted engines and is managed with carburetor heat.\n\nEngine instruments — oil pressure, oil temperature, RPM (or manifold pressure on constant-speed props), cylinder head temperature — exist because the engine can be damaged well before it visibly fails. A pilot who only reacts to a rough-running or stopped engine is reading the instruments too late; the point of a scan is to catch a drifting oil pressure or temperature while there's still time to act.",
+          "keyTakeaway": "The engine is a four-stroke piston engine turning a propeller, managed with mixture and (on carbureted engines) carb heat, and its instruments exist to catch a developing problem long before the engine actually fails.",
+          "simTip": "The simulator's engine-out mission cuts power abruptly rather than modeling a gradual oil-pressure decline — treat every real engine instrument as the earlier warning the simulator doesn't give you."
+        },
+        "the-fuel-system": {
+          "title": "The fuel system",
+          "body": "Fuel is stored in wing or fuselage tanks and reaches the engine either by gravity (tanks mounted above the engine, common on high-wing trainers) or by an engine-driven or electric pump (common on low-wing aircraft where gravity alone wouldn't work). A fuel selector lets the pilot choose which tank feeds the engine — left, right, both, or off — and managing it correctly matters as much as having enough fuel in the first place.\n\nFuel gauges in light aircraft are notoriously imprecise and are only required to be accurate when the tank reads empty; the reliable numbers are the ones calculated on the ground — known fuel on board, known burn rate, elapsed time — not the needle in flight. That's exactly the total-fuel-required math covered in the flight planning module, and it exists precisely because the gauge alone isn't trustworthy.\n\nPreflight fuel checks go beyond quantity: sampling fuel from each tank's drain checks for water (which settles below fuel, since it's denser) and contamination, and confirming the correct fuel grade was used matters because the wrong fuel can cause serious engine problems, sometimes without any immediate warning.",
+          "keyTakeaway": "Fuel reaches the engine by gravity or by pump depending on tank position, the fuel selector determines which tank is actually feeding the engine, and the gauge is a backup — the trustworthy number is the one calculated on the ground.",
+          "simTip": "The simulator gives you unlimited fuel by design, so it can't teach fuel management directly — treat the total-fuel-required math from the flight planning module as the real lesson, done on paper before every real flight."
+        },
+        "the-electrical-system": {
+          "title": "The electrical system",
+          "body": "A battery provides electrical power for engine start and as a backup, while an alternator (or generator on older aircraft), driven by the engine once running, supplies power and recharges the battery in flight. The master switch controls both — turning it off, intentionally or as part of an emergency checklist, removes power from nearly everything electrical at once.\n\nElectrical loads are split into what's essential to keep flying and what isn't: flight instruments powered electrically, position and landing lights, and the stall warning are essential; cabin lighting and some avionics are not. A separate avionics switch or breaker lets radios and other electronics be shut down independently of the master switch, which matters when isolating a problem or reducing load during an electrical fault.\n\nCircuit breakers protect individual circuits the way a home electrical panel does — a breaker popping is the system doing its job, cutting power to a faulted circuit before it becomes a wiring fire, not a random malfunction to just reset and ignore. A full electrical failure doesn't stop the engine (which runs on ignition from its own magnetos, covered in the next lesson's redundancy discussion) but it does take away radios, some lights, and some instruments — which is exactly why some instruments have a non-electrical backup.",
+          "keyTakeaway": "The battery and alternator supply electrical power, the master switch controls it all at once, and a circuit breaker popping is the system protecting a faulted circuit — not something to casually reset without knowing why it tripped.",
+          "simTip": "The simulator doesn't model electrical failures or circuit breakers, so this lesson has no matching mission — treat it as background for reading a real aircraft's checklist, where an electrical-fire or alternator-failure procedure will assume exactly this knowledge."
+        },
+        "flight-controls": {
+          "title": "Flight controls",
+          "body": "Primary flight controls — the ailerons, elevator, and rudder — move the control surfaces that rotate the aircraft around its three axes, connected to the yoke or stick and rudder pedals by cables, pushrods, or (in more advanced aircraft) electrical signals. This is the same roll-pitch-yaw relationship covered in the principles of flight module, but here it's the hardware that makes it happen, not just the aerodynamics.\n\nSecondary flight controls change how the aircraft flies without directly commanding a rotation. Flaps extend from the wing's trailing edge to increase lift and drag at lower speeds, steepening the approach and lowering the stall speed for landing — which is why a flap setting is part of a stabilized approach, not just an optional extra. Trim doesn't move a control surface to command a maneuver; it relieves the constant control pressure needed to hold a given pitch attitude, letting the pilot fly hands-off at a chosen airspeed instead of fighting the same pressure for the whole flight.\n\nA control input reaches its surface through a physical or electrical chain, and any link in that chain — a cable, a pushrod, a linkage — is a potential failure point, which is part of why control checks (\"free and correct\") are a standard item before every takeoff: confirming the full chain works correctly while still on the ground, where a problem is inconvenient rather than dangerous.",
+          "keyTakeaway": "Primary controls (ailerons, elevator, rudder) command rotation around the three axes; flaps and trim are secondary controls that change lift/drag or relieve control pressure without commanding a maneuver by themselves.",
+          "simTip": "The simulator's controls respond instantly with no cable slack or linkage feel — a real preflight control check exists specifically to catch a problem the simulator has no way to reproduce."
+        },
+        "landing-gear-and-brakes": {
+          "title": "Landing gear and brakes",
+          "body": "Most training aircraft use fixed tricycle gear — a nosewheel and two main wheels, permanently extended — which is simpler and forgiving on landing compared to a taildragger's two main wheels and a small tailwheel, or to retractable gear, which trades the drag (and complexity, and failure points) of fixed gear for cruise speed at the cost of a gear-up landing being a real possibility if a pilot forgets or the mechanism fails.\n\nGround steering usually comes from the nosewheel (linked to the rudder pedals on many trainers) for gentle turns, backed up by differential braking — braking one main wheel more than the other — for tighter turns or on aircraft without direct nosewheel linkage. Differential braking during a normal landing rollout, rather than only steering, is also part of directional control if a crosswind or gust pushes the aircraft off the centerline after touchdown.\n\nOn a retractable-gear aircraft, confirming the gear is down and locked is a required item on final approach precisely because it's the one landing-configuration item that isn't obvious by feel — everything else (flaps, airspeed, sink rate) gives the pilot direct feedback, while a gear that silently failed to extend gives none until touchdown.",
+          "keyTakeaway": "Fixed tricycle gear is simple and forgiving; retractable gear trades that simplicity for cruise speed, which is exactly why confirming gear-down on final is a required, non-obvious check on those aircraft.",
+          "simTip": "The simulator's aircraft has fixed gear, so there's no gear-up risk to practice — the closest equivalent is the precision landing mission's centered, aligned touchdown, which is the part of a landing fixed gear doesn't excuse you from getting right."
+        },
+        "pitot-static-and-avionics": {
+          "title": "Pitot-static instruments and avionics",
+          "body": "The airspeed indicator, altimeter, and vertical speed indicator — covered from the reading side in the cockpit instruments module — are driven by two very simple inputs: the pitot tube, which senses the pressure of oncoming air, and the static port, which senses undisturbed outside air pressure at the aircraft's current altitude. Nearly every pitot-static failure traces back to one of those two openings being blocked.\n\nA blocked pitot tube — commonly from ice, insects, or a forgotten cover — mainly affects the airspeed indicator, which is why aircraft that fly in visible moisture near freezing temperatures have pitot heat to keep the opening clear. A blocked static port affects all three instruments at once, which is why aircraft carry an alternate static source: a backup port, usually inside the cabin, that can be selected if the primary is blocked.\n\nAvionics — communication and navigation radios, the transponder that reports the aircraft's position and altitude to ATC radar, GPS, and on more equipped aircraft an autopilot — sit downstream of the electrical system covered in an earlier lesson and are aids to flying the aircraft, not a replacement for it. An autopilot that's doing exactly what it was told still needs a pilot watching what it was told to do.",
+          "keyTakeaway": "The pitot tube and static port feed the airspeed indicator, altimeter, and VSI; a blocked pitot mainly affects airspeed (fixed with pitot heat), while a blocked static port affects all three (fixed with an alternate static source).",
+          "simTip": "The simulator's instruments are always perfectly accurate, with no icing or blockage possible — read this lesson as the real-world caveat behind every number the simulator's HUD shows you without question."
+        },
+        "redundancy-and-system-failures": {
+          "title": "Redundancy and system failures",
+          "body": "A single-engine piston aircraft has real limits on redundancy: one engine, one set of flight controls, often one alternator. Some redundancy still exists within that — most engines have dual magnetos (independent ignition systems, each capable of running the engine alone), and some instruments have a non-electrical backup, as covered in the pitot-static lesson. But an engine failure in a single-engine aircraft, unlike in a multi-engine aircraft or airliner, means the flight is going to end on the ground somewhere very soon, planned or not.\n\nThat's the reasoning behind the engine-out mission's structure: once the engine fails, the priority order is fly the aircraft first (establish best-glide speed), pick a landing site within reach, then work any restart checklist if time allows — not the reverse. A pilot who spends the first precious seconds after an engine failure troubleshooting instead of flying the aircraft can turn a survivable forced landing into a stall-spin accident.\n\nThe broader habit this module points toward is a checklist mentality: memorized immediate items for the first seconds of an emergency, then a printed checklist (or quick-reference handbook) for everything after that. Systems knowledge from this whole module — what the powerplant, fuel, electrical, and control systems actually do — is what makes a checklist item make sense instead of being a step followed blindly.",
+          "keyTakeaway": "A single-engine aircraft has limited redundancy, so an engine failure means flying the aircraft and picking a landing site come before troubleshooting — and systems knowledge is what makes a checklist meaningful instead of a step followed blindly.",
+          "simTip": "The simulator's engine-out mission is exactly this scenario: fly the glide, pick the runway, and get down — the mission is graded on getting that priority order right, not on restarting the engine."
+        }
+      },
+      "quiz": {
+        "the-powerplant-q1": {
+          "question": "What is the mixture control primarily used for?",
+          "options": [
+            "Adjusting the fuel-to-air ratio for the air density at altitude",
+            "Controlling how much fuel is stored in each tank",
+            "Switching between the left and right magneto"
+          ],
+          "explanation": "Leaning the mixture as altitude increases keeps the engine running efficiently for the thinner air, rather than running unnecessarily rich."
+        },
+        "the-powerplant-q2": {
+          "question": "Why does carburetor icing happen even in above-freezing outside air?",
+          "options": [
+            "The pressure drop and fuel vaporization inside the carburetor cause a sharp local temperature drop",
+            "It only happens when flying through visible cloud",
+            "It's caused by water contamination in the fuel tanks"
+          ],
+          "explanation": "The carburetor's own pressure drop and fuel vaporization can chill it below freezing internally, regardless of the outside air temperature."
+        },
+        "the-powerplant-q3": {
+          "question": "Why do engine instruments like oil pressure and temperature matter if the engine is running fine?",
+          "options": [
+            "They can catch a developing problem well before the engine visibly fails",
+            "They're only required for engines over a certain size",
+            "They exist solely to calculate fuel burn"
+          ],
+          "explanation": "A pilot who only reacts once the engine runs rough is reading the instruments too late — the scan exists to catch a drifting value early."
+        },
+        "the-fuel-system-q1": {
+          "question": "Why are fuel gauges in light aircraft not the primary way to track fuel in flight?",
+          "options": [
+            "They're only required to be accurate when the tank reads empty — calculated burn rate and elapsed time are more reliable",
+            "They only work correctly on the ground",
+            "They're replaced entirely by the fuel selector position"
+          ],
+          "explanation": "The trustworthy fuel number comes from known fuel on board, known burn rate and elapsed time — not the in-flight gauge reading."
+        },
+        "the-fuel-system-q2": {
+          "question": "What does sampling fuel from each tank's drain during preflight check for?",
+          "options": [
+            "Water (which settles below fuel) and contamination",
+            "The exact quantity of fuel remaining",
+            "Whether the fuel selector is set to \"both\""
+          ],
+          "explanation": "Water is denser than fuel and settles to the bottom, which is exactly where the sample drain is positioned to catch it."
+        },
+        "the-fuel-system-q3": {
+          "question": "What determines whether fuel reaches the engine by gravity or by a pump?",
+          "options": [
+            "Whether the tanks are mounted above the engine (gravity-feed) or not (pump-fed)",
+            "Whether the aircraft has retractable or fixed landing gear",
+            "The grade of fuel loaded into the tanks"
+          ],
+          "explanation": "High-wing aircraft with tanks above the engine can gravity-feed; low-wing aircraft generally need an engine-driven or electric pump."
+        },
+        "the-electrical-system-q1": {
+          "question": "What happens when the master switch is turned off?",
+          "options": [
+            "Nearly everything electrical loses power at once",
+            "Only the cabin lights turn off",
+            "The engine stops running"
+          ],
+          "explanation": "The master switch controls the battery and alternator circuit as a whole, so turning it off removes power from nearly all electrical systems together."
+        },
+        "the-electrical-system-q2": {
+          "question": "What does a circuit breaker popping usually indicate?",
+          "options": [
+            "The system is protecting a faulted circuit before it becomes a bigger problem",
+            "A random malfunction that can be reset and ignored",
+            "The battery is fully discharged"
+          ],
+          "explanation": "A breaker tripping is the protection system working as designed — reset only after understanding, not assuming, why it tripped."
+        },
+        "the-electrical-system-q3": {
+          "question": "Why does the engine keep running through a full electrical failure?",
+          "options": [
+            "It runs on ignition from its own magnetos, independent of the aircraft's electrical system",
+            "It switches automatically to battery-only power",
+            "Electrical failures only affect aircraft on the ground"
+          ],
+          "explanation": "Magneto ignition is self-contained and doesn't depend on the aircraft's battery or alternator, which is why an electrical failure doesn't stop the engine."
+        },
+        "flight-controls-q1": {
+          "question": "What is the difference between primary and secondary flight controls?",
+          "options": [
+            "Primary controls (ailerons, elevator, rudder) command rotation; secondary controls (flaps, trim) change how the aircraft flies without commanding a rotation",
+            "Primary controls are electrical and secondary controls are mechanical",
+            "Secondary controls only exist on retractable-gear aircraft"
+          ],
+          "explanation": "Ailerons, elevator and rudder rotate the aircraft around its axes; flaps and trim adjust lift/drag or control pressure instead."
+        },
+        "flight-controls-q2": {
+          "question": "What does trim actually do?",
+          "options": [
+            "Relieves the constant control pressure needed to hold a given pitch attitude",
+            "Directly commands a climb or descent",
+            "Increases lift and drag for landing"
+          ],
+          "explanation": "Trim lets a pilot fly hands-off at a chosen airspeed by removing the steady control pressure — it doesn't command a maneuver by itself."
+        },
+        "flight-controls-q3": {
+          "question": "Why is a \"free and correct\" control check performed before every takeoff?",
+          "options": [
+            "To confirm the full mechanical chain from control to surface works correctly while still on the ground",
+            "It's only required after maintenance",
+            "It tests the electrical system, not the flight controls"
+          ],
+          "explanation": "Any link in the control chain — cable, pushrod, linkage — is a potential failure point, and it's far better to find a problem on the ground."
+        },
+        "landing-gear-and-brakes-q1": {
+          "question": "What is the main tradeoff of retractable landing gear compared to fixed gear?",
+          "options": [
+            "Higher cruise speed from reduced drag, at the cost of complexity and gear-up landing risk",
+            "Retractable gear is always lighter than fixed gear",
+            "Retractable gear removes the need for brakes"
+          ],
+          "explanation": "Retracting the gear reduces drag for cruise speed, but adds a mechanism that can fail and a real risk of landing gear-up if it's forgotten or malfunctions."
+        },
+        "landing-gear-and-brakes-q2": {
+          "question": "How does differential braking help during ground operations?",
+          "options": [
+            "Braking one main wheel more than the other tightens turns and helps directional control after touchdown",
+            "It only functions when the nosewheel is retracted",
+            "It replaces the need for rudder pedals entirely"
+          ],
+          "explanation": "Differential braking backs up nosewheel steering for tight turns and helps hold the centerline if a crosswind pushes the aircraft off course after landing."
+        },
+        "landing-gear-and-brakes-q3": {
+          "question": "Why is confirming \"gear down and locked\" a required item on final approach for retractable-gear aircraft?",
+          "options": [
+            "It's the one landing-configuration item that gives no direct feedback if it silently failed",
+            "It's required only in crosswind conditions",
+            "It replaces the need to check airspeed on approach"
+          ],
+          "explanation": "Flaps, airspeed and sink rate all give direct feedback; a gear that failed to extend gives none until touchdown, which is why it needs a deliberate check."
+        },
+        "pitot-static-and-avionics-q1": {
+          "question": "What do the pitot tube and static port each sense?",
+          "options": [
+            "The pitot senses oncoming air pressure; the static port senses undisturbed outside air pressure",
+            "Both sense the same pressure as a built-in redundancy",
+            "The pitot senses altitude and the static port senses airspeed"
+          ],
+          "explanation": "Airspeed comes from comparing pitot (ram air) pressure to static pressure; altitude and vertical speed come from static pressure alone."
+        },
+        "pitot-static-and-avionics-q2": {
+          "question": "What's the key difference between a blocked pitot tube and a blocked static port?",
+          "options": [
+            "A blocked pitot mainly affects airspeed; a blocked static port affects airspeed, altitude and VSI together",
+            "A blocked pitot affects only the altimeter",
+            "Both produce the exact same instrument errors"
+          ],
+          "explanation": "The static port feeds all three pitot-static instruments, so blocking it affects all three at once — which is why an alternate static source exists."
+        },
+        "pitot-static-and-avionics-q3": {
+          "question": "What is the relationship between avionics like autopilot and the pilot?",
+          "options": [
+            "Avionics are aids to flying the aircraft, not a replacement for a pilot monitoring them",
+            "Once engaged, an autopilot removes the need for pilot monitoring",
+            "Avionics operate independently of the electrical system"
+          ],
+          "explanation": "An autopilot faithfully does what it was told — a pilot still has to watch what it was told to do, and be ready to intervene."
+        },
+        "redundancy-and-system-failures-q1": {
+          "question": "What is the correct priority order immediately after an engine failure in a single-engine aircraft?",
+          "options": [
+            "Fly the aircraft (best-glide speed) first, then pick a landing site, then work a restart checklist if time allows",
+            "Immediately begin the restart checklist before anything else",
+            "Contact ATC first to declare the emergency"
+          ],
+          "explanation": "Spending the first seconds troubleshooting instead of flying the aircraft can turn a survivable forced landing into a stall-spin accident."
+        },
+        "redundancy-and-system-failures-q2": {
+          "question": "Why does a single-engine aircraft have real limits on redundancy compared to a multi-engine aircraft?",
+          "options": [
+            "One engine failure ends the flight on the ground very soon, planned or not",
+            "Single-engine aircraft have no backup systems at all",
+            "Redundancy only applies to electrical systems"
+          ],
+          "explanation": "Unlike a multi-engine aircraft that can continue flying on a remaining engine, a single-engine aircraft has no such option once its one engine fails."
+        },
+        "redundancy-and-system-failures-q3": {
+          "question": "What is the purpose of a checklist mentality for emergencies?",
+          "options": [
+            "Memorized immediate items first, then a printed checklist for everything after — built on understanding the systems, not blind steps",
+            "To avoid needing systems knowledge at all",
+            "To replace the need to fly the aircraft during an emergency"
+          ],
+          "explanation": "Systems knowledge is what makes each checklist item make sense, rather than being a step followed without understanding why."
+        }
+      }
+    },
+    "advanced-atc": {
+      "title": "Advanced ATC",
+      "description": "Building on the regulations module: what each airspace class actually requires from a pilot, IFR versus VFR clearances, advanced phraseology, radar services and flight following, holding patterns, emergency ATC procedures, and how things differ outside your home country.",
+      "lessons": {
+        "airspace-and-atc-requirements": {
+          "title": "What each airspace class actually requires",
+          "body": "The regulations module covered airspace classes from the cloud-clearance and self-separation side — how far to stay from clouds, and where a pilot is responsible for their own separation. This lesson covers the other half: what each class actually requires from a pilot before entering it, and what a controller expects from a pilot inside it.\n\nEntering controlled airspace generally requires two-way radio communication established with the controlling facility before entry — not just a call made, but a response received, since a call with no answer isn't clearance. Some classes require an explicit clearance (a controller's active instruction to enter or operate); others only require that communication has been established, with no further response needed unless the controller says otherwise. Equipment requirements — a functioning transponder reporting altitude, for instance — often apply above certain altitudes or within certain distances of busy airports regardless of airspace class.\n\nThe practical habit this builds is checking a chart not just for weather minimums but for exactly which requirement applies before a flight crosses into a new class: is this a \"call and wait for a response\" boundary, or a \"call and get an explicit clearance\" boundary? Treating the two the same is a common and avoidable mistake.",
+          "keyTakeaway": "Controlled airspace requires established two-way communication at minimum, and some classes require an explicit clearance beyond that — knowing which applies to a given boundary before crossing it is the practical skill.",
+          "simTip": "The simulator doesn't model ATC communication requirements at all — treat this lesson as filling in exactly the layer of real flying the simulator's free-roam mode skips entirely."
+        },
+        "vfr-and-ifr-clearances": {
+          "title": "VFR and IFR clearances",
+          "body": "A VFR flight generally operates under see-and-avoid separation and doesn't require a clearance to simply fly, though specific airspace may require communication or clearance to enter, as covered in the previous lesson. An IFR flight is different by design: it operates under a full ATC clearance for the entire route, altitude, and any changes to either, because IFR assumes the pilot may not be able to see other traffic or terrain at all.\n\nAn IFR clearance is read back to the controller, not just acknowledged, specifically because a clearance that was misheard and not read back is a clearance that can lead directly to a conflict — route, altitude, and any restrictions all get repeated back word for word on the parts that matter (route, altitude, and squawk code, at minimum).\n\nVFR flight following is a middle ground: a VFR flight, still self-separating under the same rules as any VFR flight, can request traffic advisories from ATC on a workload-permitting basis. It's a service, not a clearance — the pilot is still responsible for separation and can be, and sometimes is, dropped from the service without a clearance ever having been issued in the first place.",
+          "keyTakeaway": "IFR operates under a full clearance for route and altitude, read back to confirm it was heard correctly; VFR flight following is a traffic-advisory service, not a clearance, and separation stays the pilot's responsibility either way.",
+          "simTip": "The simulator's missions never require a clearance to start or continue — real IFR flying is built entirely around clearances the simulator has no equivalent for, which is worth remembering before assuming ATC works the way it does in the sim's free-roam mode (which is to say, not at all)."
+        },
+        "advanced-phraseology": {
+          "title": "Advanced phraseology",
+          "body": "Standard phraseology exists so that a short, precise phrase can't be misheard as something else — \"cleared to land\" and \"cleared for the option\" sound similar enough that using anything but the exact standard phrase invites confusion at exactly the moment confusion is least affordable. Numbers are read individually (\"one two zero\" rather than \"one twenty\") for the same reason: fewer ways for a number to be misheard as a different number.\n\nReadbacks aren't optional politeness — for specific items (runway assignments, altitude assignments, frequency changes, and any hold-short instruction), a readback confirms the instruction was heard correctly, and a controller who doesn't hear the expected readback will usually query it rather than assume it was understood. \"Roger\" only confirms a transmission was received, not that an instruction will be followed — using it in place of a required readback is a common and confusing mistake.\n\nWhen phraseology breaks down — an unfamiliar situation, a non-native speaker on either end, a busy frequency — plain language is the correct fallback, not silence. The goal of phraseology is always clear communication, and standard phrases are the default tool for that, not a rulebook that overrides being understood when something doesn't fit the standard pattern.",
+          "keyTakeaway": "Standard phraseology and individually-spoken numbers exist to prevent instructions from being misheard; required items get read back explicitly, and \"roger\" is not a substitute for a required readback.",
+          "simTip": "The simulator has no radio communication to practice at all — phraseology is a skill that has to be learned from real training materials and practice, not from this simulator."
+        },
+        "radar-services-and-flight-following": {
+          "title": "Radar services and flight following",
+          "body": "ATC radar shows a controller each aircraft's position, and for aircraft with the right transponder equipment, altitude and identification as well — which is what makes services like traffic advisories, sequencing, and vectoring (a specific heading instruction to route around traffic or toward a fix) possible in the first place. Not every aircraft is required to carry a transponder, but where one is required, it's specifically because radar-based separation depends on it.\n\nFlight following (introduced in the previous lesson on clearances) is one radar service among several: traffic advisories on a workload-permitting basis for a VFR flight, in contrast to radar separation for IFR flights, which is an active, continuous service, not a courtesy extended when the controller has spare capacity.\n\nA squawk code — the four-digit code set on the transponder — lets a specific aircraft be identified on the controller's radar display among all the others. Standard codes exist for VFR flight not receiving a specific service, and specific emergency codes (covered in the next lesson) exist precisely so a controller can identify an aircraft in distress on the radar display alone, without needing a radio call to know something is wrong.",
+          "keyTakeaway": "Radar services depend on transponder equipment; flight following is traffic advisories offered on a workload-permitting basis for VFR, while IFR separation is an active, continuous service — and a squawk code is how a specific aircraft is identified on the display.",
+          "simTip": "The simulator's HUD and mini-map already show you exactly where you are — real radar services exist because a controller and other pilots can't see that information without a transponder and radio communication providing it."
+        },
+        "holding-patterns": {
+          "title": "Holding patterns",
+          "body": "A hold is a racetrack-shaped pattern flown around a fixed point — a navigation aid or a GPS waypoint — used to keep an aircraft in a defined piece of airspace, usually because of traffic ahead, a runway not yet available, or timing for an approach that isn't ready to be flown yet. It's not a maneuver a pilot chooses; it's assigned by ATC, with a fix, a direction of turn, and a leg length or timing all specified.\n\nEntering a hold correctly depends on the aircraft's heading relative to the holding course when it arrives at the fix — three standard entry types (direct, teardrop, and parallel) cover every possible arrival angle, each designed to get the aircraft established on the racetrack without overshooting into the wrong side of the pattern.\n\nHolds exist because airspace and runways are finite shared resources — an aircraft can't simply wait in place, so it's given a defined piece of sky to circle in instead, freeing the airspace ahead for whatever it's waiting on to become available. Being assigned a hold isn't a sign anything has gone wrong; it's ATC managing a finite resource with the tools available.",
+          "keyTakeaway": "A hold is an ATC-assigned racetrack pattern around a fix, entered by one of three standard entry types depending on arrival heading, used to manage finite airspace or runway availability — not something a pilot chooses on their own.",
+          "simTip": "The simulator's flight area is always immediately available with nothing to wait for — a real hold is the direct consequence of shared, finite airspace and runways, which the simulator's uncrowded skies never actually create a need for."
+        },
+        "emergency-atc-procedures": {
+          "title": "Emergency ATC procedures",
+          "body": "Declaring an emergency to ATC — using the word \"Mayday\" for a distress situation (life or aircraft at immediate risk) or \"Pan-Pan\" for an urgent situation that isn't yet distress — gives a controller explicit authority to give that flight priority: other traffic can be moved, a runway can be cleared, and normal procedures can be set aside as needed. The specific transponder emergency code (distinct from the standard code discussed in the radar services lesson) does the same thing passively, flagging the aircraft on radar even without a radio call.\n\nA pilot doesn't need to wait for a controller's permission to declare an emergency, and doesn't need to justify it extensively over the radio in the moment — a short, clear statement of the problem, position, and intentions is enough; the full explanation can wait until the immediate situation is handled. This mirrors the same fly-the-aircraft-first priority from the aircraft systems module's redundancy lesson, applied here to the radio call rather than the flight controls.\n\nAfter an emergency, a controller will generally ask for more detail once the immediate situation allows — for search and rescue purposes if needed, or simply to understand what happened. None of that changes the first-response priority: aviate, navigate, communicate, in that order, with the emergency declaration itself being part of \"communicate,\" not something that has to happen before the other two.",
+          "keyTakeaway": "\"Mayday\" (distress) and \"Pan-Pan\" (urgency) give ATC explicit authority to prioritize a flight; declaring one doesn't require permission or a lengthy explanation — a short statement of problem, position, and intentions is enough, after flying the aircraft first.",
+          "simTip": "The simulator's engine-out and stall-recovery missions are the \"aviate\" half of this lesson without the \"communicate\" half — there's no ATC to call, so treat every mission as practice for the part a real emergency call would come after."
+        },
+        "international-differences": {
+          "title": "International and ICAO differences",
+          "body": "ICAO (the International Civil Aviation Organization) sets standards and recommended practices that most countries base their own aviation regulations on, which is why phraseology, airspace classes, and many procedures are broadly similar worldwide — but \"broadly similar\" isn't \"identical,\" and a pilot flying into unfamiliar airspace needs to check the specific differences rather than assume home-country rules apply everywhere.\n\nCommon differences include units (altitude in feet is nearly universal, but some countries use metric altitudes or QFE rather than QNH altimeter settings), specific phraseology variations, and differences in what's required to enter a given airspace class, even when the class letter itself is the same. VFR minimums, equipment requirements, and even which side of a runway to expect other traffic on can vary by country in ways that aren't obvious from general aviation knowledge alone.\n\nThe practical takeaway isn't memorizing every country's rules — it's building the habit of checking, specifically, what's different before flying somewhere new, the same way the flight planning module's NOTAM and briefing habit applies before any unfamiliar flight, extended here to cover the regulatory environment itself rather than just weather and temporary hazards.",
+          "keyTakeaway": "ICAO standards make aviation broadly similar worldwide but not identical — altimeter settings, phraseology details, and airspace requirements can all vary by country, so checking specific differences before flying somewhere new is the real skill.",
+          "simTip": "The simulator uses one consistent set of conventions everywhere in its flight area — real international flying requires actively checking what's different before departure, a habit this simulator has no way to exercise."
+        }
+      },
+      "quiz": {
+        "airspace-and-atc-requirements-q1": {
+          "question": "What does entering controlled airspace generally require at minimum?",
+          "options": [
+            "Two-way radio communication established with the controlling facility before entry",
+            "A filed flight plan, regardless of airspace class",
+            "A transponder squawking the standard VFR code"
+          ],
+          "explanation": "Communication must actually be established — a response received, not just a call made with no answer — before entering most controlled airspace."
+        },
+        "airspace-and-atc-requirements-q2": {
+          "question": "What's the difference between airspace requiring \"established communication\" versus an \"explicit clearance\"?",
+          "options": [
+            "Some classes only require communication established, with no further response needed unless the controller says otherwise; others require an active clearance instruction",
+            "There is no difference — all controlled airspace requires an explicit clearance",
+            "Explicit clearance is only required for IFR flights, never VFR"
+          ],
+          "explanation": "Different airspace classes set different requirements, and treating a communication-only boundary the same as a clearance-required boundary is a common mistake."
+        },
+        "airspace-and-atc-requirements-q3": {
+          "question": "Why can equipment requirements like a functioning transponder apply regardless of airspace class?",
+          "options": [
+            "They often apply based on altitude or proximity to busy airports, independent of the airspace class itself",
+            "Transponders are only required inside Class A airspace",
+            "Equipment requirements are set individually by each pilot"
+          ],
+          "explanation": "Altitude- and proximity-based equipment requirements exist alongside airspace-class requirements, not only within them."
+        },
+        "vfr-and-ifr-clearances-q1": {
+          "question": "Why is an IFR clearance required for the entire route and altitude, unlike typical VFR operations?",
+          "options": [
+            "IFR assumes the pilot may not be able to see other traffic or terrain at all",
+            "IFR flights are always flown at night",
+            "IFR clearances are optional but recommended"
+          ],
+          "explanation": "Because IFR doesn't rely on visual separation, ATC actively manages the full route and altitude through a clearance rather than leaving separation to see-and-avoid."
+        },
+        "vfr-and-ifr-clearances-q2": {
+          "question": "Why is an IFR clearance read back rather than just acknowledged?",
+          "options": [
+            "A clearance that was misheard and not read back can lead directly to a conflict",
+            "Read backs are only required for VFR flight following",
+            "It's a courtesy with no operational purpose"
+          ],
+          "explanation": "Reading back route, altitude, and squawk code confirms the clearance was heard correctly before it's acted on."
+        },
+        "vfr-and-ifr-clearances-q3": {
+          "question": "What is VFR flight following?",
+          "options": [
+            "A traffic-advisory service offered on a workload-permitting basis, not a clearance",
+            "A mandatory clearance required for all VFR flights",
+            "The IFR equivalent of radar separation"
+          ],
+          "explanation": "Flight following is a service, not a clearance — the VFR pilot remains responsible for separation and can be dropped from the service at any time."
+        },
+        "advanced-phraseology-q1": {
+          "question": "Why are numbers read individually (\"one two zero\") rather than as a whole number?",
+          "options": [
+            "It reduces the ways a number can be misheard as a different number",
+            "It's faster to say than a whole number",
+            "It's only done for altitude assignments, never frequencies"
+          ],
+          "explanation": "Reading digits individually is a deliberate choice to minimize the chance of a number being misheard under radio conditions."
+        },
+        "advanced-phraseology-q2": {
+          "question": "Why is \"roger\" not an acceptable substitute for a required readback?",
+          "options": [
+            "\"Roger\" only confirms a transmission was received, not that an instruction will be followed",
+            "\"Roger\" is not standard phraseology at all",
+            "Readbacks are always optional regardless of the instruction"
+          ],
+          "explanation": "A controller needs confirmation the specific instruction was heard correctly, which \"roger\" alone doesn't provide."
+        },
+        "advanced-phraseology-q3": {
+          "question": "What is the correct fallback when standard phraseology breaks down?",
+          "options": [
+            "Plain language, since the goal is always clear communication",
+            "Silence, until standard phraseology can be used correctly",
+            "Repeating the same standard phrase more loudly"
+          ],
+          "explanation": "Standard phraseology is a tool for clarity, not a rulebook that overrides being understood when a situation doesn't fit the standard pattern."
+        },
+        "radar-services-and-flight-following-q1": {
+          "question": "What makes services like vectoring and traffic advisories possible?",
+          "options": [
+            "ATC radar showing aircraft position, and for equipped aircraft, altitude and identification via transponder",
+            "Every aircraft being required to file an IFR flight plan",
+            "Pilots reporting their own position over the radio every few minutes"
+          ],
+          "explanation": "Radar-based services depend on the aircraft being visible on the controller's display, which for altitude and identification requires the right transponder equipment."
+        },
+        "radar-services-and-flight-following-q2": {
+          "question": "How does flight following differ from IFR radar separation?",
+          "options": [
+            "Flight following is offered on a workload-permitting basis; IFR separation is an active, continuous service",
+            "They are the same service under two different names",
+            "Flight following is only available to IFR flights"
+          ],
+          "explanation": "IFR separation is a guaranteed, ongoing service; VFR flight following is a courtesy extended when the controller has capacity."
+        },
+        "radar-services-and-flight-following-q3": {
+          "question": "What is the purpose of a squawk code?",
+          "options": [
+            "It lets a specific aircraft be identified on the controller's radar display among all others",
+            "It sets the aircraft's assigned cruising altitude",
+            "It's only used during an emergency"
+          ],
+          "explanation": "A four-digit squawk code distinguishes one aircraft from others on radar; specific codes are also reserved for standard VFR flight and for emergencies."
+        },
+        "holding-patterns-q1": {
+          "question": "Why is a hold flown, and who decides when to enter one?",
+          "options": [
+            "To keep an aircraft in a defined piece of airspace when a runway or route ahead isn't yet available — assigned by ATC, not chosen by the pilot",
+            "It's a maneuver a pilot chooses to practice at any time",
+            "It's only used during an engine failure"
+          ],
+          "explanation": "A hold manages finite airspace and runway availability and is specifically assigned by ATC with a fix, turn direction, and leg length or timing."
+        },
+        "holding-patterns-q2": {
+          "question": "What determines which of the three standard hold entries a pilot uses?",
+          "options": [
+            "The aircraft's heading relative to the holding course when it arrives at the fix",
+            "The pilot's personal preference",
+            "Whether the flight is VFR or IFR"
+          ],
+          "explanation": "Direct, teardrop, and parallel entries each match a different arrival angle, together covering every possible approach to the fix."
+        },
+        "holding-patterns-q3": {
+          "question": "What does being assigned a hold generally indicate?",
+          "options": [
+            "ATC managing a finite shared resource like airspace or a runway, not that something has gone wrong",
+            "That the flight has been denied its clearance entirely",
+            "That the aircraft has a system malfunction"
+          ],
+          "explanation": "A hold is a normal traffic-management tool, not a sign of a problem with the flight."
+        },
+        "emergency-atc-procedures-q1": {
+          "question": "What is the difference between \"Mayday\" and \"Pan-Pan\"?",
+          "options": [
+            "\"Mayday\" is for distress (life or aircraft at immediate risk); \"Pan-Pan\" is for urgency that isn't yet distress",
+            "They mean the same thing in different countries",
+            "\"Pan-Pan\" is only used for medical emergencies"
+          ],
+          "explanation": "Both give ATC authority to prioritize the flight, but they signal different severity levels to the controller."
+        },
+        "emergency-atc-procedures-q2": {
+          "question": "Does a pilot need a controller's permission to declare an emergency?",
+          "options": [
+            "No — a pilot can declare an emergency and give a short statement of problem, position and intentions without waiting for permission",
+            "Yes, and a full written justification is required first",
+            "Only IFR flights are permitted to declare an emergency"
+          ],
+          "explanation": "An emergency declaration doesn't require prior permission; a brief, clear statement is enough, with full detail following once the situation allows."
+        },
+        "emergency-atc-procedures-q3": {
+          "question": "Where does declaring an emergency fit in the aviate-navigate-communicate priority?",
+          "options": [
+            "It's part of \"communicate\" — after flying the aircraft and navigating come first",
+            "It must happen before flying the aircraft in every case",
+            "It replaces the need to navigate toward a safe landing site"
+          ],
+          "explanation": "Flying the aircraft and navigating toward safety take priority; declaring the emergency is the communicate step that follows."
+        },
+        "international-differences-q1": {
+          "question": "What role does ICAO play in international aviation?",
+          "options": [
+            "It sets standards and recommended practices that most countries base their own regulations on",
+            "It directly controls air traffic in every member country",
+            "It only applies to airline operations, not general aviation"
+          ],
+          "explanation": "ICAO standards make aviation broadly similar worldwide, which is why phraseology and airspace classes look familiar across borders — but they aren't identical everywhere."
+        },
+        "international-differences-q2": {
+          "question": "Which of these is a real example of a country-to-country difference a pilot might encounter?",
+          "options": [
+            "Metric altitudes or QFE altimeter settings instead of QNH in feet",
+            "The three axes of aircraft rotation",
+            "The four-stroke engine cycle"
+          ],
+          "explanation": "Altimeter setting conventions and altitude units are a common real-world difference; core aerodynamics and engine operation are not."
+        },
+        "international-differences-q3": {
+          "question": "What is the practical habit this lesson recommends before flying somewhere unfamiliar?",
+          "options": [
+            "Actively checking what's specifically different in that country's procedures, rather than assuming home-country rules apply",
+            "Memorizing every country's full regulations in advance",
+            "Avoiding international flights entirely until fully fluent in every local rule"
+          ],
+          "explanation": "The realistic approach is checking specific differences before an unfamiliar flight, the same habit as a NOTAM and weather briefing applied to the regulatory environment."
+        }
+      }
     }
   },
   "passedTag": "Passed",

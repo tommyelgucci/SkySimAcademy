@@ -93,6 +93,10 @@
     "stall-recovery": {
       "title": "Recuperación de pérdida",
       "objective": "Por encima de 100 m, provoca la pérdida y recupera velocidad de vuelo antes de bajar."
+    },
+    "precision-landing": {
+      "title": "Aterrizaje de precisión",
+      "objective": "Aterriza suave, centrado y alineado con el eje de la pista — el mismo criterio que una nota de 4-5★."
     }
   },
   "timeUp": {

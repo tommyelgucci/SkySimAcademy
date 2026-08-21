@@ -93,6 +93,10 @@
     "stall-recovery": {
       "title": "Recuperação de estol",
       "objective": "Acima de 100 m, provoque o estol e recupere a velocidade de voo antes de perder altitude."
+    },
+    "precision-landing": {
+      "title": "Pouso de precisão",
+      "objective": "Pouse suave, centralizado e alinhado com o eixo da pista — o mesmo critério de uma nota 4-5★."
     }
   },
   "timeUp": {

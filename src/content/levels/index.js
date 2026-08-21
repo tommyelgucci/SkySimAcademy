@@ -15,7 +15,7 @@ export const LEVELS = [
   {
     id: "student-pilot",
     icon: "graduation-cap",
-    missionIds: ["free-flight", "first-takeoff", "safe-landing"],
+    missionIds: ["free-flight", "first-takeoff", "safe-landing", "precision-landing"],
     requiresModules: ["principles-of-flight"],
   },
   {

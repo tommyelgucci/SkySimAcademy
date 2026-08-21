@@ -314,6 +314,14 @@ export default function SimulatorView({ onExit }) {
     let hudTimer = 0;
     let frameId = 0;
     let wasStalled = false;
+    // Último informe de aterrizaje del evaluador, para el resumen final
+    // (ver endSession): `consumeLanding()` solo devuelve algo la primera
+    // vez que se lee tras completarse un aterrizaje, y el loop puede
+    // terminar (tracker.done) en el mismo frame en que se generó — para
+    // entonces ya se consumió más abajo, así que volver a llamarlo dentro
+    // de endSession siempre daría null. Se guarda la última lectura no nula
+    // en vez de leer de nuevo.
+    let lastLanding = null;
 
     const resize = () => {
       const { clientWidth, clientHeight } = containerRef.current;
@@ -331,7 +339,7 @@ export default function SimulatorView({ onExit }) {
         distanceKm: (engine.distance / 1000).toFixed(1),
         // Si la sesión termina justo con un aterrizaje puntuado (p. ej. la
         // misión de aterrizaje), la nota va en el mismo overlay final
-        landing: evaluator.consumeLanding(),
+        landing: lastLanding,
       });
       setPhase(finalPhase);
     };
@@ -389,6 +397,11 @@ export default function SimulatorView({ onExit }) {
 
       // Aterrizaje completado en pleno vuelo libre: informe descartable
       const landing = evaluator.consumeLanding();
+      if (landing) lastLanding = landing;
+      // Para la misión "precision-landing": mismo informe, criterio propio
+      // (ver MissionTracker#checkLanding) — antes del popup de abajo, así
+      // si la misión se completa acá no se muestra el debrief genérico.
+      tracker.checkLanding(landing);
       if (landing && !tracker.done) {
         if (landing.stars >= 4) soundRef.current?.success();
         setLandingDebrief(landing);

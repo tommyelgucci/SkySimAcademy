@@ -26,8 +26,11 @@ import {
   RotateCw,
   Route,
   Scale,
+  Target,
+  TowerControl,
   TriangleAlert,
   Wind,
+  Wrench,
 } from "lucide-react";
 
 const CONTENT_ICONS = {
@@ -44,12 +47,15 @@ const CONTENT_ICONS = {
   "move-horizontal": MoveHorizontal,
   "rotate-cw": RotateCw,
   route: Route,
+  target: Target,
   "triangle-alert": TriangleAlert,
   wind: Wind,
   scale: Scale,
   gavel: Gavel,
   brain: Brain,
   "clipboard-list": ClipboardList,
+  wrench: Wrench,
+  "tower-control": TowerControl,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */
