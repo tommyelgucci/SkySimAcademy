@@ -30,6 +30,12 @@
  *    → aterrizar con el mismo criterio que una nota de 4-5★ del informe de
  *      aterrizaje (FlightEvaluator): suave, centrado y alineado con el eje
  *      de la pista, no solo "tocar despacio" como exige "landing"
+ *  - { type: "levelTurn", bankTarget, tolerance, altitudeBand, minAltitude, holdSeconds }
+ *    → viraje a altitud constante (maniobra básica de vuelo por instrumentos):
+ *      mantener el banco objetivo Y la altitud dentro de ±altitudeBand
+ *      respecto a la altitud con la que se entró al viraje, ambas a la vez,
+ *      durante holdSeconds. Más exigente que "bankTurn" (que no vigila la
+ *      altitud) o "altitudeHold" (que no exige virar)
  *
  * Las misiones se agrupan en niveles con licencia en
  * src/content/levels/index.js (LEVELS referencia estos ids).
@@ -77,6 +83,19 @@ export const MISSIONS = [
     icon: "rotate-cw",
     requiresModule: "cockpit-instruments",
     goal: { type: "bankTurn", bankTarget: 30, tolerance: 8, minAltitude: 50, holdSeconds: 5 },
+  },
+  {
+    id: "level-turn",
+    icon: "orbit",
+    requiresModule: "cockpit-instruments",
+    goal: {
+      type: "levelTurn",
+      bankTarget: -20,
+      tolerance: 8,
+      altitudeBand: 15,
+      minAltitude: 60,
+      holdSeconds: 6,
+    },
   },
   {
     id: "nav-leg",

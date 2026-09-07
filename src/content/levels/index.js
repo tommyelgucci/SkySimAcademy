@@ -21,7 +21,7 @@ export const LEVELS = [
   {
     id: "instrument-basics",
     icon: "gauge",
-    missionIds: ["heading-turn", "level-flight", "standard-turn"],
+    missionIds: ["heading-turn", "level-flight", "standard-turn", "level-turn"],
     requiresModules: ["cockpit-instruments"],
   },
   {

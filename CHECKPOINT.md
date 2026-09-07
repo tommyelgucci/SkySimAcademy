@@ -9,6 +9,47 @@ commit.
 
 ---
 
+## 2026-09-07 — Nueva misión del simulador: viraje a altitud constante
+
+**Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
+"más escenarios/misiones" de `RUMBO.md`):
+
+- **Simulador:** misión `level-turn` (12ª del catálogo), nuevo tipo de
+  objetivo `levelTurn` en `src/simulator/MissionTracker.js`. Exige
+  mantener un banco de 20° a la izquierda (tolerancia ±8°) SIN alejarse
+  más de ±15 m de la altitud con la que se entró al viraje, durante 6
+  segundos por encima de 60 m. A diferencia de `bankTurn` (solo banco) y
+  `altitudeHold` (solo altitud, contra un valor fijo), combina ambas a la
+  vez y la altitud de referencia es dinámica (la de entrada al viraje, no
+  un nivel prefijado) — es la maniobra real de instrumentos "viraje a
+  altitud constante". Añadida al nivel `instrument-basics`
+  (`src/content/levels/index.js`), junto a `heading-turn`/`level-flight`/
+  `standard-turn`, mismo requisito de módulo (`cockpit-instruments`).
+  Icono nuevo `orbit` (Lucide) en `src/components/icons.jsx`. Traducida a
+  los 5 idiomas (`missions.level-turn.title/.objective` en cada
+  `simulator.json`). No hizo falta tocar `FlightEngine` ni la UI del
+  simulador — el HUD y el objetivo genérico (`hud-objective`) ya
+  funcionan para cualquier misión sin lógica específica por tipo.
+- **Tests:** 5 casos nuevos en `MissionTracker.test.js` (cumple con banco
+  - altitud sostenidos, nivelar alas reinicia el contador, perder la
+    altitud de referencia reinicia el contador — y la nueva altitud pasa a
+    ser la referencia —, no cuenta por debajo de la altitud mínima, no
+    cuenta virando al lado contrario).
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados en `CLAUDE.md`), `npm run format:check`, `npm run check:i18n`
+(13 módulos × 5 idiomas), `npm test` (**77/77**, antes 72) y `npm run
+build`, todos en verde.
+
+**Próximo paso sugerido:** ver `RUMBO.md` → la línea de misiones sigue
+abierta ("aproximación con viento cruzado" requiere decidir si vale la
+pena sumar un modelo de viento a `FlightEngine`, que hoy no existe, antes
+de tocar código; "vuelo IFR simplificado" y "emergencias adicionales"
+también siguen como candidatos sin implementar más allá de este primer
+paso).
+
+---
+
 ## 2026-08-20 — Dos módulos de teoría nuevos: Aircraft systems y Advanced ATC
 
 **Qué se hizo** (siguiendo la instrucción de trabajar el backlog de más

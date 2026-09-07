@@ -34,7 +34,13 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 - [ ] Más módulos de teoría (candidatos: sistemas de aeronave, ATC
       avanzado)
 - [ ] Más escenarios/misiones en el simulador (vuelo IFR simplificado,
-      aproximación con viento cruzado, emergencias adicionales)
+      aproximación con viento cruzado, emergencias adicionales) — se sumó
+      "viraje a altitud constante" (`level-turn`) como primer paso hacia
+      maniobras de vuelo por instrumentos; ver Decisiones, 2026-09-07. El
+      simulador no modela viento, así que "aproximación con viento
+      cruzado" sigue pendiente de una decisión de alcance (¿vale la pena
+      un modelo de viento en `FlightEngine` solo para esa misión?) antes
+      de tocar código.
 - [ ] Más mazos de flashcards (además de instrumentos y alertas de cabina)
 
 ### Producto / crecimiento
@@ -68,6 +74,22 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-07 — Nueva misión del simulador: "viraje a altitud constante"
+  (`level-turn`, 12ª misión), a pedido explícito del dueño del proyecto
+  dentro de la línea "más escenarios/misiones". Combina dos habilidades
+  que hasta ahora se evaluaban por separado (`bankTurn` solo vigila el
+  banco, `altitudeHold` solo la altitud): exige mantener un banco de 20°
+  a la izquierda SIN perder más de ±15 m de la altitud con la que se
+  entró al viraje, durante 6 segundos — la maniobra básica de
+  instrumentos real ("constant-altitude turn"). Nuevo tipo de objetivo
+  `levelTurn` en `MissionTracker` (la altitud de referencia se fija al
+  entrar en el viraje, no es un valor fijo del nivel — así la misión
+  premia no perder altura mientras se vira, no llegar a una cota
+  concreta). Añadida a `instrument-basics` (requiere `cockpit-instruments`,
+  igual que sus otras 3 misiones). Sin cambios de UI: el HUD ya muestra
+  banco y altitud para cualquier misión, y el objetivo se resuelve por
+  i18n como las demás (`missions.level-turn.objective`). No se tocó
+  `FlightEngine` — no hace falta física nueva para esta maniobra.
 - 2026-08-10 — Se prioriza "Contenido nuevo" (módulo Planificación de
   vuelo), "Calidad/infraestructura" y documentar (sin activar) la
   analítica, a pedido explícito del dueño del proyecto. Trabajo

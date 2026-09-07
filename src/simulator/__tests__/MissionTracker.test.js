@@ -178,6 +178,60 @@ describe("MissionTracker", () => {
     expect(tracker.done).toBe(false);
   });
 
+  describe("levelTurn", () => {
+    const goal = {
+      type: "levelTurn",
+      bankTarget: -20,
+      tolerance: 8,
+      altitudeBand: 15,
+      minAltitude: 60,
+      holdSeconds: 6,
+    };
+
+    it("exige mantener el banco Y la altitud de entrada al viraje a la vez", () => {
+      const tracker = new MissionTracker({ goal });
+      const turning = engineState({ altitude: 100, bankAngle: -22, grounded: false });
+      tracker.update(turning, 4);
+      expect(tracker.done).toBe(false); // aún no llega a 6 s
+      tracker.update(turning, 2);
+      expect(tracker.done).toBe(true);
+    });
+
+    it("nivelar alas reinicia el contador", () => {
+      const tracker = new MissionTracker({ goal });
+      const turning = engineState({ altitude: 100, bankAngle: -22, grounded: false });
+      tracker.update(turning, 4);
+      tracker.update(engineState({ altitude: 100, bankAngle: 0, grounded: false }), 0.5);
+      tracker.update(turning, 4);
+      expect(tracker.done).toBe(false);
+      tracker.update(turning, 2);
+      expect(tracker.done).toBe(true);
+    });
+
+    it("perder la altitud de entrada durante el viraje reinicia el contador", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.update(engineState({ altitude: 100, bankAngle: -22, grounded: false }), 4);
+      // Se hunde 20 m sin nivelar alas: sigue virando pero fuera de la banda
+      tracker.update(engineState({ altitude: 80, bankAngle: -22, grounded: false }), 3);
+      expect(tracker.done).toBe(false);
+      // La nueva altitud (80) pasa a ser la referencia: mantenerla ahora sí cuenta
+      tracker.update(engineState({ altitude: 80, bankAngle: -22, grounded: false }), 6);
+      expect(tracker.done).toBe(true);
+    });
+
+    it("por debajo de la altitud mínima no cuenta", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.update(engineState({ altitude: 40, bankAngle: -22, grounded: false }), 10);
+      expect(tracker.done).toBe(false);
+    });
+
+    it("virar al lado contrario del objetivo no cuenta", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.update(engineState({ altitude: 100, bankAngle: 22, grounded: false }), 10);
+      expect(tracker.done).toBe(false);
+    });
+  });
+
   describe("precisionLanding (informe de FlightEvaluator, no de engineState)", () => {
     const goal = { type: "precisionLanding", maxVerticalSpeed: 3, maxOffCenter: 5 };
 

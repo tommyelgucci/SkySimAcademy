@@ -82,6 +82,10 @@
       "title": "Standardkurve",
       "objective": "Halte über 50 m eine Schräglage von 30° nach rechts für 5 Sekunden."
     },
+    "level-turn": {
+      "title": "Höhenkonstante Kurve",
+      "objective": "Halte über 60 m eine sanfte Schräglage von 20° nach links, ohne mehr als 15 m von deiner Höhe abzuweichen, für 6 Sekunden."
+    },
     "nav-leg": {
       "title": "Streckenabschnitt nach Süden",
       "objective": "Halte über 100 m den Kurs 180° für 6 Sekunden."

@@ -12,6 +12,7 @@ export class MissionTracker {
     this.wasAirborne = false; // para "landing": primero hay que subir
     this.wasStalled = false; // para "stallRecovery": primero hay que entrar en pérdida
     this.engineCut = false; // para "engineOut": el ejercicio ya cortó los gases
+    this.refAltitude = null; // para "levelTurn": altitud con la que se entró al viraje
   }
 
   /**
@@ -125,6 +126,27 @@ export class MissionTracker {
           this.done = true;
         }
         break;
+
+      case "levelTurn": {
+        const bankOk = Math.abs(engine.bankAngle - this.goal.bankTarget) <= this.goal.tolerance;
+        if (engine.altitude < this.goal.minAltitude || !bankOk) {
+          this.holdTime = 0;
+          this.refAltitude = null;
+          break;
+        }
+        // La altitud de referencia se fija al entrar en el viraje, no antes:
+        // lo que importa es no perder/ganar altura MIENTRAS se vira, no
+        // llegar exactamente a un valor fijo (eso ya lo cubre "altitudeHold").
+        if (this.refAltitude == null) this.refAltitude = engine.altitude;
+        if (Math.abs(engine.altitude - this.refAltitude) <= this.goal.altitudeBand) {
+          this.holdTime += dt;
+          if (this.holdTime >= this.goal.holdSeconds) this.done = true;
+        } else {
+          this.holdTime = 0;
+          this.refAltitude = engine.altitude;
+        }
+        break;
+      }
     }
   }
 }
