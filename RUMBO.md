@@ -7,16 +7,18 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-08-10.
+**Última revisión:** 2026-09-07.
 
 ## Estado de partida
 
-Verificado el 2026-08-10 (tras el trabajo de la sección "Decisiones" de
-abajo): `npm run lint` (0 errores), `npm run format:check`, `npm run
-check:i18n` (5 idiomas × 5 namespaces, **11 módulos**, 19 flashcards) ✅,
-`npm test` (**59** tests, 7 archivos) ✅, `npm run build` ✅. Sin issues ni
-PRs abiertos en GitHub. El proyecto no tiene deuda técnica visible ni
-bloqueadores conocidos.
+Verificado el 2026-09-07 (tras el trabajo de la sección "Decisiones" de
+abajo): `npm run lint` (0 errores, 8 warnings documentados en
+`CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
+namespaces, **13 módulos**, 45 flashcards) ✅, `npm test` (**77** tests, 9
+archivos) ✅, `npm run build` ✅. Sin issues ni PRs abiertos en GitHub. El
+proyecto no tiene deuda técnica visible ni bloqueadores conocidos — sí
+tenía este documento desactualizado en dos ítems (ver "Contenido" abajo),
+ahora corregido.
 
 ## Líneas de trabajo propuestas
 
@@ -31,8 +33,12 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
       ruta y cartas, combustible y reservas, alternos y mínimos
       meteorológicos, NOTAM y partes, presentar un plan de vuelo, decisión
       de ir/no ir. 7 lecciones, 5 idiomas. Ver Decisiones, 2026-08-10.
-- [ ] Más módulos de teoría (candidatos: sistemas de aeronave, ATC
-      avanzado)
+- [x] Más módulos de teoría — **Sistemas de aeronave** (`aircraft-systems`,
+      12º) y **ATC avanzado** (`advanced-atc`, 13º), 7 lecciones y 5
+      idiomas cada uno. Hecho en la sesión del 2026-08-20 (ver
+      `CHECKPOINT.md`); este casillero no se había marcado entonces —
+      corregido el 2026-09-07 al revisar el estado real del repo (13
+      módulos en `src/content/modules/`, no 11).
 - [ ] Más escenarios/misiones en el simulador (vuelo IFR simplificado,
       aproximación con viento cruzado, emergencias adicionales) — se sumó
       "viraje a altitud constante" (`level-turn`) como primer paso hacia
@@ -41,7 +47,11 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
       cruzado" sigue pendiente de una decisión de alcance (¿vale la pena
       un modelo de viento en `FlightEngine` solo para esa misión?) antes
       de tocar código.
-- [ ] Más mazos de flashcards (además de instrumentos y alertas de cabina)
+- [x] Más mazos de flashcards — **Alfabeto radiotelefónico** (26 tarjetas,
+      OACI), sumado a los mazos de instrumentos y alertas de cabina.
+      Mismo caso que el ítem anterior: hecho antes, sin marcar; corregido
+      el 2026-09-07 (3 mazos, 45 flashcards en total según
+      `check:i18n`).
 
 ### Producto / crecimiento
 
