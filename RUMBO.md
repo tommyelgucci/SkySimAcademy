@@ -7,18 +7,16 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-09-07.
+**Última revisión:** 2026-09-09.
 
 ## Estado de partida
 
-Verificado el 2026-09-07 (tras el trabajo de la sección "Decisiones" de
+Verificado el 2026-09-09 (tras el trabajo de la sección "Decisiones" de
 abajo): `npm run lint` (0 errores, 8 warnings documentados en
 `CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
-namespaces, **13 módulos**, 45 flashcards) ✅, `npm test` (**77** tests, 9
+namespaces, **14 módulos**, 45 flashcards) ✅, `npm test` (**77** tests, 9
 archivos) ✅, `npm run build` ✅. Sin issues ni PRs abiertos en GitHub. El
-proyecto no tiene deuda técnica visible ni bloqueadores conocidos — sí
-tenía este documento desactualizado en dos ítems (ver "Contenido" abajo),
-ahora corregido.
+proyecto no tiene deuda técnica visible ni bloqueadores conocidos.
 
 ## Líneas de trabajo propuestas
 
@@ -38,7 +36,9 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
       idiomas cada uno. Hecho en la sesión del 2026-08-20 (ver
       `CHECKPOINT.md`); este casillero no se había marcado entonces —
       corregido el 2026-09-07 al revisar el estado real del repo (13
-      módulos en `src/content/modules/`, no 11).
+      módulos en `src/content/modules/`, no 11). Sumado un 14º módulo,
+      **Operaciones de aeródromo** (`airport-operations`), el 2026-09-09 —
+      ver Decisiones.
 - [ ] Más escenarios/misiones en el simulador (vuelo IFR simplificado,
       aproximación con viento cruzado, emergencias adicionales) — se sumó
       "viraje a altitud constante" (`level-turn`) como primer paso hacia
@@ -84,6 +84,23 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-09 — Nuevo módulo de teoría: **Operaciones de aeródromo**
+  (`airport-operations`, 14º del catálogo), a pedido explícito del dueño
+  del proyecto dentro de la línea "más módulos de teoría". Cubre el lado
+  físico de volar que ningún módulo anterior tocaba: leer un diagrama de
+  aeródromo (números de pista, puntos críticos), marcas de pista y de
+  calle de rodaje (umbral desplazado, posición de espera), señales del
+  aeródromo por color, iluminación (PAPI/VASI, faro giratorio), la
+  geometría y prioridad de paso del circuito de tráfico, y seguridad en
+  tierra (hélice, derecho de paso rodando, plataforma). 7 lecciones, 5
+  idiomas traducidos de verdad, icono nuevo `signpost` (Lucide).
+  Verificado contra el resto del catálogo antes de escribir contenido: el
+  módulo `radio-alphabet` ya tenía una lección ("Llamadas de posición en
+  el circuito de tráfico") sobre las llamadas de radio en CTAF —para no
+  duplicarla, la lección de "operaciones sin torre" de este módulo nuevo
+  se enfocó en el respaldo visual (círculo segmentado, manga de viento,
+  indicadores de sentido de circuito) y la incorporación estándar a 45°,
+  remitiendo a `radio-alphabet` para la fraseología en sí.
 - 2026-09-07 — Nueva misión del simulador: "viraje a altitud constante"
   (`level-turn`, 12ª misión), a pedido explícito del dueño del proyecto
   dentro de la línea "más escenarios/misiones". Combina dos habilidades
