@@ -82,6 +82,10 @@
       "title": "Viraje estándar",
       "objective": "Por encima de 50 m, mantén un banco de 30° a la derecha durante 5 segundos."
     },
+    "level-turn": {
+      "title": "Viraje a altitud constante",
+      "objective": "Por encima de 60 m, mantén un banco suave de 20° a la izquierda sin alejarte más de 15 m de tu altitud durante 6 segundos."
+    },
     "nav-leg": {
       "title": "Tramo al sur",
       "objective": "Por encima de 100 m, mantén rumbo 180° durante 6 segundos."

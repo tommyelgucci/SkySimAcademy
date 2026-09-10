@@ -3085,6 +3085,233 @@
           "explanation": "El enfoque realista es comprobar las diferencias concretas antes de un vuelo poco familiar, el mismo hábito de NOTAM y briefing meteorológico aplicado al entorno regulatorio."
         }
       }
+    },
+    "airport-operations": {
+      "title": "Operaciones de aeródromo",
+      "description": "El lado físico de volar: leer un diagrama del aeródromo, las marcas y señales de pista y de calle de rodaje, la iluminación del aeródromo, el circuito de tráfico estándar, operar en un aeródromo sin torre de control, y la seguridad en tierra alrededor de otras aeronaves.",
+      "lessons": {
+        "reading-an-airport-diagram": {
+          "title": "Leer un diagrama del aeródromo",
+          "body": "Un diagrama del aeródromo muestra la disposición de pistas y calles de rodaje visto desde arriba, igual que el plano de un edificio muestra su distribución antes de recorrerlo. Repasarlo antes de rodar por primera vez en un aeródromo poco familiar —en una carta, una app, o un diagrama impreso— construye por adelantado la misma imagen mental que una carta y un briefing meteorológico construyen para la ruta en sí.\n\nEl número de una pista aproxima su rumbo magnético, redondeado a la decena más cercana y quitando el último dígito: una pista marcada 27 apunta aproximadamente al 270° magnético, y esa misma franja de asfalto es la pista 9 desde el sentido contrario. Las calles de rodaje se identifican con letras (y a veces un número para un tramo de una más larga), y los diagramas marcan \"puntos críticos\": lugares concretos con un historial documentado de confusión o incursiones en pista, que merecen una mirada extra antes de rodar cerca de ellos.\n\nLa conciencia situacional en tierra importa tanto como en el aire, y la mayoría de las incursiones en pista se originan en una autorización de rodaje mal entendida o en un piloto que no tenía claro dónde estaba exactamente en la superficie del aeródromo — no en un fallo de equipo. Conocer la disposición antes de arrancar el motor es lo que evita ese tipo particular de error.",
+          "keyTakeaway": "Los diagramas del aeródromo muestran la disposición de pistas/calles de rodaje y los puntos críticos; el número de una pista aproxima su rumbo magnético, y repasar el diagrama de antemano es lo que evita la mayoría de las incursiones en pista, que vienen de la confusión, no de un fallo de equipo.",
+          "simTip": "Los aeródromos del simulador son pequeños y sin red de calles de rodaje que recorrer — trata repasar un diagrama real, aunque sea de un aeródromo conocido, como estudio obligatorio antes de rodar allí por primera vez."
+        },
+        "runway-markings": {
+          "title": "Marcas de pista",
+          "body": "Las marcas de pista son siempre blancas, lo primero que las distingue de un vistazo de las marcas de calle de rodaje. Los números de pista están en cada extremo, y una línea discontinua de eje central recorre el medio para ayudar a mantener la alineación durante el despegue, el aterrizaje y el rodaje entre ambos.\n\nLas marcas de punto de referencia —dos franjas rectangulares gruesas a unos 300 metros del umbral— dan una referencia visual de dónde apuntar durante la aproximación y el redondeo, y las marcas de zona de toma de contacto (franjas adicionales a intervalos en pistas más largas) ayudan a juzgar cuánto asfalto útil queda por delante. Las marcas de umbral, un conjunto de franjas justo al comienzo de la pista, muestran con precisión dónde empieza la superficie utilizable para aterrizar.\n\nUn umbral desplazado mueve ese punto de inicio más adelante en la pista, señalado con flechas que conducen hasta él: el asfalto antes de las flechas todavía puede usarse para la carrera de despegue o para rodar, pero aterrizar no está permitido antes del umbral desplazado en sí — normalmente por un obstáculo en la trayectoria de aproximación o porque ese asfalto no es apto para una carrera de aterrizaje completa. Acorta la distancia de aterrizaje disponible sin acortar la longitud útil de la pista para despegar.",
+          "keyTakeaway": "Las marcas de pista son blancas; el eje central ayuda a la alineación, las marcas de punto de referencia y de zona de toma de contacto muestran dónde aterrizar, y un umbral desplazado acorta la distancia de aterrizaje disponible sin acortar la pista en sí.",
+          "simTip": "La misión de aterrizaje de precisión evalúa exactamente para qué sirven estas marcas en el vuelo real — un toque suave, centrado y alineado con el eje de la pista."
+        },
+        "taxiway-markings-and-signs": {
+          "title": "Marcas y señales de calle de rodaje",
+          "body": "Las marcas de calle de rodaje son amarillas, lo opuesto al blanco de la pista — un contraste deliberado que hace obvio de un vistazo cuál superficie es cuál, incluso de noche o con poca visibilidad. Una línea de eje amarilla continua marca el camino a seguir mientras se rueda, y las marcas de borde muestran dónde termina el asfalto utilizable de la calle de rodaje.\n\nLas marcas de posición de espera en pista aparecen sobre la propia calle de rodaje, justo antes de llegar a una pista: dos líneas amarillas continuas seguidas de dos líneas amarillas discontinuas, cruzando todo el ancho de la calle de rodaje. El lado de las líneas continuas es donde el avión se detiene y espera hasta recibir autorización para cruzar o entrar en la pista — cruzar esa marca sin autorización es una incursión en pista sin importar la intención, y por eso se trata como un alto obligatorio, no como una sugerencia.\n\nLas señales del aeródromo se interpretan tanto por color y texto como por forma. Las señales rojas con texto blanco son señales de instrucción obligatoria —un límite de pista, o una zona de acceso explícitamente prohibido— y son las que más directamente importan para la seguridad. Las señales con fondo amarillo y texto negro son señales de ubicación, que muestran en qué calle de rodaje está el avión; las señales con fondo negro y texto amarillo (a menudo con una flecha) son señales de dirección, que apuntan hacia las calles de rodaje o pistas más adelante. Leer las tres correctamente es lo que convierte una autorización de rodaje en una ejecución segura en vez de una adivinanza, sobre todo en un aeródromo concurrido o poco familiar.",
+          "keyTakeaway": "Las marcas de calle de rodaje son amarillas; en una marca de posición de espera, el lado de líneas continuas es donde detenerse, y el color de las señales decodifica el significado: rojo para instrucciones obligatorias, fondo amarillo para ubicación, fondo negro para dirección.",
+          "simTip": "El simulador no tiene red de calles de rodaje ni señalización en tierra para practicar — desarrolla la conciencia de las líneas de espera a partir de un diagrama de aeródromo real y, con el tiempo, de una plataforma real, no del simulador."
+        },
+        "airport-lighting": {
+          "title": "Iluminación del aeródromo",
+          "body": "Las luces de borde de pista son blancas y delimitan la pista utilizable de noche — en algunas pistas, las luces cambian a ámbar en el último tramo como aviso visual de que la longitud útil restante es limitada. Las luces de borde de calle de rodaje son azules, el mismo contraste blanco/amarillo del día pero ahora frente al azul, así un piloto puede distinguir pista de calle de rodaje solo por el color de las luces con poca visibilidad o de noche.\n\nUn indicador visual de senda de planeo —un PAPI (una sola fila de cuatro luces) o el VASI más antiguo (dos barras de luces)— muestra si el avión va por encima, por debajo, o exactamente en la senda de aproximación correcta usando rojo y blanco. En un PAPI, cuatro luces blancas significa que se va demasiado alto, cuatro rojas significa demasiado bajo, y una combinación de dos rojas y dos blancas significa que se va en la senda correcta; más rojo que blanco significa bajo, más blanco que rojo significa alto.\n\nEl faro giratorio del aeródromo identifica el tipo de campo a distancia por su patrón de color: destellos alternos blanco y verde marcan un aeródromo terrestre iluminado, blanco y amarillo marcan una base de hidroaviones, y dos destellos blancos rápidos marcan un aeródromo militar. Nada de esto reemplaza las marcas de pista y calle de rodaje de las lecciones anteriores — es la misma información, construida para seguir siendo legible después del anochecer.",
+          "keyTakeaway": "Las luces de pista son blancas (ámbar cerca del final en algunas pistas), las de calle de rodaje son azules, un PAPI/VASI muestra la posición en la senda de planeo con rojo y blanco, y el patrón de color del faro giratorio identifica el tipo de aeródromo.",
+          "simTip": "El indicador de senda de planeo en pantalla del simulador (demasiado alto, demasiado bajo, o en senda) hace exactamente el mismo trabajo que un PAPI o VASI real — acostúmbrate a comprobarlo igual que comprobarías los colores de las luces en una aproximación real."
+        },
+        "traffic-pattern-procedures": {
+          "title": "El circuito de tráfico",
+          "body": "El circuito de tráfico estándar es un rectángulo que se vuela alrededor de la pista en una secuencia fija: salida (subiendo en línea recta tras el despegue, siguiendo el rumbo de la pista), viento cruzado (un giro de 90° alejándose de la pista), viento en cola (paralelo a la pista, en sentido contrario, volado a la altura de circuito), base (un giro de 90° de regreso hacia la pista), y final (alineado con la pista, descendiendo para aterrizar). Se espera que toda llegada y salida de ese aeródromo encaje en esa misma secuencia.\n\nSalvo que se indique lo contrario, los giros del circuito son a la izquierda, y el circuito se vuela a una altura de circuito publicada — habitualmente unos 300 metros (1.000 pies) sobre el aeródromo, salvo que se especifique una altura distinta para ese campo. Volarlo de forma consistente, con la altura y el sentido de giro correctos, es lo que mantiene predecibles a varios aviones compartiendo el mismo circuito sin un controlador que los secuencie.\n\nEl derecho de paso en el circuito sigue una prioridad simple: un avión en final, o ya aterrizando, tiene prioridad sobre uno todavía en otro tramo del circuito, y a un avión aterrizando nunca se lo debe cortar con un giro para entrar por delante. Dos aviones que convergen en el mismo tramo generalmente ceden el paso al que está a la derecha, y adelantar a otro avión en el circuito se hace ensanchando la trayectoria, nunca girando por dentro.",
+          "keyTakeaway": "El circuito estándar vuela salida, viento cruzado, viento en cola, base y final en ese orden, con giros a la izquierda a la altura de circuito salvo que se indique otra cosa, y un avión en final o aterrizando tiene prioridad sobre uno todavía en el circuito.",
+          "simTip": "Las misiones de giro a rumbo, tramo transversal y tramo al sur practican todas mantener un rumbo — exactamente el bloque básico detrás de volar un viento en cola, base y final consistentes en un circuito real."
+        },
+        "non-towered-airport-operations": {
+          "title": "Operaciones en un aeródromo sin torre",
+          "body": "Un aeródromo sin torre de control no tiene a nadie asignando secuencia ni autorizaciones — los pilotos construyen la misma imagen del tráfico anunciando su posición por la CTAF del aeródromo, con la misma estructura de llamada vista en el módulo de radio y alfabeto deletreado. Lo que ese módulo no cubre es en qué apoyarse cuando nadie está haciendo llamadas: sin radio a bordo, una radio averiada, o un aeródromo sin frecuencia asignada.\n\nEl círculo segmentado cerca de la pista está construido exactamente para eso. Un indicador de viento dentro de él —una manga de viento o una T de viento— muestra la dirección del viento de un vistazo, algo que importa para elegir la pista correcta antes de que nadie diga una palabra. Los indicadores de sentido de circuito en forma de L, dispuestos alrededor del círculo, muestran si una pista dada usa tráfico a izquierda o a derecha, algo que vale la pena comprobar en vez de asumir que siempre aplica el circuito por defecto a la izquierda.\n\nSalvo que algo indique lo contrario, la incorporación estándar al circuito es en un ángulo de 45° hacia el tramo de viento en cola, a la altura de circuito — no entrando directamente en viento en cola, ni cruzando por encima del campo o yendo directo a final sin anunciarlo. Una incorporación fuera de lo estándar sorprende justamente a los pilotos que confían en el flujo esperado y en un escaneo visual para construir su propia imagen del tráfico alrededor, haya o no llamadas de radio.",
+          "keyTakeaway": "Sin torre, el indicador de viento del círculo segmentado y los indicadores de sentido de circuito son el respaldo visual para el viento y el sentido de giro cuando nadie está transmitiendo, y la incorporación estándar —45° al viento en cola, a la altura de circuito— es lo que todo piloto espera salvo que se indique otra cosa.",
+          "simTip": "El módulo de radio y alfabeto deletreado ya cubre qué decir por la CTAF — esta lección es la parte que sigue aplicando incluso cuando nadie está transmitiendo."
+        },
+        "ground-operations-and-safety": {
+          "title": "Operaciones en tierra y seguridad",
+          "body": "Una hélice girando es casi invisible y el peligro más serio en cualquier plataforma — acercarse o caminar cerca de un avión con el motor en marcha siempre evita la zona frente a la hélice, nunca a través de ella, y la estela de la hélice (el chorro de aire detrás de una hélice en marcha) puede tumbar a una persona o un equipo suelto bastante por detrás del avión con potencias más altas.\n\nLas reglas de derecho de paso en tierra siguen el mismo espíritu que la carretera: dos aviones que se cruzan casi de frente se apartan cada uno ligeramente a su derecha, un avión que está siendo adelantado tiene prioridad y el que adelanta se mantiene bien alejado, y rodar se hace a una velocidad que el piloto realmente pueda controlar o detener — los frenos no son instantáneos, y una punta de ala tiene menos margen del que parece desde la cabina. Un señalero, cuando hay uno disponible en una plataforma estrecha, está ahí precisamente para vigilar lo que el piloto no puede ver desde su asiento.\n\nEn la plataforma en general, mantenerse alejado de la zona detrás de cualquier avión operando (chorro de motor o estela de hélice), asegurar los objetos sueltos antes de arrancar el motor (una lista de verificación, una gorra o una carta pueden convertirse en residuos succionados por una hélice o una toma de admisión), y mantener un camino despejado para alejarse de aviones estacionados son los hábitos que tratan la plataforma como la zona de peligro activo que es — no como un estacionamiento.",
+          "keyTakeaway": "Mantente alejado del arco de la hélice y de su estela en cualquier avión en marcha, sigue el derecho de paso en tierra y rueda a una velocidad controlable, y trata la plataforma como una zona de peligro activo — libre de chorros de motor, hélices y objetos sueltos.",
+          "simTip": "El simulador no tiene plataforma ni otros aviones alrededor de los cuales rodar, así que esta lección no tiene misión equivalente — es contexto para la primera vez en una plataforma real y concurrida, algo que el simulador no puede reproducir."
+        }
+      },
+      "quiz": {
+        "reading-an-airport-diagram-q1": {
+          "question": "¿Qué aproxima el número de una pista?",
+          "options": [
+            "Su rumbo magnético, redondeado a la decena más cercana y sin el último dígito",
+            "Su longitud exacta en cientos de metros",
+            "El orden en que se construyó la pista"
+          ],
+          "explanation": "La pista 27 apunta aproximadamente al 270° magnético — esa misma franja de asfalto es la pista 9 desde el sentido contrario."
+        },
+        "reading-an-airport-diagram-q2": {
+          "question": "¿Qué es un \"punto crítico\" en un diagrama de aeródromo?",
+          "options": [
+            "Un lugar con un historial documentado de confusión o incursiones en pista",
+            "Una zona restringida reservada solo para tráfico militar",
+            "El sitio donde los camiones de combustible repostan a los aviones"
+          ],
+          "explanation": "Los puntos críticos marcan lugares concretos que merecen precaución extra al rodar, basados en un historial documentado de incidentes."
+        },
+        "reading-an-airport-diagram-q3": {
+          "question": "¿Por qué repasar un diagrama de aeródromo antes de rodar en uno poco familiar?",
+          "options": [
+            "La mayoría de las incursiones en pista vienen de una autorización de rodaje mal entendida o una posición poco clara, no de un fallo de equipo",
+            "Solo es obligatorio en aeródromos sin torre de control",
+            "Reemplaza la necesidad de recibir una autorización de rodaje"
+          ],
+          "explanation": "Construir la imagen de la disposición por adelantado es lo que evita el tipo de confusión detrás de la mayoría de las incursiones en pista."
+        },
+        "runway-markings-q1": {
+          "question": "¿De qué color son las marcas de pista?",
+          "options": ["Blancas", "Amarillas", "Azules"],
+          "explanation": "Las marcas de pista son siempre blancas — el contraste con las amarillas de la calle de rodaje hace fácil distinguir ambas superficies."
+        },
+        "runway-markings-q2": {
+          "question": "¿Qué significa un umbral desplazado?",
+          "options": [
+            "Aterrizar no está permitido antes de ese punto, pero el asfalto anterior aún puede usarse para la carrera de despegue o para rodar",
+            "La pista queda cerrada de forma permanente más allá de ese punto",
+            "Solo se permiten aterrizajes nocturnos antes de ese punto"
+          ],
+          "explanation": "Un umbral desplazado acorta la distancia de aterrizaje disponible sin acortar la longitud útil de la pista para despegar."
+        },
+        "runway-markings-q3": {
+          "question": "¿Para qué sirven las marcas de punto de referencia?",
+          "options": [
+            "Dan al piloto una referencia visual de dónde apuntar durante la aproximación y el redondeo",
+            "Marcan el punto exacto donde termina el asfalto de la pista",
+            "Indican dónde deben detenerse las máquinas quitanieves"
+          ],
+          "explanation": "Las dos franjas rectangulares gruesas después del umbral dan un punto de mira visual constante durante la aproximación."
+        },
+        "taxiway-markings-and-signs-q1": {
+          "question": "¿De qué color son las marcas de calle de rodaje?",
+          "options": ["Amarillas", "Blancas", "Rojas"],
+          "explanation": "Las marcas de calle de rodaje son amarillas, lo opuesto deliberado al blanco de la pista."
+        },
+        "taxiway-markings-and-signs-q2": {
+          "question": "En una marca de posición de espera en pista, ¿en qué lado hay que detenerse y esperar?",
+          "options": [
+            "En el lado de las dos líneas continuas, hasta recibir autorización para cruzar o entrar",
+            "En el lado de las dos líneas discontinuas",
+            "En cualquiera de los dos lados, no importa cuál"
+          ],
+          "explanation": "El lado de líneas continuas es el lado de espera; cruzarlo sin autorización es una incursión en pista sin importar la intención."
+        },
+        "taxiway-markings-and-signs-q3": {
+          "question": "¿Qué indica una señal roja con texto blanco?",
+          "options": [
+            "Una instrucción obligatoria, como un límite de pista o una zona de acceso prohibido",
+            "En qué calle de rodaje está el avión en ese momento",
+            "La dirección hacia el surtidor de combustible más cercano"
+          ],
+          "explanation": "Las señales rojas son señales de instrucción obligatoria — las que más directamente importan para la seguridad."
+        },
+        "airport-lighting-q1": {
+          "question": "¿De qué color son las luces de borde de pista?",
+          "options": [
+            "Blancas (ámbar en el último tramo en algunas pistas)",
+            "Azules",
+            "Verdes en toda su longitud"
+          ],
+          "explanation": "El blanco delimita la pista utilizable de noche, con el ámbar avisando de que queda longitud útil limitada en algunas pistas."
+        },
+        "airport-lighting-q2": {
+          "question": "¿De qué color son las luces de borde de calle de rodaje?",
+          "options": ["Azules", "Blancas", "Rojas"],
+          "explanation": "Las luces azules de calle de rodaje contrastan con las blancas de pista, la misma distinción que las marcas amarillas frente a blancas de día."
+        },
+        "airport-lighting-q3": {
+          "question": "En un PAPI, ¿qué significa ver más luces rojas que blancas?",
+          "options": [
+            "El avión va por debajo de la senda de planeo correcta",
+            "El avión va por encima de la senda de planeo correcta",
+            "El avión está a la izquierda de la prolongación del eje de pista"
+          ],
+          "explanation": "Más rojo que blanco en un PAPI significa que se va bajo; cuatro blancas significa demasiado alto, y dos y dos significa senda correcta."
+        },
+        "traffic-pattern-procedures-q1": {
+          "question": "¿Cuál es el orden correcto de los tramos del circuito estándar tras el despegue?",
+          "options": [
+            "Salida, viento cruzado, viento en cola, base, final",
+            "Viento en cola, salida, base, viento cruzado, final",
+            "Final, base, viento cruzado, viento en cola, salida"
+          ],
+          "explanation": "Se espera que toda llegada y salida de ese aeródromo encaje en esa misma secuencia."
+        },
+        "traffic-pattern-procedures-q2": {
+          "question": "Salvo que se indique lo contrario, ¿en qué sentido se vuelan los giros del circuito?",
+          "options": [
+            "A la izquierda",
+            "A la derecha",
+            "En el sentido que tenga menos tráfico en ese momento"
+          ],
+          "explanation": "Volar el sentido por defecto de forma consistente es lo que mantiene predecibles a los aviones que comparten un circuito."
+        },
+        "traffic-pattern-procedures-q3": {
+          "question": "En el circuito de tráfico, ¿qué avión tiene generalmente prioridad?",
+          "options": [
+            "El avión en final o ya aterrizando",
+            "El avión que entró primero al circuito, sin importar su posición",
+            "El avión más rápido"
+          ],
+          "explanation": "A un avión aterrizando, o en final, nunca se lo debe cortar con un giro para entrar por delante."
+        },
+        "non-towered-airport-operations-q1": {
+          "question": "¿Qué muestra el indicador de viento de un círculo segmentado (una manga o una T de viento)?",
+          "options": [
+            "La dirección del viento, que importa para elegir la pista correcta antes de cualquier llamada de radio",
+            "La frecuencia actual de control de tráfico aéreo",
+            "La elevación del campo del aeródromo"
+          ],
+          "explanation": "Es un respaldo visual para exactamente la información que un piloto obtendría de otro modo por radio o de un controlador."
+        },
+        "non-towered-airport-operations-q2": {
+          "question": "¿Qué muestran los indicadores de sentido de circuito en forma de L alrededor de un círculo segmentado?",
+          "options": [
+            "Si una pista dada usa tráfico a izquierda o a derecha",
+            "La altura mínima de seguridad para el circuito",
+            "La ubicación del surtidor de combustible más cercano"
+          ],
+          "explanation": "Vale la pena comprobarlos en vez de asumir que siempre aplica el circuito por defecto a la izquierda en cada pista."
+        },
+        "non-towered-airport-operations-q3": {
+          "question": "Salvo que se indique otra cosa, ¿cuál es la incorporación estándar al circuito?",
+          "options": [
+            "Un ángulo de 45° hacia el tramo de viento en cola, a la altura de circuito",
+            "Directo a final sin importar el resto del tráfico",
+            "Directamente sobre el campo a cualquier altura"
+          ],
+          "explanation": "Una incorporación fuera de lo estándar sorprende justamente a los pilotos que confían en el flujo esperado y una trayectoria previsible."
+        },
+        "ground-operations-and-safety-q1": {
+          "question": "Al acercarse a un avión estacionado con el motor en marcha, ¿qué se debe evitar?",
+          "options": [
+            "Acercarse por delante, cerca de la hélice",
+            "Acercarse directamente por detrás del ala",
+            "Acercarse mientras el motor no esté apagado"
+          ],
+          "explanation": "Una hélice girando es casi invisible y el peligro más serio en cualquier plataforma."
+        },
+        "ground-operations-and-safety-q2": {
+          "question": "Al rodar y cruzarse casi de frente con otro avión, ¿cuál es la práctica estándar?",
+          "options": [
+            "Cada avión se aparta ligeramente a su derecha",
+            "Ambos aviones se detienen y esperan a un vehículo de tierra que los dirija",
+            "El avión más grande tiene prioridad incondicional en todos los casos"
+          ],
+          "explanation": "El derecho de paso en tierra sigue el mismo espíritu que la carretera — cada avión cede ligeramente hacia su propia derecha."
+        },
+        "ground-operations-and-safety-q3": {
+          "question": "¿Por qué asegurar los objetos sueltos antes de arrancar el motor?",
+          "options": [
+            "Pueden convertirse en residuos succionados por una hélice o una toma de admisión",
+            "Solo es una preocupación en aviones con motor a reacción",
+            "Solo importa en aviones con tren de aterrizaje retráctil"
+          ],
+          "explanation": "Una lista de verificación, una gorra o una carta atrapada por la estela de la hélice o una toma se vuelve un peligro, no solo un objeto perdido."
+        }
+      }
     }
   },
   "passedTag": "Aprobado",

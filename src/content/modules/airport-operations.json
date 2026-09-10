@@ -1,0 +1,82 @@
+{
+  "id": "airport-operations",
+  "icon": "signpost",
+  "order": 14,
+  "status": "available",
+  "lessons": [
+    {
+      "id": "reading-an-airport-diagram",
+      "quiz": {
+        "questions": [
+          { "id": "reading-an-airport-diagram-q1", "correct": 0 },
+          { "id": "reading-an-airport-diagram-q2", "correct": 0 },
+          { "id": "reading-an-airport-diagram-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "runway-markings",
+      "quiz": {
+        "questions": [
+          { "id": "runway-markings-q1", "correct": 0 },
+          { "id": "runway-markings-q2", "correct": 0 },
+          { "id": "runway-markings-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "taxiway-markings-and-signs",
+      "quiz": {
+        "questions": [
+          { "id": "taxiway-markings-and-signs-q1", "correct": 0 },
+          { "id": "taxiway-markings-and-signs-q2", "correct": 0 },
+          { "id": "taxiway-markings-and-signs-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "airport-lighting",
+      "quiz": {
+        "questions": [
+          { "id": "airport-lighting-q1", "correct": 0 },
+          { "id": "airport-lighting-q2", "correct": 0 },
+          { "id": "airport-lighting-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "traffic-pattern-procedures",
+      "quiz": {
+        "questions": [
+          { "id": "traffic-pattern-procedures-q1", "correct": 0 },
+          { "id": "traffic-pattern-procedures-q2", "correct": 0 },
+          { "id": "traffic-pattern-procedures-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "non-towered-airport-operations",
+      "quiz": {
+        "questions": [
+          { "id": "non-towered-airport-operations-q1", "correct": 0 },
+          { "id": "non-towered-airport-operations-q2", "correct": 0 },
+          { "id": "non-towered-airport-operations-q3", "correct": 0 }
+        ]
+      }
+    },
+    {
+      "id": "ground-operations-and-safety",
+      "quiz": {
+        "questions": [
+          { "id": "ground-operations-and-safety-q1", "correct": 0 },
+          { "id": "ground-operations-and-safety-q2", "correct": 0 },
+          { "id": "ground-operations-and-safety-q3", "correct": 0 }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passScore": 8,
+    "sampleSize": 10
+  }
+}

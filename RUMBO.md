@@ -7,16 +7,16 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-08-10.
+**Última revisión:** 2026-09-09.
 
 ## Estado de partida
 
-Verificado el 2026-08-10 (tras el trabajo de la sección "Decisiones" de
-abajo): `npm run lint` (0 errores), `npm run format:check`, `npm run
-check:i18n` (5 idiomas × 5 namespaces, **11 módulos**, 19 flashcards) ✅,
-`npm test` (**59** tests, 7 archivos) ✅, `npm run build` ✅. Sin issues ni
-PRs abiertos en GitHub. El proyecto no tiene deuda técnica visible ni
-bloqueadores conocidos.
+Verificado el 2026-09-09 (tras el trabajo de la sección "Decisiones" de
+abajo): `npm run lint` (0 errores, 8 warnings documentados en
+`CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
+namespaces, **14 módulos**, 45 flashcards) ✅, `npm test` (**77** tests, 9
+archivos) ✅, `npm run build` ✅. Sin issues ni PRs abiertos en GitHub. El
+proyecto no tiene deuda técnica visible ni bloqueadores conocidos.
 
 ## Líneas de trabajo propuestas
 
@@ -31,11 +31,27 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
       ruta y cartas, combustible y reservas, alternos y mínimos
       meteorológicos, NOTAM y partes, presentar un plan de vuelo, decisión
       de ir/no ir. 7 lecciones, 5 idiomas. Ver Decisiones, 2026-08-10.
-- [ ] Más módulos de teoría (candidatos: sistemas de aeronave, ATC
-      avanzado)
+- [x] Más módulos de teoría — **Sistemas de aeronave** (`aircraft-systems`,
+      12º) y **ATC avanzado** (`advanced-atc`, 13º), 7 lecciones y 5
+      idiomas cada uno. Hecho en la sesión del 2026-08-20 (ver
+      `CHECKPOINT.md`); este casillero no se había marcado entonces —
+      corregido el 2026-09-07 al revisar el estado real del repo (13
+      módulos en `src/content/modules/`, no 11). Sumado un 14º módulo,
+      **Operaciones de aeródromo** (`airport-operations`), el 2026-09-09 —
+      ver Decisiones.
 - [ ] Más escenarios/misiones en el simulador (vuelo IFR simplificado,
-      aproximación con viento cruzado, emergencias adicionales)
-- [ ] Más mazos de flashcards (además de instrumentos y alertas de cabina)
+      aproximación con viento cruzado, emergencias adicionales) — se sumó
+      "viraje a altitud constante" (`level-turn`) como primer paso hacia
+      maniobras de vuelo por instrumentos; ver Decisiones, 2026-09-07. El
+      simulador no modela viento, así que "aproximación con viento
+      cruzado" sigue pendiente de una decisión de alcance (¿vale la pena
+      un modelo de viento en `FlightEngine` solo para esa misión?) antes
+      de tocar código.
+- [x] Más mazos de flashcards — **Alfabeto radiotelefónico** (26 tarjetas,
+      OACI), sumado a los mazos de instrumentos y alertas de cabina.
+      Mismo caso que el ítem anterior: hecho antes, sin marcar; corregido
+      el 2026-09-07 (3 mazos, 45 flashcards en total según
+      `check:i18n`).
 
 ### Producto / crecimiento
 
@@ -68,6 +84,39 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-09 — Nuevo módulo de teoría: **Operaciones de aeródromo**
+  (`airport-operations`, 14º del catálogo), a pedido explícito del dueño
+  del proyecto dentro de la línea "más módulos de teoría". Cubre el lado
+  físico de volar que ningún módulo anterior tocaba: leer un diagrama de
+  aeródromo (números de pista, puntos críticos), marcas de pista y de
+  calle de rodaje (umbral desplazado, posición de espera), señales del
+  aeródromo por color, iluminación (PAPI/VASI, faro giratorio), la
+  geometría y prioridad de paso del circuito de tráfico, y seguridad en
+  tierra (hélice, derecho de paso rodando, plataforma). 7 lecciones, 5
+  idiomas traducidos de verdad, icono nuevo `signpost` (Lucide).
+  Verificado contra el resto del catálogo antes de escribir contenido: el
+  módulo `radio-alphabet` ya tenía una lección ("Llamadas de posición en
+  el circuito de tráfico") sobre las llamadas de radio en CTAF —para no
+  duplicarla, la lección de "operaciones sin torre" de este módulo nuevo
+  se enfocó en el respaldo visual (círculo segmentado, manga de viento,
+  indicadores de sentido de circuito) y la incorporación estándar a 45°,
+  remitiendo a `radio-alphabet` para la fraseología en sí.
+- 2026-09-07 — Nueva misión del simulador: "viraje a altitud constante"
+  (`level-turn`, 12ª misión), a pedido explícito del dueño del proyecto
+  dentro de la línea "más escenarios/misiones". Combina dos habilidades
+  que hasta ahora se evaluaban por separado (`bankTurn` solo vigila el
+  banco, `altitudeHold` solo la altitud): exige mantener un banco de 20°
+  a la izquierda SIN perder más de ±15 m de la altitud con la que se
+  entró al viraje, durante 6 segundos — la maniobra básica de
+  instrumentos real ("constant-altitude turn"). Nuevo tipo de objetivo
+  `levelTurn` en `MissionTracker` (la altitud de referencia se fija al
+  entrar en el viraje, no es un valor fijo del nivel — así la misión
+  premia no perder altura mientras se vira, no llegar a una cota
+  concreta). Añadida a `instrument-basics` (requiere `cockpit-instruments`,
+  igual que sus otras 3 misiones). Sin cambios de UI: el HUD ya muestra
+  banco y altitud para cualquier misión, y el objetivo se resuelve por
+  i18n como las demás (`missions.level-turn.objective`). No se tocó
+  `FlightEngine` — no hace falta física nueva para esta maniobra.
 - 2026-08-10 — Se prioriza "Contenido nuevo" (módulo Planificación de
   vuelo), "Calidad/infraestructura" y documentar (sin activar) la
   analítica, a pedido explícito del dueño del proyecto. Trabajo

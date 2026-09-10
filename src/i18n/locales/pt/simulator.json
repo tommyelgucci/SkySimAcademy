@@ -82,6 +82,10 @@
       "title": "Curva padrão",
       "objective": "Acima de 50 m, mantenha uma inclinação de 30° à direita por 5 segundos."
     },
+    "level-turn": {
+      "title": "Curva com altitude constante",
+      "objective": "Acima de 60 m, mantenha uma inclinação suave de 20° à esquerda sem se afastar mais de 15 m da sua altitude por 6 segundos."
+    },
     "nav-leg": {
       "title": "Perna ao sul",
       "objective": "Acima de 100 m, mantenha a proa 180° por 6 segundos."

@@ -3073,6 +3073,233 @@
           "explanation": "The realistic approach is checking specific differences before an unfamiliar flight, the same habit as a NOTAM and weather briefing applied to the regulatory environment."
         }
       }
+    },
+    "airport-operations": {
+      "title": "Airport operations",
+      "description": "The physical side of flying: reading an airport diagram, runway and taxiway markings and signs, airport lighting, the standard traffic pattern, operating at a non-towered airport, and ground safety around other aircraft.",
+      "lessons": {
+        "reading-an-airport-diagram": {
+          "title": "Reading an airport diagram",
+          "body": "An airport diagram shows the layout of runways and taxiways from directly above, the same way a floor plan shows a building's layout before walking through it. Reviewing it before ever taxiing at an unfamiliar airport — on a chart, an app, or a printed diagram — builds the same kind of picture in advance that a chart and weather briefing build for the route itself.\n\nRunway numbers approximate the runway's magnetic heading, rounded to the nearest 10° with the last digit dropped — a runway numbered 27 points roughly 270° magnetic, and the same strip of pavement is runway 9 from the opposite direction. Taxiways are labeled with letters (and sometimes a number for a segment of a longer one), and diagrams mark \"hot spots\": specific locations with a documented history of confusion or runway incursions, worth a second look before taxiing anywhere near one.\n\nSituational awareness on the ground matters as much as it does in the air, and most runway incursions trace back to a misunderstood taxi clearance or a pilot who wasn't sure exactly where they were on the airport surface — not to equipment failure. Knowing the layout before the engine starts is what prevents that particular kind of mistake.",
+          "keyTakeaway": "Airport diagrams show the runway/taxiway layout and hot spots; a runway number approximates its magnetic heading, and reviewing the diagram beforehand is what prevents most runway incursions, which come from confusion, not equipment failure.",
+          "simTip": "The simulator's airports are small with no taxiway network to navigate — treat reviewing a real airport diagram, even for a familiar field, as required study before ever taxiing there for the first time."
+        },
+        "runway-markings": {
+          "title": "Runway markings",
+          "body": "Runway markings are always white, which is the first thing that distinguishes them from taxiway markings at a glance. The runway numbers sit at each end, and a dashed centerline stripe runs down the middle to help track alignment during takeoff, landing, and the rollout in between.\n\nAiming point markings — two thick rectangular stripes roughly 1,000 feet past the threshold — give a visual reference for exactly where to aim during the approach and flare, and touchdown zone markings (additional paired rectangles at intervals on longer runways) help judge how much usable pavement remains ahead. Threshold markings, a set of stripes right at the start of the runway, show precisely where the surface usable for landing begins.\n\nA displaced threshold moves that starting point further down the runway, marked with arrows leading up to it: the pavement before the arrows can still be used for takeoff roll or for taxiing, but landing isn't permitted before the displaced threshold itself — commonly because of an obstacle in the approach path or pavement that isn't suitable for a full landing rollout. It shortens the landing distance available without shortening the runway's usable length for departure.",
+          "keyTakeaway": "Runway markings are white; the centerline aids alignment, aiming point and touchdown zone markings show where to land, and a displaced threshold shortens landing distance available without shortening the runway itself.",
+          "simTip": "The precision-landing mission grades exactly what these markings are for in real flying — a soft touchdown, centered and aligned with the runway centerline."
+        },
+        "taxiway-markings-and-signs": {
+          "title": "Taxiway markings and signs",
+          "body": "Taxiway markings are yellow, the opposite of the runway's white — a deliberate contrast that makes it obvious at a glance which surface is which, even at night or in poor visibility. A continuous yellow centerline marks the path to follow while taxiing, and edge markings show where the usable taxiway pavement ends.\n\nRunway holding position markings appear on the taxiway itself, just before it reaches a runway: two solid yellow lines followed by two dashed yellow lines, running across the full width of the taxiway. The solid-line side is where an aircraft stops and holds until cleared to cross or enter the runway — crossing that marking without clearance is a runway incursion regardless of intent, which is exactly why it's treated as a hard stop, not a suggestion.\n\nAirport signs decode by color and text as much as by shape. Red signs with white text are mandatory instruction signs — a runway boundary, or an explicit no-entry area — and are the ones that most directly matter for safety. Signs with a yellow background and black text are location signs, showing which taxiway a pilot is currently on; signs with a black background and yellow text (often with an arrow) are direction signs, pointing toward the taxiways or runways ahead. Reading all three correctly is what turns a taxi clearance into safe execution instead of guesswork, especially at a busy or unfamiliar airport.",
+          "keyTakeaway": "Taxiway markings are yellow; a runway holding position marking's solid-line side is where to stop, and sign colors decode meaning — red for mandatory instructions, yellow-background for location, black-background for direction.",
+          "simTip": "The simulator has no taxiway network or ground signage to practice against — treat hold-short awareness as something to build from a real airport diagram and, eventually, a real ramp, not from the sim."
+        },
+        "airport-lighting": {
+          "title": "Airport lighting",
+          "body": "Runway edge lights are white, outlining the usable runway at night — on some runways, the lights switch to amber over the last portion as a visual warning that the remaining usable length is limited. Taxiway edge lights are blue, the same white/yellow-versus-blue contrast as the daytime markings, so a pilot can tell runway from taxiway by light color alone in low visibility or at night.\n\nA visual approach path indicator — a PAPI (a single row of four lights) or the older VASI (two bars of lights) — shows whether the aircraft is above, below, or on the correct glide path using red and white. On a PAPI, four white lights means too high, four red means too low, and a mix of two red and two white means on the correct path; more red than white means low, more white than red means high.\n\nThe airport's rotating beacon identifies the type of field from a distance by its color pattern: alternating white and green flashes mark a lighted land airport, white and yellow mark a seaplane base, and two quick white flashes mark a military field. None of this replaces the runway and taxiway markings from the daytime lessons — it's the same information, built to still be readable after dark.",
+          "keyTakeaway": "Runway lights are white (amber near the end on some runways), taxiway lights are blue, a PAPI/VASI shows glide path position with red and white, and the rotating beacon's color pattern identifies the type of airport.",
+          "simTip": "The simulator's on-screen glide path indicator (too high, too low, or on course) does the same job as a real PAPI or VASI — get in the habit of cross-checking it the same way you would the light colors on a real approach."
+        },
+        "traffic-pattern-procedures": {
+          "title": "The traffic pattern",
+          "body": "The standard traffic pattern is a rectangle flown around the runway in a fixed sequence: upwind (climbing straight ahead after takeoff, along the runway heading), crosswind (a 90° turn away from the runway), downwind (parallel to the runway, opposite direction, flown at pattern altitude), base (a 90° turn back toward the runway), and final (aligned with the runway, descending to land). Every arrival and departure at that airport is expected to fit into this same sequence.\n\nUnless posted otherwise, pattern turns are to the left, and the pattern is flown at a published pattern altitude — commonly around 1,000 feet above the airport unless a different altitude is specified for that field. Flying it consistently, at the correct altitude and turn direction, is what keeps several aircraft sharing the same pattern predictable to each other with no controller sequencing them.\n\nRight-of-way in the pattern follows a simple priority: an aircraft on final approach, or already landing, has right-of-way over one still on another leg of the pattern, and a landing aircraft is never to be cut off by one turning to enter ahead of it. Two aircraft converging on the same leg generally give way to the one on the right, and overtaking another aircraft in the pattern is done by widening out, never by turning inside it.",
+          "keyTakeaway": "The standard pattern flies upwind, crosswind, downwind, base, and final in that order, with left turns at pattern altitude unless posted otherwise, and an aircraft on final or landing has right-of-way over one still in the pattern.",
+          "simTip": "The heading-turn, cross-country, and nav-leg missions all practice holding a heading — the exact building block behind flying a consistent downwind, base, and final leg in a real pattern."
+        },
+        "non-towered-airport-operations": {
+          "title": "Non-towered airport operations",
+          "body": "An airport with no control tower has no one assigning sequence or clearances — pilots build a shared picture of traffic by self-announcing on the airport's CTAF, using the same call structure covered in the radio and spelling alphabet module. What that module doesn't cover is what to rely on when nobody's making calls at all: no radio on board, a radio failure, or an airport with no assigned frequency in the first place.\n\nThe segmented circle near the runway is built for exactly that. A wind indicator inside it — a wind sock or wind tee — shows wind direction at a glance, which matters for picking the correct runway before anyone says a word. L-shaped traffic pattern indicators arranged around the circle show whether a given runway uses left-hand or right-hand traffic, worth checking rather than assuming the default left-hand pattern always applies.\n\nUnless something indicates otherwise, the standard pattern entry is at a 45° angle to the downwind leg, at pattern altitude — not entering directly onto downwind, and not crossing overhead or going straight in without announcing. A non-standard entry surprises exactly the pilots who are relying on the expected flow and a visual scan to build their own picture of the traffic around them, radio calls or not.",
+          "keyTakeaway": "With no tower, the segmented circle's wind indicator and traffic pattern indicators are the visual backup for wind and turn direction when nobody's transmitting, and the standard entry — a 45° angle to downwind at pattern altitude — is what every pilot expects unless told otherwise.",
+          "simTip": "The radio and spelling alphabet module already covers what to say on the CTAF — this lesson is the part that still applies even when nobody's transmitting at all."
+        },
+        "ground-operations-and-safety": {
+          "title": "Ground operations and safety",
+          "body": "A spinning propeller is close to invisible and the single most dangerous hazard on any ramp — approaching or walking near a running aircraft always stays clear of the area in front of the propeller, never through it, and prop wash (the blast of air behind a running propeller) can knock over a person or unsecured equipment well behind the aircraft at higher power settings.\n\nGround right-of-way rules mirror the road in spirit: two aircraft meeting nearly head-on each alter course slightly to the right, an aircraft being overtaken has right-of-way and the aircraft passing it stays well clear, and taxiing happens at a speed the pilot can actually stop or steer out of trouble — brakes are not instantaneous, and a wingtip has less clearance than it looks like from the cockpit. A wing-walker or marshaller, when one is available in a tight ramp area, is there specifically to watch what the pilot can't see from their seat.\n\nOn the ramp generally, staying clear of the area behind any operating aircraft (jet blast or prop wash), securing loose items before starting an engine (a checklist, a hat, or a chart can become debris pulled into a propeller or intake), and keeping a clear path to move away from parked aircraft are the habits that treat the ramp as the active hazard zone it is — not a parking lot.",
+          "keyTakeaway": "Stay clear of the propeller arc and prop wash on any running aircraft, follow ground right-of-way and taxi at a controllable speed, and treat the ramp as an active hazard zone — clear of blast, propellers, and loose debris.",
+          "simTip": "The simulator has no ramp or other aircraft to taxi around, so this lesson has no matching mission — it's background for the first time on a real, busy ramp, which the sim has no way to reproduce."
+        }
+      },
+      "quiz": {
+        "reading-an-airport-diagram-q1": {
+          "question": "What does a runway number approximate?",
+          "options": [
+            "The runway's magnetic heading, rounded to the nearest 10° with the last digit dropped",
+            "The runway's exact length in hundreds of feet",
+            "The order in which the runway was built"
+          ],
+          "explanation": "Runway 27 points roughly 270° magnetic — the same strip of pavement is runway 9 from the opposite direction."
+        },
+        "reading-an-airport-diagram-q2": {
+          "question": "What is a \"hot spot\" on an airport diagram?",
+          "options": [
+            "A location with a documented history of confusion or runway incursions",
+            "A restricted area reserved only for military traffic",
+            "The spot where fuel trucks refuel aircraft"
+          ],
+          "explanation": "Hot spots mark specific locations worth extra caution while taxiing, based on a documented history of incidents there."
+        },
+        "reading-an-airport-diagram-q3": {
+          "question": "Why review an airport diagram before taxiing at an unfamiliar airport?",
+          "options": [
+            "Most runway incursions come from a misunderstood taxi clearance or unclear position, not equipment failure",
+            "It's required only at airports without a control tower",
+            "It replaces the need to receive a taxi clearance"
+          ],
+          "explanation": "Building the layout picture in advance is what prevents the kind of confusion that leads to most runway incursions."
+        },
+        "runway-markings-q1": {
+          "question": "What color are runway markings?",
+          "options": ["White", "Yellow", "Blue"],
+          "explanation": "Runway markings are always white — the contrast with yellow taxiway markings makes the two surfaces easy to tell apart."
+        },
+        "runway-markings-q2": {
+          "question": "What does a displaced threshold mean?",
+          "options": [
+            "Landing isn't permitted before that point, but the pavement before it can still be used for takeoff roll or taxiing",
+            "The runway is permanently closed beyond that point",
+            "Only night landings are allowed before that point"
+          ],
+          "explanation": "A displaced threshold shortens the landing distance available without shortening the runway's usable length for departure."
+        },
+        "runway-markings-q3": {
+          "question": "What are aiming point markings used for?",
+          "options": [
+            "Giving the pilot a visual reference for where to aim during the approach and flare",
+            "Marking the exact spot where the runway pavement ends",
+            "Indicating where snowplows should stop clearing"
+          ],
+          "explanation": "The two thick rectangular stripes past the threshold give a consistent visual aim point during the approach."
+        },
+        "taxiway-markings-and-signs-q1": {
+          "question": "What color are taxiway markings?",
+          "options": ["Yellow", "White", "Red"],
+          "explanation": "Taxiway markings are yellow, the deliberate opposite of the runway's white."
+        },
+        "taxiway-markings-and-signs-q2": {
+          "question": "At a runway holding position marking, which side do you stop and hold at?",
+          "options": [
+            "The side with the two solid lines, until cleared to cross or enter",
+            "The side with the two dashed lines",
+            "Either side — it doesn't matter which"
+          ],
+          "explanation": "The solid-line side is the hold side; crossing it without clearance is a runway incursion regardless of intent."
+        },
+        "taxiway-markings-and-signs-q3": {
+          "question": "What does a red sign with white text indicate?",
+          "options": [
+            "A mandatory instruction, such as a runway boundary or a no-entry area",
+            "Which taxiway you are currently on",
+            "The direction to the nearest fuel pump"
+          ],
+          "explanation": "Red signs are mandatory instruction signs — the ones that most directly matter for safety."
+        },
+        "airport-lighting-q1": {
+          "question": "What color are runway edge lights?",
+          "options": [
+            "White (amber over the last portion on some runways)",
+            "Blue",
+            "Green along the entire length"
+          ],
+          "explanation": "White marks the usable runway at night, with amber warning that the remaining usable length is limited on some runways."
+        },
+        "airport-lighting-q2": {
+          "question": "What color are taxiway edge lights?",
+          "options": ["Blue", "White", "Red"],
+          "explanation": "Blue taxiway lights contrast with white runway lights, the same distinction as the daytime yellow-versus-white markings."
+        },
+        "airport-lighting-q3": {
+          "question": "On a PAPI, what does seeing more red lights than white mean?",
+          "options": [
+            "The aircraft is below the correct glide path",
+            "The aircraft is above the correct glide path",
+            "The aircraft is left of the extended runway centerline"
+          ],
+          "explanation": "More red than white on a PAPI means low; four white means too high, and two-and-two means on the correct path."
+        },
+        "traffic-pattern-procedures-q1": {
+          "question": "What is the correct order of standard traffic pattern legs after takeoff?",
+          "options": [
+            "Upwind, crosswind, downwind, base, final",
+            "Downwind, upwind, base, crosswind, final",
+            "Final, base, crosswind, downwind, upwind"
+          ],
+          "explanation": "Every arrival and departure at that airport is expected to fit into this same sequence."
+        },
+        "traffic-pattern-procedures-q2": {
+          "question": "Unless posted otherwise, which direction are traffic pattern turns flown?",
+          "options": [
+            "Left turns",
+            "Right turns",
+            "Whichever direction has less traffic at the time"
+          ],
+          "explanation": "Flying the default direction consistently is what keeps aircraft sharing a pattern predictable to each other."
+        },
+        "traffic-pattern-procedures-q3": {
+          "question": "In the traffic pattern, which aircraft generally has right-of-way?",
+          "options": [
+            "The aircraft on final approach or already landing",
+            "The aircraft that entered the pattern first, regardless of position",
+            "The faster aircraft"
+          ],
+          "explanation": "A landing aircraft, or one on final, is never to be cut off by one turning to enter ahead of it."
+        },
+        "non-towered-airport-operations-q1": {
+          "question": "What does a segmented circle's wind indicator (a wind sock or wind tee) show?",
+          "options": [
+            "Wind direction, which matters for picking the correct runway before anyone makes a radio call",
+            "The current air traffic control frequency",
+            "The airport's field elevation"
+          ],
+          "explanation": "It's a visual backup for exactly the information a pilot would otherwise get from a radio call or a controller."
+        },
+        "non-towered-airport-operations-q2": {
+          "question": "What do the L-shaped traffic pattern indicators around a segmented circle show?",
+          "options": [
+            "Whether a given runway uses left-hand or right-hand traffic",
+            "The minimum safe altitude for the pattern",
+            "The location of the nearest fuel pump"
+          ],
+          "explanation": "They're worth checking rather than assuming the default left-hand pattern always applies at every runway."
+        },
+        "non-towered-airport-operations-q3": {
+          "question": "Unless otherwise indicated, what is the standard traffic pattern entry?",
+          "options": [
+            "A 45° angle to the downwind leg, at pattern altitude",
+            "Straight in on final regardless of other traffic",
+            "Directly overhead the field at any altitude"
+          ],
+          "explanation": "A non-standard entry is exactly what surprises pilots relying on standard calls and an expected flight path."
+        },
+        "ground-operations-and-safety-q1": {
+          "question": "When approaching a parked aircraft with the engine running, what should be avoided?",
+          "options": [
+            "Approaching from the front, near the propeller",
+            "Approaching from directly behind the wing",
+            "Approaching at all before the engine is shut down"
+          ],
+          "explanation": "A spinning propeller is close to invisible and the single most dangerous hazard on any ramp."
+        },
+        "ground-operations-and-safety-q2": {
+          "question": "When taxiing and meeting another aircraft nearly head-on, what's the standard practice?",
+          "options": [
+            "Each aircraft alters course slightly to the right",
+            "Both aircraft stop and wait for a ground vehicle to direct them",
+            "The larger aircraft always has unconditional right-of-way"
+          ],
+          "explanation": "Ground right-of-way mirrors the road in spirit — each aircraft gives way slightly to its own right."
+        },
+        "ground-operations-and-safety-q3": {
+          "question": "Why secure loose items before starting the engine?",
+          "options": [
+            "They can become debris pulled into a propeller or intake",
+            "It's only a concern on aircraft with jet engines",
+            "It only matters on aircraft with retractable landing gear"
+          ],
+          "explanation": "A checklist, hat, or chart caught by prop wash or an intake becomes a hazard, not just a lost item."
+        }
+      }
     }
   },
   "passedTag": "Passed",

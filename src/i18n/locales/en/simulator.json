@@ -82,6 +82,10 @@
       "title": "Standard turn",
       "objective": "Above 50 m, hold a 30° right bank for 5 seconds."
     },
+    "level-turn": {
+      "title": "Constant-altitude turn",
+      "objective": "Above 60 m, hold a gentle 20° left bank without drifting more than 15 m from your altitude for 6 seconds."
+    },
     "nav-leg": {
       "title": "Southbound leg",
       "objective": "Above 100 m, hold heading 180° for 6 seconds."

@@ -20,6 +20,7 @@ import humanFactors from "./human-factors.json";
 import flightPlanning from "./flight-planning.json";
 import aircraftSystems from "./aircraft-systems.json";
 import advancedAtc from "./advanced-atc.json";
+import airportOperations from "./airport-operations.json";
 
 export const MODULES = [
   principlesOfFlight,
@@ -35,6 +36,7 @@ export const MODULES = [
   flightPlanning,
   aircraftSystems,
   advancedAtc,
+  airportOperations,
 ]
   .map(deriveModuleQuiz)
   .map(validateModule)

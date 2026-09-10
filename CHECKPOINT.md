@@ -9,6 +9,91 @@ commit.
 
 ---
 
+## 2026-09-09 — Nuevo módulo de teoría: Operaciones de aeródromo
+
+**Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
+"más módulos de teoría" de `RUMBO.md`):
+
+- **Contenido:** 14º módulo, `airport-operations` (icono nuevo `signpost`,
+  orden 14). 7 lecciones: leer un diagrama de aeródromo (números de pista,
+  puntos críticos), marcas de pista (umbral desplazado, punto de
+  referencia, zona de toma de contacto), marcas y señales de calle de
+  rodaje (posición de espera, colores de señales), iluminación del
+  aeródromo (PAPI/VASI, faro giratorio), el circuito de tráfico (tramos,
+  sentido de giro, altura, prioridad de paso), operaciones sin torre
+  (círculo segmentado, manga de viento, indicadores de sentido de
+  circuito, incorporación a 45°), y operaciones/seguridad en tierra
+  (hélice, derecho de paso rodando, plataforma). 21 preguntas de quiz
+  (3 por lección), traducción real a los 5 idiomas.
+  - **Chequeo de solapamiento antes de escribir:** el módulo
+    `radio-alphabet` ya tenía una lección sobre las llamadas de posición
+    en el circuito por CTAF (downwind/base/final). La lección de
+    "operaciones sin torre" de este módulo nuevo se rediseñó para no
+    repetirla — se enfoca en lo que esa lección no cubre (el respaldo
+    visual cuando nadie transmite: círculo segmentado, manga de viento,
+    indicadores en L, incorporación estándar a 45°) y remite a
+    `radio-alphabet` para la fraseología en sí. El resto del contenido
+    (marcas, señales, iluminación, geometría del circuito, seguridad en
+    tierra) se confirmó como territorio nuevo revisando los 13 módulos
+    existentes antes de escribir.
+- **Verificación:** estructura validada a mano contra las reglas de
+  `validateModule` (3 preguntas por lección, `correct` numérico, ids de
+  pregunta únicos, `passScore` ≤ `sampleSize`) además de correr los
+  chequeos automáticos.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados), `npm run format:check`, `npm run check:i18n` (**14
+módulos** × 5 idiomas), `npm test` (77/77) y `npm run build`, todos en
+verde.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — quedan abiertas "más
+misiones/escenarios" (viento cruzado pendiente de decidir si se justifica
+un modelo de viento) y los pendientes grandes de producto (analítica,
+validación con usuarios reales, versión instructor).
+
+---
+
+## 2026-09-07 — Nueva misión del simulador: viraje a altitud constante
+
+**Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
+"más escenarios/misiones" de `RUMBO.md`):
+
+- **Simulador:** misión `level-turn` (12ª del catálogo), nuevo tipo de
+  objetivo `levelTurn` en `src/simulator/MissionTracker.js`. Exige
+  mantener un banco de 20° a la izquierda (tolerancia ±8°) SIN alejarse
+  más de ±15 m de la altitud con la que se entró al viraje, durante 6
+  segundos por encima de 60 m. A diferencia de `bankTurn` (solo banco) y
+  `altitudeHold` (solo altitud, contra un valor fijo), combina ambas a la
+  vez y la altitud de referencia es dinámica (la de entrada al viraje, no
+  un nivel prefijado) — es la maniobra real de instrumentos "viraje a
+  altitud constante". Añadida al nivel `instrument-basics`
+  (`src/content/levels/index.js`), junto a `heading-turn`/`level-flight`/
+  `standard-turn`, mismo requisito de módulo (`cockpit-instruments`).
+  Icono nuevo `orbit` (Lucide) en `src/components/icons.jsx`. Traducida a
+  los 5 idiomas (`missions.level-turn.title/.objective` en cada
+  `simulator.json`). No hizo falta tocar `FlightEngine` ni la UI del
+  simulador — el HUD y el objetivo genérico (`hud-objective`) ya
+  funcionan para cualquier misión sin lógica específica por tipo.
+- **Tests:** 5 casos nuevos en `MissionTracker.test.js` (cumple con banco
+  - altitud sostenidos, nivelar alas reinicia el contador, perder la
+    altitud de referencia reinicia el contador — y la nueva altitud pasa a
+    ser la referencia —, no cuenta por debajo de la altitud mínima, no
+    cuenta virando al lado contrario).
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados en `CLAUDE.md`), `npm run format:check`, `npm run check:i18n`
+(13 módulos × 5 idiomas), `npm test` (**77/77**, antes 72) y `npm run
+build`, todos en verde.
+
+**Próximo paso sugerido:** ver `RUMBO.md` → la línea de misiones sigue
+abierta ("aproximación con viento cruzado" requiere decidir si vale la
+pena sumar un modelo de viento a `FlightEngine`, que hoy no existe, antes
+de tocar código; "vuelo IFR simplificado" y "emergencias adicionales"
+también siguen como candidatos sin implementar más allá de este primer
+paso).
+
+---
+
 ## 2026-08-20 — Dos módulos de teoría nuevos: Aircraft systems y Advanced ATC
 
 **Qué se hizo** (siguiendo la instrucción de trabajar el backlog de más

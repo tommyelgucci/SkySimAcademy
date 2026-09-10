@@ -3081,6 +3081,233 @@
           "explanation": "Der realistische Ansatz ist, konkrete Unterschiede vor einem ungewohnten Flug zu prüfen — dieselbe Gewohnheit wie NOTAM- und Wetterbriefing, hier auf das regulatorische Umfeld angewendet."
         }
       }
+    },
+    "airport-operations": {
+      "title": "Flugplatzbetrieb",
+      "description": "Die physische Seite des Fliegens: einen Flugplatzplan lesen, Pisten- und Rollbahnmarkierungen und -schilder, Flugplatzbefeuerung, die Standard-Platzrunde, Betrieb an einem Flugplatz ohne Kontrollturm, und Bodensicherheit rund um andere Flugzeuge.",
+      "lessons": {
+        "reading-an-airport-diagram": {
+          "title": "Einen Flugplatzplan lesen",
+          "body": "Ein Flugplatzplan zeigt die Anordnung von Pisten und Rollbahnen von oben, genau wie ein Grundriss die Aufteilung eines Gebäudes zeigt, bevor man hindurchgeht. Ihn vor dem ersten Rollen an einem unbekannten Flugplatz durchzusehen — auf einer Karte, in einer App oder als ausgedrucktem Plan — baut im Voraus dasselbe Bild auf, das eine Karte und ein Wetterbriefing für die Route selbst aufbauen.\n\nDie Pistennummer entspricht ungefähr dem missweisenden Kurs der Piste, auf die nächsten 10° gerundet, mit weggelassener letzter Ziffer — eine mit 27 bezeichnete Piste zeigt ungefähr auf 270° missweisend, und derselbe Asphaltstreifen ist aus der Gegenrichtung Piste 9. Rollbahnen werden mit Buchstaben bezeichnet (manchmal mit einer Zahl für den Abschnitt einer längeren), und Pläne markieren \"Hotspots\": konkrete Stellen mit dokumentierter Vorgeschichte von Verwirrung oder Pistenverletzungen, die vor dem Rollen in der Nähe einen zweiten Blick verdienen.\n\nSituationsbewusstsein am Boden zählt genauso wie in der Luft, und die meisten Pistenverletzungen gehen auf eine missverstandene Rollfreigabe oder einen Piloten zurück, der sich über die eigene Position auf dem Flugplatzgelände nicht sicher war — nicht auf ein technisches Versagen. Die Anordnung schon vor dem Anlassen zu kennen, verhindert genau diese Art von Fehler.",
+          "keyTakeaway": "Flugplatzpläne zeigen Pisten-/Rollbahnanordnung und Hotspots; eine Pistennummer entspricht ungefähr ihrem missweisenden Kurs, und den Plan vorab durchzusehen verhindert die meisten Pistenverletzungen, die aus Verwirrung entstehen, nicht aus technischem Versagen.",
+          "simTip": "Die Flugplätze des Simulators sind klein, ohne Rollbahnnetz zum Navigieren — behandle das Durchsehen eines echten Flugplatzplans, auch für einen bekannten Platz, als Pflichtvorbereitung vor dem allerersten Rollen dort."
+        },
+        "runway-markings": {
+          "title": "Pistenmarkierungen",
+          "body": "Pistenmarkierungen sind immer weiß — das erste, was sie auf einen Blick von Rollbahnmarkierungen unterscheidet. Die Pistennummern stehen an jedem Ende, und ein gestrichelter Mittellinienstreifen verläuft in der Mitte, um die Ausrichtung bei Start, Landung und dem Rollen dazwischen zu halten.\n\nAufsetzzielmarkierungen — zwei dicke rechteckige Streifen etwa 300 Meter hinter der Schwelle — geben eine visuelle Referenz, wohin während des Anflugs und des Abfangens gezielt wird, und Aufsetzzonenmarkierungen (weitere gepaarte Rechtecke in Abständen auf längeren Pisten) helfen einzuschätzen, wie viel nutzbarer Asphalt noch vor einem liegt. Schwellenmarkierungen, ein Satz Streifen direkt am Pistenanfang, zeigen genau, wo die für die Landung nutzbare Fläche beginnt.\n\nEine versetzte Schwelle verschiebt diesen Startpunkt weiter die Piste hinunter, markiert mit Pfeilen, die zu ihr hinführen: Der Asphalt vor den Pfeilen kann weiterhin für den Startlauf oder zum Rollen genutzt werden, aber gelandet werden darf erst ab der versetzten Schwelle selbst — meist wegen eines Hindernisses im Anflugweg oder weil dieser Asphalt für einen vollständigen Landeausrollen nicht geeignet ist. Sie verkürzt die verfügbare Landestrecke, ohne die für den Start nutzbare Pistenlänge zu verkürzen.",
+          "keyTakeaway": "Pistenmarkierungen sind weiß; die Mittellinie hilft bei der Ausrichtung, Aufsetzziel- und Aufsetzzonenmarkierungen zeigen, wo gelandet wird, und eine versetzte Schwelle verkürzt die verfügbare Landestrecke, ohne die Piste selbst zu verkürzen.",
+          "simTip": "Die Punktlandung-Mission bewertet genau das, wofür diese Markierungen im echten Fliegen da sind — eine sanfte, mittige, auf die Pistenmittellinie ausgerichtete Landung."
+        },
+        "taxiway-markings-and-signs": {
+          "title": "Rollbahnmarkierungen und -schilder",
+          "body": "Rollbahnmarkierungen sind gelb, das Gegenteil des weißen der Piste — ein bewusster Kontrast, der auf einen Blick klarmacht, welche Fläche welche ist, selbst nachts oder bei schlechter Sicht. Eine durchgehende gelbe Mittellinie markiert den zu befahrenden Weg beim Rollen, und Randmarkierungen zeigen, wo der nutzbare Rollbahnbelag endet.\n\nRollhaltmarkierungen erscheinen auf der Rollbahn selbst, kurz bevor sie eine Piste erreicht: zwei durchgehende gelbe Linien, gefolgt von zwei gestrichelten gelben Linien, quer über die gesamte Rollbahnbreite. Die Seite mit den durchgehenden Linien ist dort, wo angehalten und gewartet wird, bis die Freigabe zum Kreuzen oder Einfahren in die Piste erteilt ist — diese Markierung ohne Freigabe zu überqueren ist unabhängig von der Absicht eine Pistenverletzung, weshalb sie als harter Halt behandelt wird, nicht als Vorschlag.\n\nFlugplatzschilder werden ebenso über Farbe und Text wie über Form gedeutet. Rote Schilder mit weißem Text sind Gebotsschilder — eine Pistengrenze oder ein ausdrücklich gesperrter Bereich — und sind diejenigen, die am unmittelbarsten für die Sicherheit zählen. Schilder mit gelbem Hintergrund und schwarzem Text sind Standortschilder, die zeigen, auf welcher Rollbahn man sich gerade befindet; Schilder mit schwarzem Hintergrund und gelbem Text (oft mit einem Pfeil) sind Richtungsschilder, die auf die vorausliegenden Rollbahnen oder Pisten zeigen. Alle drei richtig zu lesen macht aus einer Rollfreigabe eine sichere Ausführung statt Ratens, besonders an einem belebten oder unbekannten Flugplatz.",
+          "keyTakeaway": "Rollbahnmarkierungen sind gelb; bei einer Rollhaltmarkierung ist die Seite mit den durchgehenden Linien die Halteseite, und die Schilderfarbe entschlüsselt die Bedeutung — rot für Gebote, gelber Hintergrund für Standort, schwarzer Hintergrund für Richtung.",
+          "simTip": "Der Simulator hat kein Rollbahnnetz und keine Bodenbeschilderung zum Üben — baue das Bewusstsein für Rollhaltlinien anhand eines echten Flugplatzplans und, mit der Zeit, auf einem echten Vorfeld auf, nicht im Simulator."
+        },
+        "airport-lighting": {
+          "title": "Flugplatzbefeuerung",
+          "body": "Pistenrandfeuer sind weiß und umranden nachts die nutzbare Piste — auf manchen Pisten wechseln die Feuer im letzten Abschnitt auf Gelb-Orange als visuelle Warnung, dass die verbleibende nutzbare Länge begrenzt ist. Rollbahnrandfeuer sind blau, derselbe Weiß-gegen-Gelb-Kontrast wie tagsüber, nur jetzt gegen Blau, sodass ein Pilot Piste und Rollbahn allein an der Feuerfarbe unterscheiden kann, bei schlechter Sicht oder nachts.\n\nEin visueller Gleitwegindikator — ein PAPI (eine einzelne Reihe von vier Leuchten) oder das ältere VASI (zwei Leuchtenbalken) — zeigt mit Rot und Weiß, ob das Flugzeug über, unter oder genau auf dem richtigen Gleitweg ist. Bei einem PAPI bedeuten vier weiße Leuchten zu hoch, vier rote zu niedrig, und eine Mischung aus zwei roten und zwei weißen bedeutet auf dem richtigen Weg; mehr Rot als Weiß bedeutet niedrig, mehr Weiß als Rot bedeutet hoch.\n\nDas Drehfeuer des Flugplatzes identifiziert die Art des Platzes aus der Ferne an seinem Farbmuster: abwechselnd weiße und grüne Blitze kennzeichnen einen befeuerten Landflugplatz, weiß und gelb einen Wasserflugplatz, und zwei schnelle weiße Blitze einen Militärflugplatz. Nichts davon ersetzt die Pisten- und Rollbahnmarkierungen aus den vorherigen Lektionen — es ist dieselbe Information, nur so gebaut, dass sie auch nach Einbruch der Dunkelheit lesbar bleibt.",
+          "keyTakeaway": "Pistenfeuer sind weiß (auf manchen Pisten gelb-orange am Ende), Rollbahnfeuer sind blau, ein PAPI/VASI zeigt die Gleitwegposition mit Rot und Weiß, und das Farbmuster des Drehfeuers identifiziert die Art des Flugplatzes.",
+          "simTip": "Die Gleitweganzeige des Simulators auf dem Bildschirm (zu hoch, zu niedrig, auf dem Weg) erfüllt genau denselben Zweck wie ein echtes PAPI oder VASI — gewöhne dir an, sie genauso zu prüfen wie die Leuchtfarben bei einem echten Anflug."
+        },
+        "traffic-pattern-procedures": {
+          "title": "Die Platzrunde",
+          "body": "Die Standard-Platzrunde ist ein Rechteck, das in fester Reihenfolge um die Piste geflogen wird: Abflug (nach dem Start geradeaus im Steigflug entlang des Pistenkurses), Querabflug (eine 90°-Kurve von der Piste weg), Gegenanflug (parallel zur Piste, in Gegenrichtung, in Platzrundenhöhe geflogen), Queranflug (eine 90°-Kurve zurück zur Piste) und Endanflug (auf die Piste ausgerichtet, im Sinkflug zur Landung). Von jedem Anflug und Abflug an diesem Flugplatz wird erwartet, dass er sich in genau diese Abfolge einfügt.\n\nSofern nicht anders angegeben, werden Platzrundenkurven links geflogen, und die Platzrunde wird in einer veröffentlichten Platzrundenhöhe geflogen — üblicherweise etwa 300 Meter (1.000 Fuß) über dem Flugplatz, sofern für diesen Platz keine andere Höhe angegeben ist. Sie konsequent mit der richtigen Höhe und Kurvenrichtung zu fliegen, hält mehrere Flugzeuge, die sich dieselbe Platzrunde teilen, füreinander vorhersehbar, ohne dass ein Lotse sie staffelt.\n\nDie Vorfahrt in der Platzrunde folgt einer einfachen Priorität: Ein Flugzeug im Endanflug oder bereits bei der Landung hat Vorrang vor einem, das sich noch in einem anderen Teil der Platzrunde befindet, und ein landendes Flugzeug darf niemals von einem anderen geschnitten werden, das vor ihm einschert. Zwei Flugzeuge, die sich im selben Teil begegnen, weichen im Allgemeinen dem rechts liegenden aus, und ein anderes Flugzeug in der Platzrunde überholt man, indem man außen vorbeizieht, niemals durch eine Innenkurve.",
+          "keyTakeaway": "Die Standard-Platzrunde fliegt Abflug, Querabflug, Gegenanflug, Queranflug und Endanflug in dieser Reihenfolge, mit Linkskurven in Platzrundenhöhe sofern nicht anders angegeben, und ein Flugzeug im Endanflug oder bei der Landung hat Vorrang vor einem, das noch in der Platzrunde ist.",
+          "simTip": "Die Missionen Kursänderung, Streckenflug und Südkurs üben alle das Halten eines Kurses — genau der Grundbaustein hinter einem gleichmäßigen Gegenanflug, Queranflug und Endanflug in einer echten Platzrunde."
+        },
+        "non-towered-airport-operations": {
+          "title": "Betrieb an Flugplätzen ohne Kontrollturm",
+          "body": "An einem Flugplatz ohne Kontrollturm weist niemand eine Reihenfolge oder Freigaben zu — Piloten bauen dasselbe Bild des Verkehrs auf, indem sie ihre Position auf der CTAF des Flugplatzes selbst ansagen, mit demselben Meldeaufbau wie im Modul Funk und Buchstabieralphabet behandelt. Was jenes Modul nicht abdeckt, ist, worauf man sich verlässt, wenn niemand überhaupt Meldungen macht: kein Funkgerät an Bord, ein Funkausfall, oder ein Flugplatz ohne zugewiesene Frequenz.\n\nGenau dafür ist der Bodensignalkreis nahe der Piste gebaut. Ein Windanzeiger darin — ein Windsack oder ein Windrichtungs-T — zeigt die Windrichtung auf einen Blick, was zählt, um die richtige Piste zu wählen, bevor jemand ein Wort sagt. L-förmige Platzrundenrichtungsanzeiger, um den Kreis angeordnet, zeigen, ob eine bestimmte Piste mit Links- oder Rechtsplatzrunde geflogen wird — es lohnt sich, das zu prüfen, statt anzunehmen, dass immer die Standard-Linksplatzrunde gilt.\n\nSofern nichts anderes angezeigt ist, erfolgt der Standard-Einflug in die Platzrunde im 45°-Winkel zum Gegenanflug, in Platzrundenhöhe — nicht direkt in den Gegenanflug einfliegend, und nicht über das Feld hinweg oder direkt in den Endanflug ohne Ansage. Ein unüblicher Einflug überrascht genau die Piloten, die sich auf den erwarteten Ablauf und einen Sichtscan verlassen, um sich ihr eigenes Bild vom Verkehr rundherum zu machen — mit oder ohne Funkmeldungen.",
+          "keyTakeaway": "Ohne Kontrollturm sind der Windanzeiger des Bodensignalkreises und die Platzrundenrichtungsanzeiger die visuelle Rückfallebene für Wind und Kurvenrichtung, wenn niemand sendet, und der Standard-Einflug — 45° zum Gegenanflug in Platzrundenhöhe — ist das, was jeder Pilot erwartet, sofern nicht anders angegeben.",
+          "simTip": "Das Modul Funk und Buchstabieralphabet deckt bereits ab, was auf der CTAF gesagt wird — diese Lektion ist der Teil, der auch dann noch gilt, wenn überhaupt niemand sendet."
+        },
+        "ground-operations-and-safety": {
+          "title": "Bodenbetrieb und Sicherheit",
+          "body": "Ein drehender Propeller ist fast unsichtbar und die mit Abstand gefährlichste Gefahr auf jedem Vorfeld — beim Herangehen an oder Vorbeigehen an einem laufenden Flugzeug bleibt man immer aus dem Bereich vor dem Propeller heraus, niemals durch ihn hindurch, und der Propellerstrahl (der Luftstoß hinter einem laufenden Propeller) kann bei höheren Leistungseinstellungen eine Person oder ungesicherte Ausrüstung noch weit hinter dem Flugzeug umwerfen.\n\nDie Vorfahrtregeln am Boden ähneln im Grundgedanken der Straße: Zwei Flugzeuge, die sich fast frontal begegnen, weichen jeweils leicht nach rechts aus, ein überholtes Flugzeug hat Vorrang und das überholende bleibt deutlich auf Abstand, und gerollt wird mit einer Geschwindigkeit, die der Pilot tatsächlich kontrollieren oder anhalten kann — Bremsen wirken nicht sofort, und eine Flügelspitze hat weniger Abstand, als es vom Cockpit aus aussieht. Ein Einweiser, wo einer auf einem engen Vorfeld verfügbar ist, ist genau dafür da, das zu beobachten, was der Pilot vom eigenen Sitz aus nicht sehen kann.\n\nAuf dem Vorfeld generell sind es die Gewohnheiten, die es als die aktive Gefahrenzone behandeln, die es ist — nicht als Parkplatz: den Bereich hinter jedem laufenden Flugzeug meiden (Strahl oder Propellerstrahl), lose Gegenstände vor dem Anlassen sichern (eine Checkliste, eine Mütze oder eine Karte kann zu Trümmern werden, die in einen Propeller oder Einlass gesaugt werden), und einen freien Weg halten, um sich von geparkten Flugzeugen zu entfernen.",
+          "keyTakeaway": "Bleib aus dem Propellerkreis und dem Propellerstrahl jedes laufenden Flugzeugs heraus, folge der Vorfahrt am Boden und rolle mit kontrollierbarer Geschwindigkeit, und behandle das Vorfeld als aktive Gefahrenzone — frei von Strahl, Propellern und losen Gegenständen.",
+          "simTip": "Der Simulator hat kein Vorfeld und keine anderen Flugzeuge, um die herumgerollt werden müsste, daher gibt es zu dieser Lektion keine passende Mission — sie ist Hintergrundwissen für das erste Mal auf einem echten, belebten Vorfeld, das der Simulator nicht nachbilden kann."
+        }
+      },
+      "quiz": {
+        "reading-an-airport-diagram-q1": {
+          "question": "Was entspricht eine Pistennummer ungefähr?",
+          "options": [
+            "Dem missweisenden Kurs der Piste, auf die nächsten 10° gerundet, ohne die letzte Ziffer",
+            "Der genauen Länge der Piste in hundert Metern",
+            "Der Reihenfolge, in der die Piste gebaut wurde"
+          ],
+          "explanation": "Piste 27 zeigt ungefähr auf 270° missweisend — derselbe Asphaltstreifen ist aus der Gegenrichtung Piste 9."
+        },
+        "reading-an-airport-diagram-q2": {
+          "question": "Was ist ein \"Hotspot\" auf einem Flugplatzplan?",
+          "options": [
+            "Eine Stelle mit dokumentierter Vorgeschichte von Verwirrung oder Pistenverletzungen",
+            "Ein Sperrgebiet, das ausschließlich militärischem Verkehr vorbehalten ist",
+            "Die Stelle, an der Tankwagen Flugzeuge betanken"
+          ],
+          "explanation": "Hotspots markieren konkrete Stellen, die aufgrund einer dokumentierten Vorgeschichte von Vorfällen zusätzliche Vorsicht verdienen."
+        },
+        "reading-an-airport-diagram-q3": {
+          "question": "Warum einen Flugplatzplan vor dem Rollen an einem unbekannten Flugplatz durchsehen?",
+          "options": [
+            "Die meisten Pistenverletzungen entstehen aus einer missverstandenen Rollfreigabe oder unklarer Position, nicht aus technischem Versagen",
+            "Es ist nur an Flugplätzen ohne Kontrollturm vorgeschrieben",
+            "Es ersetzt die Notwendigkeit, eine Rollfreigabe zu erhalten"
+          ],
+          "explanation": "Das Bild der Anordnung im Voraus aufzubauen verhindert genau die Art von Verwirrung hinter den meisten Pistenverletzungen."
+        },
+        "runway-markings-q1": {
+          "question": "Welche Farbe haben Pistenmarkierungen?",
+          "options": ["Weiß", "Gelb", "Blau"],
+          "explanation": "Pistenmarkierungen sind immer weiß — der Kontrast zu den gelben Rollbahnmarkierungen macht die beiden Flächen leicht unterscheidbar."
+        },
+        "runway-markings-q2": {
+          "question": "Was bedeutet eine versetzte Schwelle?",
+          "options": [
+            "Vor diesem Punkt ist Landen nicht erlaubt, aber der Asphalt davor kann weiterhin für den Startlauf oder zum Rollen genutzt werden",
+            "Die Piste ist ab diesem Punkt dauerhaft gesperrt",
+            "Vor diesem Punkt sind nur Nachtlandungen erlaubt"
+          ],
+          "explanation": "Eine versetzte Schwelle verkürzt die verfügbare Landestrecke, ohne die für den Start nutzbare Pistenlänge zu verkürzen."
+        },
+        "runway-markings-q3": {
+          "question": "Wofür dienen Aufsetzzielmarkierungen?",
+          "options": [
+            "Sie geben dem Piloten eine visuelle Referenz, wohin während Anflug und Abfangen gezielt wird",
+            "Sie markieren die genaue Stelle, an der der Pistenbelag endet",
+            "Sie zeigen an, wo Schneepflüge mit dem Räumen aufhören sollen"
+          ],
+          "explanation": "Die zwei dicken rechteckigen Streifen hinter der Schwelle geben während des Anflugs einen konstanten visuellen Zielpunkt."
+        },
+        "taxiway-markings-and-signs-q1": {
+          "question": "Welche Farbe haben Rollbahnmarkierungen?",
+          "options": ["Gelb", "Weiß", "Rot"],
+          "explanation": "Rollbahnmarkierungen sind gelb, das bewusste Gegenteil des weißen der Piste."
+        },
+        "taxiway-markings-and-signs-q2": {
+          "question": "An einer Rollhaltmarkierung — auf welcher Seite hält man an und wartet?",
+          "options": [
+            "Auf der Seite mit den zwei durchgehenden Linien, bis die Freigabe zum Kreuzen oder Einfahren erteilt ist",
+            "Auf der Seite mit den zwei gestrichelten Linien",
+            "Auf beiden Seiten — es spielt keine Rolle"
+          ],
+          "explanation": "Die Seite mit den durchgehenden Linien ist die Halteseite; sie ohne Freigabe zu überqueren ist unabhängig von der Absicht eine Pistenverletzung."
+        },
+        "taxiway-markings-and-signs-q3": {
+          "question": "Was zeigt ein rotes Schild mit weißem Text an?",
+          "options": [
+            "Ein Gebot, etwa eine Pistengrenze oder einen ausdrücklich gesperrten Bereich",
+            "Auf welcher Rollbahn man sich gerade befindet",
+            "Die Richtung zur nächsten Tankstelle"
+          ],
+          "explanation": "Rote Schilder sind Gebotsschilder — diejenigen, die am unmittelbarsten für die Sicherheit zählen."
+        },
+        "airport-lighting-q1": {
+          "question": "Welche Farbe haben Pistenrandfeuer?",
+          "options": [
+            "Weiß (auf manchen Pisten im letzten Abschnitt gelb-orange)",
+            "Blau",
+            "Über die gesamte Länge grün"
+          ],
+          "explanation": "Weiß umrandet nachts die nutzbare Piste, wobei Gelb-Orange auf manchen Pisten vor begrenzter verbleibender Länge warnt."
+        },
+        "airport-lighting-q2": {
+          "question": "Welche Farbe haben Rollbahnrandfeuer?",
+          "options": ["Blau", "Weiß", "Rot"],
+          "explanation": "Blaue Rollbahnfeuer stehen im Kontrast zu weißen Pistenfeuern, dieselbe Unterscheidung wie die gelben gegen weißen Markierungen am Tag."
+        },
+        "airport-lighting-q3": {
+          "question": "Was bedeutet es bei einem PAPI, mehr rote als weiße Leuchten zu sehen?",
+          "options": [
+            "Das Flugzeug ist unter dem richtigen Gleitweg",
+            "Das Flugzeug ist über dem richtigen Gleitweg",
+            "Das Flugzeug ist links der verlängerten Pistenmittellinie"
+          ],
+          "explanation": "Mehr Rot als Weiß bei einem PAPI bedeutet niedrig; vier weiße Leuchten bedeuten zu hoch, und zwei-und-zwei bedeutet auf dem richtigen Weg."
+        },
+        "traffic-pattern-procedures-q1": {
+          "question": "Was ist die richtige Reihenfolge der Standard-Platzrundenteile nach dem Start?",
+          "options": [
+            "Abflug, Querabflug, Gegenanflug, Queranflug, Endanflug",
+            "Gegenanflug, Abflug, Queranflug, Querabflug, Endanflug",
+            "Endanflug, Queranflug, Querabflug, Gegenanflug, Abflug"
+          ],
+          "explanation": "Von jedem Anflug und Abflug an diesem Flugplatz wird erwartet, dass er sich in genau diese Abfolge einfügt."
+        },
+        "traffic-pattern-procedures-q2": {
+          "question": "Sofern nicht anders angegeben, in welche Richtung werden Platzrundenkurven geflogen?",
+          "options": [
+            "Linkskurven",
+            "Rechtskurven",
+            "In die Richtung mit dem gerade geringeren Verkehr"
+          ],
+          "explanation": "Die Standardrichtung konsequent zu fliegen hält Flugzeuge, die sich eine Platzrunde teilen, füreinander vorhersehbar."
+        },
+        "traffic-pattern-procedures-q3": {
+          "question": "In der Platzrunde — welches Flugzeug hat im Allgemeinen Vorrang?",
+          "options": [
+            "Das Flugzeug im Endanflug oder bereits bei der Landung",
+            "Das Flugzeug, das unabhängig von seiner Position zuerst in die Platzrunde eingeflogen ist",
+            "Das schnellere Flugzeug"
+          ],
+          "explanation": "Ein landendes Flugzeug, oder eines im Endanflug, darf niemals von einem geschnitten werden, das vor ihm einschert."
+        },
+        "non-towered-airport-operations-q1": {
+          "question": "Was zeigt der Windanzeiger eines Bodensignalkreises (ein Windsack oder ein Windrichtungs-T)?",
+          "options": [
+            "Die Windrichtung, die zählt, um die richtige Piste zu wählen, bevor überhaupt eine Funkmeldung erfolgt",
+            "Die aktuell genutzte Frequenz der Flugsicherung",
+            "Die Platzhöhe des Flugplatzes"
+          ],
+          "explanation": "Es ist eine visuelle Rückfallebene für genau die Information, die ein Pilot sonst per Funkmeldung oder von einem Lotsen erhalten würde."
+        },
+        "non-towered-airport-operations-q2": {
+          "question": "Was zeigen die L-förmigen Platzrundenrichtungsanzeiger um einen Bodensignalkreis?",
+          "options": [
+            "Ob eine bestimmte Piste mit Links- oder Rechtsplatzrunde geflogen wird",
+            "Die Mindestsicherheitshöhe für die Platzrunde",
+            "Den Standort der nächsten Tankstelle"
+          ],
+          "explanation": "Es lohnt sich, sie zu prüfen, statt anzunehmen, dass an jeder Piste immer die Standard-Linksplatzrunde gilt."
+        },
+        "non-towered-airport-operations-q3": {
+          "question": "Sofern nichts anderes angezeigt ist — was ist der Standard-Einflug in die Platzrunde?",
+          "options": [
+            "Ein 45°-Winkel zum Gegenanflug, in Platzrundenhöhe",
+            "Direkt in den Endanflug, unabhängig vom übrigen Verkehr",
+            "Direkt über dem Feld in beliebiger Höhe"
+          ],
+          "explanation": "Ein unüblicher Einflug überrascht genau die Piloten, die sich auf den erwarteten Ablauf und eine vorhersehbare Flugbahn verlassen."
+        },
+        "ground-operations-and-safety-q1": {
+          "question": "Was sollte beim Herangehen an ein geparktes Flugzeug mit laufendem Triebwerk vermieden werden?",
+          "options": [
+            "Sich von vorne, nahe am Propeller, zu nähern",
+            "Sich direkt von hinten hinter dem Flügel zu nähern",
+            "Sich überhaupt zu nähern, bevor das Triebwerk abgestellt ist"
+          ],
+          "explanation": "Ein drehender Propeller ist fast unsichtbar und die mit Abstand gefährlichste Gefahr auf jedem Vorfeld."
+        },
+        "ground-operations-and-safety-q2": {
+          "question": "Beim Rollen und einer fast frontalen Begegnung mit einem anderen Flugzeug — was ist die Standardpraxis?",
+          "options": [
+            "Jedes Flugzeug weicht leicht nach rechts aus",
+            "Beide Flugzeuge halten an und warten auf ein Bodenfahrzeug, das sie einweist",
+            "Das größere Flugzeug hat in jedem Fall uneingeschränkten Vorrang"
+          ],
+          "explanation": "Die Vorfahrt am Boden ähnelt im Grundgedanken der Straße — jedes Flugzeug weicht leicht nach seiner eigenen rechten Seite aus."
+        },
+        "ground-operations-and-safety-q3": {
+          "question": "Warum lose Gegenstände vor dem Anlassen des Triebwerks sichern?",
+          "options": [
+            "Sie können zu Trümmern werden, die in einen Propeller oder Einlass gesaugt werden",
+            "Das ist nur bei Flugzeugen mit Strahltriebwerk relevant",
+            "Das ist nur bei Flugzeugen mit einziehbarem Fahrwerk relevant"
+          ],
+          "explanation": "Eine Checkliste, eine Mütze oder eine Karte, vom Propellerstrahl oder einem Einlass erfasst, wird zur Gefahr, nicht nur zu einem verlorenen Gegenstand."
+        }
+      }
     }
   },
   "passedTag": "Bestanden",

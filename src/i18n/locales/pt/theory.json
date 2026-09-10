@@ -3085,6 +3085,233 @@
           "explanation": "A abordagem realista é verificar diferenças específicas antes de um voo desconhecido, o mesmo hábito de NOTAM e briefing meteorológico aplicado ao ambiente regulatório."
         }
       }
+    },
+    "airport-operations": {
+      "title": "Operações de aeródromo",
+      "description": "O lado físico de voar: ler um diagrama de aeródromo, as marcas e placas de pista e de pista de táxi, a iluminação do aeródromo, o circuito de tráfego padrão, operar num aeródromo sem torre de controle, e a segurança em solo ao redor de outras aeronaves.",
+      "lessons": {
+        "reading-an-airport-diagram": {
+          "title": "Ler um diagrama de aeródromo",
+          "body": "Um diagrama de aeródromo mostra a disposição de pistas e pistas de táxi vista de cima, da mesma forma que a planta de um prédio mostra sua distribuição antes de percorrê-lo. Revisá-lo antes de taxiar pela primeira vez num aeródromo pouco familiar — numa carta, num aplicativo, ou num diagrama impresso — constrói de antemão a mesma imagem que uma carta e um briefing meteorológico constroem para a própria rota.\n\nO número de uma pista aproxima sua proa magnética, arredondada para a dezena mais próxima e sem o último dígito: uma pista identificada como 27 aponta aproximadamente para 270° magnético, e essa mesma faixa de asfalto é a pista 9 no sentido contrário. As pistas de táxi são identificadas por letras (e às vezes um número para um trecho de uma mais longa), e os diagramas marcam \"pontos críticos\": locais específicos com histórico documentado de confusão ou incursões em pista, que merecem um olhar extra antes de taxiar por perto.\n\nA consciência situacional em solo importa tanto quanto no ar, e a maioria das incursões em pista vem de uma autorização de táxi mal compreendida ou de um piloto que não tinha certeza de onde exatamente estava na superfície do aeródromo — não de uma falha de equipamento. Conhecer a disposição antes de dar partida no motor é o que evita esse tipo específico de erro.",
+          "keyTakeaway": "Diagramas de aeródromo mostram a disposição de pistas/pistas de táxi e os pontos críticos; o número de uma pista aproxima sua proa magnética, e revisar o diagrama com antecedência é o que evita a maioria das incursões em pista, que vêm de confusão, não de falha de equipamento.",
+          "simTip": "Os aeródromos do simulador são pequenos, sem rede de pistas de táxi para navegar — trate revisar um diagrama real, mesmo de um campo conhecido, como estudo obrigatório antes de taxiar ali pela primeira vez."
+        },
+        "runway-markings": {
+          "title": "Marcas de pista",
+          "body": "As marcas de pista são sempre brancas, a primeira coisa que as distingue à primeira vista das marcas de pista de táxi. Os números da pista ficam em cada extremidade, e uma faixa tracejada de eixo central percorre o meio para ajudar a manter o alinhamento durante a decolagem, o pouso e a corrida entre os dois.\n\nAs marcas do ponto de referência de pouso — duas faixas retangulares grossas a cerca de 300 metros da cabeceira — dão uma referência visual de onde mirar durante a aproximação e o arredondamento, e as marcas de zona de toque (retângulos adicionais em pares, em intervalos, em pistas mais longas) ajudam a avaliar quanto asfalto útil ainda resta à frente. As marcas de cabeceira, um conjunto de faixas bem no início da pista, mostram com precisão onde começa a superfície utilizável para pouso.\n\nUma cabeceira deslocada move esse ponto de início mais adiante na pista, sinalizada com setas que levam até ela: o asfalto antes das setas ainda pode ser usado para a corrida de decolagem ou para taxiar, mas pousar não é permitido antes da própria cabeceira deslocada — geralmente por causa de um obstáculo na trajetória de aproximação ou porque esse trecho de asfalto não é adequado para uma corrida de pouso completa. Ela reduz a distância de pouso disponível sem reduzir o comprimento útil da pista para a decolagem.",
+          "keyTakeaway": "As marcas de pista são brancas; o eixo central ajuda no alinhamento, as marcas de ponto de referência e de zona de toque mostram onde pousar, e uma cabeceira deslocada reduz a distância de pouso disponível sem reduzir a pista em si.",
+          "simTip": "A missão de pouso de precisão avalia exatamente para que servem essas marcas no voo real — um toque suave, centralizado e alinhado com o eixo da pista."
+        },
+        "taxiway-markings-and-signs": {
+          "title": "Marcas e placas de pista de táxi",
+          "body": "As marcas de pista de táxi são amarelas, o oposto do branco da pista — um contraste deliberado que deixa óbvio à primeira vista qual superfície é qual, mesmo à noite ou com pouca visibilidade. Uma linha de eixo amarela contínua marca o caminho a seguir enquanto se taxia, e marcas de borda mostram onde termina o asfalto utilizável da pista de táxi.\n\nAs marcas de posição de espera de pista aparecem na própria pista de táxi, pouco antes de chegar a uma pista: duas linhas amarelas contínuas seguidas de duas linhas amarelas tracejadas, cruzando toda a largura da pista de táxi. O lado das linhas contínuas é onde a aeronave para e espera até receber autorização para cruzar ou entrar na pista — cruzar essa marca sem autorização é uma incursão em pista independentemente da intenção, e é exatamente por isso que é tratada como uma parada obrigatória, não uma sugestão.\n\nAs placas do aeródromo são interpretadas tanto pela cor e pelo texto quanto pela forma. Placas vermelhas com texto branco são placas de instrução obrigatória — um limite de pista, ou uma área de acesso explicitamente proibido — e são as que mais diretamente importam para a segurança. Placas com fundo amarelo e texto preto são placas de localização, mostrando em qual pista de táxi a aeronave está; placas com fundo preto e texto amarelo (muitas vezes com uma seta) são placas de direção, apontando para as pistas de táxi ou pistas à frente. Ler as três corretamente é o que transforma uma autorização de táxi em uma execução segura em vez de um chute, especialmente num aeródromo movimentado ou pouco familiar.",
+          "keyTakeaway": "As marcas de pista de táxi são amarelas; numa marca de posição de espera, o lado das linhas contínuas é onde parar, e a cor das placas decodifica o significado: vermelho para instruções obrigatórias, fundo amarelo para localização, fundo preto para direção.",
+          "simTip": "O simulador não tem rede de pistas de táxi nem sinalização de solo para praticar — construa a consciência das linhas de espera a partir de um diagrama de aeródromo real e, com o tempo, de um pátio real, não do simulador."
+        },
+        "airport-lighting": {
+          "title": "Iluminação do aeródromo",
+          "body": "As luzes de borda de pista são brancas e delimitam a pista utilizável à noite — em algumas pistas, as luzes mudam para âmbar no último trecho como aviso visual de que o comprimento útil restante é limitado. As luzes de borda de pista de táxi são azuis, o mesmo contraste branco/amarelo do dia, agora contra o azul, para que um piloto consiga distinguir pista de pista de táxi só pela cor das luzes, com pouca visibilidade ou à noite.\n\nUm indicador visual de trajetória de aproximação — um PAPI (uma única fileira de quatro luzes) ou o VASI mais antigo (duas barras de luzes) — mostra se a aeronave está acima, abaixo, ou exatamente na trajetória correta usando vermelho e branco. Num PAPI, quatro luzes brancas significam alto demais, quatro vermelhas significam baixo demais, e uma combinação de duas vermelhas e duas brancas significa na trajetória correta; mais vermelho que branco significa baixo, mais branco que vermelho significa alto.\n\nO farol giratório do aeródromo identifica o tipo de campo à distância pelo seu padrão de cor: lampejos alternados de branco e verde marcam um aeródromo terrestre iluminado, branco e amarelo marcam uma base de hidroaviões, e dois lampejos brancos rápidos marcam um campo militar. Nada disso substitui as marcas de pista e de pista de táxi das lições anteriores — é a mesma informação, construída para continuar legível depois de escurecer.",
+          "keyTakeaway": "As luzes de pista são brancas (âmbar perto do final em algumas pistas), as de pista de táxi são azuis, um PAPI/VASI mostra a posição na trajetória de aproximação com vermelho e branco, e o padrão de cor do farol giratório identifica o tipo de aeródromo.",
+          "simTip": "O indicador de trajetória de aproximação na tela do simulador (alto demais, baixo demais, ou na trajetória) faz exatamente o mesmo trabalho que um PAPI ou VASI real — acostume-se a conferi-lo do mesmo jeito que conferiria as cores das luzes numa aproximação real."
+        },
+        "traffic-pattern-procedures": {
+          "title": "O circuito de tráfego",
+          "body": "O circuito de tráfego padrão é um retângulo voado ao redor da pista numa sequência fixa: subida inicial (subindo em linha reta após a decolagem, seguindo a proa da pista), través (uma curva de 90° se afastando da pista), vento de cauda (paralelo à pista, em sentido contrário, voado na altitude do circuito), base (uma curva de 90° de volta em direção à pista), e final (alinhado com a pista, descendo para pousar). Espera-se que toda chegada e saída daquele aeródromo se encaixe nessa mesma sequência.\n\nSalvo indicação em contrário, as curvas do circuito são para a esquerda, e o circuito é voado numa altitude de circuito publicada — normalmente cerca de 300 metros (1.000 pés) acima do aeródromo, salvo que uma altitude diferente seja especificada para aquele campo. Voá-lo de forma consistente, com a altitude e o sentido de curva corretos, é o que mantém previsíveis várias aeronaves compartilhando o mesmo circuito sem um controlador as sequenciando.\n\nO direito de passagem no circuito segue uma prioridade simples: uma aeronave em final, ou já pousando, tem prioridade sobre uma ainda em outro trecho do circuito, e uma aeronave pousando nunca deve ser cortada por outra que entre curvando à sua frente. Duas aeronaves que convergem no mesmo trecho geralmente cedem à que está à direita, e ultrapassar outra aeronave no circuito é feito abrindo a trajetória, nunca curvando por dentro.",
+          "keyTakeaway": "O circuito padrão voa subida inicial, través, vento de cauda, base e final nessa ordem, com curvas à esquerda na altitude do circuito salvo indicação em contrário, e uma aeronave em final ou pousando tem prioridade sobre uma ainda no circuito.",
+          "simTip": "As missões de curva de proa, trecho transversal e trecho ao sul praticam todas manter uma proa — exatamente o bloco básico por trás de voar um vento de cauda, base e final consistentes num circuito real."
+        },
+        "non-towered-airport-operations": {
+          "title": "Operações em aeródromo sem torre",
+          "body": "Um aeródromo sem torre de controle não tem ninguém atribuindo sequência ou autorizações — os pilotos constroem a mesma imagem do tráfego anunciando sua posição na CTAF do aeródromo, com a mesma estrutura de chamada vista no módulo de rádio e alfabeto soletrado. O que aquele módulo não cobre é em que se apoiar quando ninguém está fazendo chamadas: sem rádio a bordo, um rádio com defeito, ou um aeródromo sem frequência atribuída.\n\nO círculo segmentado próximo à pista é feito exatamente para isso. Um indicador de vento dentro dele — uma manga de vento ou um T de vento — mostra a direção do vento num relance, o que importa para escolher a pista correta antes que alguém diga uma palavra. Os indicadores de sentido de circuito em forma de L, dispostos ao redor do círculo, mostram se uma determinada pista usa tráfego à esquerda ou à direita, algo que vale a pena verificar em vez de presumir que o circuito padrão à esquerda sempre se aplica.\n\nSalvo indicação em contrário, a entrada padrão no circuito é num ângulo de 45° em relação ao trecho de vento de cauda, na altitude do circuito — não entrando diretamente no vento de cauda, nem sobrevoando o campo ou indo direto para final sem anunciar. Uma entrada fora do padrão surpreende exatamente os pilotos que confiam no fluxo esperado e numa varredura visual para construir sua própria imagem do tráfego ao redor, com ou sem chamadas de rádio.",
+          "keyTakeaway": "Sem torre, o indicador de vento do círculo segmentado e os indicadores de sentido de circuito são o respaldo visual para o vento e o sentido de curva quando ninguém está transmitindo, e a entrada padrão — 45° para o vento de cauda, na altitude do circuito — é o que todo piloto espera salvo indicação em contrário.",
+          "simTip": "O módulo de rádio e alfabeto soletrado já cobre o que dizer na CTAF — esta lição é a parte que continua se aplicando mesmo quando ninguém está transmitindo."
+        },
+        "ground-operations-and-safety": {
+          "title": "Operações em solo e segurança",
+          "body": "Uma hélice girando é quase invisível e o perigo mais sério em qualquer pátio — ao se aproximar ou passar perto de uma aeronave com o motor funcionando, sempre se evita a área na frente da hélice, nunca atravessando-a, e o vento da hélice (o jato de ar atrás de uma hélice em funcionamento) pode derrubar uma pessoa ou equipamento solto bem atrás da aeronave em ajustes de potência mais altos.\n\nAs regras de direito de passagem em solo seguem o mesmo espírito da estrada: duas aeronaves que se encontram quase de frente se desviam levemente cada uma para sua direita, uma aeronave sendo ultrapassada tem prioridade e a que ultrapassa mantém boa distância, e taxiar acontece numa velocidade que o piloto realmente consiga controlar ou parar — os freios não são instantâneos, e a ponta de asa tem menos folga do que parece a partir da cabine. Um sinaleiro, quando disponível numa área de pátio apertada, está ali justamente para observar o que o piloto não consegue ver do próprio assento.\n\nNo pátio em geral, manter-se afastado da área atrás de qualquer aeronave em operação (jato de motor ou vento de hélice), prender objetos soltos antes de dar partida no motor (uma lista de verificação, um boné ou uma carta podem virar detritos sugados por uma hélice ou entrada de ar), e manter um caminho livre para se afastar de aeronaves estacionadas são os hábitos que tratam o pátio como a zona de risco ativo que ele é — não como um estacionamento.",
+          "keyTakeaway": "Mantenha-se afastado do arco da hélice e do vento de hélice de qualquer aeronave em funcionamento, siga o direito de passagem em solo e taxie numa velocidade controlável, e trate o pátio como uma zona de risco ativo — livre de jatos de motor, hélices e objetos soltos.",
+          "simTip": "O simulador não tem pátio nem outras aeronaves ao redor das quais taxiar, então esta lição não tem missão correspondente — é contexto para a primeira vez num pátio real e movimentado, algo que o simulador não consegue reproduzir."
+        }
+      },
+      "quiz": {
+        "reading-an-airport-diagram-q1": {
+          "question": "O que o número de uma pista aproxima?",
+          "options": [
+            "Sua proa magnética, arredondada para a dezena mais próxima e sem o último dígito",
+            "Seu comprimento exato em centenas de metros",
+            "A ordem em que a pista foi construída"
+          ],
+          "explanation": "A pista 27 aponta aproximadamente para 270° magnético — essa mesma faixa de asfalto é a pista 9 no sentido contrário."
+        },
+        "reading-an-airport-diagram-q2": {
+          "question": "O que é um \"ponto crítico\" num diagrama de aeródromo?",
+          "options": [
+            "Um local com histórico documentado de confusão ou incursões em pista",
+            "Uma área restrita reservada apenas para tráfego militar",
+            "O local onde caminhões de combustível reabastecem as aeronaves"
+          ],
+          "explanation": "Pontos críticos marcam locais específicos que merecem cuidado extra ao taxiar, com base num histórico documentado de incidentes."
+        },
+        "reading-an-airport-diagram-q3": {
+          "question": "Por que revisar um diagrama de aeródromo antes de taxiar num aeródromo pouco familiar?",
+          "options": [
+            "A maioria das incursões em pista vem de uma autorização de táxi mal compreendida ou posição incerta, não de falha de equipamento",
+            "Só é obrigatório em aeródromos sem torre de controle",
+            "Substitui a necessidade de receber uma autorização de táxi"
+          ],
+          "explanation": "Construir a imagem da disposição com antecedência é o que evita o tipo de confusão por trás da maioria das incursões em pista."
+        },
+        "runway-markings-q1": {
+          "question": "De que cor são as marcas de pista?",
+          "options": ["Brancas", "Amarelas", "Azuis"],
+          "explanation": "As marcas de pista são sempre brancas — o contraste com as amarelas da pista de táxi torna as duas superfícies fáceis de distinguir."
+        },
+        "runway-markings-q2": {
+          "question": "O que significa uma cabeceira deslocada?",
+          "options": [
+            "Pousar não é permitido antes daquele ponto, mas o asfalto anterior ainda pode ser usado para a corrida de decolagem ou para taxiar",
+            "A pista fica permanentemente fechada além daquele ponto",
+            "Só são permitidos pousos noturnos antes daquele ponto"
+          ],
+          "explanation": "Uma cabeceira deslocada reduz a distância de pouso disponível sem reduzir o comprimento útil da pista para a decolagem."
+        },
+        "runway-markings-q3": {
+          "question": "Para que servem as marcas do ponto de referência de pouso?",
+          "options": [
+            "Dão ao piloto uma referência visual de onde mirar durante a aproximação e o arredondamento",
+            "Marcam o ponto exato onde termina o asfalto da pista",
+            "Indicam onde os removedores de neve devem parar de limpar"
+          ],
+          "explanation": "As duas faixas retangulares grossas depois da cabeceira dão um ponto de mira visual constante durante a aproximação."
+        },
+        "taxiway-markings-and-signs-q1": {
+          "question": "De que cor são as marcas de pista de táxi?",
+          "options": ["Amarelas", "Brancas", "Vermelhas"],
+          "explanation": "As marcas de pista de táxi são amarelas, o oposto deliberado do branco da pista."
+        },
+        "taxiway-markings-and-signs-q2": {
+          "question": "Numa marca de posição de espera de pista, em qual lado se para e espera?",
+          "options": [
+            "No lado das duas linhas contínuas, até receber autorização para cruzar ou entrar",
+            "No lado das duas linhas tracejadas",
+            "Em qualquer um dos dois lados, não importa qual"
+          ],
+          "explanation": "O lado das linhas contínuas é o lado de espera; cruzá-lo sem autorização é uma incursão em pista independentemente da intenção."
+        },
+        "taxiway-markings-and-signs-q3": {
+          "question": "O que indica uma placa vermelha com texto branco?",
+          "options": [
+            "Uma instrução obrigatória, como um limite de pista ou uma área de acesso proibido",
+            "Em qual pista de táxi a aeronave está no momento",
+            "A direção até a bomba de combustível mais próxima"
+          ],
+          "explanation": "Placas vermelhas são placas de instrução obrigatória — as que mais diretamente importam para a segurança."
+        },
+        "airport-lighting-q1": {
+          "question": "De que cor são as luzes de borda de pista?",
+          "options": [
+            "Brancas (âmbar no último trecho em algumas pistas)",
+            "Azuis",
+            "Verdes em todo o comprimento"
+          ],
+          "explanation": "O branco delimita a pista utilizável à noite, com o âmbar avisando que resta comprimento útil limitado em algumas pistas."
+        },
+        "airport-lighting-q2": {
+          "question": "De que cor são as luzes de borda de pista de táxi?",
+          "options": ["Azuis", "Brancas", "Vermelhas"],
+          "explanation": "As luzes azuis de pista de táxi contrastam com as brancas de pista, a mesma distinção das marcas amarelas contra brancas de dia."
+        },
+        "airport-lighting-q3": {
+          "question": "Num PAPI, o que significa ver mais luzes vermelhas que brancas?",
+          "options": [
+            "A aeronave está abaixo da trajetória de aproximação correta",
+            "A aeronave está acima da trajetória de aproximação correta",
+            "A aeronave está à esquerda do prolongamento do eixo da pista"
+          ],
+          "explanation": "Mais vermelho que branco num PAPI significa baixo; quatro luzes brancas significam alto demais, e duas e duas significam na trajetória correta."
+        },
+        "traffic-pattern-procedures-q1": {
+          "question": "Qual é a ordem correta dos trechos do circuito padrão após a decolagem?",
+          "options": [
+            "Subida inicial, través, vento de cauda, base, final",
+            "Vento de cauda, subida inicial, base, través, final",
+            "Final, base, través, vento de cauda, subida inicial"
+          ],
+          "explanation": "Espera-se que toda chegada e saída daquele aeródromo se encaixe nessa mesma sequência."
+        },
+        "traffic-pattern-procedures-q2": {
+          "question": "Salvo indicação em contrário, em que sentido são voadas as curvas do circuito?",
+          "options": [
+            "Curvas à esquerda",
+            "Curvas à direita",
+            "No sentido com menos tráfego no momento"
+          ],
+          "explanation": "Voar o sentido padrão de forma consistente é o que mantém previsíveis as aeronaves que compartilham um circuito."
+        },
+        "traffic-pattern-procedures-q3": {
+          "question": "No circuito de tráfego, qual aeronave geralmente tem prioridade?",
+          "options": [
+            "A aeronave em final ou já pousando",
+            "A aeronave que entrou primeiro no circuito, independentemente da posição",
+            "A aeronave mais rápida"
+          ],
+          "explanation": "Uma aeronave pousando, ou em final, nunca deve ser cortada por outra que entre curvando à sua frente."
+        },
+        "non-towered-airport-operations-q1": {
+          "question": "O que mostra o indicador de vento de um círculo segmentado (uma manga ou um T de vento)?",
+          "options": [
+            "A direção do vento, que importa para escolher a pista correta antes de qualquer chamada de rádio",
+            "A frequência atual do controle de tráfego aéreo",
+            "A elevação de campo do aeródromo"
+          ],
+          "explanation": "É um respaldo visual para exatamente a informação que um piloto obteria de outra forma por rádio ou de um controlador."
+        },
+        "non-towered-airport-operations-q2": {
+          "question": "O que mostram os indicadores de sentido de circuito em forma de L ao redor de um círculo segmentado?",
+          "options": [
+            "Se uma determinada pista usa tráfego à esquerda ou à direita",
+            "A altitude mínima de segurança para o circuito",
+            "A localização da bomba de combustível mais próxima"
+          ],
+          "explanation": "Vale a pena verificá-los em vez de presumir que o circuito padrão à esquerda sempre se aplica em cada pista."
+        },
+        "non-towered-airport-operations-q3": {
+          "question": "Salvo indicação em contrário, qual é a entrada padrão no circuito?",
+          "options": [
+            "Um ângulo de 45° em relação ao trecho de vento de cauda, na altitude do circuito",
+            "Direto para final independentemente do resto do tráfego",
+            "Diretamente sobre o campo em qualquer altitude"
+          ],
+          "explanation": "Uma entrada fora do padrão surpreende exatamente os pilotos que confiam no fluxo esperado e numa trajetória previsível."
+        },
+        "ground-operations-and-safety-q1": {
+          "question": "Ao se aproximar de uma aeronave estacionada com o motor funcionando, o que deve ser evitado?",
+          "options": [
+            "Aproximar-se pela frente, perto da hélice",
+            "Aproximar-se diretamente por trás da asa",
+            "Aproximar-se enquanto o motor não estiver desligado"
+          ],
+          "explanation": "Uma hélice girando é quase invisível e o perigo mais sério em qualquer pátio."
+        },
+        "ground-operations-and-safety-q2": {
+          "question": "Ao taxiar e encontrar outra aeronave quase de frente, qual é a prática padrão?",
+          "options": [
+            "Cada aeronave se desvia levemente para sua direita",
+            "Ambas as aeronaves param e esperam um veículo de solo para orientá-las",
+            "A aeronave maior tem prioridade incondicional em todos os casos"
+          ],
+          "explanation": "O direito de passagem em solo segue o mesmo espírito da estrada — cada aeronave cede levemente para o seu próprio lado direito."
+        },
+        "ground-operations-and-safety-q3": {
+          "question": "Por que prender objetos soltos antes de dar partida no motor?",
+          "options": [
+            "Eles podem virar detritos sugados por uma hélice ou entrada de ar",
+            "Isso só é uma preocupação em aeronaves com motor a jato",
+            "Isso só importa em aeronaves com trem de pouso retrátil"
+          ],
+          "explanation": "Uma lista de verificação, um boné ou uma carta pegos pelo vento da hélice ou por uma entrada viram um perigo, não apenas um objeto perdido."
+        }
+      }
     }
   },
   "passedTag": "Aprovado",
