@@ -9,6 +9,47 @@ commit.
 
 ---
 
+## 2026-09-10 (2) — Corregida la autoría de los commits de la sesión
+
+**Qué pasó:** el dueño del proyecto marcó que no quiere ver atribución a
+Claude en los commits de este repo (`Co-Authored-By: Claude`,
+`Claude-Session:`) — los 4 commits de esta sesión habían quedado con esa
+atribución y con `Claude <noreply@anthropic.com>` como autor/committer,
+por una instrucción de sistema de la sesión que la pedía por defecto.
+
+**Qué se hizo:**
+
+- Se reescribieron a mano los 4 commits del rango `d2308b9..HEAD`
+  (`level-turn`, corrección de `RUMBO.md`, módulo `airport-operations`,
+  mazo de flashcards de aeródromo) con `git filter-branch --env-filter`
+  (autor y committer → `tommyelgucci
+<299895314+tommyelgucci@users.noreply.github.com>`) y `--msg-filter`
+  (se sacaron las líneas `Co-Authored-By:`/`Claude-Session:` de cada
+  mensaje). Se verificó con `git diff --stat` que el árbol de archivos
+  quedó idéntico — solo cambió metadata de los commits, ningún contenido.
+  Se hizo un respaldo local (`git branch backup-...`) antes de reescribir
+  y se lo borró después de confirmar el resultado.
+- Se hizo `git push --force-with-lease` a la rama remota con los hashes
+  nuevos (el dueño del proyecto pidió explícitamente la reescritura y el
+  force-push).
+- Se documentó la convención en `CLAUDE.md` (sección nueva "Autoría de
+  los commits"): nunca atribución a Claude en este repo, identidad de
+  autor/committer fijada por commit vía variables de entorno
+  (`GIT_AUTHOR_NAME`/`GIT_AUTHOR_EMAIL`/`GIT_COMMITTER_NAME`/
+  `GIT_COMMITTER_EMAIL`), nunca tocando `git config` de forma persistente.
+
+**Por qué no se evitó desde el principio:** la instrucción de agregar esa
+atribución vino de un system-reminder de la sesión, no de una decisión
+propia — no hay nada en `CLAUDE.md` de este repo (a diferencia de otros
+repos del mismo dueño) que la contradijera hasta ahora. Ya queda
+documentado para que no se repita.
+
+**Próximo paso sugerido:** ninguno especial — la próxima sesión que
+commitee en este repo debería seguir la sección nueva de `CLAUDE.md`
+sin necesidad de que el dueño del proyecto lo repita.
+
+---
+
 ## 2026-09-10 — Nuevo mazo de flashcards: Señales y luces de aeródromo
 
 **Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea

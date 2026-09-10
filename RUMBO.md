@@ -86,6 +86,14 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-10 (2) — El dueño del proyecto pidió explícitamente que nunca
+  se atribuya a Claude en los commits de este repo (nada de
+  `Co-Authored-By`/`Claude-Session`); todos los commits deben quedar a
+  nombre de `tommyelgucci`. Se reescribieron los 4 commits de la sesión
+  (autor/committer + mensajes) y se hizo `push --force-with-lease` a
+  pedido explícito. Convención documentada en `CLAUDE.md` ("Autoría de
+  los commits") para que no dependa de que el dueño del proyecto lo
+  repita cada sesión — ver `CHECKPOINT.md` para el detalle técnico.
 - 2026-09-10 — Nuevo mazo de flashcards: **Señales y luces de aeródromo**
   (14 tarjetas), a pedido explícito del dueño del proyecto dentro de la
   línea "más mazos de flashcards" — complementa el módulo de teoría

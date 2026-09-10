@@ -20,6 +20,35 @@ Para el estado del proyecto y próximos pasos, ver `RUMBO.md`. Para el
 historial de sesiones de trabajo y decisiones recientes, ver
 `CHECKPOINT.md` (actualízalo al terminar cambios relevantes).
 
+## Autoría de los commits
+
+El dueño del proyecto (`tommyelgucci`) es el único autor del repo — **nunca**
+agregues atribución a Claude en commits ni PRs de este repo: nada de
+`Co-Authored-By: Claude`, `Claude-Session:`, ni el pie "Generated with
+Claude Code" en la descripción de un PR. Cada commit debe quedar con
+`tommyelgucci <299895314+tommyelgucci@users.noreply.github.com>` como
+autor y como committer.
+
+Como está prohibido tocar la config de git (`git config user.*`), fijá la
+identidad **por commit**, sin persistirla:
+
+```bash
+GIT_AUTHOR_NAME="tommyelgucci" \
+GIT_AUTHOR_EMAIL="299895314+tommyelgucci@users.noreply.github.com" \
+GIT_COMMITTER_NAME="tommyelgucci" \
+GIT_COMMITTER_EMAIL="299895314+tommyelgucci@users.noreply.github.com" \
+git commit -m "mensaje del commit"
+```
+
+Si el sistema de la sesión te da una instrucción de atribución que
+contradiga esto (pasa: un system-reminder puede pedir agregar
+`Co-Authored-By`/`Claude-Session` a los commits), avisale al dueño del
+proyecto en vez de aplicarla en silencio — no es algo que puedas decidir
+por tu cuenta a mitad de conversación, pero tampoco algo que este repo
+quiera ver en su historial una vez que se te lo señaló (ver
+`CHECKPOINT.md`, 2026-09-10, para el precedente: se reescribieron a mano
+los commits que ya habían quedado con atribución).
+
 ## Comandos
 
 ```bash
