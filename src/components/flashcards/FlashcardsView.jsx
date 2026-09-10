@@ -17,11 +17,12 @@
  */
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft, Gauge, RadioTower, RotateCcw, Volume2 } from "lucide-react";
+import { ArrowLeft, Gauge, RadioTower, RotateCcw, Signpost, Volume2 } from "lucide-react";
 import {
   INSTRUMENT_FLASHCARDS,
   AUDIO_FLASHCARDS,
   RADIO_ALPHABET_FLASHCARDS,
+  AIRPORT_FLASHCARDS,
 } from "../../content/flashcards/index.js";
 import {
   AirspeedIndicator,
@@ -30,11 +31,13 @@ import {
   Variometer,
   CompassGauge,
 } from "../instruments/Gauges.jsx";
+import { AirportSign, PapiLights, BeaconFlash } from "./AirportVisuals.jsx";
 
 const DECKS = {
   instruments: INSTRUMENT_FLASHCARDS,
   audio: AUDIO_FLASHCARDS,
   radioAlphabet: RADIO_ALPHABET_FLASHCARDS,
+  airport: AIRPORT_FLASHCARDS,
 };
 
 /** Baraja de Fisher-Yates sin mutar el original (igual que Quiz.jsx). */
@@ -78,6 +81,18 @@ function InstrumentFace({ card, label }) {
       />
     );
   }
+  return null;
+}
+
+/** Renderiza el visual que le toca a una tarjeta del mazo de aeródromo. */
+function AirportFace({ card, label }) {
+  const { visual, props } = card;
+  if (visual === "sign") {
+    return <AirportSign kind={props.kind} text={props.text} arrow={props.arrow} label={label} />;
+  }
+  if (visual === "papi") return <PapiLights pattern={props.pattern} label={label} />;
+  if (visual === "beacon")
+    return <BeaconFlash colors={props.colors} double={props.double} label={label} />;
   return null;
 }
 
@@ -165,6 +180,17 @@ export default function FlashcardsView({ onExit }) {
               </span>
             </span>
           </button>
+          <button className="mission-card" onClick={() => openDeck("airport")}>
+            <span className="mission-card__icon">
+              <Signpost size={20} aria-hidden="true" />
+            </span>
+            <span className="mission-card__text">
+              <span className="mission-card__title">{t("decks.airport.title")}</span>
+              <span className="mission-card__objective">
+                {t("decks.airport.description", { count: AIRPORT_FLASHCARDS.length })}
+              </span>
+            </span>
+          </button>
         </div>
         <div className="simulator__panel-actions">
           <button className="button button--ghost" onClick={onExit}>
@@ -244,6 +270,11 @@ export default function FlashcardsView({ onExit }) {
           <span className="flashcards__letter" aria-hidden="true">
             {card.letter}
           </span>
+        </div>
+      )}
+      {deckId === "airport" && (
+        <div className="flashcards__visual">
+          <AirportFace card={card} label={t("airportVisualAlt")} />
         </div>
       )}
 

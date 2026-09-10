@@ -121,13 +121,13 @@ for (const lang of LANGS) {
 }
 
 // --- 4. Estructura de flashcards ↔ textos de flashcards ---------------
-const { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS, RADIO_ALPHABET_FLASHCARDS } = await import(
-  join(root, "src/content/flashcards/index.js")
-);
+const { INSTRUMENT_FLASHCARDS, AUDIO_FLASHCARDS, RADIO_ALPHABET_FLASHCARDS, AIRPORT_FLASHCARDS } =
+  await import(join(root, "src/content/flashcards/index.js"));
 const flashcardDecks = {
   instruments: INSTRUMENT_FLASHCARDS,
   audio: AUDIO_FLASHCARDS,
   radioAlphabet: RADIO_ALPHABET_FLASHCARDS,
+  airport: AIRPORT_FLASHCARDS,
 };
 
 for (const lang of LANGS) {

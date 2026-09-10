@@ -7,16 +7,17 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-09-09.
+**Última revisión:** 2026-09-10.
 
 ## Estado de partida
 
-Verificado el 2026-09-09 (tras el trabajo de la sección "Decisiones" de
+Verificado el 2026-09-10 (tras el trabajo de la sección "Decisiones" de
 abajo): `npm run lint` (0 errores, 8 warnings documentados en
 `CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
-namespaces, **14 módulos**, 45 flashcards) ✅, `npm test` (**77** tests, 9
-archivos) ✅, `npm run build` ✅. Sin issues ni PRs abiertos en GitHub. El
-proyecto no tiene deuda técnica visible ni bloqueadores conocidos.
+namespaces, **14 módulos**, **59 flashcards**) ✅, `npm test` (**77**
+tests, 9 archivos) ✅, `npm run build` ✅. Sin issues ni PRs abiertos en
+GitHub. El proyecto no tiene deuda técnica visible ni bloqueadores
+conocidos.
 
 ## Líneas de trabajo propuestas
 
@@ -51,7 +52,8 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
       OACI), sumado a los mazos de instrumentos y alertas de cabina.
       Mismo caso que el ítem anterior: hecho antes, sin marcar; corregido
       el 2026-09-07 (3 mazos, 45 flashcards en total según
-      `check:i18n`).
+      `check:i18n`). Sumado un 4º mazo, **Señales y luces de aeródromo**
+      (14 tarjetas), el 2026-09-10 — ver Decisiones.
 
 ### Producto / crecimiento
 
@@ -84,6 +86,24 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-10 — Nuevo mazo de flashcards: **Señales y luces de aeródromo**
+  (14 tarjetas), a pedido explícito del dueño del proyecto dentro de la
+  línea "más mazos de flashcards" — complementa el módulo de teoría
+  "Operaciones de aeródromo" del día anterior. 3 visuales SVG propios
+  nuevos (`src/components/flashcards/AirportVisuals.jsx`, mismo criterio
+  "cero assets externos" que `Gauges.jsx`): `AirportSign` (señal roja/
+  blanca, amarilla/negra o negra/amarilla con flecha), `PapiLights`
+  (fila de 4 luces blanco/rojo) y `BeaconFlash` (patrón de color del faro
+  giratorio). 6 tarjetas de señales, 5 de PAPI (cubriendo todo el
+  espectro alto/en senda/bajo del quiz del módulo de teoría) y 3 de faro.
+  Se actualizó `scripts/check-i18n.mjs`, que hasta ahora solo conocía los
+  3 mazos originales a mano y no habría detectado textos faltantes en el
+  mazo nuevo — un guante que quedó suelto desde que se creó el script
+  (ver Decisiones, 2026-08-10) y que conviene tener presente si se agrega
+  un mazo más adelante. Verificado visualmente en navegador (Playwright)
+  en inglés y en árabe (RTL): las flechas de dirección de las señales no
+  se espejan en RTL, correcto según la convención del proyecto para
+  diagramas técnicos que representan geografía real.
 - 2026-09-09 — Nuevo módulo de teoría: **Operaciones de aeródromo**
   (`airport-operations`, 14º del catálogo), a pedido explícito del dueño
   del proyecto dentro de la línea "más módulos de teoría". Cubre el lado

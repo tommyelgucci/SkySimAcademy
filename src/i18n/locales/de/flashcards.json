@@ -1,6 +1,6 @@
 {
   "title": "Karteikarten",
-  "intro": "Übe das Erkennen von Cockpit-Instrumenten und akustischen Warnsignalen. Das ist freies Üben — es zählt nicht für die Modul-Quiz und schaltet keine Simulator-Missionen frei, also wiederhole es so oft du willst.",
+  "intro": "Übe das Erkennen von Cockpit-Instrumenten, akustischen Warnsignalen, Funkmeldungen und Flugplatzschildern und -befeuerung. Das ist freies Üben — es zählt nicht für die Modul-Quiz und schaltet keine Simulator-Missionen frei, also wiederhole es so oft du willst.",
   "exit": "Verlassen",
   "decks": {
     "instruments": {
@@ -14,9 +14,14 @@
     "radioAlphabet": {
       "title": "Buchstabieralphabet",
       "description": "{{count}} Karten — buchstabiere jeden Buchstaben mit dem ICAO-Buchstabieralphabet, denselben 26 Wörtern wie im echten Funkverkehr."
+    },
+    "airport": {
+      "title": "Flugplatzschilder und -befeuerung",
+      "description": "{{count}} Karten — erkenne Rollbahnschilder an der Farbe und lies ein PAPI und ein Drehfeuer, aus dem Modul Flugplatzbetrieb."
     }
   },
   "instrumentAlt": "Fluginstrument",
+  "airportVisualAlt": "Flugplatzschild oder -feuer",
   "playAudio": "Audio abspielen",
   "backToDecks": "Zurück zu den Kartensätzen",
   "cardProgress": "Karte {{current}} von {{total}}",
@@ -309,6 +314,134 @@
       "question": "Wie buchstabierst du den Buchstaben Z über Funk?",
       "options": ["Zulu", "Echo", "Lima", "Sierra"],
       "explanation": "„Zulu“ ist das ICAO-Buchstabierwort für Z — gewählt, weil es sich selbst über einen verrauschten Funkkanal nicht mit dem Wort eines anderen Buchstabens verwechseln lässt."
+    }
+  },
+  "airport": {
+    "sign-mandatory-1": {
+      "question": "Was zeigt dieses Schild an?",
+      "options": [
+        "Ein Gebot — eine Pistengrenze oder einen gesperrten Bereich",
+        "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
+        "Die Richtung zu einer weiteren Rollbahn voraus"
+      ],
+      "explanation": "Rote Schilder mit weißem Text sind Gebotsschilder — die Farbe, die am unmittelbarsten für die Sicherheit zählt, hier an einer Rollhaltposition."
+    },
+    "sign-mandatory-2": {
+      "question": "Was zeigt dieses Schild an?",
+      "options": [
+        "Ein Gebot — eine Pistengrenze oder einen gesperrten Bereich",
+        "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
+        "Die Richtung zu einer weiteren Rollbahn voraus"
+      ],
+      "explanation": "Rote Schilder mit weißem Text markieren Gebote — dieses markiert die Grenze eines ILS-Schutzbereichs, der freigehalten werden muss, wenn er ein landendes Flugzeug beeinträchtigen könnte."
+    },
+    "sign-location-1": {
+      "question": "Was zeigt dieses Schild an?",
+      "options": [
+        "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
+        "Ein Gebot, das befolgt werden muss",
+        "Die Richtung zu einer Piste voraus"
+      ],
+      "explanation": "Ein gelber Hintergrund mit schwarzem Text ist ein Standortschild — es zeigt dem Piloten, auf welcher Rollbahn er sich befindet, nicht ein Gebot oder eine Richtung."
+    },
+    "sign-location-2": {
+      "question": "Was zeigt dieses Schild an?",
+      "options": [
+        "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
+        "Ein Gebot, das befolgt werden muss",
+        "Die Richtung zu einer Piste voraus"
+      ],
+      "explanation": "Schilder mit gelbem Hintergrund sind Standortschilder — dieses markiert einen bestimmten Rollbahnabschnitt und bestätigt, wo sich der Pilot beim Rollen genau befindet."
+    },
+    "sign-direction-1": {
+      "question": "Was zeigt dieses Schild an?",
+      "options": [
+        "Die Richtung zu einer weiteren Rollbahn oder Piste voraus",
+        "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
+        "Einen vorgeschriebenen Haltepunkt"
+      ],
+      "explanation": "Ein schwarzer Hintergrund mit gelbem Text — oft mit einem Pfeil, wie hier — ist ein Richtungsschild, das auf die vorausliegende Rollbahn oder Piste zeigt."
+    },
+    "sign-direction-2": {
+      "question": "Was zeigt dieses Schild an?",
+      "options": [
+        "Die Richtung zu einer weiteren Rollbahn oder Piste voraus",
+        "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
+        "Einen vorgeschriebenen Haltepunkt"
+      ],
+      "explanation": "Schwarze Schilder mit gelbem Text und einem Pfeil zeigen auf das, was voraus liegt — hier eine Piste auf der Seite, auf die der Pfeil zeigt."
+    },
+    "papi-high": {
+      "question": "Was zeigt dieses PAPI-Muster an?",
+      "options": [
+        "Das Flugzeug ist über dem richtigen Gleitweg — zu hoch",
+        "Das Flugzeug ist auf dem richtigen Gleitweg",
+        "Das Flugzeug ist unter dem richtigen Gleitweg — zu niedrig"
+      ],
+      "explanation": "Vier weiße Leuchten bedeuten zu hoch — leicht abfangen oder Leistung reduzieren, um zurück auf den Gleitweg zu sinken."
+    },
+    "papi-high-slight": {
+      "question": "Was zeigt dieses PAPI-Muster an?",
+      "options": [
+        "Das Flugzeug ist über dem richtigen Gleitweg — zu hoch",
+        "Das Flugzeug ist auf dem richtigen Gleitweg",
+        "Das Flugzeug ist unter dem richtigen Gleitweg — zu niedrig"
+      ],
+      "explanation": "Mehr Weiß als Rot bedeutet weiterhin zu hoch, auch ohne dass alle vier Leuchten weiß sind — sanft sinken, um den Gleitweg wieder zu erreichen."
+    },
+    "papi-on-path": {
+      "question": "Was zeigt dieses PAPI-Muster an?",
+      "options": [
+        "Das Flugzeug ist auf dem richtigen Gleitweg",
+        "Das Flugzeug ist über dem richtigen Gleitweg — zu hoch",
+        "Das Flugzeug ist unter dem richtigen Gleitweg — zu niedrig"
+      ],
+      "explanation": "Zwei weiße und zwei rote Leuchten bedeuten, dass das Flugzeug genau auf dem richtigen Gleitweg ist — das so beibehalten."
+    },
+    "papi-low-slight": {
+      "question": "Was zeigt dieses PAPI-Muster an?",
+      "options": [
+        "Das Flugzeug ist unter dem richtigen Gleitweg — zu niedrig",
+        "Das Flugzeug ist auf dem richtigen Gleitweg",
+        "Das Flugzeug ist über dem richtigen Gleitweg — zu hoch"
+      ],
+      "explanation": "Mehr Rot als Weiß bedeutet zu niedrig, auch ohne dass alle vier Leuchten rot sind — Leistung erhöhen oder den Sinkflug abflachen, um zum Gleitweg zurückzukehren."
+    },
+    "papi-low": {
+      "question": "Was zeigt dieses PAPI-Muster an?",
+      "options": [
+        "Das Flugzeug ist unter dem richtigen Gleitweg — zu niedrig",
+        "Das Flugzeug ist auf dem richtigen Gleitweg",
+        "Das Flugzeug ist über dem richtigen Gleitweg — zu hoch"
+      ],
+      "explanation": "Vier rote Leuchten bedeuten zu niedrig — eine ernste Warnung, sofort zum Gleitweg zurückzukehren."
+    },
+    "beacon-land": {
+      "question": "Was identifiziert dieses Farbmuster des Drehfeuers?",
+      "options": [
+        "Einen befeuerten Landflugplatz",
+        "Einen Wasserflugplatz",
+        "Einen Militärflugplatz"
+      ],
+      "explanation": "Abwechselnd weiße und grüne Blitze kennzeichnen einen befeuerten Landflugplatz — das häufigste Feuermuster."
+    },
+    "beacon-seaplane": {
+      "question": "Was identifiziert dieses Farbmuster des Drehfeuers?",
+      "options": [
+        "Einen Wasserflugplatz",
+        "Einen befeuerten Landflugplatz",
+        "Einen Militärflugplatz"
+      ],
+      "explanation": "Abwechselnd weiße und gelbe Blitze kennzeichnen einen Wasserflugplatz statt eines Landflugplatzes."
+    },
+    "beacon-military": {
+      "question": "Was identifiziert dieses Muster des Drehfeuers?",
+      "options": [
+        "Einen Militärflugplatz",
+        "Einen befeuerten Landflugplatz",
+        "Einen Wasserflugplatz"
+      ],
+      "explanation": "Zwei schnelle weiße Blitze kurz hintereinander, statt eines gleichmäßigen, kennzeichnen einen Militärflugplatz."
     }
   }
 }

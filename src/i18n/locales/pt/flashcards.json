@@ -1,6 +1,6 @@
 {
   "title": "Flashcards",
-  "intro": "Pratique reconhecer instrumentos de cabine e alertas sonoros de cabine. Isto é treino livre — não conta para os questionários dos módulos nem desbloqueia missões do simulador, então repita quantas vezes quiser.",
+  "intro": "Pratique reconhecer instrumentos de cabine, alertas sonoros de cabine, chamadas de rádio, e placas e luzes de aeródromo. Isto é treino livre — não conta para os questionários dos módulos nem desbloqueia missões do simulador, então repita quantas vezes quiser.",
   "exit": "Sair",
   "decks": {
     "instruments": {
@@ -14,9 +14,14 @@
     "radioAlphabet": {
       "title": "Alfabeto radiofônico",
       "description": "{{count}} cartões — soletre qualquer letra com o alfabeto fonético OACI, as mesmas 26 palavras usadas no rádio de verdade."
+    },
+    "airport": {
+      "title": "Placas e luzes de aeródromo",
+      "description": "{{count}} cartões — reconheça placas de pista de táxi pela cor e leia um PAPI e um farol giratório, do módulo de operações de aeródromo."
     }
   },
   "instrumentAlt": "Instrumento de voo",
+  "airportVisualAlt": "Placa ou luz de aeródromo",
   "playAudio": "Reproduzir áudio",
   "backToDecks": "Voltar aos baralhos",
   "cardProgress": "Cartão {{current}} de {{total}}",
@@ -309,6 +314,134 @@
       "question": "Como você soletra a letra Z pelo rádio?",
       "options": ["Zulu", "Echo", "Lima", "Sierra"],
       "explanation": "“Zulu” é a palavra OACI para a letra Z — escolhida porque não pode ser confundida com a de nenhuma outra letra, mesmo com ruído no canal de rádio."
+    }
+  },
+  "airport": {
+    "sign-mandatory-1": {
+      "question": "O que esta placa indica?",
+      "options": [
+        "Uma instrução obrigatória — um limite de pista ou uma área de acesso proibido",
+        "Em qual pista de táxi a aeronave está no momento",
+        "A direção até outra pista de táxi mais adiante"
+      ],
+      "explanation": "Placas vermelhas com texto branco são placas de instrução obrigatória — a cor que mais diretamente importa para a segurança, aqui marcando uma posição de espera de pista."
+    },
+    "sign-mandatory-2": {
+      "question": "O que esta placa indica?",
+      "options": [
+        "Uma instrução obrigatória — um limite de pista ou uma área de acesso proibido",
+        "Em qual pista de táxi a aeronave está no momento",
+        "A direção até outra pista de táxi mais adiante"
+      ],
+      "explanation": "Placas vermelhas com texto branco marcam instruções obrigatórias — esta marca o limite de uma área crítica de ILS, que deve ficar livre quando puder afetar uma aeronave pousando."
+    },
+    "sign-location-1": {
+      "question": "O que esta placa indica?",
+      "options": [
+        "Em qual pista de táxi a aeronave está no momento",
+        "Uma instrução obrigatória a ser seguida",
+        "A direção até uma pista mais adiante"
+      ],
+      "explanation": "Um fundo amarelo com texto preto é uma placa de localização — mostra ao piloto em qual pista de táxi ele está, não uma instrução nem uma direção."
+    },
+    "sign-location-2": {
+      "question": "O que esta placa indica?",
+      "options": [
+        "Em qual pista de táxi a aeronave está no momento",
+        "Uma instrução obrigatória a ser seguida",
+        "A direção até uma pista mais adiante"
+      ],
+      "explanation": "Placas de fundo amarelo são placas de localização — esta marca um trecho específico de pista de táxi, confirmando exatamente onde o piloto está enquanto taxia."
+    },
+    "sign-direction-1": {
+      "question": "O que esta placa indica?",
+      "options": [
+        "A direção até outra pista de táxi ou pista mais adiante",
+        "Em qual pista de táxi a aeronave está no momento",
+        "Um ponto de parada obrigatória"
+      ],
+      "explanation": "Um fundo preto com texto amarelo — muitas vezes com uma seta, como aqui — é uma placa de direção, apontando para a pista de táxi ou pista à frente."
+    },
+    "sign-direction-2": {
+      "question": "O que esta placa indica?",
+      "options": [
+        "A direção até outra pista de táxi ou pista mais adiante",
+        "Em qual pista de táxi a aeronave está no momento",
+        "Um ponto de parada obrigatória"
+      ],
+      "explanation": "Placas pretas com texto amarelo e uma seta apontam para o que vem à frente — aqui, uma pista para o lado que a seta mostra."
+    },
+    "papi-high": {
+      "question": "O que este padrão de PAPI indica?",
+      "options": [
+        "A aeronave está acima da trajetória de aproximação correta — alto demais",
+        "A aeronave está na trajetória de aproximação correta",
+        "A aeronave está abaixo da trajetória de aproximação correta — baixo demais"
+      ],
+      "explanation": "Quatro luzes brancas significam alto demais — abaixe um pouco o nariz ou reduza a potência para descer de volta à trajetória correta."
+    },
+    "papi-high-slight": {
+      "question": "O que este padrão de PAPI indica?",
+      "options": [
+        "A aeronave está acima da trajetória de aproximação correta — alto demais",
+        "A aeronave está na trajetória de aproximação correta",
+        "A aeronave está abaixo da trajetória de aproximação correta — baixo demais"
+      ],
+      "explanation": "Mais branco que vermelho ainda significa alto, mesmo sem as quatro luzes brancas — desça suavemente para reinterceptar a trajetória."
+    },
+    "papi-on-path": {
+      "question": "O que este padrão de PAPI indica?",
+      "options": [
+        "A aeronave está na trajetória de aproximação correta",
+        "A aeronave está acima da trajetória de aproximação correta — alto demais",
+        "A aeronave está abaixo da trajetória de aproximação correta — baixo demais"
+      ],
+      "explanation": "Duas luzes brancas e duas vermelhas significam que a aeronave está exatamente na trajetória correta — mantenha assim."
+    },
+    "papi-low-slight": {
+      "question": "O que este padrão de PAPI indica?",
+      "options": [
+        "A aeronave está abaixo da trajetória de aproximação correta — baixo demais",
+        "A aeronave está na trajetória de aproximação correta",
+        "A aeronave está acima da trajetória de aproximação correta — alto demais"
+      ],
+      "explanation": "Mais vermelho que branco significa baixo, mesmo sem as quatro luzes vermelhas — adicione potência ou suavize a descida para voltar à trajetória."
+    },
+    "papi-low": {
+      "question": "O que este padrão de PAPI indica?",
+      "options": [
+        "A aeronave está abaixo da trajetória de aproximação correta — baixo demais",
+        "A aeronave está na trajetória de aproximação correta",
+        "A aeronave está acima da trajetória de aproximação correta — alto demais"
+      ],
+      "explanation": "Quatro luzes vermelhas significam baixo demais — um aviso sério para voltar imediatamente à trajetória correta."
+    },
+    "beacon-land": {
+      "question": "O que este padrão de cor do farol giratório identifica?",
+      "options": [
+        "Um aeródromo terrestre iluminado",
+        "Uma base de hidroaviões",
+        "Um aeródromo militar"
+      ],
+      "explanation": "Lampejos alternados de branco e verde identificam um aeródromo terrestre iluminado — o padrão de farol mais comum."
+    },
+    "beacon-seaplane": {
+      "question": "O que este padrão de cor do farol giratório identifica?",
+      "options": [
+        "Uma base de hidroaviões",
+        "Um aeródromo terrestre iluminado",
+        "Um aeródromo militar"
+      ],
+      "explanation": "Lampejos alternados de branco e amarelo identificam uma base de hidroaviões em vez de um aeródromo terrestre."
+    },
+    "beacon-military": {
+      "question": "O que este padrão do farol giratório identifica?",
+      "options": [
+        "Um aeródromo militar",
+        "Um aeródromo terrestre iluminado",
+        "Uma base de hidroaviões"
+      ],
+      "explanation": "Dois lampejos brancos rápidos e próximos entre si, em vez de um constante, identificam um aeródromo militar."
     }
   }
 }

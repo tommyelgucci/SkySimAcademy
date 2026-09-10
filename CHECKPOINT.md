@@ -9,6 +9,50 @@ commit.
 
 ---
 
+## 2026-09-10 — Nuevo mazo de flashcards: Señales y luces de aeródromo
+
+**Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
+"más mazos de flashcards" de `RUMBO.md`, complementando el módulo de teoría
+`airport-operations` del día anterior):
+
+- **Contenido:** 4º mazo, `AIRPORT_FLASHCARDS` (14 tarjetas): 6 de señales
+  de calle de rodaje por color (obligatoria roja/blanca, ubicación
+  amarilla/negra, dirección negra/amarilla con flecha), 5 de lectura de
+  PAPI (los 5 patrones del espectro alto → en senda → bajo, calcados de
+  los ejemplos del quiz del módulo de teoría) y 3 de patrón de color del
+  faro giratorio (aeródromo terrestre, base de hidroaviones, militar).
+  Traducción real a los 5 idiomas.
+- **Visuales SVG nuevos:** `src/components/flashcards/AirportVisuals.jsx`
+  — `AirportSign`, `PapiLights`, `BeaconFlash`, mismo criterio que
+  `Gauges.jsx` (geometría propia, sin assets externos, clase CSS `gauge`
+  reutilizada para el tamaño). Cableado en `FlashcardsView.jsx` (nuevo
+  deck `airport`, icono `Signpost` — el mismo del módulo de teoría).
+- **Se encontró y corrigió un guante suelto:** `scripts/check-i18n.mjs`
+  tenía los 3 mazos originales escritos a mano en un objeto
+  `flashcardDecks` y no importaba el mazo nuevo — `npm run check:i18n`
+  habría seguido reportando "OK" aunque faltaran textos en el mazo de
+  aeródromo, porque simplemente no lo miraba. Corregido para importar
+  también `AIRPORT_FLASHCARDS`. Vale la pena recordar este punto si se
+  agrega un 5º mazo más adelante.
+- **Verificación en navegador:** build servido con `vite preview` +
+  Playwright (headless, sin agregar la dependencia al proyecto) para
+  confirmar que los 3 visuales nuevos renderizan bien, sin errores de
+  consola, y que el mazo funciona en árabe (RTL) sin romper el layout —
+  las flechas de dirección de las señales no se espejan en RTL a
+  propósito, igual que los diagramas técnicos de `LessonDiagram.jsx`.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados), `npm run format:check`, `npm run check:i18n` (14 módulos,
+**59 flashcards**, antes 45), `npm test` (77/77) y `npm run build`, todos
+en verde.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — quedan abiertas "más
+misiones/escenarios" (viento cruzado pendiente de decisión de alcance) y
+los pendientes grandes de producto (analítica, validación con usuarios
+reales, versión instructor).
+
+---
+
 ## 2026-09-09 — Nuevo módulo de teoría: Operaciones de aeródromo
 
 **Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
