@@ -320,7 +320,7 @@
     "sign-mandatory-1": {
       "question": "¿Qué indica esta señal?",
       "options": [
-        "Una instrucción obligatoria — un límite de pista o una zona de acceso prohibido",
+        "Una instrucción obligatoria — una posición de espera en pista o una zona de acceso prohibido",
         "En qué calle de rodaje está el avión en ese momento",
         "La dirección hacia otra calle de rodaje más adelante"
       ],
@@ -329,7 +329,7 @@
     "sign-mandatory-2": {
       "question": "¿Qué indica esta señal?",
       "options": [
-        "Una instrucción obligatoria — un límite de pista o una zona de acceso prohibido",
+        "Una instrucción obligatoria — una posición de espera en pista o una zona de acceso prohibido",
         "En qué calle de rodaje está el avión en ese momento",
         "La dirección hacia otra calle de rodaje más adelante"
       ],
@@ -342,7 +342,7 @@
         "Una instrucción obligatoria que hay que seguir",
         "La dirección hacia una pista más adelante"
       ],
-      "explanation": "Un fondo amarillo con texto negro es una señal de ubicación — le dice al piloto en qué calle de rodaje está, no una instrucción ni una dirección."
+      "explanation": "Un fondo amarillo con texto negro es una señal de ubicación — le dice al piloto en qué calle de rodaje está. Las señales de dirección comparten este mismo color; una señal de ubicación es la que no tiene flecha."
     },
     "sign-location-2": {
       "question": "¿Qué indica esta señal?",
@@ -351,7 +351,7 @@
         "Una instrucción obligatoria que hay que seguir",
         "La dirección hacia una pista más adelante"
       ],
-      "explanation": "Las señales de fondo amarillo son señales de ubicación — esta marca un tramo concreto de calle de rodaje, confirmando exactamente dónde está el piloto mientras rueda."
+      "explanation": "Las señales de fondo amarillo son señales de ubicación — esta marca un tramo concreto de calle de rodaje, confirmando exactamente dónde está el piloto mientras rueda. Una señal de dirección usa los mismos colores, pero siempre lleva una flecha."
     },
     "sign-direction-1": {
       "question": "¿Qué indica esta señal?",
@@ -360,7 +360,7 @@
         "En qué calle de rodaje está el avión en ese momento",
         "Un punto de parada obligatoria"
       ],
-      "explanation": "Un fondo negro con texto amarillo —a menudo con una flecha, como aquí— es una señal de dirección, que apunta hacia la calle de rodaje o pista que sigue."
+      "explanation": "Las señales de dirección usan el mismo fondo amarillo y texto negro que las de ubicación — lo que las distingue es la flecha, que apunta hacia la calle de rodaje o pista que sigue."
     },
     "sign-direction-2": {
       "question": "¿Qué indica esta señal?",
@@ -369,7 +369,7 @@
         "En qué calle de rodaje está el avión en ese momento",
         "Un punto de parada obligatoria"
       ],
-      "explanation": "Las señales negras con texto amarillo y una flecha apuntan hacia lo que sigue — aquí, una pista hacia el lado que muestra la flecha."
+      "explanation": "Las señales de dirección comparten el color amarillo y negro de las de ubicación — la flecha es lo que apunta hacia lo que sigue, aquí una pista hacia el lado que muestra."
     },
     "papi-high": {
       "question": "¿Qué indica este patrón de PAPI?",
@@ -441,7 +441,7 @@
         "Un aeródromo terrestre iluminado",
         "Una base de hidroaviones"
       ],
-      "explanation": "Dos destellos blancos rápidos y próximos entre sí, en vez de uno constante, identifican un aeródromo militar."
+      "explanation": "Un aeródromo militar sigue alternando con verde, igual que uno civil — lo que lo distingue es que el destello blanco se divide en dos golpes rápidos en vez de uno constante."
     }
   }
 }

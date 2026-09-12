@@ -320,7 +320,7 @@
     "sign-mandatory-1": {
       "question": "O que esta placa indica?",
       "options": [
-        "Uma instrução obrigatória — um limite de pista ou uma área de acesso proibido",
+        "Uma instrução obrigatória — uma posição de espera de pista ou uma área de acesso proibido",
         "Em qual pista de táxi a aeronave está no momento",
         "A direção até outra pista de táxi mais adiante"
       ],
@@ -329,7 +329,7 @@
     "sign-mandatory-2": {
       "question": "O que esta placa indica?",
       "options": [
-        "Uma instrução obrigatória — um limite de pista ou uma área de acesso proibido",
+        "Uma instrução obrigatória — uma posição de espera de pista ou uma área de acesso proibido",
         "Em qual pista de táxi a aeronave está no momento",
         "A direção até outra pista de táxi mais adiante"
       ],
@@ -342,7 +342,7 @@
         "Uma instrução obrigatória a ser seguida",
         "A direção até uma pista mais adiante"
       ],
-      "explanation": "Um fundo amarelo com texto preto é uma placa de localização — mostra ao piloto em qual pista de táxi ele está, não uma instrução nem uma direção."
+      "explanation": "Um fundo amarelo com texto preto é uma placa de localização — mostra ao piloto em qual pista de táxi ele está. Placas de direção compartilham essa mesma cor; uma placa de localização é a que não tem seta."
     },
     "sign-location-2": {
       "question": "O que esta placa indica?",
@@ -351,7 +351,7 @@
         "Uma instrução obrigatória a ser seguida",
         "A direção até uma pista mais adiante"
       ],
-      "explanation": "Placas de fundo amarelo são placas de localização — esta marca um trecho específico de pista de táxi, confirmando exatamente onde o piloto está enquanto taxia."
+      "explanation": "Placas de fundo amarelo são placas de localização — esta marca um trecho específico de pista de táxi, confirmando exatamente onde o piloto está enquanto taxia. Uma placa de direção usa as mesmas cores, mas sempre traz uma seta."
     },
     "sign-direction-1": {
       "question": "O que esta placa indica?",
@@ -360,7 +360,7 @@
         "Em qual pista de táxi a aeronave está no momento",
         "Um ponto de parada obrigatória"
       ],
-      "explanation": "Um fundo preto com texto amarelo — muitas vezes com uma seta, como aqui — é uma placa de direção, apontando para a pista de táxi ou pista à frente."
+      "explanation": "Placas de direção usam o mesmo fundo amarelo e texto preto das placas de localização — a seta é o que a diferencia, apontando para a pista de táxi ou pista à frente."
     },
     "sign-direction-2": {
       "question": "O que esta placa indica?",
@@ -369,7 +369,7 @@
         "Em qual pista de táxi a aeronave está no momento",
         "Um ponto de parada obrigatória"
       ],
-      "explanation": "Placas pretas com texto amarelo e uma seta apontam para o que vem à frente — aqui, uma pista para o lado que a seta mostra."
+      "explanation": "Placas de direção compartilham a cor amarela e preta das placas de localização — a seta é o que aponta para o que vem à frente, aqui uma pista para o lado que ela mostra."
     },
     "papi-high": {
       "question": "O que este padrão de PAPI indica?",
@@ -441,7 +441,7 @@
         "Um aeródromo terrestre iluminado",
         "Uma base de hidroaviões"
       ],
-      "explanation": "Dois lampejos brancos rápidos e próximos entre si, em vez de um constante, identificam um aeródromo militar."
+      "explanation": "Um aeródromo militar continua alternando com verde, igual a um civil — o que o diferencia é que o lampejo branco se divide em dois golpes rápidos em vez de um constante."
     }
   }
 }

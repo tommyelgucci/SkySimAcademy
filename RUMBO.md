@@ -7,7 +7,7 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-09-12.
+**Última revisión:** 2026-09-12 (2).
 
 ## Estado de partida
 
@@ -17,7 +17,10 @@ abajo): `npm run lint` (0 errores, 8 warnings documentados en
 namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**82** tests, 9
 archivos) ✅, `npm run build` ✅. PR #11 abierto (rama
 `claude/skysimacademy-proyecto-a0t4x4` → `main`), sin conflictos. El
-proyecto no tiene deuda técnica visible.
+proyecto no tiene deuda técnica visible — se corrigieron además 3 errores
+reales de contenido de aviación en el módulo `airport-operations` y su
+mazo de flashcards, encontrados por una revisión de Codex en el PR #10
+(ya mergeado); ver Decisiones.
 
 **Pendiente que no depende de código:** 3 commits ya mergeados en `main`
 (vía PR #10) siguen teniendo atribución a Claude en su historia — arreglar
@@ -99,6 +102,37 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-12 (2) — El dueño del proyecto pidió revisar todos los
+  comentarios que un revisor automático (Codex, de OpenAI) había dejado
+  en varios PRs del repo y arreglar los que fueran útiles. Verificado
+  cada hallazgo contra fuentes reales (FAA AIM/AC) antes de tocar nada,
+  no solo confiando en el comentario — los 3 en el PR #10 (ya mergeado)
+  eran reales, con matices:
+  - **Señales de dirección mal coloreadas** — Codex tenía razón a
+    medias: las señales de dirección debían ser amarillas/negras (como
+    las de ubicación), no negras/amarillas como las construí. Pero
+    Codex también decía que las de ubicación debían ser negras/amarillas
+    — eso es incorrecto para el caso general (esa combinación solo
+    existe en una variante poco común, pintada en el pavimento, que no
+    es lo que representan las tarjetas). Ubicación y dirección
+    comparten color en la aviación real; lo que distingue a la de
+    dirección es la flecha, no el color — así quedó corregido.
+  - **Faro de aeródromo militar sin verde** — cierto: el patrón real
+    sigue alternando con verde, solo que el destello blanco se parte en
+    dos golpes rápidos en vez de uno. Lo había hecho sin verde. Corregido
+    el componente `BeaconFlash` para representar esto de verdad, no solo
+    el texto.
+  - **"Runway boundary" mal usado** — cierto: la señal roja/blanca
+    ("25-07") es correctamente una señal de instrucción obligatoria,
+    pero el término correcto es "posición de espera en pista" — "runway
+    boundary sign" es una señal amarilla/negra distinta, no relacionada.
+    Corregido en el módulo de teoría `airport-operations` (lección
+    "taxiway-markings-and-signs" y "airport-lighting") y en el mazo de
+    flashcards de aeródromo, en los 5 idiomas — ver `CHECKPOINT.md` para el
+    detalle técnico. También se revisaron a fondo 6 hallazgos de Codex en 2
+    PRs de Clumsy (otro repo del dueño del proyecto) — todos reales
+    también, confirmados leyendo el código — pero, a pedido explícito, no
+    se tocó nada de ese repo.
 - 2026-09-11/12 — El PR #11 quedó con conflicto porque el force-push de
   la atribución (ver la entrada del 2026-09-10 de abajo) reescribió 3
   commits que ya se habían mergeado a `main` vía PR #10, dejándolos con

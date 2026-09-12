@@ -12,11 +12,16 @@
 
 /** Señal de aeródromo: roja/blanca (obligatoria), amarilla/negra (ubicación)
  *  o negra/amarilla con flecha opcional (dirección). */
+// Las señales de ubicación y dirección comparten el mismo amarillo/negro en
+// la aviación real — lo que distingue a una de dirección es la flecha, no un
+// color propio (ver RUMBO.md, Decisiones, hallazgo de revisión de Codex).
+const YELLOW_SIGN = { fill: "#f5c518", stroke: "#a9860a", text: "#14171c" };
+
 export function AirportSign({ kind, text, arrow, label }) {
   const palette = {
     mandatory: { fill: "#c81e33", stroke: "#7a0f1e", text: "#ffffff" },
-    location: { fill: "#f5c518", stroke: "#a9860a", text: "#14171c" },
-    direction: { fill: "#14171c", stroke: "#3a4356", text: "#f5c518" },
+    location: YELLOW_SIGN,
+    direction: YELLOW_SIGN,
   }[kind];
 
   const arrowPoints =
@@ -79,33 +84,43 @@ const BEACON_COLORS = {
   yellow: "#ffb703",
 };
 
-/** Faro giratorio: dos destellos de color alternos (o dos destellos blancos
- *  próximos entre sí para el patrón militar, `double`). */
-export function BeaconFlash({ colors, double, label }) {
-  const [a, b] = colors;
-  const gap = double ? 14 : 30;
-  const cx1 = 50 - gap / 2;
-  const cx2 = 50 + gap / 2;
+/** Un destello del faro: el punto de color más una pequeña ráfaga radial
+ *  alrededor, para leerse como "luz", no como un simple círculo plano. */
+function BeaconBlip({ cx, color, radius = 9 }) {
+  return (
+    <g>
+      {[0, 45, 90, 135].map((deg) => (
+        <line
+          key={deg}
+          x1={cx}
+          y1="50"
+          x2={cx + 16 * Math.cos((deg * Math.PI) / 180)}
+          y2={50 + 16 * Math.sin((deg * Math.PI) / 180)}
+          stroke={BEACON_COLORS[color]}
+          strokeWidth="1.5"
+          opacity="0.55"
+        />
+      ))}
+      <circle cx={cx} cy="50" r={radius} fill={BEACON_COLORS[color]} />
+    </g>
+  );
+}
+
+/** Faro giratorio: un destello de color (verde = aeródromo terrestre,
+ *  amarillo = base de hidroaviones) alternando con uno blanco. El patrón
+ *  militar (`doubleWhite`) sigue alternando con el mismo verde — lo que lo
+ *  distingue es que el destello blanco se parte en dos golpes rápidos y
+ *  próximos entre sí, no que el verde desaparezca. */
+export function BeaconFlash({ color, doubleWhite, label }) {
+  const whiteCenters = doubleWhite ? [58, 72] : [65];
+  const whiteRadius = doubleWhite ? 6.5 : 9;
   return (
     <svg viewBox="0 0 100 100" className="gauge" role="img" aria-label={label}>
       <circle cx="50" cy="50" r="49" fill="#0a0d13" />
       <circle cx="50" cy="50" r="46" fill="#11151d" stroke="#2a3242" strokeWidth="1.5" />
-      {[cx1, cx2].map((cx, i) => (
-        <g key={i}>
-          {[0, 45, 90, 135].map((deg) => (
-            <line
-              key={deg}
-              x1={cx}
-              y1="50"
-              x2={cx + 16 * Math.cos((deg * Math.PI) / 180)}
-              y2={50 + 16 * Math.sin((deg * Math.PI) / 180)}
-              stroke={BEACON_COLORS[i === 0 ? a : b]}
-              strokeWidth="1.5"
-              opacity="0.55"
-            />
-          ))}
-          <circle cx={cx} cy="50" r="9" fill={BEACON_COLORS[i === 0 ? a : b]} />
-        </g>
+      <BeaconBlip cx={35} color={color} />
+      {whiteCenters.map((cx) => (
+        <BeaconBlip key={cx} cx={cx} color="white" radius={whiteRadius} />
       ))}
     </svg>
   );

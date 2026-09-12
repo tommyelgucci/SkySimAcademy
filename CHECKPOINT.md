@@ -9,6 +9,89 @@ commit.
 
 ---
 
+## 2026-09-12 (2) — Corregidos 3 errores de contenido que encontró Codex
+
+**Qué pasó:** el dueño del proyecto pidió revisar todos los comentarios que
+Codex (revisor automático de OpenAI) había dejado en varios PRs de sus
+repos, y arreglar los que fueran útiles. Se encontraron comentarios en
+`SkySimAcademy` PR #10 (3, sobre contenido de aviación) y en `Clumsy` PR
+#5/#6 (6, sobre bugs de código/seguridad — ver más abajo). A pedido
+explícito, solo se tocó SkySimAcademy.
+
+**Verificación antes de arreglar:** cada hallazgo se chequeó contra
+fuentes reales (AIM/AC de la FAA vía búsqueda web) antes de escribir una
+sola línea, porque un comentario automático puede estar tan equivocado
+como el contenido que señala:
+
+1. **Señales de dirección** — Codex decía que ubicación debía ser
+   negro/amarillo y dirección amarillo/negro. Verificado: eso está
+   invertido para el caso general. En la aviación real, **ubicación y
+   dirección comparten el mismo color** (amarillo/negro) — lo que
+   distingue a una señal de dirección es la flecha, no un color propio.
+   El negro/amarillo que Codex describía solo existe en una variante
+   pintada en el pavimento (poco común), no en las señales elevadas que
+   representan las tarjetas. Se corrigió `AirportSign` en
+   `AirportVisuals.jsx` para que "direction" use la misma paleta que
+   "location" (antes tenía una paleta negro/amarillo inventada), y se
+   reescribió el texto de ambas (ubicación y dirección) en el módulo de
+   teoría y en las flashcards, en los 5 idiomas, para explicar que el
+   color no las distingue — la flecha sí.
+2. **Faro de aeródromo militar** — cierto: el patrón real sigue
+   alternando con verde; lo que lo distingue de un aeródromo civil es que
+   el destello blanco se parte en dos golpes rápidos en vez de uno, no
+   que el verde desaparezca (como lo tenía armado, con `colors: ["white",
+"white"]`, sin verde). Se rediseñó `BeaconFlash` (nuevo prop shape:
+   `color` + `doubleWhite` en vez de `colors`/`double`) para renderizar
+   un destello de color más uno o dos destellos blancos, en vez de dos
+   destellos de colores arbitrarios — representa la física real, no solo
+   corrige el texto. Actualizado `content/flashcards/index.js` y
+   `FlashcardsView.jsx` al nuevo shape.
+3. **"Runway boundary" mal usado** — cierto: la señal roja/blanca
+   ("25-07") es una señal de instrucción obligatoria correctamente
+   coloreada, pero el término correcto es "posición de espera en pista"
+   ("runway holding position") — "runway boundary sign" es una señal
+   amarilla/negra completamente distinta (confirmado por búsqueda). Se
+   reemplazó el término en las 6 apariciones (módulo de teoría + mazo de
+   flashcards × 5 idiomas).
+
+Los 3 fixes tocaron tanto el módulo de teoría `airport-operations`
+(lecciones "taxiway-markings-and-signs" y "airport-lighting", ambas su
+`body`/`keyTakeaway`/quiz donde aplicaba) como el mazo de flashcards de
+aeródromo, en los 5 idiomas — no solo donde Codex señaló, porque el mismo
+error de contenido estaba duplicado en el módulo de teoría (Codex solo
+revisó el diff del PR de flashcards, no el módulo que ya estaba en
+`main`).
+
+**Verificación:** capturas de pantalla (Playwright) de las 14 tarjetas del
+mazo de aeródromo en inglés — confirmado visualmente que la señal de
+dirección ahora es amarilla con flecha negra (antes negra), que el faro
+militar muestra verde + dos blancos (antes dos blancos sin verde), y que
+las tarjetas de ubicación ("A"/"C4", sin flecha) siguen siendo
+correctamente amarillas.
+
+**Sobre Clumsy:** se leyó el código real (no solo el comentario) de los 6
+hallazgos de Codex en ese repo — los 6 son reales y confirmados: undo/redo
+que ata la restauración a la capa activa en vez de a la capa editada,
+condición de carrera en el relleno por inundación, secrets no declarados
+en la función de validación de compras (rompería en producción),
+transacción de StoreKit no atada al comprador autenticado (permite
+canjear una compra válida en cuentas ilimitadas), regla de Firestore que
+permite transferir `ownerId` en un update, y el canvas real todavía no
+está conectado a `saveProject`/`loadProject`. A pedido explícito del
+dueño del proyecto, no se tocó nada de ese repo — queda documentado acá
+por si se retoma en una sesión de Clumsy.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados), `npm run format:check`, `npm run check:i18n` (14 módulos,
+59 flashcards), `npm test` (82/82) y `npm run build`, todos en verde.
+
+**Próximo paso sugerido:** ninguno específico de este arreglo. Si se
+retoma Clumsy en otra sesión, los 6 hallazgos de arriba ya están
+verificados y listos para arreglarse sin tener que releer el código desde
+cero.
+
+---
+
 ## 2026-09-11/12 — PR #11 reparado + nueva misión "ascenso por instrumentos"
 
 **Qué pasó con el PR:** el force-push de la sesión anterior (para sacar la
