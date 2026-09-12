@@ -36,6 +36,11 @@
  *      respecto a la altitud con la que se entró al viraje, ambas a la vez,
  *      durante holdSeconds. Más exigente que "bankTurn" (que no vigila la
  *      altitud) o "altitudeHold" (que no exige virar)
+ *  - { type: "climbAndHold", heading, tolerance, targetAltitude, band, holdSeconds, minAltitude }
+ *    → salida por instrumentos simplificada: subir en rumbo (±tolerance) y,
+ *      al llegar a targetAltitude (±band), mantener rumbo Y altitud a la vez
+ *      durante holdSeconds — combina "heading" y "altitudeHold" en una sola
+ *      maniobra recta, en vez de un viraje como "levelTurn"
  *
  * Las misiones se agrupan en niveles con licencia en
  * src/content/levels/index.js (LEVELS referencia estos ids).
@@ -95,6 +100,20 @@ export const MISSIONS = [
       altitudeBand: 15,
       minAltitude: 60,
       holdSeconds: 6,
+    },
+  },
+  {
+    id: "climb-and-hold",
+    icon: "trending-up",
+    requiresModule: "cockpit-instruments",
+    goal: {
+      type: "climbAndHold",
+      heading: 0,
+      tolerance: 12,
+      targetAltitude: 150,
+      band: 15,
+      holdSeconds: 6,
+      minAltitude: 30,
     },
   },
   {

@@ -86,6 +86,10 @@
       "title": "Curva com altitude constante",
       "objective": "Acima de 60 m, mantenha uma inclinação suave de 20° à esquerda sem se afastar mais de 15 m da sua altitude por 6 segundos."
     },
+    "climb-and-hold": {
+      "title": "Subida por instrumentos",
+      "objective": "Acima de 30 m, suba na proa 000° e, ao chegar a 150 m, mantenha essa proa junto com a altitude por 6 segundos."
+    },
     "nav-leg": {
       "title": "Perna ao sul",
       "objective": "Acima de 100 m, mantenha a proa 180° por 6 segundos."

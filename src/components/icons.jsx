@@ -30,6 +30,7 @@ import {
   Signpost,
   Target,
   TowerControl,
+  TrendingUp,
   TriangleAlert,
   Wind,
   Wrench,
@@ -60,6 +61,7 @@ const CONTENT_ICONS = {
   "clipboard-list": ClipboardList,
   wrench: Wrench,
   "tower-control": TowerControl,
+  "trending-up": TrendingUp,
 };
 
 /** Icono declarado en datos de contenido; CircleHelp como fallback visible. */

@@ -147,6 +147,24 @@ export class MissionTracker {
         }
         break;
       }
+
+      case "climbAndHold": {
+        if (engine.altitude < this.goal.minAltitude) {
+          this.holdTime = 0;
+          break;
+        }
+        const diff = Math.abs(((engine.heading - this.goal.heading + 540) % 360) - 180);
+        const headingOk = diff <= this.goal.tolerance;
+        const atTargetAltitude =
+          Math.abs(engine.altitude - this.goal.targetAltitude) <= this.goal.band;
+        if (headingOk && atTargetAltitude) {
+          this.holdTime += dt;
+          if (this.holdTime >= this.goal.holdSeconds) this.done = true;
+        } else {
+          this.holdTime = 0;
+        }
+        break;
+      }
     }
   }
 }

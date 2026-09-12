@@ -232,6 +232,62 @@ describe("MissionTracker", () => {
     });
   });
 
+  describe("climbAndHold", () => {
+    const goal = {
+      type: "climbAndHold",
+      heading: 0,
+      tolerance: 12,
+      targetAltitude: 150,
+      band: 15,
+      holdSeconds: 6,
+      minAltitude: 30,
+    };
+
+    it("no cuenta mientras se sube, solo al llegar a la altitud objetivo en rumbo", () => {
+      const tracker = new MissionTracker({ goal });
+      // Subiendo en rumbo, todavía lejos de la altitud objetivo: no acumula
+      tracker.update(engineState({ altitude: 80, heading: 0, grounded: false }), 20);
+      expect(tracker.done).toBe(false);
+      expect(tracker.holdTime).toBe(0);
+      // Llega a la altitud objetivo y mantiene rumbo + altitud
+      const level = engineState({ altitude: 150, heading: 0, grounded: false });
+      tracker.update(level, 4);
+      expect(tracker.done).toBe(false); // aún no llega a 6 s
+      tracker.update(level, 2);
+      expect(tracker.done).toBe(true);
+    });
+
+    it("salirse de rumbo ya nivelado reinicia el contador", () => {
+      const tracker = new MissionTracker({ goal });
+      const level = engineState({ altitude: 150, heading: 0, grounded: false });
+      tracker.update(level, 4);
+      tracker.update(engineState({ altitude: 150, heading: 90, grounded: false }), 0.5);
+      tracker.update(level, 4);
+      expect(tracker.done).toBe(false);
+      tracker.update(level, 2);
+      expect(tracker.done).toBe(true);
+    });
+
+    it("el rumbo maneja el cruce 359°→0°", () => {
+      const tracker = new MissionTracker({ goal });
+      const level = engineState({ altitude: 150, heading: 355, grounded: false });
+      tracker.update(level, 6);
+      expect(tracker.done).toBe(true); // 355° está a 5° de 0°, dentro de ±12°
+    });
+
+    it("por debajo de la altitud mínima no cuenta", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.update(engineState({ altitude: 20, heading: 0, grounded: false }), 10);
+      expect(tracker.done).toBe(false);
+    });
+
+    it("fuera de la banda de altitud objetivo, aunque sea por encima, no cuenta", () => {
+      const tracker = new MissionTracker({ goal });
+      tracker.update(engineState({ altitude: 200, heading: 0, grounded: false }), 10);
+      expect(tracker.done).toBe(false);
+    });
+  });
+
   describe("precisionLanding (informe de FlightEvaluator, no de engineState)", () => {
     const goal = { type: "precisionLanding", maxVerticalSpeed: 3, maxOffCenter: 5 };
 

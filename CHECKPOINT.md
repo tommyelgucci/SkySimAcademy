@@ -9,6 +9,77 @@ commit.
 
 ---
 
+## 2026-09-11/12 — PR #11 reparado + nueva misión "ascenso por instrumentos"
+
+**Qué pasó con el PR:** el force-push de la sesión anterior (para sacar la
+atribución a Claude) reescribió 3 commits que YA estaban mergeados en
+`main` vía PR #10 (level-turn, corrección de RUMBO.md, módulo
+airport-operations) — quedaron con hashes nuevos distintos a los que
+`main` ya tenía, y Git no podía reconciliar ambas versiones del mismo
+contenido. El PR #11 mostraba conflicto en `RUMBO.md`/`CHECKPOINT.md`.
+
+**Cómo se arregló:** se reconstruyó la rama `claude/skysimacademy-proyecto-a0t4x4`
+partiendo de `origin/main` actual (que ya tiene esas 3 commits) y se
+aplicaron encima, con `git cherry-pick`, solo las 2 commits que todavía no
+estaban mergeadas (mazo de flashcards de aeródromo + convención de
+autoría), preservando su autoría original (`tommyelgucci`) y fijando el
+committer también a `tommyelgucci` vía variables de entorno en cada
+cherry-pick. Se verificó con `git diff` que el contenido final es
+idéntico al de antes del arreglo — cero cambios de código, solo de forma
+en que está armada la rama. Push (esta vez sin forzar, porque el remoto
+seguía en un estado anterior compatible) y confirmado con la API de
+GitHub que el PR pasó de `mergeable_state: dirty` a `unstable` (sin
+conflicto, solo checks pendientes).
+
+**Lo que no se pudo hacer:** el dueño del proyecto pidió además reescribir
+esas 3 commits directamente en el historial de `main` para sacarles la
+atribución vieja de raíz. El modo automático de la sesión bloqueó la
+acción con un mensaje explícito `[Git Destructive]` — ni siquiera dejó
+crear una rama local de prueba (`git checkout -B`), pese a la
+confirmación explícita del dueño del proyecto en el chat. No es algo que
+se pueda resolver reintentando de otra forma desde acá (el propio mensaje
+de bloqueo pide no intentar esquivarlo). Se le dejó documentado el comando
+`git filter-branch` exacto (con el mismo criterio de "solo tocar commits
+con autor `noreply@anthropic.com`") para que lo corra él si quiere, o que
+lo deje así — GitHub solo muestra esas 3 commits si alguien entra a ver
+los commits individuales del merge, no en la vista principal del PR/rama.
+
+**Qué se hizo además** (a pedido explícito de "seguir con todo lo que se
+pueda hacer, de más fácil a más difícil"): nueva misión del simulador,
+**ascenso por instrumentos** (`climb-and-hold`, 13ª misión) — subir en
+rumbo 000° por encima de 30 m y, al llegar a 150 m, mantener ese rumbo
+junto con la altitud durante 6 segundos. Nuevo tipo de objetivo
+`climbAndHold` en `MissionTracker` (mismo criterio que `levelTurn`:
+combina dos objetivos existentes — `heading` + `altitudeHold` — en una
+sola maniobra recta, sin tocar `FlightEngine`). Añadida a
+`instrument-basics` (5ª misión de ese nivel), icono nuevo `trending-up`,
+traducida a los 5 idiomas. 5 tests nuevos en `MissionTracker.test.js`
+(incluye un caso que expone y corrige un bug real de la primera versión:
+el contador arrancaba a acumular durante la subida en vez de solo al
+llegar a la altitud objetivo, completando la misión antes de tiempo).
+Verificado en navegador (Playwright) que la misión aparece correctamente
+en la lista, bajo "Basic instruments" (0/5).
+
+**Lo que sigue sin resolver:** "aproximación con viento cruzado" — el
+simulador no modela viento, y agregarlo afectaría potencialmente a las 13
+misiones existentes (tolerancias de rumbo/altitud calibradas para vuelo
+sin viento). No se tocó por decisión propia; es un cambio de alcance
+mayor que amerita que el dueño del proyecto lo pida explícitamente.
+"Emergencias adicionales" tampoco tiene candidatos concretos evaluados
+todavía.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados), `npm run format:check`, `npm run check:i18n` (14 módulos,
+59 flashcards), `npm test` (**82/82**, antes 77) y `npm run build`, todos
+en verde. PR #11 sin conflictos.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — decisión pendiente sobre
+viento cruzado, y los pendientes grandes de producto (analítica,
+validación con usuarios reales, versión instructor) que no son tareas de
+código.
+
+---
+
 ## 2026-09-10 (2) — Corregida la autoría de los commits de la sesión
 
 **Qué pasó:** el dueño del proyecto marcó que no quiere ver atribución a
