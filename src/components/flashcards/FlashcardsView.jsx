@@ -92,7 +92,7 @@ function AirportFace({ card, label }) {
   }
   if (visual === "papi") return <PapiLights pattern={props.pattern} label={label} />;
   if (visual === "beacon")
-    return <BeaconFlash colors={props.colors} double={props.double} label={label} />;
+    return <BeaconFlash color={props.color} doubleWhite={props.doubleWhite} label={label} />;
   return null;
 }
 

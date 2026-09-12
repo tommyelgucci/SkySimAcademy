@@ -107,12 +107,12 @@ export const AIRPORT_FLASHCARDS = [
     correct: 0,
   },
   { id: "papi-low", visual: "papi", props: { pattern: ["red", "red", "red", "red"] }, correct: 0 },
-  { id: "beacon-land", visual: "beacon", props: { colors: ["white", "green"] }, correct: 0 },
-  { id: "beacon-seaplane", visual: "beacon", props: { colors: ["white", "yellow"] }, correct: 0 },
+  { id: "beacon-land", visual: "beacon", props: { color: "green" }, correct: 0 },
+  { id: "beacon-seaplane", visual: "beacon", props: { color: "yellow" }, correct: 0 },
   {
     id: "beacon-military",
     visual: "beacon",
-    props: { colors: ["white", "white"], double: true },
+    props: { color: "green", doubleWhite: true },
     correct: 0,
   },
 ];

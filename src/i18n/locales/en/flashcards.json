@@ -320,7 +320,7 @@
     "sign-mandatory-1": {
       "question": "What does this sign indicate?",
       "options": [
-        "A mandatory instruction — a runway boundary or a no-entry area",
+        "A mandatory instruction — a runway holding position or a no-entry area",
         "Which taxiway you're currently on",
         "The direction to another taxiway ahead"
       ],
@@ -329,7 +329,7 @@
     "sign-mandatory-2": {
       "question": "What does this sign indicate?",
       "options": [
-        "A mandatory instruction — a runway boundary or a no-entry area",
+        "A mandatory instruction — a runway holding position or a no-entry area",
         "Which taxiway you're currently on",
         "The direction to another taxiway ahead"
       ],
@@ -342,7 +342,7 @@
         "A mandatory instruction you must follow",
         "The direction to a runway ahead"
       ],
-      "explanation": "A yellow background with black text is a location sign — it tells a pilot which taxiway they're on, not an instruction or a direction."
+      "explanation": "A yellow background with black text is a location sign — it tells a pilot which taxiway they're on. Direction signs share this same coloring; a location sign is the one without an arrow."
     },
     "sign-location-2": {
       "question": "What does this sign indicate?",
@@ -351,7 +351,7 @@
         "A mandatory instruction you must follow",
         "The direction to a runway ahead"
       ],
-      "explanation": "Yellow-background signs are location signs — this one marks a specific taxiway segment, confirming exactly where a pilot is while taxiing."
+      "explanation": "Yellow-background signs are location signs — this one marks a specific taxiway segment, confirming exactly where a pilot is while taxiing. A direction sign uses the same colors, but always adds an arrow."
     },
     "sign-direction-1": {
       "question": "What does this sign indicate?",
@@ -360,7 +360,7 @@
         "Which taxiway you're currently on",
         "A mandatory stop point"
       ],
-      "explanation": "A black background with yellow text — often with an arrow, as here — is a direction sign, pointing toward the taxiway or runway ahead."
+      "explanation": "Direction signs use the same yellow background and black text as location signs — the arrow is what sets it apart, pointing toward the taxiway or runway ahead."
     },
     "sign-direction-2": {
       "question": "What does this sign indicate?",
@@ -369,7 +369,7 @@
         "Which taxiway you're currently on",
         "A mandatory stop point"
       ],
-      "explanation": "Black signs with yellow text and an arrow point toward what's ahead — here, a runway to the side the arrow shows."
+      "explanation": "Direction signs share a location sign's yellow-and-black coloring — the arrow is what points toward what's ahead, here toward a runway to the side it shows."
     },
     "papi-high": {
       "question": "What does this PAPI pattern indicate?",
@@ -429,7 +429,7 @@
     "beacon-military": {
       "question": "What does this rotating beacon pattern identify?",
       "options": ["A military airfield", "A lighted land airport", "A seaplane base"],
-      "explanation": "Two quick white flashes close together, instead of one steady flash, identify a military airfield."
+      "explanation": "A military airfield still alternates with green, like a civil airport — the tell is the white flash splitting into two quick peaks instead of one steady flash."
     }
   }
 }
