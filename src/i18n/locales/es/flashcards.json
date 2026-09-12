@@ -1,6 +1,6 @@
 {
   "title": "Flashcards",
-  "intro": "Practica reconociendo instrumentos de cabina y alertas de audio. Esto es repaso libre — no cuenta para los quiz de los módulos ni desbloquea misiones del simulador, así que repítelo tantas veces como quieras.",
+  "intro": "Practica reconociendo instrumentos de cabina, alertas de audio, llamadas de radio, y señales y luces de aeródromo. Esto es repaso libre — no cuenta para los quiz de los módulos ni desbloquea misiones del simulador, así que repítelo tantas veces como quieras.",
   "exit": "Salir",
   "decks": {
     "instruments": {
@@ -14,9 +14,14 @@
     "radioAlphabet": {
       "title": "Alfabeto radiotelefónico",
       "description": "{{count}} tarjetas — deletrea cualquier letra con el alfabeto fonético OACI, las mismas 26 palabras que se usan en la radio real."
+    },
+    "airport": {
+      "title": "Señales y luces de aeródromo",
+      "description": "{{count}} tarjetas — reconoce las señales de calle de rodaje por color y lee un PAPI y un faro giratorio, del módulo de operaciones de aeródromo."
     }
   },
   "instrumentAlt": "Instrumento de vuelo",
+  "airportVisualAlt": "Señal o luz de aeródromo",
   "playAudio": "Reproducir audio",
   "backToDecks": "Volver a los mazos",
   "cardProgress": "Tarjeta {{current}} de {{total}}",
@@ -309,6 +314,134 @@
       "question": "¿Cómo deletreas la letra Z por radio?",
       "options": ["Zulu", "Echo", "Lima", "Sierra"],
       "explanation": "«Zulu» es la palabra OACI para la letra Z — elegida porque no se puede confundir con la de ninguna otra letra, ni siquiera con ruido en el canal de radio."
+    }
+  },
+  "airport": {
+    "sign-mandatory-1": {
+      "question": "¿Qué indica esta señal?",
+      "options": [
+        "Una instrucción obligatoria — un límite de pista o una zona de acceso prohibido",
+        "En qué calle de rodaje está el avión en ese momento",
+        "La dirección hacia otra calle de rodaje más adelante"
+      ],
+      "explanation": "Las señales rojas con texto blanco son señales de instrucción obligatoria —el color que más importa para la seguridad—, aquí marcando una posición de espera en pista."
+    },
+    "sign-mandatory-2": {
+      "question": "¿Qué indica esta señal?",
+      "options": [
+        "Una instrucción obligatoria — un límite de pista o una zona de acceso prohibido",
+        "En qué calle de rodaje está el avión en ese momento",
+        "La dirección hacia otra calle de rodaje más adelante"
+      ],
+      "explanation": "Las señales rojas con texto blanco marcan instrucciones obligatorias — esta marca el límite de un área crítica de ILS, que debe mantenerse despejada cuando pueda afectar a un avión aterrizando."
+    },
+    "sign-location-1": {
+      "question": "¿Qué indica esta señal?",
+      "options": [
+        "En qué calle de rodaje está el avión en ese momento",
+        "Una instrucción obligatoria que hay que seguir",
+        "La dirección hacia una pista más adelante"
+      ],
+      "explanation": "Un fondo amarillo con texto negro es una señal de ubicación — le dice al piloto en qué calle de rodaje está, no una instrucción ni una dirección."
+    },
+    "sign-location-2": {
+      "question": "¿Qué indica esta señal?",
+      "options": [
+        "En qué calle de rodaje está el avión en ese momento",
+        "Una instrucción obligatoria que hay que seguir",
+        "La dirección hacia una pista más adelante"
+      ],
+      "explanation": "Las señales de fondo amarillo son señales de ubicación — esta marca un tramo concreto de calle de rodaje, confirmando exactamente dónde está el piloto mientras rueda."
+    },
+    "sign-direction-1": {
+      "question": "¿Qué indica esta señal?",
+      "options": [
+        "La dirección hacia otra calle de rodaje o pista más adelante",
+        "En qué calle de rodaje está el avión en ese momento",
+        "Un punto de parada obligatoria"
+      ],
+      "explanation": "Un fondo negro con texto amarillo —a menudo con una flecha, como aquí— es una señal de dirección, que apunta hacia la calle de rodaje o pista que sigue."
+    },
+    "sign-direction-2": {
+      "question": "¿Qué indica esta señal?",
+      "options": [
+        "La dirección hacia otra calle de rodaje o pista más adelante",
+        "En qué calle de rodaje está el avión en ese momento",
+        "Un punto de parada obligatoria"
+      ],
+      "explanation": "Las señales negras con texto amarillo y una flecha apuntan hacia lo que sigue — aquí, una pista hacia el lado que muestra la flecha."
+    },
+    "papi-high": {
+      "question": "¿Qué indica este patrón de PAPI?",
+      "options": [
+        "El avión va por encima de la senda de planeo correcta — demasiado alto",
+        "El avión va en la senda de planeo correcta",
+        "El avión va por debajo de la senda de planeo correcta — demasiado bajo"
+      ],
+      "explanation": "Cuatro luces blancas significa demasiado alto — baja un poco el morro o reduce potencia para volver a la senda de planeo."
+    },
+    "papi-high-slight": {
+      "question": "¿Qué indica este patrón de PAPI?",
+      "options": [
+        "El avión va por encima de la senda de planeo correcta — demasiado alto",
+        "El avión va en la senda de planeo correcta",
+        "El avión va por debajo de la senda de planeo correcta — demasiado bajo"
+      ],
+      "explanation": "Más blanco que rojo sigue significando alto, aunque no las cuatro luces sean blancas — desciende suavemente para volver a interceptar la senda."
+    },
+    "papi-on-path": {
+      "question": "¿Qué indica este patrón de PAPI?",
+      "options": [
+        "El avión va en la senda de planeo correcta",
+        "El avión va por encima de la senda de planeo correcta — demasiado alto",
+        "El avión va por debajo de la senda de planeo correcta — demasiado bajo"
+      ],
+      "explanation": "Dos luces blancas y dos rojas significa que el avión va exactamente en la senda de planeo correcta — mantén esto."
+    },
+    "papi-low-slight": {
+      "question": "¿Qué indica este patrón de PAPI?",
+      "options": [
+        "El avión va por debajo de la senda de planeo correcta — demasiado bajo",
+        "El avión va en la senda de planeo correcta",
+        "El avión va por encima de la senda de planeo correcta — demasiado alto"
+      ],
+      "explanation": "Más rojo que blanco significa bajo, aunque no las cuatro luces sean rojas — añade potencia o suaviza el descenso para volver a la senda."
+    },
+    "papi-low": {
+      "question": "¿Qué indica este patrón de PAPI?",
+      "options": [
+        "El avión va por debajo de la senda de planeo correcta — demasiado bajo",
+        "El avión va en la senda de planeo correcta",
+        "El avión va por encima de la senda de planeo correcta — demasiado alto"
+      ],
+      "explanation": "Cuatro luces rojas significa demasiado bajo — un aviso serio para volver de inmediato a la senda de planeo."
+    },
+    "beacon-land": {
+      "question": "¿Qué identifica este patrón de color del faro giratorio?",
+      "options": [
+        "Un aeródromo terrestre iluminado",
+        "Una base de hidroaviones",
+        "Un aeródromo militar"
+      ],
+      "explanation": "Destellos alternos blanco y verde identifican un aeródromo terrestre iluminado — el patrón de faro más común."
+    },
+    "beacon-seaplane": {
+      "question": "¿Qué identifica este patrón de color del faro giratorio?",
+      "options": [
+        "Una base de hidroaviones",
+        "Un aeródromo terrestre iluminado",
+        "Un aeródromo militar"
+      ],
+      "explanation": "Destellos alternos blanco y amarillo identifican una base de hidroaviones en vez de un aeródromo terrestre."
+    },
+    "beacon-military": {
+      "question": "¿Qué identifica este patrón del faro giratorio?",
+      "options": [
+        "Un aeródromo militar",
+        "Un aeródromo terrestre iluminado",
+        "Una base de hidroaviones"
+      ],
+      "explanation": "Dos destellos blancos rápidos y próximos entre sí, en vez de uno constante, identifican un aeródromo militar."
     }
   }
 }

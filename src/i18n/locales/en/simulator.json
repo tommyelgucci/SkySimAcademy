@@ -86,6 +86,10 @@
       "title": "Constant-altitude turn",
       "objective": "Above 60 m, hold a gentle 20° left bank without drifting more than 15 m from your altitude for 6 seconds."
     },
+    "climb-and-hold": {
+      "title": "Instrument climb",
+      "objective": "Above 30 m, climb on heading 000° and, once at 150 m, hold that heading and altitude together for 6 seconds."
+    },
     "nav-leg": {
       "title": "Southbound leg",
       "objective": "Above 100 m, hold heading 180° for 6 seconds."

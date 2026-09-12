@@ -1,6 +1,6 @@
 {
   "title": "Flashcards",
-  "intro": "Practice recognizing cockpit instruments and cabin audio alerts. This is free practice — it doesn't count toward module quizzes or unlock simulator missions, so repeat it as many times as you like.",
+  "intro": "Practice recognizing cockpit instruments, cabin audio alerts, radio calls, and airport signs and lights. This is free practice — it doesn't count toward module quizzes or unlock simulator missions, so repeat it as many times as you like.",
   "exit": "Exit",
   "decks": {
     "instruments": {
@@ -14,9 +14,14 @@
     "radioAlphabet": {
       "title": "Radio alphabet",
       "description": "{{count}} cards — spell any letter with the ICAO phonetic alphabet, the same 26 words used in real radio calls."
+    },
+    "airport": {
+      "title": "Airport signs and lights",
+      "description": "{{count}} cards — recognize taxiway signs by color and read a PAPI and a rotating beacon, from the airport operations module."
     }
   },
   "instrumentAlt": "Flight instrument",
+  "airportVisualAlt": "Airport sign or light",
   "playAudio": "Play audio",
   "backToDecks": "Back to decks",
   "cardProgress": "Card {{current}} of {{total}}",
@@ -309,6 +314,122 @@
       "question": "How do you spell the letter Z over the radio?",
       "options": ["Zulu", "Echo", "Lima", "Sierra"],
       "explanation": "“Zulu” is the ICAO word for Z — chosen because it can't be confused with any other letter's word, even over a noisy radio channel."
+    }
+  },
+  "airport": {
+    "sign-mandatory-1": {
+      "question": "What does this sign indicate?",
+      "options": [
+        "A mandatory instruction — a runway boundary or a no-entry area",
+        "Which taxiway you're currently on",
+        "The direction to another taxiway ahead"
+      ],
+      "explanation": "Red signs with white text are mandatory instruction signs — the color most directly tied to safety, seen here marking a runway holding position."
+    },
+    "sign-mandatory-2": {
+      "question": "What does this sign indicate?",
+      "options": [
+        "A mandatory instruction — a runway boundary or a no-entry area",
+        "Which taxiway you're currently on",
+        "The direction to another taxiway ahead"
+      ],
+      "explanation": "Red signs with white text mark mandatory instructions — this one marks the boundary of an ILS critical area, which must stay clear when it could affect a landing aircraft."
+    },
+    "sign-location-1": {
+      "question": "What does this sign indicate?",
+      "options": [
+        "Which taxiway you're currently on",
+        "A mandatory instruction you must follow",
+        "The direction to a runway ahead"
+      ],
+      "explanation": "A yellow background with black text is a location sign — it tells a pilot which taxiway they're on, not an instruction or a direction."
+    },
+    "sign-location-2": {
+      "question": "What does this sign indicate?",
+      "options": [
+        "Which taxiway you're currently on",
+        "A mandatory instruction you must follow",
+        "The direction to a runway ahead"
+      ],
+      "explanation": "Yellow-background signs are location signs — this one marks a specific taxiway segment, confirming exactly where a pilot is while taxiing."
+    },
+    "sign-direction-1": {
+      "question": "What does this sign indicate?",
+      "options": [
+        "The direction to another taxiway or runway ahead",
+        "Which taxiway you're currently on",
+        "A mandatory stop point"
+      ],
+      "explanation": "A black background with yellow text — often with an arrow, as here — is a direction sign, pointing toward the taxiway or runway ahead."
+    },
+    "sign-direction-2": {
+      "question": "What does this sign indicate?",
+      "options": [
+        "The direction to another taxiway or runway ahead",
+        "Which taxiway you're currently on",
+        "A mandatory stop point"
+      ],
+      "explanation": "Black signs with yellow text and an arrow point toward what's ahead — here, a runway to the side the arrow shows."
+    },
+    "papi-high": {
+      "question": "What does this PAPI pattern indicate?",
+      "options": [
+        "The aircraft is above the correct glide path — too high",
+        "The aircraft is on the correct glide path",
+        "The aircraft is below the correct glide path — too low"
+      ],
+      "explanation": "Four white lights means too high — pitch down slightly or reduce power to descend back onto the glide path."
+    },
+    "papi-high-slight": {
+      "question": "What does this PAPI pattern indicate?",
+      "options": [
+        "The aircraft is above the correct glide path — too high",
+        "The aircraft is on the correct glide path",
+        "The aircraft is below the correct glide path — too low"
+      ],
+      "explanation": "More white than red still means high, even without all four lights white — descend gently to re-intercept the glide path."
+    },
+    "papi-on-path": {
+      "question": "What does this PAPI pattern indicate?",
+      "options": [
+        "The aircraft is on the correct glide path",
+        "The aircraft is above the correct glide path — too high",
+        "The aircraft is below the correct glide path — too low"
+      ],
+      "explanation": "Two white and two red lights means the aircraft is exactly on the correct glide path — hold this."
+    },
+    "papi-low-slight": {
+      "question": "What does this PAPI pattern indicate?",
+      "options": [
+        "The aircraft is below the correct glide path — too low",
+        "The aircraft is on the correct glide path",
+        "The aircraft is above the correct glide path — too high"
+      ],
+      "explanation": "More red than white means low, even without all four lights red — add power or ease the descent to climb back onto the glide path."
+    },
+    "papi-low": {
+      "question": "What does this PAPI pattern indicate?",
+      "options": [
+        "The aircraft is below the correct glide path — too low",
+        "The aircraft is on the correct glide path",
+        "The aircraft is above the correct glide path — too high"
+      ],
+      "explanation": "Four red lights means too low — a serious warning to climb back onto the glide path immediately."
+    },
+    "beacon-land": {
+      "question": "What does this rotating beacon color pattern identify?",
+      "options": ["A lighted land airport", "A seaplane base", "A military airfield"],
+      "explanation": "Alternating white and green flashes identify a lighted land airport — the most common beacon pattern."
+    },
+    "beacon-seaplane": {
+      "question": "What does this rotating beacon color pattern identify?",
+      "options": ["A seaplane base", "A lighted land airport", "A military airfield"],
+      "explanation": "Alternating white and yellow flashes identify a seaplane base instead of a land airport."
+    },
+    "beacon-military": {
+      "question": "What does this rotating beacon pattern identify?",
+      "options": ["A military airfield", "A lighted land airport", "A seaplane base"],
+      "explanation": "Two quick white flashes close together, instead of one steady flash, identify a military airfield."
     }
   }
 }

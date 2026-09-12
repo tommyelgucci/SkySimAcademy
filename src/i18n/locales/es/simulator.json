@@ -86,6 +86,10 @@
       "title": "Viraje a altitud constante",
       "objective": "Por encima de 60 m, mantén un banco suave de 20° a la izquierda sin alejarte más de 15 m de tu altitud durante 6 segundos."
     },
+    "climb-and-hold": {
+      "title": "Ascenso por instrumentos",
+      "objective": "Por encima de 30 m, sube en rumbo 000° y, al llegar a 150 m, mantén ese rumbo junto con la altitud durante 6 segundos."
+    },
     "nav-leg": {
       "title": "Tramo al sur",
       "objective": "Por encima de 100 m, mantén rumbo 180° durante 6 segundos."

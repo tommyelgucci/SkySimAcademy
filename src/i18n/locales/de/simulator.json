@@ -86,6 +86,10 @@
       "title": "Höhenkonstante Kurve",
       "objective": "Halte über 60 m eine sanfte Schräglage von 20° nach links, ohne mehr als 15 m von deiner Höhe abzuweichen, für 6 Sekunden."
     },
+    "climb-and-hold": {
+      "title": "Instrumentensteigflug",
+      "objective": "Steige über 30 m auf Kurs 000° und halte, sobald du 150 m erreichst, Kurs und Höhe dort zusammen für 6 Sekunden."
+    },
     "nav-leg": {
       "title": "Streckenabschnitt nach Süden",
       "objective": "Halte über 100 m den Kurs 180° für 6 Sekunden."

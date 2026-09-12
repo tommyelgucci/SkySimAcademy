@@ -1,7 +1,7 @@
 /**
  * Flashcards — modo de repaso independiente del curso de teoría (no cuenta
  * para aprobar módulos ni desbloquear misiones del simulador, ver
- * FlashcardsView.jsx). Tres mazos:
+ * FlashcardsView.jsx). Cuatro mazos:
  *
  *  - INSTRUMENT_FLASHCARDS: reconocer y leer los mismos relojes SVG del
  *    cuadro de instrumentos del simulador (ver ../../components/instruments/
@@ -17,11 +17,17 @@
  *    que se muestra en la tarjeta, siempre en mayúscula latina sin importar
  *    el idioma de la interfaz (el alfabeto OACI deletrea matrículas y
  *    designadores, que usan letras latinas en cualquier idioma).
+ *  - AIRPORT_FLASHCARDS: reconocer señales de calle de rodaje por color
+ *    (`visual: "sign"`), leer un PAPI (`"papi"`) e identificar el patrón de
+ *    color de un faro giratorio (`"beacon"`) — mismo contenido que el
+ *    módulo de teoría "airport-operations", ver
+ *    ../../components/flashcards/AirportVisuals.jsx.
  *
  * Los textos (question/options/explanation) viven en i18next, namespace
  * "flashcards", claves `instruments.<id>` / `audio.<id>` / `radioAlphabet.<id>`
- * (5 idiomas). Como en el resto del proyecto, la opción en el índice 0 es
- * siempre la correcta en la estructura; la UI la baraja solo para mostrarla.
+ * / `airport.<id>` (5 idiomas). Como en el resto del proyecto, la opción en
+ * el índice 0 es siempre la correcta en la estructura; la UI la baraja solo
+ * para mostrarla.
  */
 export const INSTRUMENT_FLASHCARDS = [
   { id: "airspeed-id", gauge: "airspeed", props: { value: 45 }, correct: 0 },
@@ -53,3 +59,60 @@ export const RADIO_ALPHABET_FLASHCARDS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").
   letter,
   correct: 0,
 }));
+
+export const AIRPORT_FLASHCARDS = [
+  {
+    id: "sign-mandatory-1",
+    visual: "sign",
+    props: { kind: "mandatory", text: "25-07" },
+    correct: 0,
+  },
+  { id: "sign-mandatory-2", visual: "sign", props: { kind: "mandatory", text: "ILS" }, correct: 0 },
+  { id: "sign-location-1", visual: "sign", props: { kind: "location", text: "A" }, correct: 0 },
+  { id: "sign-location-2", visual: "sign", props: { kind: "location", text: "C4" }, correct: 0 },
+  {
+    id: "sign-direction-1",
+    visual: "sign",
+    props: { kind: "direction", text: "B", arrow: "right" },
+    correct: 0,
+  },
+  {
+    id: "sign-direction-2",
+    visual: "sign",
+    props: { kind: "direction", text: "9", arrow: "left" },
+    correct: 0,
+  },
+  {
+    id: "papi-high",
+    visual: "papi",
+    props: { pattern: ["white", "white", "white", "white"] },
+    correct: 0,
+  },
+  {
+    id: "papi-high-slight",
+    visual: "papi",
+    props: { pattern: ["white", "white", "white", "red"] },
+    correct: 0,
+  },
+  {
+    id: "papi-on-path",
+    visual: "papi",
+    props: { pattern: ["white", "white", "red", "red"] },
+    correct: 0,
+  },
+  {
+    id: "papi-low-slight",
+    visual: "papi",
+    props: { pattern: ["white", "red", "red", "red"] },
+    correct: 0,
+  },
+  { id: "papi-low", visual: "papi", props: { pattern: ["red", "red", "red", "red"] }, correct: 0 },
+  { id: "beacon-land", visual: "beacon", props: { colors: ["white", "green"] }, correct: 0 },
+  { id: "beacon-seaplane", visual: "beacon", props: { colors: ["white", "yellow"] }, correct: 0 },
+  {
+    id: "beacon-military",
+    visual: "beacon",
+    props: { colors: ["white", "white"], double: true },
+    correct: 0,
+  },
+];

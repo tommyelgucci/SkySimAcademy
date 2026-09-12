@@ -7,16 +7,26 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-09-09.
+**Última revisión:** 2026-09-12.
 
 ## Estado de partida
 
-Verificado el 2026-09-09 (tras el trabajo de la sección "Decisiones" de
+Verificado el 2026-09-12 (tras el trabajo de la sección "Decisiones" de
 abajo): `npm run lint` (0 errores, 8 warnings documentados en
 `CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
-namespaces, **14 módulos**, 45 flashcards) ✅, `npm test` (**77** tests, 9
-archivos) ✅, `npm run build` ✅. Sin issues ni PRs abiertos en GitHub. El
-proyecto no tiene deuda técnica visible ni bloqueadores conocidos.
+namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**82** tests, 9
+archivos) ✅, `npm run build` ✅. PR #11 abierto (rama
+`claude/skysimacademy-proyecto-a0t4x4` → `main`), sin conflictos. El
+proyecto no tiene deuda técnica visible.
+
+**Pendiente que no depende de código:** 3 commits ya mergeados en `main`
+(vía PR #10) siguen teniendo atribución a Claude en su historia — arreglar
+eso requeriría reescribir `main` y forzar el push a la rama por defecto,
+algo que el modo automático de esta sesión bloquea de forma dura sin
+importar la confirmación del dueño del proyecto en el chat. Le dejé el
+comando exacto para que lo corra él si quiere (ver conversación del
+2026-09-11); no es algo que se pueda resolver solo con más trabajo de
+código en este repo.
 
 ## Líneas de trabajo propuestas
 
@@ -40,18 +50,23 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
       **Operaciones de aeródromo** (`airport-operations`), el 2026-09-09 —
       ver Decisiones.
 - [ ] Más escenarios/misiones en el simulador (vuelo IFR simplificado,
-      aproximación con viento cruzado, emergencias adicionales) — se sumó
-      "viraje a altitud constante" (`level-turn`) como primer paso hacia
-      maniobras de vuelo por instrumentos; ver Decisiones, 2026-09-07. El
+      aproximación con viento cruzado, emergencias adicionales) — se
+      sumaron "viraje a altitud constante" (`level-turn`, 2026-09-07) y
+      "ascenso por instrumentos" (`climb-and-hold`, 2026-09-12) como pasos
+      hacia maniobras de vuelo por instrumentos; ver Decisiones. El
       simulador no modela viento, así que "aproximación con viento
       cruzado" sigue pendiente de una decisión de alcance (¿vale la pena
-      un modelo de viento en `FlightEngine` solo para esa misión?) antes
-      de tocar código.
+      un modelo de viento en `FlightEngine` solo para esa misión? afecta
+      potencialmente a las 13 misiones existentes, no solo a la nueva)
+      antes de tocar código — no es algo que decida por mi cuenta sin que
+      el dueño del proyecto lo pida. "Emergencias adicionales" sigue sin
+      candidatos concretos evaluados todavía.
 - [x] Más mazos de flashcards — **Alfabeto radiotelefónico** (26 tarjetas,
       OACI), sumado a los mazos de instrumentos y alertas de cabina.
       Mismo caso que el ítem anterior: hecho antes, sin marcar; corregido
       el 2026-09-07 (3 mazos, 45 flashcards en total según
-      `check:i18n`).
+      `check:i18n`). Sumado un 4º mazo, **Señales y luces de aeródromo**
+      (14 tarjetas), el 2026-09-10 — ver Decisiones.
 
 ### Producto / crecimiento
 
@@ -84,6 +99,62 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-11/12 — El PR #11 quedó con conflicto porque el force-push de
+  la atribución (ver la entrada del 2026-09-10 de abajo) reescribió 3
+  commits que ya se habían mergeado a `main` vía PR #10, dejándolos con
+  hashes distintos a los que quedaron en `main`. Se reconstruyó la rama
+  del PR partiendo del `main` actual y aplicando encima solo lo que
+  faltaba mergear (mazo de flashcards + convención de autoría), sin
+  volver a tocar nada que ya fuera historia de `main` — verificado que el
+  contenido final es idéntico, sin conflicto. El dueño del proyecto pidió
+  además reescribir esos 3 commits directamente en `main` para sacarles
+  la atribución vieja; el modo automático de la sesión bloqueó esa acción
+  de forma dura (`[Git Destructive]`) incluso con su confirmación
+  explícita en el chat — no se pudo completar desde acá. Se le dejó el
+  comando exacto para que lo corra él, o la opción de dejarlo así (los 3
+  commits solo son visibles entrando a ver commits individuales del
+  merge, no en la vista principal de GitHub).
+  Continuando con el backlog mientras tanto (a pedido explícito de
+  "seguir con todo lo que se pueda hacer, de más fácil a más difícil"):
+  nueva misión del simulador, **ascenso por instrumentos**
+  (`climb-and-hold`, 13ª misión) — subir en rumbo 000° y, al llegar a 150
+  m, mantener rumbo y altitud juntos durante 6 segundos. Mismo criterio
+  que `level-turn`: nuevo tipo de objetivo en `MissionTracker`
+  (`climbAndHold`, combina `heading` + `altitudeHold` en una sola
+  maniobra recta) sin tocar `FlightEngine`. Añadida a `instrument-basics`.
+  Verificado en navegador (Playwright) que aparece en la lista de
+  misiones. La línea de "aproximación con viento cruzado" sigue sin
+  avanzar — requiere decidir si vale la pena un modelo de viento en
+  `FlightEngine`, un cambio que afectaría potencialmente a las 13
+  misiones existentes (tolerancias de rumbo/altitud calibradas sin
+  viento), no algo para decidir unilateralmente sin que el dueño del
+  proyecto lo pida explícitamente.
+- 2026-09-10 (2) — El dueño del proyecto pidió explícitamente que nunca
+  se atribuya a Claude en los commits de este repo (nada de
+  `Co-Authored-By`/`Claude-Session`); todos los commits deben quedar a
+  nombre de `tommyelgucci`. Se reescribieron los 4 commits de la sesión
+  (autor/committer + mensajes) y se hizo `push --force-with-lease` a
+  pedido explícito. Convención documentada en `CLAUDE.md` ("Autoría de
+  los commits") para que no dependa de que el dueño del proyecto lo
+  repita cada sesión — ver `CHECKPOINT.md` para el detalle técnico.
+- 2026-09-10 — Nuevo mazo de flashcards: **Señales y luces de aeródromo**
+  (14 tarjetas), a pedido explícito del dueño del proyecto dentro de la
+  línea "más mazos de flashcards" — complementa el módulo de teoría
+  "Operaciones de aeródromo" del día anterior. 3 visuales SVG propios
+  nuevos (`src/components/flashcards/AirportVisuals.jsx`, mismo criterio
+  "cero assets externos" que `Gauges.jsx`): `AirportSign` (señal roja/
+  blanca, amarilla/negra o negra/amarilla con flecha), `PapiLights`
+  (fila de 4 luces blanco/rojo) y `BeaconFlash` (patrón de color del faro
+  giratorio). 6 tarjetas de señales, 5 de PAPI (cubriendo todo el
+  espectro alto/en senda/bajo del quiz del módulo de teoría) y 3 de faro.
+  Se actualizó `scripts/check-i18n.mjs`, que hasta ahora solo conocía los
+  3 mazos originales a mano y no habría detectado textos faltantes en el
+  mazo nuevo — un guante que quedó suelto desde que se creó el script
+  (ver Decisiones, 2026-08-10) y que conviene tener presente si se agrega
+  un mazo más adelante. Verificado visualmente en navegador (Playwright)
+  en inglés y en árabe (RTL): las flechas de dirección de las señales no
+  se espejan en RTL, correcto según la convención del proyecto para
+  diagramas técnicos que representan geografía real.
 - 2026-09-09 — Nuevo módulo de teoría: **Operaciones de aeródromo**
   (`airport-operations`, 14º del catálogo), a pedido explícito del dueño
   del proyecto dentro de la línea "más módulos de teoría". Cubre el lado

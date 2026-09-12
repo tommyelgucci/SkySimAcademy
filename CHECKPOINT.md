@@ -9,6 +9,162 @@ commit.
 
 ---
 
+## 2026-09-11/12 — PR #11 reparado + nueva misión "ascenso por instrumentos"
+
+**Qué pasó con el PR:** el force-push de la sesión anterior (para sacar la
+atribución a Claude) reescribió 3 commits que YA estaban mergeados en
+`main` vía PR #10 (level-turn, corrección de RUMBO.md, módulo
+airport-operations) — quedaron con hashes nuevos distintos a los que
+`main` ya tenía, y Git no podía reconciliar ambas versiones del mismo
+contenido. El PR #11 mostraba conflicto en `RUMBO.md`/`CHECKPOINT.md`.
+
+**Cómo se arregló:** se reconstruyó la rama `claude/skysimacademy-proyecto-a0t4x4`
+partiendo de `origin/main` actual (que ya tiene esas 3 commits) y se
+aplicaron encima, con `git cherry-pick`, solo las 2 commits que todavía no
+estaban mergeadas (mazo de flashcards de aeródromo + convención de
+autoría), preservando su autoría original (`tommyelgucci`) y fijando el
+committer también a `tommyelgucci` vía variables de entorno en cada
+cherry-pick. Se verificó con `git diff` que el contenido final es
+idéntico al de antes del arreglo — cero cambios de código, solo de forma
+en que está armada la rama. Push (esta vez sin forzar, porque el remoto
+seguía en un estado anterior compatible) y confirmado con la API de
+GitHub que el PR pasó de `mergeable_state: dirty` a `unstable` (sin
+conflicto, solo checks pendientes).
+
+**Lo que no se pudo hacer:** el dueño del proyecto pidió además reescribir
+esas 3 commits directamente en el historial de `main` para sacarles la
+atribución vieja de raíz. El modo automático de la sesión bloqueó la
+acción con un mensaje explícito `[Git Destructive]` — ni siquiera dejó
+crear una rama local de prueba (`git checkout -B`), pese a la
+confirmación explícita del dueño del proyecto en el chat. No es algo que
+se pueda resolver reintentando de otra forma desde acá (el propio mensaje
+de bloqueo pide no intentar esquivarlo). Se le dejó documentado el comando
+`git filter-branch` exacto (con el mismo criterio de "solo tocar commits
+con autor `noreply@anthropic.com`") para que lo corra él si quiere, o que
+lo deje así — GitHub solo muestra esas 3 commits si alguien entra a ver
+los commits individuales del merge, no en la vista principal del PR/rama.
+
+**Qué se hizo además** (a pedido explícito de "seguir con todo lo que se
+pueda hacer, de más fácil a más difícil"): nueva misión del simulador,
+**ascenso por instrumentos** (`climb-and-hold`, 13ª misión) — subir en
+rumbo 000° por encima de 30 m y, al llegar a 150 m, mantener ese rumbo
+junto con la altitud durante 6 segundos. Nuevo tipo de objetivo
+`climbAndHold` en `MissionTracker` (mismo criterio que `levelTurn`:
+combina dos objetivos existentes — `heading` + `altitudeHold` — en una
+sola maniobra recta, sin tocar `FlightEngine`). Añadida a
+`instrument-basics` (5ª misión de ese nivel), icono nuevo `trending-up`,
+traducida a los 5 idiomas. 5 tests nuevos en `MissionTracker.test.js`
+(incluye un caso que expone y corrige un bug real de la primera versión:
+el contador arrancaba a acumular durante la subida en vez de solo al
+llegar a la altitud objetivo, completando la misión antes de tiempo).
+Verificado en navegador (Playwright) que la misión aparece correctamente
+en la lista, bajo "Basic instruments" (0/5).
+
+**Lo que sigue sin resolver:** "aproximación con viento cruzado" — el
+simulador no modela viento, y agregarlo afectaría potencialmente a las 13
+misiones existentes (tolerancias de rumbo/altitud calibradas para vuelo
+sin viento). No se tocó por decisión propia; es un cambio de alcance
+mayor que amerita que el dueño del proyecto lo pida explícitamente.
+"Emergencias adicionales" tampoco tiene candidatos concretos evaluados
+todavía.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados), `npm run format:check`, `npm run check:i18n` (14 módulos,
+59 flashcards), `npm test` (**82/82**, antes 77) y `npm run build`, todos
+en verde. PR #11 sin conflictos.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — decisión pendiente sobre
+viento cruzado, y los pendientes grandes de producto (analítica,
+validación con usuarios reales, versión instructor) que no son tareas de
+código.
+
+---
+
+## 2026-09-10 (2) — Corregida la autoría de los commits de la sesión
+
+**Qué pasó:** el dueño del proyecto marcó que no quiere ver atribución a
+Claude en los commits de este repo (`Co-Authored-By: Claude`,
+`Claude-Session:`) — los 4 commits de esta sesión habían quedado con esa
+atribución y con `Claude <noreply@anthropic.com>` como autor/committer,
+por una instrucción de sistema de la sesión que la pedía por defecto.
+
+**Qué se hizo:**
+
+- Se reescribieron a mano los 4 commits del rango `d2308b9..HEAD`
+  (`level-turn`, corrección de `RUMBO.md`, módulo `airport-operations`,
+  mazo de flashcards de aeródromo) con `git filter-branch --env-filter`
+  (autor y committer → `tommyelgucci
+<299895314+tommyelgucci@users.noreply.github.com>`) y `--msg-filter`
+  (se sacaron las líneas `Co-Authored-By:`/`Claude-Session:` de cada
+  mensaje). Se verificó con `git diff --stat` que el árbol de archivos
+  quedó idéntico — solo cambió metadata de los commits, ningún contenido.
+  Se hizo un respaldo local (`git branch backup-...`) antes de reescribir
+  y se lo borró después de confirmar el resultado.
+- Se hizo `git push --force-with-lease` a la rama remota con los hashes
+  nuevos (el dueño del proyecto pidió explícitamente la reescritura y el
+  force-push).
+- Se documentó la convención en `CLAUDE.md` (sección nueva "Autoría de
+  los commits"): nunca atribución a Claude en este repo, identidad de
+  autor/committer fijada por commit vía variables de entorno
+  (`GIT_AUTHOR_NAME`/`GIT_AUTHOR_EMAIL`/`GIT_COMMITTER_NAME`/
+  `GIT_COMMITTER_EMAIL`), nunca tocando `git config` de forma persistente.
+
+**Por qué no se evitó desde el principio:** la instrucción de agregar esa
+atribución vino de un system-reminder de la sesión, no de una decisión
+propia — no hay nada en `CLAUDE.md` de este repo (a diferencia de otros
+repos del mismo dueño) que la contradijera hasta ahora. Ya queda
+documentado para que no se repita.
+
+**Próximo paso sugerido:** ninguno especial — la próxima sesión que
+commitee en este repo debería seguir la sección nueva de `CLAUDE.md`
+sin necesidad de que el dueño del proyecto lo repita.
+
+---
+
+## 2026-09-10 — Nuevo mazo de flashcards: Señales y luces de aeródromo
+
+**Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
+"más mazos de flashcards" de `RUMBO.md`, complementando el módulo de teoría
+`airport-operations` del día anterior):
+
+- **Contenido:** 4º mazo, `AIRPORT_FLASHCARDS` (14 tarjetas): 6 de señales
+  de calle de rodaje por color (obligatoria roja/blanca, ubicación
+  amarilla/negra, dirección negra/amarilla con flecha), 5 de lectura de
+  PAPI (los 5 patrones del espectro alto → en senda → bajo, calcados de
+  los ejemplos del quiz del módulo de teoría) y 3 de patrón de color del
+  faro giratorio (aeródromo terrestre, base de hidroaviones, militar).
+  Traducción real a los 5 idiomas.
+- **Visuales SVG nuevos:** `src/components/flashcards/AirportVisuals.jsx`
+  — `AirportSign`, `PapiLights`, `BeaconFlash`, mismo criterio que
+  `Gauges.jsx` (geometría propia, sin assets externos, clase CSS `gauge`
+  reutilizada para el tamaño). Cableado en `FlashcardsView.jsx` (nuevo
+  deck `airport`, icono `Signpost` — el mismo del módulo de teoría).
+- **Se encontró y corrigió un guante suelto:** `scripts/check-i18n.mjs`
+  tenía los 3 mazos originales escritos a mano en un objeto
+  `flashcardDecks` y no importaba el mazo nuevo — `npm run check:i18n`
+  habría seguido reportando "OK" aunque faltaran textos en el mazo de
+  aeródromo, porque simplemente no lo miraba. Corregido para importar
+  también `AIRPORT_FLASHCARDS`. Vale la pena recordar este punto si se
+  agrega un 5º mazo más adelante.
+- **Verificación en navegador:** build servido con `vite preview` +
+  Playwright (headless, sin agregar la dependencia al proyecto) para
+  confirmar que los 3 visuales nuevos renderizan bien, sin errores de
+  consola, y que el mazo funciona en árabe (RTL) sin romper el layout —
+  las flechas de dirección de las señales no se espejan en RTL a
+  propósito, igual que los diagramas técnicos de `LessonDiagram.jsx`.
+
+**Estado al cierre:** `npm run lint` (0 errores, 8 warnings ya
+documentados), `npm run format:check`, `npm run check:i18n` (14 módulos,
+**59 flashcards**, antes 45), `npm test` (77/77) y `npm run build`, todos
+en verde.
+
+**Próximo paso sugerido:** ver `RUMBO.md` — quedan abiertas "más
+misiones/escenarios" (viento cruzado pendiente de decisión de alcance) y
+los pendientes grandes de producto (analítica, validación con usuarios
+reales, versión instructor).
+
+---
+
 ## 2026-09-09 — Nuevo módulo de teoría: Operaciones de aeródromo
 
 **Qué se hizo** (a pedido explícito del dueño del proyecto: seguir la línea
