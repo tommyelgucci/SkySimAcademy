@@ -9,6 +9,62 @@ commit.
 
 ---
 
+## 2026-09-13 — Segunda ronda de Codex en el mismo PR: corregido un error propio
+
+**Qué pasó:** tras mergear el PR #12 (con los 3 fixes de la entrada de
+abajo), Codex dejó 3 comentarios nuevos sobre ese mismo diff. Antes de
+tocar nada se verificó cada uno contra fuentes primarias (FAA/Wikipedia
+vía búsqueda web), porque uno de ellos contradecía directamente la
+conclusión de la entrada anterior — y esta vez la conclusión anterior
+era la equivocada:
+
+1. **Señales de ubicación (P1, confirmado — corrige un error mío de la
+   entrada de abajo).** La entrada anterior decía que ubicación y
+   dirección comparten el mismo amarillo/negro en la aviación real. Eso
+   era incorrecto: **las señales de ubicación son negro con texto
+   amarillo**; las de dirección son amarillo con texto negro más flecha —
+   colores invertidos entre sí, no compartidos. Verificado con múltiples
+   fuentes (FAA AIM, guías de instrucción de vuelo) que coinciden en el
+   mismo detalle: "yellow on black is where you're at" no se aplica —
+   dicho correctamente es al revés (ubicación = negro y amarillo).
+   Corregido `AirportSign` en `AirportVisuals.jsx` (paleta `BLACK_SIGN`
+   nueva para `location`, separada de `YELLOW_SIGN` para `direction`) y
+   reescrito el texto de ubicación/dirección en el módulo de teoría y en
+   las flashcards, en los 5 idiomas.
+2. **Orden de colores del PAPI (P2, confirmado).** Los patrones mixtos en
+   `AIRPORT_FLASHCARDS` (papi-high-slight/on-path/low-slight) tenían el
+   rojo del lado equivocado del array. Verificado (Wikipedia, cita
+   directa del artículo de PAPI): la unidad más cercana a la pista es la
+   que se pone roja primero al subir por encima de la senda, y blanca
+   primero al bajar por debajo — el orden real, de la unidad más cercana
+   a la más lejana, es rojo→blanco (`RWWW`, `RRWW`, `RRRW`), no
+   blanco→rojo como estaba. Se invirtieron los 3 arrays mixtos en
+   `content/flashcards/index.js` (los patrones sólidos, `papi-high` y
+   `papi-low`, no cambian). El texto de teoría/flashcards no mencionaba
+   el orden espacial, así que no hacía falta tocarlo.
+3. **`climbAndHold` no exigía el rumbo durante el ascenso (P2,
+   confirmado por lectura directa del código).** `MissionTracker.js`
+   solo comprobaba `headingOk` una vez dentro de la banda de altitud
+   objetivo — un jugador podía subir en cualquier rumbo y enderezar
+   recién al entrar en la banda, reduciendo el ejercicio "sube en rumbo
+   000°" a un simple mantenimiento de nivel de 6 s. Se añadió
+   `climbHeadingBroken` (se resetea al bajar de `minAltitude`, se marca
+   si el rumbo se sale de tolerancia mientras `atTargetAltitude` es
+   falso) que bloquea la acumulación de `holdTime` si el ascenso no se
+   hizo en rumbo — mismo patrón que ya usa `levelTurn` con su
+   `refAltitude` dinámico para una exigencia de continuidad parecida. Se
+   agregaron 2 tests nuevos (`MissionTracker.test.js`) que cubren
+   exactamente el caso que describía Codex y la recuperación válida
+   (bajar de `minAltitude` y volver a subir en rumbo).
+
+Lección para la próxima vez que Codex comente sobre este mismo módulo:
+verificar contra una fuente primaria citada textualmente (no solo un
+resumen de búsqueda), porque la sesión anterior ya se equivocó una vez en
+esta misma pregunta — y la manera de no repetirlo es exigirse la cita
+exacta, no solo "until it sounds right".
+
+---
+
 ## 2026-09-12 (2) — Corregidos 3 errores de contenido que encontró Codex
 
 **Qué pasó:** el dueño del proyecto pidió revisar todos los comentarios que

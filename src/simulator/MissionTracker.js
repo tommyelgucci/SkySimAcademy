@@ -13,6 +13,7 @@ export class MissionTracker {
     this.wasStalled = false; // para "stallRecovery": primero hay que entrar en pérdida
     this.engineCut = false; // para "engineOut": el ejercicio ya cortó los gases
     this.refAltitude = null; // para "levelTurn": altitud con la que se entró al viraje
+    this.climbHeadingBroken = false; // para "climbAndHold": se salió de rumbo durante el ascenso
   }
 
   /**
@@ -151,13 +152,22 @@ export class MissionTracker {
       case "climbAndHold": {
         if (engine.altitude < this.goal.minAltitude) {
           this.holdTime = 0;
+          this.climbHeadingBroken = false;
           break;
         }
         const diff = Math.abs(((engine.heading - this.goal.heading + 540) % 360) - 180);
         const headingOk = diff <= this.goal.tolerance;
         const atTargetAltitude =
           Math.abs(engine.altitude - this.goal.targetAltitude) <= this.goal.band;
-        if (headingOk && atTargetAltitude) {
+        if (!atTargetAltitude) {
+          // Todavía subiendo: cualquier desvío de rumbo aquí invalida el
+          // intento — no basta con enderezar recién al entrar en la banda
+          // (ver RUMBO.md, Decisiones, hallazgo de revisión de Codex).
+          if (!headingOk) this.climbHeadingBroken = true;
+          this.holdTime = 0;
+          break;
+        }
+        if (headingOk && !this.climbHeadingBroken) {
           this.holdTime += dt;
           if (this.holdTime >= this.goal.holdSeconds) this.done = true;
         } else {

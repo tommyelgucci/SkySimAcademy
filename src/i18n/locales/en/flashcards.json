@@ -342,7 +342,7 @@
         "A mandatory instruction you must follow",
         "The direction to a runway ahead"
       ],
-      "explanation": "A yellow background with black text is a location sign — it tells a pilot which taxiway they're on. Direction signs share this same coloring; a location sign is the one without an arrow."
+      "explanation": "A black background with yellow text is a location sign — it tells a pilot which taxiway they're on. Direction signs use the opposite coloring, yellow background with black text, plus an arrow."
     },
     "sign-location-2": {
       "question": "What does this sign indicate?",
@@ -351,7 +351,7 @@
         "A mandatory instruction you must follow",
         "The direction to a runway ahead"
       ],
-      "explanation": "Yellow-background signs are location signs — this one marks a specific taxiway segment, confirming exactly where a pilot is while taxiing. A direction sign uses the same colors, but always adds an arrow."
+      "explanation": "Black-background signs are location signs — this one marks a specific taxiway segment, confirming exactly where a pilot is while taxiing. A direction sign flips to a yellow background and always adds an arrow."
     },
     "sign-direction-1": {
       "question": "What does this sign indicate?",
@@ -360,7 +360,7 @@
         "Which taxiway you're currently on",
         "A mandatory stop point"
       ],
-      "explanation": "Direction signs use the same yellow background and black text as location signs — the arrow is what sets it apart, pointing toward the taxiway or runway ahead."
+      "explanation": "Direction signs use a yellow background and black text, the opposite of a location sign's black-and-yellow — the arrow points toward the taxiway or runway ahead."
     },
     "sign-direction-2": {
       "question": "What does this sign indicate?",
@@ -369,7 +369,7 @@
         "Which taxiway you're currently on",
         "A mandatory stop point"
       ],
-      "explanation": "Direction signs share a location sign's yellow-and-black coloring — the arrow is what points toward what's ahead, here toward a runway to the side it shows."
+      "explanation": "Direction signs use yellow-and-black coloring, the reverse of a location sign's black-and-yellow — the arrow points toward what's ahead, here toward a runway to the side it shows."
     },
     "papi-high": {
       "question": "What does this PAPI pattern indicate?",

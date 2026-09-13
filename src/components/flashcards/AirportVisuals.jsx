@@ -10,17 +10,17 @@
  * de cada visual controla su proporción interna.
  */
 
-/** Señal de aeródromo: roja/blanca (obligatoria), amarilla/negra (ubicación)
- *  o negra/amarilla con flecha opcional (dirección). */
-// Las señales de ubicación y dirección comparten el mismo amarillo/negro en
-// la aviación real — lo que distingue a una de dirección es la flecha, no un
-// color propio (ver RUMBO.md, Decisiones, hallazgo de revisión de Codex).
+/** Señal de aeródromo: roja/blanca (obligatoria), negra/amarilla (ubicación)
+ *  o amarilla/negra con flecha opcional (dirección) — colores invertidos
+ *  entre ambas, no comparten paleta (ver RUMBO.md, Decisiones, segunda
+ *  revisión de Codex que corrigió el error anterior de esta paleta). */
 const YELLOW_SIGN = { fill: "#f5c518", stroke: "#a9860a", text: "#14171c" };
+const BLACK_SIGN = { fill: "#14171c", stroke: "#3a3f47", text: "#f5c518" };
 
 export function AirportSign({ kind, text, arrow, label }) {
   const palette = {
     mandatory: { fill: "#c81e33", stroke: "#7a0f1e", text: "#ffffff" },
-    location: YELLOW_SIGN,
+    location: BLACK_SIGN,
     direction: YELLOW_SIGN,
   }[kind];
 
