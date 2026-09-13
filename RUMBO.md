@@ -14,14 +14,14 @@ una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 Verificado el 2026-09-13 (tras el trabajo de la sección "Decisiones" de
 abajo): `npm run lint` (0 errores, 8 warnings documentados en
 `CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
-namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**84** tests, 9
-archivos) ✅, `npm run build` ✅. PR #12 mergeado; los fixes de esta sesión
-van sobre la misma rama `claude/skysimacademy-proyecto-a0t4x4` → `main`.
-El proyecto no tiene deuda técnica visible — se corrigieron 6 errores
-reales de contenido/lógica de aviación en total en el módulo
+namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**85** tests, 9
+archivos) ✅, `npm run build` ✅. PR #13 abierto (rama
+`claude/skysimacademy-proyecto-a0t4x4` → `main`), sin conflictos. El
+proyecto no tiene deuda técnica visible — se corrigieron 7 errores reales
+de contenido/lógica de aviación en total en el módulo
 `airport-operations`, su mazo de flashcards y la misión `climbAndHold` del
-simulador, encontrados en dos rondas de revisión de Codex sobre el mismo
-diff (PR #10 y PR #12, ambos ya mergeados); ver Decisiones.
+simulador, encontrados en tres rondas de revisión de Codex sobre el mismo
+diff (PR #10 y #12, ya mergeados, y #13, abierto); ver Decisiones.
 
 **Pendiente que no depende de código:** 3 commits ya mergeados en `main`
 (vía PR #10) siguen teniendo atribución a Claude en su historia — arreglar
@@ -103,6 +103,19 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-13 (2) — Al abrir el PR #13 con el fix de abajo, Codex encontró
+  un bug real en mi propio fix de `climbAndHold`: `climbHeadingBroken` no
+  distinguía "todavía no llegó a la banda" de "ya llegó y volvió a
+  salirse" (p. ej. una ráfaga durante el hold) — si el rumbo también
+  estaba fuera de tolerancia en ese momento, la misión quedaba bloqueada
+  para siempre salvo bajar de `minAltitude` y rehacer todo el ascenso.
+  Agregado `reachedTargetBand` para que solo un desvío de rumbo _antes_
+  de la primera llegada a la banda invalide el ascenso; después de
+  llegar, cualquier desviación vuelve a ser una falla de hold común (solo
+  reinicia `holdTime`). Van 2 rondas seguidas donde el fix de la ronda
+  anterior tenía su propio bug — ver `CHECKPOINT.md` 2026-09-13 (2) para
+  la nota sobre trazar transiciones de estado a mano en vez de solo el
+  camino feliz.
 - 2026-09-13 — Codex dejó 3 comentarios nuevos sobre el mismo diff del
   PR #12 (ya mergeado), uno de los cuales contradecía directamente la
   entrada de abajo (2026-09-12 (2)): esa entrada afirma que ubicación y

@@ -9,6 +9,49 @@ commit.
 
 ---
 
+## 2026-09-13 (2) — Tercera ronda de Codex: bug propio en el fix de climbAndHold
+
+**Qué pasó:** el dueño del proyecto abrió el PR #13 con el fix de la
+entrada de abajo, y Codex encontró un problema real en mi propia
+corrección de `climbAndHold` (no en el hallazgo original, en el fix que
+yo mismo escribí para resolverlo):
+
+**El bug:** `climbHeadingBroken` se marcaba con `if (!atTargetAltitude)
+{ if (!headingOk) this.climbHeadingBroken = true; ... }` sin distinguir
+"todavía no llegó nunca a la banda" de "ya llegó, y ahora se salió de
+nuevo" (p. ej. una ráfaga, o simplemente perder altitud un momento
+durante el hold). Si eso pasaba con el rumbo también fuera de tolerancia
+en ese instante, el vuelo quedaba con `climbHeadingBroken = true` de
+forma permanente — sin ninguna manera de recuperarlo salvo bajar de
+`minAltitude` (30 m) y rehacer todo el ascenso desde cero, aunque el
+ascenso original hubiera sido perfectamente válido.
+
+**El fix:** se agregó `reachedTargetBand` (se resetea junto con
+`climbHeadingBroken` al bajar de `minAltitude`, se pone en `true` la
+primera vez que `atTargetAltitude` es verdadero). La condición que marca
+`climbHeadingBroken` ahora es `if (!this.reachedTargetBand &&
+!headingOk)` — solo un desvío de rumbo **antes** de haber llegado a la
+banda por primera vez invalida el ascenso; una vez alcanzada, cualquier
+desviación posterior (de altitud, de rumbo, o ambas) vuelve a ser una
+falla de mantenimiento común que solo reinicia `holdTime`, igual que en
+el resto de las misiones de tipo "hold". Se agregó el test
+"una desviación después de llegar a la banda no bloquea la misión para
+siempre", que reproduce exactamente el escenario que describió Codex
+(llegar en rumbo, salirse de banda+rumbo por una ráfaga, recuperar y
+completar sin tener que bajar de `minAltitude`).
+
+**Nota para la próxima ronda de revisión de este mismo módulo:** ya van
+2 rondas seguidas donde el fix de una ronda anterior tenía su propio bug
+(ver también la entrada de abajo, que corrigió un error de la ronda
+todavía anterior). Antes de dar por cerrado un fix sobre `climbAndHold`
+o cualquier lógica de estado con "banderas" de invalidación como
+`climbHeadingBroken`, vale la pena trazar a mano los casos de
+transición de estado (entrar/salir de la banda más de una vez, no solo
+una vez) en vez de solo el camino feliz y el caso que reportó Codex
+literalmente.
+
+---
+
 ## 2026-09-13 — Segunda ronda de Codex en el mismo PR: corregido un error propio
 
 **Qué pasó:** tras mergear el PR #12 (con los 3 fixes de la entrada de
