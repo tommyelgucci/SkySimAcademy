@@ -91,19 +91,19 @@ export const AIRPORT_FLASHCARDS = [
   {
     id: "papi-high-slight",
     visual: "papi",
-    props: { pattern: ["white", "white", "white", "red"] },
+    props: { pattern: ["red", "white", "white", "white"] },
     correct: 0,
   },
   {
     id: "papi-on-path",
     visual: "papi",
-    props: { pattern: ["white", "white", "red", "red"] },
+    props: { pattern: ["red", "red", "white", "white"] },
     correct: 0,
   },
   {
     id: "papi-low-slight",
     visual: "papi",
-    props: { pattern: ["white", "red", "red", "red"] },
+    props: { pattern: ["red", "red", "red", "white"] },
     correct: 0,
   },
   { id: "papi-low", visual: "papi", props: { pattern: ["red", "red", "red", "red"] }, correct: 0 },

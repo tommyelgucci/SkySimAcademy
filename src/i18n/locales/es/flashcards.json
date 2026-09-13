@@ -342,7 +342,7 @@
         "Una instrucción obligatoria que hay que seguir",
         "La dirección hacia una pista más adelante"
       ],
-      "explanation": "Un fondo amarillo con texto negro es una señal de ubicación — le dice al piloto en qué calle de rodaje está. Las señales de dirección comparten este mismo color; una señal de ubicación es la que no tiene flecha."
+      "explanation": "Un fondo negro con texto amarillo es una señal de ubicación — le dice al piloto en qué calle de rodaje está. Las señales de dirección usan los colores invertidos, fondo amarillo con texto negro, además de una flecha."
     },
     "sign-location-2": {
       "question": "¿Qué indica esta señal?",
@@ -351,7 +351,7 @@
         "Una instrucción obligatoria que hay que seguir",
         "La dirección hacia una pista más adelante"
       ],
-      "explanation": "Las señales de fondo amarillo son señales de ubicación — esta marca un tramo concreto de calle de rodaje, confirmando exactamente dónde está el piloto mientras rueda. Una señal de dirección usa los mismos colores, pero siempre lleva una flecha."
+      "explanation": "Las señales de fondo negro son señales de ubicación — esta marca un tramo concreto de calle de rodaje, confirmando exactamente dónde está el piloto mientras rueda. Una señal de dirección invierte a fondo amarillo y siempre lleva una flecha."
     },
     "sign-direction-1": {
       "question": "¿Qué indica esta señal?",
@@ -360,7 +360,7 @@
         "En qué calle de rodaje está el avión en ese momento",
         "Un punto de parada obligatoria"
       ],
-      "explanation": "Las señales de dirección usan el mismo fondo amarillo y texto negro que las de ubicación — lo que las distingue es la flecha, que apunta hacia la calle de rodaje o pista que sigue."
+      "explanation": "Las señales de dirección usan fondo amarillo y texto negro, lo opuesto al negro y amarillo de una señal de ubicación — la flecha apunta hacia la calle de rodaje o pista que sigue."
     },
     "sign-direction-2": {
       "question": "¿Qué indica esta señal?",
@@ -369,7 +369,7 @@
         "En qué calle de rodaje está el avión en ese momento",
         "Un punto de parada obligatoria"
       ],
-      "explanation": "Las señales de dirección comparten el color amarillo y negro de las de ubicación — la flecha es lo que apunta hacia lo que sigue, aquí una pista hacia el lado que muestra."
+      "explanation": "Las señales de dirección usan amarillo y negro, lo inverso del negro y amarillo de una señal de ubicación — la flecha apunta hacia lo que sigue, aquí una pista hacia el lado que muestra."
     },
     "papi-high": {
       "question": "¿Qué indica este patrón de PAPI?",

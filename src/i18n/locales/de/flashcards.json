@@ -342,7 +342,7 @@
         "Ein Gebot, das befolgt werden muss",
         "Die Richtung zu einer Piste voraus"
       ],
-      "explanation": "Ein gelber Hintergrund mit schwarzem Text ist ein Standortschild — es zeigt dem Piloten, auf welcher Rollbahn er sich befindet. Richtungsschilder haben dieselbe Farbgebung; ein Standortschild ist das ohne Pfeil."
+      "explanation": "Ein schwarzer Hintergrund mit gelbem Text ist ein Standortschild — es zeigt dem Piloten, auf welcher Rollbahn er sich befindet. Richtungsschilder nutzen die umgekehrte Farbgebung, gelber Hintergrund mit schwarzem Text, dazu einen Pfeil."
     },
     "sign-location-2": {
       "question": "Was zeigt dieses Schild an?",
@@ -351,7 +351,7 @@
         "Ein Gebot, das befolgt werden muss",
         "Die Richtung zu einer Piste voraus"
       ],
-      "explanation": "Schilder mit gelbem Hintergrund sind Standortschilder — dieses markiert einen bestimmten Rollbahnabschnitt und bestätigt, wo sich der Pilot beim Rollen genau befindet. Ein Richtungsschild nutzt dieselben Farben, hat aber immer einen Pfeil."
+      "explanation": "Schilder mit schwarzem Hintergrund sind Standortschilder — dieses markiert einen bestimmten Rollbahnabschnitt und bestätigt, wo sich der Pilot beim Rollen genau befindet. Ein Richtungsschild wechselt zu gelbem Hintergrund und hat immer einen Pfeil."
     },
     "sign-direction-1": {
       "question": "Was zeigt dieses Schild an?",
@@ -360,7 +360,7 @@
         "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
         "Einen vorgeschriebenen Haltepunkt"
       ],
-      "explanation": "Richtungsschilder haben denselben gelben Hintergrund und schwarzen Text wie Standortschilder — der Pfeil ist es, der es kennzeichnet, hier zeigt er auf die vorausliegende Rollbahn oder Piste."
+      "explanation": "Richtungsschilder haben gelben Hintergrund und schwarzen Text, das Gegenteil des schwarz-gelben Standortschilds — der Pfeil zeigt auf die vorausliegende Rollbahn oder Piste."
     },
     "sign-direction-2": {
       "question": "Was zeigt dieses Schild an?",
@@ -369,7 +369,7 @@
         "Auf welcher Rollbahn sich das Flugzeug gerade befindet",
         "Einen vorgeschriebenen Haltepunkt"
       ],
-      "explanation": "Richtungsschilder haben dieselbe gelb-schwarze Farbgebung wie Standortschilder — der Pfeil zeigt auf das, was voraus liegt, hier eine Piste auf der Seite, auf die er zeigt."
+      "explanation": "Richtungsschilder haben eine gelb-schwarze Farbgebung, umgekehrt zum schwarz-gelben Standortschild — der Pfeil zeigt auf das, was voraus liegt, hier eine Piste auf der Seite, auf die er zeigt."
     },
     "papi-high": {
       "question": "Was zeigt dieses PAPI-Muster an?",

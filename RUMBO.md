@@ -7,20 +7,21 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-09-12 (2).
+**Última revisión:** 2026-09-13.
 
 ## Estado de partida
 
-Verificado el 2026-09-12 (tras el trabajo de la sección "Decisiones" de
+Verificado el 2026-09-13 (tras el trabajo de la sección "Decisiones" de
 abajo): `npm run lint` (0 errores, 8 warnings documentados en
 `CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
-namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**82** tests, 9
-archivos) ✅, `npm run build` ✅. PR #11 abierto (rama
+namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**85** tests, 9
+archivos) ✅, `npm run build` ✅. PR #13 abierto (rama
 `claude/skysimacademy-proyecto-a0t4x4` → `main`), sin conflictos. El
-proyecto no tiene deuda técnica visible — se corrigieron además 3 errores
-reales de contenido de aviación en el módulo `airport-operations` y su
-mazo de flashcards, encontrados por una revisión de Codex en el PR #10
-(ya mergeado); ver Decisiones.
+proyecto no tiene deuda técnica visible — se corrigieron 7 errores reales
+de contenido/lógica de aviación en total en el módulo
+`airport-operations`, su mazo de flashcards y la misión `climbAndHold` del
+simulador, encontrados en tres rondas de revisión de Codex sobre el mismo
+diff (PR #10 y #12, ya mergeados, y #13, abierto); ver Decisiones.
 
 **Pendiente que no depende de código:** 3 commits ya mergeados en `main`
 (vía PR #10) siguen teniendo atribución a Claude en su historia — arreglar
@@ -102,6 +103,34 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-13 (2) — Al abrir el PR #13 con el fix de abajo, Codex encontró
+  un bug real en mi propio fix de `climbAndHold`: `climbHeadingBroken` no
+  distinguía "todavía no llegó a la banda" de "ya llegó y volvió a
+  salirse" (p. ej. una ráfaga durante el hold) — si el rumbo también
+  estaba fuera de tolerancia en ese momento, la misión quedaba bloqueada
+  para siempre salvo bajar de `minAltitude` y rehacer todo el ascenso.
+  Agregado `reachedTargetBand` para que solo un desvío de rumbo _antes_
+  de la primera llegada a la banda invalide el ascenso; después de
+  llegar, cualquier desviación vuelve a ser una falla de hold común (solo
+  reinicia `holdTime`). Van 2 rondas seguidas donde el fix de la ronda
+  anterior tenía su propio bug — ver `CHECKPOINT.md` 2026-09-13 (2) para
+  la nota sobre trazar transiciones de estado a mano en vez de solo el
+  camino feliz.
+- 2026-09-13 — Codex dejó 3 comentarios nuevos sobre el mismo diff del
+  PR #12 (ya mergeado), uno de los cuales contradecía directamente la
+  entrada de abajo (2026-09-12 (2)): esa entrada afirma que ubicación y
+  dirección "comparten color en la aviación real" — eso estaba mal.
+  Verificado con cita textual de fuentes primarias esta vez (no solo un
+  resumen de búsqueda): **las señales de ubicación son negro con texto
+  amarillo, las de dirección son amarillo con texto negro** — colores
+  invertidos, no compartidos. Corregido `AirportSign` (paleta separada
+  por tipo) y el texto en los 5 idiomas. Los otros 2 hallazgos también
+  se confirmaron reales: el orden de colores del PAPI en los patrones
+  mixtos estaba invertido (la unidad más cercana a la pista es la que se
+  pone roja primero al subir, así que el orden real es rojo→blanco, no
+  blanco→rojo), y `climbAndHold` no exigía mantener el rumbo durante el
+  ascenso, solo al llegar a la banda de altitud — ver `CHECKPOINT.md`
+  2026-09-13 para el detalle técnico de los 3 fixes.
 - 2026-09-12 (2) — El dueño del proyecto pidió revisar todos los
   comentarios que un revisor automático (Codex, de OpenAI) había dejado
   en varios PRs del repo y arreglar los que fueran útiles. Verificado

@@ -342,7 +342,7 @@
         "Uma instrução obrigatória a ser seguida",
         "A direção até uma pista mais adiante"
       ],
-      "explanation": "Um fundo amarelo com texto preto é uma placa de localização — mostra ao piloto em qual pista de táxi ele está. Placas de direção compartilham essa mesma cor; uma placa de localização é a que não tem seta."
+      "explanation": "Um fundo preto com texto amarelo é uma placa de localização — mostra ao piloto em qual pista de táxi ele está. Placas de direção usam as cores invertidas, fundo amarelo com texto preto, além de uma seta."
     },
     "sign-location-2": {
       "question": "O que esta placa indica?",
@@ -351,7 +351,7 @@
         "Uma instrução obrigatória a ser seguida",
         "A direção até uma pista mais adiante"
       ],
-      "explanation": "Placas de fundo amarelo são placas de localização — esta marca um trecho específico de pista de táxi, confirmando exatamente onde o piloto está enquanto taxia. Uma placa de direção usa as mesmas cores, mas sempre traz uma seta."
+      "explanation": "Placas de fundo preto são placas de localização — esta marca um trecho específico de pista de táxi, confirmando exatamente onde o piloto está enquanto taxia. Uma placa de direção inverte para fundo amarelo e sempre traz uma seta."
     },
     "sign-direction-1": {
       "question": "O que esta placa indica?",
@@ -360,7 +360,7 @@
         "Em qual pista de táxi a aeronave está no momento",
         "Um ponto de parada obrigatória"
       ],
-      "explanation": "Placas de direção usam o mesmo fundo amarelo e texto preto das placas de localização — a seta é o que a diferencia, apontando para a pista de táxi ou pista à frente."
+      "explanation": "Placas de direção usam fundo amarelo e texto preto, o oposto do preto e amarelo de uma placa de localização — a seta aponta para a pista de táxi ou pista à frente."
     },
     "sign-direction-2": {
       "question": "O que esta placa indica?",
@@ -369,7 +369,7 @@
         "Em qual pista de táxi a aeronave está no momento",
         "Um ponto de parada obrigatória"
       ],
-      "explanation": "Placas de direção compartilham a cor amarela e preta das placas de localização — a seta é o que aponta para o que vem à frente, aqui uma pista para o lado que ela mostra."
+      "explanation": "Placas de direção usam a cor amarela e preta, o inverso do preto e amarelo de uma placa de localização — a seta aponta para o que vem à frente, aqui uma pista para o lado que ela mostra."
     },
     "papi-high": {
       "question": "O que este padrão de PAPI indica?",

@@ -13,6 +13,8 @@ export class MissionTracker {
     this.wasStalled = false; // para "stallRecovery": primero hay que entrar en pérdida
     this.engineCut = false; // para "engineOut": el ejercicio ya cortó los gases
     this.refAltitude = null; // para "levelTurn": altitud con la que se entró al viraje
+    this.climbHeadingBroken = false; // para "climbAndHold": se salió de rumbo durante el ascenso
+    this.reachedTargetBand = false; // para "climbAndHold": ya llegó a la banda de altitud objetivo
   }
 
   /**
@@ -151,13 +153,26 @@ export class MissionTracker {
       case "climbAndHold": {
         if (engine.altitude < this.goal.minAltitude) {
           this.holdTime = 0;
+          this.climbHeadingBroken = false;
+          this.reachedTargetBand = false;
           break;
         }
         const diff = Math.abs(((engine.heading - this.goal.heading + 540) % 360) - 180);
         const headingOk = diff <= this.goal.tolerance;
         const atTargetAltitude =
           Math.abs(engine.altitude - this.goal.targetAltitude) <= this.goal.band;
-        if (headingOk && atTargetAltitude) {
+        if (atTargetAltitude) this.reachedTargetBand = true;
+        if (!atTargetAltitude) {
+          // Solo cuenta como "todavía subiendo" antes de haber llegado a la
+          // banda por primera vez — un desvío posterior (ya en la banda, se
+          // sale por ráfaga o descuido) es una falla de mantenimiento común
+          // y corriente, no invalida el ascenso ya cumplido (ver RUMBO.md,
+          // Decisiones, hallazgo de revisión de Codex).
+          if (!this.reachedTargetBand && !headingOk) this.climbHeadingBroken = true;
+          this.holdTime = 0;
+          break;
+        }
+        if (headingOk && !this.climbHeadingBroken) {
           this.holdTime += dt;
           if (this.holdTime >= this.goal.holdSeconds) this.done = true;
         } else {

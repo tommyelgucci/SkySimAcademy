@@ -286,6 +286,47 @@ describe("MissionTracker", () => {
       tracker.update(engineState({ altitude: 200, heading: 0, grounded: false }), 10);
       expect(tracker.done).toBe(false);
     });
+
+    it("subir fuera de rumbo y enderezar recién dentro de la banda no completa la misión", () => {
+      const tracker = new MissionTracker({ goal });
+      // Sube casi hasta la banda con un rumbo arbitrario, fuera de tolerancia
+      tracker.update(engineState({ altitude: 80, heading: 90, grounded: false }), 5);
+      // Endereza justo al entrar en la banda y mantiene rumbo + altitud 6 s
+      const level = engineState({ altitude: 150, heading: 0, grounded: false });
+      tracker.update(level, 6);
+      expect(tracker.done).toBe(false);
+      tracker.update(level, 6);
+      expect(tracker.done).toBe(false);
+    });
+
+    it("una desviación después de llegar a la banda no bloquea la misión para siempre", () => {
+      const tracker = new MissionTracker({ goal });
+      // Sube en rumbo correcto y llega a la banda
+      tracker.update(engineState({ altitude: 80, heading: 0, grounded: false }), 5);
+      const level = engineState({ altitude: 150, heading: 0, grounded: false });
+      tracker.update(level, 3);
+      // Se sale de la banda de altitud Y de rumbo (p. ej. una ráfaga), sin
+      // bajar de la altitud mínima — esto no es un nuevo intento de ascenso
+      tracker.update(engineState({ altitude: 200, heading: 90, grounded: false }), 2);
+      expect(tracker.done).toBe(false);
+      // Recupera altitud y rumbo y completa el hold sin necesidad de bajar
+      // de minAltitude para "reiniciar" el intento
+      tracker.update(level, 6);
+      expect(tracker.done).toBe(true);
+    });
+
+    it("bajar de la altitud mínima y volver a subir en rumbo permite un intento válido", () => {
+      const tracker = new MissionTracker({ goal });
+      // Primer intento: sube fuera de rumbo, invalida el ascenso
+      tracker.update(engineState({ altitude: 80, heading: 90, grounded: false }), 5);
+      // Vuelve por debajo de la altitud mínima — reinicia el intento
+      tracker.update(engineState({ altitude: 20, heading: 90, grounded: false }), 5);
+      // Segundo intento: sube en rumbo correcto todo el ascenso
+      tracker.update(engineState({ altitude: 80, heading: 0, grounded: false }), 5);
+      const level = engineState({ altitude: 150, heading: 0, grounded: false });
+      tracker.update(level, 6);
+      expect(tracker.done).toBe(true);
+    });
   });
 
   describe("precisionLanding (informe de FlightEvaluator, no de engineState)", () => {
