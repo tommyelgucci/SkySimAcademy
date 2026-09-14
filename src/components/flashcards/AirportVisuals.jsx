@@ -15,7 +15,7 @@
  *  entre ambas, no comparten paleta (ver RUMBO.md, Decisiones, segunda
  *  revisión de Codex que corrigió el error anterior de esta paleta). */
 const YELLOW_SIGN = { fill: "#f5c518", stroke: "#a9860a", text: "#14171c" };
-const BLACK_SIGN = { fill: "#14171c", stroke: "#3a3f47", text: "#f5c518" };
+const BLACK_SIGN = { fill: "#14171c", stroke: "#f5c518", text: "#f5c518" };
 
 export function AirportSign({ kind, text, arrow, label }) {
   const palette = {

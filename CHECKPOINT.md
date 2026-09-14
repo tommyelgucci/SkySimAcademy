@@ -9,6 +9,31 @@ commit.
 
 ---
 
+## 2026-09-14 — Cuarta ronda de Codex: borde de la señal de ubicación
+
+**Qué pasó:** al abrir el PR #14 (con el fix de climbAndHold de la
+entrada de abajo), Codex encontró que `BLACK_SIGN` (la paleta de la
+señal de ubicación agregada en la ronda anterior) usaba un borde
+gris oscuro (`#3a3f47`) en vez de amarillo. Verificado (misma búsqueda
+que ya había citado "black background, yellow inscription and yellow
+border" en la ronda anterior, pero esta vez llevada hasta el detalle del
+borde en vez de solo el color de fondo/texto): la señal de ubicación real
+lleva **inscripción Y borde amarillos** sobre fondo negro — no es un
+detalle nuevo, es algo que ya había leído pero no trasladé del todo al
+código. Corregido `stroke: "#f5c518"` en `BLACK_SIGN`
+(`AirportVisuals.jsx`). No hizo falta tocar texto en ningún idioma — el
+borde no se menciona en las explicaciones de las flashcards ni del
+módulo de teoría.
+
+Van 4 rondas seguidas de Codex sobre el mismo mazo de flashcards de
+aeródromo. Patrón a tener en cuenta la próxima vez que se toque este
+componente: cuando una fuente ya researcheada menciona varios atributos
+de un mismo elemento (aquí: fondo, inscripción, Y borde), trasladar los
+tres al código de una — no solo los que el hallazgo original señaló
+explícitamente.
+
+---
+
 ## 2026-09-13 (2) — Tercera ronda de Codex: bug propio en el fix de climbAndHold
 
 **Qué pasó:** el dueño del proyecto abrió el PR #13 con el fix de la
