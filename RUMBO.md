@@ -7,21 +7,22 @@ donde se decide y se lleva registro de **qué viene después**.
 Actualízalo cuando se tome una decisión de rumbo (empezar/pausar/descartar
 una línea de trabajo), no en cada commit — para eso está `CHECKPOINT.md`.
 
-**Última revisión:** 2026-09-13.
+**Última revisión:** 2026-09-14.
 
 ## Estado de partida
 
-Verificado el 2026-09-13 (tras el trabajo de la sección "Decisiones" de
+Verificado el 2026-09-14 (tras el trabajo de la sección "Decisiones" de
 abajo): `npm run lint` (0 errores, 8 warnings documentados en
 `CLAUDE.md`), `npm run format:check`, `npm run check:i18n` (5 idiomas × 5
 namespaces, 14 módulos, 59 flashcards) ✅, `npm test` (**85** tests, 9
-archivos) ✅, `npm run build` ✅. PR #13 abierto (rama
+archivos) ✅, `npm run build` ✅. PR #14 abierto (rama
 `claude/skysimacademy-proyecto-a0t4x4` → `main`), sin conflictos. El
-proyecto no tiene deuda técnica visible — se corrigieron 7 errores reales
+proyecto no tiene deuda técnica visible — se corrigieron 8 errores reales
 de contenido/lógica de aviación en total en el módulo
 `airport-operations`, su mazo de flashcards y la misión `climbAndHold` del
-simulador, encontrados en tres rondas de revisión de Codex sobre el mismo
-diff (PR #10 y #12, ya mergeados, y #13, abierto); ver Decisiones.
+simulador, encontrados en cuatro rondas seguidas de revisión de Codex
+sobre el mismo diff (PR #10 y #12, ya mergeados, y #13/#14, el mismo
+trabajo re-abierto); ver Decisiones.
 
 **Pendiente que no depende de código:** 3 commits ya mergeados en `main`
 (vía PR #10) siguen teniendo atribución a Claude en su historia — arreglar
@@ -103,6 +104,14 @@ con `[x]` lo que se decida perseguir y anota la decisión abajo en
 _(Registro breve de decisiones de rumbo, más reciente primero. Formato:
 fecha — decisión — por qué.)_
 
+- 2026-09-14 — Cuarta ronda de Codex, ahora en el PR #14: el borde de
+  `BLACK_SIGN` (señal de ubicación) era gris oscuro en vez de amarillo —
+  un detalle que ya había salido en la búsqueda de la ronda anterior
+  ("black background, yellow inscription and yellow border") pero no
+  había trasladado del todo al código. Corregido `stroke` en
+  `AirportVisuals.jsx`; ver `CHECKPOINT.md` 2026-09-14 para la nota sobre
+  trasladar todos los atributos de una fuente ya researcheada, no solo
+  los que señaló el hallazgo original.
 - 2026-09-13 (2) — Al abrir el PR #13 con el fix de abajo, Codex encontró
   un bug real en mi propio fix de `climbAndHold`: `climbHeadingBroken` no
   distinguía "todavía no llegó a la banda" de "ya llegó y volvió a
