@@ -1101,6 +1101,63 @@ h3 {
   font-size: 1.4rem;
 }
 
+/* Barra de avance del quiz */
+.progress-bar {
+  height: 4px;
+  margin-block: 0.4rem 1rem;
+  background: var(--color-surface-raised);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), #7dd3ff);
+  border-radius: inherit;
+  transition: width 0.4s var(--ease-out);
+}
+
+/* La pregunta entra con cada cambio (el componente la remonta por `key`) */
+.quiz__question,
+.lesson-quiz__question {
+  animation: rise-in 0.3s var(--ease-out) both;
+}
+
+/* Estadísticas */
+.stats__card {
+  animation: rise-in 0.4s var(--ease-out) both;
+}
+
+.stats__card:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.stats__module-row {
+  transition:
+    border-color 0.14s ease,
+    transform 0.14s var(--ease-out);
+}
+
+.stats__module-row:hover {
+  border-color: rgba(56, 182, 255, 0.4);
+  transform: translateX(3px);
+}
+
+[dir="rtl"] .stats__module-row:hover {
+  transform: translateX(-3px);
+}
+
+/* La llama de racha activa titila apenas */
+.stats__flame--on {
+  animation: soft-pulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 183, 3, 0.5));
+}
+
+/* Último minuto del examen: el cronómetro late */
+.exam__timer.is-wrong {
+  animation: soft-pulse 1s ease-in-out infinite;
+}
+
 .quiz__options {
   display: flex;
   flex-direction: column;
