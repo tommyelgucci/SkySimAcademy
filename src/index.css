@@ -95,6 +95,13 @@
   }
 }
 
+@keyframes breathe {
+  50% {
+    opacity: 0.6;
+    scale: 1.06;
+  }
+}
+
 @keyframes soft-pulse {
   50% {
     opacity: 0.45;
@@ -411,6 +418,39 @@ h3 {
   background: radial-gradient(closest-side, rgba(56, 182, 255, 0.18), transparent);
   pointer-events: none;
   z-index: -1;
+  animation: breathe 7s ease-in-out infinite;
+}
+
+/* Entrada escalonada de la portada: insignia → titular → texto → botones →
+   cifras. Cada bloque llega un poco después del anterior. */
+.home__badge,
+.home__title,
+.home__intro,
+.home__actions,
+.highlight-card {
+  animation: rise-in 0.55s var(--ease-out) both;
+}
+
+.home__title {
+  animation-delay: 0.07s;
+}
+.home__intro {
+  animation-delay: 0.14s;
+}
+.home__actions {
+  animation-delay: 0.21s;
+}
+.highlight-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.highlight-card:nth-child(2) {
+  animation-delay: 0.36s;
+}
+.highlight-card:nth-child(3) {
+  animation-delay: 0.42s;
+}
+.highlight-card:nth-child(4) {
+  animation-delay: 0.48s;
 }
 
 .home__badge {
@@ -473,6 +513,16 @@ h3 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  transition:
+    border-color 0.16s ease,
+    transform 0.16s var(--ease-out),
+    box-shadow 0.16s ease;
+}
+
+.highlight-card:hover {
+  border-color: rgba(56, 182, 255, 0.45);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 
 .highlight-card__icon {
@@ -1413,6 +1463,10 @@ h3 {
   box-shadow: var(--shadow-card);
 }
 
+.lesson-diagram {
+  animation: rise-in 0.45s var(--ease-out) both;
+}
+
 .lesson-diagram__svg {
   display: block;
   width: 100%;
@@ -1473,6 +1527,10 @@ h3 {
   border-radius: var(--radius);
 }
 
+.flashcards__visual {
+  animation: panel-in 0.35s var(--ease-out) both;
+}
+
 .flashcards__visual .gauge {
   width: 200px;
   height: 200px;
@@ -1503,8 +1561,18 @@ h3 {
   cursor: pointer;
 }
 
+.flashcards__play {
+  transition:
+    filter 0.14s ease,
+    transform 0.14s var(--ease-out);
+}
+
 .flashcards__play:hover {
   filter: brightness(1.1);
+}
+
+.flashcards__play:active {
+  transform: scale(0.97);
 }
 
 .flashcards__phrase {
