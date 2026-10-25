@@ -276,6 +276,7 @@ export class SceneManager {
     this.cameraView = "external";
     this._viewBlend = 0;
     this._elapsed = 0; // para el estroboscopio del avión
+    this._gearDeploy = 1; // 1 = tren abajo, 0 = replegado
     /** Reloj compartido con el shader del mar (olas animadas en GPU). */
     this._waterTime = { value: 0 };
 
@@ -1425,6 +1426,30 @@ export class SceneManager {
     const strobe = this.aircraft.userData.strobe;
     if (strobe) strobe.visible = this._elapsed % 1 < 0.08;
 
+    // Tren de aterrizaje: abajo en tierra y por debajo de 25 m sobre el
+    // suelo; se pliega en vuelo (escala vertical suavizada, oculto al final).
+    const gear = this.aircraft.userData.gear;
+    if (gear) {
+      const wantDown = state.grounded || state.position.y - FLIGHT.GROUND_Y < 25;
+      const gearTarget = wantDown ? 1 : 0;
+      this._gearDeploy += (gearTarget - this._gearDeploy) * Math.min(1, 4 * dt);
+      gear.visible = this._gearDeploy > 0.04;
+      gear.scale.y = Math.max(0.001, this._gearDeploy);
+    }
+
+    // Escape de los motores: crece y se enciende con los gases
+    const exhausts = this.aircraft.userData.exhausts;
+    if (exhausts) {
+      const power = THREE.MathUtils.clamp(state.throttle, 0, 1);
+      const flicker = 0.92 + 0.08 * Math.sin(this._elapsed * 60);
+      for (const flame of exhausts) {
+        flame.visible = power > 0.05;
+        flame.material.opacity = 0.55 * power * flicker;
+        flame.scale.set(1, 0.4 + 1.6 * power, 1);
+        flame.position.z = 0.53 + (0.4 + 1.6 * power) * 0.5;
+      }
+    }
+
     // Transición de vista: 0 = exterior, 1 = cabina
     const targetBlend = this.cameraView === "cockpit" ? 1 : 0;
     this._viewBlend += (targetBlend - this._viewBlend) * Math.min(1, 5 * dt);
@@ -1642,10 +1667,55 @@ function buildAircraft() {
     const pylon = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.09, 0.4), silverMaterial);
     pylon.position.set(0, 0.08, 0);
     nacelle.add(pylon);
+    // Llama de escape: cono aditivo detrás de la góndola; SceneManager.update
+    // le ajusta largo y opacidad según los gases (el bloom la hace brillar).
+    const exhaust = new THREE.Mesh(
+      new THREE.ConeGeometry(0.13, 1, 10, 1, true),
+      new THREE.MeshBasicMaterial({
+        color: 0xffa24d,
+        transparent: true,
+        opacity: 0,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      }),
+    );
+    exhaust.rotation.x = -Math.PI / 2; // punta hacia +Z (atrás)
+    exhaust.position.z = 0.53;
+    exhaust.visible = false;
+    nacelle.add(exhaust);
+    exhausts.push(exhaust);
     nacelle.position.set(mirror * 0.5, 0.05, 1.7);
     return nacelle;
   };
+  const exhausts = [];
   group.add(makeEngine(1), makeEngine(-1));
+  group.userData.exhausts = exhausts;
+
+  // Tren de aterrizaje: tres patas con rueda. El origen del avión está
+  // FLIGHT.GROUND_Y (0.6) sobre el suelo, así que cada rueda llega a y = -0.6.
+  // Cada pata cuelga de un grupo cuyo `scale.y` se anima en update() para
+  // retraerlo en vuelo.
+  const tyreMaterial = new THREE.MeshStandardMaterial({ color: 0x14171c, roughness: 0.9 });
+  const makeGear = (x, z, scale = 1) => {
+    const leg = new THREE.Group();
+    const strut = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.3, 0.06), silverMaterial);
+    strut.position.y = -0.15;
+    leg.add(strut);
+    const wheel = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.1, 0.1, 0.1 * scale + 0.06, 12),
+      tyreMaterial,
+    );
+    wheel.rotation.z = Math.PI / 2;
+    wheel.position.y = -0.4;
+    leg.add(wheel);
+    leg.position.set(x, -0.2, z);
+    return leg;
+  };
+  const gearLegs = [makeGear(0, -1.2, 0.5), makeGear(0.62, 0.6), makeGear(-0.62, 0.6)];
+  const gear = new THREE.Group();
+  gear.add(...gearLegs);
+  group.add(gear);
+  group.userData.gear = gear;
 
   return group;
 }
