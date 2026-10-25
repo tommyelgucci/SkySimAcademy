@@ -50,6 +50,69 @@
   box-sizing: border-box;
 }
 
+/* ---------- Movimiento compartido ---------- */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  45% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes shake {
+  20% {
+    transform: translateX(-5px);
+  }
+  45% {
+    transform: translateX(4px);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+}
+
+@keyframes soft-pulse {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.985);
+  }
+}
+
+/* Cada pantalla entra con un fundido corto: el cambio por estado no tiene
+   router detrás, así que sin esto el contenido se sustituye de golpe. */
+.app__main > * {
+  animation: rise-in 0.32s var(--ease-out) both;
+}
+
+/* El simulador pinta su propio canvas a pantalla completa: sin
+   desplazamiento, solo fundido. */
+.app--fullscreen .app__main > * {
+  animation-name: fade-in;
+}
+
+/* Anillo de foco visible solo con teclado */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -781,6 +844,16 @@ h3 {
   box-shadow: var(--shadow-lift);
 }
 
+/* Entrada escalonada de la cuadrícula (hasta 14 tarjetas) */
+.module-grid > .module-card {
+  animation: rise-in 0.4s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+
+.module-card:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.99);
+}
+
 .module-card:hover:not(:disabled)::before {
   opacity: 1;
 }
@@ -988,6 +1061,14 @@ h3 {
   border-radius: var(--radius);
   padding: 0.9rem 1.1rem;
   cursor: pointer;
+  transition:
+    border-color 0.14s ease,
+    background 0.14s ease,
+    transform 0.14s var(--ease-out);
+}
+
+.quiz__option:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .quiz__option:hover:not(:disabled) {
@@ -1000,17 +1081,20 @@ h3 {
 }
 
 .quiz__option--correct {
+  animation: pop 0.35s var(--ease-spring);
   border-color: var(--color-correct);
   background: color-mix(in srgb, var(--color-correct) 18%, var(--color-surface));
 }
 
 .quiz__option--wrong {
+  animation: shake 0.38s ease;
   border-color: var(--color-wrong);
   background: color-mix(in srgb, var(--color-wrong) 18%, var(--color-surface));
 }
 
 .quiz__feedback {
   font-weight: 600;
+  animation: rise-in 0.25s var(--ease-out) both;
 }
 
 .quiz__feedback.is-correct {
@@ -1124,13 +1208,7 @@ h3 {
   font-size: 1.3rem;
   font-weight: 800;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  animation: blink 0.6s steps(2) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0.2;
-  }
+  animation: soft-pulse 0.7s ease-in-out infinite;
 }
 
 /* Aviso de límite del mapa: ámbar, menos alarmante que la pérdida */
@@ -1291,7 +1369,9 @@ h3 {
 .gauge__horizon {
   transform-box: view-box;
   transform-origin: 50% 50%;
-  transition: transform 0.12s linear;
+  /* Las muestras llegan a ~10 Hz: un ease-out corto reparte el giro y evita
+     el efecto de aguja a saltitos que da `linear` con intervalos largos. */
+  transition: transform 0.2s cubic-bezier(0.22, 0.8, 0.3, 1);
 }
 
 /* En pantallas táctiles: encima de los mandos, como panel de cabina */

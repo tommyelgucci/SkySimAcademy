@@ -43,13 +43,14 @@ export default function ModuleList({ onOpenModule, onOpenExam, onOpenReview, onO
       </div>
 
       <div className="module-grid">
-        {MODULES.map((module) => {
+        {MODULES.map((module, index) => {
           const available = module.status === "available";
           const passed = available && isModulePassed(module.id);
           return (
             <button
               key={module.id}
               className={`module-card ${available ? "" : "module-card--disabled"}`}
+              style={{ "--i": index }}
               disabled={!available}
               onClick={() => onOpenModule(module.id)}
             >

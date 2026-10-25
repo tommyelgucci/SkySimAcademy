@@ -22,11 +22,21 @@ import { useDraggableHud } from "./useDraggableHud.js";
 const SIZE = 130; // px CSS; el buffer real se escala por devicePixelRatio
 /** Radio mínimo (px) del punto que marca cada pista, sin importar la escala. */
 const RUNWAY_MARKER_MIN = 3;
+/** Cuántas posiciones de estela se recuerdan, y cada cuántos px de mapa se suma una. */
+const TRAIL_MAX = 48;
+const TRAIL_STEP_PX = 2.5;
 
 export default function MiniMap({ terrain, posX, posZ, heading, nearBoundary }) {
   const { t } = useTranslation("simulator");
   const canvasRef = useRef(null);
+  /** Estela del avión en coordenadas de mundo; vive en un ref porque dibujarla no debe re-renderizar. */
+  const trailRef = useRef([]);
   const { ref: dragRef, style: dragStyle, handlers } = useDraggableHud("aerolearn.hudPos.minimap");
+
+  // Un vuelo nuevo (otro terreno) empieza sin estela del anterior.
+  useEffect(() => {
+    trailRef.current = [];
+  }, [terrain]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -46,18 +56,54 @@ export default function MiniMap({ terrain, posX, posZ, heading, nearBoundary }) 
     // Mundo → mapa: +Z (sur) queda abajo, norte arriba, sin rotación.
     const toMap = (x, z) => [cx + x * scale, cy + z * scale];
 
-    // Fondo
-    ctx.fillStyle = "rgba(8, 14, 26, 0.85)";
+    const outer = SIZE / 2 - 6;
+
+    // Fondo: degradado radial, más claro al centro, para dar profundidad.
+    const bg = ctx.createRadialGradient(cx, cy, 4, cx, cy, SIZE / 2);
+    bg.addColorStop(0, "rgba(20, 34, 56, 0.9)");
+    bg.addColorStop(1, "rgba(6, 11, 20, 0.92)");
+    ctx.fillStyle = bg;
     ctx.beginPath();
     ctx.arc(cx, cy, SIZE / 2 - 2, 0, Math.PI * 2);
     ctx.fill();
 
-    // Límite del área de vuelo
+    // Anillos de distancia (tercios del radio) y cruz de ejes: referencia de
+    // escala sin texto, que sería ilegible a este tamaño.
+    ctx.strokeStyle = "rgba(148, 163, 184, 0.14)";
+    ctx.lineWidth = 1;
+    for (const f of [1 / 3, 2 / 3]) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, outer * f, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.beginPath();
+    ctx.moveTo(cx - outer, cy);
+    ctx.lineTo(cx + outer, cy);
+    ctx.moveTo(cx, cy - outer);
+    ctx.lineTo(cx, cy + outer);
+    ctx.stroke();
+
+    // Límite del área de vuelo (con halo cuando el avión se acerca)
+    ctx.save();
+    if (nearBoundary) {
+      ctx.shadowColor = "#f2545b";
+      ctx.shadowBlur = 8;
+    }
     ctx.strokeStyle = nearBoundary ? "#f2545b" : "rgba(148, 163, 184, 0.55)";
     ctx.lineWidth = nearBoundary ? 2.5 : 1.5;
     ctx.beginPath();
-    ctx.arc(cx, cy, SIZE / 2 - 6, 0, Math.PI * 2);
+    ctx.arc(cx, cy, outer, 0, Math.PI * 2);
     ctx.stroke();
+    ctx.restore();
+
+    // Marca de norte: la única pista de orientación del mapa, que no rota.
+    ctx.fillStyle = "#ff8f5c";
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - outer - 1);
+    ctx.lineTo(cx - 3.5, cy - outer + 6);
+    ctx.lineTo(cx + 3.5, cy - outer + 6);
+    ctx.closePath();
+    ctx.fill();
 
     // Pistas: el rectángulo real a escala, más un punto de tamaño mínimo
     // encima para que ninguna quede invisible en mapas grandes (vuelo libre).
@@ -78,6 +124,17 @@ export default function MiniMap({ terrain, posX, posZ, heading, nearBoundary }) 
       ctx.translate(rx, rz);
       ctx.rotate(-runway.rotationY);
       ctx.fillRect(-runwayWidth / 2, -runwayLength / 2, runwayWidth, runwayLength);
+      // Eje central discontinuo: distingue una pista de una mancha clara.
+      if (runwayLength > 8) {
+        ctx.strokeStyle = "rgba(8, 14, 26, 0.7)";
+        ctx.lineWidth = 0.8;
+        ctx.setLineDash([2, 2]);
+        ctx.beginPath();
+        ctx.moveTo(0, -runwayLength / 2 + 1);
+        ctx.lineTo(0, runwayLength / 2 - 1);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
       ctx.restore();
 
       ctx.beginPath();
@@ -85,18 +142,44 @@ export default function MiniMap({ terrain, posX, posZ, heading, nearBoundary }) 
       ctx.fill();
     }
 
-    // Avión (triángulo apuntando al rumbo actual)
+    // Estela: se suma un punto solo si el avión se movió lo suficiente en
+    // pantalla, para que a baja velocidad no se apilen puntos idénticos.
+    const trail = trailRef.current;
+    const last = trail[trail.length - 1];
+    if (!last || Math.hypot((posX - last[0]) * scale, (posZ - last[1]) * scale) >= TRAIL_STEP_PX) {
+      trail.push([posX, posZ]);
+      if (trail.length > TRAIL_MAX) trail.shift();
+    }
+    ctx.lineCap = "round";
+    ctx.lineWidth = 1.6;
+    for (let i = 1; i < trail.length; i++) {
+      const [x0, z0] = toMap(trail[i - 1][0], trail[i - 1][1]);
+      const [x1, z1] = toMap(trail[i][0], trail[i][1]);
+      ctx.strokeStyle = `rgba(77, 163, 255, ${(i / trail.length) * 0.55})`;
+      ctx.beginPath();
+      ctx.moveTo(x0, z0);
+      ctx.lineTo(x1, z1);
+      ctx.stroke();
+    }
+
+    // Avión (flecha con muesca apuntando al rumbo actual, con halo)
     const [px, pz] = toMap(posX, posZ);
     ctx.save();
     ctx.translate(px, pz);
     ctx.rotate((heading * Math.PI) / 180);
+    ctx.shadowColor = "rgba(77, 163, 255, 0.9)";
+    ctx.shadowBlur = 6;
     ctx.fillStyle = "#4da3ff";
+    ctx.strokeStyle = "#e8f3ff";
+    ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(0, -6);
-    ctx.lineTo(4, 5);
-    ctx.lineTo(-4, 5);
+    ctx.moveTo(0, -6.5);
+    ctx.lineTo(4.5, 5.5);
+    ctx.lineTo(0, 3);
+    ctx.lineTo(-4.5, 5.5);
     ctx.closePath();
     ctx.fill();
+    ctx.stroke();
     ctx.restore();
   }, [terrain, posX, posZ, heading, nearBoundary]);
 

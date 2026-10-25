@@ -36,6 +36,7 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
+import { FLIGHT } from "./FlightEngine.js";
 
 const CAMERA_OFFSET = new THREE.Vector3(0, 3.4, 10); // detrás y encima del avión
 /** Posición del "asiento del piloto" relativa al avión (vista de cabina). */
@@ -155,6 +156,10 @@ const _cockpitPos = new THREE.Vector3();
 const _cockpitLook = new THREE.Vector3();
 const _forwardTmp = new THREE.Vector3();
 
+/** FOV vertical en reposo y cuánto se abre a máxima velocidad (sensación de velocidad). */
+const BASE_FOV = 60;
+const SPEED_FOV_GAIN = 9;
+
 // Temporales reutilizados al construir InstancedMesh (montañas, palmeras):
 // una matriz/vector por escenario, no por instancia.
 const _instMatrix = new THREE.Matrix4();
@@ -264,7 +269,7 @@ export class SceneManager {
     this.scene.background = horizon;
     this.scene.fog = new THREE.Fog(horizon.getHex(), 450, this.palette.fogFar);
 
-    this.camera = new THREE.PerspectiveCamera(60, 1, 0.1, 5000);
+    this.camera = new THREE.PerspectiveCamera(BASE_FOV, 1, 0.1, 5000);
     this.camera.position.set(0, 5, 20);
 
     // Cámara: "external" (persecución) o "cockpit"; _viewBlend interpola
@@ -1442,6 +1447,16 @@ export class SceneManager {
     const smoothing = 1 - Math.exp(-(4 + 16 * blend) * dt);
     this.camera.position.lerp(_desired, smoothing);
     this.camera.lookAt(_lookAt);
+
+    // FOV según la velocidad: abrirlo al acelerar acentúa el movimiento del
+    // suelo sin tocar la física. En cabina la ganancia se reduce a la mitad
+    // para no deformar el panel. Solo se recalcula la proyección si cambió.
+    const speedRatio = THREE.MathUtils.clamp(state.airspeed / FLIGHT.MAX_SPEED, 0, 1.25);
+    const targetFov = BASE_FOV + SPEED_FOV_GAIN * speedRatio * (1 - 0.5 * blend);
+    if (Math.abs(targetFov - this.camera.fov) > 0.01) {
+      this.camera.fov += (targetFov - this.camera.fov) * Math.min(1, 2.5 * dt);
+      this.camera.updateProjectionMatrix();
+    }
 
     // Sombra de contacto: sigue al avión en planta y se desvanece con la
     // altitud (a 50 m ya no aporta nada — a esa altura la sombra proyectada
