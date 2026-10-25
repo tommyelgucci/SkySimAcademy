@@ -88,6 +88,13 @@
   }
 }
 
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
 @keyframes soft-pulse {
   50% {
     opacity: 0.45;
@@ -1168,6 +1175,9 @@ h3 {
   text-align: center;
   min-width: 5.2rem;
   box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.95);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
 }
 
 /* Reflejo en el filo superior: es lo que hace que un panel translúcido se
@@ -1181,8 +1191,14 @@ h3 {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
+.hud__item--warning {
+  border-color: rgba(255, 93, 93, 0.55);
+  background: rgba(70, 14, 20, 0.6);
+}
+
 .hud__item--warning .hud__value {
   color: var(--color-wrong);
+  animation: soft-pulse 1s ease-in-out infinite;
 }
 
 .hud__label {
@@ -1535,6 +1551,8 @@ h3 {
   padding: 0.35rem 1rem;
   font-size: 0.85rem;
   color: var(--color-text);
+  box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.9);
+  animation: rise-in 0.4s var(--ease-out) 0.15s both;
 }
 
 .hud-objective svg {
@@ -1657,6 +1675,11 @@ h3 {
   align-items: center;
   gap: 0.5rem;
   max-width: 20rem;
+  background: var(--surface-gradient);
+  box-shadow:
+    0 24px 50px -24px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: panel-in 0.4s var(--ease-spring) both;
 }
 
 [dir="rtl"] .landing-debrief {
@@ -1670,8 +1693,10 @@ h3 {
 
 .landing-debrief__grade {
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.1rem;
   color: var(--color-accent);
+  text-shadow: 0 0 18px rgba(255, 183, 3, 0.45);
 }
 
 .landing-debrief ul {
@@ -1767,11 +1792,42 @@ h3 {
   border-radius: var(--radius);
   padding: 0.7rem 0.9rem;
   cursor: pointer;
-  transition: border-color 0.12s ease;
+  transition:
+    border-color 0.14s ease,
+    background 0.14s ease,
+    transform 0.14s var(--ease-out);
+  animation: rise-in 0.35s var(--ease-out) both;
+}
+
+/* Entrada escalonada de la lista de misiones (hasta 10 filas) */
+.mission-card:nth-child(2) {
+  animation-delay: 40ms;
+}
+.mission-card:nth-child(3) {
+  animation-delay: 80ms;
+}
+.mission-card:nth-child(4) {
+  animation-delay: 120ms;
+}
+.mission-card:nth-child(5) {
+  animation-delay: 160ms;
+}
+.mission-card:nth-child(n + 6) {
+  animation-delay: 200ms;
 }
 
 .mission-card:hover:not(:disabled) {
   border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface-raised));
+  transform: translateX(3px);
+}
+
+[dir="rtl"] .mission-card:hover:not(:disabled) {
+  transform: translateX(-3px);
+}
+
+.mission-card:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .mission-card--locked {
@@ -1828,7 +1884,9 @@ h3 {
   display: grid;
   place-items: center;
   background: rgba(8, 13, 24, 0.7);
+  backdrop-filter: blur(5px);
   padding: 1rem;
+  animation: fade-in 0.25s ease both;
 }
 
 .simulator__panel {
@@ -1838,7 +1896,10 @@ h3 {
   padding: 2rem;
   max-width: 30rem;
   width: 100%;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.95);
+  box-shadow:
+    0 30px 60px -30px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  animation: panel-in 0.32s var(--ease-out) both;
 }
 
 .simulator__panel h1 {
