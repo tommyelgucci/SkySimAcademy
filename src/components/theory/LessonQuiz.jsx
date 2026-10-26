@@ -10,6 +10,7 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Check, CircleCheck, CircleX } from "lucide-react";
 import { clearFailedQuestion, recordFailedQuestion } from "../../storage.js";
+import ProgressBar from "./ProgressBar.jsx";
 
 function shuffled(array) {
   const copy = [...array];
@@ -65,7 +66,10 @@ export default function LessonQuiz({ moduleId, questions }) {
       <p className="quiz__progress">
         {t("quiz.questionProgress", { current: index + 1, total: questions.length })}
       </p>
-      <p className="lesson-quiz__question">{t(`${base}.question`)}</p>
+      <ProgressBar current={index + 1} total={questions.length} />
+      <p key={index} className="lesson-quiz__question">
+        {t(`${base}.question`)}
+      </p>
       <div className="quiz__options">
         {optionOrder.map((optionIndex) => {
           let modifier = "";

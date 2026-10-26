@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { BookOpen, Check, Trophy } from "lucide-react";
 import { clearFailedQuestion, recordFailedQuestion, recordQuizResult } from "../../storage.js";
 import { trackEvent } from "../../analytics.js";
+import ProgressBar from "./ProgressBar.jsx";
 
 /** Baraja de Fisher-Yates sin mutar el original. */
 function shuffled(array) {
@@ -132,7 +133,10 @@ export default function Quiz({ module, onBackToLessons, onExit }) {
           total: questions.length,
         })}
       </p>
-      <h1 className="quiz__question">{t(`${keyBase}.${question.id}.question`)}</h1>
+      <ProgressBar current={questionIndex + 1} total={questions.length} />
+      <h1 key={question.id} className="quiz__question">
+        {t(`${keyBase}.${question.id}.question`)}
+      </h1>
 
       <div className="quiz__options">
         {order.map((optionIndex) => {

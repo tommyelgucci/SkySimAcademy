@@ -50,6 +50,83 @@
   box-sizing: border-box;
 }
 
+/* ---------- Movimiento compartido ---------- */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  45% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes shake {
+  20% {
+    transform: translateX(-5px);
+  }
+  45% {
+    transform: translateX(4px);
+  }
+  70% {
+    transform: translateX(-2px);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
+@keyframes breathe {
+  50% {
+    opacity: 0.6;
+    scale: 1.06;
+  }
+}
+
+@keyframes soft-pulse {
+  50% {
+    opacity: 0.45;
+    transform: scale(0.985);
+  }
+}
+
+/* Cada pantalla entra con un fundido corto: el cambio por estado no tiene
+   router detrás, así que sin esto el contenido se sustituye de golpe. */
+.app__main > * {
+  animation: rise-in 0.32s var(--ease-out) both;
+}
+
+/* El simulador pinta su propio canvas a pantalla completa: sin
+   desplazamiento, solo fundido. */
+.app--fullscreen .app__main > * {
+  animation-name: fade-in;
+}
+
+/* Anillo de foco visible solo con teclado */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 body {
   margin: 0;
   font-family: var(--font);
@@ -341,6 +418,39 @@ h3 {
   background: radial-gradient(closest-side, rgba(56, 182, 255, 0.18), transparent);
   pointer-events: none;
   z-index: -1;
+  animation: breathe 7s ease-in-out infinite;
+}
+
+/* Entrada escalonada de la portada: insignia → titular → texto → botones →
+   cifras. Cada bloque llega un poco después del anterior. */
+.home__badge,
+.home__title,
+.home__intro,
+.home__actions,
+.highlight-card {
+  animation: rise-in 0.55s var(--ease-out) both;
+}
+
+.home__title {
+  animation-delay: 0.07s;
+}
+.home__intro {
+  animation-delay: 0.14s;
+}
+.home__actions {
+  animation-delay: 0.21s;
+}
+.highlight-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.highlight-card:nth-child(2) {
+  animation-delay: 0.36s;
+}
+.highlight-card:nth-child(3) {
+  animation-delay: 0.42s;
+}
+.highlight-card:nth-child(4) {
+  animation-delay: 0.48s;
 }
 
 .home__badge {
@@ -403,6 +513,16 @@ h3 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+  transition:
+    border-color 0.16s ease,
+    transform 0.16s var(--ease-out),
+    box-shadow 0.16s ease;
+}
+
+.highlight-card:hover {
+  border-color: rgba(56, 182, 255, 0.45);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
 }
 
 .highlight-card__icon {
@@ -781,6 +901,16 @@ h3 {
   box-shadow: var(--shadow-lift);
 }
 
+/* Entrada escalonada de la cuadrícula (hasta 14 tarjetas) */
+.module-grid > .module-card {
+  animation: rise-in 0.4s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+
+.module-card:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.99);
+}
+
 .module-card:hover:not(:disabled)::before {
   opacity: 1;
 }
@@ -971,6 +1101,63 @@ h3 {
   font-size: 1.4rem;
 }
 
+/* Barra de avance del quiz */
+.progress-bar {
+  height: 4px;
+  margin-block: 0.4rem 1rem;
+  background: var(--color-surface-raised);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), #7dd3ff);
+  border-radius: inherit;
+  transition: width 0.4s var(--ease-out);
+}
+
+/* La pregunta entra con cada cambio (el componente la remonta por `key`) */
+.quiz__question,
+.lesson-quiz__question {
+  animation: rise-in 0.3s var(--ease-out) both;
+}
+
+/* Estadísticas */
+.stats__card {
+  animation: rise-in 0.4s var(--ease-out) both;
+}
+
+.stats__card:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.stats__module-row {
+  transition:
+    border-color 0.14s ease,
+    transform 0.14s var(--ease-out);
+}
+
+.stats__module-row:hover {
+  border-color: rgba(56, 182, 255, 0.4);
+  transform: translateX(3px);
+}
+
+[dir="rtl"] .stats__module-row:hover {
+  transform: translateX(-3px);
+}
+
+/* La llama de racha activa titila apenas */
+.stats__flame--on {
+  animation: soft-pulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 183, 3, 0.5));
+}
+
+/* Último minuto del examen: el cronómetro late */
+.exam__timer.is-wrong {
+  animation: soft-pulse 1s ease-in-out infinite;
+}
+
 .quiz__options {
   display: flex;
   flex-direction: column;
@@ -988,6 +1175,14 @@ h3 {
   border-radius: var(--radius);
   padding: 0.9rem 1.1rem;
   cursor: pointer;
+  transition:
+    border-color 0.14s ease,
+    background 0.14s ease,
+    transform 0.14s var(--ease-out);
+}
+
+.quiz__option:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .quiz__option:hover:not(:disabled) {
@@ -1000,17 +1195,20 @@ h3 {
 }
 
 .quiz__option--correct {
+  animation: pop 0.35s var(--ease-spring);
   border-color: var(--color-correct);
   background: color-mix(in srgb, var(--color-correct) 18%, var(--color-surface));
 }
 
 .quiz__option--wrong {
+  animation: shake 0.38s ease;
   border-color: var(--color-wrong);
   background: color-mix(in srgb, var(--color-wrong) 18%, var(--color-surface));
 }
 
 .quiz__feedback {
   font-weight: 600;
+  animation: rise-in 0.25s var(--ease-out) both;
 }
 
 .quiz__feedback.is-correct {
@@ -1084,6 +1282,9 @@ h3 {
   text-align: center;
   min-width: 5.2rem;
   box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.95);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
 }
 
 /* Reflejo en el filo superior: es lo que hace que un panel translúcido se
@@ -1097,8 +1298,14 @@ h3 {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
+.hud__item--warning {
+  border-color: rgba(255, 93, 93, 0.55);
+  background: rgba(70, 14, 20, 0.6);
+}
+
 .hud__item--warning .hud__value {
   color: var(--color-wrong);
+  animation: soft-pulse 1s ease-in-out infinite;
 }
 
 .hud__label {
@@ -1124,13 +1331,7 @@ h3 {
   font-size: 1.3rem;
   font-weight: 800;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  animation: blink 0.6s steps(2) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0.2;
-  }
+  animation: soft-pulse 0.7s ease-in-out infinite;
 }
 
 /* Aviso de límite del mapa: ámbar, menos alarmante que la pérdida */
@@ -1291,7 +1492,9 @@ h3 {
 .gauge__horizon {
   transform-box: view-box;
   transform-origin: 50% 50%;
-  transition: transform 0.12s linear;
+  /* Las muestras llegan a ~10 Hz: un ease-out corto reparte el giro y evita
+     el efecto de aguja a saltitos que da `linear` con intervalos largos. */
+  transition: transform 0.2s cubic-bezier(0.22, 0.8, 0.3, 1);
 }
 
 /* En pantallas táctiles: encima de los mandos, como panel de cabina */
@@ -1315,6 +1518,10 @@ h3 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-card);
+}
+
+.lesson-diagram {
+  animation: rise-in 0.45s var(--ease-out) both;
 }
 
 .lesson-diagram__svg {
@@ -1377,6 +1584,10 @@ h3 {
   border-radius: var(--radius);
 }
 
+.flashcards__visual {
+  animation: panel-in 0.35s var(--ease-out) both;
+}
+
 .flashcards__visual .gauge {
   width: 200px;
   height: 200px;
@@ -1407,8 +1618,18 @@ h3 {
   cursor: pointer;
 }
 
+.flashcards__play {
+  transition:
+    filter 0.14s ease,
+    transform 0.14s var(--ease-out);
+}
+
 .flashcards__play:hover {
   filter: brightness(1.1);
+}
+
+.flashcards__play:active {
+  transform: scale(0.97);
 }
 
 .flashcards__phrase {
@@ -1455,6 +1676,8 @@ h3 {
   padding: 0.35rem 1rem;
   font-size: 0.85rem;
   color: var(--color-text);
+  box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.9);
+  animation: rise-in 0.4s var(--ease-out) 0.15s both;
 }
 
 .hud-objective svg {
@@ -1577,6 +1800,11 @@ h3 {
   align-items: center;
   gap: 0.5rem;
   max-width: 20rem;
+  background: var(--surface-gradient);
+  box-shadow:
+    0 24px 50px -24px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: panel-in 0.4s var(--ease-spring) both;
 }
 
 [dir="rtl"] .landing-debrief {
@@ -1590,8 +1818,10 @@ h3 {
 
 .landing-debrief__grade {
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.1rem;
   color: var(--color-accent);
+  text-shadow: 0 0 18px rgba(255, 183, 3, 0.45);
 }
 
 .landing-debrief ul {
@@ -1687,11 +1917,42 @@ h3 {
   border-radius: var(--radius);
   padding: 0.7rem 0.9rem;
   cursor: pointer;
-  transition: border-color 0.12s ease;
+  transition:
+    border-color 0.14s ease,
+    background 0.14s ease,
+    transform 0.14s var(--ease-out);
+  animation: rise-in 0.35s var(--ease-out) both;
+}
+
+/* Entrada escalonada de la lista de misiones (hasta 10 filas) */
+.mission-card:nth-child(2) {
+  animation-delay: 40ms;
+}
+.mission-card:nth-child(3) {
+  animation-delay: 80ms;
+}
+.mission-card:nth-child(4) {
+  animation-delay: 120ms;
+}
+.mission-card:nth-child(5) {
+  animation-delay: 160ms;
+}
+.mission-card:nth-child(n + 6) {
+  animation-delay: 200ms;
 }
 
 .mission-card:hover:not(:disabled) {
   border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface-raised));
+  transform: translateX(3px);
+}
+
+[dir="rtl"] .mission-card:hover:not(:disabled) {
+  transform: translateX(-3px);
+}
+
+.mission-card:active:not(:disabled) {
+  transform: scale(0.99);
 }
 
 .mission-card--locked {
@@ -1748,7 +2009,9 @@ h3 {
   display: grid;
   place-items: center;
   background: rgba(8, 13, 24, 0.7);
+  backdrop-filter: blur(5px);
   padding: 1rem;
+  animation: fade-in 0.25s ease both;
 }
 
 .simulator__panel {
@@ -1758,7 +2021,10 @@ h3 {
   padding: 2rem;
   max-width: 30rem;
   width: 100%;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.95);
+  box-shadow:
+    0 30px 60px -30px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  animation: panel-in 0.32s var(--ease-out) both;
 }
 
 .simulator__panel h1 {
@@ -1807,6 +2073,22 @@ h3 {
   place-items: center;
 }
 
+.joystick,
+.throttle-slider,
+.yaw-button {
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+/* El mando que se está tocando se ilumina (`:active` cubre el toque) */
+.joystick:active,
+.throttle-slider:active {
+  border-color: rgba(56, 182, 255, 0.7);
+  box-shadow: 0 0 18px -4px rgba(56, 182, 255, 0.6);
+}
+
 .joystick__thumb {
   width: 46px;
   height: 46px;
@@ -1834,7 +2116,11 @@ h3 {
   position: absolute;
   inset-inline: 0;
   inset-block-end: 0;
-  background: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-accent) 70%, transparent),
+    color-mix(in srgb, var(--color-accent) 35%, transparent)
+  );
 }
 
 .throttle-slider__fill {
@@ -1888,6 +2174,8 @@ h3 {
 
 .yaw-button:active {
   background: var(--color-surface-raised);
+  border-color: rgba(56, 182, 255, 0.7);
+  transform: scale(0.94);
 }
 
 .controls-help__touch {

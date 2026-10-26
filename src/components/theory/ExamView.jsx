@@ -16,6 +16,7 @@ import {
   recordExamResult,
   recordFailedQuestion,
 } from "../../storage.js";
+import ProgressBar from "./ProgressBar.jsx";
 
 const QUESTIONS_PER_MODULE = 4; // × 5 módulos = 20 preguntas
 const EXAM_SECONDS = 20 * 60;
@@ -237,7 +238,10 @@ export default function ExamView({ onBack }) {
           <Timer size={16} aria-hidden="true" /> {minutes}:{seconds}
         </span>
       </div>
-      <h1 className="quiz__question">{t(`${base}.question`)}</h1>
+      <ProgressBar current={index + 1} total={questions.length} />
+      <h1 key={index} className="quiz__question">
+        {t(`${base}.question`)}
+      </h1>
       <div className="quiz__options">
         {optionOrders[index].map((optionIndex) => (
           <button
