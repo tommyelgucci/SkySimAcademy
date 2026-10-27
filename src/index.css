@@ -41,6 +41,9 @@
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
+    /* Sin esto, los elementos con entrada escalonada (`both` + delay) se
+       quedan invisibles durante su retraso aunque la animación sea instantánea. */
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
